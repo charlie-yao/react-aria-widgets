@@ -6,6 +6,9 @@ module.exports = {
 	devtool: 'inline-source-map',
 	resolve: {
 		extensions: ['.js', '.json', '.jsx'],
+		alias: {
+			src: path.resolve(__dirname, 'src/'),
+		},
 	},
 	entry: './src/index.jsx',
 	output: {
