@@ -1,1 +1,10 @@
 console.log('hello world!');
+
+const promise = new Promise();
+promise.resolve();
+
+const rofl = [1, 2, 3, 4, 5].map(num => {
+	return num + 1;
+});
+
+console.log(rofl);
