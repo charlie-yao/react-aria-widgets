@@ -1,3 +1,5 @@
+import Test from './test.jsx';
+
 console.log('hello world!');
 
 const promise = new Promise();
@@ -8,3 +10,5 @@ const rofl = [1, 2, 3, 4, 5].map(num => {
 });
 
 console.log(rofl);
+
+console.log(Test);
