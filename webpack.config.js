@@ -35,6 +35,11 @@ module.exports = {
 					},
 				},
 			},
+			{
+				test: /\.css$/,
+				exclude: /\.yarn/,
+				use: ['style-loader', 'css-loader'],
+			},
 		],
 	},
 	plugins: [

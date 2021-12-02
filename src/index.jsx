@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Test from './test';
+import './styles.css';
 
 console.log('hello world!');
 console.log(Test);
