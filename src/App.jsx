@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+//Components and Styles
+import Accordion from 'src/Accordion';
 
 class App extends React.Component {
 	render() {
 		return (
-			<div>Hello world!</div>
+			<Fragment>
+				<h1>Accordion</h1>
+				<Accordion />
+			</Fragment>
 		);
 	}
 }
