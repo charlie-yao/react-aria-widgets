@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Test from './test.jsx';
 
 console.log('hello world!');
@@ -16,3 +19,5 @@ const rofl = [1, 2, 3, 4, 5].map(num => {
 console.log(rofl);
 
 console.log(Test);
+
+ReactDOM.render(<Test />, document.getElementById('reactRoot'));
