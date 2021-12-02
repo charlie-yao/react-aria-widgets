@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Test from './test.jsx';
+import Test from './test';
 
 console.log('hello world!');
 console.log(Test);
