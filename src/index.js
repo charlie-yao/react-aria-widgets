@@ -1,6 +1,7 @@
 import Test from './test.jsx';
 
 console.log('hello world!');
+console.log(Test);
 
 const promise = new Promise();
 promise.resolve();
