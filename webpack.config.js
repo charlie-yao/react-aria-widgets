@@ -37,6 +37,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: 'Hello world!',
+			template: 'template.html',
 		}),
 	],
 	devServer: {
