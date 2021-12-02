@@ -40,6 +40,11 @@ module.exports = {
 				exclude: /\.yarn/,
 				use: ['style-loader', 'css-loader'],
 			},
+			{
+				test: /\.scss$/,
+				exclude: /\.yarn/,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
+			},
 		],
 	},
 	plugins: [

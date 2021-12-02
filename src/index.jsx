@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Test from './test';
-import './styles.css';
+import './styles.scss';
 
 console.log('hello world!');
 console.log(Test);
