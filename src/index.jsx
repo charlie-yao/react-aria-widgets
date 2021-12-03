@@ -1,23 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Test from './test';
+//Components and Styles
+import App from 'src/App';
+import 'src/styles.scss';
 
-console.log('hello world!');
-console.log(Test);
-
-const promise = new Promise((resolve, reject) => {
-	resolve(555);
-}).then(val => {
-	console.log(val);
-});
-
-const rofl = [1, 2, 3, 4, 5].map(num => {
-	return num + 1;
-});
-
-console.log(rofl);
-
-console.log(Test);
-
-ReactDOM.render(<Test />, document.getElementById('reactRoot'));
+ReactDOM.render(<App />, document.getElementById('reactRoot'));

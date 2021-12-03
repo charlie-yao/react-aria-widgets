@@ -6,6 +6,9 @@ module.exports = {
 	devtool: 'inline-source-map',
 	resolve: {
 		extensions: ['.js', '.json', '.jsx'],
+		alias: {
+			src: path.resolve(__dirname, 'src/'),
+		},
 	},
 	entry: './src/index.jsx',
 	output: {
@@ -34,6 +37,16 @@ module.exports = {
 						presets: ['@babel/preset-env', '@babel/preset-react']
 					},
 				},
+			},
+			{
+				test: /\.css$/,
+				exclude: /\.yarn/,
+				use: ['style-loader', 'css-loader'],
+			},
+			{
+				test: /\.scss$/,
+				exclude: /\.yarn/,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 		],
 	},
