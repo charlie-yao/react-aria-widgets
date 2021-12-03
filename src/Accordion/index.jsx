@@ -13,7 +13,7 @@ class Accordion extends React.Component {
 		allowMultiple: true,
 		allowToggle: true,
 	};
-	
+
 	constructor() {
 		super();
 
@@ -35,7 +35,7 @@ class Accordion extends React.Component {
 		const allowToggle = this.getAllowToggle();
 		const panelId = event.target.getAttribute('aria-controls');
 		const field = `${panelId}Expanded`;
-		
+
 		if(allowMultiple) {
 			this.setState(prevState => {
 				return {
@@ -54,7 +54,7 @@ class Accordion extends React.Component {
 				return state;
 			});
 		}
-	}
+	};
 
 	onTriggerKeyDown = (event) => {
 		const { key } = event;
@@ -86,11 +86,11 @@ class Accordion extends React.Component {
 				event.preventDefault();
 				break;
 		}
-	}
+	};
 
 	onDummySubmit = (event) => {
 		event.preventDefault();
-	}
+	};
 
 	//---- Rendering ----
 	render() {
@@ -177,7 +177,7 @@ class Accordion extends React.Component {
 		//multiple accordion sections are expanded with no way of closing them.
 		const { allowToggle, allowMultiple } = this.props;
 		return allowMultiple ? true : allowToggle;
-	}
+	};
 }
 
 export default Accordion;
