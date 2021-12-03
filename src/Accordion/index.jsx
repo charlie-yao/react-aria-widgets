@@ -27,20 +27,33 @@ class Accordion extends React.Component {
 		const { allowMultiple, allowToggle } = this.props;
 		const panelId = event.target.getAttribute('aria-controls');
 		const field = `${panelId}Expanded`;
+		
+		if(allowMultiple) {
+			//Just pretend allowToggle is true? The case of allowMultiple && !allowToggle
+			//doesn't make much sense because it means we'd have a bunch of open sections
+			//that can't be closed
+			this.setState(prevState => {
+				return {
+					[field]: !prevState[field],
+				};
+			});
+		}
+		else {
+			this.setState(prevState => {
+				const state = {};
 
-		if(!allowToggle && this.state[field])
-			return;
+				Object.keys(prevState).forEach(key => {
+					state[key] = key === field ? (allowToggle ? !prevState[field] : true) : false;
+				});
 
-		this.setState(prevState => {
-			return {
-				[field]: !prevState[field],
-			};
-		});
+				return state;
+			});
+		}
 	}
 
 	//---- Rendering ----
 	render() {
-		const { allowMultiple, allowToggle } = this.props;
+		const { allowToggle } = this.props;
 		const { section1PanelExpanded, section2PanelExpanded, section3PanelExpanded } = this.state;
 
 		return (
