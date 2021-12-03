@@ -18,6 +18,11 @@ module.exports = {
 	'plugins': [
 		'react',
 	],
+	'settings': {
+		'react': {
+			'version': 'detect',
+		},
+	},
 	'rules': {
 		'indent': [
 			'error',
@@ -65,6 +70,15 @@ module.exports = {
 			},
 		],
 		'no-trailing-spaces': [
+			'error',
+		],
+		'react/button-has-type': [
+			'error',
+		],
+		'react/default-props-match-prop-types': [
+			'error',
+		],
+		'react/no-access-state-in-setstate': [
 			'error',
 		],
 	}
