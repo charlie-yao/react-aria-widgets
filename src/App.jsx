@@ -6,12 +6,10 @@ import Accordion from 'src/Accordion';
 class App extends React.Component {
 	render() {
 		return (
-			<Fragment>
-				<main>
-					<h1>Accordion</h1>
-					<Accordion />
-				</main>
-			</Fragment>
+			<main>
+				<h1>Accordion</h1>
+				<Accordion />
+			</main>
 		);
 	}
 }
