@@ -53,7 +53,7 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { allowToggle } = this.props;
+		const { allowMultiple, allowToggle } = this.props;
 		const { section1PanelExpanded, section2PanelExpanded, section3PanelExpanded } = this.state;
 
 		return (
@@ -63,7 +63,7 @@ class Accordion extends React.Component {
 						aria-controls="section1Panel"
 						aria-expanded={ section1PanelExpanded }
 						onClick={ this.onClickAccordionTrigger }
-						aria-disabled={ !allowToggle && section1PanelExpanded }
+						aria-disabled={ !allowMultiple && !allowToggle && section1PanelExpanded }
 					>
 						Section 1
 					</button>
@@ -80,7 +80,7 @@ class Accordion extends React.Component {
 						aria-controls="section2Panel"
 						aria-expanded={ section2PanelExpanded }
 						onClick={ this.onClickAccordionTrigger }
-						aria-disabled={ !allowToggle && section2PanelExpanded }
+						aria-disabled={ !allowMultiple && !allowToggle && section2PanelExpanded }
 					>
 						Section 2
 					</button>
@@ -97,7 +97,7 @@ class Accordion extends React.Component {
 						aria-controls="section3Panel"
 						aria-expanded={ section3PanelExpanded }
 						onClick={ this.onClickAccordionTrigger }
-						aria-disabled={ !allowToggle && section3PanelExpanded }
+						aria-disabled={ !allowMultiple && !allowToggle && section3PanelExpanded }
 					>
 						Section 3
 					</button>
