@@ -64,19 +64,27 @@ class Accordion extends React.Component {
 
 		switch(key) {
 			case 'ArrowUp':
-				console.log('arrow up', index, this.triggerRefs[index]);
+				if(index === 0)
+					this.triggerRefs[this.triggerRefs.length - 1].current.focus();
+				else
+					this.triggerRefs[index - 1].current.focus();
+
 				event.preventDefault();
 				break;
 			case 'ArrowDown':
-				console.log('arrow down', index, this.triggerRefs[index]);
+				if(index === this.triggerRefs.length - 1)
+					this.triggerRefs[0].current.focus();
+				else
+					this.triggerRefs[index + 1].current.focus();
+
 				event.preventDefault();
 				break;
 			case 'Home':
-				console.log('home', index, this.triggerRefs[index]);
+				this.triggerRefs[0].current.focus();
 				event.preventDefault();
 				break;
 			case 'End':
-				console.log('end', index, this.triggerRefs[index]);
+				this.triggerRefs[this.triggerRefs.length - 1].current.focus();
 				event.preventDefault();
 				break;
 		}
