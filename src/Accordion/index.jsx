@@ -1,34 +1,68 @@
 import React, { Fragment } from 'react';
 
 class Accordion extends React.Component {
+	constructor() {
+		super();
+
+		this.state = {
+			section1PanelExpanded: true,
+			section2PanelExpanded: false,
+			section3PanelExpanded: false,
+		};
+	}
+
 	//---- Events ----
+	onClickAccordionTrigger = (event) => {
+		const panelId = event.target.getAttribute('aria-controls');
+		const field = `${panelId}Expanded`;
+
+		this.setState(prevState => {
+			return {
+				[field]: !prevState[field],
+			};
+		});
+	}
 
 	//---- Rendering ----
 	render() {
+		const { section1PanelExpanded, section2PanelExpanded, section3PanelExpanded } = this.state;
+
 		return (
 			<Fragment>
 				<h2 id="section1Header">
-					<button aria-controls="section1Content">
+					<button
+						aria-controls="section1Panel"
+						aria-expanded={ section1PanelExpanded }
+						onClick={ this.onClickAccordionTrigger }
+					>
 						Section 1
 					</button>
 				</h2>
-				<section id="section1Content" aria-labelledby="section1Header">
+				<section id="section1Panel" aria-labelledby="section1Header" hidden={ !section1PanelExpanded }>
 					Section 1 content
 				</section>
 				<h2 id="section2Header">
-					<button aria-controls="section2Content">
+					<button
+						aria-controls="section2Panel"
+						aria-expanded={ section2PanelExpanded }
+						onClick={ this.onClickAccordionTrigger }
+					>
 						Section 2
 					</button>
 				</h2>
-				<section id="section2Content" aria-labelledby="section2Header">
+				<section id="section2Panel" aria-labelledby="section2Header" hidden={ !section2PanelExpanded }>
 					Section 2 content
 				</section>
 				<h2 id="section3Header">
-					<button aria-controls="section3Content">
+					<button
+						aria-controls="section3Panel"
+						aria-expanded={ section3PanelExpanded }
+						onClick={ this.onClickAccordionTrigger }
+					>
 						Section 3
 					</button>
 				</h2>
-				<section id="section3Content" aria-labelledby="section3Header">
+				<section id="section3Panel" aria-labelledby="section3Header" hidden={ !section3PanelExpanded }>
 					Section 3 content
 				</section>
 			</Fragment>
