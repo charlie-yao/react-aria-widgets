@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+const NUM_SECTIONS = 3;
+
 class Accordion extends React.Component {
 	static propTypes = {
 		allowMultiple: PropTypes.bool,
@@ -20,6 +22,11 @@ class Accordion extends React.Component {
 			section2PanelExpanded: false,
 			section3PanelExpanded: false,
 		};
+
+		this.triggerRefs = [];
+
+		for(let i=0; i<NUM_SECTIONS; i++)
+			this.triggerRefs[i] = React.createRef();
 	}
 
 	//---- Events ----
@@ -53,19 +60,24 @@ class Accordion extends React.Component {
 
 	onTriggerKeyDown = (event) => {
 		const { key } = event;
+		const index = Number.parseInt(event.target.dataset.index);
 
 		switch(key) {
 			case 'ArrowUp':
-				console.log('arrow up');
+				console.log('arrow up', index, this.triggerRefs[index]);
+				event.preventDefault();
 				break;
 			case 'ArrowDown':
-				console.log('arrow down');
+				console.log('arrow down', index, this.triggerRefs[index]);
+				event.preventDefault();
 				break;
 			case 'Home':
-				console.log('home');
+				console.log('home', index, this.triggerRefs[index]);
+				event.preventDefault();
 				break;
 			case 'End':
-				console.log('end');
+				console.log('end', index, this.triggerRefs[index]);
+				event.preventDefault();
 				break;
 		}
 	}
@@ -88,6 +100,8 @@ class Accordion extends React.Component {
 						onClick={ this.onClickTrigger }
 						onKeyDown={ this.onTriggerKeyDown }
 						aria-disabled={ !allowMultiple && !allowToggle && section1PanelExpanded }
+						data-index="0"
+						ref={ this.triggerRefs[0] }
 					>
 						Section 1
 					</button>
@@ -112,6 +126,8 @@ class Accordion extends React.Component {
 						onClick={ this.onClickTrigger }
 						onKeyDown={ this.onTriggerKeyDown }
 						aria-disabled={ !allowMultiple && !allowToggle && section2PanelExpanded }
+						data-index="1"
+						ref={ this.triggerRefs[1] }
 					>
 						Section 2
 					</button>
@@ -130,6 +146,8 @@ class Accordion extends React.Component {
 						onClick={ this.onClickTrigger }
 						onKeyDown={ this.onTriggerKeyDown }
 						aria-disabled={ !allowMultiple && !allowToggle && section3PanelExpanded }
+						data-index="2"
+						ref={ this.triggerRefs[2] }
 					>
 						Section 3
 					</button>
