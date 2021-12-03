@@ -38,7 +38,11 @@ class Accordion extends React.Component {
 						Section 1
 					</button>
 				</h2>
-				<section id="section1Panel" aria-labelledby="section1Header" hidden={ !section1PanelExpanded }>
+				<section
+					id="section1Panel"
+					aria-labelledby="section1Header"
+					hidden={ !section1PanelExpanded }
+				>
 					Section 1 content
 				</section>
 				<h2 id="section2Header">
@@ -50,7 +54,11 @@ class Accordion extends React.Component {
 						Section 2
 					</button>
 				</h2>
-				<section id="section2Panel" aria-labelledby="section2Header" hidden={ !section2PanelExpanded }>
+				<section
+					id="section2Panel"
+					aria-labelledby="section2Header"
+					hidden={ !section2PanelExpanded }
+				>
 					Section 2 content
 				</section>
 				<h2 id="section3Header">
@@ -62,7 +70,11 @@ class Accordion extends React.Component {
 						Section 3
 					</button>
 				</h2>
-				<section id="section3Panel" aria-labelledby="section3Header" hidden={ !section3PanelExpanded }>
+				<section
+					id="section3Panel"
+					aria-labelledby="section3Header"
+					hidden={ !section3PanelExpanded }
+				>
 					Section 3 content
 				</section>
 			</Fragment>
