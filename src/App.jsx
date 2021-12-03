@@ -8,7 +8,7 @@ class App extends React.Component {
 		return (
 			<Fragment>
 				<h1>Accordion</h1>
-				<Accordion />
+				<Accordion allowToggle={ false }/>
 			</Fragment>
 		);
 	}
