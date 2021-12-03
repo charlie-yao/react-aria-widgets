@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 //Components and Styles
 import Accordion from 'src/Accordion';
