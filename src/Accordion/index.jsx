@@ -23,7 +23,7 @@ class Accordion extends React.Component {
 	}
 
 	//---- Events ----
-	onClickAccordionTrigger = (event) => {
+	onClickTrigger = (event) => {
 		const { allowMultiple, allowToggle } = this.props;
 		const panelId = event.target.getAttribute('aria-controls');
 		const field = `${panelId}Expanded`;
@@ -51,6 +51,25 @@ class Accordion extends React.Component {
 		}
 	}
 
+	onTriggerKeyDown = (event) => {
+		const { key } = event;
+
+		switch(key) {
+			case 'ArrowUp':
+				console.log('arrow up');
+				break;
+			case 'ArrowDown':
+				console.log('arrow down');
+				break;
+			case 'Home':
+				console.log('home');
+				break;
+			case 'End':
+				console.log('end');
+				break;
+		}
+	}
+
 	onDummySubmit = (event) => {
 		event.preventDefault();
 	}
@@ -66,7 +85,8 @@ class Accordion extends React.Component {
 					<button
 						aria-controls="section1Panel"
 						aria-expanded={ section1PanelExpanded }
-						onClick={ this.onClickAccordionTrigger }
+						onClick={ this.onClickTrigger }
+						onKeyDown={ this.onTriggerKeyDown }
 						aria-disabled={ !allowMultiple && !allowToggle && section1PanelExpanded }
 					>
 						Section 1
@@ -89,7 +109,8 @@ class Accordion extends React.Component {
 					<button
 						aria-controls="section2Panel"
 						aria-expanded={ section2PanelExpanded }
-						onClick={ this.onClickAccordionTrigger }
+						onClick={ this.onClickTrigger }
+						onKeyDown={ this.onTriggerKeyDown }
 						aria-disabled={ !allowMultiple && !allowToggle && section2PanelExpanded }
 					>
 						Section 2
@@ -106,7 +127,8 @@ class Accordion extends React.Component {
 					<button
 						aria-controls="section3Panel"
 						aria-expanded={ section3PanelExpanded }
-						onClick={ this.onClickAccordionTrigger }
+						onClick={ this.onClickTrigger }
+						onKeyDown={ this.onTriggerKeyDown }
 						aria-disabled={ !allowMultiple && !allowToggle && section3PanelExpanded }
 					>
 						Section 3
