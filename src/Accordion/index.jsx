@@ -31,14 +31,12 @@ class Accordion extends React.Component {
 
 	//---- Events ----
 	onClickTrigger = (event) => {
-		const { allowMultiple, allowToggle } = this.props;
+		const { allowMultiple } = this.props;
+		const allowToggle = this.getAllowToggle();
 		const panelId = event.target.getAttribute('aria-controls');
 		const field = `${panelId}Expanded`;
 		
 		if(allowMultiple) {
-			//Just pretend allowToggle is true? The case of allowMultiple && !allowToggle
-			//doesn't make much sense because it means we'd have a bunch of open sections
-			//that can't be closed
 			this.setState(prevState => {
 				return {
 					[field]: !prevState[field],
@@ -96,8 +94,8 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { allowMultiple, allowToggle } = this.props;
 		const { section1PanelExpanded, section2PanelExpanded, section3PanelExpanded } = this.state;
+		const allowToggle = this.getAllowToggle();
 
 		return (
 			<Fragment>
@@ -107,7 +105,7 @@ class Accordion extends React.Component {
 						aria-expanded={ section1PanelExpanded }
 						onClick={ this.onClickTrigger }
 						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowMultiple && !allowToggle && section1PanelExpanded }
+						aria-disabled={ !allowToggle && section1PanelExpanded }
 						data-index="0"
 						ref={ this.triggerRefs[0] }
 					>
@@ -133,7 +131,7 @@ class Accordion extends React.Component {
 						aria-expanded={ section2PanelExpanded }
 						onClick={ this.onClickTrigger }
 						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowMultiple && !allowToggle && section2PanelExpanded }
+						aria-disabled={ !allowToggle && section2PanelExpanded }
 						data-index="1"
 						ref={ this.triggerRefs[1] }
 					>
@@ -153,7 +151,7 @@ class Accordion extends React.Component {
 						aria-expanded={ section3PanelExpanded }
 						onClick={ this.onClickTrigger }
 						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowMultiple && !allowToggle && section3PanelExpanded }
+						aria-disabled={ !allowToggle && section3PanelExpanded }
 						data-index="2"
 						ref={ this.triggerRefs[2] }
 					>
@@ -169,6 +167,16 @@ class Accordion extends React.Component {
 				</section>
 			</Fragment>
 		);
+	}
+
+	//---- Misc. ----
+	getAllowToggle = () => {
+		//Even though this component accepts allowMultiple and allowToggle
+		//as independent props, the case of allowMultiple && !allowToggle
+		//doesn't make much sense because we'd end up in a situation where
+		//multiple accordion sections are expanded with no way of closing them.
+		const { allowToggle, allowMultiple } = this.props;
+		return allowMultiple ? true : allowToggle;
 	}
 }
 
