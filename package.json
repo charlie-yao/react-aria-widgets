@@ -16,6 +16,8 @@
 		"@babel/preset-react": "^7.16.0",
 		"babel-loader": "^8.2.3",
 		"css-loader": "^6.5.1",
+		"eslint": "^8.3.0",
+		"eslint-plugin-react": "^7.27.1",
 		"html-webpack-plugin": "^5.5.0",
 		"sass": "^1.44.0",
 		"sass-loader": "^12.3.0",
