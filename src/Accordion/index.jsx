@@ -1,6 +1,17 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 class Accordion extends React.Component {
+	static propTypes = {
+		allowMultiple: PropTypes.bool,
+		allowToggle: PropTypes.bool,
+	};
+
+	static defaultProps = {
+		allowMultiple: true,
+		allowToggle: true,
+	};
+	
 	constructor() {
 		super();
 
