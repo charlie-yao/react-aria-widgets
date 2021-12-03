@@ -7,8 +7,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<h1>Accordion</h1>
-				<Accordion />
+				<main>
+					<h1>Accordion</h1>
+					<Accordion />
+				</main>
 			</Fragment>
 		);
 	}
