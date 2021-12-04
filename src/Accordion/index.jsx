@@ -108,6 +108,7 @@ class Accordion extends React.Component {
 						aria-disabled={ !allowToggle && section1PanelExpanded }
 						data-index="0"
 						ref={ this.triggerRefs[0] }
+						type="button"
 					>
 						Section 1
 					</button>
@@ -134,6 +135,7 @@ class Accordion extends React.Component {
 						aria-disabled={ !allowToggle && section2PanelExpanded }
 						data-index="1"
 						ref={ this.triggerRefs[1] }
+						type="button"
 					>
 						Section 2
 					</button>
@@ -154,6 +156,7 @@ class Accordion extends React.Component {
 						aria-disabled={ !allowToggle && section3PanelExpanded }
 						data-index="2"
 						ref={ this.triggerRefs[2] }
+						type="button"
 					>
 						Section 3
 					</button>
