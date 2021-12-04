@@ -121,7 +121,7 @@ class Accordion extends React.Component {
 						<label htmlFor="section1Input1">Dummy Input #1</label>
 						<input type="text" id="section1Input1" required />
 						<label htmlFor="section1Input2">Dummy Input #2</label>
-						<input type="number" min="0" max="100" required step="1" id="section1Input2"/>
+						<input type="number" min="0" max="100" required step="1" id="section1Input2" />
 						<button type="submit">Submit</button>
 					</form>
 				</section>

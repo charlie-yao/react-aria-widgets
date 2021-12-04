@@ -81,5 +81,81 @@ module.exports = {
 		'react/no-access-state-in-setstate': [
 			'error',
 		],
+		'react/require-default-props': [
+			'error',
+			{
+				'forbidDefaultForRequired': true,
+			},
+		],
+		'react/void-dom-elements-no-children': [
+			'error',
+		],
+		'react/jsx-child-element-spacing': [
+			'error',
+		],
+		'react/jsx-closing-tag-location': [
+			'error',
+		],
+		'react/jsx-curly-brace-presence': [
+			'error',
+			'never',
+		],
+		'react/jsx-curly-newline': [
+			'error',
+			'consistent'
+		],
+		'react/jsx-curly-spacing': [
+			'error',
+			{
+				'when': 'always',
+				'children': true,
+				'spacing': {
+					'objectLiterals': 'never',
+				},
+			},
+		],
+		'react/jsx-equals-spacing': [
+			'error'
+		],
+		'react/jsx-filename-extension': [
+			'error',
+			{
+				'allow': 'as-needed',
+			},
+		],
+		'react/jsx-indent': [
+			'error',
+			'tab',
+			{
+				'indentLogicalExpressions': true,
+			},
+		],
+		'react/jsx-no-bind': [
+			'error',
+		],
+		'react/jsx-no-useless-fragment': [
+			'error',
+		],
+		'react/jsx-pascal-case': [
+			'error',
+		],
+		'react/jsx-props-no-spreading': [
+			'error',
+		],
+		'react/jsx-tag-spacing': [
+			'error',
+			{
+				'beforeClosing': 'never',
+			},
+		],
+		'react/jsx-wrap-multilines': [
+			'error',
+			{
+				'declaration': 'parens-new-line',
+				'assignment': 'parens-new-line',
+				'return': 'parens-new-line',
+				'arrow': 'parens-new-line',
+			},
+		],
 	}
 };
