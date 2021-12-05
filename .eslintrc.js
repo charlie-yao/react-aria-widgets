@@ -43,6 +43,24 @@ module.exports = {
 			'error',
 			'always',
 		],
+		'array-callback-return': [
+			'warn',
+		],
+		'no-await-in-loop': [
+			'warn',
+		],
+		'no-constructor-return': [
+			'error',
+		],
+		'no-promise-executor-return': [
+			'error',
+		],
+		'no-self-compare': [
+			'error',
+		],
+		'no-unused-private-class-members': [
+			'error',
+		],
 		'eqeqeq': [
 			'error',
 			'always',
