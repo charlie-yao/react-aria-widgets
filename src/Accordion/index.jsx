@@ -58,7 +58,7 @@ class Accordion extends React.Component {
 
 	onTriggerKeyDown = (event) => {
 		const { key } = event;
-		const index = Number.parseInt(event.target.dataset.index);
+		const index = Number.parseInt(event.target.dataset.index, 10);
 
 		switch(key) {
 			case 'ArrowUp':
