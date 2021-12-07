@@ -25,7 +25,7 @@ class Accordion extends React.Component {
 
 		this.triggerRefs = [];
 
-		for(let i=0; i<NUM_SECTIONS; i++)
+		for(let i = 0; i < NUM_SECTIONS; i++)
 			this.triggerRefs[i] = React.createRef();
 	}
 

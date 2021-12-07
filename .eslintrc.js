@@ -213,17 +213,93 @@ module.exports = {
 		'require-unicode-regexp': [
 			'error',
 		],
+		'array-bracket-newline': [
+			'error',
+			'consistent',
+		],
+		'array-bracket-spacing': [
+			'error',
+			'never',
+		],
+		'array-element-newline': [
+			'error',
+			'consistent',
+		],
+		'arrow-spacing': [
+			'error',
+		],
+		'block-spacing': [
+			'error',
+		],
+		'brace-style': [
+			'error',
+			'stroustrup',
+		],
 		'comma-dangle': [
 			'error',
 			'always-multiline',
+		],
+		'comma-spacing': [
+			'error',
+		],
+		'comma-style': [
+			'error',
+		],
+		'computed-property-spacing': [
+			'error',
+		],
+		'dot-location': [
+			'error',
 		],
 		'eol-last': [
 			'error',
 			'always',
 		],
+		'func-call-spacing': [
+			'error',
+		],
+		'function-call-argument-newline': [
+			'error',
+			'consistent',
+		],
+		'function-paren-newline': [
+			'error',
+		],
+		'implicit-arrow-linebreak': [
+			'error',
+		],
 		'jsx-quotes': [
 			'error',
 			'prefer-double',
+		],
+		'key-spacing': [
+			'error'
+		],
+		'keyword-spacing': [
+			'error',
+			{
+				'overrides': {
+					'if': {
+						'after': false,
+					},
+					'for': {
+						'after': false,
+					},
+					'while': {
+						'after': false,
+					},
+					'switch': {
+						'after': false,
+					},
+				},
+			},
+		],
+		'new-parens': [
+			'error',
+			'always',
+		],
+		'no-multi-spaces': [
+			'error',
 		],
 		'no-multiple-empty-lines': [
 			'error',
@@ -234,6 +310,85 @@ module.exports = {
 		],
 		'no-trailing-spaces': [
 			'error',
+		],
+		'no-whitespace-before-property': [
+			'error',
+		],
+		'nonblock-statement-body-position': [
+			'error',
+			'below',
+		],
+		'object-curly-newline': [
+			'error',
+			{
+				'consistent': true,
+			},
+		],
+		'object-curly-spacing': [
+			'error',
+			'always',
+		],
+		'object-property-newline': [
+			'error',
+			{
+				'allowAllPropertiesOnSameLine': true,
+			},
+		],
+		'operator-linebreak': [
+			'error',
+			'before',
+		],
+		'padded-blocks': [
+			'error',
+			'never',
+		],
+		'rest-spread-spacing': [
+			'error',
+			'never',
+		],
+		'semi-spacing': [
+			'error',
+			{
+				'before': false,
+				'after': true,
+			},
+		],
+		'semi-style': [
+			'error',
+			'last',
+		],
+		'space-before-blocks': [
+			'error',
+			'always',
+		],
+		'space-before-function-paren': [
+			'error',
+			'never',
+		],
+		'space-in-parens': [
+			'error',
+			'never',
+		],
+		'space-infix-ops': [
+			'error',
+		],
+		'space-unary-ops': [
+			'error',
+			{
+				'words': true,
+				'nonwords': false,
+			},
+		],
+		'switch-colon-spacing': [
+			'error',
+			{
+				'after': true,
+				'before': false,
+			},
+		],
+		'template-curly-spacing': [
+			'error',
+			'never',
 		],
 		'react/button-has-type': [
 			'error',
