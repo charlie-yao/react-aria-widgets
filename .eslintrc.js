@@ -398,10 +398,73 @@ module.exports = {
 		'react/button-has-type': [
 			'error',
 		],
+		'react/destructuring-assignment': [
+			'error',
+			'always',
+		],
 		'react/default-props-match-prop-types': [
 			'error',
 		],
+		'react/function-component-definition': [
+			'error',
+			{
+				namedComponents: 'function-declaration',
+				unnamedComponents: 'function-expression', //Linter prevents using array syntax though it's allowed
+			},
+		],
 		'react/no-access-state-in-setstate': [
+			'error',
+		],
+		'react/no-adjacent-inline-elements': [
+			'warn',
+		],
+		'react/no-array-index-key': [
+			'warn',
+		],
+		'react/no-arrow-function-lifecycle': [
+			'error',
+		],
+		'react/no-danger': [
+			'warn',
+		],
+		'react/no-did-mount-set-state': [
+			'error',
+		],
+		'react/no-did-update-set-state': [
+			'error',
+		],
+		'react/no-invalid-html-attribute': [
+			'error',
+		],
+		'react/no-redundant-should-component-update': [
+			'error',
+		],
+		'react/no-this-in-sfc': [
+			'error',
+		],
+		'react/no-typos': [
+			'error',
+		],
+		'react/no-unstable-nested-components': [
+			'error',
+		],
+		'react/no-unused-class-component-methods': [
+			'error',
+		],
+		'react/no-unused-prop-types': [
+			'error',
+		],
+		'react/no-unused-state': [
+			'error',
+		],
+		'react/no-will-update-set-state': [
+			'error',
+		],
+		'react/prefer-es6-class': [
+			'error',
+			'always',
+		],
+		'react/prefer-stateless-function': [
 			'error',
 		],
 		'react/require-default-props': [
@@ -410,11 +473,44 @@ module.exports = {
 				forbidDefaultForRequired: true,
 			},
 		],
+		'react/self-closing-comp': [
+			'error',
+		],
+		'react/sort-comp': [
+			'error',
+			{
+				order: [
+					'static-variables',
+					'static-methods',
+					'lifecycle',
+					'/^on.+$/u', //Events with "on" prefix
+					'rendering',
+					'everything-else',
+				],
+				groups: {
+					rendering: [
+						'render',
+						'/^render.+$/u',
+					],
+				},
+			},
+		],
+		'react/state-in-constructor': [
+			'error',
+			'always',
+		],
+		'react/static-property-placement': [
+			'error',
+			'static public field',
+		],
+		'react/style-prop-object': [
+			'error',
+		],
 		'react/void-dom-elements-no-children': [
 			'error',
 		],
 		'react/jsx-child-element-spacing': [
-			'error',
+			'warn',
 		],
 		'react/jsx-closing-tag-location': [
 			'error',
