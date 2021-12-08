@@ -1,7 +1,7 @@
 module.exports = {
 	root: true,
 	parser: '@babel/eslint-parser',
-	ignorePatterns: ['.git', '.yarn', 'dist'],
+	ignorePatterns: [ '.git', '.yarn', 'dist' ],
 	env: {
 		browser: true,
 		es2021: true,
@@ -221,7 +221,10 @@ module.exports = {
 		],
 		'array-bracket-spacing': [
 			'error',
-			'never',
+			'always',
+			{
+				objectsInArrays: false,
+			},
 		],
 		'array-element-newline': [
 			'error',
