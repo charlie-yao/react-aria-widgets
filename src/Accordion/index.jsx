@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import AccordionHeader from 'src/Accordion/AccordionHeader';
+import AccordionPanel from 'src/Accordion/AccordionPanel';
+
 const NUM_SECTIONS = 3;
 
 class Accordion extends React.Component {
@@ -99,24 +103,23 @@ class Accordion extends React.Component {
 
 		return (
 			<Fragment>
-				<h2 id="section1Header">
-					<button
-						aria-controls="section1Panel"
-						aria-expanded={ section1PanelExpanded }
-						onClick={ this.onClickTrigger }
-						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowToggle && section1PanelExpanded }
-						data-index="0"
-						ref={ this.triggerRefs[0] }
-						type="button"
-					>
-						Section 1
-					</button>
-				</h2>
-				<section
+				<AccordionHeader
+					id="section1Header"
+					controlsId="section1Panel"
+					level={ 2 }
+					isExpanded={ section1PanelExpanded }
+					isDisabled={ !allowToggle && section1PanelExpanded }
+					onClick={ this.onClickTrigger }
+					onKeyDown={ this.onTriggerKeyDown }
+					index={ 0 }
+					_ref={ this.triggerRefs[0] }
+				>
+					Section 1
+				</AccordionHeader>
+				<AccordionPanel
 					id="section1Panel"
-					aria-labelledby="section1Header"
-					hidden={ !section1PanelExpanded }
+					labelId="section1Header"
+					isExpanded={ section1PanelExpanded }
 				>
 					<form onSubmit={ this.onDummySubmit }>
 						<label htmlFor="section1Input1">Dummy Input #1</label>
@@ -125,7 +128,7 @@ class Accordion extends React.Component {
 						<input type="number" min="0" max="100" required step="1" id="section1Input2" />
 						<button type="submit">Submit</button>
 					</form>
-				</section>
+				</AccordionPanel>
 				<h2 id="section2Header">
 					<button
 						aria-controls="section2Panel"
