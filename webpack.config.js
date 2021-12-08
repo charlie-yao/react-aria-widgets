@@ -19,33 +19,33 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				exclude: /\.yarn/,
+				test: /\.js$/u,
+				exclude: /\.yarn/u,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env']
+						presets: ['@babel/preset-env'],
 					},
 				},
 			},
 			{
-				test: /\.jsx$/,
-				exclude: /\.yarn/,
+				test: /\.jsx$/u,
+				exclude: /\.yarn/u,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react']
+						presets: ['@babel/preset-env', '@babel/preset-react'],
 					},
 				},
 			},
 			{
-				test: /\.css$/,
-				exclude: /\.yarn/,
+				test: /\.css$/u,
+				exclude: /\.yarn/u,
 				use: ['style-loader', 'css-loader'],
 			},
 			{
-				test: /\.scss$/,
-				exclude: /\.yarn/,
+				test: /\.scss$/u,
+				exclude: /\.yarn/u,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 		],

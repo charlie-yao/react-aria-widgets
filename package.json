@@ -4,7 +4,7 @@
 	"scripts": {
 		"build": "webpack",
 		"start": "webpack serve",
-		"lint": "eslint --fix --ext .jsx,.js src/"
+		"lint": "eslint --fix --ext .jsx,.js ./"
 	},
 	"dependencies": {
 		"prop-types": "^15.7.2",

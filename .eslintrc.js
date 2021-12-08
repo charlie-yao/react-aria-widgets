@@ -1,46 +1,48 @@
 module.exports = {
-	'root': true,
-	'parser': '@babel/eslint-parser',
-	'env': {
-		'browser': true,
-		'es2021': true,
+	root: true,
+	parser: '@babel/eslint-parser',
+	ignorePatterns: ['.git', '.yarn', 'dist'],
+	env: {
+		browser: true,
+		es2021: true,
+		node: true,
 	},
-	'extends': [
+	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
 	],
-	'parserOptions': {
-		'ecmaFeatures': {
-			'jsx': true,
+	parserOptions: {
+		ecmaFeatures: {
+			jsx: true,
 		},
-		'ecmaVersion': 13,
-		'sourceType': 'module',
+		ecmaVersion: 13,
+		sourceType: 'module',
 	},
-	'plugins': [
+	plugins: [
 		'react',
 	],
-	'settings': {
-		'react': {
-			'version': 'detect',
+	settings: {
+		react: {
+			version: 'detect',
 		},
 	},
-	'rules': {
-		'indent': [
+	rules: {
+		indent: [
 			'error',
 			'tab',
 			{
-				'SwitchCase': 1,
+				SwitchCase: 1,
 			},
 		],
 		'linebreak-style': [
 			'error',
 			'unix',
 		],
-		'quotes': [
+		quotes: [
 			'error',
 			'single',
 		],
-		'semi': [
+		semi: [
 			'error',
 			'always',
 		],
@@ -62,18 +64,18 @@ module.exports = {
 		'no-unused-private-class-members': [
 			'error',
 		],
-		'camelcase': [
+		camelcase: [
 			'error',
 		],
 		'capitalized-comments': [
 			'error',
 			'always',
 			{
-				'ignoreInlineComments': true,
-				'ignoreConsecutiveComments': true,
+				ignoreInlineComments: true,
+				ignoreConsecutiveComments: true,
 			},
 		],
-		'curly': [
+		curly: [
 			'error',
 			'multi-or-nest',
 		],
@@ -86,7 +88,7 @@ module.exports = {
 		'dot-notation': [
 			'error',
 		],
-		'eqeqeq': [
+		eqeqeq: [
 			'error',
 			'always',
 		],
@@ -107,7 +109,7 @@ module.exports = {
 			'warn',
 		],
 		'no-array-constructor': [
-			'error'
+			'error',
 		],
 		'no-caller': [
 			'error',
@@ -158,12 +160,12 @@ module.exports = {
 			'error',
 		],
 		'no-throw-literal': [
-			'error'
+			'error',
 		],
 		'no-unused-expressions': [
 			'error',
 			{
-				'enforceForJSX': true,
+				enforceForJSX: true,
 			},
 		],
 		'no-useless-call': [
@@ -204,7 +206,7 @@ module.exports = {
 			'error',
 			'as-needed',
 		],
-		'radix': [
+		radix: [
 			'error',
 		],
 		'require-await': [
@@ -273,23 +275,23 @@ module.exports = {
 			'prefer-double',
 		],
 		'key-spacing': [
-			'error'
+			'error',
 		],
 		'keyword-spacing': [
 			'error',
 			{
-				'overrides': {
-					'if': {
-						'after': false,
+				overrides: {
+					if: {
+						after: false,
 					},
-					'for': {
-						'after': false,
+					for: {
+						after: false,
 					},
-					'while': {
-						'after': false,
+					while: {
+						after: false,
 					},
-					'switch': {
-						'after': false,
+					switch: {
+						after: false,
 					},
 				},
 			},
@@ -304,8 +306,8 @@ module.exports = {
 		'no-multiple-empty-lines': [
 			'error',
 			{
-				'max': 1,
-				'maxEOF': 0,
+				max: 1,
+				maxEOF: 0,
 			},
 		],
 		'no-trailing-spaces': [
@@ -321,7 +323,7 @@ module.exports = {
 		'object-curly-newline': [
 			'error',
 			{
-				'consistent': true,
+				consistent: true,
 			},
 		],
 		'object-curly-spacing': [
@@ -331,7 +333,7 @@ module.exports = {
 		'object-property-newline': [
 			'error',
 			{
-				'allowAllPropertiesOnSameLine': true,
+				allowAllPropertiesOnSameLine: true,
 			},
 		],
 		'operator-linebreak': [
@@ -349,8 +351,8 @@ module.exports = {
 		'semi-spacing': [
 			'error',
 			{
-				'before': false,
-				'after': true,
+				before: false,
+				after: true,
 			},
 		],
 		'semi-style': [
@@ -375,15 +377,15 @@ module.exports = {
 		'space-unary-ops': [
 			'error',
 			{
-				'words': true,
-				'nonwords': false,
+				words: true,
+				nonwords: false,
 			},
 		],
 		'switch-colon-spacing': [
 			'error',
 			{
-				'after': true,
-				'before': false,
+				after: true,
+				before: false,
 			},
 		],
 		'template-curly-spacing': [
@@ -402,7 +404,7 @@ module.exports = {
 		'react/require-default-props': [
 			'error',
 			{
-				'forbidDefaultForRequired': true,
+				forbidDefaultForRequired: true,
 			},
 		],
 		'react/void-dom-elements-no-children': [
@@ -420,32 +422,32 @@ module.exports = {
 		],
 		'react/jsx-curly-newline': [
 			'error',
-			'consistent'
+			'consistent',
 		],
 		'react/jsx-curly-spacing': [
 			'error',
 			{
-				'when': 'always',
-				'children': true,
-				'spacing': {
-					'objectLiterals': 'never',
+				when: 'always',
+				children: true,
+				spacing: {
+					objectLiterals: 'never',
 				},
 			},
 		],
 		'react/jsx-equals-spacing': [
-			'error'
+			'error',
 		],
 		'react/jsx-filename-extension': [
 			'error',
 			{
-				'allow': 'as-needed',
+				allow: 'as-needed',
 			},
 		],
 		'react/jsx-indent': [
 			'error',
 			'tab',
 			{
-				'indentLogicalExpressions': true,
+				indentLogicalExpressions: true,
 			},
 		],
 		'react/jsx-no-bind': [
@@ -463,17 +465,17 @@ module.exports = {
 		'react/jsx-tag-spacing': [
 			'error',
 			{
-				'beforeClosing': 'never',
+				beforeClosing: 'never',
 			},
 		],
 		'react/jsx-wrap-multilines': [
 			'error',
 			{
-				'declaration': 'parens-new-line',
-				'assignment': 'parens-new-line',
-				'return': 'parens-new-line',
-				'arrow': 'parens-new-line',
+				declaration: 'parens-new-line',
+				assignment: 'parens-new-line',
+				return: 'parens-new-line',
+				arrow: 'parens-new-line',
 			},
 		],
-	}
+	},
 };
