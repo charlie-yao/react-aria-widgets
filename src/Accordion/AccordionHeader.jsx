@@ -18,8 +18,8 @@ function getHeaderElement(level) {
 
 function AccordionHeader(props) {
 	const {
-		level, children, id, controlsId, onClick, onKeyDown, isExpanded,
-		isDisabled, index, _ref,
+		level, children, id, controlsId, onClick, onKeyDown,
+		isExpanded, isDisabled, index, _ref,
 	} = props;
 	const HeaderElement = getHeaderElement(level);
 
