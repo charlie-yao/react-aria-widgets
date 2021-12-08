@@ -509,6 +509,10 @@ module.exports = {
 		'react/void-dom-elements-no-children': [
 			'error',
 		],
+		'react/jsx-boolean-value': [
+			'error',
+			'never',
+		],
 		'react/jsx-child-element-spacing': [
 			'warn',
 		],
@@ -542,11 +546,31 @@ module.exports = {
 				allow: 'as-needed',
 			},
 		],
+		'react/jsx-first-prop-new-line': [
+			'error',
+			'multiline',
+		],
+		'react/jsx-handler-names': [
+			'error',
+			{
+				eventHandlerPrefix: 'on',
+			},
+		],
 		'react/jsx-indent': [
 			'error',
 			'tab',
 			{
 				indentLogicalExpressions: true,
+			},
+		],
+		'react/jsx-indent-props': [
+			'error',
+			'tab',
+		],
+		'react/jsx-newline': [
+			'error',
+			{
+				prevent: true,
 			},
 		],
 		'react/jsx-no-bind': [
@@ -555,7 +579,16 @@ module.exports = {
 		'react/jsx-no-useless-fragment': [
 			'error',
 		],
+		'react/jsx-one-expression-per-line': [
+			'error',
+			{
+				allow: 'single-child',
+			},
+		],
 		'react/jsx-pascal-case': [
+			'error',
+		],
+		'react/jsx-props-no-multi-spaces': [
 			'error',
 		],
 		'react/jsx-props-no-spreading': [
