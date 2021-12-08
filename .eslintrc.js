@@ -483,7 +483,7 @@ module.exports = {
 					'static-variables',
 					'static-methods',
 					'lifecycle',
-					'/^on.+$/u', //Events with "on" prefix
+					'/^on.+$/u',
 					'rendering',
 					'everything-else',
 				],
