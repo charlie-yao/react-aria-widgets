@@ -5,7 +5,7 @@ module.exports = {
 	mode: 'development',
 	devtool: 'inline-source-map',
 	resolve: {
-		extensions: ['.js', '.json', '.jsx'],
+		extensions: [ '.js', '.json', '.jsx' ],
 		alias: {
 			src: path.resolve(__dirname, 'src/'),
 		},
@@ -19,34 +19,34 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				exclude: /\.yarn/,
+				test: /\.js$/u,
+				exclude: /\.yarn/u,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env']
+						presets: [ '@babel/preset-env' ],
 					},
 				},
 			},
 			{
-				test: /\.jsx$/,
-				exclude: /\.yarn/,
+				test: /\.jsx$/u,
+				exclude: /\.yarn/u,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env', '@babel/preset-react']
+						presets: [ '@babel/preset-env', '@babel/preset-react' ],
 					},
 				},
 			},
 			{
-				test: /\.css$/,
-				exclude: /\.yarn/,
-				use: ['style-loader', 'css-loader'],
+				test: /\.css$/u,
+				exclude: /\.yarn/u,
+				use: [ 'style-loader', 'css-loader' ],
 			},
 			{
-				test: /\.scss$/,
-				exclude: /\.yarn/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
+				test: /\.scss$/u,
+				exclude: /\.yarn/u,
+				use: [ 'style-loader', 'css-loader', 'sass-loader' ],
 			},
 		],
 	},

@@ -3,7 +3,8 @@
 	"packageManager": "yarn@3.1.1",
 	"scripts": {
 		"build": "webpack",
-		"start": "webpack serve"
+		"start": "webpack serve",
+		"lint": "eslint --fix --ext .jsx,.js ./"
 	},
 	"dependencies": {
 		"prop-types": "^15.7.2",
@@ -12,10 +13,13 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.0",
+		"@babel/eslint-parser": "^7.16.3",
 		"@babel/preset-env": "^7.16.4",
 		"@babel/preset-react": "^7.16.0",
 		"babel-loader": "^8.2.3",
 		"css-loader": "^6.5.1",
+		"eslint": "^8.3.0",
+		"eslint-plugin-react": "^7.27.1",
 		"html-webpack-plugin": "^5.5.0",
 		"sass": "^1.44.0",
 		"sass-loader": "^12.3.0",

@@ -13,7 +13,7 @@ class Accordion extends React.Component {
 		allowMultiple: true,
 		allowToggle: true,
 	};
-	
+
 	constructor() {
 		super();
 
@@ -25,7 +25,7 @@ class Accordion extends React.Component {
 
 		this.triggerRefs = [];
 
-		for(let i=0; i<NUM_SECTIONS; i++)
+		for(let i = 0; i < NUM_SECTIONS; i++)
 			this.triggerRefs[i] = React.createRef();
 	}
 
@@ -35,7 +35,7 @@ class Accordion extends React.Component {
 		const allowToggle = this.getAllowToggle();
 		const panelId = event.target.getAttribute('aria-controls');
 		const field = `${panelId}Expanded`;
-		
+
 		if(allowMultiple) {
 			this.setState(prevState => {
 				return {
@@ -54,11 +54,11 @@ class Accordion extends React.Component {
 				return state;
 			});
 		}
-	}
+	};
 
 	onTriggerKeyDown = (event) => {
 		const { key } = event;
-		const index = Number.parseInt(event.target.dataset.index);
+		const index = Number.parseInt(event.target.dataset.index, 10);
 
 		switch(key) {
 			case 'ArrowUp':
@@ -86,11 +86,11 @@ class Accordion extends React.Component {
 				event.preventDefault();
 				break;
 		}
-	}
+	};
 
 	onDummySubmit = (event) => {
 		event.preventDefault();
-	}
+	};
 
 	//---- Rendering ----
 	render() {
@@ -108,6 +108,7 @@ class Accordion extends React.Component {
 						aria-disabled={ !allowToggle && section1PanelExpanded }
 						data-index="0"
 						ref={ this.triggerRefs[0] }
+						type="button"
 					>
 						Section 1
 					</button>
@@ -121,7 +122,7 @@ class Accordion extends React.Component {
 						<label htmlFor="section1Input1">Dummy Input #1</label>
 						<input type="text" id="section1Input1" required />
 						<label htmlFor="section1Input2">Dummy Input #2</label>
-						<input type="number" min="0" max="100" required step="1" id="section1Input2"/>
+						<input type="number" min="0" max="100" required step="1" id="section1Input2" />
 						<button type="submit">Submit</button>
 					</form>
 				</section>
@@ -134,6 +135,7 @@ class Accordion extends React.Component {
 						aria-disabled={ !allowToggle && section2PanelExpanded }
 						data-index="1"
 						ref={ this.triggerRefs[1] }
+						type="button"
 					>
 						Section 2
 					</button>
@@ -154,6 +156,7 @@ class Accordion extends React.Component {
 						aria-disabled={ !allowToggle && section3PanelExpanded }
 						data-index="2"
 						ref={ this.triggerRefs[2] }
+						type="button"
 					>
 						Section 3
 					</button>
@@ -177,7 +180,7 @@ class Accordion extends React.Component {
 		//multiple accordion sections are expanded with no way of closing them.
 		const { allowToggle, allowMultiple } = this.props;
 		return allowMultiple ? true : allowToggle;
-	}
+	};
 }
 
 export default Accordion;
