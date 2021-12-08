@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  * @returns {string}
  */
 function getHeaderElement(level) {
-	if(!Number.isInteger(level) || level < 0 || level > 6)
+	if(!Number.isInteger(level) || level < 1 || level > 6)
 		level = 1;
 
 	return `h${level}`;
