@@ -50,7 +50,7 @@ AccordionHeader.propTypes = {
 	index: PropTypes.number.isRequired,
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
-	}).isRequired, //TODO Something about this just feels incredibly awkward
+	}).isRequired, //TODO feels awkward, use forwardRef()?
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	level: PropTypes.number,
