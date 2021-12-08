@@ -5,7 +5,11 @@ function AccordionPanel(props) {
 	const { children, id, labelId, isExpanded } = props;
 
 	return (
-		<section id={ id } aria-labelledby={ labelId } hidden={ !isExpanded }>
+		<section
+			id={ id }
+			aria-labelledby={ labelId }
+			hidden={ !isExpanded }
+		>
 			{ children }
 		</section>
 	);
