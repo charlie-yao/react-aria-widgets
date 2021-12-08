@@ -129,48 +129,46 @@ class Accordion extends React.Component {
 						<button type="submit">Submit</button>
 					</form>
 				</AccordionPanel>
-				<h2 id="section2Header">
-					<button
-						aria-controls="section2Panel"
-						aria-expanded={ section2PanelExpanded }
-						onClick={ this.onClickTrigger }
-						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowToggle && section2PanelExpanded }
-						data-index="1"
-						ref={ this.triggerRefs[1] }
-						type="button"
-					>
-						Section 2
-					</button>
-				</h2>
-				<section
+				<AccordionHeader
+					level={ 2 }
+					id="section2Header"
+					controlsId="section2Panel"
+					index={ 1 }
+					isExpanded={ section2PanelExpanded }
+					isDisabled={ !allowToggle && section2PanelExpanded }
+					_ref={ this.triggerRefs[1] }
+					onClick={ this.onClickTrigger }
+					onKeyDown={ this.onTriggerKeyDown }
+				>
+					Section 2
+				</AccordionHeader>
+				<AccordionPanel
 					id="section2Panel"
-					aria-labelledby="section2Header"
-					hidden={ !section2PanelExpanded }
+					labelId="section2Header"
+					isExpanded={ section2PanelExpanded }
 				>
 					Section 2 content
-				</section>
-				<h2 id="section3Header">
-					<button
-						aria-controls="section3Panel"
-						aria-expanded={ section3PanelExpanded }
-						onClick={ this.onClickTrigger }
-						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowToggle && section3PanelExpanded }
-						data-index="2"
-						ref={ this.triggerRefs[2] }
-						type="button"
-					>
-						Section 3
-					</button>
-				</h2>
-				<section
+				</AccordionPanel>
+				<AccordionHeader
+					level={ 2 }
+					index={ 2 }
+					id="section3Header"
+					controlsId="section3Panel"
+					isExpanded={ section3PanelExpanded }
+					isDisabled={ !allowToggle && section3PanelExpanded }
+					_ref={ this.triggerRefs[2] }
+					onClick={ this.onClickTrigger }
+					onKeyDown={ this.onTriggerKeyDown }
+				>
+					Section 3
+				</AccordionHeader>
+				<AccordionPanel
 					id="section3Panel"
-					aria-labelledby="section3Header"
-					hidden={ !section3PanelExpanded }
+					labelId="section3Header"
+					isExpanded={ section3PanelExpanded }
 				>
 					Section 3 content
-				</section>
+				</AccordionPanel>
 			</Fragment>
 		);
 	}
