@@ -5,87 +5,71 @@ import PropTypes from 'prop-types';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
-const NUM_SECTIONS = 3;
+//HOCs
+import createAccordionHOC from 'src/Accordion/createAccordionHOC';
 
-class Accordion extends React.Component {
-	constructor() {
-		super();
+function Accordion(props) {
+	const {
+		sections, getAllowToggle, getIsExpandedKey, level,
+		onTriggerClick, onTriggerKeyDown, triggerRefs,
+	} = props;
+	const allowToggle = getAllowToggle();
 
-		this.state = {
-			section1PanelExpanded: true,
-			section2PanelExpanded: false,
-			section3PanelExpanded: false,
-		};
+	return sections.map((section, i) => {
+		const { id, header, panel } = section;
+		const isExpanded = props[getIsExpandedKey(id)];
 
-		this.triggerRefs = [];
+		return (
+			<Fragment key={ id }>
+				<AccordionHeader
+					id={ `${id}Header` }
+					controlsId={ `${id}Panel` }
+					level={ level }
+					index={ i }
+					isExpanded={ isExpanded }
+					isDisabled={ !allowToggle && isExpanded }
+					onClick={ onTriggerClick }
+					onKeyDown={ onTriggerKeyDown }
+					_ref={ triggerRefs[i] }
+				>
+					{ header }
+				</AccordionHeader>
+				<AccordionPanel
+					id={ `${id}Panel` }
+					labelId={ `${id}Header` }
+					isExpanded={ isExpanded }
+				>
+					{ panel }
+				</AccordionPanel>
+			</Fragment>
+		);
+	});
+}
 
-		for(let i = 0; i < NUM_SECTIONS; i++)
-			this.triggerRefs[i] = React.createRef();
-	}
+Accordion.propTypes = {
+	level: function(props, propName) {
+		console.log(props, propName, props[propName]);
 
-	//---- Events ----
-	onClickTrigger = (event) => {
-		const { allowMultiple } = this.props;
-		const allowToggle = this.getAllowToggle();
-		const panelId = event.target.getAttribute('aria-controls');
-		const field = `${panelId}Expanded`;
+		const level = props[propName];
 
-		if(allowMultiple) {
-			this.setState(prevState => {
-				return {
-					[field]: !prevState[field],
-				};
-			});
-		}
-		else {
-			this.setState(prevState => {
-				const state = {};
+		if(!Number.isInteger(level) || level < 1 || level > 6)
+			return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
+	},
+	sections: PropTypes.arrayof(PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		header: PropTypes.node.isRequired,
+		panel: PropTypes.node.isRequired,
+	})).isRequired,
+	triggerRefs: PropTypes.arrayOf(PropTypes.shape({
+		current: PropTypes.object,
+	})),
+	onTriggerClick: PropTypes.func.isRequired,
+	onTriggerKeyDown: PropTypes.func.isRequired,
+	getAllowToggle: PropTypes.func.isRequired,
+	getIsExpandedKey: PropTypes.func.isRequired,
+};
 
-				Object.keys(prevState).forEach(key => {
-					state[key] = key === field ? (allowToggle ? !prevState[field] : true) : false;
-				});
-
-				return state;
-			});
-		}
-	};
-
-	onTriggerKeyDown = (event) => {
-		const { key } = event;
-		const index = Number.parseInt(event.target.dataset.index, 10);
-
-		switch(key) {
-			case 'ArrowUp':
-				if(index === 0)
-					this.triggerRefs[this.triggerRefs.length - 1].current.focus();
-				else
-					this.triggerRefs[index - 1].current.focus();
-
-				event.preventDefault();
-				break;
-			case 'ArrowDown':
-				if(index === this.triggerRefs.length - 1)
-					this.triggerRefs[0].current.focus();
-				else
-					this.triggerRefs[index + 1].current.focus();
-
-				event.preventDefault();
-				break;
-			case 'Home':
-				this.triggerRefs[0].current.focus();
-				event.preventDefault();
-				break;
-			case 'End':
-				this.triggerRefs[this.triggerRefs.length - 1].current.focus();
-				event.preventDefault();
-				break;
-		}
-	};
-
-	onDummySubmit = (event) => {
-		event.preventDefault();
-	};
-
+/*
 	//---- Rendering ----
 	render() {
 		const { section1PanelExpanded, section2PanelExpanded, section3PanelExpanded } = this.state;
@@ -162,16 +146,7 @@ class Accordion extends React.Component {
 			</Fragment>
 		);
 	}
-
-	//---- Misc. ----
-	getAllowToggle = () => {
-		//Even though this component accepts allowMultiple and allowToggle
-		//as independent props, the case of allowMultiple && !allowToggle
-		//doesn't make much sense because we'd end up in a situation where
-		//multiple accordion sections are expanded with no way of closing them.
-		const { allowToggle, allowMultiple } = this.props;
-		return allowMultiple ? true : allowToggle;
-	};
 }
+*/
 
-export default Accordion;
+export default createAccordionHOC(Accordion);

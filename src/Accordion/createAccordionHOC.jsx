@@ -119,6 +119,7 @@ function createAccordionHOC(Component) {
 					onTriggerKeyDown={ this.onTriggerKeyDown }
 					getAllowToggle={ this.getAllowToggle }
 					getIsExpandedKey={ this.getIsExpandedKey }
+					triggerRefs={ this.triggerRefs }
 					{ ...this.state }
 					{ ...this.props }
 				/>
