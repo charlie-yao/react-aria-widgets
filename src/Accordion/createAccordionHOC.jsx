@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function createAccordionHOC(Component) {
 	return class AccordionHOC extends React.Component {
 		static propTypes = {
-			sections: PropTypes.arrayof(PropTypes.shape({
+			sections: PropTypes.arrayOf(PropTypes.shape({
 				id: PropTypes.string.isRequired,
 				header: PropTypes.node.isRequired,
 				panel: PropTypes.node.isRequired,

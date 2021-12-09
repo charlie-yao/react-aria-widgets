@@ -28,9 +28,9 @@ function Accordion(props) {
 					index={ i }
 					isExpanded={ isExpanded }
 					isDisabled={ !allowToggle && isExpanded }
+					_ref={ triggerRefs[i] }
 					onClick={ onTriggerClick }
 					onKeyDown={ onTriggerKeyDown }
-					_ref={ triggerRefs[i] }
 				>
 					{ header }
 				</AccordionHeader>
@@ -48,14 +48,12 @@ function Accordion(props) {
 
 Accordion.propTypes = {
 	level: function(props, propName) {
-		console.log(props, propName, props[propName]);
-
 		const level = props[propName];
 
 		if(!Number.isInteger(level) || level < 1 || level > 6)
 			return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
 	},
-	sections: PropTypes.arrayof(PropTypes.shape({
+	sections: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		header: PropTypes.node.isRequired,
 		panel: PropTypes.node.isRequired,
