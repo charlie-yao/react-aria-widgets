@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function AccordionPanel(props) {
-	const { children, id, labelId, isExpanded } = props;
+	const { children, id, headerId, isExpanded } = props;
 
 	return (
 		<section
 			id={ id }
-			aria-labelledby={ labelId }
+			aria-labelledby={ headerId }
 			hidden={ !isExpanded }
 		>
 			{ children }
@@ -18,7 +18,7 @@ function AccordionPanel(props) {
 AccordionPanel.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	labelId: PropTypes.string.isRequired,
+	headerId: PropTypes.string.isRequired,
 	isExpanded: PropTypes.bool,
 };
 

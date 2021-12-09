@@ -23,7 +23,7 @@ function Accordion(props) {
 			<Fragment key={ id }>
 				<AccordionHeader
 					id={ `${id}Header` }
-					controlsId={ `${id}Panel` }
+					panelId={ `${id}Panel` }
 					level={ level }
 					index={ i }
 					isExpanded={ isExpanded }
@@ -36,7 +36,7 @@ function Accordion(props) {
 				</AccordionHeader>
 				<AccordionPanel
 					id={ `${id}Panel` }
-					labelId={ `${id}Header` }
+					headerId={ `${id}Header` }
 					isExpanded={ isExpanded }
 				>
 					{ panel }

@@ -18,7 +18,7 @@ function getHeaderElement(level) {
 
 function AccordionHeader(props) {
 	const {
-		level, children, id, controlsId, onClick, onKeyDown,
+		level, children, id, panelId, onClick, onKeyDown,
 		isExpanded, isDisabled, index, _ref,
 	} = props;
 	const HeaderElement = getHeaderElement(level);
@@ -27,7 +27,7 @@ function AccordionHeader(props) {
 		<HeaderElement id={ id }>
 			<button
 				type="button"
-				aria-controls={ controlsId }
+				aria-controls={ panelId }
 				aria-expanded={ isExpanded }
 				aria-disabled={ isDisabled }
 				data-index={ index }
@@ -44,13 +44,13 @@ function AccordionHeader(props) {
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	controlsId: PropTypes.string.isRequired,
+	panelId: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
-	}).isRequired, //TODO feels awkward, use forwardRef()?
+	}).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	level: PropTypes.number,
