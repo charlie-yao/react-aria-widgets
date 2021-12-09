@@ -23,7 +23,7 @@ AccordionPanel.propTypes = {
 };
 
 AccordionPanel.defaultProps = {
-	isExpanded: true,
+	isExpanded: false,
 };
 
 export default AccordionPanel;
