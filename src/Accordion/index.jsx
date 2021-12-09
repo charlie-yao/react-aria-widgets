@@ -8,16 +8,6 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 const NUM_SECTIONS = 3;
 
 class Accordion extends React.Component {
-	static propTypes = {
-		allowMultiple: PropTypes.bool,
-		allowToggle: PropTypes.bool,
-	};
-
-	static defaultProps = {
-		allowMultiple: true,
-		allowToggle: true,
-	};
-
 	constructor() {
 		super();
 
