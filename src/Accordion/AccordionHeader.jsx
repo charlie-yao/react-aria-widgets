@@ -1,27 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/**
- * Returns a string representing an <h1> to <h6> element.
- * HTML only supports 6 levels, so if the level argument
- * falls outside of those bounds, it will default to <h1>.
- *
- * @param {number} level
- * @returns {string}
- */
-function getHeaderElement(level) {
-	if(!Number.isInteger(level) || level < 1 || level > 6)
-		level = 1;
-
-	return `h${level}`;
-}
-
 function AccordionHeader(props) {
 	const {
 		level, children, id, panelId, onClick, onKeyDown,
 		isExpanded, isDisabled, index, _ref,
 	} = props;
-	const HeaderElement = getHeaderElement(level);
+	const HeaderElement = `h${level}`;
 
 	return (
 		<HeaderElement id={ id }>
@@ -48,17 +33,21 @@ AccordionHeader.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
+	level: function(props, propName) {
+		const level = props[propName];
+
+		if(!Number.isInteger(level) || level < 1 || level > 6)
+			return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
+	},
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
 	}).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
-	level: PropTypes.number,
 };
 
 AccordionHeader.defaultProps = {
-	level: 1,
-	isExpanded: true,
+	isExpanded: false,
 	isDisabled: false,
 };
 
