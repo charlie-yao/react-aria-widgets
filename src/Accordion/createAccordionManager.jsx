@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function createAccordionHOC(Component) {
+function createAccordionManager(Component) {
 	return class AccordionHOC extends React.Component {
 		static propTypes = {
 			sections: PropTypes.arrayOf(PropTypes.shape({
@@ -142,4 +142,4 @@ function createAccordionHOC(Component) {
 	};
 }
 
-export default createAccordionHOC;
+export default createAccordionManager;

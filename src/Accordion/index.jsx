@@ -6,7 +6,7 @@ import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
 //HOCs
-import createAccordionHOC from 'src/Accordion/createAccordionHOC';
+import createAccordionManager from 'src/Accordion/createAccordionManager';
 
 //Misc.
 import { validateHeaderLevelProp } from 'src/Accordion/utils';
@@ -67,4 +67,4 @@ class Accordion extends React.Component {
 	}
 }
 
-export default createAccordionHOC(Accordion);
+export default createAccordionManager(Accordion);
