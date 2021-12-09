@@ -37,7 +37,7 @@ function App() {
 	return (
 		<main>
 			<h1>Accordion</h1>
-			<Accordion level={ 2 } sections={ DUMMY_ACCORDION_SECTIONS } />
+			<Accordion headerLevel={ 2 } sections={ DUMMY_ACCORDION_SECTIONS } />
 		</main>
 	);
 }

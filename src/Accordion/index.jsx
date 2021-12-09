@@ -9,11 +9,11 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 import createAccordionHOC from 'src/Accordion/createAccordionHOC';
 
 //Misc.
-import { validateLevelProp } from 'src/Accordion/utils';
+import { validateHeaderLevelProp } from 'src/Accordion/utils';
 
 function Accordion(props) {
 	const {
-		sections, getAllowToggle, getIsExpandedKey, level,
+		sections, getAllowToggle, getIsExpandedKey, headerLevel,
 		onTriggerClick, onTriggerKeyDown, triggerRefs,
 	} = props;
 	const allowToggle = getAllowToggle();
@@ -27,7 +27,7 @@ function Accordion(props) {
 				<AccordionHeader
 					id={ `${id}Header` }
 					panelId={ `${id}Panel` }
-					level={ level }
+					headerLevel={ headerLevel }
 					index={ i }
 					isExpanded={ isExpanded }
 					isDisabled={ !allowToggle && isExpanded }
@@ -50,7 +50,7 @@ function Accordion(props) {
 }
 
 Accordion.propTypes = {
-	level: validateLevelProp.isRequired,
+	headerLevel: validateHeaderLevelProp.isRequired,
 	sections: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		header: PropTypes.node.isRequired,

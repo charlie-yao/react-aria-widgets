@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Misc.
-import { validateLevelProp } from 'src/Accordion/utils';
+import { validateHeaderLevelProp } from 'src/Accordion/utils';
 
 function AccordionHeader(props) {
 	const {
-		level, children, id, panelId, onClick, onKeyDown,
+		headerLevel, children, id, panelId, onClick, onKeyDown,
 		isExpanded, isDisabled, index, _ref,
 	} = props;
-	const HeaderElement = `h${level}`;
+	const HeaderElement = `h${headerLevel}`;
 
 	return (
 		<HeaderElement id={ id }>
@@ -36,7 +36,7 @@ AccordionHeader.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
-	level: validateLevelProp.isRequired,
+	headerLevel: validateHeaderLevelProp.isRequired,
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
 	}).isRequired, //TODO is this a good use case for React.forwardRef()?
