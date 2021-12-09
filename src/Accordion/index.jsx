@@ -8,6 +8,9 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 //HOCs
 import createAccordionHOC from 'src/Accordion/createAccordionHOC';
 
+//Misc.
+import { validateLevelProp } from 'src/Accordion/utils';
+
 function Accordion(props) {
 	const {
 		sections, getAllowToggle, getIsExpandedKey, level,
@@ -47,12 +50,7 @@ function Accordion(props) {
 }
 
 Accordion.propTypes = {
-	level: function(props, propName) {
-		const level = props[propName];
-
-		if(!Number.isInteger(level) || level < 1 || level > 6)
-			return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
-	},
+	level: validateLevelProp,
 	sections: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		header: PropTypes.node.isRequired,

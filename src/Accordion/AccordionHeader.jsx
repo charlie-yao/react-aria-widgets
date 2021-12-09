@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Misc.
+import { validateLevelProp } from 'src/Accordion/utils';
+
 function AccordionHeader(props) {
 	const {
 		level, children, id, panelId, onClick, onKeyDown,
@@ -33,12 +36,7 @@ AccordionHeader.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
-	level: function(props, propName) {
-		const level = props[propName];
-
-		if(!Number.isInteger(level) || level < 1 || level > 6)
-			return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
-	},
+	level: validateLevelProp,
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
 	}).isRequired,
