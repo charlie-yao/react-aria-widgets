@@ -11,58 +11,60 @@ import createAccordionHOC from 'src/Accordion/createAccordionHOC';
 //Misc.
 import { validateHeaderLevelProp } from 'src/Accordion/utils';
 
-function Accordion(props) {
-	const {
-		sections, getAllowToggle, getIsExpandedKey, headerLevel,
-		onTriggerClick, onTriggerKeyDown, triggerRefs,
-	} = props;
-	const allowToggle = getAllowToggle();
+class Accordion extends React.Component {
+	static propTypes = {
+		headerLevel: validateHeaderLevelProp.isRequired,
+		sections: PropTypes.arrayOf(PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			header: PropTypes.node.isRequired,
+			panel: PropTypes.node.isRequired,
+		})).isRequired,
+		triggerRefs: PropTypes.arrayOf(PropTypes.shape({
+			current: PropTypes.object,
+		})),
+		onTriggerClick: PropTypes.func.isRequired,
+		onTriggerKeyDown: PropTypes.func.isRequired,
+		getAllowToggle: PropTypes.func.isRequired,
+		getIsExpandedKey: PropTypes.func.isRequired,
+	};
 
-	return sections.map((section, i) => {
-		const { id, header, panel } = section;
-		const isExpanded = props[getIsExpandedKey(id)];
+	render() {
+		const {
+			sections, getAllowToggle, getIsExpandedKey, headerLevel,
+			onTriggerClick, onTriggerKeyDown, triggerRefs,
+		} = this.props;
+		const allowToggle = getAllowToggle();
 
-		return (
-			<Fragment key={ id }>
-				<AccordionHeader
-					id={ `${id}Header` }
-					panelId={ `${id}Panel` }
-					headerLevel={ headerLevel }
-					index={ i }
-					isExpanded={ isExpanded }
-					isDisabled={ !allowToggle && isExpanded }
-					_ref={ triggerRefs[i] }
-					onClick={ onTriggerClick }
-					onKeyDown={ onTriggerKeyDown }
-				>
-					{ header }
-				</AccordionHeader>
-				<AccordionPanel
-					id={ `${id}Panel` }
-					headerId={ `${id}Header` }
-					isExpanded={ isExpanded }
-				>
-					{ panel }
-				</AccordionPanel>
-			</Fragment>
-		);
-	});
+		return sections.map((section, i) => {
+			const { id, header, panel } = section;
+			const isExpanded = this.props[getIsExpandedKey(id)];
+
+			return (
+				<Fragment key={ id }>
+					<AccordionHeader
+						id={ `${id}Header` }
+						panelId={ `${id}Panel` }
+						headerLevel={ headerLevel }
+						index={ i }
+						isExpanded={ isExpanded }
+						isDisabled={ !allowToggle && isExpanded }
+						_ref={ triggerRefs[i] }
+						onClick={ onTriggerClick }
+						onKeyDown={ onTriggerKeyDown }
+					>
+						{ header }
+					</AccordionHeader>
+					<AccordionPanel
+						id={ `${id}Panel` }
+						headerId={ `${id}Header` }
+						isExpanded={ isExpanded }
+					>
+						{ panel }
+					</AccordionPanel>
+				</Fragment>
+			);
+		});
+	}
 }
-
-Accordion.propTypes = {
-	headerLevel: validateHeaderLevelProp.isRequired,
-	sections: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		header: PropTypes.node.isRequired,
-		panel: PropTypes.node.isRequired,
-	})).isRequired,
-	triggerRefs: PropTypes.arrayOf(PropTypes.shape({
-		current: PropTypes.object,
-	})),
-	onTriggerClick: PropTypes.func.isRequired,
-	onTriggerKeyDown: PropTypes.func.isRequired,
-	getAllowToggle: PropTypes.func.isRequired,
-	getIsExpandedKey: PropTypes.func.isRequired,
-};
 
 export default createAccordionHOC(Accordion);
