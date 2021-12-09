@@ -39,7 +39,7 @@ AccordionHeader.propTypes = {
 	level: validateLevelProp.isRequired,
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
-	}).isRequired,
+	}).isRequired, //TODO is this a good use case for React.forwardRef()?
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 };
