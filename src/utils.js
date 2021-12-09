@@ -18,13 +18,12 @@
  * @returns {Error}
  */
 export function createCustomPropType(customPropValidator, isRequired = false) {
-	return function(props, propName, componentName) {
-		const prop = props[propName}
+	return function customPropType(props, propName, componentName) {
+		const prop = props[propName];
 
-		if(isRequired && (prop === null || prop === undefined)) {
+		if(isRequired && (prop === null || prop === undefined))
 			return new Error(`${propName} is a required prop.`);
-		}
 		else
 			return customPropValidator(props, propName, componentName);
-	}
+	};
 }

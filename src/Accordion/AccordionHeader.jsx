@@ -36,7 +36,7 @@ AccordionHeader.propTypes = {
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
-	level: validateLevelProp,
+	level: validateLevelProp.isRequired,
 	_ref: PropTypes.shape({
 		current: PropTypes.object,
 	}).isRequired,

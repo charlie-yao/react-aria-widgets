@@ -50,7 +50,7 @@ function Accordion(props) {
 }
 
 Accordion.propTypes = {
-	level: validateLevelProp,
+	level: validateLevelProp.isRequired,
 	sections: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		header: PropTypes.node.isRequired,
