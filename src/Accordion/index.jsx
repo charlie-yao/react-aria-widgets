@@ -116,3 +116,4 @@ class Accordion extends React.Component {
 }
 
 export default createAccordionManager(Accordion);
+export { Accordion };
