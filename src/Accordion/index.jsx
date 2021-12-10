@@ -23,10 +23,21 @@ class Accordion extends React.Component {
 			current: PropTypes.object,
 		})),
 		expandedSections: PropTypes.instanceOf(Set).isRequired,
-		onTriggerKeyDown: PropTypes.func.isRequired,
 		getAllowToggle: PropTypes.func.isRequired,
 		toggleSection: PropTypes.func.isRequired,
 	};
+
+	constructor(props) {
+		super(props);
+
+		const { sections } = props;
+
+		this.triggerRefs = [];
+
+		sections.forEach((section, i) => {
+			this.triggerRefs[i] = React.createRef();
+		});
+	}
 
 	//---- Events ----
 	onTriggerClick = (event) => {
@@ -34,12 +45,46 @@ class Accordion extends React.Component {
 		const index = Number.parseInt(event.target.dataset.index, 10);
 		toggleSection(sections[index].id);
 	};
+
+	onTriggerKeyDown = (event) => {
+		const { sections } = this.props;
+		const { key } = event;
+		const index = Number.parseInt(event.target.dataset.index, 10);
+
+		switch(key) {
+			case 'ArrowUp':
+				event.preventDefault();
+
+				if(index === 0)
+					this.triggerRefs[sections.length - 1].current.focus();
+				else
+					this.triggerRefs[index - 1].current.focus();
+
+				break;
+			case 'ArrowDown':
+				event.preventDefault();
+
+				if(index === sections.length - 1)
+					this.triggerRefs[0].current.focus();
+				else
+					this.triggerRefs[index + 1].current.focus();
+
+				break;
+			case 'Home':
+				event.preventDefault();
+				this.triggerRefs[0].current.focus();
+				break;
+			case 'End':
+				event.preventDefault();
+				this.triggerRefs[sections.length - 1].current.focus();
+				break;
+		}
+	};
 	
 	//---- Rendering ----
 	render() {
 		const {
 			sections, getAllowToggle, headerLevel, expandedSections,
-			onTriggerKeyDown, triggerRefs,
 		} = this.props;
 		const allowToggle = getAllowToggle();
 
@@ -56,9 +101,9 @@ class Accordion extends React.Component {
 						index={ i }
 						isExpanded={ isExpanded }
 						isDisabled={ !allowToggle && isExpanded }
-						_ref={ triggerRefs[i] }
+						_ref={ this.triggerRefs[i] }
 						onClick={ this.onTriggerClick }
-						onKeyDown={ onTriggerKeyDown }
+						onKeyDown={ this.onTriggerKeyDown }
 					>
 						{ header }
 					</AccordionHeader>

@@ -23,54 +23,10 @@ function createAccordionManager(Component) {
 		constructor(props) {
 			super(props);
 
-			const { sections } = props;
-
 			this.state = {
 				expandedSections: new Set(),
 			};
-
-			this.triggerRefs = [];
-
-			sections.forEach((section, i) => {
-				this.triggerRefs[i] = React.createRef();
-			});
 		}
-
-		//---- Events ----
-		onTriggerKeyDown = (event) => {
-			const { sections } = this.props;
-			const { key } = event;
-			const index = Number.parseInt(event.target.dataset.index, 10);
-
-			switch(key) {
-				case 'ArrowUp':
-					event.preventDefault();
-
-					if(index === 0)
-						this.triggerRefs[sections.length - 1].current.focus();
-					else
-						this.triggerRefs[index - 1].current.focus();
-
-					break;
-				case 'ArrowDown':
-					event.preventDefault();
-
-					if(index === sections.length - 1)
-						this.triggerRefs[0].current.focus();
-					else
-						this.triggerRefs[index + 1].current.focus();
-
-					break;
-				case 'Home':
-					event.preventDefault();
-					this.triggerRefs[0].current.focus();
-					break;
-				case 'End':
-					event.preventDefault();
-					this.triggerRefs[sections.length - 1].current.focus();
-					break;
-			}
-		};
 
 		//---- Rendering ----
 		render() {
@@ -79,9 +35,7 @@ function createAccordionManager(Component) {
 			return (
 				<Component
 					toggleSection={ this.toggleSection }
-					onTriggerKeyDown={ this.onTriggerKeyDown }
 					getAllowToggle={ this.getAllowToggle }
-					triggerRefs={ this.triggerRefs }
 					expandedSections={ expandedSections }
 					{ ...this.props }
 				/>
