@@ -37,12 +37,6 @@ function createAccordionManager(Component) {
 		}
 
 		//---- Events ----
-		onTriggerClick = (event) => {
-			const { sections } = this.props;
-			const index = Number.parseInt(event.target.dataset.index, 10);
-			this.toggleSection(sections[index].id);
-		};
-
 		onTriggerKeyDown = (event) => {
 			const { sections } = this.props;
 			const { key } = event;
@@ -84,7 +78,7 @@ function createAccordionManager(Component) {
 
 			return (
 				<Component
-					onTriggerClick={ this.onTriggerClick }
+					toggleSection={ this.toggleSection }
 					onTriggerKeyDown={ this.onTriggerKeyDown }
 					getAllowToggle={ this.getAllowToggle }
 					triggerRefs={ this.triggerRefs }

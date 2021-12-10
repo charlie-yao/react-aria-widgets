@@ -23,15 +23,23 @@ class Accordion extends React.Component {
 			current: PropTypes.object,
 		})),
 		expandedSections: PropTypes.instanceOf(Set).isRequired,
-		onTriggerClick: PropTypes.func.isRequired,
 		onTriggerKeyDown: PropTypes.func.isRequired,
 		getAllowToggle: PropTypes.func.isRequired,
+		toggleSection: PropTypes.func.isRequired,
 	};
 
+	//---- Events ----
+	onTriggerClick = (event) => {
+		const { sections, toggleSection } = this.props;
+		const index = Number.parseInt(event.target.dataset.index, 10);
+		toggleSection(sections[index].id);
+	};
+	
+	//---- Rendering ----
 	render() {
 		const {
 			sections, getAllowToggle, headerLevel, expandedSections,
-			onTriggerClick, onTriggerKeyDown, triggerRefs,
+			onTriggerKeyDown, triggerRefs,
 		} = this.props;
 		const allowToggle = getAllowToggle();
 
@@ -49,7 +57,7 @@ class Accordion extends React.Component {
 						isExpanded={ isExpanded }
 						isDisabled={ !allowToggle && isExpanded }
 						_ref={ triggerRefs[i] }
-						onClick={ onTriggerClick }
+						onClick={ this.onTriggerClick }
 						onKeyDown={ onTriggerKeyDown }
 					>
 						{ header }
