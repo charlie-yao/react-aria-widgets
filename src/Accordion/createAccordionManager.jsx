@@ -25,14 +25,15 @@ function createAccordionManager(Component) {
 
 		//---- Rendering ----
 		render() {
+			const { allowMultiple, allowToggle, ...rest } = this.props;
 			const { expandedSections } = this.state;
 
 			return (
 				<Component
 					toggleSection={ this.toggleSection }
-					getAllowToggle={ this.getAllowToggle }
+					allowToggle={ this.getAllowToggle() }
 					expandedSections={ expandedSections }
-					{ ...this.props }
+					{ ...rest }
 				/>
 			);
 		}

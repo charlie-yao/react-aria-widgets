@@ -20,7 +20,7 @@ class Accordion extends React.Component {
 			panel: PropTypes.node.isRequired,
 		})).isRequired,
 		expandedSections: PropTypes.instanceOf(Set).isRequired,
-		getAllowToggle: PropTypes.func.isRequired,
+		allowToggle: PropTypes.bool.isRequired,
 		toggleSection: PropTypes.func.isRequired,
 	};
 
@@ -80,8 +80,7 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { sections, getAllowToggle, headerLevel, expandedSections } = this.props;
-		const allowToggle = getAllowToggle();
+		const { sections, allowToggle, headerLevel, expandedSections } = this.props;
 
 		return sections.map((section, i) => {
 			const { id, header, panel } = section;
