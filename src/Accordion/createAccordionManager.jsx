@@ -59,7 +59,7 @@ function createAccordionManager(Component) {
 			this.setState(prevState => {
 				const { expandedSections } = prevState;
 				const alreadyExpanded = expandedSections.has(sectionId);
-				
+
 				if(allowMultiple) {
 					if(alreadyExpanded)
 						expandedSections.delete(sectionId);
