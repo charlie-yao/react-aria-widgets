@@ -19,6 +19,7 @@ class Accordion extends React.Component {
 			header: PropTypes.node.isRequired,
 			panel: PropTypes.node.isRequired,
 		})).isRequired,
+		//From <AccordionManager> or another state manager
 		expandedSections: PropTypes.instanceOf(Set).isRequired,
 		allowToggle: PropTypes.bool.isRequired,
 		toggleSection: PropTypes.func.isRequired,
