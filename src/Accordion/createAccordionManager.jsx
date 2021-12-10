@@ -25,55 +25,22 @@ function createAccordionManager(Component) {
 
 			const { sections } = props;
 
-			this.state = {};
+			this.state = {
+				expandedSections: new Set(),
+			};
+
 			this.triggerRefs = [];
 
 			sections.forEach((section, i) => {
-				const { id } = section;
-				const isExpandedKey = this.getIsExpandedKey(id);
-
-				this.state[isExpandedKey] = false;
 				this.triggerRefs[i] = React.createRef();
 			});
 		}
 
 		//---- Events ----
 		onTriggerClick = (event) => {
-			const { allowMultiple, sections } = this.props;
-			const allowToggle = this.getAllowToggle();
+			const { sections } = this.props;
 			const index = Number.parseInt(event.target.dataset.index, 10);
-
-			if(allowMultiple) {
-				this.setState(prevState => {
-					const section = sections[index];
-					const { id } = section;
-					const isExpandedKey = this.getIsExpandedKey(id);
-
-					return {
-						[isExpandedKey]: !prevState[isExpandedKey],
-					};
-				});
-			}
-			else {
-				this.setState(prevState => {
-					const newState = {};
-
-					sections.forEach((section, i) => {
-						const { id } = section;
-						const isExpandedKey = this.getIsExpandedKey(id);
-						let isExpanded;
-
-						if(i === index)
-							isExpanded = allowToggle ? !prevState[isExpandedKey] : true;
-						else
-							isExpanded = false;
-
-						newState[isExpandedKey] = isExpanded;
-					});
-
-					return Object.assign({}, prevState, newState);
-				});
-			}
+			this.toggleSection(sections[index].id);
 		};
 
 		onTriggerKeyDown = (event) => {
@@ -113,14 +80,15 @@ function createAccordionManager(Component) {
 
 		//---- Rendering ----
 		render() {
+			const { expandedSections } = this.state;
+
 			return (
 				<Component
 					onTriggerClick={ this.onTriggerClick }
 					onTriggerKeyDown={ this.onTriggerKeyDown }
 					getAllowToggle={ this.getAllowToggle }
-					getIsExpandedKey={ this.getIsExpandedKey }
 					triggerRefs={ this.triggerRefs }
-					{ ...this.state }
+					expandedSections={ expandedSections }
 					{ ...this.props }
 				/>
 			);
@@ -136,8 +104,31 @@ function createAccordionManager(Component) {
 			return allowMultiple ? true : allowToggle;
 		};
 
-		getIsExpandedKey = (sectionId) => {
-			return `is${sectionId}Expanded`;
+		toggleSection = (sectionId) => {
+			const { allowMultiple } = this.props;
+			const allowToggle = this.getAllowToggle();
+
+			this.setState(prevState => {
+				const { expandedSections } = prevState;
+				const alreadyExpanded = expandedSections.has(sectionId);
+				
+				if(allowMultiple) {
+					if(alreadyExpanded)
+						expandedSections.delete(sectionId);
+					else
+						expandedSections.add(sectionId);
+				}
+				else {
+					expandedSections.clear();
+
+					if(!alreadyExpanded || (alreadyExpanded && !allowToggle))
+						expandedSections.add(sectionId);
+				}
+
+				return {
+					expandedSections,
+				};
+			});
 		};
 	};
 }

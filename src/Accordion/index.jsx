@@ -22,22 +22,22 @@ class Accordion extends React.Component {
 		triggerRefs: PropTypes.arrayOf(PropTypes.shape({
 			current: PropTypes.object,
 		})),
+		expandedSections: PropTypes.instanceOf(Set).isRequired,
 		onTriggerClick: PropTypes.func.isRequired,
 		onTriggerKeyDown: PropTypes.func.isRequired,
 		getAllowToggle: PropTypes.func.isRequired,
-		getIsExpandedKey: PropTypes.func.isRequired,
 	};
 
 	render() {
 		const {
-			sections, getAllowToggle, getIsExpandedKey, headerLevel,
+			sections, getAllowToggle, headerLevel, expandedSections,
 			onTriggerClick, onTriggerKeyDown, triggerRefs,
 		} = this.props;
 		const allowToggle = getAllowToggle();
 
 		return sections.map((section, i) => {
 			const { id, header, panel } = section;
-			const isExpanded = this.props[getIsExpandedKey(id)];
+			const isExpanded = expandedSections.has(id);
 
 			return (
 				<Fragment key={ id }>
