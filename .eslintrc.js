@@ -46,6 +46,13 @@ module.exports = {
 			'error',
 			'always',
 		],
+		'no-unused-vars': [
+			'error',
+			{
+				varsIgnorePattern: '[iI]gnored',
+				argsIgnorePattern: '[iI]gnored',
+			},
+		],
 		'array-callback-return': [
 			'warn',
 		],

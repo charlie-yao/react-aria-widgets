@@ -25,7 +25,7 @@ function createAccordionManager(Component) {
 
 		//---- Rendering ----
 		render() {
-			const { allowMultiple, allowToggle, ...rest } = this.props;
+			const { allowMultiple: amIgnored, allowToggle: atIgnored, ...rest } = this.props;
 			const { expandedSections } = this.state;
 
 			return (
