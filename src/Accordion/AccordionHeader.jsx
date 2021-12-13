@@ -12,8 +12,9 @@ function AccordionHeader(props) {
 	const HeaderElement = `h${headerLevel}`;
 
 	return (
-		<HeaderElement id={ id }>
+		<HeaderElement>
 			<button
+				id={ id }
 				type="button"
 				aria-controls={ panelId }
 				aria-expanded={ isExpanded }
