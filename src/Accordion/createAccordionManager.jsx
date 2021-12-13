@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function createAccordionManager(Component) {
-	return class AccordionHOC extends React.Component {
+	return class AccordionManager extends React.Component {
 		static propTypes = {
 			allowMultiple: PropTypes.bool,
 			allowToggle: PropTypes.bool,
