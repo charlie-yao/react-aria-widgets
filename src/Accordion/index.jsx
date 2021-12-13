@@ -96,7 +96,7 @@ class Accordion extends React.Component {
 						index={ i }
 						isExpanded={ isExpanded }
 						isDisabled={ !allowToggle && isExpanded }
-						_ref={ this.triggerRefs[i] }
+						ref={ this.triggerRefs[i] }
 						onClick={ this.onTriggerClick }
 						onKeyDown={ this.onTriggerKeyDown }
 					>

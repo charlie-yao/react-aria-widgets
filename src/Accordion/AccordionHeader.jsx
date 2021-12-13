@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 //Misc.
 import { validateHeaderLevelProp } from 'src/Accordion/utils';
 
-function AccordionHeader(props) {
+const AccordionHeader = React.forwardRef(function AccordionHeader(props, ref) {
 	const {
 		headerLevel, children, id, panelId, onClick, onKeyDown,
-		isExpanded, isDisabled, index, _ref,
+		isExpanded, isDisabled, index,
 	} = props;
 	const HeaderElement = `h${headerLevel}`;
 
@@ -20,7 +20,7 @@ function AccordionHeader(props) {
 				aria-expanded={ isExpanded }
 				aria-disabled={ isDisabled }
 				data-index={ index }
-				ref={ _ref }
+				ref={ ref }
 				onClick={ onClick }
 				onKeyDown={ onKeyDown }
 			>
@@ -28,7 +28,7 @@ function AccordionHeader(props) {
 			</button>
 		</HeaderElement>
 	);
-}
+});
 
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
@@ -38,9 +38,6 @@ AccordionHeader.propTypes = {
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
-	_ref: PropTypes.shape({
-		current: PropTypes.object,
-	}).isRequired, //TODO is this a good use case for React.forwardRef()?
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 };
@@ -49,5 +46,7 @@ AccordionHeader.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
 };
+
+AccordionHeader.displayName = 'AccordionHeader';
 
 export default AccordionHeader;
