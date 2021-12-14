@@ -81,38 +81,40 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { sections, allowToggle, headerLevel, expandedSections } = this.props;
-
-		return sections.map((section, i) => {
-			const { id, header, panel } = section;
-			const isExpanded = expandedSections.has(id);
-
-			return (
-				<Fragment key={ id }>
-					<AccordionHeader
-						id={ id }
-						panelId={ `${id}Panel` }
-						headerLevel={ headerLevel }
-						index={ i }
-						isExpanded={ isExpanded }
-						isDisabled={ !allowToggle && isExpanded }
-						ref={ this.triggerRefs[i] }
-						onClick={ this.onTriggerClick }
-						onKeyDown={ this.onTriggerKeyDown }
-					>
-						{ header }
-					</AccordionHeader>
-					<AccordionPanel
-						id={ `${id}Panel` }
-						headerId={ id }
-						isExpanded={ isExpanded }
-					>
-						{ panel }
-					</AccordionPanel>
-				</Fragment>
-			);
-		});
+		const { sections } = this.props;
+		return sections.map(this.renderSection);
 	}
+
+	renderSection = (section, i) => {
+		const { allowToggle, headerLevel, expandedSections } = this.props;
+		const { id, header, panel } = section;
+		const isExpanded = expandedSections.has(id);
+
+		return (
+			<Fragment key={ id }>
+				<AccordionHeader
+					id={ id }
+					panelId={ `${id}Panel` }
+					headerLevel={ headerLevel }
+					index={ i }
+					isExpanded={ isExpanded }
+					isDisabled={ !allowToggle && isExpanded }
+					ref={ this.triggerRefs[i] }
+					onClick={ this.onTriggerClick }
+					onKeyDown={ this.onTriggerKeyDown }
+				>
+					{ header }
+				</AccordionHeader>
+				<AccordionPanel
+					id={ `${id}Panel` }
+					headerId={ id }
+					isExpanded={ isExpanded }
+				>
+					{ panel }
+				</AccordionPanel>
+			</Fragment>
+		);
+	};
 }
 
 export default createAccordionManager(Accordion);
