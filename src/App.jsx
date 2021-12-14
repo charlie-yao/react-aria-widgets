@@ -3,6 +3,7 @@ import React from 'react';
 //Components and Styles
 import Accordion from 'src/Accordion';
 import MenuButton from 'src/Menu/MenuButton';
+import MenuBar from 'src/Menu/MenuBar';
 
 function onDummySubmit(event) {
 	event.preventDefault();
@@ -43,6 +44,10 @@ function App() {
 			<MenuButton>
 				Menu Button
 			</MenuButton>
+			<MenuBar>
+				<li>Hello</li>
+				<li>World!</li>
+			</MenuBar>
 		</main>
 	);
 }

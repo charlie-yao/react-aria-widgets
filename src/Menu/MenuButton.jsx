@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function MenuButton(props) {
 	const { children, isExpanded } = props;
-	
+
 	//TODO: point aria-controls to the menu (optional)
 	//TODO: keyboard interaction
 	return (
