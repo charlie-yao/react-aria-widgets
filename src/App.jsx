@@ -2,6 +2,7 @@ import React from 'react';
 
 //Components and Styles
 import Accordion from 'src/Accordion';
+import MenuButton from 'src/Menu/MenuButton';
 
 function onDummySubmit(event) {
 	event.preventDefault();
@@ -38,6 +39,8 @@ function App() {
 		<main>
 			<h1>Accordion</h1>
 			<Accordion headerLevel={ 2 } sections={ DUMMY_ACCORDION_SECTIONS } />
+			<h1>Menu, Menubar, Menu Button</h1>
+			<MenuButton />
 		</main>
 	);
 }
