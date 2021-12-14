@@ -1,186 +1,121 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const NUM_SECTIONS = 3;
+//Components and Styles
+import AccordionHeader from 'src/Accordion/AccordionHeader';
+import AccordionPanel from 'src/Accordion/AccordionPanel';
+
+//HOCs
+import createAccordionManager from 'src/Accordion/createAccordionManager';
+
+//Misc.
+import { validateHeaderLevelProp } from 'src/Accordion/utils';
 
 class Accordion extends React.Component {
 	static propTypes = {
-		allowMultiple: PropTypes.bool,
-		allowToggle: PropTypes.bool,
+		headerLevel: validateHeaderLevelProp.isRequired,
+		sections: PropTypes.arrayOf(PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			header: PropTypes.node.isRequired,
+			panel: PropTypes.node.isRequired,
+		})).isRequired,
+		//From <AccordionManager> or another state manager
+		expandedSections: PropTypes.instanceOf(Set).isRequired,
+		allowToggle: PropTypes.bool.isRequired,
+		toggleSection: PropTypes.func.isRequired,
 	};
 
-	static defaultProps = {
-		allowMultiple: true,
-		allowToggle: true,
-	};
+	constructor(props) {
+		super(props);
 
-	constructor() {
-		super();
-
-		this.state = {
-			section1PanelExpanded: true,
-			section2PanelExpanded: false,
-			section3PanelExpanded: false,
-		};
+		const { sections } = props;
 
 		this.triggerRefs = [];
 
-		for(let i = 0; i < NUM_SECTIONS; i++)
+		sections.forEach((section, i) => {
 			this.triggerRefs[i] = React.createRef();
+		});
 	}
 
 	//---- Events ----
-	onClickTrigger = (event) => {
-		const { allowMultiple } = this.props;
-		const allowToggle = this.getAllowToggle();
-		const panelId = event.target.getAttribute('aria-controls');
-		const field = `${panelId}Expanded`;
-
-		if(allowMultiple) {
-			this.setState(prevState => {
-				return {
-					[field]: !prevState[field],
-				};
-			});
-		}
-		else {
-			this.setState(prevState => {
-				const state = {};
-
-				Object.keys(prevState).forEach(key => {
-					state[key] = key === field ? (allowToggle ? !prevState[field] : true) : false;
-				});
-
-				return state;
-			});
-		}
+	onTriggerClick = (event) => {
+		const { sections, toggleSection } = this.props;
+		const index = Number.parseInt(event.target.dataset.index, 10);
+		toggleSection(sections[index].id);
 	};
 
 	onTriggerKeyDown = (event) => {
+		const { sections } = this.props;
 		const { key } = event;
 		const index = Number.parseInt(event.target.dataset.index, 10);
 
 		switch(key) {
 			case 'ArrowUp':
+				event.preventDefault();
+
 				if(index === 0)
-					this.triggerRefs[this.triggerRefs.length - 1].current.focus();
+					this.triggerRefs[sections.length - 1].current.focus();
 				else
 					this.triggerRefs[index - 1].current.focus();
 
-				event.preventDefault();
 				break;
 			case 'ArrowDown':
-				if(index === this.triggerRefs.length - 1)
+				event.preventDefault();
+
+				if(index === sections.length - 1)
 					this.triggerRefs[0].current.focus();
 				else
 					this.triggerRefs[index + 1].current.focus();
 
-				event.preventDefault();
 				break;
 			case 'Home':
-				this.triggerRefs[0].current.focus();
 				event.preventDefault();
+				this.triggerRefs[0].current.focus();
 				break;
 			case 'End':
-				this.triggerRefs[this.triggerRefs.length - 1].current.focus();
 				event.preventDefault();
+				this.triggerRefs[sections.length - 1].current.focus();
 				break;
 		}
 	};
 
-	onDummySubmit = (event) => {
-		event.preventDefault();
-	};
-
 	//---- Rendering ----
 	render() {
-		const { section1PanelExpanded, section2PanelExpanded, section3PanelExpanded } = this.state;
-		const allowToggle = this.getAllowToggle();
-
-		return (
-			<Fragment>
-				<h2 id="section1Header">
-					<button
-						aria-controls="section1Panel"
-						aria-expanded={ section1PanelExpanded }
-						onClick={ this.onClickTrigger }
-						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowToggle && section1PanelExpanded }
-						data-index="0"
-						ref={ this.triggerRefs[0] }
-						type="button"
-					>
-						Section 1
-					</button>
-				</h2>
-				<section
-					id="section1Panel"
-					aria-labelledby="section1Header"
-					hidden={ !section1PanelExpanded }
-				>
-					<form onSubmit={ this.onDummySubmit }>
-						<label htmlFor="section1Input1">Dummy Input #1</label>
-						<input type="text" id="section1Input1" required />
-						<label htmlFor="section1Input2">Dummy Input #2</label>
-						<input type="number" min="0" max="100" required step="1" id="section1Input2" />
-						<button type="submit">Submit</button>
-					</form>
-				</section>
-				<h2 id="section2Header">
-					<button
-						aria-controls="section2Panel"
-						aria-expanded={ section2PanelExpanded }
-						onClick={ this.onClickTrigger }
-						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowToggle && section2PanelExpanded }
-						data-index="1"
-						ref={ this.triggerRefs[1] }
-						type="button"
-					>
-						Section 2
-					</button>
-				</h2>
-				<section
-					id="section2Panel"
-					aria-labelledby="section2Header"
-					hidden={ !section2PanelExpanded }
-				>
-					Section 2 content
-				</section>
-				<h2 id="section3Header">
-					<button
-						aria-controls="section3Panel"
-						aria-expanded={ section3PanelExpanded }
-						onClick={ this.onClickTrigger }
-						onKeyDown={ this.onTriggerKeyDown }
-						aria-disabled={ !allowToggle && section3PanelExpanded }
-						data-index="2"
-						ref={ this.triggerRefs[2] }
-						type="button"
-					>
-						Section 3
-					</button>
-				</h2>
-				<section
-					id="section3Panel"
-					aria-labelledby="section3Header"
-					hidden={ !section3PanelExpanded }
-				>
-					Section 3 content
-				</section>
-			</Fragment>
-		);
+		const { sections } = this.props;
+		return sections.map(this.renderSection);
 	}
 
-	//---- Misc. ----
-	getAllowToggle = () => {
-		//Even though this component accepts allowMultiple and allowToggle
-		//as independent props, the case of allowMultiple && !allowToggle
-		//doesn't make much sense because we'd end up in a situation where
-		//multiple accordion sections are expanded with no way of closing them.
-		const { allowToggle, allowMultiple } = this.props;
-		return allowMultiple ? true : allowToggle;
+	renderSection = (section, i) => {
+		const { allowToggle, headerLevel, expandedSections } = this.props;
+		const { id, header, panel } = section;
+		const isExpanded = expandedSections.has(id);
+
+		return (
+			<Fragment key={ id }>
+				<AccordionHeader
+					id={ id }
+					panelId={ `${id}Panel` }
+					headerLevel={ headerLevel }
+					index={ i }
+					isExpanded={ isExpanded }
+					isDisabled={ !allowToggle && isExpanded }
+					ref={ this.triggerRefs[i] }
+					onClick={ this.onTriggerClick }
+					onKeyDown={ this.onTriggerKeyDown }
+				>
+					{ header }
+				</AccordionHeader>
+				<AccordionPanel
+					id={ `${id}Panel` }
+					headerId={ id }
+					isExpanded={ isExpanded }
+				>
+					{ panel }
+				</AccordionPanel>
+			</Fragment>
+		);
 	};
 }
 
-export default Accordion;
+export default createAccordionManager(Accordion);
+export { Accordion };
