@@ -40,7 +40,9 @@ function App() {
 			<h1>Accordion</h1>
 			<Accordion headerLevel={ 2 } sections={ DUMMY_ACCORDION_SECTIONS } />
 			<h1>Menu, Menubar, Menu Button</h1>
-			<MenuButton />
+			<MenuButton>
+				Menu Button
+			</MenuButton>
 		</main>
 	);
 }
