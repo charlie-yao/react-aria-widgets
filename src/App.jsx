@@ -44,10 +44,7 @@ function App() {
 			<MenuButton>
 				Menu Button
 			</MenuButton>
-			<MenuBar>
-				<li>Hello</li>
-				<li>World!</li>
-			</MenuBar>
+			<MenuBar label="Placeholder" />
 		</main>
 	);
 }

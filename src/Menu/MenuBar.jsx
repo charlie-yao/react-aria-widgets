@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
  */
 class MenuBar extends React.Component {
 	static propTypes = {
-		children: PropTypes.node.isRequired,
+//		children: PropTypes.node.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string, //eslint-disable-line react/require-default-props
 		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
@@ -31,7 +31,67 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				{ children }
+				<li role="none">
+					<a href="#" role="menuitem">
+						Parent Menuitem 1
+					</a>
+					<ul role="menu">
+						<li role="menuitem">
+							Hello world!
+						</li>
+						<li role="menuitem">
+							Hello world!
+						</li>
+						<li role="menuitem">
+							Hello world!
+						</li>
+					</ul>
+				</li>
+				<li role="none">
+					<a href="#" role="menuitem">
+						Parent Menuitem 2
+					</a>
+					<ul role="menu">
+						<li role="menuitem">
+							Hello world!
+						</li>
+						<li role="menuitem">
+							Hello world!
+						</li>
+						<li role="menuitem">
+							Hello world!
+						</li>
+					</ul>
+				</li>
+				<li role="menuitem">
+					Hello world!
+				</li>
+				<li role="none">
+					<a href="#" role="menuitem">
+						Parent Menuitem 3
+					</a>
+					<ul role="menu">
+						<li role="menuitem">
+							Hello world!
+						</li>
+						<li role="menuitem">
+							Hello world!
+						</li>
+						<li role="none">
+							<a href="#" role="menuitem">
+								Nested Parent Menuitem
+							</a>
+							<ul role="menu">
+								<li role="menuitem">
+									Hello world!
+								</li>
+								<li role="menuitem">
+									Hello world!
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
 			</ul>
 		);
 	}
