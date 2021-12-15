@@ -20,6 +20,12 @@ class MenuBar extends React.Component {
 		orientation: 'horizontal',
 	};
 
+	constructor(props) {
+		super(props);
+	}
+
+	//---- Events ----
+
 	//---- Rendering ----
 	render() {
 		const { children, orientation, label, labelId } = this.props;
