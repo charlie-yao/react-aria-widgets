@@ -32,7 +32,7 @@ class MenuBar extends React.Component {
 				aria-label={ label }
 			>
 				<li role="none">
-					<a href="#" role="menuitem" aria-haspopup="menu">
+					<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false }>
 						Parent Menuitem 1
 					</a>
 					<ul role="menu">
@@ -48,7 +48,7 @@ class MenuBar extends React.Component {
 					</ul>
 				</li>
 				<li role="none">
-					<a href="#" role="menuitem" aria-haspopup="menu">
+					<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false }>
 						Parent Menuitem 2
 					</a>
 					<ul role="menu">
@@ -67,7 +67,7 @@ class MenuBar extends React.Component {
 					Hello world!
 				</li>
 				<li role="none">
-					<a href="#" role="menuitem" aria-haspopup="menu">
+					<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false }>
 						Parent Menuitem 3
 					</a>
 					<ul role="menu">
@@ -78,7 +78,7 @@ class MenuBar extends React.Component {
 							Hello world!
 						</li>
 						<li role="none">
-							<a href="#" role="menuitem" aria-haspopup="menu">
+							<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false }>
 								Nested Parent Menuitem
 							</a>
 							<ul role="menu">
