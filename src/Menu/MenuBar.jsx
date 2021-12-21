@@ -38,60 +38,88 @@ class MenuBar extends React.Component {
 				aria-label={ label }
 			>
 				<li role="none">
-					<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false } aria-disabled={ false }>
+					<a
+						href="#"
+						role="menuitem"
+						aria-haspopup="menu"
+						aria-expanded={ false }
+						aria-disabled={ false }
+						tabindex="0"
+					>
 						Parent Menuitem 1
 					</a>
 					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
 					</ul>
 				</li>
 				<li role="none">
-					<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false } aria-disabled={ false }>
+					<a
+						href="#"
+						role="menuitem"
+						aria-haspopup="menu"
+						aria-expanded={ false }
+						aria-disabled={ false }
+						tabindex="-1"
+					>
 						Parent Menuitem 2
 					</a>
 					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
 					</ul>
 				</li>
-				<li role="menuitem" aria-disabled={ false }>
+				<li role="menuitem" aria-disabled={ false } tabindex="-1">
 					Hello world!
 				</li>
 				<li role="none">
-					<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false } aria-disabled={ false }>
+					<a
+						href="#"
+						role="menuitem"
+						aria-haspopup="menu"
+						aria-expanded={ false }
+						aria-disabled={ false }
+						tabindex="-1"
+					>
 						Parent Menuitem 3
 					</a>
 					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false }>
+						<li role="menuitem" aria-disabled={ false } tabindex="-1">
 							Hello world!
 						</li>
 						<li role="none">
-							<a href="#" role="menuitem" aria-haspopup="menu" aria-expanded={ false } aria-disabled={ false }>
+							<a
+								href="#"
+								role="menuitem"
+								aria-haspopup="menu"
+								aria-expanded={ false }
+								aria-disabled={ false }
+								tabindex="-1"
+							>
 								Nested Parent Menuitem
 							</a>
 							<ul role="menu">
-								<li role="menuitem" aria-disabled={ false }>
+								<li role="menuitem" aria-disabled={ false } tabindex="-1">
 									Hello world!
 								</li>
-								<li role="menuitem" aria-disabled={ false }>
+								<li role="menuitem" aria-disabled={ false } tabindex="-1">
 									Hello world!
 								</li>
 							</ul>
