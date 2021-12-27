@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//TODO: navigation-specific menu item?
 function MenuItem(props) {
 	const { children, isDisabled } = props;
 

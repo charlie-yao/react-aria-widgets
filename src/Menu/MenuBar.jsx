@@ -32,6 +32,10 @@ class MenuBar extends React.Component {
 
 	constructor(props) {
 		super(props);
+
+		const { menuItems } = props;
+
+		this.menuItemRefs = this.createRefs(menuItems);
 	}
 
 	//---- Events ----
@@ -42,6 +46,8 @@ class MenuBar extends React.Component {
 		const renderedMenuItems = menuItems.map((menuItem, index, array) => {
 			return renderItem(menuItem, index, array, this.props);
 		});
+
+		console.log(this.menuItemRefs);
 
 		return (
 			<ul
@@ -54,6 +60,22 @@ class MenuBar extends React.Component {
 			</ul>
 		);
 	}
+
+	//---- Misc. ----
+	createRefs = (menuItems) => {
+		const refs = [];
+
+		menuItems.forEach((item, i) => {
+			const { type, menuItems: subMenuItems } = item;
+
+			if(type === 'parentmenuitem')
+				refs[i] = this.createRefs(subMenuItems);
+			else
+				refs[i] = React.createRef();
+		});
+
+		return refs;
+	};
 }
 
 export default MenuBar;
