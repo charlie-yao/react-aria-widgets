@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import MenuItem from 'src/Menu/MenuItem';
 import ParentMenuItem from 'src/Menu/ParentMenuItem';
 
+//Misc.
+import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+
 /*
  * Some notes on props:
  *
@@ -15,12 +18,7 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
 class MenuBar extends React.Component {
 	static propTypes = {
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-		menuItems: PropTypes.arrayOf(PropTypes.shape({
-			type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemradio', 'separator' ]),
-			node: PropTypes.node.isRequired,
-			menuItems: PropTypes.array, //Only relevant for "parentmenuitem"
-			props: PropTypes.object,
-		})).isRequired,
+		menuItems: MENU_ITEMS_PROPTYPE.isRequired,
 		label: PropTypes.string, //eslint-disable-line react/require-default-props
 		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
 		renderItem: PropTypes.func,

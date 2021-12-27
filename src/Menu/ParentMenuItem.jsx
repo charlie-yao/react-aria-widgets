@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import MenuItem from 'src/Menu/MenuItem';
 
+//Misc.
+import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+
 function ParentMenuItem(props) {
 	const { children, menuItems, isExpanded, isDisabled, renderItem } = props;
 	const menuItemNodes = menuItems.map((mi, index, array) => {
@@ -31,12 +34,7 @@ function ParentMenuItem(props) {
 
 ParentMenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
-	menuItems: PropTypes.arrayOf(PropTypes.shape({
-		type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]),
-		node: PropTypes.node.isRequired,
-		menuItems: PropTypes.array, //Only required for "parentmenuitem"
-		props: PropTypes.object,
-	})).isRequired,
+	menuItems: MENU_ITEMS_PROPTYPE.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	renderItem: PropTypes.func,

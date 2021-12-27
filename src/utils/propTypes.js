@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 /**
  * Creates a custom React prop type.
  *
@@ -47,3 +49,12 @@ function _validateHeaderLevelProp(props, propName) {
 const validateHeaderLevelProp = createCustomPropType(_validateHeaderLevelProp);
 validateHeaderLevelProp.isRequired = createCustomPropType(_validateHeaderLevelProp, true);
 export { validateHeaderLevelProp };
+
+export const MENU_ITEM_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]),
+	node: PropTypes.node.isRequired,
+	menuItems: PropTypes.array, //Only required for "parentmenuitem"
+	props: PropTypes.object,
+});
+
+export const MENU_ITEMS_PROPTYPE = PropTypes.arrayOf(MENU_ITEM_PROPTYPE);
