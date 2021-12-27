@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import MenuItem from 'src/Menu/MenuItem';
 
 function ParentMenuItem(props) {
-	const { node, menuItems, isExpanded, isDisabled, renderItem } = props;
+	const { children, menuItems, isExpanded, isDisabled, renderItem } = props;
 	const menuItemNodes = menuItems.map((mi, index, array) => {
 		return renderItem(mi, index, array, props);
 	});
@@ -20,7 +20,7 @@ function ParentMenuItem(props) {
 				aria-disabled={ isDisabled }
 				tabIndex="0"
 			>
-				{ node }
+				{ children }
 			</a>
 			<ul role="menu">
 				{ menuItemNodes }
@@ -30,7 +30,7 @@ function ParentMenuItem(props) {
 }
 
 ParentMenuItem.propTypes = {
-	node: PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired,
 	menuItems: PropTypes.arrayOf(PropTypes.shape({
 		type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]),
 		node: PropTypes.node.isRequired,
@@ -41,18 +41,21 @@ ParentMenuItem.propTypes = {
 	isDisabled: PropTypes.bool,
 	renderItem: PropTypes.func,
 	renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
+	renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 };
 
 ParentMenuItem.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
 	renderItem: function renderItem(menuItem, index, array, parentItemProps) {
-		const { renderMenuItem } = parentItemProps;
+		const { renderMenuItem, renderParentMenuItem } = parentItemProps;
 		const { type } = menuItem;
 		let node;
 
 		if(type === 'menuitem')
 			node = renderMenuItem(menuItem, index, array, parentItemProps);
+		else if(type === 'parentmenuitem')
+			node = renderParentMenuItem(menuItem, index, array, parentItemProps);
 		else
 			node = renderMenuItem(menuItem, index, array, parentItemProps);
 
@@ -66,6 +69,21 @@ ParentMenuItem.defaultProps = {
 			<MenuItem key={ index } isDisabled={ isDisabled }>
 				{ node }
 			</MenuItem>
+		);
+	},
+	renderParentMenuItem: function renderParentMenuItem(menuItem, index) {
+		const { node, menuItems, props = {} } = menuItem;
+		const { isDisabled, isEnabled } = props;
+
+		return (
+			<ParentMenuItem
+				key={ index }
+				menuItems={ menuItems }
+				isDisabled={ isDisabled }
+				isEnabled={ isEnabled }
+			>
+				{ node }
+			</ParentMenuItem>
 		);
 	},
 };

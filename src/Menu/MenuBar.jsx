@@ -2,22 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
+import MenuItem from 'src/Menu/MenuItem';
 import ParentMenuItem from 'src/Menu/ParentMenuItem';
-
-const MENU_ITEMS_1 = [
-	{
-		type: 'menuitem',
-		node: 'Hello world!',
-	},
-	{
-		type: 'menuitem',
-		node: 'Hello world!',
-	},
-	{
-		type: 'menuitem',
-		node: 'Hello world!',
-	},
-];
 
 /*
  * Some notes on props:
@@ -33,13 +19,56 @@ class MenuBar extends React.Component {
 			type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemradio', 'separator' ]),
 			node: PropTypes.node.isRequired,
 			menuItems: PropTypes.array, //Only relevant for "parentmenuitem"
+			props: PropTypes.object,
 		})).isRequired,
 		label: PropTypes.string, //eslint-disable-line react/require-default-props
 		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
+		renderItem: PropTypes.func,
+		renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
+		renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 	};
 
 	static defaultProps = {
 		orientation: 'horizontal',
+		renderItem: function renderItem(menuItem, index, array, menuBarProps) {
+			const { renderMenuItem, renderParentMenuItem } = menuBarProps;
+			const { type } = menuItem;
+			let node;
+
+			if(type === 'menuitem')
+				node = renderMenuItem(menuItem, index, array, menuBarProps);
+			else if(type === 'parentmenuitem')
+				node = renderParentMenuItem(menuItem, index, array, menuBarProps);
+			else
+				node = renderMenuItem(menuItem, index, array, menuBarProps);
+
+			return node;
+		},
+		renderMenuItem: function renderMenuItem(menuItem, index) {
+			const { node, props = {} } = menuItem;
+			const { isDisabled } = props;
+
+			return (
+				<MenuItem key={ index } isDisabled={ isDisabled }>
+					{ node }
+				</MenuItem>
+			);
+		},
+		renderParentMenuItem: function renderParentMenuItem(menuItem, index) {
+			const { node, menuItems, props = {} } = menuItem;
+			const { isDisabled, isEnabled } = props;
+
+			return (
+				<ParentMenuItem
+					key={ index }
+					menuItems={ menuItems }
+					isDisabled={ isDisabled }
+					isEnabled={ isEnabled }
+				>
+					{ node }
+				</ParentMenuItem>
+			);
+		},
 	};
 
 	constructor(props) {
@@ -50,7 +79,10 @@ class MenuBar extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { orientation, label, labelId } = this.props;
+		const { orientation, menuItems, label, labelId, renderItem } = this.props;
+		const renderedMenuItems = menuItems.map((menuItem, index, array) => {
+			return renderItem(menuItem, index, array, this.props);
+		});
 
 		return (
 			<ul
@@ -59,76 +91,7 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				<ParentMenuItem
-					node="Parent Menuitem 1"
-					menuItems={ MENU_ITEMS_1 }
-				/>
-				<li role="none">
-					<a
-						href="#"
-						role="menuitem"
-						aria-haspopup="menu"
-						aria-expanded={ false }
-						aria-disabled={ false }
-						tabIndex="-1"
-					>
-						Parent Menuitem 2
-					</a>
-					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-							Hello world!
-						</li>
-						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-							Hello world!
-						</li>
-						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-							Hello world!
-						</li>
-					</ul>
-				</li>
-				<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-					Hello world!
-				</li>
-				<li role="none">
-					<a
-						href="#"
-						role="menuitem"
-						aria-haspopup="menu"
-						aria-expanded={ false }
-						aria-disabled={ false }
-						tabIndex="-1"
-					>
-						Parent Menuitem 3
-					</a>
-					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-							Hello world!
-						</li>
-						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-							Hello world!
-						</li>
-						<li role="none">
-							<a
-								href="#"
-								role="menuitem"
-								aria-haspopup="menu"
-								aria-expanded={ false }
-								aria-disabled={ false }
-								tabIndex="-1"
-							>
-								Nested Parent Menuitem
-							</a>
-							<ul role="menu">
-								<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-									Hello world!
-								</li>
-								<li role="menuitem" aria-disabled={ false } tabIndex="-1">
-									Hello world!
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
+				{ renderedMenuItems }
 			</ul>
 		);
 	}

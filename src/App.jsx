@@ -35,6 +35,77 @@ const DUMMY_ACCORDION_SECTIONS = [
 	},
 ];
 
+const MENU_ITEMS = [
+	{
+		type: 'parentmenuitem',
+		node: 'Parent Menuitem 1',
+		menuItems: [
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+		],
+	},
+	{
+		type: 'parentmenuitem',
+		node: 'Parent Menuitem 2',
+		menuItems: [
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+		],
+	},
+	{
+		type: 'menuitem',
+		node: 'Hello world!',
+	},
+	{
+		type: 'parentmenuitem',
+		node: 'Parent Menuitem 3',
+		menuItems: [
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menuitem',
+				node: 'Hello world!',
+			},
+			{
+				type: 'parentmenuitem',
+				node: 'Nested Parent Menuitem',
+				menuItems: [
+					{
+						type: 'menuitem',
+						node: 'Hello world!',
+					},
+					{
+						type: 'menuitem',
+						node: 'Hello world!',
+					},
+				],
+			},
+		],
+	},
+];
+
 function App() {
 	return (
 		<main>
@@ -44,7 +115,7 @@ function App() {
 			<MenuButton>
 				Menu Button
 			</MenuButton>
-			<MenuBar label="Placeholder" />
+			<MenuBar label="Placeholder" menuItems={ MENU_ITEMS } />
 		</main>
 	);
 }
