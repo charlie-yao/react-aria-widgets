@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Misc.
-import { validateHeaderLevelProp } from 'src/Accordion/utils';
+import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 const AccordionHeader = React.forwardRef(function AccordionHeader(props, ref) {
 	const {
