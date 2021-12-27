@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import ParentMenuItem from 'src/Menu/ParentMenuItem';
+
 /*
  * Some notes on props:
  *
@@ -12,6 +15,11 @@ class MenuBar extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+		menu: PropTypes.arrayOf(PropTypes.shape({
+			type: PropTypes.oneOf(['menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemradio', 'separator']),
+			node: PropTypes.node.isRequired,
+			menuItems: PropTypes.array, //only relevant for "parentmenuitem"
+		})).isRequired,
 		label: PropTypes.string, //eslint-disable-line react/require-default-props
 		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
 	};
@@ -37,29 +45,7 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				<li role="none">
-					<a
-						href="#"
-						role="menuitem"
-						aria-haspopup="menu"
-						aria-expanded={ false }
-						aria-disabled={ false }
-						tabindex="0"
-					>
-						Parent Menuitem 1
-					</a>
-					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
-							Hello world!
-						</li>
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
-							Hello world!
-						</li>
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
-							Hello world!
-						</li>
-					</ul>
-				</li>
+				<ParentMenuItem />
 				<li role="none">
 					<a
 						href="#"
