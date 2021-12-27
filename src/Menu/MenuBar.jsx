@@ -7,15 +7,15 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
 const MENU_ITEMS_1 = [
 	{
 		type: 'menuitem',
-		node: 'Hello world!'
+		node: 'Hello world!',
 	},
 	{
 		type: 'menuitem',
-		node: 'Hello world!'
+		node: 'Hello world!',
 	},
 	{
 		type: 'menuitem',
-		node: 'Hello world!'
+		node: 'Hello world!',
 	},
 ];
 
@@ -30,10 +30,10 @@ class MenuBar extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-		menu: PropTypes.arrayOf(PropTypes.shape({
-			type: PropTypes.oneOf(['menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemradio', 'separator']),
+		menuItems: PropTypes.arrayOf(PropTypes.shape({
+			type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemradio', 'separator' ]),
 			node: PropTypes.node.isRequired,
-			menuItems: PropTypes.array, //only relevant for "parentmenuitem"
+			menuItems: PropTypes.array, //Only relevant for "parentmenuitem"
 		})).isRequired,
 		label: PropTypes.string, //eslint-disable-line react/require-default-props
 		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
@@ -71,23 +71,23 @@ class MenuBar extends React.Component {
 						aria-haspopup="menu"
 						aria-expanded={ false }
 						aria-disabled={ false }
-						tabindex="-1"
+						tabIndex="-1"
 					>
 						Parent Menuitem 2
 					</a>
 					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
+						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
+						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
+						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 							Hello world!
 						</li>
 					</ul>
 				</li>
-				<li role="menuitem" aria-disabled={ false } tabindex="-1">
+				<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 					Hello world!
 				</li>
 				<li role="none">
@@ -97,15 +97,15 @@ class MenuBar extends React.Component {
 						aria-haspopup="menu"
 						aria-expanded={ false }
 						aria-disabled={ false }
-						tabindex="-1"
+						tabIndex="-1"
 					>
 						Parent Menuitem 3
 					</a>
 					<ul role="menu">
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
+						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 							Hello world!
 						</li>
-						<li role="menuitem" aria-disabled={ false } tabindex="-1">
+						<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 							Hello world!
 						</li>
 						<li role="none">
@@ -115,15 +115,15 @@ class MenuBar extends React.Component {
 								aria-haspopup="menu"
 								aria-expanded={ false }
 								aria-disabled={ false }
-								tabindex="-1"
+								tabIndex="-1"
 							>
 								Nested Parent Menuitem
 							</a>
 							<ul role="menu">
-								<li role="menuitem" aria-disabled={ false } tabindex="-1">
+								<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 									Hello world!
 								</li>
-								<li role="menuitem" aria-disabled={ false } tabindex="-1">
+								<li role="menuitem" aria-disabled={ false } tabIndex="-1">
 									Hello world!
 								</li>
 							</ul>

@@ -5,7 +5,7 @@ function MenuItem(props) {
 	const { children, isDisabled } = props;
 
 	return (
-		<li role="menuitem" aria-disabled={ isDisabled } tabindex="-1">
+		<li role="menuitem" aria-disabled={ isDisabled } tabIndex="-1">
 			{ children }
 		</li>
 	);

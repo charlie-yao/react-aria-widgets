@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import MenuItem from 'src/Menu/MenuItem';
 
 function ParentMenuItem(props) {
-	const { node, menuItems, isExpanded, isDisabled, renderMenuItem } = props;
+	const { node, menuItems, isExpanded, isDisabled, renderItem } = props;
 	const menuItemNodes = menuItems.map((mi, index, array) => {
-		return renderMenuItem(mi, index, array, props);
+		return renderItem(mi, index, array, props);
 	});
 
 	return (
@@ -18,7 +18,7 @@ function ParentMenuItem(props) {
 				aria-haspopup="menu"
 				aria-expanded={ isExpanded }
 				aria-disabled={ isDisabled }
-				tabindex="0"
+				tabIndex="0"
 			>
 				{ node }
 			</a>
@@ -32,31 +32,40 @@ function ParentMenuItem(props) {
 ParentMenuItem.propTypes = {
 	node: PropTypes.node.isRequired,
 	menuItems: PropTypes.arrayOf(PropTypes.shape({
-		type: PropTypes.oneOf(['menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator']),
+		type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]),
 		node: PropTypes.node.isRequired,
-		menuItems: PropTypes.array, //only required for "parentmenuitem"
+		menuItems: PropTypes.array, //Only required for "parentmenuitem"
+		props: PropTypes.object,
 	})).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
-	renderMenuItem: PropTypes.func,
+	renderItem: PropTypes.func,
+	renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 };
 
 ParentMenuItem.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
-	renderMenuItem: function renderMenuItem(menuItem, index, array, props) {
-		const { type, node, menuItems } = menuItem;
-		let Element;
+	renderItem: function renderItem(menuItem, index, array, parentItemProps) {
+		const { renderMenuItem } = parentItemProps;
+		const { type } = menuItem;
+		let node;
 
 		if(type === 'menuitem')
-			Element = MenuItem;
+			node = renderMenuItem(menuItem, index, array, parentItemProps);
 		else
-			Element = MenuItem;
+			node = renderMenuItem(menuItem, index, array, parentItemProps);
+
+		return node;
+	},
+	renderMenuItem: function renderMenuItem(menuItem, index) {
+		const { node, props = {} } = menuItem;
+		const { isDisabled } = props;
 
 		return (
-			<Element>
+			<MenuItem key={ index } isDisabled={ isDisabled }>
 				{ node }
-			</Element>
+			</MenuItem>
 		);
 	},
 };
