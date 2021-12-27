@@ -7,6 +7,7 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
 /*
  * Some notes on props:
@@ -28,45 +29,9 @@ class MenuBar extends React.Component {
 
 	static defaultProps = {
 		orientation: 'horizontal',
-		renderItem: function renderItem(menuItem, index, array, menuBarProps) {
-			const { renderMenuItem, renderParentMenuItem } = menuBarProps;
-			const { type } = menuItem;
-			let node;
-
-			if(type === 'menuitem')
-				node = renderMenuItem(menuItem, index, array, menuBarProps);
-			else if(type === 'parentmenuitem')
-				node = renderParentMenuItem(menuItem, index, array, menuBarProps);
-			else
-				node = renderMenuItem(menuItem, index, array, menuBarProps);
-
-			return node;
-		},
-		renderMenuItem: function renderMenuItem(menuItem, index) {
-			const { node, props = {} } = menuItem;
-			const { isDisabled } = props;
-
-			return (
-				<MenuItem key={ index } isDisabled={ isDisabled }>
-					{ node }
-				</MenuItem>
-			);
-		},
-		renderParentMenuItem: function renderParentMenuItem(menuItem, index) {
-			const { node, menuItems, props = {} } = menuItem;
-			const { isDisabled, isEnabled } = props;
-
-			return (
-				<ParentMenuItem
-					key={ index }
-					menuItems={ menuItems }
-					isDisabled={ isDisabled }
-					isEnabled={ isEnabled }
-				>
-					{ node }
-				</ParentMenuItem>
-			);
-		},
+		renderItem,
+		renderMenuItem,
+		renderParentMenuItem,
 	};
 
 	constructor(props) {

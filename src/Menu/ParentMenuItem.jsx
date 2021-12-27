@@ -6,6 +6,7 @@ import MenuItem from 'src/Menu/MenuItem';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
 function ParentMenuItem(props) {
 	const { children, menuItems, isExpanded, isDisabled, renderItem } = props;
@@ -45,45 +46,9 @@ ParentMenuItem.propTypes = {
 ParentMenuItem.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
-	renderItem: function renderItem(menuItem, index, array, parentItemProps) {
-		const { renderMenuItem, renderParentMenuItem } = parentItemProps;
-		const { type } = menuItem;
-		let node;
-
-		if(type === 'menuitem')
-			node = renderMenuItem(menuItem, index, array, parentItemProps);
-		else if(type === 'parentmenuitem')
-			node = renderParentMenuItem(menuItem, index, array, parentItemProps);
-		else
-			node = renderMenuItem(menuItem, index, array, parentItemProps);
-
-		return node;
-	},
-	renderMenuItem: function renderMenuItem(menuItem, index) {
-		const { node, props = {} } = menuItem;
-		const { isDisabled } = props;
-
-		return (
-			<MenuItem key={ index } isDisabled={ isDisabled }>
-				{ node }
-			</MenuItem>
-		);
-	},
-	renderParentMenuItem: function renderParentMenuItem(menuItem, index) {
-		const { node, menuItems, props = {} } = menuItem;
-		const { isDisabled, isEnabled } = props;
-
-		return (
-			<ParentMenuItem
-				key={ index }
-				menuItems={ menuItems }
-				isDisabled={ isDisabled }
-				isEnabled={ isEnabled }
-			>
-				{ node }
-			</ParentMenuItem>
-		);
-	},
+	renderItem,
+	renderMenuItem,
+	renderParentMenuItem,
 };
 
 export default ParentMenuItem;
