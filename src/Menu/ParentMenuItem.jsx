@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
-import MenuItem from 'src/Menu/MenuItem';
 import Menu from 'src/Menu/Menu';
 
 //Misc.

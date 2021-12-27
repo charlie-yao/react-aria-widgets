@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
-import MenuItem from 'src/Menu/MenuItem';
-import ParentMenuItem from 'src/Menu/ParentMenuItem';
-
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
