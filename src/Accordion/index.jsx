@@ -9,7 +9,7 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 import createAccordionManager from 'src/Accordion/createAccordionManager';
 
 //Misc.
-import { validateHeaderLevelProp } from 'src/Accordion/utils';
+import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 class Accordion extends React.Component {
 	static propTypes = {
