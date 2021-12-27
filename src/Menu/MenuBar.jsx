@@ -28,7 +28,6 @@ const MENU_ITEMS_1 = [
  */
 class MenuBar extends React.Component {
 	static propTypes = {
-		children: PropTypes.node.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		menuItems: PropTypes.arrayOf(PropTypes.shape({
 			type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemradio', 'separator' ]),
@@ -51,7 +50,7 @@ class MenuBar extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, orientation, label, labelId } = this.props;
+		const { orientation, label, labelId } = this.props;
 
 		return (
 			<ul
