@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import ParentMenuItem from 'src/Menu/ParentMenuItem';
 
+const MENU_ITEMS_1 = [
+	{ type: 'menuitem', node: 'Hello world!' },
+	{ type: 'menuitem', node: 'Hello world!' },
+	{ type: 'menuitem', node: 'Hello world!' },
+];
+
 /*
  * Some notes on props:
  *
@@ -45,7 +51,10 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				<ParentMenuItem />
+				<ParentMenuItem
+					node="Parent Menuitem 1"
+					menuItems={ MENU_ITEMS_1 }
+				/>
 				<li role="none">
 					<a
 						href="#"

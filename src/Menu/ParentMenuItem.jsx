@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ParentMenuItem(props) {
+	const { node, menuItems, isExpanded, isDisabled } = props;
+
 	return (
 		<li role="none">
 			<a
 				href="#"
 				role="menuitem"
 				aria-haspopup="menu"
-				aria-expanded={ false }
-				aria-disabled={ false }
+				aria-expanded={ isExpanded }
+				aria-disabled={ isDisabled }
 				tabindex="0"
 			>
-				Parent Menuitem 1
+				{ node }
 			</a>
 			<ul role="menu">
 				<li role="menuitem" aria-disabled={ false } tabindex="-1">
@@ -30,9 +32,19 @@ function ParentMenuItem(props) {
 }
 
 ParentMenuItem.propTypes = {
+	node: PropTypes.node.isRequired,
+	menuItems: PropTypes.arrayOf(PropTypes.shape({
+		type: PropTypes.oneOf(['menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator']),
+		node: PropTypes.node.isRequired,
+		menuItems: PropTypes.array, //only relevant for "parentmenuitem"
+	})).isRequired,
+	isExpanded: PropTypes.bool,
+	isDisabled: PropTypes.bool,
 };
 
 ParentMenuItem.defaultProps = {
+	isExpanded: false,
+	isDisabled: false,
 };
 
 export default ParentMenuItem;
