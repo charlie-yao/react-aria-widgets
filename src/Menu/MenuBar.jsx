@@ -5,9 +5,18 @@ import PropTypes from 'prop-types';
 import ParentMenuItem from 'src/Menu/ParentMenuItem';
 
 const MENU_ITEMS_1 = [
-	{ type: 'menuitem', node: 'Hello world!' },
-	{ type: 'menuitem', node: 'Hello world!' },
-	{ type: 'menuitem', node: 'Hello world!' },
+	{
+		type: 'menuitem',
+		node: 'Hello world!'
+	},
+	{
+		type: 'menuitem',
+		node: 'Hello world!'
+	},
+	{
+		type: 'menuitem',
+		node: 'Hello world!'
+	},
 ];
 
 /*
