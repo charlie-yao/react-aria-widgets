@@ -36,7 +36,11 @@ class MenuBar extends React.Component {
 
 		const { items } = props;
 
-		this.itemMetaData = this.initializeMetaData(items);
+		this.itemMetaData = this.initializeMetaDataOld(items);
+
+		this.state = {
+			metaData: this.initializeMetaData({}, items),
+		};
 	}
 
 	//---- Events ----
@@ -48,7 +52,7 @@ class MenuBar extends React.Component {
 			return renderItem(item, index, _items, this.props, this.itemMetaData[index]);
 		});
 
-		console.log(this.props, this.itemMetaData);
+		console.log(this.props, this.state, this.itemMetaData);
 
 		return (
 			<ul
@@ -63,7 +67,26 @@ class MenuBar extends React.Component {
 	}
 
 	//---- Misc. ----
-	initializeMetaData = (items, parentId) => {
+	initializeMetaData = (metaData, items, parentId) => {
+		items.forEach((item, i) => {
+			const { type, items: subItems, props = {} } = item;
+			const { id } = props;
+			const _id = id ? id : uuidv4();
+
+			metaData[_id] = {
+				id: _id,
+				ref: React.createRef(),
+				parentId,
+			};
+
+			if(type === 'parentmenuitem')
+				metaData = this.initializeMetaData(metaData, subItems, _id);
+		});
+
+		return metaData;
+	};
+
+	initializeMetaDataOld = (items, parentId) => {
 		const metaData = [];
 
 		items.forEach((item, i) => {
@@ -78,7 +101,7 @@ class MenuBar extends React.Component {
 			};
 
 			if(type === 'parentmenuitem')
-				metaData[i].childMetaData = this.initializeMetaData(subItems, _id);
+				metaData[i].childMetaData = this.initializeMetaDataOld(subItems, _id);
 		});
 
 		return metaData;
