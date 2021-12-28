@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
  *
  * This also circumvents an issue with eslint-plugin-react
  * as the rule react/require-default-props will complain
- * if it encounters a custom prop validator.
- * normally cannot mark them as required.
+ * if it encounters a custom prop validator as they
+ * normally cannot be marked as required.
  *
  * See:
  * https://github.com/yannickcr/eslint-plugin-react/issues/1020
