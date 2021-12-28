@@ -22,8 +22,6 @@ export function renderItem(item, index, items, menuProps, refs) {
 	const { type } = item;
 	let node;
 
-	console.log(menuProps, refs);
-
 	if(type === 'menuitem')
 		node = renderMenuItem(item, index, items, menuProps, refs);
 	else if(type === 'parentmenuitem')
