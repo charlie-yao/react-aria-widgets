@@ -53,7 +53,7 @@ export { validateHeaderLevelProp };
 export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 	type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]),
 	node: PropTypes.node.isRequired,
-	menuItems: PropTypes.array, //Only required for "parentmenuitem"
+	items: PropTypes.array, //Only required for "parentmenuitem"
 	props: PropTypes.object,
 });
 

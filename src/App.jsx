@@ -39,7 +39,7 @@ const MENU_ITEMS = [
 	{
 		type: 'parentmenuitem',
 		node: 'Parent Menuitem 1',
-		menuItems: [
+		items: [
 			{
 				type: 'menuitem',
 				node: 'Hello world!',
@@ -57,7 +57,7 @@ const MENU_ITEMS = [
 	{
 		type: 'parentmenuitem',
 		node: 'Parent Menuitem 2',
-		menuItems: [
+		items: [
 			{
 				type: 'menuitem',
 				node: 'Hello world!',
@@ -79,7 +79,7 @@ const MENU_ITEMS = [
 	{
 		type: 'parentmenuitem',
 		node: 'Parent Menuitem 3',
-		menuItems: [
+		items: [
 			{
 				type: 'menuitem',
 				node: 'Hello world!',
@@ -91,7 +91,7 @@ const MENU_ITEMS = [
 			{
 				type: 'parentmenuitem',
 				node: 'Nested Parent Menuitem',
-				menuItems: [
+				items: [
 					{
 						type: 'menuitem',
 						node: 'Hello world!',
@@ -115,7 +115,7 @@ function App() {
 			<MenuButton>
 				Menu Button
 			</MenuButton>
-			<MenuBar label="Placeholder" menuItems={ MENU_ITEMS } />
+			<MenuBar label="Placeholder" items={ MENU_ITEMS } />
 		</main>
 	);
 }

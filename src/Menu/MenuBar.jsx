@@ -15,7 +15,7 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 class MenuBar extends React.Component {
 	static propTypes = {
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-		menuItems: MENU_ITEMS_PROPTYPE.isRequired,
+		items: MENU_ITEMS_PROPTYPE.isRequired,
 		label: PropTypes.string, //eslint-disable-line react/require-default-props
 		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
 		renderItem: PropTypes.func,
@@ -33,21 +33,21 @@ class MenuBar extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const { menuItems } = props;
+		const { items } = props;
 
-		this.menuItemRefs = this.createRefs(menuItems);
+		this.itemRefs = this.createRefs(items);
 	}
 
 	//---- Events ----
 
 	//---- Rendering ----
 	render() {
-		const { orientation, menuItems, label, labelId, renderItem } = this.props;
-		const renderedMenuItems = menuItems.map((menuItem, index, array) => {
-			return renderItem(menuItem, index, array, this.props, this.menuItemRefs);
+		const { orientation, items, label, labelId, renderItem } = this.props;
+		const itemNodes = items.map((item, index, _items) => {
+			return renderItem(item, index, _items, this.props, this.itemRefs[index]);
 		});
 
-		console.log(this.menuItemRefs);
+		console.log(this.itemRefs);
 
 		return (
 			<ul
@@ -56,22 +56,22 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				{ renderedMenuItems }
+				{ itemNodes }
 			</ul>
 		);
 	}
 
 	//---- Misc. ----
-	createRefs = (menuItems) => {
+	createRefs = (items) => {
 		const refs = [];
 
-		menuItems.forEach((item, i) => {
-			const { type, menuItems: subMenuItems } = item;
+		items.forEach((item, i) => {
+			const { type, items: subItems } = item;
 
 			if(type === 'parentmenuitem') {
 				refs[i] = {
 					ref: React.createRef(),
-					childRefs: this.createRefs(subMenuItems),
+					childRefs: this.createRefs(subItems),
 				};
 			}
 			else

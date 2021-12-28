@@ -4,41 +4,77 @@ import React from 'react';
 import MenuItem from 'src/Menu/MenuItem';
 import ParentMenuItem from 'src/Menu/ParentMenuItem';
 
-export function renderItem(menuItem, index, array, parentMenuProps, refs) {
-	const { renderMenuItem, renderParentMenuItem } = parentMenuProps;
-	const { type } = menuItem;
+/**
+ * Renders an item in a (sub-)menu.
+ *
+ * Note that this function only receives data for the current level of the
+ * overall menu, i.e. if this function is being run of a sub-menu, then
+ * arguments like parentMenuProps can only see data for this sub-menu and below.
+ *
+ * @param {object} item Descriptor for the item
+ * @param {number} index Location of the item within the current (sub-)menu
+ * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
+ * @param {object} menuProps Props for the current (sub-)menu
+ * @param {Array} refs Refs for the item and any child items if it's a parent menuitem
+ */
+export function renderItem(item, index, items, menuProps, refs) {
+	const { renderMenuItem, renderParentMenuItem } = menuProps;
+	const { type } = item;
 	let node;
 
+	console.log(menuProps, refs);
+
 	if(type === 'menuitem')
-		node = renderMenuItem(menuItem, index, array, parentMenuProps, refs);
+		node = renderMenuItem(item, index, items, menuProps, refs);
 	else if(type === 'parentmenuitem')
-		node = renderParentMenuItem(menuItem, index, array, parentMenuProps, refs);
-	else
-		node = renderMenuItem(menuItem, index, array, parentMenuProps, refs);
+		node = renderParentMenuItem(item, index, items, menuProps, refs);
 
 	return node;
 }
 
-export function renderMenuItem(menuItem, index, array, parentMenuProps, refs) {
+/**
+ * Renders a menuitem.
+ *
+ * @param {object} item Descriptor for the menuitem
+ * @param {number} index Location of the menuitem within the current (sub-)menu
+ * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
+ * @param {object} menuProps Props for the current (sub-)menu
+ * @param {object} ref Ref for the menuitem
+ */
+export function renderMenuItem(menuItem, index, menuItems, menuProps, ref) {
 	const { node, props = {} } = menuItem;
 	const { isDisabled } = props;
 
 	return (
-		<MenuItem key={ index } isDisabled={ isDisabled } ref={ refs[index] }>
+		<MenuItem key={ index } isDisabled={ isDisabled } ref={ ref }>
 			{ node }
 		</MenuItem>
 	);
 }
 
-export function renderParentMenuItem(menuItem, index, array, parentMenuProps, refs) {
-	const { node, menuItems, props = {} } = menuItem;
+/**
+ * Renders a parent menuitem.
+ *
+ * Note that a "parent menuitem" is a menuitem that acts as a parent
+ * for a sub-menu. The term "parent menuitem" is NOT being used to
+ * communicate "parent of the current item", though that parent would
+ * be a "parent menuitem".
+ *
+ * @param {object} item Descriptor for the parent menuitem
+ * @param {number} index Location of the parent menuitem within the current (sub-)menu
+ * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
+ * @param {object} menuProps Props for the current (sub-)menu
+ * @param {object} refs Object containing the refs for the parent menuitem and its child items
+ */
+export function renderParentMenuItem(item, index, items, menuProps, refs) {
+	const { node, items: childItems, props = {} } = item;
 	const { isDisabled, isEnabled, orientation } = props;
-	const { ref, childRefs } = refs[index];
+	const { ref, childRefs } = refs;
 
 	return (
 		<ParentMenuItem
 			key={ index }
-			menuItems={ menuItems }
+			items={ childItems }
 			isDisabled={ isDisabled }
 			isEnabled={ isEnabled }
 			orientation={ orientation }
