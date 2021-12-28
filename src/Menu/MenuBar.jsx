@@ -25,7 +25,7 @@ class MenuBar extends React.Component {
 
 	static defaultProps = {
 		orientation: 'horizontal',
-		renderItem,
+		renderItem: renderItem,
 		renderMenuItem,
 		renderParentMenuItem,
 	};
@@ -44,7 +44,7 @@ class MenuBar extends React.Component {
 	render() {
 		const { orientation, menuItems, label, labelId, renderItem } = this.props;
 		const renderedMenuItems = menuItems.map((menuItem, index, array) => {
-			return renderItem(menuItem, index, array, this.props);
+			return renderItem(menuItem, index, array, this.props, this.menuItemRefs);
 		});
 
 		console.log(this.menuItemRefs);
@@ -68,8 +68,12 @@ class MenuBar extends React.Component {
 		menuItems.forEach((item, i) => {
 			const { type, menuItems: subMenuItems } = item;
 
-			if(type === 'parentmenuitem')
-				refs[i] = this.createRefs(subMenuItems);
+			if(type === 'parentmenuitem') {
+				refs[i] = {
+					ref: React.createRef(),
+					childRefs: this.createRefs(subMenuItems),
+				};
+			}
 			else
 				refs[i] = React.createRef();
 		});

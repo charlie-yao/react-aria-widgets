@@ -8,10 +8,10 @@ import Menu from 'src/Menu/Menu';
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
-function ParentMenuItem(props) {
-	const { children, menuItems, isExpanded, isDisabled, orientation, renderItem } = props;
+const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
+	const { children, menuItems, refs, isExpanded, isDisabled, orientation, renderItem } = props;
 	const menuItemNodes = menuItems.map((mi, index, array) => {
-		return renderItem(mi, index, array, props);
+		return renderItem(mi, index, array, props, refs);
 	});
 
 	return (
@@ -23,6 +23,7 @@ function ParentMenuItem(props) {
 				aria-expanded={ isExpanded }
 				aria-disabled={ isDisabled }
 				tabIndex="0"
+				ref={ ref }
 			>
 				{ children }
 			</a>
@@ -31,11 +32,14 @@ function ParentMenuItem(props) {
 			</Menu>
 		</li>
 	);
-}
+});
 
 ParentMenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	menuItems: MENU_ITEMS_PROPTYPE.isRequired,
+	refs: PropTypes.arrayOf(PropTypes.shape({
+		current: PropTypes.object,
+	})).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
