@@ -9,7 +9,7 @@ import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
-	const { children, items, refs, isExpanded, isDisabled, orientation, renderItem } = props;
+	const { children, items, refs, isExpanded, isDisabled, isFocusable, orientation, renderItem } = props;
 	const itemNodes = items.map((item, index, _items) => {
 		return renderItem(item, index, _items, props, refs[index]);
 	});
@@ -22,7 +22,7 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 				aria-haspopup="menu"
 				aria-expanded={ isExpanded }
 				aria-disabled={ isDisabled }
-				tabIndex="0"
+				tabIndex={ isFocusable ? '0' : '-1' }
 				ref={ ref }
 			>
 				{ children }
@@ -42,6 +42,7 @@ ParentMenuItem.propTypes = {
 	})).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
+	isFocusable: PropTypes.bool,
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 	renderItem: PropTypes.func,
 	renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
@@ -51,6 +52,7 @@ ParentMenuItem.propTypes = {
 ParentMenuItem.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
+	isFocusable: false,
 	orientation: 'horizontal',
 	renderItem,
 	renderMenuItem,
