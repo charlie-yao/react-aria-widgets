@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -35,7 +36,7 @@ class MenuBar extends React.Component {
 
 		const { items } = props;
 
-		this.itemRefs = this.createRefs(items);
+		this.itemMetaData = this.initializeMetaData(items);
 	}
 
 	//---- Events ----
@@ -44,10 +45,10 @@ class MenuBar extends React.Component {
 	render() {
 		const { orientation, items, label, labelId, renderItem } = this.props;
 		const itemNodes = items.map((item, index, _items) => {
-			return renderItem(item, index, _items, this.props, this.itemRefs[index]);
+			return renderItem(item, index, _items, this.props, this.itemMetaData[index]);
 		});
 
-		console.log(this.props, this.itemRefs);
+		console.log(this.props, this.itemMetaData);
 
 		return (
 			<ul
@@ -62,23 +63,25 @@ class MenuBar extends React.Component {
 	}
 
 	//---- Misc. ----
-	createRefs = (items) => {
-		const refs = [];
+	initializeMetaData = (items, parentId) => {
+		const metaData = [];
 
 		items.forEach((item, i) => {
-			const { type, items: subItems } = item;
+			const { type, items: subItems, props = {} } = item;
+			const { id } = props;
+			const _id = id ? id : uuidv4();
 
-			if(type === 'parentmenuitem') {
-				refs[i] = {
-					ref: React.createRef(),
-					childRefs: this.createRefs(subItems),
-				};
-			}
-			else
-				refs[i] = React.createRef();
+			metaData[i] = {
+				id: _id,
+				ref: React.createRef(),
+				parentId,
+			};
+
+			if(type === 'parentmenuitem')
+				metaData[i].childMetaData = this.initializeMetaData(subItems, _id);
 		});
 
-		return refs;
+		return metaData;
 	};
 }
 

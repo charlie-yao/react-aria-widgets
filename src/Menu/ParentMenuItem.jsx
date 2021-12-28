@@ -5,16 +5,19 @@ import PropTypes from 'prop-types';
 import Menu from 'src/Menu/Menu';
 
 //Misc.
-import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { MENU_ITEMS_PROPTYPE, MENU_ITEMS_METADATA_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
+//TODO: this is straying further and further away
+//from the idea of a "base" component - might be a good
+//idea to separate the opinionated stuff I'm adding on?
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
-		children, items, refs, isExpanded, isDisabled, isFocusable,
+		children, items, childMetaData, isExpanded, isDisabled, isFocusable,
 		orientation, renderItem, id
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
-		return renderItem(item, index, _items, props, refs[index]);
+		return renderItem(item, index, _items, props, childMetaData[index]);
 	});
 
 	return (
@@ -41,9 +44,7 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 ParentMenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	items: MENU_ITEMS_PROPTYPE.isRequired,
-	refs: PropTypes.arrayOf(PropTypes.shape({
-		current: PropTypes.object,
-	})).isRequired,
+	childMetaData: MENU_ITEMS_METADATA_PROPTYPE.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	isFocusable: PropTypes.bool,
