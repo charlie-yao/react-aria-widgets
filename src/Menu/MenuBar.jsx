@@ -25,7 +25,7 @@ class MenuBar extends React.Component {
 
 	static defaultProps = {
 		orientation: 'horizontal',
-		renderItem: renderItem,
+		renderItem,
 		renderMenuItem,
 		renderParentMenuItem,
 	};
