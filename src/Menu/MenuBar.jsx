@@ -47,7 +47,7 @@ class MenuBar extends React.Component {
 			return renderItem(item, index, _items, this.props, this.itemRefs[index]);
 		});
 
-		console.log(this.itemRefs);
+		console.log(this.props, this.itemRefs);
 
 		return (
 			<ul

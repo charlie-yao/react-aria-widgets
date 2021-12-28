@@ -51,9 +51,9 @@ validateHeaderLevelProp.isRequired = createCustomPropType(_validateHeaderLevelPr
 export { validateHeaderLevelProp };
 
 export const MENU_ITEM_PROPTYPE = PropTypes.shape({
-	type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]),
+	type: PropTypes.oneOf([ 'menuitem', 'parentmenuitem', 'menuitemcheckbox', 'menuitemreadio', 'separator' ]).isRequired,
 	node: PropTypes.node.isRequired,
-	items: PropTypes.array, //Only required for "parentmenuitem"
+	items: MENU_ITEMS_PROPTYPE, //Only required for "parentmenuitem"
 	props: PropTypes.object,
 });
 
