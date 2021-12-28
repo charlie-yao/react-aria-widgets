@@ -41,10 +41,15 @@ export function renderItem(item, index, items, menuProps, refs) {
  */
 export function renderMenuItem(menuItem, index, menuItems, menuProps, ref) {
 	const { node, props = {} } = menuItem;
-	const { isDisabled } = props;
+	const { isDisabled, isFocusable } = props;
 
 	return (
-		<MenuItem key={ index } isDisabled={ isDisabled } ref={ ref }>
+		<MenuItem
+			key={ index }
+			isDisabled={ isDisabled }
+			isFocusable={ isFocusable }
+			ref={ ref }
+		>
 			{ node }
 		</MenuItem>
 	);
@@ -66,7 +71,7 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps, ref) {
  */
 export function renderParentMenuItem(item, index, items, menuProps, refs) {
 	const { node, items: childItems, props = {} } = item;
-	const { isDisabled, isEnabled, orientation } = props;
+	const { isDisabled, isEnabled, isFocusable, orientation } = props;
 	const { ref, childRefs } = refs;
 
 	return (
@@ -75,6 +80,7 @@ export function renderParentMenuItem(item, index, items, menuProps, refs) {
 			items={ childItems }
 			isDisabled={ isDisabled }
 			isEnabled={ isEnabled }
+			isFocusable={ isFocusable }
 			orientation={ orientation }
 			ref={ ref }
 			refs={ childRefs }
