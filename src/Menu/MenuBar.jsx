@@ -48,8 +48,46 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onItemKeyDown = (event) => {
-		console.log(event.target.id);
-		console.log(event.target.getAttribute('role'));
+		const { orientation } = this.props;
+		const { key, target, shiftKey } = event;
+		const id = target.id;
+		const role = target.getAttribute('role');
+		const nextSibling = target.nextElementSibling;
+		const nextSiblingRole = nextSibling ? nextSibling.getAttribute('role') : undefined;
+
+		//According to the WAI-ARIA Authoring Practices 1.1,
+		//the element with the role "menu" should be the
+		//sibling element immediately following its parent
+		//"menuitem".
+		console.log(key, shiftKey, id, role, nextSibling, nextSiblingRole);
+		
+		//TODO: Any key that corresponds to a printable character (Optional):
+		//Move focus to the next menu item in the current menu whose label begins
+		//with that printable character.
+		if(key === 'ArrowUp' || key === 'Up') {
+		}
+		else if(key === 'ArrowDown' || key === 'Down') {
+		}
+		else if(key === 'ArrowLeft' || key === 'Left') {
+		}
+		else if(key === 'ArrowRight' || key === 'Right') {
+		}
+		else if(key === 'Enter') {
+		}
+		else if(key === ' ' || key === 'Spacebar') {
+		}
+		else if(key === 'Home') {
+		}
+		else if(key === 'End') {
+		}
+		else if(key === 'Escape' || key === 'Esc') {
+		}
+		else if(key === 'Tab') {
+			if(shiftKey) {
+			}
+			else {
+			}
+		}
 	};
 
 	//---- Rendering ----
