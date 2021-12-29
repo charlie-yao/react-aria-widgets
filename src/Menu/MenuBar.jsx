@@ -86,6 +86,7 @@ class MenuBar extends React.Component {
 			_items.push(Object.assign({}, item, {
 				id: _id,
 				ref: React.createRef(),
+				isFocusable: i === 0 && !parentId,
 				parentId,
 			}));
 
