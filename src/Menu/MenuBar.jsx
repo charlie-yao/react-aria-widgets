@@ -51,19 +51,18 @@ class MenuBar extends React.Component {
 		const { orientation } = this.props;
 		const { items } = this.state;
 		const { key, target, shiftKey } = event;
+		const { id, nextElementSibling } = target;
 		const index = Number.parseInt(target.dataset.index, 10);
 		const item = items[index];
-		const id = target.id;
 		const role = target.getAttribute('role');
-		const nextSibling = target.nextElementSibling;
-		const nextSiblingRole = nextSibling ? nextSibling.getAttribute('role') : undefined;
+		const isParentMenuitem = role === 'menuitem' && nextElementSibling && nextElementSibling.getAttribute('role') === 'menu';
 		let nextIndex = index;
 
 		//According to the WAI-ARIA Authoring Practices 1.1,
 		//the element with the role "menu" should be the
 		//sibling element immediately following its parent
 		//"menuitem".
-		console.log(key, shiftKey, id, role, nextSibling, nextSiblingRole, index, item);
+		console.log(key, shiftKey, id, index, item, isParentMenuitem);
 		
 		//TODO: Any key that corresponds to a printable character (Optional):
 		//Move focus to the next menu item in the current menu whose label begins
@@ -103,7 +102,6 @@ class MenuBar extends React.Component {
 		}
 
 		this.setState(prevState => {
-			console.log(prevState.items, index, nextIndex);
 			prevState.items[index].isFocusable = false;
 			prevState.items[nextIndex].isFocusable = true;
 			prevState.items[nextIndex].ref.current.focus();
