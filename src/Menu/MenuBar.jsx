@@ -79,10 +79,13 @@ class MenuBar extends React.Component {
 	 */
 	initializeItemMap = (itemMap, items, parentId) => {
 		items.forEach((item, index) => {
-			const { type, items: childItems, props = {} } = item;
-			const { id } = props;
+			const { type, items: childItems, id } = item;
 			const _id = id ? id : uuidv4();
 
+			//TODO: objects in itemMap cannot easily find their
+			//position in items, and objects in items cannot easily
+			//find their position in itemMap because we cannot modify
+			//the items prop to give them their ID
 			itemMap[_id] = {
 				id: _id,
 				ref: React.createRef(),
@@ -103,8 +106,7 @@ class MenuBar extends React.Component {
 		const metaData = [];
 
 		items.forEach((item, i) => {
-			const { type, items: subItems, props = {} } = item;
-			const { id } = props;
+			const { type, items: subItems, id } = item;
 			const _id = id ? id : uuidv4();
 
 			metaData[i] = {

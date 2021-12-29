@@ -40,8 +40,7 @@ export function renderItem(item, index, items, menuProps, metaData) {
  * @param {object} metaData Extra data for the menuitem
  */
 export function renderMenuItem(menuItem, index, menuItems, menuProps, metaData) {
-	const { node, props = {} } = menuItem;
-	const { isDisabled, isFocusable } = props;
+	const { node, isDisabled, isFocusable } = menuItem;
 	const { ref, id } = metaData;
 
 	return (
@@ -72,14 +71,14 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps, metaData) 
  * @param {object} metaData Extra data for the parent menuitem and its children
  */
 export function renderParentMenuItem(item, index, items, menuProps, metaData) {
-	const { node, items: childItems, props = {} } = item;
-	const { isDisabled, isFocusable, orientation } = props;
+	const { node, items: childItems, isDisabled, isFocusable, orientation, isExpandable } = item;
 	const { ref, id, childMetaData } = metaData;
 
 	return (
 		<ParentMenuItem
 			key={ index }
 			items={ childItems }
+			isExpandable={ isExpandable }
 			isDisabled={ isDisabled }
 			isFocusable={ isFocusable }
 			orientation={ orientation }
