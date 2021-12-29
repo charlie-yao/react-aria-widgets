@@ -69,32 +69,39 @@ class MenuBar extends React.Component {
 		//with that printable character.
 		//TODO: take into account orientation
 		if(key === 'ArrowUp' || key === 'Up') {
+			event.preventDefault();
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
+			event.preventDefault();
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
-			nextIndex = index === 0 ? items.length - 1 : index - 1;
 			event.preventDefault();
+			nextIndex = index === 0 ? items.length - 1 : index - 1;
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
-			nextIndex = index === items.length - 1 ? 0 : index + 1;
 			event.preventDefault();
+			nextIndex = index === items.length - 1 ? 0 : index + 1;
 		}
 		else if(key === 'Enter') {
+			event.preventDefault();
 		}
 		else if(key === ' ' || key === 'Spacebar') {
+			event.preventDefault();
 		}
 		else if(key === 'Home') {
-			nextIndex = 0;
 			event.preventDefault();
+			nextIndex = 0;
 		}
 		else if(key === 'End') {
-			nextIndex = items.length - 1;
 			event.preventDefault();
+			nextIndex = items.length - 1;
 		}
 		else if(key === 'Escape' || key === 'Esc') {
+			event.preventDefault();
 		}
 		else if(key === 'Tab') {
+			event.preventDefault();
+
 			if(shiftKey) {
 			}
 			else {
