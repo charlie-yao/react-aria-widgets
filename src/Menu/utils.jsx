@@ -15,17 +15,16 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
  * @param {number} index Location of the item within the current (sub-)menu
  * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
  * @param {object} menuProps Props for the current (sub-)menu
- * @param {object} metaData Extra data for the item (and any child items if it's a parent menuitem)
  */
-export function renderItem(item, index, items, menuProps, metaData) {
+export function renderItem(item, index, items, menuProps) {
 	const { renderMenuItem, renderParentMenuItem } = menuProps;
 	const { type } = item;
 	let node;
 
 	if(type === 'menuitem')
-		node = renderMenuItem(item, index, items, menuProps, metaData);
+		node = renderMenuItem(item, index, items, menuProps);
 	else if(type === 'parentmenuitem')
-		node = renderParentMenuItem(item, index, items, menuProps, metaData);
+		node = renderParentMenuItem(item, index, items, menuProps);
 
 	return node;
 }
@@ -37,11 +36,9 @@ export function renderItem(item, index, items, menuProps, metaData) {
  * @param {number} index Location of the menuitem within the current (sub-)menu
  * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
  * @param {object} menuProps Props for the current (sub-)menu
- * @param {object} metaData Extra data for the menuitem
  */
-export function renderMenuItem(menuItem, index, menuItems, menuProps, metaData) {
-	const { node, isDisabled, isFocusable } = menuItem;
-	const { ref, id } = metaData;
+export function renderMenuItem(menuItem, index, menuItems, menuProps) {
+	const { node, isDisabled, isFocusable, ref, id } = menuItem;
 
 	return (
 		<MenuItem
@@ -68,11 +65,9 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps, metaData) 
  * @param {number} index Location of the parent menuitem within the current (sub-)menu
  * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
  * @param {object} menuProps Props for the current (sub-)menu
- * @param {object} metaData Extra data for the parent menuitem and its children
  */
-export function renderParentMenuItem(item, index, items, menuProps, metaData) {
-	const { node, items: childItems, isDisabled, isFocusable, orientation, isExpandable } = item;
-	const { ref, id, childMetaData } = metaData;
+export function renderParentMenuItem(item, index, items, menuProps) {
+	const { node, items: childItems, isDisabled, isFocusable, orientation, isExpandable, ref, id } = item;
 
 	return (
 		<ParentMenuItem
@@ -84,7 +79,6 @@ export function renderParentMenuItem(item, index, items, menuProps, metaData) {
 			orientation={ orientation }
 			ref={ ref }
 			id={ id }
-			childMetaData={ childMetaData }
 		>
 			{ node }
 		</ParentMenuItem>

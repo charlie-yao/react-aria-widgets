@@ -13,11 +13,11 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 //idea to separate the opinionated stuff I'm adding on?
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
-		children, items, childMetaData, isExpanded, isDisabled, isFocusable,
+		children, items, isExpanded, isDisabled, isFocusable,
 		orientation, renderItem, id,
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
-		return renderItem(item, index, _items, props, childMetaData[index]);
+		return renderItem(item, index, _items, props);
 	});
 
 	return (
@@ -44,7 +44,6 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 ParentMenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	items: MENU_ITEMS_PROPTYPE.isRequired,
-	childMetaData: MENU_ITEMS_METADATA_PROPTYPE.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	isFocusable: PropTypes.bool,

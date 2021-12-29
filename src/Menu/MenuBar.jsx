@@ -35,11 +35,12 @@ class MenuBar extends React.Component {
 		super(props);
 
 		const { items } = props;
-
-		this.itemMetaData = this.initializeMetaDataOld(items);
-
+		
+		//TODO: feels incredibly awkward, e.g.:
+		//- refs in state?
+		//- what if someone passes new props (e.g. change isDisabled for an item)?
 		this.state = {
-			itemMap: this.initializeItemMap({}, items),
+			items: this.initializeItems(items),
 		};
 	}
 
@@ -47,12 +48,13 @@ class MenuBar extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { orientation, items, label, labelId, renderItem } = this.props;
+		const { orientation, label, labelId, renderItem } = this.props;
+		const { items } = this.state;
 		const itemNodes = items.map((item, index, _items) => {
-			return renderItem(item, index, _items, this.props, this.itemMetaData[index]);
+			return renderItem(item, index, _items, this.props);
 		});
 
-		console.log(this.props, this.state, this.itemMetaData);
+		console.log(this.props, this.state);
 
 		return (
 			<ul
@@ -67,59 +69,27 @@ class MenuBar extends React.Component {
 	}
 
 	//---- Misc. ----
-	/**
-	 * Recursively traverses the item tree to create a "flattened"
-	 * hashtable that maps each item's ID to any relevant data.
-	 * The items prop represents the structure of the menu but
-	 * this hashtable allows for quick lookups of data.
-	 *
-	 * @param {object} itemMap
-	 * @param {Array} items An array of items representing a single (sub-)menu
-	 * @param {string} [parentId] The ID of the (sub-)menu's parent menuitem
-	 */
-	initializeItemMap = (itemMap, items, parentId) => {
-		items.forEach((item, index) => {
-			const { type, items: childItems, id } = item;
-			const _id = id ? id : uuidv4();
-
-			//TODO: objects in itemMap cannot easily find their
-			//position in items, and objects in items cannot easily
-			//find their position in itemMap because we cannot modify
-			//the items prop to give them their ID
-			itemMap[_id] = {
-				id: _id,
-				ref: React.createRef(),
-				parentId,
-				index,
-				items,
-				childItems,
-			};
-
-			if(type === 'parentmenuitem')
-				itemMap = this.initializeItemMap(itemMap, childItems, _id);
-		});
-
-		return itemMap;
-	};
-
-	initializeMetaDataOld = (items, parentId) => {
-		const metaData = [];
+	initializeItems = (items, parentId) => {
+		const _items = [];
 
 		items.forEach((item, i) => {
-			const { type, items: subItems, id } = item;
+			const { type, items: childItems, id } = item;
 			const _id = id ? id : uuidv4();
-
-			metaData[i] = {
+			
+			//We can't modify the props being passed in here,
+			//so let's create a copy of items with some extra
+			//info attached.
+			_items.push(Object.assign({}, item, {
 				id: _id,
 				ref: React.createRef(),
 				parentId,
-			};
+			}));
 
 			if(type === 'parentmenuitem')
-				metaData[i].childMetaData = this.initializeMetaDataOld(subItems, _id);
+				_items[i].items = this.initializeItems(childItems, _id);
 		});
 
-		return metaData;
+		return _items;
 	};
 }
 
