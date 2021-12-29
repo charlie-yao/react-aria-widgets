@@ -17,8 +17,8 @@ class MenuBar extends React.Component {
 	static propTypes = {
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		items: MENU_ITEMS_PROPTYPE.isRequired,
-		label: PropTypes.string, //eslint-disable-line react/require-default-props
-		labelId: PropTypes.string, //eslint-disable-line react/require-default-props
+		label: PropTypes.string,
+		labelId: PropTypes.string,
 		renderItem: PropTypes.func,
 		renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 		renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
@@ -26,6 +26,8 @@ class MenuBar extends React.Component {
 
 	static defaultProps = {
 		orientation: 'horizontal',
+		label: undefined,
+		labelId: undefined,
 		renderItem,
 		renderMenuItem,
 		renderParentMenuItem,
