@@ -50,6 +50,7 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps, onKeyDown)
 			ref={ ref }
 			id={ id }
 			onKeyDown={ onKeyDown }
+			index={ index }
 		>
 			{ node }
 		</MenuItem>
@@ -84,6 +85,7 @@ export function renderParentMenuItem(item, index, items, menuProps, onKeyDown) {
 			ref={ ref }
 			id={ id }
 			onKeyDown={ onKeyDown }
+			index={ index }
 		>
 			{ node }
 		</ParentMenuItem>

@@ -45,6 +45,8 @@ class Accordion extends React.Component {
 	};
 
 	onTriggerKeyDown = (event) => {
+		//TODO: should we be using a data-index here? feels like a potentially
+		//unnecessary prop being passed down to the menu items
 		const { sections } = this.props;
 		const { key } = event;
 		const index = Number.parseInt(event.target.dataset.index, 10);

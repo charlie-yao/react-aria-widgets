@@ -49,36 +49,49 @@ class MenuBar extends React.Component {
 	//---- Events ----
 	onItemKeyDown = (event) => {
 		const { orientation } = this.props;
+		const { items } = this.state;
 		const { key, target, shiftKey } = event;
+		const index = Number.parseInt(target.dataset.index, 10);
+		const item = items[index];
 		const id = target.id;
 		const role = target.getAttribute('role');
 		const nextSibling = target.nextElementSibling;
 		const nextSiblingRole = nextSibling ? nextSibling.getAttribute('role') : undefined;
+		let nextIndex = index;
 
 		//According to the WAI-ARIA Authoring Practices 1.1,
 		//the element with the role "menu" should be the
 		//sibling element immediately following its parent
 		//"menuitem".
-		console.log(key, shiftKey, id, role, nextSibling, nextSiblingRole);
+		console.log(key, shiftKey, id, role, nextSibling, nextSiblingRole, index, item);
 		
 		//TODO: Any key that corresponds to a printable character (Optional):
 		//Move focus to the next menu item in the current menu whose label begins
 		//with that printable character.
+		//TODO: take into account orientation
 		if(key === 'ArrowUp' || key === 'Up') {
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
+			nextIndex = index === 0 ? items.length - 1 : index - 1;
+			event.preventDefault();
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
+			nextIndex = index === items.length - 1 ? 0 : index + 1;
+			event.preventDefault();
 		}
 		else if(key === 'Enter') {
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 		}
 		else if(key === 'Home') {
+			nextIndex = 0;
+			event.preventDefault();
 		}
 		else if(key === 'End') {
+			nextIndex = items.length - 1;
+			event.preventDefault();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 		}
@@ -88,6 +101,14 @@ class MenuBar extends React.Component {
 			else {
 			}
 		}
+
+		this.setState(prevState => {
+			console.log(prevState.items, index, nextIndex);
+			prevState.items[index].isFocusable = false;
+			prevState.items[nextIndex].isFocusable = true;
+			prevState.items[nextIndex].ref.current.focus();
+			return prevState;
+		});
 	};
 
 	//---- Rendering ----
