@@ -45,13 +45,17 @@ class MenuBar extends React.Component {
 	}
 
 	//---- Events ----
+	onItemKeyDown = (event) => {
+		console.log(event.target.id);
+		console.log(event.target.getAttribute('role'));
+	};
 
 	//---- Rendering ----
 	render() {
 		const { orientation, label, labelId, renderItem } = this.props;
 		const { items } = this.state;
 		const itemNodes = items.map((item, index, _items) => {
-			return renderItem(item, index, _items, this.props);
+			return renderItem(item, index, _items, this.props, this.onItemKeyDown);
 		});
 
 		console.log(this.props, this.state);
@@ -73,7 +77,7 @@ class MenuBar extends React.Component {
 		const _items = [];
 
 		items.forEach((item, i) => {
-			const { type, items: childItems, id } = item;
+			const { type, children, id } = item;
 			const _id = id ? id : uuidv4();
 			
 			//We can't modify the props being passed in here,
@@ -86,7 +90,7 @@ class MenuBar extends React.Component {
 			}));
 
 			if(type === 'parentmenuitem')
-				_items[i].items = this.initializeItems(childItems, _id);
+				_items[i].children = this.initializeItems(children, _id);
 		});
 
 		return _items;

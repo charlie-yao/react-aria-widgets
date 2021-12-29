@@ -14,10 +14,10 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
 		children, items, isExpanded, isDisabled, isFocusable,
-		orientation, renderItem, id,
+		orientation, renderItem, id, onKeyDown,
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
-		return renderItem(item, index, _items, props);
+		return renderItem(item, index, _items, props, onKeyDown);
 	});
 
 	return (
@@ -31,6 +31,7 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 				tabIndex={ isFocusable ? '0' : '-1' }
 				ref={ ref }
 				id={ id }
+				onKeyDown={ onKeyDown }
 			>
 				{ children }
 			</a>
@@ -44,6 +45,7 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 ParentMenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	items: MENU_ITEMS_PROPTYPE.isRequired,
+	onKeyDown: PropTypes.func.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	isFocusable: PropTypes.bool,

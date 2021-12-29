@@ -15,16 +15,17 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
  * @param {number} index Location of the item within the current (sub-)menu
  * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
  * @param {object} menuProps Props for the current (sub-)menu
+ * @param {function} onKeyDown
  */
-export function renderItem(item, index, items, menuProps) {
+export function renderItem(item, index, items, menuProps, onKeyDown) {
 	const { renderMenuItem, renderParentMenuItem } = menuProps;
 	const { type } = item;
 	let node;
 
 	if(type === 'menuitem')
-		node = renderMenuItem(item, index, items, menuProps);
+		node = renderMenuItem(item, index, items, menuProps, onKeyDown);
 	else if(type === 'parentmenuitem')
-		node = renderParentMenuItem(item, index, items, menuProps);
+		node = renderParentMenuItem(item, index, items, menuProps, onKeyDown);
 
 	return node;
 }
@@ -36,8 +37,9 @@ export function renderItem(item, index, items, menuProps) {
  * @param {number} index Location of the menuitem within the current (sub-)menu
  * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
  * @param {object} menuProps Props for the current (sub-)menu
+ * @param {function} onKeyDown
  */
-export function renderMenuItem(menuItem, index, menuItems, menuProps) {
+export function renderMenuItem(menuItem, index, menuItems, menuProps, onKeyDown) {
 	const { node, isDisabled, isFocusable, ref, id } = menuItem;
 
 	return (
@@ -47,6 +49,7 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps) {
 			isFocusable={ isFocusable }
 			ref={ ref }
 			id={ id }
+			onKeyDown={ onKeyDown }
 		>
 			{ node }
 		</MenuItem>
@@ -65,20 +68,22 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps) {
  * @param {number} index Location of the parent menuitem within the current (sub-)menu
  * @param {Array} items Array of descriptors representing the items in the current (sub-)menu
  * @param {object} menuProps Props for the current (sub-)menu
+ * @param {function} onKeyDown
  */
-export function renderParentMenuItem(item, index, items, menuProps) {
-	const { node, items: childItems, isDisabled, isFocusable, orientation, isExpandable, ref, id } = item;
+export function renderParentMenuItem(item, index, items, menuProps, onKeyDown) {
+	const { node, children, isDisabled, isFocusable, orientation, isExpandable, ref, id } = item;
 
 	return (
 		<ParentMenuItem
 			key={ index }
-			items={ childItems }
+			items={ children }
 			isExpandable={ isExpandable }
 			isDisabled={ isDisabled }
 			isFocusable={ isFocusable }
 			orientation={ orientation }
 			ref={ ref }
 			id={ id }
+			onKeyDown={ onKeyDown }
 		>
 			{ node }
 		</ParentMenuItem>

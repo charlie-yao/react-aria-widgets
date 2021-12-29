@@ -39,7 +39,7 @@ const MENU_ITEMS = [
 	{
 		type: 'parentmenuitem',
 		node: 'Parent Menuitem 1',
-		items: [
+		children: [
 			{
 				type: 'menuitem',
 				node: 'Hello world!',
@@ -57,7 +57,7 @@ const MENU_ITEMS = [
 	{
 		type: 'parentmenuitem',
 		node: 'Parent Menuitem 2',
-		items: [
+		children: [
 			{
 				type: 'menuitem',
 				node: 'Hello world!',
@@ -79,7 +79,7 @@ const MENU_ITEMS = [
 	{
 		type: 'parentmenuitem',
 		node: 'Parent Menuitem 3',
-		items: [
+		children: [
 			{
 				type: 'menuitem',
 				node: 'Hello world!',
@@ -91,7 +91,7 @@ const MENU_ITEMS = [
 			{
 				type: 'parentmenuitem',
 				node: 'Nested Parent Menuitem',
-				items: [
+				children: [
 					{
 						type: 'menuitem',
 						node: 'Hello world!',
