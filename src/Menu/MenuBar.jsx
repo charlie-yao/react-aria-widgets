@@ -39,7 +39,7 @@ class MenuBar extends React.Component {
 		this.itemMetaData = this.initializeMetaDataOld(items);
 
 		this.state = {
-			metaData: this.initializeMetaData({}, items),
+			itemMap: this.initializeItemMap({}, items),
 		};
 	}
 
@@ -67,23 +67,36 @@ class MenuBar extends React.Component {
 	}
 
 	//---- Misc. ----
-	initializeMetaData = (metaData, items, parentId) => {
-		items.forEach((item, i) => {
-			const { type, items: subItems, props = {} } = item;
+	/**
+	 * Recursively traverses the item tree to create a "flattened"
+	 * hashtable that maps each item's ID to any relevant data.
+	 * The items prop represents the structure of the menu but
+	 * this hashtable allows for quick lookups of data.
+	 *
+	 * @param {object} itemMap
+	 * @param {Array} items An array of items representing a single (sub-)menu
+	 * @param {string} [parentId] The ID of the (sub-)menu's parent menuitem
+	 */
+	initializeItemMap = (itemMap, items, parentId) => {
+		items.forEach((item, index) => {
+			const { type, items: childItems, props = {} } = item;
 			const { id } = props;
 			const _id = id ? id : uuidv4();
 
-			metaData[_id] = {
+			itemMap[_id] = {
 				id: _id,
 				ref: React.createRef(),
 				parentId,
+				index,
+				items,
+				childItems,
 			};
 
 			if(type === 'parentmenuitem')
-				metaData = this.initializeMetaData(metaData, subItems, _id);
+				itemMap = this.initializeItemMap(itemMap, childItems, _id);
 		});
 
-		return metaData;
+		return itemMap;
 	};
 
 	initializeMetaDataOld = (items, parentId) => {

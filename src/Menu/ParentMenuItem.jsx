@@ -14,7 +14,7 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
 		children, items, childMetaData, isExpanded, isDisabled, isFocusable,
-		orientation, renderItem, id
+		orientation, renderItem, id,
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
 		return renderItem(item, index, _items, props, childMetaData[index]);

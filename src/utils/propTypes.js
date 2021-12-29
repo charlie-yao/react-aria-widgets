@@ -56,7 +56,7 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 		'parentmenuitem',
 		'menuitemcheckbox',
 		'menuitemreadio',
-		'separator'
+		'separator',
 	]).isRequired,
 	node: PropTypes.node.isRequired,
 	items: MENU_ITEMS_PROPTYPE, //Only required for "parentmenuitem"
