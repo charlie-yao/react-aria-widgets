@@ -52,21 +52,31 @@ class MenuBar extends React.Component {
 		const { key, target, shiftKey } = event;
 		const { nextElementSibling } = target;
 		const role = target.getAttribute('role');
-		const position = target.dataset.position.split(',').map(index => Number.parseInt(index, 10));
+		const position = target.dataset.position.split(',');
 		const isParentMenuitem = role === 'menuitem' && nextElementSibling && nextElementSibling.getAttribute('role') === 'menu';
 		let item;
+		let nextIndex;
+		let index; //location of item within subItems
+		let subItems = items; //(sub-)menu that item belongs in
 
-		console.log(position);
+		position.forEach(i => {
+			index = Number.parseInt(i, 10);
+			item = subItems[index];
+			
+			//Don't do this on the last iteration so we know
+			//the subset of items that item belongs in. Otherwise,
+			//subItems would  be the children of item (assuming
+			//item is a parent menuitem).
+			if(index < position.length - 1)
+				subItems = item.children;
+		});
 
-		/*
-		let nextIndex = index;
+		console.log(position, items, subItems, item, index)
 
 		//According to the WAI-ARIA Authoring Practices 1.1,
 		//the element with the role "menu" should be the
 		//sibling element immediately following its parent
 		//"menuitem".
-		console.log(key, shiftKey, position, item, isParentMenuitem);
-		
 		//TODO: Any key that corresponds to a printable character (Optional):
 		//Move focus to the next menu item in the current menu whose label begins
 		//with that printable character.
@@ -80,7 +90,7 @@ class MenuBar extends React.Component {
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
-			nextIndex = index === 0 ? items.length - 1 : index - 1;
+			nextIndex = index === 0 ? subItems.length - 1 : index - 1;
 
 			this.setState(prevState => {
 				prevState.items[index].isFocusable = false;
@@ -92,7 +102,7 @@ class MenuBar extends React.Component {
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 
-			nextIndex = index === items.length - 1 ? 0 : index + 1;
+			nextIndex = index === subItems.length - 1 ? 0 : index + 1;
 
 			this.setState(prevState => {
 				prevState.items[index].isFocusable = false;
@@ -122,7 +132,7 @@ class MenuBar extends React.Component {
 		else if(key === 'End') {
 			event.preventDefault();
 
-			nextIndex = items.length - 1;
+			nextIndex = subItems.length - 1;
 
 			this.setState(prevState => {
 				prevState.items[index].isFocusable = false;
@@ -140,7 +150,6 @@ class MenuBar extends React.Component {
 			else {
 			}
 		}
-		*/
 	};
 
 	//---- Rendering ----
