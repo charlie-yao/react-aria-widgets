@@ -59,7 +59,10 @@ class MenuBar extends React.Component {
 		let nextIndex;
 		let item;
 		let subItems = items; //(sub-)menu that item belongs in
-
+		
+		//TODO this should probably be put inside the setState() calls
+		//so that subItems is referencing prevState rather than
+		//this.state
 		position.forEach((pos, i) => {
 			index = Number.parseInt(pos, 10);
 			item = subItems[index];
@@ -80,6 +83,26 @@ class MenuBar extends React.Component {
 		//TODO: take into account orientation
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
+
+			if(level > 0) {
+				this.setState(prevState => {
+					nextIndex = index === 0 ? subItems.length - 1 : index - 1;
+					subItems[index].isFocusable = false;
+					subItems[nextIndex].isFocusable = true;
+					subItems[nextIndex].ref.current.focus();
+					return prevState;
+				});
+			}
+			else if(isParentMenuitem) {
+				this.setState(prevState => {
+					item.isFocusable = false;
+					item.isExpanded = true;
+					item.children[item.children.length - 1].isFocusable = true;
+					return prevState;
+				}, () => {
+					item.children[item.children.length - 1].ref.current.focus();
+				});
+			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
@@ -95,12 +118,12 @@ class MenuBar extends React.Component {
 			}
 			else if(isParentMenuitem) {
 				this.setState(prevState => {
-					prevState.items[index].isFocusable = false;
-					prevState.items[index].isExpanded = true;
-					prevState.items[index].children[0].isFocusable = true;
+					item.isFocusable = false;
+					item.isExpanded = true;
+					item.children[0].isFocusable = true;
 					return prevState;
 				}, () => {
-					this.state.items[index].children[0].ref.current.focus();
+					item.children[0].ref.current.focus();
 				});
 			}
 		}
