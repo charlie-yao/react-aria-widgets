@@ -171,14 +171,31 @@ class MenuBar extends React.Component {
 				});
 			}
 			else {
-				//TODO activate the item and close the menu.
-				//does that activation need to be done manually
-				//here? Also, I'm pretty sure we need to close the whole menu,
-				//not just the current sub-menu
+				//TODO activate the item and close the (whole?) menu
 			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
+			
+			if(isParentMenuitem) {
+				this.setState(prevState => {
+					item.isFocusable = false;
+					item.isExpanded = true;
+					item.children[0].isFocusable = true;
+					return prevState;
+				}, () => {
+					item.children[0].ref.current.focus();
+				});
+			}
+			else if(role === 'menuitemcheckbox') {
+				//TODO: change state without closing the menu
+			}
+			else if(role === 'menuitemradio') {
+				//TODO change state without closing the menu
+			}
+			else {
+				//TODO: activate the item and closes the (whole?) menu
+			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
