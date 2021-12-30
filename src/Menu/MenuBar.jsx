@@ -154,6 +154,16 @@ class MenuBar extends React.Component {
 					return prevState;
 				});
 			}
+			else if(isParentMenuitem) {
+				this.setState(prevState => {
+					item.isFocusable = false;
+					item.isExpanded = true;
+					item.children[0].isFocusable = true;
+					return prevState;
+				}, () => {
+					item.children[0].ref.current.focus();
+				});
+			}
 			else {
 			}
 		}
