@@ -54,24 +54,26 @@ class MenuBar extends React.Component {
 		const role = target.getAttribute('role');
 		const position = target.dataset.position.split(',');
 		const isParentMenuitem = role === 'menuitem' && nextElementSibling && nextElementSibling.getAttribute('role') === 'menu';
-		let item;
-		let nextIndex;
-		let index; //location of item within subItems
+		const level = position.length - 1;
+		let index = Number.parseInt(position[position.length - 1], 10);
+		let item = items[index];
 		let subItems = items; //(sub-)menu that item belongs in
 
-		position.forEach(i => {
-			index = Number.parseInt(i, 10);
-			item = subItems[index];
-			
-			//Don't do this on the last iteration so we know
-			//the subset of items that item belongs in. Otherwise,
-			//subItems would  be the children of item (assuming
-			//item is a parent menuitem).
-			if(index < position.length - 1)
-				subItems = item.children;
-		});
+		if(level > 0) {
+			for(let i = 1; i < positions.length; i++) {
+				const pos = Number.parseInt(positions[i], 10);
+				item = subItems[pos];
 
-		console.log(position, items, subItems, item, index)
+				//Don't do this on the last iteration so we know
+				//the subset of items that item belongs in. Otherwise,
+				//subItems would  be the children of item (assuming
+				//item is a parent menuitem).
+				if(i < position.length - 1)
+					subItems = item.children;
+			}
+		}
+
+		console.log(level, index, item, subItems);
 
 		//According to the WAI-ARIA Authoring Practices 1.1,
 		//the element with the role "menu" should be the
@@ -90,26 +92,34 @@ class MenuBar extends React.Component {
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
-			nextIndex = index === 0 ? subItems.length - 1 : index - 1;
+			if(level === 0) {
+				const nextIndex = index === 0 ? items.length - 1 : index - 1;
 
-			this.setState(prevState => {
-				prevState.items[index].isFocusable = false;
-				prevState.items[nextIndex].isFocusable = true;
-				prevState.items[nextIndex].ref.current.focus();
-				return prevState;
-			});
+				this.setState(prevState => {
+					prevState.items[index].isFocusable = false;
+					prevState.items[nextIndex].isFocusable = true;
+					prevState.items[nextIndex].ref.current.focus();
+					return prevState;
+				});
+			}
+			else {
+			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 
-			nextIndex = index === subItems.length - 1 ? 0 : index + 1;
+			if(level === 0) {
+				const nextIndex = index === items.length - 1 ? 0 : index + 1;
 
-			this.setState(prevState => {
-				prevState.items[index].isFocusable = false;
-				prevState.items[nextIndex].isFocusable = true;
-				prevState.items[nextIndex].ref.current.focus();
-				return prevState;
-			});
+				this.setState(prevState => {
+					prevState.items[index].isFocusable = false;
+					prevState.items[nextIndex].isFocusable = true;
+					prevState.items[nextIndex].ref.current.focus();
+					return prevState;
+				});
+			}
+			else {
+			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
@@ -120,26 +130,34 @@ class MenuBar extends React.Component {
 		else if(key === 'Home') {
 			event.preventDefault();
 
-			nextIndex = 0;
+			if(level === 0) {
+				const nextIndex = 0;
 
-			this.setState(prevState => {
-				prevState.items[index].isFocusable = false;
-				prevState.items[nextIndex].isFocusable = true;
-				prevState.items[nextIndex].ref.current.focus();
-				return prevState;
-			});
+				this.setState(prevState => {
+					prevState.items[index].isFocusable = false;
+					prevState.items[nextIndex].isFocusable = true;
+					prevState.items[nextIndex].ref.current.focus();
+					return prevState;
+				});
+			}
+			else {
+			}
 		}
 		else if(key === 'End') {
 			event.preventDefault();
 
-			nextIndex = subItems.length - 1;
+			if(level === 0) {
+				const nextIndex = items.length - 1;
 
-			this.setState(prevState => {
-				prevState.items[index].isFocusable = false;
-				prevState.items[nextIndex].isFocusable = true;
-				prevState.items[nextIndex].ref.current.focus();
-				return prevState;
-			});
+				this.setState(prevState => {
+					prevState.items[index].isFocusable = false;
+					prevState.items[nextIndex].isFocusable = true;
+					prevState.items[nextIndex].ref.current.focus();
+					return prevState;
+				});
+			}
+			else {
+			}
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
