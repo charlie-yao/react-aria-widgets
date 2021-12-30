@@ -55,30 +55,25 @@ class MenuBar extends React.Component {
 		const position = target.dataset.position.split(',');
 		const isParentMenuitem = role === 'menuitem' && nextElementSibling && nextElementSibling.getAttribute('role') === 'menu';
 		const level = position.length - 1;
-		let index = Number.parseInt(position[position.length - 1], 10);
-		let item = items[index];
+		let index;
+		let nextIndex;
+		let item;
 		let subItems = items; //(sub-)menu that item belongs in
 
-		if(level > 0) {
-			for(let i = 1; i < positions.length; i++) {
-				const pos = Number.parseInt(positions[i], 10);
-				item = subItems[pos];
-
-				//Don't do this on the last iteration so we know
-				//the subset of items that item belongs in. Otherwise,
-				//subItems would  be the children of item (assuming
-				//item is a parent menuitem).
-				if(i < position.length - 1)
-					subItems = item.children;
-			}
-		}
-
+		position.forEach((pos, i) => {
+			index = Number.parseInt(pos, 10);
+			item = subItems[index];
+			
+			//Don't do this on the last iteration so we know
+			//the subset of items that item belongs in. Otherwise,
+			//subItems would  be the children of item (assuming
+			//item is a parent menuitem).
+			if(i < position.length - 1)
+				subItems = item.children;
+		});
+		
 		console.log(level, index, item, subItems);
 
-		//According to the WAI-ARIA Authoring Practices 1.1,
-		//the element with the role "menu" should be the
-		//sibling element immediately following its parent
-		//"menuitem".
 		//TODO: Any key that corresponds to a printable character (Optional):
 		//Move focus to the next menu item in the current menu whose label begins
 		//with that printable character.
@@ -88,17 +83,36 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
+
+			if(level > 0) {
+				this.setState(prevState => {
+					nextIndex = index === subItems.length - 1 ? 0 : index + 1;
+					subItems[index].isFocusable = false;
+					subItems[nextIndex].isFocusable = true;
+					subItems[nextIndex].ref.current.focus();
+					return prevState;
+				});
+			}
+			else if(isParentMenuitem) {
+				this.setState(prevState => {
+					prevState.items[index].isFocusable = false;
+					prevState.items[index].isExpanded = true;
+					prevState.items[index].children[0].isFocusable = true;
+					return prevState;
+				}, () => {
+					this.state.items[index].children[0].ref.current.focus();
+				});
+			}
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
 			if(level === 0) {
-				const nextIndex = index === 0 ? items.length - 1 : index - 1;
-
 				this.setState(prevState => {
-					prevState.items[index].isFocusable = false;
-					prevState.items[nextIndex].isFocusable = true;
-					prevState.items[nextIndex].ref.current.focus();
+					nextIndex = index === 0 ? subItems.length - 1 : index - 1;
+					subItems[index].isFocusable = false;
+					subItems[nextIndex].isFocusable = true;
+					subItems[nextIndex].ref.current.focus();
 					return prevState;
 				});
 			}
@@ -109,12 +123,11 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(level === 0) {
-				const nextIndex = index === items.length - 1 ? 0 : index + 1;
-
 				this.setState(prevState => {
-					prevState.items[index].isFocusable = false;
-					prevState.items[nextIndex].isFocusable = true;
-					prevState.items[nextIndex].ref.current.focus();
+					nextIndex = index === subItems.length - 1 ? 0 : index + 1;
+					subItems[index].isFocusable = false;
+					subItems[nextIndex].isFocusable = true;
+					subItems[nextIndex].ref.current.focus();
 					return prevState;
 				});
 			}
@@ -130,34 +143,24 @@ class MenuBar extends React.Component {
 		else if(key === 'Home') {
 			event.preventDefault();
 
-			if(level === 0) {
-				const nextIndex = 0;
-
-				this.setState(prevState => {
-					prevState.items[index].isFocusable = false;
-					prevState.items[nextIndex].isFocusable = true;
-					prevState.items[nextIndex].ref.current.focus();
-					return prevState;
-				});
-			}
-			else {
-			}
+			this.setState(prevState => {
+				nextIndex = 0;
+				subItems[index].isFocusable = false;
+				subItems[nextIndex].isFocusable = true;
+				subItems[nextIndex].ref.current.focus();
+				return prevState;
+			});
 		}
 		else if(key === 'End') {
 			event.preventDefault();
 
-			if(level === 0) {
-				const nextIndex = items.length - 1;
-
-				this.setState(prevState => {
-					prevState.items[index].isFocusable = false;
-					prevState.items[nextIndex].isFocusable = true;
-					prevState.items[nextIndex].ref.current.focus();
-					return prevState;
-				});
-			}
-			else {
-			}
+			this.setState(prevState => {
+				nextIndex = subItems.length - 1;
+				subItems[index].isFocusable = false;
+				subItems[nextIndex].isFocusable = true;
+				subItems[nextIndex].ref.current.focus();
+				return prevState;
+			});
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
