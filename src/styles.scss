@@ -2,6 +2,10 @@
 	display: none;
 }
 
+[role="menuitem"][aria-expanded="false"] + [role="menu"] {
+	display: none;
+}
+
 //A technique for visually-hiding elements
 //but still keeping them readable to machines.
 //See:

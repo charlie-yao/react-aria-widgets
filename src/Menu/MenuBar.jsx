@@ -76,11 +76,27 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
+
 			nextIndex = index === 0 ? items.length - 1 : index - 1;
+
+			this.setState(prevState => {
+				prevState.items[index].isFocusable = false;
+				prevState.items[nextIndex].isFocusable = true;
+				prevState.items[nextIndex].ref.current.focus();
+				return prevState;
+			});
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
+
 			nextIndex = index === items.length - 1 ? 0 : index + 1;
+
+			this.setState(prevState => {
+				prevState.items[index].isFocusable = false;
+				prevState.items[nextIndex].isFocusable = true;
+				prevState.items[nextIndex].ref.current.focus();
+				return prevState;
+			});
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
@@ -90,11 +106,27 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
+
 			nextIndex = 0;
+
+			this.setState(prevState => {
+				prevState.items[index].isFocusable = false;
+				prevState.items[nextIndex].isFocusable = true;
+				prevState.items[nextIndex].ref.current.focus();
+				return prevState;
+			});
 		}
 		else if(key === 'End') {
 			event.preventDefault();
+
 			nextIndex = items.length - 1;
+
+			this.setState(prevState => {
+				prevState.items[index].isFocusable = false;
+				prevState.items[nextIndex].isFocusable = true;
+				prevState.items[nextIndex].ref.current.focus();
+				return prevState;
+			});
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
@@ -105,13 +137,6 @@ class MenuBar extends React.Component {
 			else {
 			}
 		}
-
-		this.setState(prevState => {
-			prevState.items[index].isFocusable = false;
-			prevState.items[nextIndex].isFocusable = true;
-			prevState.items[nextIndex].ref.current.focus();
-			return prevState;
-		});
 	};
 
 	//---- Rendering ----
