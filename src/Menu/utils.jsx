@@ -40,7 +40,7 @@ export function renderItem(item, index, items, menuProps, onKeyDown) {
  * @param {function} onKeyDown
  */
 export function renderMenuItem(menuItem, index, menuItems, menuProps, onKeyDown) {
-	const { node, isDisabled, isFocusable, ref, id } = menuItem;
+	const { node, isDisabled, isFocusable, ref, position } = menuItem;
 
 	return (
 		<MenuItem
@@ -48,9 +48,8 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps, onKeyDown)
 			isDisabled={ isDisabled }
 			isFocusable={ isFocusable }
 			ref={ ref }
-			id={ id }
 			onKeyDown={ onKeyDown }
-			index={ index }
+			position={ position }
 		>
 			{ node }
 		</MenuItem>
@@ -72,20 +71,19 @@ export function renderMenuItem(menuItem, index, menuItems, menuProps, onKeyDown)
  * @param {function} onKeyDown
  */
 export function renderParentMenuItem(item, index, items, menuProps, onKeyDown) {
-	const { node, children, isDisabled, isFocusable, orientation, isExpandable, ref, id } = item;
+	const { node, children, isDisabled, isFocusable, orientation, isExpanded, ref, position } = item;
 
 	return (
 		<ParentMenuItem
 			key={ index }
 			items={ children }
-			isExpandable={ isExpandable }
+			isExpanded={ isExpanded }
 			isDisabled={ isDisabled }
 			isFocusable={ isFocusable }
 			orientation={ orientation }
 			ref={ ref }
-			id={ id }
 			onKeyDown={ onKeyDown }
-			index={ index }
+			position={ position }
 		>
 			{ node }
 		</ParentMenuItem>

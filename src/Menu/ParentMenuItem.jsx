@@ -14,7 +14,7 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
 		children, items, isExpanded, isDisabled, isFocusable,
-		orientation, renderItem, id, onKeyDown, index,
+		orientation, renderItem, onKeyDown, position
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
 		return renderItem(item, index, _items, props, onKeyDown);
@@ -30,9 +30,8 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 				aria-disabled={ isDisabled }
 				tabIndex={ isFocusable ? '0' : '-1' }
 				ref={ ref }
-				id={ id }
 				onKeyDown={ onKeyDown }
-				data-index={ index }
+				data-position={ position.toString() }
 			>
 				{ children }
 			</a>
@@ -47,12 +46,11 @@ ParentMenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	items: MENU_ITEMS_PROPTYPE.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
+	position: PropTypes.arrayOf(PropTypes.number).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	isFocusable: PropTypes.bool,
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-	id: PropTypes.string,
-	index: PropTypes.number,
 	renderItem: PropTypes.func,
 	renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 	renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
@@ -63,8 +61,6 @@ ParentMenuItem.defaultProps = {
 	isDisabled: false,
 	isFocusable: false,
 	orientation: 'horizontal',
-	id: undefined,
-	index: undefined,
 	renderItem,
 	renderMenuItem,
 	renderParentMenuItem,

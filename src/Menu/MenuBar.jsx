@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -51,18 +50,22 @@ class MenuBar extends React.Component {
 		const { orientation } = this.props;
 		const { items } = this.state;
 		const { key, target, shiftKey } = event;
-		const { id, nextElementSibling } = target;
-		const index = Number.parseInt(target.dataset.index, 10);
-		const item = items[index];
+		const { nextElementSibling } = target;
 		const role = target.getAttribute('role');
+		const position = target.dataset.position.split(',').map(index => Number.parseInt(index, 10));
 		const isParentMenuitem = role === 'menuitem' && nextElementSibling && nextElementSibling.getAttribute('role') === 'menu';
+		let item;
+
+		console.log(position);
+
+		/*
 		let nextIndex = index;
 
 		//According to the WAI-ARIA Authoring Practices 1.1,
 		//the element with the role "menu" should be the
 		//sibling element immediately following its parent
 		//"menuitem".
-		console.log(key, shiftKey, id, index, item, isParentMenuitem);
+		console.log(key, shiftKey, position, item, isParentMenuitem);
 		
 		//TODO: Any key that corresponds to a printable character (Optional):
 		//Move focus to the next menu item in the current menu whose label begins
@@ -137,6 +140,7 @@ class MenuBar extends React.Component {
 			else {
 			}
 		}
+		*/
 	};
 
 	//---- Rendering ----
@@ -166,17 +170,15 @@ class MenuBar extends React.Component {
 		const _items = [];
 
 		items.forEach((item, i) => {
-			const { type, children, id } = item;
-			const _id = id ? id : uuidv4();
+			const { type, children } = item;
 			
-			position = [...position];
+			position = position.slice(0);
 			position[level] = i;
 
 			//We can't modify the props being passed in here,
 			//so let's create a copy of items with some extra
 			//info attached.
 			_items.push(Object.assign({}, item, {
-				id: _id,
 				ref: React.createRef(),
 				isFocusable: i === 0 && level === 0,
 				position,
