@@ -67,6 +67,48 @@ const MENU_ITEMS = [
 				node: 'Hello world!',
 			},
 			{
+				type: 'parentmenuitem',
+				node: 'Nested Parent Menuitem',
+				children: [
+					{
+						type: 'parentmenuitem',
+						node: 'Nested Parent Menuitem',
+						children: [
+							{
+								type: 'menuitem',
+								node: 'Hello world!',
+							},
+							{
+								type: 'menuitem',
+								node: 'Hello world!',
+							},
+						],
+					},
+					{
+						type: 'menuitem',
+						node: 'Hello world!',
+					},
+					{
+						type: 'menuitem',
+						node: 'Hello world!',
+					},
+					{
+						type: 'parentmenuitem',
+						node: 'Nested Parent Menuitem',
+						children: [
+							{
+								type: 'menuitem',
+								node: 'Hello world!',
+							},
+							{
+								type: 'menuitem',
+								node: 'Hello world!',
+							},
+						],
+					},
+				],
+			},
+			{
 				type: 'menuitem',
 				node: 'Hello world!',
 			},

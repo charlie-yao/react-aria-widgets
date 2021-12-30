@@ -100,8 +100,6 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 		}
 		else if(key === 'Tab') {
-			event.preventDefault();
-
 			if(shiftKey) {
 			}
 			else {
@@ -139,25 +137,28 @@ class MenuBar extends React.Component {
 	}
 
 	//---- Misc. ----
-	initializeItems = (items, parentId) => {
+	initializeItems = (items, level = 0, position = []) => {
 		const _items = [];
 
 		items.forEach((item, i) => {
 			const { type, children, id } = item;
 			const _id = id ? id : uuidv4();
 			
+			position = [...position];
+			position[level] = i;
+
 			//We can't modify the props being passed in here,
 			//so let's create a copy of items with some extra
 			//info attached.
 			_items.push(Object.assign({}, item, {
 				id: _id,
 				ref: React.createRef(),
-				isFocusable: i === 0 && !parentId,
-				parentId,
+				isFocusable: i === 0 && level === 0,
+				position,
 			}));
 
 			if(type === 'parentmenuitem')
-				_items[i].children = this.initializeItems(children, _id);
+				_items[i].children = this.initializeItems(children, level + 1, position);
 		});
 
 		return _items;
