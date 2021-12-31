@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
-import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
+import { renderItem, renderMenuItem, renderParentMenuItem, isParentMenuitem } from 'src/Menu/utils';
 
 /*
  * Some notes on props:
@@ -50,10 +50,8 @@ class MenuBar extends React.Component {
 		const { orientation } = this.props;
 		const { items } = this.state;
 		const { key, target, shiftKey } = event;
-		const { nextElementSibling } = target;
 		const role = target.getAttribute('role');
 		const position = target.dataset.position.split(',');
-		const isParentMenuitem = role === 'menuitem' && nextElementSibling && nextElementSibling.getAttribute('role') === 'menu';
 		const level = position.length - 1;
 		let index;
 		let nextIndex;
@@ -93,7 +91,7 @@ class MenuBar extends React.Component {
 					return prevState;
 				});
 			}
-			else if(isParentMenuitem) {
+			else if(isParentMenuitem(item)) {
 				this.setState(prevState => {
 					item.isFocusable = false;
 					item.isExpanded = true;
@@ -116,7 +114,7 @@ class MenuBar extends React.Component {
 					return prevState;
 				});
 			}
-			else if(isParentMenuitem) {
+			else if(isParentMenuitem(item)) {
 				this.setState(prevState => {
 					item.isFocusable = false;
 					item.isExpanded = true;
@@ -154,7 +152,7 @@ class MenuBar extends React.Component {
 					return prevState;
 				});
 			}
-			else if(isParentMenuitem) {
+			else if(isParentMenuitem(item)) {
 				this.setState(prevState => {
 					item.isFocusable = false;
 					item.isExpanded = true;
@@ -170,7 +168,7 @@ class MenuBar extends React.Component {
 		else if(key === 'Enter') {
 			event.preventDefault();
 
-			if(isParentMenuitem) {
+			if(isParentMenuitem(item)) {
 				this.setState(prevState => {
 					item.isFocusable = false;
 					item.isExpanded = true;
@@ -187,7 +185,7 @@ class MenuBar extends React.Component {
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
 			
-			if(isParentMenuitem) {
+			if(isParentMenuitem(item)) {
 				this.setState(prevState => {
 					item.isFocusable = false;
 					item.isExpanded = true;

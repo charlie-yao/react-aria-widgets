@@ -89,3 +89,29 @@ export function renderParentMenuItem(item, index, items, menuProps, onKeyDown) {
 		</ParentMenuItem>
 	);
 }
+
+/**
+ * Checks if the item is a "parent menuitem".
+ *
+ * According to the WAI-ARIA Authoring Practices 1.1,
+ * we know that a sub-menu must be the immediate
+ * sibling of the menuitem that opens it.
+ *
+ * See:
+ * https://www.w3.org/TR/wai-aria-practices-1.1/#menu
+ *
+ * @param {(object)|(HTMLElement)} item
+ * @return {boolean}
+ */
+export function isParentMenuitem(item) {
+	if(item === undefined || item === null)
+		return false;
+	else if(item instanceof HTMLElement) {
+		const role = item.getAttribute('role');
+		const nextSibling = item.nextElementSibling;
+		const nextSiblingRole = nextSibling ? nextSibling.getAttribute('role') : undefined;
+		return role === 'menuitem' && nextSiblingRole === 'menu';
+	}
+	else
+		return item.type === 'parentmenuitem';
+}
