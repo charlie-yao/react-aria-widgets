@@ -151,7 +151,7 @@ class MenuBar extends React.Component {
 					nextItem.isFocusable = true;
 					nextItem.ref.current.focus();
 
-					if(isParentMenuitem)
+					if(isParentMenuitem(nextItem))
 						nextItem.isExpanded = true;
 
 					return prevState;
@@ -314,6 +314,29 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
+			
+			if(level > 0) {
+				this.setState(prevState => {
+					let _items = items;
+					let _item;
+
+					position.forEach((pos, i) => {
+						const _pos = Number.parseInt(pos);
+						_item = _items[pos];
+						_items = _item.children;
+
+						if(i === position.length - 2) {
+							_item.isExpanded = false;
+							_item.isFocusable = true;
+							_item.ref.current.focus();
+						}
+						else if(i === position.length - 1)
+							_item.isFocusable = false;
+					});
+
+					return prevState;
+				});
+			}
 		}
 		else if(key === 'Tab') {
 			if(shiftKey) {
