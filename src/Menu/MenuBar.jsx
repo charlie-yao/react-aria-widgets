@@ -126,6 +126,8 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(level === 0) {
+				//TODO Like with arrow right, also maintain
+				//"root expand state"?
 				this.setState(prevState => {
 					nextIndex = index === 0 ? subItems.length - 1 : index - 1;
 					subItems[index].isFocusable = false;
@@ -135,7 +137,30 @@ class MenuBar extends React.Component {
 					return prevState;
 				});
 			}
+			else if (level === 1) {
+				this.setState(prevState => {
+					const pos1 = Number.parseInt(position[0]);
+					const pos2 = Number.parseInt(position[1]);
+					const nextIndex = pos1 === 0 ? items.length - 1 : pos1 - 1;
+					const nextItem = items[nextIndex];
+					const parentMenuitem = items[pos1];
+					const subMenuitem = items[pos1].children[pos2];
+
+					subMenuitem.isFocusable = false;
+					parentMenuitem.isExpanded = false;
+					nextItem.isFocusable = true;
+					nextItem.ref.current.focus();
+
+					if(isParentMenuitem)
+						nextItem.isExpanded = true;
+
+					return prevState;
+				});
+			}
 			else {
+				this.setState(prevState => {
+					return prevState;
+				});
 			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
