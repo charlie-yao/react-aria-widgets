@@ -75,9 +75,6 @@ class MenuBar extends React.Component {
 		
 		console.log(level, index, item, subItems);
 
-		//TODO: Any key that corresponds to a printable character (Optional):
-		//Move focus to the next menu item in the current menu whose label begins
-		//with that printable character.
 		//TODO: take into account orientation
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
@@ -163,6 +160,38 @@ class MenuBar extends React.Component {
 				});
 			}
 			else {
+				this.setState(prevState => {
+					//Close the submenu and any parent menus
+					let _items = items;
+					let _menuitem;
+
+					position.forEach((pos, i) => {
+						const _pos = Number.parseInt(pos, 10);
+						position[i] = _pos;
+						_menuitem = _items[_pos];
+						_items = _menuitem.children;
+
+						_menuitem.isFocusable = false;
+
+						if(isParentMenuitem(_menuitem))
+							_menuitem.isExpanded = false;
+					});
+
+					//Move focus to the next menuitem in the menubar,
+					//and if it's a parent menuitem, open the submenu
+					//without changing focus
+					const index = position[0];
+					const nextIndex = index === items.length - 1 ? 0 : index + 1;
+					const nextItem = items[nextIndex];
+
+					nextItem.isFocusable = true;
+					nextItem.ref.current.focus();
+
+					if(isParentMenuitem(nextItem))
+						nextItem.isExpanded = true;
+
+					return prevState;
+				});
 			}
 		}
 		else if(key === 'Enter') {
@@ -235,6 +264,11 @@ class MenuBar extends React.Component {
 			}
 			else {
 			}
+		}
+		else {
+			//TODO: Any key that corresponds to a printable character (Optional):
+			//Move focus to the next menu item in the current menu whose label begins
+			//with that printable character.
 		}
 	};
 

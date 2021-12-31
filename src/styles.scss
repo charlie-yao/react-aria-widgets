@@ -6,6 +6,14 @@
 	display: none;
 }
 
+[role="menubar"][aria-orientation="horizontal"] {
+	display: flex;
+
+	> li {
+		flex: 1 1 auto;
+	}
+}
+
 //A technique for visually-hiding elements
 //but still keeping them readable to machines.
 //See:
