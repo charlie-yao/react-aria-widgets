@@ -129,6 +129,7 @@ class MenuBar extends React.Component {
 				this.setState(prevState => {
 					nextIndex = index === 0 ? subItems.length - 1 : index - 1;
 					subItems[index].isFocusable = false;
+					subItems[index].isExpanded = false;
 					subItems[nextIndex].isFocusable = true;
 					subItems[nextIndex].ref.current.focus();
 					return prevState;
@@ -142,10 +143,23 @@ class MenuBar extends React.Component {
 
 			if(level === 0) {
 				this.setState(prevState => {
+					//const wasExpanded = subItems[index].isExpanded;
+
 					nextIndex = index === subItems.length - 1 ? 0 : index + 1;
 					subItems[index].isFocusable = false;
+					subItems[index].isExpanded = false;
 					subItems[nextIndex].isFocusable = true;
 					subItems[nextIndex].ref.current.focus();
+					
+					//This behavior isn't defined in the authoring prac
+					//but is exhibited in the example implementations
+					//https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-1/menubar-1.html
+					//https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-2/menubar-2.html
+					//FIXME: currently broken - what if subItems[nextIndex] isn't a parent menuitem,
+					//but the subsequent item is? we lose the "root expanded" state.
+					//if(isParentMenu(subItems[nextIndex]) && wasExpanded)
+					//	subItems[nextIndex].isExpanded = true;
+
 					return prevState;
 				});
 			}
