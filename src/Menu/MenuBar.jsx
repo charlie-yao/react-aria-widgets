@@ -338,11 +338,24 @@ class MenuBar extends React.Component {
 				});
 			}
 		}
-		else if(key === 'Tab') {
-			if(shiftKey) {
-			}
-			else {
-			}
+		else if(key === 'Tab' && level > 0) {
+			this.setState(prevState => {
+				let _items = items;
+				let _item;
+
+				position.forEach((pos, i) => {
+					const _pos = Number.parseInt(pos, 10);
+					_item = _items[pos];
+					_items = _item.children;
+					
+					//FIXME: broken in both directions. shift+tab goes to the
+					//root item rather than the element before the menubar
+					_item.isFocusable = i === 0;
+					_item.isExpanded = false;
+				});
+
+				return prevState;
+			});
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
