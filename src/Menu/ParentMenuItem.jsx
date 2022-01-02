@@ -13,7 +13,7 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 //idea to separate the opinionated stuff I'm adding on?
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
-		children, items, isExpanded, isDisabled, isFocusable,
+		children, items, isExpanded, isDisabled, isTabbable,
 		orientation, renderItem, onKeyDown, position
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
@@ -28,7 +28,7 @@ const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 				aria-haspopup="menu"
 				aria-expanded={ isExpanded }
 				aria-disabled={ isDisabled }
-				tabIndex={ isFocusable ? '0' : '-1' }
+				tabIndex={ isTabbable ? '0' : '-1' }
 				ref={ ref }
 				onKeyDown={ onKeyDown }
 				data-position={ position.toString() }
@@ -49,7 +49,7 @@ ParentMenuItem.propTypes = {
 	position: PropTypes.arrayOf(PropTypes.number).isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
-	isFocusable: PropTypes.bool,
+	isTabbable: PropTypes.bool,
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 	renderItem: PropTypes.func,
 	renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
@@ -59,7 +59,7 @@ ParentMenuItem.propTypes = {
 ParentMenuItem.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
-	isFocusable: false,
+	isTabbable: false,
 	orientation: 'horizontal',
 	renderItem,
 	renderMenuItem,

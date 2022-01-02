@@ -63,7 +63,7 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //Only relevant to parentmenuitem"
 	isExpanded: PropTypes.bool, //Only relevant to "parentmenuitem"
 	isDisabled: PropTypes.bool,
-	isFocusable: PropTypes.bool,
+	isTabbable: PropTypes.bool,
 });
 
 export const MENU_ITEM_METADATA_PROPTYPE = PropTypes.shape({
