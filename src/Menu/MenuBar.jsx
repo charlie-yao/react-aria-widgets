@@ -36,7 +36,7 @@ class MenuBar extends React.Component {
 		super(props);
 
 		const { items } = props;
-		
+
 		//TODO: feels incredibly awkward, e.g.:
 		//- refs in state?
 		//- what if someone passes new props (e.g. change isDisabled for an item)?
@@ -58,14 +58,14 @@ class MenuBar extends React.Component {
 		let nextIndex;
 		let item;
 		let subItems = items; //(sub-)menu that item belongs in
-		
+
 		//TODO this should probably be put inside the setState() calls
 		//so that subItems is referencing prevState rather than
 		//this.state
 		position.forEach((pos, i) => {
 			index = Number.parseInt(pos, 10);
 			item = subItems[index];
-			
+
 			//Don't do this on the last iteration so we know
 			//the subset of items that item belongs in. Otherwise,
 			//subItems would  be the children of item (assuming
@@ -73,7 +73,7 @@ class MenuBar extends React.Component {
 			if(i < position.length - 1)
 				subItems = item.children;
 		});
-		
+
 		console.log(level, index, item, subItems);
 
 		//TODO:
@@ -132,14 +132,14 @@ class MenuBar extends React.Component {
 					return prevState;
 				});
 			}
-			else if (level === 1) {
+			else if(level === 1) {
 				this.setState(prevState => {
 					const pos1 = Number.parseInt(position[0]);
 					const pos2 = Number.parseInt(position[1]);
 					const nextIndex = pos1 === 0 ? items.length - 1 : pos1 - 1;
 					const nextItem = items[nextIndex];
 					const parentMenuitem = items[pos1];
-					
+
 					parentMenuitem.isTabbable = false;
 					parentMenuitem.isExpanded = false;
 					nextItem.isTabbable = true;
@@ -176,14 +176,14 @@ class MenuBar extends React.Component {
 
 			if(level === 0) {
 				this.setState(prevState => {
-					//const wasExpanded = subItems[index].isExpanded;
+					//Const wasExpanded = subItems[index].isExpanded;
 
 					nextIndex = index === subItems.length - 1 ? 0 : index + 1;
 					subItems[index].isTabbable = false;
 					subItems[index].isExpanded = false;
 					subItems[nextIndex].isTabbable = true;
 					subItems[nextIndex].ref.current.focus();
-					
+
 					//This behavior isn't defined in the authoring prac
 					//but is exhibited in the example implementations
 					//https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-1/menubar-1.html
@@ -227,7 +227,7 @@ class MenuBar extends React.Component {
 					const nextIndex = index === items.length - 1 ? 0 : index + 1;
 					const nextItem = items[nextIndex];
 					const item = items[index];
-					
+
 					item.isTabbable = false;
 					nextItem.isTabbable = true;
 					nextItem.ref.current.focus();
@@ -256,7 +256,7 @@ class MenuBar extends React.Component {
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
-			
+
 			if(isParentMenuitem(item)) {
 				this.setState(prevState => {
 					item.isExpanded = true;
@@ -307,7 +307,7 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
-			
+
 			if(level > 0) {
 				this.setState(prevState => {
 					let _items = items;
@@ -337,7 +337,7 @@ class MenuBar extends React.Component {
 					const _pos = Number.parseInt(pos, 10);
 					_item = _items[pos];
 					_items = _item.children;
-					
+
 					//FIXME: broken in both directions. shift+tab goes to the
 					//root item rather than the element before the menubar.
 					//Tabbing forward seems to focus on some unknown "thing"
@@ -387,7 +387,7 @@ class MenuBar extends React.Component {
 
 		items.forEach((item, i) => {
 			const { type, children } = item;
-			
+
 			position = position.slice(0);
 			position[level] = i;
 

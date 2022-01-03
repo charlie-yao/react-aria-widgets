@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Menu from 'src/Menu/Menu';
 
 //Misc.
-import { MENU_ITEMS_PROPTYPE, MENU_ITEMS_METADATA_PROPTYPE } from 'src/utils/propTypes';
+import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
 //TODO: this is straying further and further away
@@ -14,7 +14,7 @@ import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
 		children, items, isExpanded, isDisabled, isTabbable,
-		orientation, renderItem, onKeyDown, position
+		orientation, renderItem, onKeyDown, position,
 	} = props;
 	const itemNodes = items.map((item, index, _items) => {
 		return renderItem(item, index, _items, props, onKeyDown);

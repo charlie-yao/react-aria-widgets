@@ -66,14 +66,4 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 	isTabbable: PropTypes.bool,
 });
 
-export const MENU_ITEM_METADATA_PROPTYPE = PropTypes.shape({
-	id: PropTypes.string, //TODO required?
-	parentId: PropTypes.string,
-	ref: PropTypes.shape({
-		current: PropTypes.object,
-	}).isRequired,
-	childMetaData: MENU_ITEMS_METADATA_PROPTYPE, //Only required for "parentmenuitem"
-});
-
 export const MENU_ITEMS_PROPTYPE = PropTypes.arrayOf(MENU_ITEM_PROPTYPE);
-export const MENU_ITEMS_METADATA_PROPTYPE = PropTypes.arrayOf(MENU_ITEM_METADATA_PROPTYPE);
