@@ -328,7 +328,8 @@ class MenuBar extends React.Component {
 				});
 			}
 		}
-		else if(key === 'Tab' && level > 0) {
+		else if(key === 'Tab') {
+			/*
 			this.setState(prevState => {
 				let _items = items;
 				let _item;
@@ -346,6 +347,7 @@ class MenuBar extends React.Component {
 
 				return prevState;
 			});
+			*/
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
