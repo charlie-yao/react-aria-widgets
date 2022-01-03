@@ -50,7 +50,7 @@ class MenuBar extends React.Component {
 	onItemKeyDown = (event) => {
 		const { orientation } = this.props;
 		const { items } = this.state;
-		const { key, target, shiftKey } = event;
+		const { key, target } = event;
 		const role = target.getAttribute('role');
 		const position = target.dataset.position.split(',');
 		const level = position.length - 1;
@@ -134,8 +134,7 @@ class MenuBar extends React.Component {
 			}
 			else if(level === 1) {
 				this.setState(prevState => {
-					const pos1 = Number.parseInt(position[0]);
-					const pos2 = Number.parseInt(position[1]);
+					const pos1 = Number.parseInt(position[0], 10);
 					const nextIndex = pos1 === 0 ? items.length - 1 : pos1 - 1;
 					const nextItem = items[nextIndex];
 					const parentMenuitem = items[pos1];
@@ -314,8 +313,8 @@ class MenuBar extends React.Component {
 					let _item;
 
 					position.forEach((pos, i) => {
-						const _pos = Number.parseInt(pos);
-						_item = _items[pos];
+						const _pos = Number.parseInt(pos, 10);
+						_item = _items[_pos];
 						_items = _item.children;
 
 						if(i === position.length - 2) {
@@ -333,9 +332,9 @@ class MenuBar extends React.Component {
 				let _items = items;
 				let _item;
 
-				position.forEach((pos, i) => {
+				position.forEach(pos => {
 					const _pos = Number.parseInt(pos, 10);
-					_item = _items[pos];
+					_item = _items[_pos];
 					_items = _item.children;
 
 					//FIXME: broken in both directions. shift+tab goes to the
