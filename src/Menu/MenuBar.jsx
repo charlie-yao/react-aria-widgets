@@ -40,6 +40,7 @@ class MenuBar extends React.Component {
 		//TODO: feels incredibly awkward, e.g.:
 		//- refs in state?
 		//- what if someone passes new props (e.g. change isDisabled for an item)?
+		//- are we updating state properly? deep copy/nested weirdness?
 		this.state = {
 			items: this.initializeItems(items),
 		};
@@ -75,24 +76,22 @@ class MenuBar extends React.Component {
 		
 		console.log(level, index, item, subItems);
 
-		//TODO: take into account orientation
+		//TODO:
+		//- take into account orientation
+		//- consolidate logic and move into separate methods?
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
 			if(level > 0) {
 				this.setState(prevState => {
 					nextIndex = index === 0 ? subItems.length - 1 : index - 1;
-					subItems[index].isTabbable = false;
-					subItems[nextIndex].isTabbable = true;
 					subItems[nextIndex].ref.current.focus();
 					return prevState;
 				});
 			}
 			else if(isParentMenuitem(item)) {
 				this.setState(prevState => {
-					item.isTabbable = false;
 					item.isExpanded = true;
-					item.children[item.children.length - 1].isTabbable = true;
 					return prevState;
 				}, () => {
 					item.children[item.children.length - 1].ref.current.focus();
@@ -105,17 +104,13 @@ class MenuBar extends React.Component {
 			if(level > 0) {
 				this.setState(prevState => {
 					nextIndex = index === subItems.length - 1 ? 0 : index + 1;
-					subItems[index].isTabbable = false;
-					subItems[nextIndex].isTabbable = true;
 					subItems[nextIndex].ref.current.focus();
 					return prevState;
 				});
 			}
 			else if(isParentMenuitem(item)) {
 				this.setState(prevState => {
-					item.isTabbable = false;
 					item.isExpanded = true;
-					item.children[0].isTabbable = true;
 					return prevState;
 				}, () => {
 					item.children[0].ref.current.focus();
@@ -144,9 +139,8 @@ class MenuBar extends React.Component {
 					const nextIndex = pos1 === 0 ? items.length - 1 : pos1 - 1;
 					const nextItem = items[nextIndex];
 					const parentMenuitem = items[pos1];
-					const subMenuitem = items[pos1].children[pos2];
-
-					subMenuitem.isTabbable = false;
+					
+					parentMenuitem.isTabbable = false;
 					parentMenuitem.isExpanded = false;
 					nextItem.isTabbable = true;
 					nextItem.ref.current.focus();
@@ -168,12 +162,9 @@ class MenuBar extends React.Component {
 						_items = _item.children;
 
 						if(i === position.length - 2) {
-							_item.isTabbable = true;
 							_item.isExpanded = false;
 							_item.ref.current.focus();
 						}
-						else if(i === position.length - 1)
-							_item.isTabbable = false;
 					});
 
 					return prevState;
@@ -207,9 +198,7 @@ class MenuBar extends React.Component {
 			}
 			else if(isParentMenuitem(item)) {
 				this.setState(prevState => {
-					item.isTabbable = false;
 					item.isExpanded = true;
-					item.children[0].isTabbable = true;
 					return prevState;
 				}, () => {
 					item.children[0].ref.current.focus();
@@ -227,8 +216,6 @@ class MenuBar extends React.Component {
 						_menuitem = _items[_pos];
 						_items = _menuitem.children;
 
-						_menuitem.isTabbable = false;
-
 						if(isParentMenuitem(_menuitem))
 							_menuitem.isExpanded = false;
 					});
@@ -239,7 +226,9 @@ class MenuBar extends React.Component {
 					const index = position[0];
 					const nextIndex = index === items.length - 1 ? 0 : index + 1;
 					const nextItem = items[nextIndex];
-
+					const item = items[index];
+					
+					item.isTabbable = false;
 					nextItem.isTabbable = true;
 					nextItem.ref.current.focus();
 
@@ -255,9 +244,7 @@ class MenuBar extends React.Component {
 
 			if(isParentMenuitem(item)) {
 				this.setState(prevState => {
-					item.isTabbable = false;
 					item.isExpanded = true;
-					item.children[0].isTabbable = true;
 					return prevState;
 				}, () => {
 					item.children[0].ref.current.focus();
@@ -272,9 +259,7 @@ class MenuBar extends React.Component {
 			
 			if(isParentMenuitem(item)) {
 				this.setState(prevState => {
-					item.isTabbable = false;
 					item.isExpanded = true;
-					item.children[0].isTabbable = true;
 					return prevState;
 				}, () => {
 					item.children[0].ref.current.focus();
@@ -295,8 +280,12 @@ class MenuBar extends React.Component {
 
 			this.setState(prevState => {
 				nextIndex = 0;
-				subItems[index].isTabbable = false;
-				subItems[nextIndex].isTabbable = true;
+
+				if(level === 0) {
+					subItems[index].isTabbable = false;
+					subItems[nextIndex].isTabbable = true;
+				}
+
 				subItems[nextIndex].ref.current.focus();
 				return prevState;
 			});
@@ -306,8 +295,12 @@ class MenuBar extends React.Component {
 
 			this.setState(prevState => {
 				nextIndex = subItems.length - 1;
-				subItems[index].isTabbable = false;
-				subItems[nextIndex].isTabbable = true;
+
+				if(level === 0) {
+					subItems[index].isTabbable = false;
+					subItems[nextIndex].isTabbable = true;
+				}
+
 				subItems[nextIndex].ref.current.focus();
 				return prevState;
 			});
@@ -327,11 +320,8 @@ class MenuBar extends React.Component {
 
 						if(i === position.length - 2) {
 							_item.isExpanded = false;
-							_item.isTabbable = true;
 							_item.ref.current.focus();
 						}
-						else if(i === position.length - 1)
-							_item.isTabbable = false;
 					});
 
 					return prevState;
@@ -350,7 +340,7 @@ class MenuBar extends React.Component {
 					
 					//FIXME: broken in both directions. shift+tab goes to the
 					//root item rather than the element before the menubar
-					_item.isTabbable = i === 0;
+					//_item.isTabbable = i === 0;
 					_item.isExpanded = false;
 				});
 
