@@ -329,7 +329,6 @@ class MenuBar extends React.Component {
 			}
 		}
 		else if(key === 'Tab') {
-			/*
 			this.setState(prevState => {
 				let _items = items;
 				let _item;
@@ -340,14 +339,18 @@ class MenuBar extends React.Component {
 					_items = _item.children;
 					
 					//FIXME: broken in both directions. shift+tab goes to the
-					//root item rather than the element before the menubar
+					//root item rather than the element before the menubar.
+					//Tabbing forward seems to focus on some unknown "thing"
+					//rather than something on the browser (though that only
+					//seems to occur if the menubar is NOT the last element).
+					//This behavior does not show up on the WAI-ARIA example
+					//implementations so it's likely something we're doing.
 					//_item.isTabbable = i === 0;
 					_item.isExpanded = false;
 				});
 
 				return prevState;
 			});
-			*/
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
