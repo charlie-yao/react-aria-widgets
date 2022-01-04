@@ -60,6 +60,7 @@ class MenuBar extends React.Component {
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index);
 		const item = items[index];
+		const { type } = item;
 
 		console.log(index, item, items);
 
@@ -95,30 +96,72 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
+			const newIndex = index === items.length - 1 ? 0 : index + 1;
+
+			this.setState({
+				tabbableIndex: newIndex,
+				expandedIndex: undefined, //TODO: wai aria implementation maintains this if previously expanded
+			}, () => {
+				this.itemRefs[newIndex].current.focus();
+			});
 
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
-
+			
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.itemRefs[index].current.focusFirstChild();
+				});
+			}
+			else {
+				//TODO: activate the item and close the (whole?) menu
+			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
 
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.itemRefs[index].current.focusFirstChild();
+				});
+			}
+			else if(role === 'menuitemcheckbox') {
+				//TODO: change state without closing the menu
+			}
+			else if(role === 'menuitemradio') {
+				//TODO: change state without closing the menu
+			}
+			else if(role === 'menuitem') {
+				//TODO: activate the item and close the (whole?) menu
+			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
 
+			this.setState({
+				tabbableIndex: 0,
+				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this if previous item was expanded
+			}, () => {
+				this.itemRefs[0].current.focus();
+			});
 		}
 		else if(key === 'End') {
 			event.preventDefault();
 
-		}
-		else if(key === 'Escape' || key === 'Esc') {
-			event.preventDefault();
-
+			this.setState({
+				tabbableIndex: items.length - 1,
+				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this if previous item was expanded
+			}, () => {
+				this.itemRefs[items.length - 1].current.focus();
+			});
 		}
 		else if(key === 'Tab') {
-
+			//TODO
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
