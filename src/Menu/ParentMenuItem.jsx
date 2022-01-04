@@ -5,12 +5,76 @@ import PropTypes from 'prop-types';
 import Menu from 'src/Menu/Menu';
 
 //Misc.
-import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { MENU_ITEMS_PROPTYPE, REF_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
+
+class ParentMenuItem extends React.Component {
+	static propTypes = {
+		children: PropTypes.node.isRequired,
+		items: MENU_ITEMS_PROPTYPE.isRequired,
+		onKeyDown: PropTypes.func.isRequired,
+		position: PropTypes.arrayOf(PropTypes.number).isRequired,
+		forwardedRef: REF_PROPTYPE.isRequired,
+		isExpanded: PropTypes.bool,
+		isDisabled: PropTypes.bool,
+		isTabbable: PropTypes.bool,
+		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+		renderItem: PropTypes.func,
+		renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
+		renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
+	};
+
+	static defaultProps = {
+		isExpanded: false,
+		isDisabled: false,
+		isTabbable: false,
+		orientation: 'horizontal',
+		renderItem,
+		renderMenuItem,
+		renderParentMenuItem,
+	};
+
+	//---- Rendering ----
+	render() {
+		const {
+			children, items, isExpanded, isDisabled, isTabbable,
+			orientation, renderItem, onKeyDown, position, forwardedRef,
+		} = this.props;
+		const itemNodes = items.map((item, index, _items) => {
+			return renderItem(item, index, _items, this.props, onKeyDown);
+		});
+
+		return (
+			<li role="none">
+				<a
+					href="#"
+					role="menuitem"
+					aria-haspopup="menu"
+					aria-expanded={ isExpanded }
+					aria-disabled={ isDisabled }
+					tabIndex={ isTabbable ? '0' : '-1' }
+					ref={ forwardedRef }
+					onKeyDown={ onKeyDown }
+					data-position={ position.toString() }
+				>
+					{ children }
+				</a>
+				<Menu orientation={ orientation }>
+					{ itemNodes }
+				</Menu>
+			</li>
+		);
+	}
+}
+
+export default React.forwardRef((props, ref) => {
+	return <ParentMenuItem {...props} forwardedRef={ ref } />;
+});
 
 //TODO: this is straying further and further away
 //from the idea of a "base" component - might be a good
 //idea to separate the opinionated stuff I'm adding on?
+/*
 const ParentMenuItem = React.forwardRef(function ParentMenuItem(props, ref) {
 	const {
 		children, items, isExpanded, isDisabled, isTabbable,
@@ -67,3 +131,4 @@ ParentMenuItem.defaultProps = {
 };
 
 export default ParentMenuItem;
+*/
