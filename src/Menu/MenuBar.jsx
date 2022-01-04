@@ -70,7 +70,7 @@ class MenuBar extends React.Component {
 			this.setState({
 				expandedIndex: index,
 			}, () => {
-				this.itemRefs[index].current.focusLastItem();
+				this.itemRefs[index].current.focusLastChild();
 			});
 
 		}
@@ -80,7 +80,7 @@ class MenuBar extends React.Component {
 			this.setState({
 				expandedIndex: index,
 			}, () => {
-				this.itemRefs[index].current.focusFirstItem();
+				this.itemRefs[index].current.focusFirstChild();
 			});
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
