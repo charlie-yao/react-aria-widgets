@@ -69,17 +69,29 @@ class MenuBar extends React.Component {
 			this.setState({
 				expandedIndex: index,
 			}, () => {
-				console.log(this.itemRefs[index]);
+				this.itemRefs[index].current.focusLastItem();
 			});
 
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
+			this.setState({
+				expandedIndex: index,
+			}, () => {
+				this.itemRefs[index].current.focusFirstItem();
+			});
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
+			const newIndex = index === 0 ? items.length - 1 : index - 1;
 
+			this.setState({
+				tabbableIndex: newIndex,
+				expandedIndex: undefined, //TODO: wai aria implementation maintains this if previously expanded
+			}, () => {
+				this.itemRefs[newIndex].current.focus();
+			});
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();

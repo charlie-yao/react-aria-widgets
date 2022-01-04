@@ -42,8 +42,9 @@ class ParentMenuItem extends React.Component {
 		this.state = {
 			expandedIndex: undefined,
 		};
-
-		this.itemRefs = items.map(() => React.createRef());
+		
+		this.itemRef = React.createRef();
+		this.childItemRefs = items.map(() => React.createRef());
 	}
 
 	//---- Events ----
@@ -107,7 +108,7 @@ class ParentMenuItem extends React.Component {
 	render() {
 		const {
 			children, items, isExpanded, isDisabled, isTabbable,
-			orientation, renderItem, onKeyDown, index, forwardedRef,
+			orientation, renderItem, onKeyDown, index
 		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
@@ -120,7 +121,7 @@ class ParentMenuItem extends React.Component {
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }
-					ref={ forwardedRef }
+					ref={ this.itemRef }
 					onKeyDown={ onKeyDown }
 					data-index={ index }
 				>
@@ -142,7 +143,7 @@ class ParentMenuItem extends React.Component {
 				<MenuItem
 					key={ index }
 					index={ index }
-					ref={ this.itemRefs[index] }
+					ref={ this.childItemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
 					isDisabled={ isDisabled }
 				>
@@ -157,7 +158,7 @@ class ParentMenuItem extends React.Component {
 					index={ index }
 					items={ children }
 					orientation={ orientation }
-					ref={ this.itemRefs[index] }
+					ref={ this.childItemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
 					isExpanded={ index === expandedIndex }
 					isDisabled={ isDisabled }
@@ -166,6 +167,24 @@ class ParentMenuItem extends React.Component {
 				</ParentMenuItem>
 			);
 		}
+	};
+
+	//---- Events ----
+	focus = () => {
+		this.itemRef.current.focus();
+	};
+
+	focusChild = (index) => {
+		this.childItemRefs[index].current.focus();
+	};
+
+	focusFirstChild = () => {
+		this.focusChild(0);
+	};
+
+	focusLastChild = () => {
+		const { items } = this.props;
+		this.focusChild(items.length - 1);
 	};
 }
 
