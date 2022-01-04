@@ -80,7 +80,7 @@ class _ParentMenuItem extends React.Component {
 
 	renderItem = (item, index, items) => {
 		const { position } = this.props;
-		const { node, type, isDisabled, children, isExpanded, isTabbable, orientation } = item;
+		const { node, type, isDisabled, children, isExpanded, orientation } = item;
 
 		if(type === 'menuitem') {
 			return (
@@ -106,7 +106,6 @@ class _ParentMenuItem extends React.Component {
 					onKeyDown={ this.onItemKeyDown }
 					isExpanded={ isExpanded }
 					isDisabled={ isDisabled }
-					isTabbable={ isTabbable }
 				>
 					{ node }
 				</ParentMenuItem>

@@ -47,6 +47,7 @@ class MenuBar extends React.Component {
 		//- are we updating state properly? deep copy/nested weirdness?
 		this.state = {
 			items: this.initializeItems(items),
+			tabbableIndex: 0,
 		};
 
 		this.itemRefs = items.map(() => React.createRef());
@@ -389,7 +390,8 @@ class MenuBar extends React.Component {
 	}
 
 	renderItems = (item, index, items) => {
-		const { type, node, position, children, isDisabled, isExpanded, isTabbable, orientation } = item;
+		const { tabbableIndex } = this.state
+		const { type, node, position, children, isDisabled, isExpanded, orientation } = item;
 
 		if(type === 'menuitem') {
 			return (
@@ -399,7 +401,7 @@ class MenuBar extends React.Component {
 					ref={ this.itemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
 					isDisabled={ isDisabled }
-					isTabbable={ isTabbable }
+					isTabbable={ index === tabbableIndex }
 				>
 					{ node }
 				</MenuItem>
@@ -416,7 +418,7 @@ class MenuBar extends React.Component {
 					orientation={ orientation }
 					isDisabled={ isDisabled }
 					isExpanded={ isExpanded }
-					isTabbable={ isTabbable }
+					isTabbable={ index === tabbableIndex }
 				>
 					{ node }
 				</ParentMenuItem>
@@ -438,8 +440,6 @@ class MenuBar extends React.Component {
 			//so let's create a copy of items with some extra
 			//info attached.
 			_items.push(Object.assign({}, item, {
-				ref: React.createRef(),
-				isTabbable: i === 0 && level === 0,
 				position,
 			}));
 
