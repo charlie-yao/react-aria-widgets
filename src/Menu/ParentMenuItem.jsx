@@ -45,7 +45,59 @@ class _ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onItemKeyDown = (event) => {
-		
+		const { orientation, items } = this.props;
+		const { key, target } = event;
+		const index = Number.parseInt(target.dataset.index);
+		const item = items[index];
+
+		console.log(index, item, items);
+
+		if(key === 'ArrowUp' || key === 'Up') {
+			event.preventDefault();
+
+		}
+		else if(key === 'ArrowDown' || key === 'Down') {
+			event.preventDefault();
+
+		}
+		else if(key === 'ArrowLeft' || key === 'Left') {
+			event.preventDefault();
+
+		}
+		else if(key === 'ArrowRight' || key === 'Right') {
+			event.preventDefault();
+
+		}
+		else if(key === 'Enter') {
+			event.preventDefault();
+
+		}
+		else if(key === ' ' || key === 'Spacebar') {
+			event.preventDefault();
+
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+
+		}
+		else if(key === 'Escape' || key === 'Esc') {
+			event.preventDefault();
+
+		}
+		else if(key === 'Tab') {
+
+		}
+		else {
+			//TODO: Any key that corresponds to a printable character (Optional):
+			//Move focus to the next menu item in the current menu whose label begins
+			//with that printable character.
+		}
+
+
 	};
 
 	//---- Rendering ----
