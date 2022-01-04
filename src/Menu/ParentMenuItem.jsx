@@ -9,7 +9,7 @@ import MenuItem from 'src/Menu/MenuItem';
 import { MENU_ITEMS_PROPTYPE, REF_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
-class ParentMenuItem extends React.Component {
+class _ParentMenuItem extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		items: MENU_ITEMS_PROPTYPE.isRequired,
@@ -115,9 +115,11 @@ class ParentMenuItem extends React.Component {
 	};
 }
 
-export default React.forwardRef((props, ref) => {
-	return <ParentMenuItem {...props} forwardedRef={ ref } />;
+const ParentMenuItem = React.forwardRef((props, ref) => {
+	return <_ParentMenuItem {...props} forwardedRef={ ref } />;
 });
+
+export default ParentMenuItem;
 
 //TODO: this is straying further and further away
 //from the idea of a "base" component - might be a good

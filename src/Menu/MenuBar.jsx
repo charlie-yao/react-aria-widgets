@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import MenuItem from 'src/Menu/MenuItem';
+import ParentMenuItem from 'src/Menu/ParentMenuItem';
+
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem, isParentMenuitem } from 'src/Menu/utils';
@@ -44,6 +48,8 @@ class MenuBar extends React.Component {
 		this.state = {
 			items: this.initializeItems(items),
 		};
+
+		this.itemRefs = items.map(() => React.createRef());
 	}
 
 	//---- Events ----
@@ -362,9 +368,11 @@ class MenuBar extends React.Component {
 	render() {
 		const { orientation, label, labelId, renderItem } = this.props;
 		const { items } = this.state;
-		const itemNodes = items.map((item, index, _items) => {
-			return renderItem(item, index, _items, this.props, this.onItemKeyDown);
-		});
+		const itemNodes = items.map(this.renderItems);
+		//const { items } = this.state;
+		//const itemNodes = items.map((item, index, _items) => {
+		//	return renderItem(item, index, _items, this.props, this.onItemKeyDown);
+		//});
 
 		console.log(this.props, this.state);
 
@@ -379,6 +387,42 @@ class MenuBar extends React.Component {
 			</ul>
 		);
 	}
+
+	renderItems = (item, index, items) => {
+		const { type, node, position, children, isDisabled, isExpanded, isTabbable, orientation } = item;
+
+		if(type === 'menuitem') {
+			return (
+				<MenuItem
+					key={ index }
+					position={ position}
+					ref={ this.itemRefs[index] }
+					onKeyDown={ this.onItemKeyDown }
+					isDisabled={ isDisabled }
+					isTabbable={ isTabbable }
+				>
+					{ node }
+				</MenuItem>
+			);
+		}
+		else if(type === 'parentmenuitem') {
+			return (
+				<ParentMenuItem
+					key={ index }
+					position={ position }
+					items={ children }
+					ref={ this.itemRefs[index] }
+					onKeyDown={ this.onItemKeyDown }
+					orientation={ orientation }
+					isDisabled={ isDisabled }
+					isExpanded={ isExpanded }
+					isTabbable={ isTabbable }
+				>
+					{ node }
+				</ParentMenuItem>
+			);
+		}
+	};
 
 	//---- Misc. ----
 	initializeItems = (items, level = 0, position = []) => {
