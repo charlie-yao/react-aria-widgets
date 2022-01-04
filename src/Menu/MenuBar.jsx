@@ -377,10 +377,6 @@ class MenuBar extends React.Component {
 	render() {
 		const { orientation, label, labelId, renderItem, items } = this.props;
 		const itemNodes = items.map(this.renderItems);
-		//const { items } = this.state;
-		//const itemNodes = items.map((item, index, _items) => {
-		//	return renderItem(item, index, _items, this.props, this.onItemKeyDown);
-		//});
 
 		console.log(this.props, this.state);
 
