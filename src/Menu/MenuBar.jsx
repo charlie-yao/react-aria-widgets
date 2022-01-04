@@ -48,6 +48,7 @@ class MenuBar extends React.Component {
 		this.state = {
 			items: this.initializeItems(items),
 			tabbableIndex: 0,
+			expandedIndex: undefined,
 		};
 
 		this.itemRefs = items.map(() => React.createRef());
@@ -439,8 +440,8 @@ class MenuBar extends React.Component {
 	}
 
 	renderItems = (item, index, items) => {
-		const { tabbableIndex } = this.state
-		const { type, node, children, isDisabled, isExpanded, orientation } = item;
+		const { tabbableIndex, expandedIndex } = this.state
+		const { type, node, children, isDisabled, orientation } = item;
 
 		if(type === 'menuitem') {
 			return (
@@ -466,7 +467,7 @@ class MenuBar extends React.Component {
 					onKeyDown={ this.onItemKeyDown }
 					orientation={ orientation }
 					isDisabled={ isDisabled }
-					isExpanded={ isExpanded }
+					isExpanded={ index === expandedIndex }
 					isTabbable={ index === tabbableIndex }
 				>
 					{ node }

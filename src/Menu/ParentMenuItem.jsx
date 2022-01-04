@@ -40,6 +40,10 @@ class _ParentMenuItem extends React.Component {
 
 		const { items } = props;
 
+		this.state = {
+			expandedIndex: undefined,
+		};
+
 		this.itemRefs = items.map(() => React.createRef());
 	}
 
@@ -131,7 +135,8 @@ class _ParentMenuItem extends React.Component {
 	}
 
 	renderItem = (item, index, items) => {
-		const { node, type, isDisabled, children, isExpanded, orientation } = item;
+		const { node, type, isDisabled, children, orientation } = item;
+		const { expandedIndex } = this.state;
 
 		if(type === 'menuitem') {
 			return (
@@ -155,7 +160,7 @@ class _ParentMenuItem extends React.Component {
 					orientation={ orientation }
 					ref={ this.itemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
-					isExpanded={ isExpanded }
+					isExpanded={ index === expandedIndex }
 					isDisabled={ isDisabled }
 				>
 					{ node }
