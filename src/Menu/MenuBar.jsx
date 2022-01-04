@@ -66,6 +66,12 @@ class MenuBar extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
+			this.setState({
+				expandedIndex: index,
+			}, () => {
+				console.log(this.itemRefs[index]);
+			});
+
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();

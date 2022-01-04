@@ -9,13 +9,12 @@ import MenuItem from 'src/Menu/MenuItem';
 import { MENU_ITEMS_PROPTYPE, REF_PROPTYPE } from 'src/utils/propTypes';
 import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
-class _ParentMenuItem extends React.Component {
+class ParentMenuItem extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		items: MENU_ITEMS_PROPTYPE.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		index: PropTypes.number.isRequired,
-		forwardedRef: REF_PROPTYPE.isRequired,
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
@@ -169,10 +168,6 @@ class _ParentMenuItem extends React.Component {
 		}
 	};
 }
-
-const ParentMenuItem = React.forwardRef((props, ref) => {
-	return <_ParentMenuItem {...props} forwardedRef={ ref } />;
-});
 
 export default ParentMenuItem;
 
