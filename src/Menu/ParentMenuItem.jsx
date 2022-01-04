@@ -14,7 +14,7 @@ class _ParentMenuItem extends React.Component {
 		children: PropTypes.node.isRequired,
 		items: MENU_ITEMS_PROPTYPE.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
-		position: PropTypes.arrayOf(PropTypes.number).isRequired,
+		index: PropTypes.number.isRequired,
 		forwardedRef: REF_PROPTYPE.isRequired,
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
@@ -52,7 +52,7 @@ class _ParentMenuItem extends React.Component {
 	render() {
 		const {
 			children, items, isExpanded, isDisabled, isTabbable,
-			orientation, renderItem, onKeyDown, position, forwardedRef,
+			orientation, renderItem, onKeyDown, index, forwardedRef,
 		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
@@ -67,7 +67,7 @@ class _ParentMenuItem extends React.Component {
 					tabIndex={ isTabbable ? '0' : '-1' }
 					ref={ forwardedRef }
 					onKeyDown={ onKeyDown }
-					data-position={ position.toString() }
+					data-index={ index }
 				>
 					{ children }
 				</a>
@@ -79,14 +79,13 @@ class _ParentMenuItem extends React.Component {
 	}
 
 	renderItem = (item, index, items) => {
-		const { position } = this.props;
 		const { node, type, isDisabled, children, isExpanded, orientation } = item;
 
 		if(type === 'menuitem') {
 			return (
 				<MenuItem
 					key={ index }
-					position={ position }
+					index={ index }
 					ref={ this.itemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
 					isDisabled={ isDisabled }
@@ -99,7 +98,7 @@ class _ParentMenuItem extends React.Component {
 			return (
 				<ParentMenuItem
 					key={ index }
-					position={ position }
+					index={ index }
 					items={ children }
 					orientation={ orientation }
 					ref={ this.itemRefs[index] }

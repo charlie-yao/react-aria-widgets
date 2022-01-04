@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 //TODO: navigation-specific menu item?
 const MenuItem = React.forwardRef(function MenuItem(props, ref) {
-	const { children, isDisabled, isTabbable, onKeyDown, position } = props;
+	const { children, isDisabled, isTabbable, onKeyDown, index } = props;
 
 	return (
 		<li
@@ -12,7 +12,7 @@ const MenuItem = React.forwardRef(function MenuItem(props, ref) {
 			tabIndex={ isTabbable ? '0' : '-1' }
 			ref={ ref }
 			onKeyDown={ onKeyDown }
-			data-position={ position.toString() }
+			data-index={ index }
 		>
 			{ children }
 		</li>
@@ -22,7 +22,7 @@ const MenuItem = React.forwardRef(function MenuItem(props, ref) {
 MenuItem.propTypes = {
 	children: PropTypes.node.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
-	position: PropTypes.arrayOf(PropTypes.number).isRequired,
+	index: PropTypes.number.isRequired,
 	isDisabled: PropTypes.bool,
 	isTabbable: PropTypes.bool,
 };

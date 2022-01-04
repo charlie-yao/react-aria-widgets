@@ -56,6 +56,13 @@ class MenuBar extends React.Component {
 	//---- Events ----
 	onItemKeyDown = (event) => {
 		const { orientation } = this.props;
+		const { key, target } = event;
+		const index = Number.parseInt(target.dataset.index);
+
+		console.log(index);
+
+		/*
+		const { orientation } = this.props;
 		const { items } = this.state;
 		const { key, target } = event;
 		const role = target.getAttribute('role');
@@ -363,12 +370,12 @@ class MenuBar extends React.Component {
 			//Move focus to the next menu item in the current menu whose label begins
 			//with that printable character.
 		}
+		*/
 	};
 
 	//---- Rendering ----
 	render() {
-		const { orientation, label, labelId, renderItem } = this.props;
-		const { items } = this.state;
+		const { orientation, label, labelId, renderItem, items } = this.props;
 		const itemNodes = items.map(this.renderItems);
 		//const { items } = this.state;
 		//const itemNodes = items.map((item, index, _items) => {
@@ -391,13 +398,13 @@ class MenuBar extends React.Component {
 
 	renderItems = (item, index, items) => {
 		const { tabbableIndex } = this.state
-		const { type, node, position, children, isDisabled, isExpanded, orientation } = item;
+		const { type, node, children, isDisabled, isExpanded, orientation } = item;
 
 		if(type === 'menuitem') {
 			return (
 				<MenuItem
 					key={ index }
-					position={ position}
+					index={ index }
 					ref={ this.itemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
 					isDisabled={ isDisabled }
@@ -411,7 +418,7 @@ class MenuBar extends React.Component {
 			return (
 				<ParentMenuItem
 					key={ index }
-					position={ position }
+					index={ index }
 					items={ children }
 					ref={ this.itemRefs[index] }
 					onKeyDown={ this.onItemKeyDown }
