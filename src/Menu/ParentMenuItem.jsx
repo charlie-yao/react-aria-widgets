@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 //Components and Styles
 import Menu from 'src/Menu/Menu';
+import MenuItem from 'src/Menu/MenuItem';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE, REF_PROPTYPE } from 'src/utils/propTypes';
@@ -34,15 +35,26 @@ class ParentMenuItem extends React.Component {
 		renderParentMenuItem,
 	};
 
+	constructor(props) {
+		super(props);
+
+		const { items } = props;
+
+		this.itemRefs = items.map(() => React.createRef());
+	}
+
+	//---- Events ----
+	onItemKeyDown = (event) => {
+		
+	};
+
 	//---- Rendering ----
 	render() {
 		const {
 			children, items, isExpanded, isDisabled, isTabbable,
 			orientation, renderItem, onKeyDown, position, forwardedRef,
 		} = this.props;
-		const itemNodes = items.map((item, index, _items) => {
-			return renderItem(item, index, _items, this.props, onKeyDown);
-		});
+		const itemNodes = items.map(this.renderItem);
 
 		return (
 			<li role="none">
@@ -65,6 +77,42 @@ class ParentMenuItem extends React.Component {
 			</li>
 		);
 	}
+
+	renderItem = (item, index, items) => {
+		const { position } = this.props;
+		const { node, type, isDisabled, children, isExpanded, isTabbable, orientation } = item;
+
+		if(type === 'menuitem') {
+			return (
+				<MenuItem
+					key={ index }
+					position={ position }
+					ref={ this.itemRefs[index] }
+					onKeyDown={ this.onItemKeyDown }
+					isDisabled={ isDisabled }
+				>
+					{ node }
+				</MenuItem>
+			);
+		}
+		else if(type === 'parentmenuitem') {
+			return (
+				<ParentMenuItem
+					key={ index }
+					position={ position }
+					items={ children }
+					orientation={ orientation }
+					ref={ this.itemRefs[index] }
+					onKeyDown={ this.onItemKeyDown }
+					isExpanded={ isExpanded }
+					isDisabled={ isDisabled }
+					isTabbable={ isTabbable }
+				>
+					{ node }
+				</ParentMenuItem>
+			);
+		}
+	};
 }
 
 export default React.forwardRef((props, ref) => {
