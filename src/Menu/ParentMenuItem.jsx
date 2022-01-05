@@ -84,6 +84,17 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.childItemRefs[index].current.focusFirstChild();
+				});
+			}
+			else {
+		
+			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
