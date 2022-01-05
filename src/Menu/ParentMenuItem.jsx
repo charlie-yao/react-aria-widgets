@@ -15,6 +15,7 @@ class ParentMenuItem extends React.Component {
 		index: PropTypes.number.isRequired,
 		level: PropTypes.number.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
+		collapseParent: PropTypes.func.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
@@ -43,10 +44,12 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items } = this.props;
+		const { items, collapseParent } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
 		const level = Number.parseInt(target.dataset.level, 10);
+		const item = items[index];
+		const { type } = item;
 
 		console.log(index, level);
 
@@ -62,15 +65,50 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
+
+			if(level === 1) {
+				
+			}
+			else {
+				//collapseParent();
+			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.childItemRefs[index].current.focusFirstChild();
+				});
+			}
+			else {
+				//TODO activate the item and close the (whole?) menu
+			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.childItemRefs[index].current.focusFirstChild();
+				});
+			}
+			else if(type === 'menuitemchecbox') {
+				//TODO change state without closing the menu
+			}
+			else if(type === 'menuitemradio') {
+				//TODO change state without closing the menu
+			}
+			else if(type === 'menuitem') {
+				//TODO activate the item and close the whole menu
+			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
@@ -444,6 +482,7 @@ class ParentMenuItem extends React.Component {
 					index={ index }
 					level={ level + 1 }
 					onKeyDown={ this.onChildKeyDown }
+					collapseParent={ this.collapseMenu }
 					isDisabled={ isDisabled }
 					ref={ this.childItemRefs[index] }
 				>
@@ -459,6 +498,7 @@ class ParentMenuItem extends React.Component {
 					index={ index }
 					level={ level + 1 }
 					onKeyDown={ this.onChildKeyDown }
+					collapseParent={ this.collapseMenu }
 					orientation={ orientation }
 					isExpanded={ index === expandedIndex }
 					isDisabled={ isDisabled }
@@ -486,6 +526,12 @@ class ParentMenuItem extends React.Component {
 	focusLastChild = () => {
 		const { items } = this.props;
 		this.focusChild(items.length - 1);
+	};
+
+	collapseMenu = () => {
+		this.setState({
+			expandedIndex: undefined,
+		});
 	};
 }
 
