@@ -16,6 +16,8 @@ class ParentMenuItem extends React.Component {
 		level: PropTypes.number.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		collapseParent: PropTypes.func.isRequired,
+		focusPrevSibling: PropTypes.func.isRequired,
+		focusNextMenubarItem: PropTypes.func.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
@@ -44,7 +46,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapseParent, focusPrevSibling } = this.props;
+		const { items, collapseParent, focusPrevSibling, focusNextMenubarItem } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
 		const level = Number.parseInt(target.dataset.level, 10);
@@ -72,12 +74,12 @@ class ParentMenuItem extends React.Component {
 				//event, but we're not focusing the previous sibling of the
 				//menuitem executing this event. we're focusing that menuitem's
 				//parent's previous sibling
-				collapseParent(() => {
+				collapseParent(false, () => {
 					focusPrevSibling(this.props.index, true);
 				});
 			}
 			else {
-				collapseParent(() => {
+				collapseParent(false, () => {
 					this.focus();
 				});
 			}
@@ -93,7 +95,8 @@ class ParentMenuItem extends React.Component {
 				});
 			}
 			else {
-		
+				focusNextMenubarItem();
+				collapseParent(true);
 			}
 		}
 		else if(key === 'Enter') {
@@ -132,9 +135,11 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
+			this.focusFirstChild();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
+			this.focusLastChild();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
@@ -467,6 +472,8 @@ class ParentMenuItem extends React.Component {
 		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
+		console.log(this.props, this.state);
+
 		return (
 			<li role="none">
 				<a
@@ -491,7 +498,7 @@ class ParentMenuItem extends React.Component {
 	}
 
 	renderItem = (item, index) => {
-		const { level } = this.props;
+		const { level, focusNextMenubarItem } = this.props;
 		const { node, type, children, orientation, isDisabled } = item;
 		const { expandedIndex } = this.state;
 
@@ -519,6 +526,7 @@ class ParentMenuItem extends React.Component {
 					level={ level + 1 }
 					onKeyDown={ this.onChildKeyDown }
 					collapseParent={ this.collapseMenu }
+					focusNextMenubarItem={ focusNextMenubarItem }
 					orientation={ orientation }
 					isExpanded={ index === expandedIndex }
 					isDisabled={ isDisabled }
@@ -548,12 +556,19 @@ class ParentMenuItem extends React.Component {
 		this.focusChild(items.length - 1);
 	};
 
-	collapseMenu = (callback) => {
+	collapseMenu = (collapseAll, callback) => {
+		const { collapseParent } = this.props;
+
 		console.log('in parentmenuitem', this.props.index, this.props.level);
+
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
-			if(typeof callback === 'function')
+		//	if(typeof callback === 'function')
+		//		callback();
+			if(collapseAll)
+				collapseParent(true, callback);
+			else if(typeof callback === 'function')
 				callback();
 		});
 	};

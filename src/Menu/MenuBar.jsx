@@ -527,6 +527,7 @@ class MenuBar extends React.Component {
 					onKeyDown={ this.onChildKeyDown }
 					collapseParent={ this.collapseMenu }
 					focusPrevSibling={ this.focusPrevSibling }
+					focusNextMenubarItem={ this.focusNextSibling }
 					orientation={ orientation }
 					isDisabled={ isDisabled }
 					isExpanded={ index === expandedIndex }
@@ -563,7 +564,7 @@ class MenuBar extends React.Component {
 		return _items;
 	};
 
-	collapseMenu = (callback) => {
+	collapseMenu = (collapseAll, callback) => {
 		console.log('in menubar');
 		this.setState({
 			expandedIndex: undefined,
@@ -580,6 +581,23 @@ class MenuBar extends React.Component {
 		this.setState({
 			tabbableIndex: newIndex,
 			expandedIndex: autoExpand ? newIndex : undefined,
+		}, () => {
+			this.itemRefs[newIndex].current.focus();
+		});
+	};
+	
+	//TODO not very flexible, assuming the current index is
+	//what is currently expanded...
+	focusNextSibling = () => {
+		const { items } = this.props;
+		const { expandedIndex } = this.state;
+		const newIndex = expandedIndex === items.length - 1 ? 0 : expandedIndex + 1;
+
+		console.log(expandedIndex, newIndex);
+
+		this.setState({
+			tabbableIndex: newIndex,
+			expandedIndex: newIndex,
 		}, () => {
 			this.itemRefs[newIndex].current.focus();
 		});
