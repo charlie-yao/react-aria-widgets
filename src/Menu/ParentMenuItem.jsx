@@ -50,9 +50,6 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		//TODO
-		//- handle orientation
-		//- improve abstractions for state/focus management?
 		const { items, collapseParent, focusPrevSibling, focusNextMenubarItem } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);

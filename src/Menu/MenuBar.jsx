@@ -44,9 +44,6 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		//TODO
-		//- orientation
-		//- abstract away setState calls? 
 		const { items } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
