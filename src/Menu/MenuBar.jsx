@@ -9,7 +9,7 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 
 /*
- * Some notes on props:
+ * Note:
  *
  * - If the menubar has a visible label, a labelId prop that points towards
  * the labeling element should be provided. Otherwise, one should pass in
@@ -502,7 +502,7 @@ class MenuBar extends React.Component {
 
 	renderItem = (item, index) => {
 		const { tabbableIndex, expandedIndex } = this.state
-		const { type, node, children, isDisabled, orientation } = item;
+		const { type, node, children, orientation, label, labelId, isDisabled } = item;
 
 		if(type === 'menuitem') {
 			return (
@@ -532,6 +532,8 @@ class MenuBar extends React.Component {
 					focusPrevSibling={ this.focusPrevSibling }
 					focusNextMenubarItem={ this.focusNextSibling }
 					orientation={ orientation }
+					label={ label }
+					labelId={ labelId }
 					isDisabled={ isDisabled }
 					isExpanded={ index === expandedIndex }
 					isTabbable={ index === tabbableIndex }

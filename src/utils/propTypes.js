@@ -61,6 +61,8 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 	node: PropTypes.node.isRequired,
 	children: MENU_ITEMS_PROPTYPE, //Only relevant to "parentmenuitem"
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //Only relevant to parentmenuitem"
+	label: PropTypes.string, //Only relevant to "parentmenuitem"
+	labelId: PropTypes.string, //Only relevant to "parentmenuitem"
 	isDisabled: PropTypes.bool,
 });
 

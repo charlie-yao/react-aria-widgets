@@ -19,6 +19,8 @@ class ParentMenuItem extends React.Component {
 		focusPrevSibling: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+		label: PropTypes.string,
+		labelId: PropTypes.string,
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
@@ -473,7 +475,8 @@ class ParentMenuItem extends React.Component {
 	render() {
 		const {
 			children, items, index, level, onKeyDown,
-			orientation, isExpanded, isDisabled, isTabbable,
+			orientation, label, labelId,
+			isExpanded, isDisabled, isTabbable,
 		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
@@ -495,7 +498,11 @@ class ParentMenuItem extends React.Component {
 				>
 					{ children }
 				</a>
-				<Menu orientation={ orientation }>
+				<Menu
+					orientation={ orientation }
+					label={ label }
+					labelId={ labelId }
+				>
 					{ itemNodes }
 				</Menu>
 			</li>
@@ -504,7 +511,7 @@ class ParentMenuItem extends React.Component {
 
 	renderItem = (item, index) => {
 		const { level, focusNextMenubarItem } = this.props;
-		const { node, type, children, orientation, isDisabled } = item;
+		const { node, type, children, orientation, label, labelId, isDisabled } = item;
 		const { expandedIndex } = this.state;
 
 		if(type === 'menuitem') {
@@ -533,6 +540,8 @@ class ParentMenuItem extends React.Component {
 					collapseParent={ this.collapseMenu }
 					focusNextMenubarItem={ focusNextMenubarItem }
 					orientation={ orientation }
+					label={ label }
+					labelId={ labelId }
 					isExpanded={ index === expandedIndex }
 					isDisabled={ isDisabled }
 					ref={ this.childItemRefs[index] }
