@@ -269,8 +269,6 @@ class ParentMenuItem extends React.Component {
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
-		//	if(typeof callback === 'function')
-		//		callback();
 			if(collapseAll)
 				collapseParent(true, callback);
 			else if(typeof callback === 'function')
