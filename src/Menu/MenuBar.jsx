@@ -14,6 +14,9 @@ import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
  * - If the menubar has a visible label, a labelId prop that points towards
  * the labeling element should be provided. Otherwise, one should pass in
  * a label via the label prop. In other words, one XOR the other must be provided.
+ *
+ * TODO:
+ * - activate upon shift + F10?
  */
 class MenuBar extends React.Component {
 	static propTypes = {

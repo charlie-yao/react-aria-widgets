@@ -59,11 +59,9 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 		'separator',
 	]).isRequired,
 	node: PropTypes.node.isRequired,
-	items: MENU_ITEMS_PROPTYPE, //Only relevant to "parentmenuitem"
+	children: MENU_ITEMS_PROPTYPE, //Only relevant to "parentmenuitem"
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //Only relevant to parentmenuitem"
-	isExpanded: PropTypes.bool, //Only relevant to "parentmenuitem"
 	isDisabled: PropTypes.bool,
-	isTabbable: PropTypes.bool,
 });
 
 export const MENU_ITEMS_PROPTYPE = PropTypes.arrayOf(MENU_ITEM_PROPTYPE);
