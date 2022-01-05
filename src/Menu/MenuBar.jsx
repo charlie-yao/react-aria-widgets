@@ -510,9 +510,8 @@ class MenuBar extends React.Component {
 					key={ index }
 					index={ index }
 					ref={ this.itemRefs[index] }
-					onKeyDown={ this.onItemKeyDown }
 					isDisabled={ isDisabled }
-					isTabbable={ index === tabbableIndex }
+					level={ 0 }
 				>
 					{ node }
 				</MenuItem>
@@ -525,11 +524,9 @@ class MenuBar extends React.Component {
 					index={ index }
 					items={ children }
 					ref={ this.itemRefs[index] }
-					onKeyDown={ this.onItemKeyDown }
 					orientation={ orientation }
 					isDisabled={ isDisabled }
-					isExpanded={ index === expandedIndex }
-					isTabbable={ index === tabbableIndex }
+					level={ 0 }
 				>
 					{ node }
 				</ParentMenuItem>
