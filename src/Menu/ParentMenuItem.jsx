@@ -15,7 +15,10 @@ class ParentMenuItem extends React.Component {
 		items: MENU_ITEMS_PROPTYPE.isRequired,
 		index: PropTypes.number.isRequired,
 		level: PropTypes.number.isRequired,
+		onKeyDown: PropTypes.func.isRequired,
+		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
+		isTabbable: PropTypes.bool,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		renderItem: PropTypes.func,
 		renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
@@ -23,7 +26,9 @@ class ParentMenuItem extends React.Component {
 	};
 
 	static defaultProps = {
+		isExpanded: false,
 		isDisabled: false,
+		isTabbable: false,
 		orientation: 'horizontal',
 		renderItem,
 		renderMenuItem,
@@ -33,11 +38,10 @@ class ParentMenuItem extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const { items, level, index } = props;
+		const { items } = props;
 
 		this.state = {
-			isExpanded: false,
-			isTabbable: level === 0 && index === 0,
+			expandedIndex: undefined,
 		};
 		
 		this.itemRef = React.createRef();
@@ -45,7 +49,7 @@ class ParentMenuItem extends React.Component {
 	}
 
 	//---- Events ----
-	onKeyDown = (event) => {
+	onChildKeyDown = (event) => {
 		const { orientation, items, level } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index);
@@ -56,19 +60,11 @@ class ParentMenuItem extends React.Component {
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-
-			if(level > 0) {
-			}
-			else {
-				this.setState({
-					isExpanded: true,
-				}, () => {
-					this.childItemRefs[items.length - 1].current.focus();
-				});
-			}
+			this.focusChild(index === 0 ? items.length - 1 : index - 1);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
+			this.focusChild(index === items.length - 1 ? 0 : index + 1);
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
@@ -85,6 +81,16 @@ class ParentMenuItem extends React.Component {
 		else if(key === 'Enter') {
 			event.preventDefault();
 			
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.childItemRefs[index].current.focusFirstChild();
+				});
+			}
+			else {
+				//TODO: activate the item and close the (whole?) menu
+			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
@@ -117,6 +123,7 @@ class ParentMenuItem extends React.Component {
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
 
+			collapseParent();
 		}
 		else if(key === 'Tab') {
 
@@ -441,8 +448,10 @@ class ParentMenuItem extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, items, isDisabled, orientation, renderItem, index } = this.props;
-		const { isExpanded, isTabbable } = this.state;
+		const {
+			children, items, isExpanded, isDisabled, isTabbable,
+			orientation, renderItem, index, onKeyDown
+		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
 		return (
@@ -455,7 +464,7 @@ class ParentMenuItem extends React.Component {
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }
 					ref={ this.itemRef }
-					onKeyDown={ this.onKeyDown }
+					onKeyDown={ onKeyDown }
 					data-index={ index }
 				>
 					{ children }
@@ -470,6 +479,7 @@ class ParentMenuItem extends React.Component {
 	renderItem = (item, index, items) => {
 		const { level } = this.props;
 		const { node, type, isDisabled, children, orientation } = item;
+		const { expandedIndex } = this.state;
 
 		if(type === 'menuitem') {
 			return (
@@ -479,6 +489,7 @@ class ParentMenuItem extends React.Component {
 					ref={ this.childItemRefs[index] }
 					isDisabled={ isDisabled }
 					level={ level + 1 }
+					onKeyDown={ this.onChildKeyDown }
 				>
 					{ node }
 				</MenuItem>
@@ -492,8 +503,11 @@ class ParentMenuItem extends React.Component {
 					items={ children }
 					orientation={ orientation }
 					ref={ this.childItemRefs[index] }
+					isExpanded={ index === expandedIndex }
 					isDisabled={ isDisabled }
+					collapseParent={ this.collapseParent }
 					level={ level + 1 }
+					onKeyDown={ this.onChildKeyDown }
 				>
 					{ node }
 				</ParentMenuItem>
@@ -517,6 +531,14 @@ class ParentMenuItem extends React.Component {
 	focusLastChild = () => {
 		const { items } = this.props;
 		this.focusChild(items.length - 1);
+	};
+
+	collapseParent = () => {
+		this.setState({
+			expandedIndex: undefined,
+		}, () => {
+			this.focus();
+		});
 	};
 }
 
