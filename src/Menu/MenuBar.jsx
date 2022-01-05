@@ -102,9 +102,37 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.itemRefs[index].current.focusFirstChild();
+				});
+			}
+			else {
+				//TODO activate the item and close the (whole?) menu
+			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.itemRefs[index].current.focusFirstChild();
+				});
+			}
+			else if(type === 'menuitemcheckbox') {
+				//TODO change state without closing the menu
+			}
+			else if(type === 'menuitemradio') {
+				//TODO change state without closing the menu
+			}
+			else if(type === 'menuitem') {
+				//TODO activate the item and close the (whole?) menu
+			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
