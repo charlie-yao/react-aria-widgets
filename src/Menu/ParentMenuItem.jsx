@@ -28,6 +28,8 @@ class ParentMenuItem extends React.Component {
 
 	static defaultProps = {
 		orientation: 'horizontal',
+		label: undefined,
+		labelId: undefined,
 		isExpanded: false,
 		isDisabled: false,
 		isTabbable: false,
