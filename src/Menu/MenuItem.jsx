@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//TODO: navigation-specific menu item?
 const MenuItem = React.forwardRef(function MenuItem(props, ref) {
 	const { children, index, level, onKeyDown, isDisabled, isTabbable } = props;
 
