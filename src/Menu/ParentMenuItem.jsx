@@ -43,6 +43,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
+		const { items } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
 		const level = Number.parseInt(target.dataset.level, 10);
@@ -51,9 +52,13 @@ class ParentMenuItem extends React.Component {
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
+			const newIndex = index === 0 ? items.length - 1 : index - 1;
+			this.focusChild(newIndex);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
+			const newIndex = index === items.length - 1 ? 0 : index + 1;
+			this.focusChild(newIndex);
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
