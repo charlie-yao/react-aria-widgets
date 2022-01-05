@@ -225,29 +225,6 @@ class MenuBar extends React.Component {
 	};
 
 	//---- Misc. ----
-	initializeItems = (items, level = 0, position = []) => {
-		const _items = [];
-
-		items.forEach((item, i) => {
-			const { type, children } = item;
-
-			position = position.slice(0);
-			position[level] = i;
-
-			//We can't modify the props being passed in here,
-			//so let's create a copy of items with some extra
-			//info attached.
-			_items.push(Object.assign({}, item, {
-				position,
-			}));
-
-			if(type === 'parentmenuitem')
-				_items[i].children = this.initializeItems(children, level + 1, position);
-		});
-
-		return _items;
-	};
-
 	collapseMenu = (collapseAll, callback) => {
 		console.log('in menubar');
 		this.setState({
