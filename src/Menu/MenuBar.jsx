@@ -80,9 +80,25 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
+			const nextIndex = index === 0 ? items.length - 1 : index - 1;
+			
+			this.setState({
+				tabbableIndex: nextIndex,
+				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this
+			}, () => {
+				this.itemRefs[nextIndex].current.focus();
+			});
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
+			const nextIndex = index === items.length - 1 ? 0 : index + 1;
+
+			this.setState({
+				tabbableIndex: nextIndex,
+				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this
+			}, () => {
+				this.itemRefs[nextIndex].current.focus();
+			});
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
