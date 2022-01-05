@@ -60,6 +60,11 @@ class ParentMenuItem extends React.Component {
 			if(level > 0) {
 			}
 			else {
+				this.setState({
+					isExpanded: true,
+				}, () => {
+					this.childItemRefs[items.length - 1].current.focus();
+				});
 			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
