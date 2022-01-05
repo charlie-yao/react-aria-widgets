@@ -143,6 +143,10 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
+
+			collapseParent(false, () => {
+				this.focus();
+			});
 		}
 		else if(key === 'Tab') {
 		}
