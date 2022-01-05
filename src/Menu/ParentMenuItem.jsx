@@ -44,7 +44,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapseParent } = this.props;
+		const { items, collapseParent, focusPrevSibling } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
 		const level = Number.parseInt(target.dataset.level, 10);
@@ -67,10 +67,19 @@ class ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(level === 1) {
-				
+				//TODO: naming is just all wrong...
+				//we're collapsing the parent of the menuitem executing this
+				//event, but we're not focusing the previous sibling of the
+				//menuitem executing this event. we're focusing that menuitem's
+				//parent's previous sibling
+				collapseParent(() => {
+					focusPrevSibling(this.props.index, true);
+				});
 			}
 			else {
-				//collapseParent();
+				collapseParent(() => {
+					this.focus();
+				});
 			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
@@ -528,9 +537,13 @@ class ParentMenuItem extends React.Component {
 		this.focusChild(items.length - 1);
 	};
 
-	collapseMenu = () => {
+	collapseMenu = (callback) => {
+		console.log('in parentmenuitem', this.props.index, this.props.level);
 		this.setState({
 			expandedIndex: undefined,
+		}, () => {
+			if(typeof callback === 'function')
+				callback();
 		});
 	};
 }

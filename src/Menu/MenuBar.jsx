@@ -508,6 +508,7 @@ class MenuBar extends React.Component {
 					index={ index }
 					level={ 0 }
 					onKeyDown={ this.onChildKeyDown }
+					collapseParent={ this.collapseMenu }
 					isDisabled={ isDisabled }
 					isTabbable={ index === tabbableIndex }
 					ref={ this.itemRefs[index] }
@@ -524,6 +525,8 @@ class MenuBar extends React.Component {
 					index={ index }
 					level={ 0 }
 					onKeyDown={ this.onChildKeyDown }
+					collapseParent={ this.collapseMenu }
+					focusPrevSibling={ this.focusPrevSibling }
 					orientation={ orientation }
 					isDisabled={ isDisabled }
 					isExpanded={ index === expandedIndex }
@@ -558,6 +561,28 @@ class MenuBar extends React.Component {
 		});
 
 		return _items;
+	};
+
+	collapseMenu = (callback) => {
+		console.log('in menubar');
+		this.setState({
+			expandedIndex: undefined,
+		}, () => {
+			if(typeof callback === 'function')
+				callback();
+		});
+	};
+
+	focusPrevSibling = (index, autoExpand) => {
+		const { items } = this.props;
+		const newIndex = index === 0 ? items.length - 1 : index - 1;
+
+		this.setState({
+			tabbableIndex: newIndex,
+			expandedIndex: autoExpand ? newIndex : undefined,
+		}, () => {
+			this.itemRefs[newIndex].current.focus();
+		});
 	};
 }
 
