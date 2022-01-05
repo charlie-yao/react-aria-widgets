@@ -69,6 +69,14 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.itemRefs[index].current.focusFirstChild();
+				});
+			}
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
