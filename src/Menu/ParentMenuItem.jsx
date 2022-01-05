@@ -149,6 +149,7 @@ class ParentMenuItem extends React.Component {
 			});
 		}
 		else if(key === 'Tab') {
+			collapseParent(true);
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):

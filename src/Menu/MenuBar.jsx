@@ -158,7 +158,7 @@ class MenuBar extends React.Component {
 			});
 		}
 		else if(key === 'Tab') {
-			//TODO
+			this.collapseMenu();
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
