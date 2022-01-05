@@ -49,8 +49,8 @@ class MenuBar extends React.Component {
 	//---- Events ----
 	onChildKeyDown = (event) => {
 		const { key, target } = event;
-		const index = Number.parseInt(target.dataset.index);
-		const level = Number.parseInt(target.dataset.level);
+		const index = Number.parseInt(target.dataset.index, 10);
+		const level = Number.parseInt(target.dataset.level, 10);
 
 		console.log(index, level);
 
@@ -417,7 +417,7 @@ class MenuBar extends React.Component {
 		);
 	}
 
-	renderItem = (item, index, items) => {
+	renderItem = (item, index) => {
 		const { tabbableIndex, expandedIndex } = this.state
 		const { type, node, children, isDisabled, orientation } = item;
 

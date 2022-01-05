@@ -6,7 +6,7 @@ import Menu from 'src/Menu/Menu';
 import MenuItem from 'src/Menu/MenuItem';
 
 //Misc.
-import { MENU_ITEMS_PROPTYPE, REF_PROPTYPE } from 'src/utils/propTypes';
+import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
 
 class ParentMenuItem extends React.Component {
 	static propTypes = {
@@ -44,8 +44,8 @@ class ParentMenuItem extends React.Component {
 	//---- Events ----
 	onChildKeyDown = (event) => {
 		const { key, target } = event;
-		const index = Number.parseInt(target.dataset.index);
-		const level = Number.parseInt(target.dataset.level);
+		const index = Number.parseInt(target.dataset.index, 10);
+		const level = Number.parseInt(target.dataset.level, 10);
 
 		console.log(index, level);
 
@@ -427,7 +427,7 @@ class ParentMenuItem extends React.Component {
 		);
 	}
 
-	renderItem = (item, index, items) => {
+	renderItem = (item, index) => {
 		const { level } = this.props;
 		const { node, type, children, orientation, isDisabled } = item;
 		const { expandedIndex } = this.state;
