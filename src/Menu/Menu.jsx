@@ -31,6 +31,8 @@ Menu.propTypes = {
 
 Menu.defaultProps = {
 	orientation: 'vertical',
+	label: undefined,
+	labelId: undefined,
 };
 
 export default Menu;
