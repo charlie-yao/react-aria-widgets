@@ -136,11 +136,26 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
+
+			this.setState({
+				tabbableIndex: 0,
+				expandedIndex: undefined, //TODO: WAI-ARIA implementation maintains this
+			}, () => {
+				this.itemRefs[0].current.focus();
+			});
 		}
 		else if(key === 'End') {
 			event.preventDefault();
+
+			this.setState({
+				tabbableIndex: items.length - 1,
+				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this
+			}, () => {
+				this.itemRefs[items.length - 1].current.focus();
+			});
 		}
 		else if(key === 'Tab') {
+			//TODO
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
