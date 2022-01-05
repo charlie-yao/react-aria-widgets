@@ -7,7 +7,6 @@ import MenuItem from 'src/Menu/MenuItem';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE, REF_PROPTYPE } from 'src/utils/propTypes';
-import { renderItem, renderMenuItem, renderParentMenuItem } from 'src/Menu/utils';
 
 class ParentMenuItem extends React.Component {
 	static propTypes = {
@@ -16,23 +15,17 @@ class ParentMenuItem extends React.Component {
 		index: PropTypes.number.isRequired,
 		level: PropTypes.number.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
+		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
-		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-		renderItem: PropTypes.func,
-		renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
-		renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 	};
 
 	static defaultProps = {
+		orientation: 'horizontal',
 		isExpanded: false,
 		isDisabled: false,
 		isTabbable: false,
-		orientation: 'horizontal',
-		renderItem,
-		renderMenuItem,
-		renderParentMenuItem,
 	};
 
 	constructor(props) {
@@ -50,83 +43,40 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { orientation, items, level } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index);
-		const item = items[index];
-		const { type } = item;
+		const level = Number.parseInt(target.dataset.level);
 
-		console.log(index, item, items, level);
+		console.log(index, level);
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-			this.focusChild(index === 0 ? items.length - 1 : index - 1);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-			this.focusChild(index === items.length - 1 ? 0 : index + 1);
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-
-			if(level === 0) {
-			}
-			else {
-			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			//TODO
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
-			
-			if(type === 'parentmenuitem') {
-				this.setState({
-					expandedIndex: index,
-				}, () => {
-					this.childItemRefs[index].current.focusFirstChild();
-				});
-			}
-			else {
-				//TODO: activate the item and close the (whole?) menu
-			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
-
-			if(type === 'parentmenuitem') {
-				this.setState({
-					expandedIndex: index,
-				}, () => {
-					this.childItemRefs[index].current.focusFirstChild();
-				});
-			}
-			else if(type === 'menuitemcheckbox') {
-				//TODO change state without closing the menu
-			}
-			else if(type === 'menuitemradio') {
-				//TODO change state without closing the menu
-			}
-			else if(type === 'menuitem') {
-				//TODO activate the item and close the (whole?) menu
-			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			this.focusFirstChild();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			this.focusLastChild();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
-
-			collapseParent();
 		}
 		else if(key === 'Tab') {
-
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
@@ -449,8 +399,8 @@ class ParentMenuItem extends React.Component {
 	//---- Rendering ----
 	render() {
 		const {
-			children, items, isExpanded, isDisabled, isTabbable,
-			orientation, renderItem, index, onKeyDown
+			children, items, index, level, onKeyDown,
+			orientation, isExpanded, isDisabled, isTabbable,
 		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
@@ -460,12 +410,13 @@ class ParentMenuItem extends React.Component {
 					href="#"
 					role="menuitem"
 					aria-haspopup="menu"
+					data-index={ index }
+					data-level={ level }
+					onKeyDown={ onKeyDown }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }
 					ref={ this.itemRef }
-					onKeyDown={ onKeyDown }
-					data-index={ index }
 				>
 					{ children }
 				</a>
@@ -478,7 +429,7 @@ class ParentMenuItem extends React.Component {
 
 	renderItem = (item, index, items) => {
 		const { level } = this.props;
-		const { node, type, isDisabled, children, orientation } = item;
+		const { node, type, children, orientation, isDisabled } = item;
 		const { expandedIndex } = this.state;
 
 		if(type === 'menuitem') {
@@ -486,10 +437,10 @@ class ParentMenuItem extends React.Component {
 				<MenuItem
 					key={ index }
 					index={ index }
-					ref={ this.childItemRefs[index] }
-					isDisabled={ isDisabled }
 					level={ level + 1 }
 					onKeyDown={ this.onChildKeyDown }
+					isDisabled={ isDisabled }
+					ref={ this.childItemRefs[index] }
 				>
 					{ node }
 				</MenuItem>
@@ -499,46 +450,19 @@ class ParentMenuItem extends React.Component {
 			return (
 				<ParentMenuItem
 					key={ index }
-					index={ index }
 					items={ children }
-					orientation={ orientation }
-					ref={ this.childItemRefs[index] }
-					isExpanded={ index === expandedIndex }
-					isDisabled={ isDisabled }
-					collapseParent={ this.collapseParent }
+					index={ index }
 					level={ level + 1 }
 					onKeyDown={ this.onChildKeyDown }
+					orientation={ orientation }
+					isExpanded={ index === expandedIndex }
+					isDisabled={ isDisabled }
+					ref={ this.childItemRefs[index] }
 				>
 					{ node }
 				</ParentMenuItem>
 			);
 		}
-	};
-
-	//---- Events ----
-	focus = () => {
-		this.itemRef.current.focus();
-	};
-
-	focusChild = (index) => {
-		this.childItemRefs[index].current.focus();
-	};
-
-	focusFirstChild = () => {
-		this.focusChild(0);
-	};
-
-	focusLastChild = () => {
-		const { items } = this.props;
-		this.focusChild(items.length - 1);
-	};
-
-	collapseParent = () => {
-		this.setState({
-			expandedIndex: undefined,
-		}, () => {
-			this.focus();
-		});
 	};
 }
 

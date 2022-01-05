@@ -7,7 +7,6 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
-import { renderItem, renderMenuItem, renderParentMenuItem, isParentMenuitem } from 'src/Menu/utils';
 
 /*
  * Some notes on props:
@@ -18,22 +17,16 @@ import { renderItem, renderMenuItem, renderParentMenuItem, isParentMenuitem } fr
  */
 class MenuBar extends React.Component {
 	static propTypes = {
-		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		items: MENU_ITEMS_PROPTYPE.isRequired,
+		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
-		renderItem: PropTypes.func,
-		renderMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
-		renderParentMenuItem: PropTypes.func, //eslint-disable-line react/no-unused-prop-types
 	};
 
 	static defaultProps = {
 		orientation: 'horizontal',
 		label: undefined,
 		labelId: undefined,
-		renderItem,
-		renderMenuItem,
-		renderParentMenuItem,
 	};
 
 	constructor(props) {
@@ -46,7 +39,6 @@ class MenuBar extends React.Component {
 		//- what if someone passes new props (e.g. change isDisabled for an item)?
 		//- are we updating state properly? deep copy/nested weirdness?
 		this.state = {
-			items: this.initializeItems(items),
 			tabbableIndex: 0,
 			expandedIndex: undefined,
 		};
@@ -56,112 +48,37 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { orientation, items } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index);
-		const item = items[index];
-		const { type } = item;
+		const level = Number.parseInt(target.dataset.level);
 
-		console.log(index, item, items);
+		console.log(index, level);
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-
-			this.setState({
-				expandedIndex: index,
-			}, () => {
-				this.itemRefs[index].current.focusLastChild();
-			});
-
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-
-			this.setState({
-				expandedIndex: index,
-			}, () => {
-				this.itemRefs[index].current.focusFirstChild();
-			});
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-			const newIndex = index === 0 ? items.length - 1 : index - 1;
-
-			this.setState({
-				tabbableIndex: newIndex,
-				expandedIndex: undefined, //TODO: wai aria implementation maintains this if previously expanded
-			}, () => {
-				this.itemRefs[newIndex].current.focus();
-			});
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			const newIndex = index === items.length - 1 ? 0 : index + 1;
-
-			this.setState({
-				tabbableIndex: newIndex,
-				expandedIndex: undefined, //TODO: wai aria implementation maintains this if previously expanded
-			}, () => {
-				this.itemRefs[newIndex].current.focus();
-			});
-
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
-			
-			if(type === 'parentmenuitem') {
-				this.setState({
-					expandedIndex: index,
-				}, () => {
-					this.itemRefs[index].current.focusFirstChild();
-				});
-			}
-			else {
-				//TODO: activate the item and close the (whole?) menu
-			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
-
-			if(type === 'parentmenuitem') {
-				this.setState({
-					expandedIndex: index,
-				}, () => {
-					this.itemRefs[index].current.focusFirstChild();
-				});
-			}
-			else if(role === 'menuitemcheckbox') {
-				//TODO: change state without closing the menu
-			}
-			else if(role === 'menuitemradio') {
-				//TODO: change state without closing the menu
-			}
-			else if(role === 'menuitem') {
-				//TODO: activate the item and close the (whole?) menu
-			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-
-			this.setState({
-				tabbableIndex: 0,
-				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this if previous item was expanded
-			}, () => {
-				this.itemRefs[0].current.focus();
-			});
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-
-			this.setState({
-				tabbableIndex: items.length - 1,
-				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this if previous item was expanded
-			}, () => {
-				this.itemRefs[items.length - 1].current.focus();
-			});
 		}
 		else if(key === 'Tab') {
-			//TODO
 		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
@@ -483,8 +400,8 @@ class MenuBar extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { orientation, label, labelId, renderItem, items } = this.props;
-		const itemNodes = items.map(this.renderItems);
+		const { items, orientation, label, labelId } = this.props;
+		const itemNodes = items.map(this.renderItem);
 
 		console.log(this.props, this.state);
 
@@ -500,7 +417,7 @@ class MenuBar extends React.Component {
 		);
 	}
 
-	renderItems = (item, index, items) => {
+	renderItem = (item, index, items) => {
 		const { tabbableIndex, expandedIndex } = this.state
 		const { type, node, children, isDisabled, orientation } = item;
 
@@ -509,11 +426,11 @@ class MenuBar extends React.Component {
 				<MenuItem
 					key={ index }
 					index={ index }
-					ref={ this.itemRefs[index] }
-					isDisabled={ isDisabled }
-					isTabbable={ index === tabbableIndex }
 					level={ 0 }
 					onKeyDown={ this.onChildKeyDown }
+					isDisabled={ isDisabled }
+					isTabbable={ index === tabbableIndex }
+					ref={ this.itemRefs[index] }
 				>
 					{ node }
 				</MenuItem>
@@ -523,15 +440,15 @@ class MenuBar extends React.Component {
 			return (
 				<ParentMenuItem
 					key={ index }
-					index={ index }
 					items={ children }
-					ref={ this.itemRefs[index] }
+					index={ index }
+					level={ 0 }
+					onKeyDown={ this.onChildKeyDown }
 					orientation={ orientation }
 					isDisabled={ isDisabled }
 					isExpanded={ index === expandedIndex }
 					isTabbable={ index === tabbableIndex }
-					level={ 0 }
-					onKeyDown={ this.onChildKeyDown }
+					ref={ this.itemRefs[index] }
 				>
 					{ node }
 				</ParentMenuItem>
