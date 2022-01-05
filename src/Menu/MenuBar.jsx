@@ -48,14 +48,24 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
+		const { items } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
-		const level = Number.parseInt(target.dataset.level, 10);
+		const item = items[index];
+		const { type } = item;
 
-		console.log(index, level);
+		console.log(index, item);
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
+
+			if(type === 'parentmenuitem') {
+				this.setState({
+					expandedIndex: index,
+				}, () => {
+					this.itemRefs[index].current.focusLastChild();
+				});
+			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();

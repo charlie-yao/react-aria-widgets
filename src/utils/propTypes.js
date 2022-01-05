@@ -67,7 +67,3 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 });
 
 export const MENU_ITEMS_PROPTYPE = PropTypes.arrayOf(MENU_ITEM_PROPTYPE);
-
-export const REF_PROPTYPE = PropTypes.shape({
-	current: PropTypes.object,
-});

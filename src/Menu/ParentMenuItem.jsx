@@ -464,6 +464,16 @@ class ParentMenuItem extends React.Component {
 			);
 		}
 	};
+
+	//---- Misc. ---
+	focusChild = (index) => {
+		this.childItemRefs[index].current.focus();
+	};
+
+	focusLastChild = () => {
+		const { items } = this.props;
+		this.focusChild(items.length - 1);
+	};
 }
 
 export default ParentMenuItem;
