@@ -76,20 +76,20 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-			const nextIndex = index === 0 ? items.length - 1 : index - 1;
-			const nextItem = items[nextIndex];
-			const { type: nextType } = nextItem;
+			const prevIndex = index === 0 ? items.length - 1 : index - 1;
+			const prevItem = items[prevIndex];
+			const { type: prevType } = prevItem;
 			
 			this.setState(prevState => {
 				const { expandedIndex } = prevState;
 				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
 
 				return {
-					tabbableIndex: nextIndex,
-					expandedIndex: isExpanded && nextType === 'parentmenuitem' ? nextIndex : undefined,
+					tabbableIndex: prevIndex,
+					expandedIndex: isExpanded && prevType === 'parentmenuitem' ? prevIndex : undefined,
 				};
 			}, () => {
-				this.itemRefs[nextIndex].current.focus();
+				this.itemRefs[prevIndex].current.focus();
 			});
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
@@ -268,13 +268,13 @@ class MenuBar extends React.Component {
 
 	focusPrevSibling = (index, autoExpand) => {
 		const { items } = this.props;
-		const newIndex = index === 0 ? items.length - 1 : index - 1;
+		const prevIndex = index === 0 ? items.length - 1 : index - 1;
 
 		this.setState({
-			tabbableIndex: newIndex,
-			expandedIndex: autoExpand ? newIndex : undefined,
+			tabbableIndex: prevIndex,
+			expandedIndex: autoExpand ? prevIndex : undefined,
 		}, () => {
-			this.itemRefs[newIndex].current.focus();
+			this.itemRefs[prevIndex].current.focus();
 		});
 	};
 	
@@ -283,15 +283,15 @@ class MenuBar extends React.Component {
 	focusNextSibling = () => {
 		const { items } = this.props;
 		const { expandedIndex } = this.state;
-		const newIndex = expandedIndex === items.length - 1 ? 0 : expandedIndex + 1;
+		const nextIndex = expandedIndex === items.length - 1 ? 0 : expandedIndex + 1;
 
-		console.log(expandedIndex, newIndex);
+		console.log(expandedIndex, nextIndex);
 
 		this.setState({
-			tabbableIndex: newIndex,
-			expandedIndex: newIndex,
+			tabbableIndex: nextIndex,
+			expandedIndex: nextIndex,
 		}, () => {
-			this.itemRefs[newIndex].current.focus();
+			this.itemRefs[nextIndex].current.focus();
 		});
 	};
 }
