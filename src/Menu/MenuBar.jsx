@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import MenuItem from 'src/Menu/MenuItem';
 import ParentMenuItem from 'src/Menu/ParentMenuItem';
 import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
+import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -265,6 +266,13 @@ class MenuBar extends React.Component {
 				>
 					{ node }
 				</MenuItemCheckbox>
+			);
+		}
+		else if(type === 'separator') {
+			return (
+				<MenuItemSeparator key={ index }>
+					{ node }
+				</MenuItemSeparator>
 			);
 		}
 	};

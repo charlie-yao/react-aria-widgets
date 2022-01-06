@@ -60,6 +60,9 @@ const MENU_ITEMS = [
 				type: 'menuitemcheckbox',
 				node: 'Checkbox 2',
 			},
+			{
+				type: 'separator',
+			},
 		],
 	},
 	{
