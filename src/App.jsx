@@ -52,6 +52,14 @@ const MENU_ITEMS = [
 				type: 'menuitem',
 				node: 'Hello world!',
 			},
+			{
+				type: 'menuitemcheckbox',
+				node: 'Checkbox 1',
+			},
+			{
+				type: 'menuitemcheckbox',
+				node: 'Checkbox 2',
+			},
 		],
 	},
 	{

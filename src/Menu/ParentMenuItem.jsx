@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import Menu from 'src/Menu/Menu';
 import MenuItem from 'src/Menu/MenuItem';
+import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
 
 //Misc.
 import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -218,7 +219,6 @@ class ParentMenuItem extends React.Component {
 					index={ index }
 					level={ level + 1 }
 					onKeyDown={ this.onChildKeyDown }
-					collapseParent={ this.collapseMenu }
 					isDisabled={ isDisabled }
 					ref={ this.childItemRefs[index] }
 				>
@@ -245,6 +245,20 @@ class ParentMenuItem extends React.Component {
 				>
 					{ node }
 				</ParentMenuItem>
+			);
+		}
+		else if(type === 'menuitemcheckbox') {
+			return (
+				<MenuItemCheckbox
+					key={ index }
+					index={ index }
+					level={ level + 1 }
+					onKeyDown={ this.onChildKeyDown }
+					isDisabled={ isDisabled }
+					ref={ this.childItemRefs[index] }
+				>
+					{ node }
+				</MenuItemCheckbox>
 			);
 		}
 	};
