@@ -77,10 +77,17 @@ class MenuBar extends React.Component {
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 			const nextIndex = index === 0 ? items.length - 1 : index - 1;
+			const nextItem = items[nextIndex];
+			const { type: nextType } = nextItem;
 			
-			this.setState({
-				tabbableIndex: nextIndex,
-				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this
+			this.setState(prevState => {
+				const { expandedIndex } = prevState;
+				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
+
+				return {
+					tabbableIndex: nextIndex,
+					expandedIndex: isExpanded && nextType === 'parentmenuitem' ? nextIndex : undefined,
+				};
 			}, () => {
 				this.itemRefs[nextIndex].current.focus();
 			});
@@ -88,10 +95,17 @@ class MenuBar extends React.Component {
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 			const nextIndex = index === items.length - 1 ? 0 : index + 1;
+			const nextItem = items[nextIndex];
+			const { type: nextType } = nextItem;
 
-			this.setState({
-				tabbableIndex: nextIndex,
-				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this
+			this.setState(prevState => {
+				const { expandedIndex } = prevState;
+				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
+
+				return {
+					tabbableIndex: nextIndex,
+					expandedIndex: isExpanded && nextType === 'parentmenuitem' ? nextIndex : undefined,
+				};
 			}, () => {
 				this.itemRefs[nextIndex].current.focus();
 			});
@@ -132,20 +146,36 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
+			const firstIndex = 0;
+			const firstItem = items[firstIndex];
+			const { type: firstType } = firstItem;
 
-			this.setState({
-				tabbableIndex: 0,
-				expandedIndex: undefined, //TODO: WAI-ARIA implementation maintains this
+			this.setState(prevState => {
+				const { expandedIndex } = prevState;
+				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
+
+				return {
+					tabbableIndex: firstIndex,
+					expandedIndex: isExpanded && firstType === 'parentmenuitem' ? firstIndex : undefined,
+				};
 			}, () => {
 				this.itemRefs[0].current.focus();
 			});
 		}
 		else if(key === 'End') {
 			event.preventDefault();
+			const lastIndex = items.length - 1;
+			const lastItem = items[lastIndex];
+			const { type: lastType } = lastItem;
 
-			this.setState({
-				tabbableIndex: items.length - 1,
-				expandedIndex: undefined, //TODO WAI-ARIA implementation maintains this
+			this.setState(prevState => {
+				const { expandedIndex } = prevState;
+				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
+
+				return {
+					tabbableIndex: items.length - 1,
+					expandedIndex: isExpanded && lastType === 'parentmenuitem' ? lastIndex : undefined,
+				};
 			}, () => {
 				this.itemRefs[items.length - 1].current.focus();
 			});
@@ -227,6 +257,7 @@ class MenuBar extends React.Component {
 	//---- Misc. ----
 	collapseMenu = (collapseAll, callback) => {
 		console.log('in menubar');
+
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
