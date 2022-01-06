@@ -60,7 +60,7 @@ export const MENU_ITEM_PROPTYPE = PropTypes.shape({
 	]).isRequired,
 	node: PropTypes.node.isRequired,
 	children: MENU_ITEMS_PROPTYPE, //Only relevant to "parentmenuitem"
-	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //Only relevant to parentmenuitem"
+	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //Only relevant to parentmenuitem" or "separator"
 	label: PropTypes.string, //Only relevant to "parentmenuitem"
 	labelId: PropTypes.string, //Only relevant to "parentmenuitem"
 	isDisabled: PropTypes.bool,

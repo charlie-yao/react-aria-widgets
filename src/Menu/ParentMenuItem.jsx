@@ -264,7 +264,7 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(type === 'separator') {
 			return (
-				<MenuItemSeparator key={ index }>
+				<MenuItemSeparator key={ index } orientation={ orientation }>
 					{ node }
 				</MenuItemSeparator>
 			);
