@@ -74,14 +74,6 @@ module.exports = {
 		camelcase: [
 			'error',
 		],
-		'capitalized-comments': [
-			'error',
-			'always',
-			{
-				ignoreInlineComments: true,
-				ignoreConsecutiveComments: true,
-			},
-		],
 		curly: [
 			'error',
 			'multi-or-nest',

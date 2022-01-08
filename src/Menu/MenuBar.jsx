@@ -81,7 +81,7 @@ class MenuBar extends React.Component {
 			const prevIndex = index === 0 ? items.length - 1 : index - 1;
 			const prevItem = items[prevIndex];
 			const { type: prevType } = prevItem;
-			
+
 			this.setState(prevState => {
 				const { expandedIndex } = prevState;
 				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
@@ -182,9 +182,9 @@ class MenuBar extends React.Component {
 				this.itemRefs[items.length - 1].current.focus();
 			});
 		}
-		else if(key === 'Tab') {
+		else if(key === 'Tab')
 			this.collapseMenu();
-		}
+
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
@@ -212,7 +212,7 @@ class MenuBar extends React.Component {
 	}
 
 	renderItem = (item, index) => {
-		const { tabbableIndex, expandedIndex } = this.state
+		const { tabbableIndex, expandedIndex } = this.state;
 		const { type, node, children, orientation, label, labelId, isDisabled } = item;
 
 		if(type === 'item') {
@@ -261,7 +261,7 @@ class MenuBar extends React.Component {
 					level={ 0 }
 					onKeyDown={ this.onChildKeyDown }
 					isDisabled={ isDisabled }
-					isTabbable={ isTabbable }
+					isTabbable={ index === tabbableIndex }
 					ref={ this.itemRefs[index] }
 				>
 					{ node }
@@ -300,7 +300,7 @@ class MenuBar extends React.Component {
 			this.itemRefs[prevIndex].current.focus();
 		});
 	};
-	
+
 	//TODO not very flexible, assuming the current index is
 	//what is currently expanded...
 	focusNextSibling = () => {

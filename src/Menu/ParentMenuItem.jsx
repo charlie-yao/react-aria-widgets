@@ -45,7 +45,7 @@ class ParentMenuItem extends React.Component {
 		this.state = {
 			expandedIndex: undefined,
 		};
-		
+
 		this.itemRef = React.createRef();
 		this.childItemRefs = items.map(() => React.createRef());
 	}
@@ -160,9 +160,9 @@ class ParentMenuItem extends React.Component {
 				this.focus();
 			});
 		}
-		else if(key === 'Tab') {
+		else if(key === 'Tab')
 			collapseParent(true);
-		}
+
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
@@ -273,7 +273,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Misc. ---
 	focus = () => {
-		this.itemRef.current.focus();	
+		this.itemRef.current.focus();
 	};
 
 	focusChild = (index) => {

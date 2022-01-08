@@ -28,15 +28,15 @@ function MenuItemRadioGroup(props) {
 	);
 }
 
-RadioGroup.propTypes = {
+MenuItemRadioGroup.propTypes = {
 	children: PropTypes.node.isRequired,
 	label: PropTypes.string,
 	labelId: PropTypes.string,
 };
 
-RadioGroup.defaultProps = {
+MenuItemRadioGroup.defaultProps = {
 	label: undefined,
 	labelId: undefined,
 };
 
-export default RadioGroup;
+export default MenuItemRadioGroup;
