@@ -19,7 +19,7 @@ import { MENUITEM_RADIO_PROPTYPE } from 'src/utils/propTypes';
  * https://www.w3.org/TR/wai-aria-1.1/#menuitemradio
  */
 function MenuItemRadioGroup(props) {
-	const { options, label, labelId } = props;
+	const { options, index, level, onKeyDown, label, labelId } = props;
 	const optionNodes = options.map((option, i) => {
 		//TODO: flags should come from react state?
 		const { node, isDisabled, isChecked } = option;
@@ -27,6 +27,9 @@ function MenuItemRadioGroup(props) {
 		return (
 			<MenuItemRadio
 				key={ i }
+				index={ index + i + 1 }
+				level={ level }
+				onKeyDown={ onKeyDown }
 			>
 				{ node }
 			</MenuItemRadio>
@@ -48,6 +51,8 @@ function MenuItemRadioGroup(props) {
 
 MenuItemRadioGroup.propTypes = {
 	options: PropTypes.arrayOf(MENUITEM_RADIO_PROPTYPE).isRequired,
+	index: PropTypes.number.isRequired,
+	level: PropTypes.number.isRequired,
 	label: PropTypes.string,
 	labelId: PropTypes.string,
 };

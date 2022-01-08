@@ -22,9 +22,9 @@ const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
 
 MenuItemRadio.propTypes = {
 	children: PropTypes.node.isRequired,
-//	index: PropTypes.number.isRequired,
-//	level: PropTypes.number.isRequired,
-//	onKeyDown: PropTypes.func.isRequired,
+	index: PropTypes.number.isRequired,
+	level: PropTypes.number.isRequired,
+	onKeyDown: PropTypes.func.isRequired,
 	isDisabled: PropTypes.bool,
 	isTabbable: PropTypes.bool,
 	isChecked: PropTypes.bool,

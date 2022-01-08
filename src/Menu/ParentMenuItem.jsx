@@ -275,6 +275,9 @@ class ParentMenuItem extends React.Component {
 				<MenuItemRadioGroup
 					key={ index }
 					options={ children }
+					index={ index }
+					onKeyDown={ this.onChildKeyDown }
+					level={ level + 1 }
 					label={ label }
 					labelId={ labelId }
 				/>
