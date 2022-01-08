@@ -8,12 +8,12 @@ import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
 import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 
 //Misc.
-import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
 class ParentMenuItem extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
-		items: MENU_ITEMS_PROPTYPE.isRequired,
+		items: MENUITEMS_PROPTYPE.isRequired,
 		index: PropTypes.number.isRequired,
 		level: PropTypes.number.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
@@ -93,7 +93,7 @@ class ParentMenuItem extends React.Component {
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
@@ -114,7 +114,7 @@ class ParentMenuItem extends React.Component {
 		else if(key === 'Enter') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
@@ -128,20 +128,20 @@ class ParentMenuItem extends React.Component {
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
 					this.childItemRefs[index].current.focusFirstChild();
 				});
 			}
-			else if(type === 'menuitemchecbox') {
+			else if(type === 'checbox') {
 				//TODO change state without closing the menu
 			}
-			else if(type === 'menuitemradio') {
+			else if(type === 'radiogroup') {
 				//TODO change state without closing the menu
 			}
-			else if(type === 'menuitem') {
+			else if(type === 'item') {
 				//TODO activate the item and close the whole menu
 			}
 		}
@@ -213,7 +213,7 @@ class ParentMenuItem extends React.Component {
 		const { node, type, children, orientation, label, labelId, isDisabled } = item;
 		const { expandedIndex } = this.state;
 
-		if(type === 'menuitem') {
+		if(type === 'item') {
 			return (
 				<MenuItem
 					key={ index }
@@ -227,7 +227,7 @@ class ParentMenuItem extends React.Component {
 				</MenuItem>
 			);
 		}
-		else if(type === 'parentmenuitem') {
+		else if(type === 'menu') {
 			return (
 				<ParentMenuItem
 					key={ index }
@@ -248,7 +248,7 @@ class ParentMenuItem extends React.Component {
 				</ParentMenuItem>
 			);
 		}
-		else if(type === 'menuitemcheckbox') {
+		else if(type === 'checkbox') {
 			return (
 				<MenuItemCheckbox
 					key={ index }

@@ -50,20 +50,58 @@ const validateHeaderLevelProp = createCustomPropType(_validateHeaderLevelProp);
 validateHeaderLevelProp.isRequired = createCustomPropType(_validateHeaderLevelProp, true);
 export { validateHeaderLevelProp };
 
-export const MENU_ITEM_PROPTYPE = PropTypes.shape({
-	type: PropTypes.oneOf([
-		'menuitem',
-		'parentmenuitem',
-		'menuitemcheckbox',
-		'menuitemradio',
-		'separator',
-	]).isRequired,
+export const MENUITEM_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'item' ]).isRequired,
 	node: PropTypes.node.isRequired,
-	children: MENU_ITEMS_PROPTYPE, //Only relevant to "parentmenuitem"
-	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //Only relevant to parentmenuitem" or "separator"
-	label: PropTypes.string, //Only relevant to "parentmenuitem"
-	labelId: PropTypes.string, //Only relevant to "parentmenuitem"
+	//onKeyDown: PropTypes.func.isRequired, //TODO "onActivate"? who "owns" the event?
 	isDisabled: PropTypes.bool,
 });
 
-export const MENU_ITEMS_PROPTYPE = PropTypes.arrayOf(MENU_ITEM_PROPTYPE);
+export const PARENT_MENUITEM_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'menu' ]).isRequired,
+	node: PropTypes.node.isRequired,
+	children: MENUITEMS_PROPTYPE,
+	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+	label: PropTypes.string,
+	labelId: PropTypes.string,
+	isDisabled: PropTypes.bool,
+});
+
+export const MENUITEM_CHECKBOX_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'checkbox' ]).isRequired,
+	node: PropTypes.node.isRequired,
+	//onKeyDown: PropTypes.func.isRequired, //TODO "onActivate"? who "owns" the event?
+	isDisabled: PropTypes.bool,
+	isChecked: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.oneOf([ 'true', 'false', 'mixed' ]),
+	]),
+});
+
+export const MENUITEM_RADIOGROUP_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'radiogroup' ]).isRequired,
+	children: PropTypes.arrayOf(PropTypes.shape({
+		node: PropTypes.node.isRequired,
+		//onKeyDown: PropTypes.func.isRequired, //TODO "onActivate"? who "owns" the event?
+		isDisabled: PropTypes.bool,
+		isChecked: PropTypes.bool,
+	})).isRequired,
+	label: PropTypes.string,
+	labelId: PropTypes.string,
+	//TODO default checked index?
+	//TODO function to automatically handle which radio is checked?
+});
+
+export const MENUITEM_SEPARATOR_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'separator' ]).isRequired,
+	node: PropTypes.node,
+	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+});
+
+export const MENUITEMS_PROPTYPE = PropTypes.arrayOf(PropTypes.oneOfType([
+	MENUITEM_PROPTYPE,
+	PARENT_MENUITEM_PROPTYPE,
+	MENUITEM_CHECKBOX_PROPTYPE,
+	MENUITEM_RADIOGROUP_PROPTYPE,
+	MENUITEM_SEPARATOR_PROPTYPE,
+]));

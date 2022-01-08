@@ -35,84 +35,98 @@ const DUMMY_ACCORDION_SECTIONS = [
 	},
 ];
 
-const MENU_ITEMS = [
+const MENUITEMS = [
 	{
-		type: 'parentmenuitem',
+		type: 'menu',
 		node: 'Parent Menuitem 1',
 		children: [
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'menuitemcheckbox',
+				type: 'checkbox',
 				node: 'Checkbox 1',
 			},
 			{
-				type: 'menuitemcheckbox',
+				type: 'checkbox',
 				node: 'Checkbox 2',
 			},
-			{
-				type: 'separator',
-			},
+//			{
+//				type: 'separator',
+//			},
+//			{
+//				type: 'radiogroup',
+//				children: [
+//					{
+//						node: 'Radio Option 1',
+//					},
+//					{
+//						node: 'Radio Option 2',
+//					},
+//					{
+//						node: 'Radio Option 3',
+//					},
+//				],
+//			},
 		],
 	},
 	{
-		type: 'parentmenuitem',
+		type: 'menu',
 		node: 'Parent Menuitem 2',
 		children: [
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'parentmenuitem',
+				type: 'menu',
 				node: 'Nested Parent Menuitem',
 				children: [
 					{
-						type: 'parentmenuitem',
+						type: 'menu',
 						node: 'Nested Parent Menuitem',
 						children: [
 							{
-								type: 'menuitem',
+								type: 'item',
 								node: 'Hello world!',
 							},
 							{
-								type: 'menuitem',
+								type: 'item',
 								node: 'Hello world!',
 							},
 						],
 					},
 					{
-						type: 'menuitem',
+						type: 'item',
 						node: 'Hello world!',
 					},
 					{
-						type: 'menuitem',
+						type: 'item',
 						node: 'Hello world!',
 					},
 					{
-						type: 'parentmenuitem',
+						type: 'menu',
 						node: 'Nested Parent Menuitem',
 						children: [
 							{
-								type: 'menuitem',
+								type: 'item',
 								node: 'Hello world!',
 							},
 							{
-								type: 'menuitem',
+								type: 'item',
 								node: 'Hello world!',
 							},
 						],
@@ -120,37 +134,37 @@ const MENU_ITEMS = [
 				],
 			},
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 		],
 	},
 	{
-		type: 'menuitem',
+		type: 'item',
 		node: 'Hello world!',
 	},
 	{
-		type: 'parentmenuitem',
+		type: 'menu',
 		node: 'Parent Menuitem 3',
 		children: [
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'menuitem',
+				type: 'item',
 				node: 'Hello world!',
 			},
 			{
-				type: 'parentmenuitem',
+				type: 'menu',
 				node: 'Nested Parent Menuitem',
 				children: [
 					{
-						type: 'menuitem',
+						type: 'item',
 						node: 'Hello world!',
 					},
 					{
-						type: 'menuitem',
+						type: 'item',
 						node: 'Hello world!',
 					},
 				],
@@ -168,7 +182,7 @@ function App() {
 			<MenuButton>
 				Menu Button
 			</MenuButton>
-			<MenuBar label="Placeholder" items={ MENU_ITEMS } />
+			<MenuBar label="Placeholder" items={ MENUITEMS } />
 		</main>
 	);
 }

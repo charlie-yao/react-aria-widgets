@@ -8,7 +8,7 @@ import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
 import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 
 //Misc.
-import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
 /*
  * Note:
@@ -19,7 +19,7 @@ import { MENU_ITEMS_PROPTYPE } from 'src/utils/propTypes';
  */
 class MenuBar extends React.Component {
 	static propTypes = {
-		items: MENU_ITEMS_PROPTYPE.isRequired,
+		items: MENUITEMS_PROPTYPE.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
@@ -57,7 +57,7 @@ class MenuBar extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
@@ -68,7 +68,7 @@ class MenuBar extends React.Component {
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
@@ -88,7 +88,7 @@ class MenuBar extends React.Component {
 
 				return {
 					tabbableIndex: prevIndex,
-					expandedIndex: isExpanded && prevType === 'parentmenuitem' ? prevIndex : undefined,
+					expandedIndex: isExpanded && prevType === 'menu' ? prevIndex : undefined,
 				};
 			}, () => {
 				this.itemRefs[prevIndex].current.focus();
@@ -106,7 +106,7 @@ class MenuBar extends React.Component {
 
 				return {
 					tabbableIndex: nextIndex,
-					expandedIndex: isExpanded && nextType === 'parentmenuitem' ? nextIndex : undefined,
+					expandedIndex: isExpanded && nextType === 'menu' ? nextIndex : undefined,
 				};
 			}, () => {
 				this.itemRefs[nextIndex].current.focus();
@@ -115,7 +115,7 @@ class MenuBar extends React.Component {
 		else if(key === 'Enter') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
@@ -129,20 +129,20 @@ class MenuBar extends React.Component {
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
 
-			if(type === 'parentmenuitem') {
+			if(type === 'menu') {
 				this.setState({
 					expandedIndex: index,
 				}, () => {
 					this.itemRefs[index].current.focusFirstChild();
 				});
 			}
-			else if(type === 'menuitemcheckbox') {
+			else if(type === 'checkbox') {
 				//TODO change state without closing the menu
 			}
-			else if(type === 'menuitemradio') {
+			else if(type === 'radiogroup') {
 				//TODO change state without closing the menu
 			}
-			else if(type === 'menuitem') {
+			else if(type === 'item') {
 				//TODO activate the item and close the (whole?) menu
 			}
 		}
@@ -158,7 +158,7 @@ class MenuBar extends React.Component {
 
 				return {
 					tabbableIndex: firstIndex,
-					expandedIndex: isExpanded && firstType === 'parentmenuitem' ? firstIndex : undefined,
+					expandedIndex: isExpanded && firstType === 'menu' ? firstIndex : undefined,
 				};
 			}, () => {
 				this.itemRefs[0].current.focus();
@@ -176,7 +176,7 @@ class MenuBar extends React.Component {
 
 				return {
 					tabbableIndex: items.length - 1,
-					expandedIndex: isExpanded && lastType === 'parentmenuitem' ? lastIndex : undefined,
+					expandedIndex: isExpanded && lastType === 'menu' ? lastIndex : undefined,
 				};
 			}, () => {
 				this.itemRefs[items.length - 1].current.focus();
@@ -215,7 +215,7 @@ class MenuBar extends React.Component {
 		const { tabbableIndex, expandedIndex } = this.state
 		const { type, node, children, orientation, label, labelId, isDisabled } = item;
 
-		if(type === 'menuitem') {
+		if(type === 'item') {
 			return (
 				<MenuItem
 					key={ index }
@@ -230,7 +230,7 @@ class MenuBar extends React.Component {
 				</MenuItem>
 			);
 		}
-		else if(type === 'parentmenuitem') {
+		else if(type === 'menu') {
 			return (
 				<ParentMenuItem
 					key={ index }
@@ -253,7 +253,7 @@ class MenuBar extends React.Component {
 				</ParentMenuItem>
 			);
 		}
-		else if(type === 'menuitemcheckbox') {
+		else if(type === 'checkbox') {
 			return (
 				<MenuItemCheckbox
 					key={ index }

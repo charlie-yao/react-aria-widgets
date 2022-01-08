@@ -30,7 +30,7 @@ MenuItemCheckbox.propTypes = {
 	isChecked: PropTypes.oneOfType([
 		PropTypes.bool,
 		PropTypes.oneOf([ 'true', 'false', 'mixed' ]),
-	]).isRequired,
+	]),
 };
 
 MenuItemCheckbox.defaultProps = {
