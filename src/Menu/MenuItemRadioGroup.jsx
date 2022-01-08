@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import MenuItemRadio from 'src/Menu/MenuItemRadio';
+
+//Misc.
+import { MENUITEM_RADIO_PROPTYPE } from 'src/utils/propTypes';
+
 /*
  * Note that if a menu or menubar contains more than one group of
  * menuitemradio elements or if the menu has a group of menuitemradio
@@ -13,7 +19,19 @@ import PropTypes from 'prop-types';
  * https://www.w3.org/TR/wai-aria-1.1/#menuitemradio
  */
 function MenuItemRadioGroup(props) {
-	const { children, label, labelId } = props;
+	const { options, label, labelId } = props;
+	const optionNodes = options.map((option, i) => {
+		//TODO: flags should come from react state?
+		const { node, isDisabled, isChecked } = option;
+
+		return (
+			<MenuItemRadio
+				key={ i }
+			>
+				{ node }
+			</MenuItemRadio>
+		);
+	});
 
 	return (
 		<li>
@@ -22,14 +40,14 @@ function MenuItemRadioGroup(props) {
 				aria-label={ label }
 				aria-labelledby={ labelId }
 			>
-				{ children }
+				{ optionNodes }
 			</ul>
 		</li>
 	);
 }
 
 MenuItemRadioGroup.propTypes = {
-	children: PropTypes.node.isRequired,
+	options: PropTypes.arrayOf(MENUITEM_RADIO_PROPTYPE).isRequired,
 	label: PropTypes.string,
 	labelId: PropTypes.string,
 };

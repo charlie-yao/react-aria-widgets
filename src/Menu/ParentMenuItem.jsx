@@ -6,6 +6,7 @@ import Menu from 'src/Menu/Menu';
 import MenuItem from 'src/Menu/MenuItem';
 import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
 import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
+import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -267,6 +268,16 @@ class ParentMenuItem extends React.Component {
 				<MenuItemSeparator key={ index } orientation={ orientation }>
 					{ node }
 				</MenuItemSeparator>
+			);
+		}
+		else if(type === 'radiogroup') {
+			return (
+				<MenuItemRadioGroup
+					key={ index }
+					options={ children }
+					label={ label }
+					labelId={ labelId }
+				/>
 			);
 		}
 	};
