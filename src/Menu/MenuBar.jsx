@@ -7,6 +7,7 @@ import ParentMenuItem from 'src/Menu/ParentMenuItem';
 import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
 import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
+import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -47,8 +48,11 @@ class MenuBar extends React.Component {
 		items.forEach(item => {
 			const { type, children } = item;
 
-			if(type === 'radiogroup')
-				this.itemRefs.push(children.map(() => React.createRef()));
+			if(type === 'radiogroup') {
+				children.forEach(() => {
+					this.itemRefs.push(React.createRef());
+				});
+			}
 			else
 				this.itemRefs.push(React.createRef());
 		});
@@ -63,7 +67,8 @@ class MenuBar extends React.Component {
 		const { type } = item;
 
 		console.log(index, item);
-
+		
+		//TODO separators shouldn't be focusable
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
@@ -204,8 +209,7 @@ class MenuBar extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { items, orientation, label, labelId } = this.props;
-		const itemNodes = items.map(this.renderItem);
+		const { orientation, label, labelId } = this.props;
 
 		console.log(this.props, this.state, this.itemRefs);
 
@@ -216,93 +220,133 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				{ itemNodes }
+				{ this.renderItems() }
 			</ul>
 		);
 	}
 
-	renderItem = (item, index) => {
+	renderItems = () => {
+		const { items } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
-		const { type, node, children, orientation, label, labelId, isDisabled } = item;
+		const itemNodes = [];
+		let refIndex = 0;
 
-		if(type === 'item') {
-			return (
-				<MenuItem
-					key={ index }
-					index={ index }
-					level={ 0 }
-					onKeyDown={ this.onChildKeyDown }
-					isDisabled={ isDisabled }
-					isTabbable={ index === tabbableIndex }
-					ref={ this.itemRefs[index] }
-				>
-					{ node }
-				</MenuItem>
-			);
-		}
-		else if(type === 'menu') {
-			return (
-				<ParentMenuItem
-					key={ index }
-					items={ children }
-					index={ index }
-					level={ 0 }
-					onKeyDown={ this.onChildKeyDown }
-					collapseParent={ this.collapseMenu }
-					focusPrevSibling={ this.focusPrevSibling }
-					focusNextMenubarItem={ this.focusNextSibling }
-					orientation={ orientation }
-					label={ label }
-					labelId={ labelId }
-					isDisabled={ isDisabled }
-					isExpanded={ index === expandedIndex }
-					isTabbable={ index === tabbableIndex }
-					ref={ this.itemRefs[index] }
-				>
-					{ node }
-				</ParentMenuItem>
-			);
-		}
-		else if(type === 'checkbox') {
-			return (
-				<MenuItemCheckbox
-					key={ index }
-					index={ index }
-					level={ 0 }
-					onKeyDown={ this.onChildKeyDown }
-					isDisabled={ isDisabled }
-					isTabbable={ index === tabbableIndex }
-					ref={ this.itemRefs[index] }
-				>
-					{ node }
-				</MenuItemCheckbox>
-			);
-		}
-		else if(type === 'separator') {
-			return (
-				<MenuItemSeparator
-					key={ index }
-					index={ index }
-					level={ 0 }
-					orientation={ orientation }
-					ref={ this.itemRefs[index] }
-				>
-					{ node }
-				</MenuItemSeparator>
-			);
-		}
-		else if(type === 'radiogroup') {
-			return (
-				<MenuItemRadioGroup
-					key={ index }
-					index={ index }
-					level={ 0 }
-					options={ children }
-					label={ label }
-					labelId={ labelId }
-				/>
-			);
-		}
+		items.forEach((item, i) => {
+			const { type, node, children, orientation, label, labelId, isDisabled } = item;
+			
+			if(type === 'item') {
+				itemNodes.push(
+					<MenuItem
+						key={ i }
+						index={ refIndex }
+						level={ 0 }
+						onKeyDown={ this.onChildKeyDown }
+						isDisabled={ isDisabled }
+						isTabbable={ refIndex === tabbableIndex }
+						ref={ this.itemRefs[refIndex] }
+					>
+						{ node }
+					</MenuItem>
+				);
+
+				refIndex++;
+			}
+			else if(type === 'menu') {
+				itemNodes.push(
+					<ParentMenuItem
+						key={ i }
+						items={ children }
+						index={ refIndex }
+						level={ 0 }
+						onKeyDown={ this.onChildKeyDown }
+						collapseParent={ this.collapseMenu }
+						focusPrevSibling={ this.focusPrevSibling }
+						focusNextMenubarItem={ this.focusNextSibling }
+						orientation={ orientation }
+						label={ label }
+						labelId={ labelId }
+						isDisabled={ isDisabled }
+						isExpanded={ refIndex === expandedIndex }
+						isTabbable={ refIndex === tabbableIndex }
+						ref={ this.itemRefs[refIndex] }
+					>
+						{ node }
+					</ParentMenuItem>
+				);
+
+				refIndex++;
+			}
+			else if(type === 'checkbox') {
+				//TODO isChecked?
+				itemNodes.push(
+					<MenuItemCheckbox
+						key={ i }
+						index={ refIndex }
+						level={ 0 }
+						onKeyDown={ this.onChildKeyDown }
+						isDisabled={ isDisabled }
+						isTabbable={ refIndex === tabbableIndex }
+						ref={ this.itemRefs[index] }
+					>
+						{ node }
+					</MenuItemCheckbox>
+				);
+
+				refIndex++;
+			}
+			else if(type === 'separator') {
+				itemNodes.push(
+					<MenuItemSeparator
+						key={ i }
+						index={ refIndex }
+						level={ 0 }
+						onKeyDown={ this.onChildKeyDown }
+						orientation={ orientation }
+						ref={ this.itemRefs[refIndex] }
+					>
+						{ node }
+					</MenuItemSeparator>
+				);
+
+				refIndex++;
+			}
+			else if(type === 'radiogroup') {
+				const radioNodes = [];
+
+				children.forEach((radioItem, j) => {
+					const { node, isDisabled } = radioItem;
+					
+					//TODO isChecked?
+					radioNodes.push(
+						<MenuItemRadio
+							key={ j }
+							index={ refIndex }
+							level={ 0 }
+							onKeyDown={ this.onChildKeyDown }
+							isDisabled={ isDisabled }
+							isTabbable={ refIndex === tabbableIndex }
+							ref={ this.itemRefs[refIndex] }
+						>
+							{ node }
+						</MenuItemRadio>
+					);
+
+					refIndex++;
+				});
+
+				itemNodes.push(
+					<MenuItemRadioGroup
+						key={ i }
+						label={ label }
+						labelId={ labelId }
+					>
+						{ radioNodes }
+					</MenuItemRadioGroup>
+				);
+			}
+		});
+
+		return itemNodes;
 	};
 
 	//---- Misc. ----
