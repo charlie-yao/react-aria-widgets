@@ -16,19 +16,29 @@ import PropTypes from 'prop-types';
  *
  * See:
  * https://www.w3.org/TR/wai-aria-practices-1.1/#menu
+ *
+ * TODO: is it necessary to attach a ref to these?
  */
-function MenuItemSeparator(props) {
-	const { children, orientation } = props;
+const MenuItemSeparator = React.forwardRef(function MenuItemSeparator(props, ref) {
+	const { children, index, level, orientation } = props;
 
 	return (
-		<li role="separator" aria-orientation={ orientation }>
+		<li	
+			role="separator"
+			data-index={ index }
+			data-level={ level }
+			aria-orientation={ orientation }
+			ref={ ref }
+		>
 			{ children }
 		</li>
 	);
-}
+});
 
 MenuItemSeparator.propTypes = {
 	children: PropTypes.node,
+	index: PropTypes.number.isRequired, //TODO is this necessary?
+	level: PropTypes.number.isRequired, //TODO is this necessary?
 	orientation: PropTypes.oneOf([ 'horizontal', 'vertical' ]),
 };
 

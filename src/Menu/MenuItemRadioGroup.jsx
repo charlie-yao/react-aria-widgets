@@ -17,6 +17,20 @@ import { MENUITEM_RADIO_PROPTYPE } from 'src/utils/propTypes';
  *
  * See:
  * https://www.w3.org/TR/wai-aria-1.1/#menuitemradio
+ *
+ * TODO: how should this component accept refs? as it currently stands,
+ * the renderItem functions that map items to components can't just
+ * blindly accept something from this.itemRefs or this.childItemRefs
+ * - items that follow a radio group will need to know the existence of
+ * preceding radio groups and the number of elements they possess
+ * because radio refs are currently given their own array of refs
+ * so they can be all passed into a radio group at once.
+ *
+ * if the radio refs were "flattened", then we can't just use an Array.map
+ * to render out items because there isn't a one-to-one relation
+ * between elements in the items array and components - radiogroups
+ * can possess one or more radio options, and radiogroups are currently
+ * considered a single "item" in the items array
  */
 function MenuItemRadioGroup(props) {
 	const { options, index, level, onKeyDown, label, labelId } = props;
@@ -27,7 +41,7 @@ function MenuItemRadioGroup(props) {
 		return (
 			<MenuItemRadio
 				key={ i }
-				index={ index + i + 1 }
+				index={ index + i }
 				level={ level }
 				onKeyDown={ onKeyDown }
 			>

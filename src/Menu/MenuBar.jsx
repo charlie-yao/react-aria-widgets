@@ -42,7 +42,16 @@ class MenuBar extends React.Component {
 			expandedIndex: undefined,
 		};
 
-		this.itemRefs = items.map(() => React.createRef());
+		this.itemRefs = [];
+
+		items.forEach(item => {
+			const { type, children } = item;
+
+			if(type === 'radiogroup')
+				this.itemRefs.push(children.map(() => React.createRef()));
+			else
+				this.itemRefs.push(React.createRef());
+		});
 	}
 
 	//---- Events ----
@@ -198,7 +207,7 @@ class MenuBar extends React.Component {
 		const { items, orientation, label, labelId } = this.props;
 		const itemNodes = items.map(this.renderItem);
 
-		console.log(this.props, this.state);
+		console.log(this.props, this.state, this.itemRefs);
 
 		return (
 			<ul
@@ -271,7 +280,13 @@ class MenuBar extends React.Component {
 		}
 		else if(type === 'separator') {
 			return (
-				<MenuItemSeparator key={ index } orientation={ orientation }>
+				<MenuItemSeparator
+					key={ index }
+					index={ index }
+					level={ 0 }
+					orientation={ orientation }
+					ref={ this.itemRefs[index] }
+				>
 					{ node }
 				</MenuItemSeparator>
 			);
@@ -280,6 +295,8 @@ class MenuBar extends React.Component {
 			return (
 				<MenuItemRadioGroup
 					key={ index }
+					index={ index }
+					level={ 0 }
 					options={ children }
 					label={ label }
 					labelId={ labelId }

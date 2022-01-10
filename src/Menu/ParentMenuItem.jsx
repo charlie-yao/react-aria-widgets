@@ -48,7 +48,16 @@ class ParentMenuItem extends React.Component {
 		};
 
 		this.itemRef = React.createRef();
-		this.childItemRefs = items.map(() => React.createRef());
+		this.childItemRefs = [];
+
+		items.forEach(item => {
+			const { type, children } = item;
+
+			if(type === 'radiogroup')
+				this.childItemRefs.push(children.map(() => React.createRef()));
+			else
+				this.childItemRefs.push(React.createRef());
+		});
 	}
 
 	//---- Events ----
@@ -180,7 +189,7 @@ class ParentMenuItem extends React.Component {
 		} = this.props;
 		const itemNodes = items.map(this.renderItem);
 
-		console.log(this.props, this.state);
+		console.log(this.props, this.state, this.itemRef, this.childItemRefs);
 
 		return (
 			<li role="none">
@@ -265,7 +274,13 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(type === 'separator') {
 			return (
-				<MenuItemSeparator key={ index } orientation={ orientation }>
+				<MenuItemSeparator
+					key={ index }
+					index={ index }
+					level={ level + 1 }
+					orientation={ orientation }
+					ref={ this.childItemRefs[index] }
+				>
 					{ node }
 				</MenuItemSeparator>
 			);
@@ -276,8 +291,8 @@ class ParentMenuItem extends React.Component {
 					key={ index }
 					options={ children }
 					index={ index }
-					onKeyDown={ this.onChildKeyDown }
 					level={ level + 1 }
+					onKeyDown={ this.onChildKeyDown }
 					label={ label }
 					labelId={ labelId }
 				/>
