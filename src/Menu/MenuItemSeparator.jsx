@@ -20,12 +20,13 @@ import PropTypes from 'prop-types';
  * TODO: is it necessary to attach a ref to these?
  */
 const MenuItemSeparator = React.forwardRef(function MenuItemSeparator(props, ref) {
-	const { children, index, level, orientation } = props;
+	const { children, index, refIndex, level, orientation } = props;
 
 	return (
 		<li	
 			role="separator"
 			data-index={ index }
+			data-refindex={ refIndex }
 			data-level={ level }
 			aria-orientation={ orientation }
 			ref={ ref }
@@ -38,6 +39,7 @@ const MenuItemSeparator = React.forwardRef(function MenuItemSeparator(props, ref
 MenuItemSeparator.propTypes = {
 	children: PropTypes.node,
 	index: PropTypes.number.isRequired, //TODO is this necessary?
+	refIndex: PropTypes.number.isRequired, //TODO is this necessary?
 	level: PropTypes.number.isRequired, //TODO is this necessary?
 	orientation: PropTypes.oneOf([ 'horizontal', 'vertical' ]),
 };

@@ -17,6 +17,7 @@ class ParentMenuItem extends React.Component {
 		children: PropTypes.node.isRequired,
 		items: MENUITEMS_PROPTYPE.isRequired,
 		index: PropTypes.number.isRequired,
+		refIndex: PropTypes.number.isRequired,
 		level: PropTypes.number.isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		collapseParent: PropTypes.func.isRequired,
@@ -73,7 +74,7 @@ class ParentMenuItem extends React.Component {
 		const item = items[index];
 		const { type } = item;
 
-		console.log(index, level);
+		console.log(index, level, target.dataset);
 		
 		//TODO separators shouldn't be focusable
 		if(key === 'ArrowUp' || key === 'Up') {
@@ -188,7 +189,7 @@ class ParentMenuItem extends React.Component {
 	//---- Rendering ----
 	render() {
 		const {
-			children, index, level, onKeyDown,
+			children, index, refIndex, level, onKeyDown,
 			orientation, label, labelId,
 			isExpanded, isDisabled, isTabbable,
 		} = this.props;
@@ -202,6 +203,7 @@ class ParentMenuItem extends React.Component {
 					role="menuitem"
 					aria-haspopup="menu"
 					data-index={ index }
+					data-refindex={ refIndex }
 					data-level={ level }
 					onKeyDown={ onKeyDown }
 					aria-expanded={ isExpanded }
@@ -235,7 +237,8 @@ class ParentMenuItem extends React.Component {
 				itemNodes.push(
 					<MenuItem
 						key={ i }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ level + 1 }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
@@ -252,7 +255,8 @@ class ParentMenuItem extends React.Component {
 					<ParentMenuItem
 						key={ i }
 						items={ children }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ level + 1 }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
@@ -275,7 +279,8 @@ class ParentMenuItem extends React.Component {
 				itemNodes.push(
 					<MenuItemCheckbox
 						key={ i }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ level + 1 }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
@@ -291,7 +296,8 @@ class ParentMenuItem extends React.Component {
 				itemNodes.push(
 					<MenuItemSeparator
 						key={ i }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ level + 1 }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
@@ -313,7 +319,9 @@ class ParentMenuItem extends React.Component {
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }
-							index={ refIndex }
+							index={ i }
+							refIndex={ refIndex }
+							subIndex={ j }
 							level={ level + 1 }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
@@ -325,8 +333,6 @@ class ParentMenuItem extends React.Component {
 
 					refIndex++;
 				});
-
-				console.log(radioNodes, children);
 
 				itemNodes.push(
 					<MenuItemRadioGroup
@@ -342,7 +348,6 @@ class ParentMenuItem extends React.Component {
 
 		return itemNodes;
 	};
-
 
 	//---- Misc. ---
 	focus = () => {

@@ -77,6 +77,46 @@ const MENUITEMS = [
 					},
 				],
 			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 1',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 2',
+			},
 		],
 	},
 	{

@@ -66,7 +66,7 @@ class MenuBar extends React.Component {
 		const item = items[index];
 		const { type } = item;
 
-		console.log(index, item);
+		console.log(index, item, target.dataset);
 		
 		//TODO separators shouldn't be focusable
 		if(key === 'ArrowUp' || key === 'Up') {
@@ -238,7 +238,8 @@ class MenuBar extends React.Component {
 				itemNodes.push(
 					<MenuItem
 						key={ i }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ 0 }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
@@ -256,7 +257,8 @@ class MenuBar extends React.Component {
 					<ParentMenuItem
 						key={ i }
 						items={ children }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ 0 }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
@@ -281,7 +283,8 @@ class MenuBar extends React.Component {
 				itemNodes.push(
 					<MenuItemCheckbox
 						key={ i }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ 0 }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
@@ -298,7 +301,8 @@ class MenuBar extends React.Component {
 				itemNodes.push(
 					<MenuItemSeparator
 						key={ i }
-						index={ refIndex }
+						index={ i }
+						refIndex={ refIndex }
 						level={ 0 }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
@@ -320,7 +324,9 @@ class MenuBar extends React.Component {
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }
-							index={ refIndex }
+							index={ i }
+							refIndex={ refIndex }
+							subIndex={ j }
 							level={ 0 }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
