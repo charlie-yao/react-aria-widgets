@@ -11,6 +11,7 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { isSeparatorRef } from 'src/Menu/utils';
 
 class ParentMenuItem extends React.Component {
 	static propTypes = {
@@ -361,7 +362,7 @@ class ParentMenuItem extends React.Component {
 		let prevIndex = refIndex === 0 ? this.childItemRefs.length - 1 : refIndex - 1;
 		let prevRef = this.childItemRefs[prevIndex];
 		
-		while(this.isSeparatorRef(prevRef) && prevIndex !== refIndex) {
+		while(isSeparatorRef(prevRef) && prevIndex !== refIndex) {
 			prevIndex = prevIndex === 0 ? this.childItemRefs.length - 1 : prevIndex - 1;
 			prevRef = this.childItemRefs[prevIndex];
 		};
@@ -373,7 +374,7 @@ class ParentMenuItem extends React.Component {
 		let nextIndex = refIndex === this.childItemRefs.length - 1 ? 0 : refIndex + 1;
 		let nextRef = this.childItemRefs[nextIndex];
 
-		while(this.isSeparatorRef(nextRef) && nextIndex !== refIndex) {
+		while(isSeparatorRef(nextRef) && nextIndex !== refIndex) {
 			nextIndex = nextIndex === this.childItemRefs.length - 1 ? 0 : nextIndex + 1;
 			nextRef = this.childItemRefs[nextIndex];
 		}
@@ -403,11 +404,6 @@ class ParentMenuItem extends React.Component {
 			else if(typeof callback === 'function')
 				callback();
 		});
-	};
-
-	isSeparatorRef = (ref) => {
-		const { current } = ref;
-		return current instanceof HTMLElement && current.getAttribute('role') === 'separator';
 	};
 }
 

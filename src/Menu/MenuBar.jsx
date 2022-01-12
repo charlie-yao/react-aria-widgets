@@ -11,6 +11,7 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { isSeparatorRef } from 'src/Menu/utils';
 
 /*
  * Note:
@@ -94,39 +95,11 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-			const prevIndex = index === 0 ? items.length - 1 : index - 1;
-			const prevItem = items[prevIndex];
-			const { type: prevType } = prevItem;
-
-			this.setState(prevState => {
-				const { expandedIndex } = prevState;
-				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
-
-				return {
-					tabbableIndex: prevIndex,
-					expandedIndex: isExpanded && prevType === 'menu' ? prevIndex : undefined,
-				};
-			}, () => {
-				this.itemRefs[prevIndex].current.focus();
-			});
+			this.focusPrevChild(refIndex);
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			const nextIndex = index === items.length - 1 ? 0 : index + 1;
-			const nextItem = items[nextIndex];
-			const { type: nextType } = nextItem;
-
-			this.setState(prevState => {
-				const { expandedIndex } = prevState;
-				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
-
-				return {
-					tabbableIndex: nextIndex,
-					expandedIndex: isExpanded && nextType === 'menu' ? nextIndex : undefined,
-				};
-			}, () => {
-				this.itemRefs[nextIndex].current.focus();
-			});
+			this.focusNextChild(refIndex);
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
@@ -365,6 +338,54 @@ class MenuBar extends React.Component {
 		}, () => {
 			if(typeof callback === 'function')
 				callback();
+		});
+	};
+
+	focusPrevChild = (refIndex) => {
+		let prevIndex = refIndex === 0 ? this.itemRefs.length - 1 : refIndex - 1;
+		let prevRef = this.itemRefs[prevIndex];
+		
+		//TODO test edge cases, e.g. single-element separator and single-element non-separator?
+		while(isSeparatorRef(prevRef) && prevIndex !== refIndex) {
+			prevIndex = prevIndex === 0 ? this.itemRefs.length - 1 : prevIndex - 1;
+			prevRef = this.itemRefs[prevIndex];
+		}
+
+		this.setState(state => {
+			const { expandedIndex } = state;
+			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
+			
+			//TODO would be nice if there was a better way to map ref indices to item indices
+			//and vice-versa, checking instanceof ParentMenuItem almost feels sort of abusive
+			//wrt using refs
+			return {
+				tabbableIndex: prevIndex,
+				expandedIndex: prevRef.current instanceof ParentMenuItem && wasExpanded ? prevIndex : undefined,
+			};
+		}, () => {
+			prevRef.current.focus();
+		});
+	};
+	
+	focusNextChild = (refIndex) => {
+		let nextIndex = refIndex === this.itemRefs.length - 1 ? 0 : refIndex + 1;
+		let nextRef = this.itemRefs[nextIndex];
+
+		while(isSeparatorRef(nextRef) && nextIndex !== refIndex) {
+			nextIndex = nextIndex === this.itemRefs.length - 1 ? 0 : nextIndex + 1;
+			nextRef = this.itemRefs[nextIndex];
+		}
+
+		this.setState(state => {
+			const { expandedIndex } = state;
+			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
+
+			return {
+				tabbableIndex: nextIndex,
+				expandedIndex: nextRef.current instanceof ParentMenuItem && wasExpanded ? nextIndex : undefined,
+			};
+		}, () => {
+			nextRef.current.focus();
 		});
 	};
 
