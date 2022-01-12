@@ -63,10 +63,11 @@ class MenuBar extends React.Component {
 		const { items } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
+		const refIndex = Number.parseInt(target.dataset.refindex, 10);
 		const item = items[index];
 		const { type } = item;
 
-		console.log(index, item, target.dataset);
+		console.log(index, refIndex, item);
 		
 		//TODO separators shouldn't be focusable
 		if(key === 'ArrowUp' || key === 'Up') {

@@ -70,22 +70,21 @@ class ParentMenuItem extends React.Component {
 		const { items, collapseParent, focusPrevSibling, focusNextMenubarItem } = this.props;
 		const { key, target } = event;
 		const index = Number.parseInt(target.dataset.index, 10);
+		const refIndex = Number.parseInt(target.dataset.refindex, 10);
 		const level = Number.parseInt(target.dataset.level, 10);
 		const item = items[index];
 		const { type } = item;
 
-		console.log(index, level, target.dataset);
+		console.log(index, refIndex, level, item);
 		
 		//TODO separators shouldn't be focusable
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-			const newIndex = index === 0 ? items.length - 1 : index - 1;
-			this.focusChild(newIndex);
+			this.focusPrevChild(refIndex);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-			const newIndex = index === items.length - 1 ? 0 : index + 1;
-			this.focusChild(newIndex);
+			this.focusNextChild(refIndex);
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
@@ -358,6 +357,30 @@ class ParentMenuItem extends React.Component {
 		this.childItemRefs[index].current.focus();
 	};
 
+	focusPrevChild = (refIndex) => {
+		let prevIndex = refIndex === 0 ? this.childItemRefs.length - 1 : refIndex - 1;
+		let prevRef = this.childItemRefs[prevIndex];
+		
+		while(this.isSeparatorRef(prevRef) && prevIndex !== refIndex) {
+			prevIndex = prevIndex === 0 ? this.childItemRefs.length - 1 : prevIndex - 1;
+			prevRef = this.childItemRefs[prevIndex];
+		};
+
+		prevRef.current.focus();
+	};
+
+	focusNextChild = (refIndex) => {
+		let nextIndex = refIndex === this.childItemRefs.length - 1 ? 0 : refIndex + 1;
+		let nextRef = this.childItemRefs[nextIndex];
+
+		while(this.isSeparatorRef(nextRef) && nextIndex !== refIndex) {
+			nextIndex = nextIndex === this.childItemRefs.length - 1 ? 0 : nextIndex + 1;
+			nextRef = this.childItemRefs[nextIndex];
+		}
+
+		nextRef.current.focus();
+	};
+
 	focusFirstChild = () => {
 		this.focusChild(0);
 	};
@@ -380,6 +403,11 @@ class ParentMenuItem extends React.Component {
 			else if(typeof callback === 'function')
 				callback();
 		});
+	};
+
+	isSeparatorRef = (ref) => {
+		const { current } = ref;
+		return current instanceof HTMLElement && current.getAttribute('role') === 'separator';
 	};
 }
 
