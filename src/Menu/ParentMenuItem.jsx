@@ -354,10 +354,6 @@ class ParentMenuItem extends React.Component {
 		this.itemRef.current.focus();
 	};
 
-	focusChild = (index) => {
-		this.childItemRefs[index].current.focus();
-	};
-
 	focusPrevChild = (refIndex) => {
 		let prevIndex = refIndex === 0 ? this.childItemRefs.length - 1 : refIndex - 1;
 		let prevRef = this.childItemRefs[prevIndex];
