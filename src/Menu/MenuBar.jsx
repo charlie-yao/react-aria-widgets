@@ -137,39 +137,11 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			const firstIndex = 0;
-			const firstItem = items[firstIndex];
-			const { type: firstType } = firstItem;
-
-			this.setState(prevState => {
-				const { expandedIndex } = prevState;
-				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
-
-				return {
-					tabbableIndex: firstIndex,
-					expandedIndex: isExpanded && firstType === 'menu' ? firstIndex : undefined,
-				};
-			}, () => {
-				this.itemRefs[0].current.focus();
-			});
+			this.focusFirstChild();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			const lastIndex = items.length - 1;
-			const lastItem = items[lastIndex];
-			const { type: lastType } = lastItem;
-
-			this.setState(prevState => {
-				const { expandedIndex } = prevState;
-				const isExpanded = expandedIndex !== undefined && expandedIndex !== null;
-
-				return {
-					tabbableIndex: items.length - 1,
-					expandedIndex: isExpanded && lastType === 'menu' ? lastIndex : undefined,
-				};
-			}, () => {
-				this.itemRefs[items.length - 1].current.focus();
-			});
+			this.focusLastChild();
 		}
 		else if(key === 'Tab')
 			this.collapseMenu();
@@ -387,6 +359,14 @@ class MenuBar extends React.Component {
 		}, () => {
 			nextRef.current.focus();
 		});
+	};
+
+	focusFirstChild = () => {
+		this.focusNextChild(this.itemRefs.length - 1);
+	};
+
+	focusLastChild = () => {
+		this.focusPrevChild(0);
 	};
 
 	focusPrevSibling = (index, autoExpand) => {
