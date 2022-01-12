@@ -384,6 +384,26 @@ const MENUITEMS = [
 				node: 'Hello world!',
 			},
 			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
 				type: 'menu',
 				node: 'Nested Parent Menuitem',
 				children: [

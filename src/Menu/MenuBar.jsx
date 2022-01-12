@@ -384,6 +384,9 @@ class MenuBar extends React.Component {
 	//TODO not very flexible, assuming the current index is
 	//what is currently expanded...
 	focusNextSibling = () => {
+		const { expandedIndex } = this.state;
+		this.focusNextChild(expandedIndex);
+		/*
 		const { items } = this.props;
 		const { expandedIndex } = this.state;
 		const nextIndex = expandedIndex === items.length - 1 ? 0 : expandedIndex + 1;
@@ -396,6 +399,7 @@ class MenuBar extends React.Component {
 		}, () => {
 			this.itemRefs[nextIndex].current.focus();
 		});
+		*/
 	};
 }
 

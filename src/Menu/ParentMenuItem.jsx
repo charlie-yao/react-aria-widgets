@@ -96,6 +96,7 @@ class ParentMenuItem extends React.Component {
 				//event, but we're not focusing the previous sibling of the
 				//menuitem executing this event. we're focusing that menuitem's
 				//parent's previous sibling
+				//FIXME: broken, we don't know the item's parent's refIndex
 				collapseParent(false, () => {
 					focusPrevSibling(this.props.index, true);
 				});
@@ -111,9 +112,9 @@ class ParentMenuItem extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: index,
+					expandedIndex: refIndex,
 				}, () => {
-					this.childItemRefs[index].current.focusFirstChild();
+					this.childItemRefs[refIndex].current.focusFirstChild();
 				});
 			}
 			else {
