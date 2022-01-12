@@ -133,9 +133,9 @@ class ParentMenuItem extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: index,
+					expandedIndex: refIndex,
 				}, () => {
-					this.childItemRefs[index].current.focusFirstChild();
+					this.childItemRefs[refIndex].current.focusFirstChild();
 				});
 			}
 			else {
@@ -147,9 +147,9 @@ class ParentMenuItem extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: index,
+					expandedIndex: refIndex,
 				}, () => {
-					this.childItemRefs[index].current.focusFirstChild();
+					this.childItemRefs[refIndex].current.focusFirstChild();
 				});
 			}
 			else if(type === 'checbox') {
@@ -179,7 +179,6 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'Tab')
 			collapseParent(true);
-
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
