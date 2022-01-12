@@ -76,9 +76,9 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: index,
+					expandedIndex: refIndex,
 				}, () => {
-					this.itemRefs[index].current.focusLastChild();
+					this.itemRefs[refIndex].current.focusLastChild();
 				});
 			}
 		}
@@ -87,9 +87,9 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: index,
+					expandedIndex: refIndex,
 				}, () => {
-					this.itemRefs[index].current.focusFirstChild();
+					this.itemRefs[refIndex].current.focusFirstChild();
 				});
 			}
 		}
