@@ -383,12 +383,11 @@ class ParentMenuItem extends React.Component {
 	};
 
 	focusFirstChild = () => {
-		this.focusChild(0);
+		this.focusNextChild(this.childItemRefs.length - 1);
 	};
 
 	focusLastChild = () => {
-		const { items } = this.props;
-		this.focusChild(items.length - 1);
+		this.focusPrevChild(0);
 	};
 
 	collapseMenu = (collapseAll, callback) => {
