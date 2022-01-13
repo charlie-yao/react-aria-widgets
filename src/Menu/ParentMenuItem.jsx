@@ -20,6 +20,7 @@ class ParentMenuItem extends React.Component {
 		index: PropTypes.number.isRequired,
 		refIndex: PropTypes.number.isRequired,
 		level: PropTypes.number.isRequired,
+		position: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		collapseParent: PropTypes.func.isRequired,
 		focusPrevSibling: PropTypes.func.isRequired,
@@ -192,7 +193,7 @@ class ParentMenuItem extends React.Component {
 	//---- Rendering ----
 	render() {
 		const {
-			children, index, refIndex, level, onKeyDown,
+			children, index, refIndex, level, position, onKeyDown,
 			orientation, label, labelId,
 			isExpanded, isDisabled, isTabbable,
 		} = this.props;
@@ -208,6 +209,7 @@ class ParentMenuItem extends React.Component {
 					data-index={ index }
 					data-refindex={ refIndex }
 					data-level={ level }
+					data-position={ position }
 					onKeyDown={ onKeyDown }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
