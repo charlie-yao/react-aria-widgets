@@ -63,22 +63,23 @@ class MenuBar extends React.Component {
 	onChildKeyDown = (event) => {
 		const { items } = this.props;
 		const { key, target } = event;
-		const index = Number.parseInt(target.dataset.index, 10);
-		const refIndex = Number.parseInt(target.dataset.refindex, 10);
+		const position = target.dataset.position.split(',');
+		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const index = Number.parseInt(position[position.length - 1], 10);
+		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const item = items[index];
 		const { type } = item;
 
-		console.log(index, refIndex, item);
-		
-		//TODO separators shouldn't be focusable
+		console.log(position, flattenedPosition, index, flattenedIndex, item);
+
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: refIndex,
+					expandedIndex: flattenedIndex,
 				}, () => {
-					this.itemRefs[refIndex].current.focusLastChild();
+					this.itemRefs[flattenedIndex].current.focusLastChild();
 				});
 			}
 		}
@@ -87,28 +88,28 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: refIndex,
+					expandedIndex: flattenedIndex,
 				}, () => {
-					this.itemRefs[refIndex].current.focusFirstChild();
+					this.itemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-			this.focusPrevChild(refIndex);
+			this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			this.focusNextChild(refIndex);
+			this.focusNextChild(flattenedIndex);
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: refIndex,
+					expandedIndex: flattenedIndex,
 				}, () => {
-					this.itemRefs[refIndex].current.focusFirstChild();
+					this.itemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
 			else {
@@ -120,9 +121,9 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.setState({
-					expandedIndex: refIndex,
+					expandedIndex: flattenedIndex,
 				}, () => {
-					this.itemRefs[refIndex].current.focusFirstChild();
+					this.itemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
 			else if(type === 'checkbox') {
@@ -157,7 +158,7 @@ class MenuBar extends React.Component {
 	render() {
 		const { orientation, label, labelId } = this.props;
 
-		console.log(this.props, this.state, this.itemRefs);
+		//console.log(this.props, this.state, this.itemRefs);
 
 		return (
 			<ul
@@ -176,45 +177,46 @@ class MenuBar extends React.Component {
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
 		let position = [];
-		let refIndex = 0;
+		let flattenedPosition = [];
+		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
 			const { type, node, children, orientation, label, labelId, isDisabled } = item;
 
 			if(type === 'item') {
 				position = position.slice(0);
-				position[0] = refIndex;
+				position[0] = i;
+				flattenedPosition = flattenedPosition.slice(0);
+				flattenedPosition[0] = flattenedIndex;
 
 				itemNodes.push(
 					<MenuItem
 						key={ i }
-						index={ i }
-						refIndex={ refIndex }
-						level={ 0 }
 						position={ position }
+						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
-						isTabbable={ refIndex === tabbableIndex }
-						ref={ this.itemRefs[refIndex] }
+						isTabbable={ flattenedIndex === tabbableIndex }
+						ref={ this.itemRefs[flattenedIndex] }
 					>
 						{ node }
 					</MenuItem>
 				);
 
-				refIndex++;
+				flattenedIndex++;
 			}
 			else if(type === 'menu') {
 				position = position.slice(0);
-				position[0] = refIndex;
+				position[0] = i;
+				flattenedPosition = flattenedPosition.slice(0);
+				flattenedPosition[0] = flattenedIndex;
 
 				itemNodes.push(
 					<ParentMenuItem
 						key={ i }
 						items={ children }
-						index={ i }
-						refIndex={ refIndex }
-						level={ 0 }
 						position={ position }
+						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
 						focusPrevSibling={ this.focusPrevChild }
@@ -223,59 +225,52 @@ class MenuBar extends React.Component {
 						label={ label }
 						labelId={ labelId }
 						isDisabled={ isDisabled }
-						isExpanded={ refIndex === expandedIndex }
-						isTabbable={ refIndex === tabbableIndex }
-						ref={ this.itemRefs[refIndex] }
+						isExpanded={ flattenedIndex === expandedIndex }
+						isTabbable={ flattenedIndex === tabbableIndex }
+						ref={ this.itemRefs[flattenedIndex] }
 					>
 						{ node }
 					</ParentMenuItem>
 				);
 
-				refIndex++;
+				flattenedIndex++;
 			}
 			else if(type === 'checkbox') {
 				position = position.slice(0);
-				position[0] = refIndex;
+				position[0] = i;
+				flattenedPosition = flattenedPosition.slice(0);
+				flattenedPosition[0] = flattenedIndex;
 
 				//TODO isChecked?
 				itemNodes.push(
 					<MenuItemCheckbox
 						key={ i }
-						index={ i }
-						refIndex={ refIndex }
-						level={ 0 }
 						position={ position }
+						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
-						isTabbable={ refIndex === tabbableIndex }
-						ref={ this.itemRefs[index] }
+						isTabbable={ flattenedIndex === tabbableIndex }
+						ref={ this.itemRefs[flattenedIndex] }
 					>
 						{ node }
 					</MenuItemCheckbox>
 				);
 
-				refIndex++;
+				flattenedIndex++;
 			}
 			else if(type === 'separator') {
-				position = position.slice(0);
-				position[0] = refIndex;
-
 				itemNodes.push(
 					<MenuItemSeparator
 						key={ i }
-						index={ i }
-						refIndex={ refIndex }
-						level={ 0 }
-						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
-						ref={ this.itemRefs[refIndex] }
+						ref={ this.itemRefs[flattenedIndex] }
 					>
 						{ node }
 					</MenuItemSeparator>
 				);
 
-				refIndex++;
+				flattenedIndex++;
 			}
 			else if(type === 'radiogroup') {
 				const radioNodes = [];
@@ -284,27 +279,27 @@ class MenuBar extends React.Component {
 					const { node, isDisabled } = radioItem;
 
 					position = position.slice(0);
-					position[0] = refIndex;
+					position[0] = i;
+					flattenedPosition = flattenedPosition.slice(0);
+					flattenedPosition[0] = flattenedIndex;
 				
 					//TODO isChecked?
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }
-							index={ i }
-							refIndex={ refIndex }
 							subIndex={ j }
-							level={ 0 }
 							position={ position }
+							flattenedPosition={ flattenedPosition }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
-							isTabbable={ refIndex === tabbableIndex }
-							ref={ this.itemRefs[refIndex] }
+							isTabbable={ flattenedIndex === tabbableIndex }
+							ref={ this.itemRefs[flattenedIndex] }
 						>
 							{ node }
 						</MenuItemRadio>
 					);
 
-					refIndex++;
+					flattenedIndex++;
 				});
 
 				itemNodes.push(
@@ -334,12 +329,12 @@ class MenuBar extends React.Component {
 		});
 	};
 
-	focusPrevChild = (refIndex, autoExpand = false) => {
-		let prevIndex = refIndex === 0 ? this.itemRefs.length - 1 : refIndex - 1;
+	focusPrevChild = (flattenedIndex, autoExpand = false) => {
+		let prevIndex = flattenedIndex === 0 ? this.itemRefs.length - 1 : flattenedIndex - 1;
 		let prevRef = this.itemRefs[prevIndex];
 		
 		//TODO test edge cases, e.g. single-element separator and single-element non-separator?
-		while(isSeparatorRef(prevRef) && prevIndex !== refIndex) {
+		while(isSeparatorRef(prevRef) && prevIndex !== flattenedIndex) {
 			prevIndex = prevIndex === 0 ? this.itemRefs.length - 1 : prevIndex - 1;
 			prevRef = this.itemRefs[prevIndex];
 		}
@@ -361,11 +356,11 @@ class MenuBar extends React.Component {
 		});
 	};
 	
-	focusNextChild = (refIndex) => {
-		let nextIndex = refIndex === this.itemRefs.length - 1 ? 0 : refIndex + 1;
+	focusNextChild = (flattenedIndex) => {
+		let nextIndex = flattenedIndex === this.itemRefs.length - 1 ? 0 : flattenedIndex + 1;
 		let nextRef = this.itemRefs[nextIndex];
 
-		while(isSeparatorRef(nextRef) && nextIndex !== refIndex) {
+		while(isSeparatorRef(nextRef) && nextIndex !== flattenedIndex) {
 			nextIndex = nextIndex === this.itemRefs.length - 1 ? 0 : nextIndex + 1;
 			nextRef = this.itemRefs[nextIndex];
 		}
