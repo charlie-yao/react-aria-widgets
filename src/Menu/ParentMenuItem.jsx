@@ -118,18 +118,10 @@ class ParentMenuItem extends React.Component {
 				});
 			}
 			else {
-				//FIXME: this is broken - the next menubar item should be focused,
-				//but won't be because we immediately collapse everything after
-				//focusing on it. we're currently using the menubar's expandedIndex
-				//to determine which sibling to focus on next, so we currently
-				//cannot collapse everything first (otherwise we'd lose the expandedIndex
-				//state);
-				//
-				//hmm, should we just let everyone know their full position?
-				//would they have to know both the full position and a full "flattened"
-				//version?
-				focusNextMenubarItem();
-				collapseParent(true);
+				collapseParent(true, () => {
+					const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
+					focusNextMenubarItem(flatMenubarIndex, true);
+				});
 			}
 		}
 		else if(key === 'Enter') {

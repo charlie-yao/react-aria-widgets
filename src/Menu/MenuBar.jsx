@@ -220,7 +220,7 @@ class MenuBar extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
 						focusPrevSibling={ this.focusPrevChild }
-						focusNextMenubarItem={ this.focusNextSibling }
+						focusNextMenubarItem={ this.focusNextChild }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
@@ -356,7 +356,7 @@ class MenuBar extends React.Component {
 		});
 	};
 	
-	focusNextChild = (flattenedIndex) => {
+	focusNextChild = (flattenedIndex, autoExpand = false) => {
 		let nextIndex = flattenedIndex === this.itemRefs.length - 1 ? 0 : flattenedIndex + 1;
 		let nextRef = this.itemRefs[nextIndex];
 
@@ -368,10 +368,11 @@ class MenuBar extends React.Component {
 		this.setState(state => {
 			const { expandedIndex } = state;
 			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
+			const _autoExpand = nextRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
 
 			return {
 				tabbableIndex: nextIndex,
-				expandedIndex: nextRef.current instanceof ParentMenuItem && wasExpanded ? nextIndex : undefined,
+				expandedIndex: _autoExpand ? nextIndex : undefined,
 			};
 		}, () => {
 			nextRef.current.focus();
@@ -384,27 +385,6 @@ class MenuBar extends React.Component {
 
 	focusLastChild = () => {
 		this.focusPrevChild(0);
-	};
-
-	//TODO not very flexible, assuming the current index is
-	//what is currently expanded...
-	focusNextSibling = () => {
-		const { expandedIndex } = this.state;
-		this.focusNextChild(expandedIndex);
-		/*
-		const { items } = this.props;
-		const { expandedIndex } = this.state;
-		const nextIndex = expandedIndex === items.length - 1 ? 0 : expandedIndex + 1;
-
-		console.log(expandedIndex, nextIndex);
-
-		this.setState({
-			tabbableIndex: nextIndex,
-			expandedIndex: nextIndex,
-		}, () => {
-			this.itemRefs[nextIndex].current.focus();
-		});
-		*/
 	};
 }
 
