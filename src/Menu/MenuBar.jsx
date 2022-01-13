@@ -208,7 +208,7 @@ class MenuBar extends React.Component {
 						level={ 0 }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
-						focusPrevSibling={ this.focusPrevSibling }
+						focusPrevSibling={ this.focusPrevChild }
 						focusNextMenubarItem={ this.focusNextSibling }
 						orientation={ orientation }
 						label={ label }
@@ -313,7 +313,7 @@ class MenuBar extends React.Component {
 		});
 	};
 
-	focusPrevChild = (refIndex) => {
+	focusPrevChild = (refIndex, autoExpand = false) => {
 		let prevIndex = refIndex === 0 ? this.itemRefs.length - 1 : refIndex - 1;
 		let prevRef = this.itemRefs[prevIndex];
 		
@@ -326,13 +326,14 @@ class MenuBar extends React.Component {
 		this.setState(state => {
 			const { expandedIndex } = state;
 			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
+			const _autoExpand = prevRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
 			
 			//TODO would be nice if there was a better way to map ref indices to item indices
 			//and vice-versa, checking instanceof ParentMenuItem almost feels sort of abusive
 			//wrt using refs
 			return {
 				tabbableIndex: prevIndex,
-				expandedIndex: prevRef.current instanceof ParentMenuItem && wasExpanded ? prevIndex : undefined,
+				expandedIndex: _autoExpand ? prevIndex : undefined,
 			};
 		}, () => {
 			prevRef.current.focus();
@@ -367,18 +368,6 @@ class MenuBar extends React.Component {
 
 	focusLastChild = () => {
 		this.focusPrevChild(0);
-	};
-
-	focusPrevSibling = (index, autoExpand) => {
-		const { items } = this.props;
-		const prevIndex = index === 0 ? items.length - 1 : index - 1;
-
-		this.setState({
-			tabbableIndex: prevIndex,
-			expandedIndex: autoExpand ? prevIndex : undefined,
-		}, () => {
-			this.itemRefs[prevIndex].current.focus();
-		});
 	};
 
 	//TODO not very flexible, assuming the current index is
