@@ -175,18 +175,23 @@ class MenuBar extends React.Component {
 		const { items } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
+		let position = [];
 		let refIndex = 0;
 
 		items.forEach((item, i) => {
 			const { type, node, children, orientation, label, labelId, isDisabled } = item;
-			
+
 			if(type === 'item') {
+				position = position.slice(0);
+				position[0] = refIndex;
+
 				itemNodes.push(
 					<MenuItem
 						key={ i }
 						index={ i }
 						refIndex={ refIndex }
 						level={ 0 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isTabbable={ refIndex === tabbableIndex }
@@ -199,6 +204,9 @@ class MenuBar extends React.Component {
 				refIndex++;
 			}
 			else if(type === 'menu') {
+				position = position.slice(0);
+				position[0] = refIndex;
+
 				itemNodes.push(
 					<ParentMenuItem
 						key={ i }
@@ -206,6 +214,7 @@ class MenuBar extends React.Component {
 						index={ i }
 						refIndex={ refIndex }
 						level={ 0 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
 						focusPrevSibling={ this.focusPrevChild }
@@ -225,6 +234,9 @@ class MenuBar extends React.Component {
 				refIndex++;
 			}
 			else if(type === 'checkbox') {
+				position = position.slice(0);
+				position[0] = refIndex;
+
 				//TODO isChecked?
 				itemNodes.push(
 					<MenuItemCheckbox
@@ -232,6 +244,7 @@ class MenuBar extends React.Component {
 						index={ i }
 						refIndex={ refIndex }
 						level={ 0 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isTabbable={ refIndex === tabbableIndex }
@@ -244,12 +257,16 @@ class MenuBar extends React.Component {
 				refIndex++;
 			}
 			else if(type === 'separator') {
+				position = position.slice(0);
+				position[0] = refIndex;
+
 				itemNodes.push(
 					<MenuItemSeparator
 						key={ i }
 						index={ i }
 						refIndex={ refIndex }
 						level={ 0 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
 						ref={ this.itemRefs[refIndex] }
@@ -265,7 +282,10 @@ class MenuBar extends React.Component {
 
 				children.forEach((radioItem, j) => {
 					const { node, isDisabled } = radioItem;
-					
+
+					position = position.slice(0);
+					position[0] = refIndex;
+				
 					//TODO isChecked?
 					radioNodes.push(
 						<MenuItemRadio
@@ -274,6 +294,7 @@ class MenuBar extends React.Component {
 							refIndex={ refIndex }
 							subIndex={ j }
 							level={ 0 }
+							position={ position }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
 							isTabbable={ refIndex === tabbableIndex }

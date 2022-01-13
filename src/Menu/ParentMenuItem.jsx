@@ -123,6 +123,10 @@ class ParentMenuItem extends React.Component {
 				//to determine which sibling to focus on next, so we currently
 				//cannot collapse everything first (otherwise we'd lose the expandedIndex
 				//state);
+				//
+				//hmm, should we just let everyone know their full position?
+				//would they have to know both the full position and a full "flattened"
+				//version?
 				focusNextMenubarItem();
 				collapseParent(true);
 			}
@@ -227,18 +231,23 @@ class ParentMenuItem extends React.Component {
 		const { items, level, focusNextMenubarItem } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
+		let { position } = this.props;
 		let refIndex = 0;
 
 		items.forEach((item, i) => {
 			const { type, node, children, orientation, label, labelId, isDisabled } = item;
 			
 			if(type === 'item') {
+				position = position.slice(0);
+				position[level + 1] = refIndex;
+
 				itemNodes.push(
 					<MenuItem
 						key={ i }
 						index={ i }
 						refIndex={ refIndex }
 						level={ level + 1 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[refIndex] }
@@ -250,6 +259,9 @@ class ParentMenuItem extends React.Component {
 				refIndex++;
 			}
 			else if(type === 'menu') {
+				position = position.slice(0);
+				position[level + 1] = refIndex;
+
 				itemNodes.push(
 					<ParentMenuItem
 						key={ i }
@@ -257,6 +269,7 @@ class ParentMenuItem extends React.Component {
 						index={ i }
 						refIndex={ refIndex }
 						level={ level + 1 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
 						focusNextMenubarItem={ focusNextMenubarItem }
@@ -274,6 +287,9 @@ class ParentMenuItem extends React.Component {
 				refIndex++;
 			}
 			else if(type === 'checkbox') {
+				position = position.slice(0);
+				position[level + 1] = refIndex;
+
 				//TODO isChecked?
 				itemNodes.push(
 					<MenuItemCheckbox
@@ -281,6 +297,7 @@ class ParentMenuItem extends React.Component {
 						index={ i }
 						refIndex={ refIndex }
 						level={ level + 1 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[refIndex] }
@@ -292,12 +309,16 @@ class ParentMenuItem extends React.Component {
 				refIndex++;
 			}
 			else if(type === 'separator') {
+				position = position.slice(0);
+				position[level + 1] = refIndex;
+
 				itemNodes.push(
 					<MenuItemSeparator
 						key={ i }
 						index={ i }
 						refIndex={ refIndex }
 						level={ level + 1 }
+						position={ position }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
 						ref={ this.childItemRefs[refIndex] }
@@ -313,6 +334,9 @@ class ParentMenuItem extends React.Component {
 
 				children.forEach((radioItem, j) => {
 					const { node, isDisabled } = radioItem;
+
+					position = position.slice(0);
+					position[level + 1] = refIndex;
 					
 					//TODO isChecked?
 					radioNodes.push(
@@ -322,6 +346,7 @@ class ParentMenuItem extends React.Component {
 							refIndex={ refIndex }
 							subIndex={ j }
 							level={ level + 1 }
+							position={ position }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
 							ref={ this.childItemRefs[refIndex] }
