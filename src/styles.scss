@@ -10,11 +10,13 @@
 	display: none;
 }
 
-[role="menubar"][aria-orientation="horizontal"] {
-	display: flex;
+[role="menubar"], [role="menu"] {
+	&[aria-orientation="horizontal"] {
+		display: flex;
 
-	> li {
-		flex: 1 1 auto;
+		> li {
+			flex: 1 1 auto;
+		}
 	}
 }
 

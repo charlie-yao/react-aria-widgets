@@ -67,7 +67,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapseParent, focusPrevSibling, focusNextMenubarItem } = this.props;
+		const { items, collapseParent, focusPrevSibling, focusNextMenubarItem, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -81,48 +81,93 @@ class ParentMenuItem extends React.Component {
 		
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-			this.focusPrevChild(flattenedIndex);
+
+			if(orientation === 'vertical')
+				this.focusPrevChild(flattenedIndex);
+			else {
+				if(level === 1) {
+					//TODO: naming is just all wrong...
+					//we're collapsing the parent of the menuitem executing this
+					//event, but we're not focusing the previous sibling of the
+					//menuitem executing this event. we're focusing that menuitem's
+					//parent's previous sibling
+					collapseParent(false, () => {
+						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
+						focusPrevSibling(flatParentIndex, true);
+					});
+				}
+				else {
+					collapseParent(false, () => {
+						this.focus();
+					});
+				}
+			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-			this.focusNextChild(flattenedIndex);
+
+			if(orientation === 'vertical')
+				this.focusNextChild(flattenedIndex);
+			else {
+				if(type === 'menu') {
+					this.setState({
+						expandedIndex: flattenedIndex,
+					}, () => {
+						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+				else {
+					collapseParent(true, () => {
+						const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
+						focusNextMenubarItem(flatMenubarIndex, true);
+					});
+				}
+			}
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-
-			if(level === 1) {
-				//TODO: naming is just all wrong...
-				//we're collapsing the parent of the menuitem executing this
-				//event, but we're not focusing the previous sibling of the
-				//menuitem executing this event. we're focusing that menuitem's
-				//parent's previous sibling
-				collapseParent(false, () => {
-					const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
-					focusPrevSibling(flatParentIndex, true);
-				});
+			
+			if(orientation === 'vertical') {
+				if(level === 1) {
+					//TODO: naming is just all wrong...
+					//we're collapsing the parent of the menuitem executing this
+					//event, but we're not focusing the previous sibling of the
+					//menuitem executing this event. we're focusing that menuitem's
+					//parent's previous sibling
+					collapseParent(false, () => {
+						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
+						focusPrevSibling(flatParentIndex, true);
+					});
+				}
+				else {
+					collapseParent(false, () => {
+						this.focus();
+					});
+				}
 			}
-			else {
-				collapseParent(false, () => {
-					this.focus();
-				});
-			}
+			else
+				this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-
-			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
-				});
+			
+			if(orientation === 'vertical') {
+				if(type === 'menu') {
+					this.setState({
+						expandedIndex: flattenedIndex,
+					}, () => {
+						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+				else {
+					collapseParent(true, () => {
+						const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
+						focusNextMenubarItem(flatMenubarIndex, true);
+					});
+				}
 			}
-			else {
-				collapseParent(true, () => {
-					const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
-					focusNextMenubarItem(flatMenubarIndex, true);
-				});
-			}
+			else
+				this.focusNextChild(flattenedIndex);
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
