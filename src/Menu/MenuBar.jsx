@@ -61,7 +61,7 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items } = this.props;
+		const { items, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -75,28 +75,54 @@ class MenuBar extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			if(type === 'menu') {
-				this.expandMenu(flattenedIndex, () => {
-					this.itemRefs[flattenedIndex].current.focusLastChild();
-				});
+			if(orientation === 'horizontal') {
+				if(type === 'menu') {
+					this.expandMenu(flattenedIndex, () => {
+						this.itemRefs[flattenedIndex].current.focusLastChild();
+					});
+				}
 			}
+			else
+				this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-
-			if(type === 'menu') {
-				this.expandMenu(flattenedIndex, () => {
-					this.itemRefs[flattenedIndex].current.focusFirstChild();
-				});
+			
+			if(orientation === 'horizontal') {
+				if(type === 'menu') {
+					this.expandMenu(flattenedIndex, () => {
+						this.itemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
 			}
+			else
+				this.focusNextChild(flattenedIndex);
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-			this.focusPrevChild(flattenedIndex);
+
+			if(orientation === 'horizontal')
+				this.focusPrevChild(flattenedIndex);
+			else {
+				if(type === 'menu') {
+					this.expandMenu(flattenedIndex, () => {
+						this.itemRefs[flattenedIndex].current.focusLastChild();
+					});
+				}
+			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			this.focusNextChild(flattenedIndex);
+
+			if(orientation === 'horizontal')
+				this.focusNextChild(flattenedIndex);
+			else {
+				if(type === 'menu') {
+					this.expandMenu(flattenedIndex, () => {
+						this.itemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
