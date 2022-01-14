@@ -227,6 +227,40 @@ class ParentMenuItem extends React.Component {
 		}
 	};
 
+	onKeyDown = (event) => {
+		const { key } = event;
+
+		if(key === 'ArrowUp' || key === 'Up') {
+			event.preventDefault();
+		}
+		else if(key === 'ArrowDown' || key === 'Down') {
+			event.preventDefault();
+		}
+		else if(key === 'ArrowLeft' || key === 'Left') {
+			event.preventDefault();
+		}
+		else if(key === 'ArrowRight' || key === 'Right') {
+			event.preventDefault();
+		}
+		else if(key === 'Enter') {
+			event.preventDefault();
+		}
+		else if(key === ' ' || key === 'Spacebar') {
+			event.preventDefault();
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+		}
+		else if(key === 'Escape' || key === 'Esc') {
+			event.preventDefault();
+		}
+		else if(key === 'Tab') {
+		}
+	};
+
 	//---- Rendering ----
 	render() {
 		const {
