@@ -77,7 +77,7 @@ class MenuBar extends React.Component {
 
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
-					this.expandMenu(flattenedIndex, () => {
+					this.expandChild(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
 				}
@@ -90,7 +90,7 @@ class MenuBar extends React.Component {
 			
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
-					this.expandMenu(flattenedIndex, () => {
+					this.expandChild(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
@@ -105,7 +105,7 @@ class MenuBar extends React.Component {
 				this.focusPrevChild(flattenedIndex);
 			else {
 				if(type === 'menu') {
-					this.expandMenu(flattenedIndex, () => {
+					this.expandChild(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
 				}
@@ -118,7 +118,7 @@ class MenuBar extends React.Component {
 				this.focusNextChild(flattenedIndex);
 			else {
 				if(type === 'menu') {
-					this.expandMenu(flattenedIndex, () => {
+					this.expandChild(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
@@ -128,7 +128,7 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandMenu(flattenedIndex, () => {
+				this.expandChild(flattenedIndex, () => {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -140,7 +140,7 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandMenu(flattenedIndex, () => {
+				this.expandChild(flattenedIndex, () => {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -163,7 +163,7 @@ class MenuBar extends React.Component {
 			this.focusLastChild();
 		}
 		else if(key === 'Tab')
-			this.collapseMenu();
+			this.collapseChild();
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
@@ -235,7 +235,7 @@ class MenuBar extends React.Component {
 						position={ position }
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapseParent={ this.collapseMenu }
+						collapseParent={ this.collapseChild }
 						focusPrevParentSibling={ this.focusPrevChild }
 						focusNextMenubarItem={ this.focusNextChild }
 						parentOrientation={ undefined /* parentOrientation */ }
@@ -336,7 +336,7 @@ class MenuBar extends React.Component {
 	};
 
 	//---- Misc. ----
-	collapseMenu = (collapseAll, callback) => {
+	collapseChild = (collapseAll, callback) => {
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
@@ -345,7 +345,7 @@ class MenuBar extends React.Component {
 		});
 	};
 
-	expandMenu = (flattenedIndex, callback) => {
+	expandChild = (flattenedIndex, callback) => {
 		this.setState({
 			expandedIndex: flattenedIndex,
 		}, () => {
