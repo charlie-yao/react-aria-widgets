@@ -23,7 +23,7 @@ class ParentMenuItem extends React.Component {
 		collapseParent: PropTypes.func.isRequired,
 		focusPrevSibling: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
-		parentOrientation: PropTypes.oneOf([ 'vertical', 'horizontal']).isRequired,
+		//parentOrientation: PropTypes.oneOf([ 'vertical', 'horizontal']).isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
@@ -227,9 +227,10 @@ class ParentMenuItem extends React.Component {
 			//with that printable character.
 		}
 	};
-
+		
+	/*
 	onKeyDown = (event) => {
-		const { parentOrientation } = this.props;
+		const { expandMenu, focusPrevSibling, parentOrientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -242,14 +243,25 @@ class ParentMenuItem extends React.Component {
 			
 			if(level === 0) {
 				if(parentOrientation === 'horizontal') {
+					expandMenu(flattenedIndex, () => {
+						this.focusLastChild();
+					});
 				}
 				else {
+					focusPrevSibling(flattenedIndex);
 				}
 			}
 			else {
 				if(parentOrientation === 'vertical') {
+					focusPrevSibling(flattenedIndex);
 				}
 				else {
+					if(level === 1) {
+						//collapseParent, then go to parent's previous sibling
+					}
+					else {
+						//collapse parent and focus on parent
+					}
 				}
 			}
 		}
@@ -319,6 +331,7 @@ class ParentMenuItem extends React.Component {
 		else if(key === 'Tab') {
 		}
 	};
+	*/
 
 	//---- Rendering ----
 	render() {
