@@ -337,8 +337,6 @@ class MenuBar extends React.Component {
 
 	//---- Misc. ----
 	collapseMenu = (collapseAll, callback) => {
-		console.log('in menubar');
-
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
@@ -384,8 +382,6 @@ class MenuBar extends React.Component {
 	};
 	
 	focusNextChild = (flattenedIndex, autoExpand = false) => {
-		console.log('<MenuBar> - focusNextChild()');
-
 		let nextIndex = flattenedIndex === this.itemRefs.length - 1 ? 0 : flattenedIndex + 1;
 		let nextRef = this.itemRefs[nextIndex];
 
