@@ -105,9 +105,7 @@ class ParentMenuItem extends React.Component {
 				this.focusNextChild(flattenedIndex);
 			else {
 				if(type === 'menu') {
-					this.setState({
-						expandedIndex: flattenedIndex,
-					}, () => {
+					this.expandMenu(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
@@ -143,9 +141,7 @@ class ParentMenuItem extends React.Component {
 			
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
-					this.setState({
-						expandedIndex: flattenedIndex,
-					}, () => {
+					this.expandMenu(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
@@ -163,9 +159,7 @@ class ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
+				this.expandMenu(flattenedIndex, () => {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -177,9 +171,7 @@ class ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
+				this.expandMenu(flattenedIndex, () => {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -406,6 +398,15 @@ class ParentMenuItem extends React.Component {
 			if(collapseAll)
 				collapseParent(true, callback);
 			else if(typeof callback === 'function')
+				callback();
+		});
+	};
+
+	expandMenu = (flattenedIndex, callback) => {
+		this.setState({
+			expandedIndex: flattenedIndex,
+		}, () => {
+			if(typeof callback === 'function')
 				callback();
 		});
 	};
