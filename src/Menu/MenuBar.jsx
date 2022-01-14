@@ -351,7 +351,7 @@ class MenuBar extends React.Component {
 		this.setState({
 			expandedIndex: flattenedIndex,
 		}, () => {
-			if(callback && typeof callback === 'function')
+			if(typeof callback === 'function')
 				callback();
 		});
 	};

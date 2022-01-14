@@ -397,6 +397,19 @@ class ParentMenuItem extends React.Component {
 	};
 
 	//---- Misc. ---
+	collapseMenu = (collapseAll, callback) => {
+		const { collapseParent } = this.props;
+
+		this.setState({
+			expandedIndex: undefined,
+		}, () => {
+			if(collapseAll)
+				collapseParent(true, callback);
+			else if(typeof callback === 'function')
+				callback();
+		});
+	};
+
 	focus = () => {
 		this.itemRef.current.focus();
 	};
@@ -431,19 +444,6 @@ class ParentMenuItem extends React.Component {
 
 	focusLastChild = () => {
 		this.focusPrevChild(0);
-	};
-
-	collapseMenu = (collapseAll, callback) => {
-		const { collapseParent } = this.props;
-
-		this.setState({
-			expandedIndex: undefined,
-		}, () => {
-			if(collapseAll)
-				collapseParent(true, callback);
-			else if(typeof callback === 'function')
-				callback();
-		});
 	};
 }
 
