@@ -23,7 +23,6 @@ class ParentMenuItem extends React.Component {
 		collapseParent: PropTypes.func.isRequired,
 		focusPrevParentSibling: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
-		//parentOrientation: PropTypes.oneOf([ 'vertical', 'horizontal']).isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
@@ -302,6 +301,7 @@ class ParentMenuItem extends React.Component {
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
+						focusPrevParentSibling={ this.focusPrevChild }
 						focusNextMenubarItem={ focusNextMenubarItem }
 						orientation={ orientation }
 						label={ label }
