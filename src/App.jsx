@@ -441,6 +441,422 @@ const MENUITEMS = [
 	},
 ];
 
+const MENUITEMS_2 = [
+	{
+		type: 'menu',
+		node: 'Parent Menuitem 1',
+		orientation: 'horizontal',
+		children: [
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 1',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 2',
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 1',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 2',
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+		],
+	},
+	{
+		type: 'menu',
+		node: 'Parent Menuitem 2',
+		orientation: 'horizontal',
+		children: [
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menu',
+				node: 'Nested Parent Menuitem',
+				orientation: 'horizontal',
+				children: [
+					{
+						type: 'menu',
+						node: 'Nested Parent Menuitem',
+						orientation: 'horizontal',
+						children: [
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'separator',
+							},
+							{
+								type: 'radiogroup',
+								children: [
+									{
+										node: 'Radio Option 1',
+									},
+									{
+										node: 'Radio Option 2',
+									},
+									{
+										node: 'Radio Option 3',
+									},
+								],
+							},
+							{
+								type: 'separator',
+							},
+							{
+								type: 'radiogroup',
+								children: [
+									{
+										node: 'Radio Option 1',
+									},
+									{
+										node: 'Radio Option 2',
+									},
+									{
+										node: 'Radio Option 3',
+									},
+								],
+							},
+
+						],
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'menu',
+						node: 'Nested Parent Menuitem',
+						orientation: 'horizontal',
+						children: [
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+						],
+					},
+				],
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 1',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 2',
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 1',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 2',
+			},
+		],
+	},
+	{
+		type: 'item',
+		node: 'Hello world!',
+	},
+	{
+		type: 'menu',
+		node: 'Parent Menuitem 3',
+		orientation: 'horizontal',
+		children: [
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menu',
+				node: 'Nested Parent Menuitem',
+				orientation: 'horizontal',
+				children: [
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+				],
+			},
+		],
+	},
+	{
+		type: 'separator',
+	},
+	{
+		type: 'radiogroup',
+		children: [
+			{
+				node: 'Radio Option 1',
+			},
+			{
+				node: 'Radio Option 2',
+			},
+			{
+				node: 'Radio Option 3',
+			},
+		],
+	},
+	{
+		type: 'separator',
+	},
+	{
+		type: 'menu',
+		node: 'Parent Menuitem 4',
+		orientation: 'horizontal',
+		children: [
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'menu',
+				node: 'Nested Parent Menuitem',
+				orientation: 'horizontal',
+				children: [
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+				],
+			},
+		],
+	},
+	{
+		type: 'separator',
+	},
+	{
+		type: 'radiogroup',
+		children: [
+			{
+				node: 'Radio Option 1',
+			},
+			{
+				node: 'Radio Option 2',
+			},
+			{
+				node: 'Radio Option 3',
+			},
+		],
+	},
+	{
+		type: 'separator',
+	},
+];
+
+
 function App() {
 	return (
 		<main>
@@ -451,6 +867,7 @@ function App() {
 				Menu Button
 			</MenuButton>
 			<MenuBar label="Placeholder" items={ MENUITEMS } />
+			<MenuBar label="Placeholder" items={ MENUITEMS_2} orientation="vertical" />
 		</main>
 	);
 }
