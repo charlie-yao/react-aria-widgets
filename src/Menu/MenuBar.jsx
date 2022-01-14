@@ -190,7 +190,7 @@ class MenuBar extends React.Component {
 	}
 
 	renderItems = () => {
-		const { items } = this.props;
+		const { items, orientation: parentOrientation } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
 		let position = [];
@@ -239,6 +239,7 @@ class MenuBar extends React.Component {
 						focusPrevSibling={ this.focusPrevChild }
 						focusNextSibling={ this.focusNextChild }
 						focusNextMenubarItem={ this.focusNextChild }
+						parentOrientation={ parentOrientation }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }

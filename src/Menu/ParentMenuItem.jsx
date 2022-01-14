@@ -23,6 +23,7 @@ class ParentMenuItem extends React.Component {
 		collapseParent: PropTypes.func.isRequired,
 		focusPrevSibling: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
+		parentOrientation: PropTypes.oneOf([ 'vertical', 'horizontal']).isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
@@ -32,7 +33,7 @@ class ParentMenuItem extends React.Component {
 	};
 
 	static defaultProps = {
-		orientation: 'horizontal',
+		orientation: 'vertical',
 		label: undefined,
 		labelId: undefined,
 		isExpanded: false,
@@ -228,19 +229,77 @@ class ParentMenuItem extends React.Component {
 	};
 
 	onKeyDown = (event) => {
-		const { key } = event;
+		const { parentOrientation } = this.props;
+		const { key, target } = event;
+		const position = target.dataset.position.split(',');
+		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const index = Number.parseInt(position[position.length - 1], 10);
+		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const level = position.length - 1;
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
+			
+			if(level === 0) {
+				if(parentOrientation === 'horizontal') {
+				}
+				else {
+				}
+			}
+			else {
+				if(parentOrientation === 'vertical') {
+				}
+				else {
+				}
+			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
+
+			if(level === 0) {
+				if(parentOrientation === 'horizontal') {
+				}
+				else {
+				}
+			}
+			else {
+				if(parentOrientation === 'vertical') {
+				}
+				else {
+				}
+			}
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
+
+			if(level === 0) {
+				if(parentOrientation === 'horizontal') {
+				}
+				else {
+				}
+			}
+			else {
+				if(parentOrientation === 'vertical') {
+				}
+				else {
+				}
+			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
+
+			if(level === 0) {
+				if(parentOrientation === 'horizontal') {
+				}
+				else {
+				}
+			}
+			else {
+				if(parentOrientation === 'vertical') {
+				}
+				else {
+				}
+			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
