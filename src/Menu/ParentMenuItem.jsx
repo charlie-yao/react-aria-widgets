@@ -21,7 +21,7 @@ class ParentMenuItem extends React.Component {
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		collapseParent: PropTypes.func.isRequired,
-		focusPrevSibling: PropTypes.func.isRequired,
+		focusPrevParentSibling: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
 		//parentOrientation: PropTypes.oneOf([ 'vertical', 'horizontal']).isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
@@ -68,7 +68,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapseParent, focusPrevSibling, focusNextMenubarItem, orientation } = this.props;
+		const { items, collapseParent, focusPrevParentSibling, focusNextMenubarItem, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -87,14 +87,9 @@ class ParentMenuItem extends React.Component {
 				this.focusPrevChild(flattenedIndex);
 			else {
 				if(level === 1) {
-					//TODO: naming is just all wrong...
-					//we're collapsing the parent of the menuitem executing this
-					//event, but we're not focusing the previous sibling of the
-					//menuitem executing this event. we're focusing that menuitem's
-					//parent's previous sibling
 					collapseParent(false, () => {
 						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
-						focusPrevSibling(flatParentIndex, true);
+						focusPrevParentSibling(flatParentIndex, true);
 					});
 				}
 				else {
@@ -130,14 +125,9 @@ class ParentMenuItem extends React.Component {
 			
 			if(orientation === 'vertical') {
 				if(level === 1) {
-					//TODO: naming is just all wrong...
-					//we're collapsing the parent of the menuitem executing this
-					//event, but we're not focusing the previous sibling of the
-					//menuitem executing this event. we're focusing that menuitem's
-					//parent's previous sibling
 					collapseParent(false, () => {
 						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
-						focusPrevSibling(flatParentIndex, true);
+						focusPrevParentSibling(flatParentIndex, true);
 					});
 				}
 				else {

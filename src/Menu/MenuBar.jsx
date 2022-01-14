@@ -236,9 +236,8 @@ class MenuBar extends React.Component {
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
-						focusPrevSibling={ this.focusPrevChild }
+						focusPrevParentSibling={ this.focusPrevChild }
 						focusNextMenubarItem={ this.focusNextChild }
-						expandMenu={ this.expandMenu }
 						parentOrientation={ undefined /* parentOrientation */ }
 						orientation={ orientation }
 						label={ label }
