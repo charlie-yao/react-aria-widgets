@@ -76,9 +76,7 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
+				this.expandMenu(flattenedIndex, () => {
 					this.itemRefs[flattenedIndex].current.focusLastChild();
 				});
 			}
@@ -87,9 +85,7 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
+				this.expandMenu(flattenedIndex, () => {
 					this.itemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -106,9 +102,7 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
+				this.expandMenu(flattenedIndex, () => {
 					this.itemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -120,9 +114,7 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.setState({
-					expandedIndex: flattenedIndex,
-				}, () => {
+				this.expandMenu(flattenedIndex, () => {
 					this.itemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -146,7 +138,6 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'Tab')
 			this.collapseMenu();
-
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
@@ -220,6 +211,7 @@ class MenuBar extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						collapseParent={ this.collapseMenu }
 						focusPrevSibling={ this.focusPrevChild }
+						focusNextSibling={ this.focusNextChild }
 						focusNextMenubarItem={ this.focusNextChild }
 						orientation={ orientation }
 						label={ label }
@@ -329,6 +321,15 @@ class MenuBar extends React.Component {
 		});
 	};
 
+	expandMenu = (flattenedIndex, callback) => {
+		this.setState({
+			expandedIndex: flattenedIndex,
+		}, () => {
+			if(callback && typeof callback === 'function')
+				callback();
+		});
+	};
+
 	focusPrevChild = (flattenedIndex, autoExpand = false) => {
 		let prevIndex = flattenedIndex === 0 ? this.itemRefs.length - 1 : flattenedIndex - 1;
 		let prevRef = this.itemRefs[prevIndex];
@@ -357,6 +358,8 @@ class MenuBar extends React.Component {
 	};
 	
 	focusNextChild = (flattenedIndex, autoExpand = false) => {
+		console.log('<MenuBar> - focusNextChild()');
+
 		let nextIndex = flattenedIndex === this.itemRefs.length - 1 ? 0 : flattenedIndex + 1;
 		let nextRef = this.itemRefs[nextIndex];
 
