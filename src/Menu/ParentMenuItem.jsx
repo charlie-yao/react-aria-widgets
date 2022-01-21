@@ -411,10 +411,6 @@ class ParentMenuItem extends React.Component {
 		});
 	};
 
-	focus = () => {
-		this.itemRef.current.focus();
-	};
-
 	focusPrevChild = (flattenedIndex) => {
 		let prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
 		let prevRef = this.childItemRefs[prevIndex];
@@ -445,6 +441,10 @@ class ParentMenuItem extends React.Component {
 
 	focusLastChild = () => {
 		this.focusPrevChild(0);
+	};
+
+	focus = () => {
+		this.itemRef.current.focus();
 	};
 }
 
