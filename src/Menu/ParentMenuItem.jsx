@@ -20,7 +20,7 @@ class ParentMenuItem extends React.Component {
 		position: PropTypes.arrayOf(PropTypes.number).isRequired,
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
-		collapseParent: PropTypes.func.isRequired,
+		collapse: PropTypes.func.isRequired,
 		focusPrevParentSibling: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
@@ -67,7 +67,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapseParent, focusPrevParentSibling, focusNextMenubarItem, orientation } = this.props;
+		const { items, collapse, focusPrevParentSibling, focusNextMenubarItem, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -86,13 +86,13 @@ class ParentMenuItem extends React.Component {
 				this.focusPrevChild(flattenedIndex);
 			else {
 				if(level === 1) {
-					collapseParent(false, () => {
+					collapse(false, () => {
 						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
 						focusPrevParentSibling(flatParentIndex, true);
 					});
 				}
 				else {
-					collapseParent(false, () => {
+					collapse(false, () => {
 						this.focus();
 					});
 				}
@@ -110,7 +110,7 @@ class ParentMenuItem extends React.Component {
 					});
 				}
 				else {
-					collapseParent(true, () => {
+					collapse(true, () => {
 						const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
 						focusNextMenubarItem(flatMenubarIndex, true);
 					});
@@ -122,13 +122,13 @@ class ParentMenuItem extends React.Component {
 			
 			if(orientation === 'vertical') {
 				if(level === 1) {
-					collapseParent(false, () => {
+					collapse(false, () => {
 						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
 						focusPrevParentSibling(flatParentIndex, true);
 					});
 				}
 				else {
-					collapseParent(false, () => {
+					collapse(false, () => {
 						this.focus();
 					});
 				}
@@ -146,7 +146,7 @@ class ParentMenuItem extends React.Component {
 					});
 				}
 				else {
-					collapseParent(true, () => {
+					collapse(true, () => {
 						const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
 						focusNextMenubarItem(flatMenubarIndex, true);
 					});
@@ -196,12 +196,12 @@ class ParentMenuItem extends React.Component {
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
 
-			collapseParent(false, () => {
+			collapse(false, () => {
 				this.focus();
 			});
 		}
 		else if(key === 'Tab')
-			collapseParent(true);
+			collapse(true);
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
@@ -292,7 +292,7 @@ class ParentMenuItem extends React.Component {
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapseParent={ this.collapseChild }
+						collapse={ this.collapseChild }
 						focusPrevParentSibling={ this.focusPrevChild }
 						focusNextMenubarItem={ focusNextMenubarItem }
 						orientation={ orientation }
@@ -390,13 +390,13 @@ class ParentMenuItem extends React.Component {
 
 	//---- Misc. ---
 	collapseChild = (collapseAll, callback) => {
-		const { collapseParent } = this.props;
+		const { collapse } = this.props;
 
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
 			if(collapseAll)
-				collapseParent(true, callback);
+				collapse(true, callback);
 			else if(typeof callback === 'function')
 				callback();
 		});
