@@ -48,7 +48,9 @@ class MenuBar extends React.Component {
 
 		items.forEach(item => {
 			const { type, children } = item;
-
+			
+			if(type === 'separator')
+				return;
 			if(type === 'radiogroup') {
 				children.forEach(() => {
 					this.childItemRefs.push(React.createRef());
@@ -281,13 +283,10 @@ class MenuBar extends React.Component {
 						key={ i }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
-						ref={ this.childItemRefs[flattenedIndex] }
 					>
 						{ node }
 					</MenuItemSeparator>
 				);
-
-				flattenedIndex++;
 			}
 			else if(type === 'radiogroup') {
 				const radioNodes = [];
@@ -357,12 +356,6 @@ class MenuBar extends React.Component {
 		let prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
 		let prevRef = this.childItemRefs[prevIndex];
 		
-		//TODO test edge cases, e.g. single-element separator and single-element non-separator?
-		while(isSeparatorRef(prevRef) && prevIndex !== flattenedIndex) {
-			prevIndex = prevIndex === 0 ? this.childItemRefs.length - 1 : prevIndex - 1;
-			prevRef = this.childItemRefs[prevIndex];
-		}
-
 		this.setState(state => {
 			const { expandedIndex } = state;
 			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
@@ -383,11 +376,6 @@ class MenuBar extends React.Component {
 	focusNextChild = (flattenedIndex, autoExpand = false) => {
 		let nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
 		let nextRef = this.childItemRefs[nextIndex];
-
-		while(isSeparatorRef(nextRef) && nextIndex !== flattenedIndex) {
-			nextIndex = nextIndex === this.childItemRefs.length - 1 ? 0 : nextIndex + 1;
-			nextRef = this.childItemRefs[nextIndex];
-		}
 
 		this.setState(state => {
 			const { expandedIndex } = state;

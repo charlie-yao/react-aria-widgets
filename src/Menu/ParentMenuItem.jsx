@@ -54,7 +54,9 @@ class ParentMenuItem extends React.Component {
 
 		items.forEach(item => {
 			const { type, children } = item;
-
+			
+			if(type === 'separator')
+				return;
 			if(type === 'radiogroup') {
 				children.forEach(() => {
 					this.childItemRefs.push(React.createRef());
@@ -325,13 +327,10 @@ class ParentMenuItem extends React.Component {
 						key={ i }
 						onKeyDown={ this.onChildKeyDown }
 						orientation={ orientation }
-						ref={ this.childItemRefs[flattenedIndex] }
 					>
 						{ node }
 					</MenuItemSeparator>
 				);
-
-				flattenedIndex++;
 			}
 			else if(type === 'radiogroup') {
 				const radioNodes = [];
@@ -401,26 +400,14 @@ class ParentMenuItem extends React.Component {
 	};
 
 	focusPrevChild = (flattenedIndex) => {
-		let prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
-		let prevRef = this.childItemRefs[prevIndex];
-		
-		while(isSeparatorRef(prevRef) && prevIndex !== flattenedIndex) {
-			prevIndex = prevIndex === 0 ? this.childItemRefs.length - 1 : prevIndex - 1;
-			prevRef = this.childItemRefs[prevIndex];
-		};
-
+		const prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
+		const prevRef = this.childItemRefs[prevIndex];
 		prevRef.current.focus();
 	};
 
 	focusNextChild = (flattenedIndex) => {
-		let nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
-		let nextRef = this.childItemRefs[nextIndex];
-
-		while(isSeparatorRef(nextRef) && nextIndex !== flattenedIndex) {
-			nextIndex = nextIndex === this.childItemRefs.length - 1 ? 0 : nextIndex + 1;
-			nextRef = this.childItemRefs[nextIndex];
-		}
-
+		const nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
+		const nextRef = this.childItemRefs[nextIndex];
 		nextRef.current.focus();
 	};
 
