@@ -105,7 +105,7 @@ class ParentMenuItem extends React.Component {
 				this.focusNextChild(flattenedIndex);
 			else {
 				if(type === 'menu') {
-					this.expandMenu(flattenedIndex, () => {
+					this.expandChild(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
@@ -141,7 +141,7 @@ class ParentMenuItem extends React.Component {
 			
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
-					this.expandMenu(flattenedIndex, () => {
+					this.expandChild(flattenedIndex, () => {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
@@ -159,7 +159,7 @@ class ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandMenu(flattenedIndex, () => {
+				this.expandChild(flattenedIndex, () => {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -171,7 +171,7 @@ class ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandMenu(flattenedIndex, () => {
+				this.expandChild(flattenedIndex, () => {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
@@ -292,7 +292,7 @@ class ParentMenuItem extends React.Component {
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapseParent={ this.collapseMenu }
+						collapseParent={ this.collapseChild }
 						focusPrevParentSibling={ this.focusPrevChild }
 						focusNextMenubarItem={ focusNextMenubarItem }
 						orientation={ orientation }
@@ -389,7 +389,7 @@ class ParentMenuItem extends React.Component {
 	};
 
 	//---- Misc. ---
-	collapseMenu = (collapseAll, callback) => {
+	collapseChild = (collapseAll, callback) => {
 		const { collapseParent } = this.props;
 
 		this.setState({
@@ -402,7 +402,7 @@ class ParentMenuItem extends React.Component {
 		});
 	};
 
-	expandMenu = (flattenedIndex, callback) => {
+	expandChild = (flattenedIndex, callback) => {
 		this.setState({
 			expandedIndex: flattenedIndex,
 		}, () => {
