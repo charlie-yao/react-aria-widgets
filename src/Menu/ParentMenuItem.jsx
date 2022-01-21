@@ -21,7 +21,7 @@ class ParentMenuItem extends React.Component {
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		collapse: PropTypes.func.isRequired,
-		focusPrevParentSibling: PropTypes.func.isRequired,
+		focusPrevMenubarItem: PropTypes.func.isRequired,
 		focusNextMenubarItem: PropTypes.func.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
@@ -67,7 +67,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapse, focusPrevParentSibling, focusNextMenubarItem, orientation } = this.props;
+		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -87,8 +87,7 @@ class ParentMenuItem extends React.Component {
 			else {
 				if(level === 1) {
 					collapse(false, () => {
-						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
-						focusPrevParentSibling(flatParentIndex, true);
+						focusPrevMenubarItem(Number.parseInt(flattenedPosition[0], 10), true);
 					});
 				}
 				else {
@@ -123,8 +122,7 @@ class ParentMenuItem extends React.Component {
 			if(orientation === 'vertical') {
 				if(level === 1) {
 					collapse(false, () => {
-						const flatParentIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 2], 10);
-						focusPrevParentSibling(flatParentIndex, true);
+						focusPrevMenubarItem(Number.parseInt(flattenedPosition[0], 10), true);
 					});
 				}
 				else {
@@ -247,7 +245,7 @@ class ParentMenuItem extends React.Component {
 	}
 
 	renderItems = () => {
-		const { items, focusNextMenubarItem, position, flattenedPosition } = this.props;
+		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
@@ -293,7 +291,7 @@ class ParentMenuItem extends React.Component {
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						collapse={ this.collapseChild }
-						focusPrevParentSibling={ this.focusPrevChild }
+						focusPrevMenubarItem={ focusPrevMenubarItem }
 						focusNextMenubarItem={ focusNextMenubarItem }
 						orientation={ orientation }
 						label={ label }
