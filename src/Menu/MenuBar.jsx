@@ -241,8 +241,8 @@ class MenuBar extends React.Component {
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
-						isDisabled={ isDisabled }
 						isExpanded={ flattenedIndex === expandedIndex }
+						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
