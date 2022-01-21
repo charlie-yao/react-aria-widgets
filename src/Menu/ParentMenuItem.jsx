@@ -85,16 +85,12 @@ class ParentMenuItem extends React.Component {
 			if(orientation === 'vertical')
 				this.focusPrevChild(flattenedIndex);
 			else {
-				if(level === 1) {
-					collapse(false, () => {
+				collapse(false, () => {
+					if(level === 1)
 						focusPrevMenubarItem(Number.parseInt(flattenedPosition[0], 10), true);
-					});
-				}
-				else {
-					collapse(false, () => {
+					else
 						this.focus();
-					});
-				}
+				});
 			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
@@ -110,8 +106,7 @@ class ParentMenuItem extends React.Component {
 				}
 				else {
 					collapse(true, () => {
-						const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
-						focusNextMenubarItem(flatMenubarIndex, true);
+						focusNextMenubarItem(Number.parseInt(flattenedPosition[0], 10), true);
 					});
 				}
 			}
@@ -120,16 +115,12 @@ class ParentMenuItem extends React.Component {
 			event.preventDefault();
 			
 			if(orientation === 'vertical') {
-				if(level === 1) {
-					collapse(false, () => {
+				collapse(false, () => {
+					if(level === 1)
 						focusPrevMenubarItem(Number.parseInt(flattenedPosition[0], 10), true);
-					});
-				}
-				else {
-					collapse(false, () => {
+					else
 						this.focus();
-					});
-				}
+				});
 			}
 			else
 				this.focusPrevChild(flattenedIndex);
@@ -145,8 +136,7 @@ class ParentMenuItem extends React.Component {
 				}
 				else {
 					collapse(true, () => {
-						const flatMenubarIndex = Number.parseInt(flattenedPosition[0], 10);
-						focusNextMenubarItem(flatMenubarIndex, true);
+						focusNextMenubarItem(Number.parseInt(flattenedPosition[0], 10), true);
 					});
 				}
 			}
