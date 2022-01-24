@@ -241,7 +241,13 @@ module.exports = {
 		],
 		'comma-dangle': [
 			'error',
-			'always-multiline',
+			{
+				arrays: 'always-multiline',
+				objects: 'always-multiline',
+				imports: 'always-multiline',
+				exports: 'always-multiline',
+				functions: 'only-multiline',
+			},
 		],
 		'comma-spacing': [
 			'error',
@@ -268,6 +274,7 @@ module.exports = {
 		],
 		'function-paren-newline': [
 			'error',
+			'consistent',
 		],
 		'implicit-arrow-linebreak': [
 			'error',

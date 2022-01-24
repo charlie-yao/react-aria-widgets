@@ -11,7 +11,6 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
-import { isSeparatorRef } from 'src/Menu/utils';
 
 /*
  * Note:
@@ -48,7 +47,7 @@ class MenuBar extends React.Component {
 
 		items.forEach(item => {
 			const { type, children } = item;
-			
+
 			if(type === 'separator')
 				return;
 			if(type === 'radiogroup') {
@@ -72,7 +71,7 @@ class MenuBar extends React.Component {
 		const item = items[index];
 		const { type } = item;
 
-		console.log(position, flattenedPosition, index, flattenedIndex, item);
+		//console.log(position, flattenedPosition, index, flattenedIndex, item);
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
@@ -89,7 +88,7 @@ class MenuBar extends React.Component {
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-			
+
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
@@ -192,6 +191,8 @@ class MenuBar extends React.Component {
 	}
 
 	renderItems = () => {
+		/* eslint-disable react/no-array-index-key */
+
 		const { items } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
@@ -298,7 +299,7 @@ class MenuBar extends React.Component {
 					position[0] = i;
 					flattenedPosition = flattenedPosition.slice(0);
 					flattenedPosition[0] = flattenedIndex;
-				
+
 					//TODO isChecked?
 					radioNodes.push(
 						<MenuItemRadio
@@ -331,6 +332,8 @@ class MenuBar extends React.Component {
 		});
 
 		return itemNodes;
+
+		/* eslint-enable react/no-array-index-key */
 	};
 
 	//---- Misc. ----
@@ -353,14 +356,14 @@ class MenuBar extends React.Component {
 	};
 
 	focusPrevChild = (flattenedIndex, autoExpand = false) => {
-		let prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
-		let prevRef = this.childItemRefs[prevIndex];
-		
+		const prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
+		const prevRef = this.childItemRefs[prevIndex];
+
 		this.setState(state => {
 			const { expandedIndex } = state;
 			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
 			const _autoExpand = prevRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
-			
+
 			//TODO would be nice if there was a better way to map ref indices to item indices
 			//and vice-versa, checking instanceof ParentMenuItem almost feels sort of abusive
 			//wrt using refs
@@ -372,10 +375,10 @@ class MenuBar extends React.Component {
 			prevRef.current.focus();
 		});
 	};
-	
+
 	focusNextChild = (flattenedIndex, autoExpand = false) => {
-		let nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
-		let nextRef = this.childItemRefs[nextIndex];
+		const nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
+		const nextRef = this.childItemRefs[nextIndex];
 
 		this.setState(state => {
 			const { expandedIndex } = state;

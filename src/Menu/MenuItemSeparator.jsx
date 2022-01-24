@@ -21,7 +21,7 @@ function MenuItemSeparator(props) {
 	const { children, orientation } = props;
 
 	return (
-		<li	
+		<li
 			role="separator"
 			aria-orientation={ orientation }
 		>

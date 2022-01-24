@@ -11,7 +11,6 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
-import { isSeparatorRef } from 'src/Menu/utils';
 
 class ParentMenuItem extends React.Component {
 	static propTypes = {
@@ -54,7 +53,7 @@ class ParentMenuItem extends React.Component {
 
 		items.forEach(item => {
 			const { type, children } = item;
-			
+
 			if(type === 'separator')
 				return;
 			if(type === 'radiogroup') {
@@ -80,8 +79,8 @@ class ParentMenuItem extends React.Component {
 		const item = items[index];
 		const { type } = item;
 
-		console.log(position, flattenedPosition, index, flattenedIndex, level, item);
-		
+		//console.log(position, flattenedPosition, index, flattenedIndex, level, item);
+
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
@@ -116,7 +115,7 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-			
+
 			if(orientation === 'vertical') {
 				collapse(false, () => {
 					if(level === 1)
@@ -130,7 +129,7 @@ class ParentMenuItem extends React.Component {
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			
+
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
@@ -238,8 +237,10 @@ class ParentMenuItem extends React.Component {
 	}
 
 	renderItems = () => {
+		/* eslint-disable react/no-array-index-key */
+
 		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition } = this.props;
-		const { tabbableIndex, expandedIndex } = this.state;
+		const { expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
 		let _position = [];
@@ -248,7 +249,7 @@ class ParentMenuItem extends React.Component {
 
 		items.forEach((item, i) => {
 			const { type, node, children, orientation, label, labelId, isDisabled } = item;
-			
+
 			if(type === 'item') {
 				_position = position.slice(0);
 				_position[level] = i;
@@ -337,7 +338,7 @@ class ParentMenuItem extends React.Component {
 
 				children.forEach((radioItem, j) => {
 					const { node, isDisabled } = radioItem;
-	
+
 					_position = position.slice(0);
 					_position[level] = i;
 					_flattenedPosition = flattenedPosition.slice(0);
@@ -374,6 +375,8 @@ class ParentMenuItem extends React.Component {
 		});
 
 		return itemNodes;
+
+		/* eslint-enable react/no-array-index-key */
 	};
 
 	//---- Misc. ---

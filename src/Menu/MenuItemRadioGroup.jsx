@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
-import MenuItemRadio from 'src/Menu/MenuItemRadio';
-
 /*
  * Note that if a menu or menubar contains more than one group of
  * menuitemradio elements or if the menu has a group of menuitemradio

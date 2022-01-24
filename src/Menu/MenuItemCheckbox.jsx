@@ -22,8 +22,8 @@ const MenuItemCheckbox = React.forwardRef(function MenuItemCheckbox(props, ref) 
 
 MenuItemCheckbox.propTypes = {
 	children: PropTypes.node.isRequired,
-	position: PropTypes.arrayOf(PropTypes.number.isRequired),
-	flattenedPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
+	position: PropTypes.arrayOf(PropTypes.number).isRequired,
+	flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	isDisabled: PropTypes.bool,
 	isTabbable: PropTypes.bool,
