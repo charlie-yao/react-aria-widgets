@@ -7,35 +7,32 @@ import PropTypes from 'prop-types';
  * - The menu should either have a labelId prop that points to the menuitem or
  * button that controls its display XOR a label prop.
  */
-class Menu extends React.Component {
-	static propTypes = {
-		children: PropTypes.node.isRequired,
-		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-		label: PropTypes.string,
-		labelId: PropTypes.string,
-	};
+function Menu(props) {
+	const { children, orientation, label, labelId } = props;
 
-	static defaultProps = {
-		orientation: 'vertical',
-		label: undefined,
-		labelId: undefined,
-	};
-
-	//---- Rendering ----
-	render() {
-		const { children, orientation, label, labelId } = this.props;
-
-		return (
-			<ul
-				role="menu"
-				aria-orientation={ orientation }
-				aria-label={ label }
-				aria-labelledby={ labelId }
-			>
-				{ children }
-			</ul>
-		);
-	}
+	return (
+		<ul
+			role="menu"
+			aria-orientation={ orientation }
+			aria-label={ label }
+			aria-labelledby={ labelId }
+		>
+			{ children }
+		</ul>
+	);
 }
+
+Menu.propTypes = {
+	children: PropTypes.node.isRequired,
+	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+	label: PropTypes.string,
+	labelId: PropTypes.string,
+};
+
+Menu.defaultProps = {
+	orientation: 'vertical',
+	label: undefined,
+	labelId: undefined,
+};
 
 export default Menu;
