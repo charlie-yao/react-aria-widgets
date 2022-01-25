@@ -8,10 +8,12 @@ class MenuButton extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		items: MENUITEMS_PROPTYPE.isRequired,
+		orientation: PropTypes.oneOf([ 'vertical', 'horizontal']),
 		isExpanded: PropTypes.bool,
 	};
 
 	static defaultProps = {
+		orientation: 'vertical',
 		isExpanded: false,
 	};
 
