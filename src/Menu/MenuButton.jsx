@@ -92,6 +92,114 @@ class MenuButton extends React.Component {
 	};
 
 	onChildKeyDown = (event) => {
+		const { items, orientation } = this.props;
+		const { key, target } = event;
+		const position = target.dataset.position.split(',');
+		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const index = Number.parseInt(position[position.length - 1], 10);
+		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const item = items[index];
+		const { type } = item;
+
+		//console.log(position, flattenedPosition, index, flattenedIndex, item);
+
+		if(key === 'ArrowUp' || key === 'Up') {
+			event.preventDefault();
+
+			if(orientation === 'horizontal') {
+				if(type === 'menu') {
+					this.expandChild(flattenedIndex, () => {
+						this.childItemRefs[flattenedIndex].current.focusLastChild();
+					});
+				}
+			}
+			else
+				this.focusPrevChild(flattenedIndex);
+		}
+		else if(key === 'ArrowDown' || key === 'Down') {
+			event.preventDefault();
+
+			if(orientation === 'horizontal') {
+				if(type === 'menu') {
+					this.expandChild(flattenedIndex, () => {
+						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+			}
+			else
+				this.focusNextChild(flattenedIndex);
+		}
+		else if(key === 'ArrowLeft' || key === 'Left') {
+			event.preventDefault();
+
+			if(orientation === 'horizontal')
+				this.focusPrevChild(flattenedIndex);
+			else {
+				if(type === 'menu') {
+					this.expandChild(flattenedIndex, () => {
+						this.childItemRefs[flattenedIndex].current.focusLastChild();
+					});
+				}
+			}
+		}
+		else if(key === 'ArrowRight' || key === 'Right') {
+			event.preventDefault();
+
+			if(orientation === 'horizontal')
+				this.focusNextChild(flattenedIndex);
+			else {
+				if(type === 'menu') {
+					this.expandChild(flattenedIndex, () => {
+						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+			}
+		}
+		else if(key === 'Enter') {
+			event.preventDefault();
+
+			if(type === 'menu') {
+				this.expandChild(flattenedIndex, () => {
+					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+				});
+			}
+			else {
+				//TODO activate the item and close the (whole?) menu
+			}
+		}
+		else if(key === ' ' || key === 'Spacebar') {
+			event.preventDefault();
+
+			if(type === 'menu') {
+				this.expandChild(flattenedIndex, () => {
+					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+				});
+			}
+			else if(type === 'checkbox') {
+				//TODO change state without closing the menu
+			}
+			else if(type === 'radiogroup') {
+				//TODO change state without closing the menu
+			}
+			else if(type === 'item') {
+				//TODO activate the item and close the (whole?) menu
+			}
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+			this.focusFirstChild();
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+			this.focusLastChild();
+		}
+		else if(key === 'Tab')
+			this.collapseChild();
+		else {
+			//TODO: Any key that corresponds to a printable character (Optional):
+			//Move focus to the next menu item in the current menu whose label begins
+			//with that printable character.
+		}
 	};
 
 	//---- Rendering ----
@@ -264,6 +372,72 @@ class MenuButton extends React.Component {
 		return itemNodes;
 
 		/* eslint-enable react/no-array-index-key */
+	};
+
+	//---- Misc. ----
+	collapseChild = (collapseAll, callback) => {
+		this.setState({
+			expandedIndex: undefined,
+		}, () => {
+			if(typeof callback === 'function')
+				callback();
+		});
+	};
+
+	expandChild = (flattenedIndex, callback) => {
+		this.setState({
+			expandedIndex: flattenedIndex,
+		}, () => {
+			if(typeof callback === 'function')
+				callback();
+		});
+	};
+
+	focusPrevChild = (flattenedIndex, autoExpand = false) => {
+		const prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
+		const prevRef = this.childItemRefs[prevIndex];
+
+		this.setState(state => {
+			const { expandedIndex } = state;
+			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
+			const _autoExpand = prevRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
+
+			//TODO would be nice if there was a better way to map ref indices to item indices
+			//and vice-versa, checking instanceof ParentMenuItem almost feels sort of abusive
+			//wrt using refs
+			return {
+				tabbableIndex: prevIndex,
+				expandedIndex: _autoExpand ? prevIndex : undefined,
+			};
+		}, () => {
+			prevRef.current.focus();
+		});
+	};
+
+	focusNextChild = (flattenedIndex, autoExpand = false) => {
+		const nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
+		const nextRef = this.childItemRefs[nextIndex];
+
+		this.setState(state => {
+			const { expandedIndex } = state;
+			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
+			const _autoExpand = nextRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
+
+			return {
+				tabbableIndex: nextIndex,
+				expandedIndex: _autoExpand ? nextIndex : undefined,
+			};
+		}, () => {
+			nextRef.current.focus();
+		});
+	};
+
+	focusFirstChild = () => {
+		this.focusNextChild(this.childItemRefs.length - 1);
+	};
+
+	focusLastChild = () => {
+		this.focusPrevChild(0);
 	};
 }
 
