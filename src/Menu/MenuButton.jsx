@@ -61,7 +61,6 @@ class MenuButton extends React.Component {
 	onKeyDown = (event) => {
 		const { key } = event;
 		
-		//TODO" should we account for menu orientation when doing arrow keys?
 		if(key === 'Enter' || key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
 
@@ -394,50 +393,35 @@ class MenuButton extends React.Component {
 	};
 
 	focusPrevChild = (flattenedIndex, autoExpand = false) => {
-		const prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
-		const prevRef = this.childItemRefs[prevIndex];
-
-		this.setState(state => {
-			const { expandedIndex } = state;
-			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
-			const _autoExpand = prevRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
-
-			//TODO would be nice if there was a better way to map ref indices to item indices
-			//and vice-versa, checking instanceof ParentMenuItem almost feels sort of abusive
-			//wrt using refs
-			return {
-				tabbableIndex: prevIndex,
-				expandedIndex: _autoExpand ? prevIndex : undefined,
-			};
-		}, () => {
-			prevRef.current.focus();
-		});
+		this.focusChild(flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1, autoExpand);
 	};
 
 	focusNextChild = (flattenedIndex, autoExpand = false) => {
-		const nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
-		const nextRef = this.childItemRefs[nextIndex];
+		this.focusChild(flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1, autoExpand);
+	};
+
+	focusFirstChild = () => {
+		this.focusChild(0);
+	};
+
+	focusLastChild = () => {
+		this.focusChild(this.childItemRefs.length - 1);
+	};
+
+	focusChild = (flattenedIndex, autoExpand = false) => {
+		const targetRef = this.childItemRefs[flattenedIndex];
 
 		this.setState(state => {
 			const { expandedIndex } = state;
 			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
-			const _autoExpand = nextRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
+			const _autoExpand = targetRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
 
 			return {
-				tabbableIndex: nextIndex,
-				expandedIndex: _autoExpand ? nextIndex : undefined,
+				expandedIndex: _autoExpand ? flattenedIndex : undefined,
 			};
 		}, () => {
-			nextRef.current.focus();
+			targetRef.current.focus();
 		});
-	};
-
-	focusFirstChild = () => {
-		this.focusNextChild(this.childItemRefs.length - 1);
-	};
-
-	focusLastChild = () => {
-		this.focusPrevChild(0);
 	};
 }
 

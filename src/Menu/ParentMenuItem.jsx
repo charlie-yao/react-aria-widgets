@@ -403,23 +403,23 @@ class ParentMenuItem extends React.Component {
 	};
 
 	focusPrevChild = (flattenedIndex) => {
-		const prevIndex = flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1;
-		const prevRef = this.childItemRefs[prevIndex];
-		prevRef.current.focus();
+		this.focusChild(flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1);
 	};
 
 	focusNextChild = (flattenedIndex) => {
-		const nextIndex = flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1;
-		const nextRef = this.childItemRefs[nextIndex];
-		nextRef.current.focus();
+		this.focusChild(flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1);
 	};
 
 	focusFirstChild = () => {
-		this.focusNextChild(this.childItemRefs.length - 1);
+		this.focusChild(0);
 	};
 
 	focusLastChild = () => {
-		this.focusPrevChild(0);
+		this.focusChild(this.childItemRefs.length - 1);
+	};
+
+	focusChild = (flattenedIndex) => {
+		this.childItemRefs[flattenedIndex].current.focus();
 	};
 
 	focus = () => {
