@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+
+//Components and Styles
+import Menu from 'src/Menu/Menu';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -19,20 +22,33 @@ class MenuButton extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, isExpanded } = this.props;
+		const { children, orientation, isExpanded } = this.props;
 
 		//TODO: point aria-controls to the menu (optional)
 		//TODO: keyboard interaction
 		return (
-			<button
-				type="button"
-				aria-haspopup="menu"
-				aria-expanded={ isExpanded }
-			>
-				{ children }
-			</button>
+			<Fragment>
+				<button
+					type="button"
+					aria-haspopup="menu"
+					aria-expanded={ isExpanded }
+				>
+					{ children }
+				</button>
+				<Menu
+					orientation={ orientation }
+				>
+					{ this.renderItems() }
+				</Menu>
+			</Fragment>
 		);
 	}
+
+	renderItems = () => {
+		return (
+			<div>Hello world!</div>
+		);
+	};
 }
 
 export default MenuButton;
