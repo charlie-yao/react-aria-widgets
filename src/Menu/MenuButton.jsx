@@ -67,7 +67,7 @@ class MenuButton extends React.Component {
 			this.setState({
 				isExpanded: true,
 			}, () => {
-				this.childItemRefs[0].current.focus();
+				this.focusFirstChild();
 			});
 		}
 		else if(key === 'ArrowUp' || key === 'Up') {
@@ -76,7 +76,7 @@ class MenuButton extends React.Component {
 			this.setState({
 				isExpanded: true,
 			}, () => {
-				this.childItemRefs[this.childItemRefs.length - 1].current.focus();
+				this.focusLastChild();
 			});
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
@@ -85,7 +85,7 @@ class MenuButton extends React.Component {
 			this.setState({
 				isExpanded: true,
 			}, () => {
-				this.childItemRefs[0].current.focus();
+				this.focusFirstChild();
 			});
 		}
 	};
