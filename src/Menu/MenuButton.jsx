@@ -12,6 +12,9 @@ class MenuButton extends React.Component {
 		children: PropTypes.node.isRequired,
 		items: MENUITEMS_PROPTYPE.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal']),
+		menuLabel: PropTypes.string,
+		menuId: PropTypes.string,
+		id: PropTypes.string,
 		isExpanded: PropTypes.bool,
 	};
 
@@ -22,21 +25,24 @@ class MenuButton extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, orientation, isExpanded } = this.props;
+		const { children, orientation, menuLabel, menuId, id, isExpanded } = this.props;
 
-		//TODO: point aria-controls to the menu (optional)
-		//TODO: keyboard interaction
 		return (
 			<Fragment>
 				<button
 					type="button"
 					aria-haspopup="menu"
+					aria-controls={ menuId }
+					id={ id }
 					aria-expanded={ isExpanded }
 				>
 					{ children }
 				</button>
 				<Menu
 					orientation={ orientation }
+					label={ menuLabel }
+					labelId={ id }
+					id={ menuId }
 				>
 					{ this.renderItems() }
 				</Menu>
