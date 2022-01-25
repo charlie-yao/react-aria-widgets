@@ -59,6 +59,24 @@ class MenuButton extends React.Component {
 
 	//---- Events ----
 	onKeyDown = (event) => {
+		const { key } = event;
+		
+		//TODO" should we account for menu orientation when doing arrow keys?
+		if(key === 'Enter' || key === ' ' || key === 'Spacebar') {
+			event.preventDefault();
+
+			this.setState({
+				isExpanded: true,
+			}, () => {
+				this.childItemRefs[0].current.focus();
+			});
+		}
+		else if(key === 'ArrowUp' || key === 'Up') {
+			event.preventDefault();
+		}
+		else if(key === 'ArrowDown' || key === 'Down') {
+			event.preventDefault();
+		}
 	};
 
 	onChildKeyDown = (event) => {
@@ -77,6 +95,7 @@ class MenuButton extends React.Component {
 					aria-controls={ menuId }
 					id={ id }
 					aria-expanded={ isExpanded }
+					onKeyDown={ this.onKeyDown }
 				>
 					{ children }
 				</button>
