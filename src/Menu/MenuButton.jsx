@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Misc.
+import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+
 class MenuButton extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
+		items: MENUITEMS_PROPTYPE.isRequired,
 		isExpanded: PropTypes.bool,
 	};
 
