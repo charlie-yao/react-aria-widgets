@@ -39,7 +39,8 @@ class MenuButton extends React.Component {
 			isExpanded: false,
 			expandedIndex: undefined,
 		};
-
+		
+		this.buttonRef = React.createRef();
 		this.childItemRefs = [];
 
 		items.forEach(item => {
@@ -156,8 +157,15 @@ class MenuButton extends React.Component {
 			event.preventDefault();
 			this.focusLastChild();
 		}
-		else if(key === 'Tab')
-			this.collapseChild();
+		else if(key === 'Escape' || key === 'Esc') {
+			this.collapseButton(() => {
+				this.focus();
+			});
+		}
+		else if(key === 'Tab') {
+			//TODO: do we need to recursively collapse any children?
+			this.collapseButton();
+		}
 		else {
 			//TODO: Any key that corresponds to a printable character (Optional):
 			//Move focus to the next menu item in the current menu whose label begins
@@ -179,6 +187,7 @@ class MenuButton extends React.Component {
 					id={ id }
 					aria-expanded={ isExpanded }
 					onKeyDown={ this.onKeyDown }
+					ref={ this.buttonRef }
 				>
 					{ children }
 				</button>
@@ -360,7 +369,9 @@ class MenuButton extends React.Component {
 		this.setState({
 			expandedIndex: undefined,
 		}, () => {
-			if(typeof callback === 'function')
+			if(collapseAll)
+				this.collapseButton(callback);
+			else if(typeof callback === 'function')
 				callback();
 		});
 	};
@@ -404,6 +415,10 @@ class MenuButton extends React.Component {
 		}, () => {
 			targetRef.current.focus();
 		});
+	};
+
+	focus = () => {
+		this.buttonRef.current.focus();
 	};
 }
 
