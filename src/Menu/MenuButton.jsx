@@ -99,53 +99,29 @@ class MenuButton extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			if(orientation === 'horizontal') {
-				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusLastChild();
-					});
-				}
-			}
-			else
-				this.focusPrevChild(flattenedIndex);
+			this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
-			if(orientation === 'horizontal') {
-				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
-					});
-				}
-			}
-			else
-				this.focusNextChild(flattenedIndex);
+			this.focusNextChild(flattenedIndex);
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
-			if(orientation === 'horizontal')
-				this.focusPrevChild(flattenedIndex);
-			else {
-				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusLastChild();
-					});
-				}
+			if(type === 'menu') {
+				this.expandChild(flattenedIndex, () => {
+					this.childItemRefs[flattenedIndex].current.focusLastChild();
+				});
 			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 
-			if(orientation === 'horizontal')
-				this.focusNextChild(flattenedIndex);
-			else {
-				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
-					});
-				}
+			if(type === 'menu') {
+				this.expandChild(flattenedIndex, () => {
+					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+				});
 			}
 		}
 		else if(key === 'Enter') {
