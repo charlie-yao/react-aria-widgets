@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * button that controls its display XOR a label prop.
  */
 function Menu(props) {
-	const { children, orientation, label, labelId } = props;
+	const { children, orientation, label, labelId, id } = props;
 
 	return (
 		<ul
@@ -16,6 +16,7 @@ function Menu(props) {
 			aria-orientation={ orientation }
 			aria-label={ label }
 			aria-labelledby={ labelId }
+			id={ id }
 		>
 			{ children }
 		</ul>
@@ -27,12 +28,14 @@ Menu.propTypes = {
 	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 	label: PropTypes.string,
 	labelId: PropTypes.string,
+	id: PropTypes.string,
 };
 
 Menu.defaultProps = {
 	orientation: 'vertical',
 	label: undefined,
 	labelId: undefined,
+	id: undefined,
 };
 
 export default Menu;

@@ -13,7 +13,7 @@ class MenuButton extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, isExpanded } = props;
+		const { children, isExpanded } = this.props;
 
 		//TODO: point aria-controls to the menu (optional)
 		//TODO: keyboard interaction
