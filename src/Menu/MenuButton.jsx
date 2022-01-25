@@ -108,12 +108,6 @@ class MenuButton extends React.Component {
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
-
-			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusLastChild();
-				});
-			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
