@@ -73,9 +73,21 @@ class MenuButton extends React.Component {
 		}
 		else if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
+
+			this.setState({
+				isExpanded: true,
+			}, () => {
+				this.childItemRefs[this.childItemRefs.length - 1].current.focus();
+			});
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
+
+			this.setState({
+				isExpanded: true,
+			}, () => {
+				this.childItemRefs[0].current.focus();
+			});
 		}
 	};
 
