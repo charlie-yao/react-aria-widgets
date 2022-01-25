@@ -63,28 +63,22 @@ class MenuButton extends React.Component {
 		
 		if(key === 'Enter' || key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
-
-			this.setState({
-				isExpanded: true,
-			}, () => {
+			
+			this.expandButton(() => {
 				this.focusFirstChild();
 			});
 		}
 		else if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-
-			this.setState({
-				isExpanded: true,
-			}, () => {
+			
+			this.expandButton(() => {
 				this.focusLastChild();
 			});
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-
-			this.setState({
-				isExpanded: true,
-			}, () => {
+			
+			this.expandButton(() => {
 				this.focusFirstChild();
 			});
 		}
@@ -374,6 +368,24 @@ class MenuButton extends React.Component {
 	};
 
 	//---- Misc. ----
+	collapseButton = (callback) => {
+		this.setState({
+			isExpanded: false,
+		}, () => {
+			if(typeof callback === 'function')
+				callback();
+		});
+	};
+
+	expandButton = (callback) => {
+		this.setState({
+			isExpanded: true,
+		}, () => {
+			if(typeof callback === 'function')
+				callback();
+		});
+	};
+
 	collapseChild = (collapseAll, callback) => {
 		this.setState({
 			expandedIndex: undefined,
