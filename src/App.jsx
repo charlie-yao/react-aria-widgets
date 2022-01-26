@@ -36,7 +36,7 @@ const DUMMY_ACCORDION_SECTIONS = [
 	},
 ];
 
-export const MENUITEMS = [
+const MENUITEMS = [
 	{
 		type: 'menu',
 		node: 'Parent Menuitem 1',
