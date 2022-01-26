@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuid } from 'uuid'
 
 //Components and Styles
 import MenuBar from 'src/Menu/MenuBar';
@@ -39,10 +40,19 @@ class MenuBarOne extends React.Component {
 
 			//Create a copy of items because we shouldn't
 			//be directly modifying any props
-			_items.push(Object.assign({}, item));
+			_items.push(Object.assign({}, item, {
+				id: uuid(),
+			}));
 
 			if(type === 'menu')
 				_items[i].children = this.initializeItems(children);
+			else if(type === 'radiogroup') {
+				_items[i].children = children.map(option => {
+					return Object.assign({}, option, {
+						id: uuid(),
+					});
+				});
+			}
 		});
 
 		return _items;
