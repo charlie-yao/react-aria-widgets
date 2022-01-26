@@ -4,6 +4,7 @@ import React from 'react';
 import Accordion from 'src/Accordion';
 import MenuButton from 'src/Menu/MenuButton';
 import MenuBar from 'src/Menu/MenuBar';
+import MenuBarOne from 'src/MenuBarOne';
 
 function onDummySubmit(event) {
 	event.preventDefault();
@@ -35,7 +36,7 @@ const DUMMY_ACCORDION_SECTIONS = [
 	},
 ];
 
-const MENUITEMS = [
+export const MENUITEMS = [
 	{
 		type: 'menu',
 		node: 'Parent Menuitem 1',
@@ -1284,7 +1285,7 @@ function App() {
 			<MenuButton items={ MENUITEMS_3 } orientation="horizontal">
 				Menu Button 3
 			</MenuButton>
-			<MenuBar label="Placeholder" items={ MENUITEMS } />
+			<MenuBarOne />
 			<MenuBar label="Placeholder" items={ MENUITEMS_2 } orientation="vertical" />
 			<MenuBar label="Placeholder" items={ MENUITEMS_3 } orientation="vertical" />
 		</main>
