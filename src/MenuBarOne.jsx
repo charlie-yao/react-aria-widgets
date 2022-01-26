@@ -19,9 +19,6 @@ class MenuBarOne extends React.Component {
 				node: 'Parent Menuitem 1',
 				children: [
 					{
-						type: 'separator',
-					},
-					{
 						type: 'radiogroup',
 						children: [
 							{
@@ -131,9 +128,6 @@ class MenuBarOne extends React.Component {
 								node: 'Radio Option 3',
 							},
 						],
-					},
-					{
-						type: 'separator',
 					},
 				],
 			},
@@ -414,12 +408,7 @@ class MenuBarOne extends React.Component {
 					},
 				],
 			},
-			{
-				type: 'separator',
-			},
 		];
-
-
 	};
 }
 
