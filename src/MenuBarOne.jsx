@@ -14,8 +14,10 @@ class MenuBarOne extends React.Component {
 	constructor(props) {
 		super(props);
 
+		const { items } = props;
+
 		this.state = {
-			items: this.initializeItems(),
+			items: this.initializeItems(items),
 		};
 	}
 
@@ -29,10 +31,21 @@ class MenuBarOne extends React.Component {
 	}
 
 	//---- Misc. ----
-	initializeItems = () => {
-		const { items } = this.props;
+	initializeItems = (items) => {
+		const _items = [];
 
-		return items;
+		items.forEach((item, i) => {
+			const { type, children } = item;
+
+			//Create a copy of items because we shouldn't
+			//be directly modifying any props
+			_items.push(Object.assign({}, item));
+
+			if(type === 'menu')
+				_items[i].children = this.initializeItems(children);
+		});
+
+		return _items;
 	};
 }
 
