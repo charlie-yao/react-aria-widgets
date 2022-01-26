@@ -13,6 +13,25 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
+/*
+ * Note about labels and IDs:
+ *
+ * 1) Passing in an id prop means giving the menu an aria-labelledby attribute
+ * that points to the <button>. Passing a menuLabel prop means giving the menu
+ * an aria-label attribute. However, since the menu is controlled by the <button>
+ * and the <button> is likely going to contain accessible label text, chances are,
+ * you should be using the id prop to label the menu instead of the menuLabel prop.
+ *
+ * See:
+ * https://www.w3.org/TR/wai-aria-1.1/#aria-label
+ *
+ * This also means that, as it's current programmed, the menu's aria-labelledby
+ * attribute cannot point to any other HTML element other than the <button>
+ * controlling it.
+ *
+ * 2) One can optionally pass in a menuId prop, giving the <button> an
+ * aria-controls attribute that points to the menu.
+ */
 class MenuButton extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
