@@ -20,6 +20,12 @@
 	}
 }
 
+[role="menuitemcheckbox"] {
+	&[aria-checked="true"] {
+		background-color: blue;
+	}
+}
+
 //A technique for visually-hiding elements
 //but still keeping them readable to machines.
 //See:

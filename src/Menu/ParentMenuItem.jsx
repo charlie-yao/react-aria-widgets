@@ -28,6 +28,9 @@ class ParentMenuItem extends React.Component {
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
+		//temp?
+		itemStateMap: PropTypes.object,
+		toggleChecked: PropTypes.func,
 	};
 
 	static defaultProps = {
@@ -70,7 +73,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, orientation } = this.props;
+		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, orientation, toggleChecked } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -79,7 +82,7 @@ class ParentMenuItem extends React.Component {
 		const flattenedRootIndex = Number.parseInt(flattenedPosition[0], 10);
 		const level = position.length - 1;
 		const item = items[index];
-		const { type } = item;
+		const { type, id } = item;
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, level, item);
 
@@ -155,8 +158,15 @@ class ParentMenuItem extends React.Component {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
-			else {
-				//TODO activate the item and close the (whole?) menu
+			else if(type === 'checkbox') {
+				//TODO change state and close the menu
+				toggleChecked(id);
+			}
+			else if(type === 'radiogroup') {
+				//TODO change state and close the menu
+			}
+			else if(type === 'item') {
+				//TODO activate the item and close the whole menu
 			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
@@ -167,8 +177,9 @@ class ParentMenuItem extends React.Component {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
-			else if(type === 'checbox') {
+			else if(type === 'checkbox') {
 				//TODO change state without closing the menu
+				toggleChecked(id);
 			}
 			else if(type === 'radiogroup') {
 				//TODO change state without closing the menu
@@ -241,7 +252,7 @@ class ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition } = this.props;
+		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition, itemStateMap, toggleChecked } = this.props;
 		const { expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
@@ -250,7 +261,7 @@ class ParentMenuItem extends React.Component {
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
-			const { type, node, children, orientation, label, labelId, isDisabled } = item;
+			const { type, node, children, orientation, label, labelId, isDisabled, id } = item;
 
 			if(type === 'item') {
 				_position = position.slice(0);
@@ -295,6 +306,8 @@ class ParentMenuItem extends React.Component {
 						isExpanded={ flattenedIndex === expandedIndex }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
+						itemStateMap={ itemStateMap }
+						toggleChecked={ toggleChecked }
 					>
 						{ node }
 					</ParentMenuItem>
@@ -317,6 +330,7 @@ class ParentMenuItem extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
+						isChecked={ itemStateMap[id].isChecked }
 					>
 						{ node }
 					</MenuItemCheckbox>

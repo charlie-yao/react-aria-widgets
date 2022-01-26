@@ -1276,6 +1276,7 @@ function App() {
 			<h1>Accordion</h1>
 			<Accordion headerLevel={ 2 } sections={ DUMMY_ACCORDION_SECTIONS } />
 			<h1>Menu, Menubar, Menu Button</h1>
+			{/*
 			<MenuButton items={ MENUITEMS }>
 				Menu Button
 			</MenuButton>
@@ -1285,9 +1286,12 @@ function App() {
 			<MenuButton items={ MENUITEMS_3 } orientation="horizontal">
 				Menu Button 3
 			</MenuButton>
+			*/}
 			<MenuBarOne items={ MENUITEMS } />
+			{/*
 			<MenuBar label="Placeholder" items={ MENUITEMS_2 } orientation="vertical" />
 			<MenuBar label="Placeholder" items={ MENUITEMS_3 } orientation="vertical" />
+			*/}
 		</main>
 	);
 }

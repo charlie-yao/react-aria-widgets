@@ -25,6 +25,9 @@ class MenuBar extends React.Component {
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
+		//Temp?
+		itemStateMap: PropTypes.object,
+		toggleChecked: PropTypes.func,
 	};
 
 	static defaultProps = {
@@ -69,7 +72,7 @@ class MenuBar extends React.Component {
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const item = items[index];
-		const { type } = item;
+		const { type, id } = item;
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, item);
 
@@ -133,7 +136,14 @@ class MenuBar extends React.Component {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
-			else {
+			else if(type === 'checkbox') {
+				//TODO change state and close the menu
+				toggleChecked(id);
+			}
+			else if(type === 'radiogroup') {
+				//TODO change state and close the menu
+			}
+			else if(type === 'item') {
 				//TODO activate the item and close the (whole?) menu
 			}
 		}
@@ -193,7 +203,7 @@ class MenuBar extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items } = this.props;
+		const { items, itemStateMap, toggleChecked } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
 		let position = [];
@@ -201,7 +211,7 @@ class MenuBar extends React.Component {
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
-			const { type, node, children, orientation, label, labelId, isDisabled } = item;
+			const { type, node, children, orientation, label, labelId, isDisabled, id } = item;
 
 			if(type === 'item') {
 				position = position.slice(0);
@@ -248,6 +258,8 @@ class MenuBar extends React.Component {
 						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
 						ref={ this.childItemRefs[flattenedIndex] }
+						itemStateMap={ itemStateMap }
+						toggleChecked={ toggleChecked }
 					>
 						{ node }
 					</ParentMenuItem>
@@ -271,6 +283,7 @@ class MenuBar extends React.Component {
 						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
 						ref={ this.childItemRefs[flattenedIndex] }
+						isChecked={ itemStateMap[id].isChecked }
 					>
 						{ node }
 					</MenuItemCheckbox>

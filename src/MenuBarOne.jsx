@@ -14,48 +14,77 @@ class MenuBarOne extends React.Component {
 
 	constructor(props) {
 		super(props);
-
+		
 		const { items } = props;
+		const itemStateMap = {};
+		const _items = this.initializeItems(items, itemStateMap);
 
 		this.state = {
-			items: this.initializeItems(items),
+			items: _items,
+			itemStateMap,
 		};
 	}
 
 	//---- Rendering ----
 	render() {
-		const { items } = this.state;
+		const { items, itemStateMap } = this.state;
 
 		return (
-			<MenuBar label="Placeholder" items={ items } />
+			<MenuBar
+				label="Placeholder"
+				items={ items }
+				itemStateMap={ itemStateMap }
+				toggleChecked={ this.toggleChecked }
+			/>
 		);
 	}
 
 	//---- Misc. ----
-	initializeItems = (items) => {
+	initializeItems = (items, itemStateMap) => {
 		const _items = [];
 
 		items.forEach((item, i) => {
 			const { type, children } = item;
+			const id = uuid();
+			const _item = Object.assign({}, item, {
+				id,
+			});
 
-			//Create a copy of items because we shouldn't
-			//be directly modifying any props
-			_items.push(Object.assign({}, item, {
-				id: uuid(),
-			}));
+			_items.push(_item);
+			itemStateMap[id] = _item;
 
 			if(type === 'menu')
-				_items[i].children = this.initializeItems(children);
+				_items[i].children = this.initializeItems(children, itemStateMap);
 			else if(type === 'radiogroup') {
 				_items[i].children = children.map(option => {
-					return Object.assign({}, option, {
-						id: uuid(),
+					const optionId = uuid();
+					const _option = Object.assign({}, option, {
+						id: optionId,
 					});
+
+					itemStateMap[optionId] = _option;
+
+					return _option;
 				});
 			}
 		});
 
 		return _items;
+	};
+
+	toggleChecked = (id) => {
+		console.log(id);
+
+		//FIXME: does not work for radios or "mixed" values
+		this.setState(state => {
+			const { itemStateMap } = state;
+
+			itemStateMap[id].isChecked = !itemStateMap[id].isChecked;
+
+			return {
+				itemStateMap,
+			};
+		});
 	};
 }
 
