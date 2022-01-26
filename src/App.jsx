@@ -1278,6 +1278,12 @@ function App() {
 			<MenuButton items={ MENUITEMS }>
 				Menu Button
 			</MenuButton>
+			<MenuButton items={ MENUITEMS_2 } orientation="horizontal">
+				Menu Button 2
+			</MenuButton>
+			<MenuButton items={ MENUITEMS_3 } orientation="horizontal">
+				Menu Button 3
+			</MenuButton>
 			<MenuBar label="Placeholder" items={ MENUITEMS } />
 			<MenuBar label="Placeholder" items={ MENUITEMS_2 } orientation="vertical" />
 			<MenuBar label="Placeholder" items={ MENUITEMS_3 } orientation="vertical" />

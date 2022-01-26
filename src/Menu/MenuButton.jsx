@@ -99,24 +99,41 @@ class MenuButton extends React.Component {
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-
-			this.focusPrevChild(flattenedIndex);
+			
+			if(orientation === 'vertical')
+				this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-
-			this.focusNextChild(flattenedIndex);
+			
+			if(orientation === 'vertical')
+				this.focusNextChild(flattenedIndex);
+			else {
+				if(type === 'menu') {
+					this.expandChild(flattenedIndex, () => {
+						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+			}
 		}
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
+
+			if(orientation === 'horizontal')
+				this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-
-			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
-				});
+			
+			if(orientation === 'vertical') {
+				if(type === 'menu') {
+					this.expandChild(flattenedIndex, () => {
+						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					});
+				}
+			}
+			else {
+				this.focusNextChild(flattenedIndex);
 			}
 		}
 		else if(key === 'Enter') {

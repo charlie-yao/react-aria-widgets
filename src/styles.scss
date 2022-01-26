@@ -3,7 +3,7 @@
 }
 
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 [role="menuitem"][aria-expanded="false"] + [role="menu"] {
