@@ -31,6 +31,8 @@ class ParentMenuItem extends React.Component {
 	};
 
 	static defaultProps = {
+		focusPrevMenubarItem: undefined,
+		focusNextMenubarItem: undefined,
 		orientation: 'vertical',
 		label: undefined,
 		labelId: undefined,

@@ -17,7 +17,7 @@ class MenuButton extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		items: MENUITEMS_PROPTYPE.isRequired,
-		orientation: PropTypes.oneOf([ 'vertical', 'horizontal']),
+		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		menuLabel: PropTypes.string,
 		menuId: PropTypes.string,
 		id: PropTypes.string,
@@ -39,7 +39,7 @@ class MenuButton extends React.Component {
 			isExpanded: false,
 			expandedIndex: undefined,
 		};
-		
+
 		this.buttonRef = React.createRef();
 		this.childItemRefs = [];
 
@@ -61,24 +61,24 @@ class MenuButton extends React.Component {
 	//---- Events ----
 	onKeyDown = (event) => {
 		const { key } = event;
-		
+
 		if(key === 'Enter' || key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
-			
+
 			this.expandButton(() => {
 				this.focusFirstChild();
 			});
 		}
 		else if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-			
+
 			this.expandButton(() => {
 				this.focusLastChild();
 			});
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-			
+
 			this.expandButton(() => {
 				this.focusFirstChild();
 			});
@@ -99,13 +99,13 @@ class MenuButton extends React.Component {
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
-			
+
 			if(orientation === 'vertical')
 				this.focusPrevChild(flattenedIndex);
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
-			
+
 			if(orientation === 'vertical')
 				this.focusNextChild(flattenedIndex);
 			else {
@@ -124,7 +124,7 @@ class MenuButton extends React.Component {
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
-			
+
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
@@ -132,9 +132,8 @@ class MenuButton extends React.Component {
 					});
 				}
 			}
-			else {
+			else
 				this.focusNextChild(flattenedIndex);
-			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
@@ -180,7 +179,6 @@ class MenuButton extends React.Component {
 			});
 		}
 		else if(key === 'Tab') {
-			//TODO: do we need to recursively collapse any children?
 			this.collapseButton();
 		}
 		else {
@@ -400,12 +398,12 @@ class MenuButton extends React.Component {
 		});
 	};
 
-	focusPrevChild = (flattenedIndex, autoExpand = false) => {
-		this.focusChild(flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1, autoExpand);
+	focusPrevChild = (flattenedIndex) => {
+		this.focusChild(flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1);
 	};
 
-	focusNextChild = (flattenedIndex, autoExpand = false) => {
-		this.focusChild(flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1, autoExpand);
+	focusNextChild = (flattenedIndex) => {
+		this.focusChild(flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1);
 	};
 
 	focusFirstChild = () => {
@@ -416,20 +414,8 @@ class MenuButton extends React.Component {
 		this.focusChild(this.childItemRefs.length - 1);
 	};
 
-	focusChild = (flattenedIndex, autoExpand = false) => {
-		const targetRef = this.childItemRefs[flattenedIndex];
-
-		this.setState(state => {
-			const { expandedIndex } = state;
-			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
-			const _autoExpand = targetRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
-
-			return {
-				expandedIndex: _autoExpand ? flattenedIndex : undefined,
-			};
-		}, () => {
-			targetRef.current.focus();
-		});
+	focusChild = (flattenedIndex) => {
+		this.childItemRefs[flattenedIndex].current.focus();
 	};
 
 	focus = () => {
