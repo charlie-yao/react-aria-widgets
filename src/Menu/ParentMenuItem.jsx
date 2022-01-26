@@ -20,8 +20,8 @@ class ParentMenuItem extends React.Component {
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		collapse: PropTypes.func.isRequired,
-		focusPrevMenubarItem: PropTypes.func.isRequired,
-		focusNextMenubarItem: PropTypes.func.isRequired,
+		focusPrevMenubarItem: PropTypes.func,
+		focusNextMenubarItem: PropTypes.func,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
@@ -88,7 +88,7 @@ class ParentMenuItem extends React.Component {
 				this.focusPrevChild(flattenedIndex);
 			else {
 				collapse(false, () => {
-					if(level === 1)
+					if(level === 1 && focusPrevMenubarItem)
 						focusPrevMenubarItem(flattenedRootIndex, true);
 					else
 						this.focus();
@@ -106,7 +106,7 @@ class ParentMenuItem extends React.Component {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
-				else {
+				else if(focusNextMenubarItem) {
 					collapse(true, () => {
 						focusNextMenubarItem(flattenedRootIndex, true);
 					});
@@ -118,7 +118,7 @@ class ParentMenuItem extends React.Component {
 
 			if(orientation === 'vertical') {
 				collapse(false, () => {
-					if(level === 1)
+					if(level === 1 && focusPrevMenubarItem)
 						focusPrevMenubarItem(flattenedRootIndex, true);
 					else
 						this.focus();
@@ -136,7 +136,7 @@ class ParentMenuItem extends React.Component {
 						this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
-				else {
+				else if(focusNextMenubarItem) {
 					collapse(true, () => {
 						focusNextMenubarItem(flattenedRootIndex, true);
 					});
