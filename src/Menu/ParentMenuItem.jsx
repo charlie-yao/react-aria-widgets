@@ -28,9 +28,6 @@ class ParentMenuItem extends React.Component {
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
-		//temp?
-		itemStateMap: PropTypes.object,
-		toggleChecked: PropTypes.func,
 	};
 
 	static defaultProps = {
@@ -73,7 +70,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, orientation, toggleChecked } = this.props;
+		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -160,7 +157,6 @@ class ParentMenuItem extends React.Component {
 			}
 			else if(type === 'checkbox') {
 				//TODO change state and close the menu
-				toggleChecked(id);
 			}
 			else if(type === 'radiogroup') {
 				//TODO change state and close the menu
@@ -179,7 +175,6 @@ class ParentMenuItem extends React.Component {
 			}
 			else if(type === 'checkbox') {
 				//TODO change state without closing the menu
-				toggleChecked(id);
 			}
 			else if(type === 'radiogroup') {
 				//TODO change state without closing the menu
@@ -252,7 +247,7 @@ class ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition, itemStateMap, toggleChecked } = this.props;
+		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition } = this.props;
 		const { expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
@@ -306,8 +301,6 @@ class ParentMenuItem extends React.Component {
 						isExpanded={ flattenedIndex === expandedIndex }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
-						itemStateMap={ itemStateMap }
-						toggleChecked={ toggleChecked }
 					>
 						{ node }
 					</ParentMenuItem>
@@ -330,7 +323,6 @@ class ParentMenuItem extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
-						isChecked={ itemStateMap[id].isChecked }
 					>
 						{ node }
 					</MenuItemCheckbox>

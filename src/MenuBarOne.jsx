@@ -12,79 +12,420 @@ class MenuBarOne extends React.Component {
 		items: MENUITEMS_PROPTYPE.isRequired,
 	};
 
-	constructor(props) {
-		super(props);
-		
-		const { items } = props;
-		const itemStateMap = {};
-		const _items = this.initializeItems(items, itemStateMap);
-
-		this.state = {
-			items: _items,
-			itemStateMap,
-		};
-	}
-
 	//---- Rendering ----
 	render() {
-		const { items, itemStateMap } = this.state;
-
 		return (
-			<MenuBar
-				label="Placeholder"
-				items={ items }
-				itemStateMap={ itemStateMap }
-				toggleChecked={ this.toggleChecked }
-			/>
+			<MenuBar label="Placeholder" items={ this.getItems() } />
 		);
 	}
 
 	//---- Misc. ----
-	initializeItems = (items, itemStateMap) => {
-		const _items = [];
+	getItems = () => {
+		return [
+			{
+				type: 'menu',
+				node: 'Parent Menuitem 1',
+				children: [
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 1',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 2',
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 1',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 2',
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+				],
+			},
+			{
+				type: 'menu',
+				node: 'Parent Menuitem 2',
+				children: [
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'menu',
+						node: 'Nested Parent Menuitem',
+						children: [
+							{
+								type: 'menu',
+								node: 'Nested Parent Menuitem',
+								children: [
+									{
+										type: 'item',
+										node: 'Hello world!',
+									},
+									{
+										type: 'item',
+										node: 'Hello world!',
+									},
+									{
+										type: 'separator',
+									},
+									{
+										type: 'radiogroup',
+										children: [
+											{
+												node: 'Radio Option 1',
+											},
+											{
+												node: 'Radio Option 2',
+											},
+											{
+												node: 'Radio Option 3',
+											},
+										],
+									},
+									{
+										type: 'separator',
+									},
+									{
+										type: 'radiogroup',
+										children: [
+											{
+												node: 'Radio Option 1',
+											},
+											{
+												node: 'Radio Option 2',
+											},
+											{
+												node: 'Radio Option 3',
+											},
+										],
+									},
 
-		items.forEach((item, i) => {
-			const { type, children } = item;
-			const id = uuid();
-			const _item = Object.assign({}, item, {
-				id,
-			});
-
-			_items.push(_item);
-			itemStateMap[id] = _item;
-
-			if(type === 'menu')
-				_items[i].children = this.initializeItems(children, itemStateMap);
-			else if(type === 'radiogroup') {
-				_items[i].children = children.map(option => {
-					const optionId = uuid();
-					const _option = Object.assign({}, option, {
-						id: optionId,
-					});
-
-					itemStateMap[optionId] = _option;
-
-					return _option;
-				});
-			}
-		});
-
-		return _items;
-	};
-
-	toggleChecked = (id) => {
-		console.log(id);
-
-		//FIXME: does not work for radios or "mixed" values
-		this.setState(state => {
-			const { itemStateMap } = state;
-
-			itemStateMap[id].isChecked = !itemStateMap[id].isChecked;
-
-			return {
-				itemStateMap,
-			};
-		});
+								],
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'menu',
+								node: 'Nested Parent Menuitem',
+								children: [
+									{
+										type: 'item',
+										node: 'Hello world!',
+									},
+									{
+										type: 'item',
+										node: 'Hello world!',
+									},
+								],
+							},
+						],
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 1',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 2',
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 1',
+					},
+					{
+						type: 'checkbox',
+						node: 'Checkbox 2',
+					},
+				],
+			},
+			{
+				type: 'item',
+				node: 'Hello world!',
+			},
+			{
+				type: 'menu',
+				node: 'Parent Menuitem 3',
+				children: [
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'menu',
+						node: 'Nested Parent Menuitem',
+						children: [
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+						],
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'menu',
+				node: 'Parent Menuitem 4',
+				children: [
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'item',
+						node: 'Hello world!',
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'radiogroup',
+						children: [
+							{
+								node: 'Radio Option 1',
+							},
+							{
+								node: 'Radio Option 2',
+							},
+							{
+								node: 'Radio Option 3',
+							},
+						],
+					},
+					{
+						type: 'separator',
+					},
+					{
+						type: 'menu',
+						node: 'Nested Parent Menuitem',
+						children: [
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+							},
+						],
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+					},
+					{
+						node: 'Radio Option 2',
+					},
+					{
+						node: 'Radio Option 3',
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+		];
 	};
 }
 
