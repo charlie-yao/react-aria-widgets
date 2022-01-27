@@ -27,9 +27,6 @@ class MenuBarOne extends React.Component {
 				node: 'Parent Menuitem 1',
 				children: [
 					{
-						type: 'separator',
-					},
-					{
 						type: 'radiogroup',
 						children: [
 							{
@@ -45,18 +42,6 @@ class MenuBarOne extends React.Component {
 					},
 					{
 						type: 'separator',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
 					},
 					{
 						type: 'checkbox',
@@ -82,66 +67,6 @@ class MenuBarOne extends React.Component {
 								node: 'Radio Option 3',
 							},
 						],
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'radiogroup',
-						children: [
-							{
-								node: 'Radio Option 1',
-							},
-							{
-								node: 'Radio Option 2',
-							},
-							{
-								node: 'Radio Option 3',
-							},
-						],
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'checkbox',
-						node: 'Checkbox 1',
-					},
-					{
-						type: 'checkbox',
-						node: 'Checkbox 2',
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'radiogroup',
-						children: [
-							{
-								node: 'Radio Option 1',
-							},
-							{
-								node: 'Radio Option 2',
-							},
-							{
-								node: 'Radio Option 3',
-							},
-						],
-					},
-					{
-						type: 'separator',
 					},
 				],
 			},
@@ -158,150 +83,8 @@ class MenuBarOne extends React.Component {
 						node: 'Hello world!',
 					},
 					{
-						type: 'menu',
-						node: 'Nested Parent Menuitem',
-						children: [
-							{
-								type: 'menu',
-								node: 'Nested Parent Menuitem',
-								children: [
-									{
-										type: 'item',
-										node: 'Hello world!',
-									},
-									{
-										type: 'item',
-										node: 'Hello world!',
-									},
-									{
-										type: 'separator',
-									},
-									{
-										type: 'radiogroup',
-										children: [
-											{
-												node: 'Radio Option 1',
-											},
-											{
-												node: 'Radio Option 2',
-											},
-											{
-												node: 'Radio Option 3',
-											},
-										],
-									},
-									{
-										type: 'separator',
-									},
-									{
-										type: 'radiogroup',
-										children: [
-											{
-												node: 'Radio Option 1',
-											},
-											{
-												node: 'Radio Option 2',
-											},
-											{
-												node: 'Radio Option 3',
-											},
-										],
-									},
-
-								],
-							},
-							{
-								type: 'item',
-								node: 'Hello world!',
-							},
-							{
-								type: 'item',
-								node: 'Hello world!',
-							},
-							{
-								type: 'menu',
-								node: 'Nested Parent Menuitem',
-								children: [
-									{
-										type: 'item',
-										node: 'Hello world!',
-									},
-									{
-										type: 'item',
-										node: 'Hello world!',
-									},
-								],
-							},
-						],
-					},
-					{
 						type: 'item',
 						node: 'Hello world!',
-					},
-					{
-						type: 'checkbox',
-						node: 'Checkbox 1',
-					},
-					{
-						type: 'checkbox',
-						node: 'Checkbox 2',
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'radiogroup',
-						children: [
-							{
-								node: 'Radio Option 1',
-							},
-							{
-								node: 'Radio Option 2',
-							},
-							{
-								node: 'Radio Option 3',
-							},
-						],
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'radiogroup',
-						children: [
-							{
-								node: 'Radio Option 1',
-							},
-							{
-								node: 'Radio Option 2',
-							},
-							{
-								node: 'Radio Option 3',
-							},
-						],
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'checkbox',
-						node: 'Checkbox 1',
-					},
-					{
-						type: 'checkbox',
-						node: 'Checkbox 2',
 					},
 				],
 			},
@@ -362,68 +145,22 @@ class MenuBarOne extends React.Component {
 				node: 'Parent Menuitem 4',
 				children: [
 					{
-						type: 'item',
-						node: 'Hello world!',
+						type: 'checkbox',
+						node: 'Checkbox Parent',
 					},
 					{
-						type: 'item',
-						node: 'Hello world!',
+						type: 'checkbox',
+						node: 'Checkbox Child 1',
 					},
 					{
-						type: 'separator',
+						type: 'checkbox',
+						node: 'Checkbox Child 2',
 					},
 					{
-						type: 'radiogroup',
-						children: [
-							{
-								node: 'Radio Option 1',
-							},
-							{
-								node: 'Radio Option 2',
-							},
-							{
-								node: 'Radio Option 3',
-							},
-						],
-					},
-					{
-						type: 'separator',
-					},
-					{
-						type: 'menu',
-						node: 'Nested Parent Menuitem',
-						children: [
-							{
-								type: 'item',
-								node: 'Hello world!',
-							},
-							{
-								type: 'item',
-								node: 'Hello world!',
-							},
-						],
+						type: 'checkbox',
+						node: 'Checkbox Child 3',
 					},
 				],
-			},
-			{
-				type: 'separator',
-			},
-			{
-				type: 'radiogroup',
-				children: [
-					{
-						node: 'Radio Option 1',
-					},
-					{
-						node: 'Radio Option 2',
-					},
-					{
-						node: 'Radio Option 3',
-					},
-				],
-			},
-			{
-				type: 'separator',
 			},
 		];
 	};
