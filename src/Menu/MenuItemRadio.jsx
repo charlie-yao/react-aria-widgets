@@ -4,12 +4,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
-	const { children, subIndex, position, flattenedPosition, onKeyDown, isDisabled, isTabbable, isChecked, ...rest } = props;
+	const { children, position, flattenedPosition, onKeyDown, isDisabled, isTabbable, isChecked, ...rest } = props;
 
 	return (
 		<li
 			role="menuitemradio"
-			data-subindex={ subIndex }
 			data-position={ position }
 			data-flattenedposition={ flattenedPosition }
 			onKeyDown={ onKeyDown }
@@ -26,7 +25,6 @@ const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
 
 MenuItemRadio.propTypes = {
 	children: PropTypes.node.isRequired,
-	subIndex: PropTypes.number.isRequired,
 	position: PropTypes.arrayOf(PropTypes.number).isRequired,
 	flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 	onKeyDown: PropTypes.func.isRequired,

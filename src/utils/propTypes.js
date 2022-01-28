@@ -53,7 +53,7 @@ export { validateHeaderLevelProp };
 export const MENUITEM_PROPTYPE = PropTypes.shape({
 	type: PropTypes.oneOf([ 'item' ]).isRequired,
 	node: PropTypes.node.isRequired,
-	//onKeyDown: PropTypes.func.isRequired, //TODO "onActivate"? who "owns" the event?
+	onActivate: PropTypes.func,
 	isDisabled: PropTypes.bool,
 });
 
@@ -80,7 +80,6 @@ export const MENUITEM_CHECKBOX_PROPTYPE = PropTypes.shape({
 
 export const MENUITEM_RADIO_PROPTYPE = PropTypes.shape({
 	node: PropTypes.node.isRequired,
-	onActivate: PropTypes.func,
 	isDisabled: PropTypes.bool,
 	isChecked: PropTypes.bool,
 	value: PropTypes.any,

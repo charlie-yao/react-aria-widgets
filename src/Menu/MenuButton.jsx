@@ -109,20 +109,10 @@ class MenuButton extends React.Component {
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
-		const subIndex = Number.parseInt(target.dataset.subindex, 10);
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const item = items[index];
-		const { type, onActivate: itemOnActivate } = item;
-		let onActivate;
-
-		if(type === 'radiogroup') {
-			const radioOption = item.children[subIndex];
-			const { onActivate: radioOptionOnActivate } = radioOption;
-			onActivate = radioOptionOnActivate ? radioOptionOnActivate : itemOnActivate;
-		}
-		else
-			onActivate = itemOnActivate;
+		const { type, onActivate } = item;
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, item);
 
@@ -379,7 +369,6 @@ class MenuButton extends React.Component {
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }
-							subIndex={ j }
 							position={ position }
 							flattenedPosition={ flattenedPosition }
 							onKeyDown={ this.onChildKeyDown }

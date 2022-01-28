@@ -162,24 +162,22 @@ class MenuBarOne extends React.Component {
 				children: [
 					{
 						type: 'radiogroup',
+						onActivate: this.onChangeRadioGroupOne,
 						children: [
 							{
 								node: 'Radio Option 1',
 								value: 'option1',
 								isChecked: radioGroupOne === 'option1',
-								onActivate: this.onChangeRadioGroupOne,
 							},
 							{
 								node: 'Radio Option 2',
 								value: 'option2',
 								isChecked: radioGroupOne === 'option2',
-								onActivate: this.onChangeRadioGroupOne,
 							},
 							{
 								node: 'Radio Option 3',
 								value: 'option3',
 								isChecked: radioGroupOne === 'option3',
-								onActivate: this.onChangeRadioGroupOne,
 							},
 						],
 					},
@@ -290,24 +288,22 @@ class MenuBarOne extends React.Component {
 			},
 			{
 				type: 'radiogroup',
+				onActivate: this.onChangeRadioGroupFour,
 				children: [
 					{
 						node: 'Radio Option 1',
 						isChecked: radioGroupFour === 'option1',
 						value: 'option1',
-						onActivate: this.onChangeRadioGroupFour,
 					},
 					{
 						node: 'Radio Option 2',
 						isChecked: radioGroupFour === 'option2',
 						value: 'option2',
-						onActivate: this.onChangeRadioGroupFour,
 					},
 					{
 						node: 'Radio Option 3',
 						isChecked: radioGroupFour === 'option3',
 						value: 'option3',
-						onActivate: this.onChangeRadioGroupFour,
 					},
 				],
 			},
