@@ -12,6 +12,39 @@ class MenuBarOne extends React.Component {
 		items: MENUITEMS_PROPTYPE.isRequired,
 	};
 
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			radioGroupOne: undefined,
+			checkboxOneState: false,
+			checkboxTwoState: false,
+		};
+	}
+
+	//---- Events ----
+	onChangeRadioGroupOne = (event) => {
+		this.setState({
+			radioGroupOne: event.target.dataset.value,
+		});
+	};
+
+	onToggleCheckboxOne = () => {
+		this.setState(state => {
+			return {
+				checkboxOneState: !state.checkboxOneState,
+			};
+		});
+	};
+
+	onToggleCheckboxTwo = () => {
+		this.setState(state => {
+			return {
+				checkboxTwoState: !state.checkboxTwoState,
+			};
+		});
+	};
+
 	//---- Rendering ----
 	render() {
 		return (
@@ -21,6 +54,8 @@ class MenuBarOne extends React.Component {
 
 	//---- Misc. ----
 	getItems = () => {
+		const { radioGroupOne, checkboxOneState, checkboxTwoState } = this.state;
+
 		return [
 			{
 				type: 'menu',
@@ -31,12 +66,21 @@ class MenuBarOne extends React.Component {
 						children: [
 							{
 								node: 'Radio Option 1',
+								value: 'option1',
+								isChecked: radioGroupOne === 'option1',
+								onActivate: this.onChangeRadioGroupOne,
 							},
 							{
 								node: 'Radio Option 2',
+								value: 'option2',
+								isChecked: radioGroupOne === 'option2',
+								onActivate: this.onChangeRadioGroupOne,
 							},
 							{
 								node: 'Radio Option 3',
+								value: 'option3',
+								isChecked: radioGroupOne === 'option3',
+								onActivate: this.onChangeRadioGroupOne,
 							},
 						],
 					},
@@ -46,10 +90,14 @@ class MenuBarOne extends React.Component {
 					{
 						type: 'checkbox',
 						node: 'Checkbox 1',
+						isChecked: checkboxOneState,
+						onActivate: this.onToggleCheckboxOne,
 					},
 					{
 						type: 'checkbox',
 						node: 'Checkbox 2',
+						isChecked: checkboxTwoState,
+						onActivate: this.onToggleCheckboxTwo,
 					},
 					{
 						type: 'separator',

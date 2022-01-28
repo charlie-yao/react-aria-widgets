@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
-	const { children, subIndex, position, flattenedPosition, onKeyDown, isDisabled, isTabbable, isChecked } = props;
+	const { children, subIndex, position, flattenedPosition, onKeyDown, isDisabled, isTabbable, isChecked, ...rest } = props;
 
 	return (
 		<li
@@ -14,6 +14,7 @@ const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
 			aria-disabled={ isDisabled }
 			tabIndex={ isTabbable ? '0' : '-1' }
 			aria-checked={ isChecked }
+			{ ...rest }
 			ref={ ref }
 		>
 			{ children }

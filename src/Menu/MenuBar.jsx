@@ -68,8 +68,18 @@ class MenuBar extends React.Component {
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const subIndex = Number.parseInt(target.dataset.subindex, 10);
 		const item = items[index];
-		const { type } = item;
+		const { type, onActivate: itemOnActivate } = item;
+		let onActivate;
+
+		if(type === 'checkbox')
+			onActivate = itemOnActivate;
+		else if(type === 'radiogroup') {
+			const radioOption = item.children[subIndex];
+			const { onActivate: radioOptionOnActivate } = radioOption;
+			onActivate = radioOptionOnActivate ? radioOptionOnActivate : itemOnActivate;
+		}
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, item);
 
@@ -134,10 +144,18 @@ class MenuBar extends React.Component {
 				});
 			}
 			else if(type === 'checkbox') {
-				//TODO change state and close the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				collapse(true);
+				//TODO: focus back on root item?
 			}
 			else if(type === 'radiogroup') {
-				//TODO change state and close the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				collapse(true);
+				//TODO: focus back on root item?
 			}
 			else if(type === 'item') {
 				//TODO activate the item and close the (whole?) menu
@@ -152,10 +170,12 @@ class MenuBar extends React.Component {
 				});
 			}
 			else if(type === 'checkbox') {
-				//TODO change state without closing the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
 			}
 			else if(type === 'radiogroup') {
-				//TODO change state without closing the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
 			}
 			else if(type === 'item') {
 				//TODO activate the item and close the (whole?) menu
@@ -207,7 +227,7 @@ class MenuBar extends React.Component {
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
-			const { type, node, children, orientation, label, labelId, isDisabled, id } = item;
+			const { type, node, children, orientation, label, labelId, isDisabled, isChecked } = item;
 
 			if(type === 'item') {
 				position = position.slice(0);
@@ -276,6 +296,7 @@ class MenuBar extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
+						isChecked={ isChecked }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
 						{ node }
@@ -299,7 +320,7 @@ class MenuBar extends React.Component {
 				const radioNodes = [];
 
 				children.forEach((radioItem, j) => {
-					const { node, isDisabled } = radioItem;
+					const { node, isDisabled, isChecked, value } = radioItem;
 
 					position = position.slice(0);
 					position[0] = i;
@@ -316,6 +337,8 @@ class MenuBar extends React.Component {
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
 							isTabbable={ flattenedIndex === tabbableIndex }
+							isChecked={ isChecked }
+							data-value={ value }
 							ref={ this.childItemRefs[flattenedIndex] }
 						>
 							{ node }

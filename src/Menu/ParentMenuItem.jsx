@@ -77,9 +77,19 @@ class ParentMenuItem extends React.Component {
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const flattenedRootIndex = Number.parseInt(flattenedPosition[0], 10);
+		const subIndex = Number.parseInt(target.dataset.subindex, 10);
 		const level = position.length - 1;
 		const item = items[index];
-		const { type, id } = item;
+		const { type, onActivate: itemOnActivate } = item;
+		let onActivate;
+
+		if(type === 'checkbox')
+			onActivate = itemOnActivate;
+		else if(type === 'radiogroup') {
+			const radioOption = item.children[subIndex];
+			const { onActivate: radioOptionOnActivate } = radioOption;
+			onActivate = radioOptionOnActivate ? radioOptionOnActivate : itemOnActivate;
+		}
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, level, item);
 
@@ -156,10 +166,18 @@ class ParentMenuItem extends React.Component {
 				});
 			}
 			else if(type === 'checkbox') {
-				//TODO change state and close the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				collapse(true);
+				//TODO: focus on root item?
 			}
 			else if(type === 'radiogroup') {
-				//TODO change state and close the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				collapse(true);
+				//TODO: focus on root item?
 			}
 			else if(type === 'item') {
 				//TODO activate the item and close the whole menu
@@ -174,10 +192,12 @@ class ParentMenuItem extends React.Component {
 				});
 			}
 			else if(type === 'checkbox') {
-				//TODO change state without closing the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
 			}
 			else if(type === 'radiogroup') {
-				//TODO change state without closing the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
 			}
 			else if(type === 'item') {
 				//TODO activate the item and close the whole menu
@@ -256,7 +276,7 @@ class ParentMenuItem extends React.Component {
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
-			const { type, node, children, orientation, label, labelId, isDisabled, id } = item;
+			const { type, node, children, orientation, label, labelId, isDisabled, isChecked } = item;
 
 			if(type === 'item') {
 				_position = position.slice(0);
@@ -314,7 +334,6 @@ class ParentMenuItem extends React.Component {
 				_flattenedPosition = flattenedPosition.slice(0);
 				_flattenedPosition[level] = flattenedIndex;
 
-				//TODO isChecked?
 				itemNodes.push(
 					<MenuItemCheckbox
 						key={ i }
@@ -322,6 +341,7 @@ class ParentMenuItem extends React.Component {
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
+						isChecked={ isChecked }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
 						{ node }
@@ -345,7 +365,7 @@ class ParentMenuItem extends React.Component {
 				const radioNodes = [];
 
 				children.forEach((radioItem, j) => {
-					const { node, isDisabled } = radioItem;
+					const { node, isDisabled, isChecked, value } = radioItem;
 
 					_position = position.slice(0);
 					_position[level] = i;
@@ -361,6 +381,8 @@ class ParentMenuItem extends React.Component {
 							flattenedPosition={ _flattenedPosition }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
+							isChecked={ isChecked }
+							data-value={ value }
 							ref={ this.childItemRefs[flattenedIndex] }
 						>
 							{ node }

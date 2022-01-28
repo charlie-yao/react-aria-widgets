@@ -70,7 +70,7 @@ export const PARENT_MENUITEM_PROPTYPE = PropTypes.shape({
 export const MENUITEM_CHECKBOX_PROPTYPE = PropTypes.shape({
 	type: PropTypes.oneOf([ 'checkbox' ]).isRequired,
 	node: PropTypes.node.isRequired,
-	//onKeyDown: PropTypes.func.isRequired, //TODO "onActivate"? who "owns" the event?
+	onActivate: PropTypes.func,
 	isDisabled: PropTypes.bool,
 	isChecked: PropTypes.oneOfType([
 		PropTypes.bool,
@@ -80,18 +80,18 @@ export const MENUITEM_CHECKBOX_PROPTYPE = PropTypes.shape({
 
 export const MENUITEM_RADIO_PROPTYPE = PropTypes.shape({
 	node: PropTypes.node.isRequired,
-	//onKeyDown: PropTypes.func.isRequired, //TODO "onActivate"? who "owns" the event?
+	onActivate: PropTypes.func,
 	isDisabled: PropTypes.bool,
 	isChecked: PropTypes.bool,
+	value: PropTypes.any,
 });
 
 export const MENUITEM_RADIOGROUP_PROPTYPE = PropTypes.shape({
 	type: PropTypes.oneOf([ 'radiogroup' ]).isRequired,
 	children: PropTypes.arrayOf(MENUITEM_RADIO_PROPTYPE).isRequired,
+	onActivate: PropTypes.func,
 	label: PropTypes.string,
 	labelId: PropTypes.string,
-	//TODO default checked index?
-	//TODO function to automatically handle which radio is checked?
 });
 
 export const MENUITEM_SEPARATOR_PROPTYPE = PropTypes.shape({

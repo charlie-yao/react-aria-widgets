@@ -20,7 +20,7 @@
 	}
 }
 
-[role="menuitemcheckbox"] {
+[role="menuitemcheckbox"], [role="menuitemradio"] {
 	&[aria-checked="true"] {
 		background-color: blue;
 	}
