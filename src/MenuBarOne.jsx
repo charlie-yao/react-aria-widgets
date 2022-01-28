@@ -88,15 +88,64 @@ class MenuBarOne extends React.Component {
 	};
 
 	onToggleCheckboxParent = () => {
+		this.setState(state => {
+			const { checkboxParent } = state;
+			let newValue;
+
+			if(checkboxParent || checkboxParent === 'mixed')
+				newValue = false;
+			else if(!checkboxParent)
+				newValue = true;
+
+			return {
+				checkboxParent: newValue,
+				checkboxChild1: newValue,
+				checkboxChild2: newValue,
+				checkboxChild3: newValue,
+			};
+		});
 	};
 
 	onToggleCheckboxChild1 = () => {
+		this.setState(state => {
+			const { checkboxChild1, checkboxChild2, checkboxChild3 } = state;
+			const newChild1 = !checkboxChild1;
+			const allTrue = newChild1 && checkboxChild2 && checkboxChild3;
+			const allFalse = !newChild1 && !checkboxChild2 && !checkboxChild3;
+
+			return {
+				checkboxChild1: newChild1,
+				checkboxParent: allTrue ? true : (allFalse ? false : 'mixed'),
+			};
+		});
 	};
 
 	onToggleCheckboxChild2 = () => {
+		this.setState(state => {
+			const { checkboxChild1, checkboxChild2, checkboxChild3 } = state;
+			const newChild2 = !checkboxChild2;
+			const allTrue = checkboxChild1 && newChild2 && checkboxChild3;
+			const allFalse = !checkboxChild1 && !newChild2 && !checkboxChild3;
+
+			return {
+				checkboxChild2: newChild2,
+				checkboxParent: allTrue ? true : (allFalse ? false : 'mixed'),
+			};
+		});
 	};
 
 	onToggleCheckboxChild3 = () => {
+		this.setState(state => {
+			const { checkboxChild1, checkboxChild2, checkboxChild3 } = state;
+			const newChild3 = !checkboxChild3;
+			const allTrue = checkboxChild1 && checkboxChild2 && newChild3;
+			const allFalse = !checkboxChild1 && !checkboxChild2 && !newChild3;
+
+			return {
+				checkboxChild3: newChild3,
+				checkboxParent: allTrue ? true : (allFalse ? false : 'mixed'),
+			};
+		});
 	};
 
 	//---- Rendering ----

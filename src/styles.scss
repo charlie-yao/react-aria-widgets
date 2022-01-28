@@ -24,6 +24,10 @@
 	&[aria-checked="true"] {
 		background-color: blue;
 	}
+
+	&[aria-checked="mixed"] {
+		background-color: green;
+	}
 }
 
 //A technique for visually-hiding elements
