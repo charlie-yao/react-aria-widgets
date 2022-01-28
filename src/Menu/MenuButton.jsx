@@ -109,10 +109,20 @@ class MenuButton extends React.Component {
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const subIndex = Number.parseInt(target.dataset.subindex, 10);
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const item = items[index];
-		const { type } = item;
+		const { type, onActivate: itemOnActivate } = item;
+		let onActivate;
+
+		if(type === 'radiogroup') {
+			const radioOption = item.children[subIndex];
+			const { onActivate: radioOptionOnActivate } = radioOption;
+			onActivate = radioOptionOnActivate ? radioOptionOnActivate : itemOnActivate;
+		}
+		else
+			onActivate = itemOnActivate;
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, item);
 
@@ -162,8 +172,29 @@ class MenuButton extends React.Component {
 					this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
-			else {
-				//TODO activate the item and close the (whole?) menu
+			else if(type === 'checkbox') {
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				this.collapseButton(() => {
+					this.focus();
+				});
+			}
+			else if(type === 'radiogroup') {
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				this.collapseButton(() => {
+					this.focus();
+				});
+			}
+			else if(type === 'item') {
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				this.collapseButton(() => {
+					this.focus();
+				});
 			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
@@ -175,13 +206,20 @@ class MenuButton extends React.Component {
 				});
 			}
 			else if(type === 'checkbox') {
-				//TODO change state without closing the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
 			}
 			else if(type === 'radiogroup') {
-				//TODO change state without closing the menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
 			}
 			else if(type === 'item') {
-				//TODO activate the item and close the (whole?) menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+			
+				this.collapseButton(() => {
+					this.focus();
+				});
 			}
 		}
 		else if(key === 'Home') {
@@ -244,7 +282,7 @@ class MenuButton extends React.Component {
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
-			const { type, node, children, orientation, label, labelId, isDisabled } = item;
+			const { type, node, children, orientation, label, labelId, isDisabled, isChecked } = item;
 
 			if(type === 'item') {
 				position = position.slice(0);
@@ -300,7 +338,6 @@ class MenuButton extends React.Component {
 				flattenedPosition = flattenedPosition.slice(0);
 				flattenedPosition[0] = flattenedIndex;
 
-				//TODO isChecked?
 				itemNodes.push(
 					<MenuItemCheckbox
 						key={ i }
@@ -308,6 +345,7 @@ class MenuButton extends React.Component {
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
+						isChecked={ isChecked }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
 						{ node }
@@ -331,14 +369,13 @@ class MenuButton extends React.Component {
 				const radioNodes = [];
 
 				children.forEach((radioItem, j) => {
-					const { node, isDisabled } = radioItem;
+					const { node, isDisabled, isChecked, value } = radioItem;
 
 					position = position.slice(0);
 					position[0] = i;
 					flattenedPosition = flattenedPosition.slice(0);
 					flattenedPosition[0] = flattenedIndex;
 
-					//TODO isChecked?
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }
@@ -347,6 +384,8 @@ class MenuButton extends React.Component {
 							flattenedPosition={ flattenedPosition }
 							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
+							isChecked={ isChecked }
+							data-value={ value }
 							ref={ this.childItemRefs[flattenedIndex] }
 						>
 							{ node }

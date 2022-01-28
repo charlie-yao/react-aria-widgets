@@ -5,6 +5,7 @@ import Accordion from 'src/Accordion';
 import MenuButton from 'src/Menu/MenuButton';
 import MenuBar from 'src/Menu/MenuBar';
 import MenuBarOne from 'src/MenuBarOne';
+import MenuButtonOne from 'src/MenuButtonOne';
 
 function onDummySubmit(event) {
 	event.preventDefault();
@@ -1287,7 +1288,8 @@ function App() {
 				Menu Button 3
 			</MenuButton>
 			*/}
-			<MenuBarOne items={ MENUITEMS } />
+			<MenuBarOne />
+			<MenuButtonOne />
 			{/*
 			<MenuBar label="Placeholder" items={ MENUITEMS_2 } orientation="vertical" />
 			<MenuBar label="Placeholder" items={ MENUITEMS_3 } orientation="vertical" />

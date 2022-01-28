@@ -2,7 +2,7 @@ import React from 'react';
 import { v4 as uuid } from 'uuid'
 
 //Components and Styles
-import MenuBar from 'src/Menu/MenuBar';
+import MenuButton from 'src/Menu/MenuButton';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -147,7 +147,9 @@ class MenuBarOne extends React.Component {
 	//---- Rendering ----
 	render() {
 		return (
-			<MenuBar label="Placeholder" items={ this.getItems() } />
+			<MenuButton label="Placeholder" items={ this.getItems() }>
+				Test Button!
+			</MenuButton>
 		);
 	}
 
