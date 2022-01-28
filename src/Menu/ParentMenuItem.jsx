@@ -288,7 +288,7 @@ class ParentMenuItem extends React.Component {
 						key={ i }
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ undefined /*this.onChildKeyDown*/ }
+						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
@@ -310,15 +310,15 @@ class ParentMenuItem extends React.Component {
 						items={ children }
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ undefined /*this.onChildKeyDown*/ }
-						collapse={ undefined /*this.collapseChild*/ }
-						focusPrevRootItem={ undefined /*focusPrevRootItem*/ }
-						focusNextRootItem={ undefined /*focusNextRootItem*/ }
-						focusRootItem={ undefined /*focusRootItem*/ }
+						onKeyDown={ this.onChildKeyDown }
+						collapse={ this.collapseChild }
+						focusPrevRootItem={ focusPrevRootItem }
+						focusNextRootItem={ focusNextRootItem }
+						focusRootItem={ focusRootItem }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
-						isExpanded={ undefined /*flattenedIndex === expandedIndex*/ }
+						isExpanded={ flattenedIndex === expandedIndex }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
@@ -339,7 +339,7 @@ class ParentMenuItem extends React.Component {
 						key={ i }
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ undefined /*this.onChildKeyDown*/ }
+						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isChecked={ isChecked }
 						ref={ this.childItemRefs[flattenedIndex] }
@@ -373,7 +373,7 @@ class ParentMenuItem extends React.Component {
 							key={ j }
 							position={ _position }
 							flattenedPosition={ _flattenedPosition }
-							onKeyDown={ undefined /*this.onChildKeyDown*/ }
+							onKeyDown={ this.onChildKeyDown }
 							isDisabled={ isDisabled }
 							isChecked={ isChecked }
 							data-value={ value }
