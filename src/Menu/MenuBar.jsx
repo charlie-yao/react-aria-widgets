@@ -98,7 +98,7 @@ class MenuBar extends React.Component {
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusLastChild();
+						//this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
 				}
 			}
@@ -113,7 +113,7 @@ class MenuBar extends React.Component {
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
 			}
@@ -132,7 +132,7 @@ class MenuBar extends React.Component {
 			else {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusLastChild();
+						//this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
 				}
 			}
@@ -147,7 +147,7 @@ class MenuBar extends React.Component {
 			else {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
 			}
@@ -157,7 +157,7 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
 			else if(type === 'checkbox') {
@@ -178,7 +178,7 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 				});
 			}
 			else if(type === 'checkbox') {
@@ -250,9 +250,9 @@ class MenuBar extends React.Component {
 						key={ i }
 						position={ position }
 						flattenedPosition={ flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
+						onKeyDown={ undefined /*this.onChildKeyDown*/ }
 						isDisabled={ isDisabled }
-						isTabbable={ flattenedIndex === tabbableIndex }
+						isTabbable={ undefined /*flattenedIndex === tabbableIndex*/ }
 						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
@@ -273,17 +273,17 @@ class MenuBar extends React.Component {
 						items={ children }
 						position={ position }
 						flattenedPosition={ flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
-						collapse={ this.collapseChild }
-						focusPrevRootItem={ this.props.focusPrevItem /*this.focusPrevChild*/ }
-						focusNextRootItem={ this.props.focusNextItem /*this.focusNextChild*/ }
-						focusRootItem={ this.props.focusItem /*this.focusChild*/ }
+						onKeyDown={ undefined /*this.onChildKeyDown*/ }
+						collapse={ undefined /*this.collapseChild*/ }
+						focusPrevRootItem={ undefined /*this.props.focusPrevItem*/ /*this.focusPrevChild*/ }
+						focusNextRootItem={ undefined /*this.props.focusNextItem*/ /*this.focusNextChild*/ }
+						focusRootItem={ undefined /*this.props.focusItem*/ /*this.focusChild*/ }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
-						isExpanded={ flattenedIndex === expandedIndex }
+						isExpanded={ undefined /*flattenedIndex === expandedIndex*/ }
 						isDisabled={ isDisabled }
-						isTabbable={ flattenedIndex === tabbableIndex }
+						isTabbable={ undefined /*flattenedIndex === tabbableIndex*/ }
 						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
@@ -303,9 +303,9 @@ class MenuBar extends React.Component {
 						key={ i }
 						position={ position }
 						flattenedPosition={ flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
+						onKeyDown={ undefined /*this.onChildKeyDown*/ }
 						isDisabled={ isDisabled }
-						isTabbable={ flattenedIndex === tabbableIndex }
+						isTabbable={ undefined /*flattenedIndex === tabbableIndex*/ }
 						isChecked={ isChecked }
 						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
@@ -317,11 +317,7 @@ class MenuBar extends React.Component {
 			}
 			else if(type === 'separator') {
 				itemNodes.push(
-					<MenuItemSeparator
-						key={ i }
-						onKeyDown={ this.onChildKeyDown }
-						orientation={ orientation }
-					>
+					<MenuItemSeparator key={ i } orientation={ orientation }>
 						{ node }
 					</MenuItemSeparator>
 				);
@@ -343,9 +339,9 @@ class MenuBar extends React.Component {
 							subIndex={ j }
 							position={ position }
 							flattenedPosition={ flattenedPosition }
-							onKeyDown={ this.onChildKeyDown }
+							onKeyDown={ undefined /*this.onChildKeyDown*/ }
 							isDisabled={ isDisabled }
-							isTabbable={ flattenedIndex === tabbableIndex }
+							isTabbable={ undefined /*flattenedIndex === tabbableIndex*/ }
 							isChecked={ isChecked }
 							data-value={ value }
 							ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }

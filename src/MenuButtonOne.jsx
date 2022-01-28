@@ -3,7 +3,7 @@ import React from 'react';
 //Components and Styles
 import MenuButton from 'src/Menu/MenuButton';
 
-class MenuBarOne extends React.Component {
+class MenuButtonOne extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -356,4 +356,4 @@ class MenuBarOne extends React.Component {
 	};
 }
 
-export default MenuBarOne;
+export default MenuButtonOne;

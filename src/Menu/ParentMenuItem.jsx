@@ -210,8 +210,7 @@ class ParentMenuItem extends React.Component {
 			}
 			else if(type === 'item') {
 				if(typeof onActivate === 'function')
-					;
-				onActivate(event);
+					onActivate(event);
 
 				collapse(true, () => {
 					focusRootItem(flattenedRootIndex);
@@ -299,7 +298,7 @@ class ParentMenuItem extends React.Component {
 						key={ i }
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
+						onKeyDown={ undefined /*this.onChildKeyDown*/ }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
@@ -321,15 +320,15 @@ class ParentMenuItem extends React.Component {
 						items={ children }
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
-						collapse={ this.collapseChild }
-						focusPrevRootItem={ focusPrevRootItem }
-						focusNextRootItem={ focusNextRootItem }
-						focusRootItem={ focusRootItem }
+						onKeyDown={ undefined /*this.onChildKeyDown*/ }
+						collapse={ undefined /*this.collapseChild*/ }
+						focusPrevRootItem={ undefined /*focusPrevRootItem*/ }
+						focusNextRootItem={ undefined /*focusNextRootItem*/ }
+						focusRootItem={ undefined /*focusRootItem*/ }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
-						isExpanded={ flattenedIndex === expandedIndex }
+						isExpanded={ undefined /*flattenedIndex === expandedIndex*/ }
 						isDisabled={ isDisabled }
 						ref={ this.childItemRefs[flattenedIndex] }
 					>
@@ -350,7 +349,7 @@ class ParentMenuItem extends React.Component {
 						key={ i }
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
+						onKeyDown={ undefined /*this.onChildKeyDown*/ }
 						isDisabled={ isDisabled }
 						isChecked={ isChecked }
 						ref={ this.childItemRefs[flattenedIndex] }
@@ -363,11 +362,7 @@ class ParentMenuItem extends React.Component {
 			}
 			else if(type === 'separator') {
 				itemNodes.push(
-					<MenuItemSeparator
-						key={ i }
-						onKeyDown={ this.onChildKeyDown }
-						orientation={ orientation }
-					>
+					<MenuItemSeparator key={ i } orientation={ orientation }>
 						{ node }
 					</MenuItemSeparator>
 				);
@@ -389,7 +384,7 @@ class ParentMenuItem extends React.Component {
 							subIndex={ j }
 							position={ _position }
 							flattenedPosition={ _flattenedPosition }
-							onKeyDown={ this.onChildKeyDown }
+							onKeyDown={ undefined /*this.onChildKeyDown*/ }
 							isDisabled={ isDisabled }
 							isChecked={ isChecked }
 							data-value={ value }
