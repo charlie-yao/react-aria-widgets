@@ -20,6 +20,9 @@ class MenuBarOne extends React.Component {
 			checkboxOneState: false,
 			checkboxTwoState: false,
 			radioGroupTwo: undefined,
+			radioGroupThree: undefined,
+			radioGroupFour: undefined,
+			checkboxThreeState: false,
 		};
 	}
 
@@ -46,9 +49,29 @@ class MenuBarOne extends React.Component {
 		});
 	};
 
-	onToggleRadioGroupTwo = (event) => {
+	onChangeRadioGroupTwo = (event) => {
 		this.setState({
 			radioGroupTwo: event.target.dataset.value,
+		});
+	};
+
+	onChangeRadioGroupThree = (event) => {
+		this.setState({
+			radioGroupThree: event.target.dataset.value,
+		});
+	};
+
+	onChangeRadioGroupFour = (event) => {
+		this.setState({
+			radioGroupFour: event.target.dataset.value,
+		});
+	};
+
+	onToggleCheckboxThree = () => {
+		this.setState(state => {
+			return {
+				checkboxThreeState: !state.checkboxThreeState,
+			};
 		});
 	};
 
@@ -61,7 +84,10 @@ class MenuBarOne extends React.Component {
 
 	//---- Misc. ----
 	getItems = () => {
-		const { radioGroupOne, checkboxOneState, checkboxTwoState, radioGroupTwo } = this.state;
+		const {
+			radioGroupOne, checkboxOneState, checkboxTwoState, radioGroupTwo,
+			radioGroupThree, radioGroupFour, checkboxThreeState,
+		} = this.state;
 
 		return [
 			{
@@ -111,7 +137,7 @@ class MenuBarOne extends React.Component {
 					},
 					{
 						type: 'radiogroup',
-						onActivate: this.onToggleRadioGroupTwo,
+						onActivate: this.onChangeRadioGroupTwo,
 						children: [
 							{
 								node: 'Radio Option 1',
@@ -187,20 +213,59 @@ class MenuBarOne extends React.Component {
 			},
 			{
 				type: 'radiogroup',
+				onActivate: this.onChangeRadioGroupThree,
 				children: [
 					{
 						node: 'Radio Option 1',
+						isChecked: radioGroupThree === 'option1',
+						value: 'option1',
 					},
 					{
 						node: 'Radio Option 2',
+						isChecked: radioGroupThree === 'option2',
+						value: 'option2',
 					},
 					{
 						node: 'Radio Option 3',
+						isChecked: radioGroupThree === 'option3',
+						value: 'option3',
 					},
 				],
 			},
 			{
 				type: 'separator',
+			},
+			{
+				type: 'radiogroup',
+				children: [
+					{
+						node: 'Radio Option 1',
+						isChecked: radioGroupFour === 'option1',
+						value: 'option1',
+						onActivate: this.onChangeRadioGroupFour,
+					},
+					{
+						node: 'Radio Option 2',
+						isChecked: radioGroupFour === 'option2',
+						value: 'option2',
+						onActivate: this.onChangeRadioGroupFour,
+					},
+					{
+						node: 'Radio Option 3',
+						isChecked: radioGroupFour === 'option3',
+						value: 'option3',
+						onActivate: this.onChangeRadioGroupFour,
+					},
+				],
+			},
+			{
+				type: 'separator',
+			},
+			{
+				type: 'checkbox',
+				node: 'Checkbox 3',
+				onActivate: this.onToggleCheckboxThree,
+				isChecked: checkboxThreeState,
 			},
 			{
 				type: 'menu',
