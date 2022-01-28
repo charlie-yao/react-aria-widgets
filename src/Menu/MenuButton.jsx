@@ -200,11 +200,6 @@ class MenuButton extends React.Component {
 		else if(key === 'Tab') {
 			this.collapseButton();
 		}
-		else {
-			//TODO: Any key that corresponds to a printable character (Optional):
-			//Move focus to the next menu item in the current menu whose label begins
-			//with that printable character.
-		}
 	};
 
 	//---- Rendering ----
