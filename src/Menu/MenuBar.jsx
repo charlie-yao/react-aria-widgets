@@ -11,6 +11,7 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { renderItems } from 'src/Menu/utils';
 
 /*
  * Note:
@@ -192,6 +193,7 @@ class MenuBar extends React.Component {
 	//---- Rendering ----
 	render() {
 		const { orientation, label, labelId } = this.props;
+		const items = renderItems.bind(this)();
 
 		//console.log(this.props, this.state, this.childItemRefs);
 
@@ -202,7 +204,8 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				{ this.renderItems() }
+				{ /*this.renderItems()*/ }
+				{ items }
 			</ul>
 		);
 	}
