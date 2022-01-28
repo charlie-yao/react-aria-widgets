@@ -23,6 +23,10 @@ class MenuBarOne extends React.Component {
 			radioGroupThree: undefined,
 			radioGroupFour: undefined,
 			checkboxThreeState: false,
+			checkboxParent: false,
+			checkboxChild1: false,
+			checkboxChild2: false,
+			checkboxChild3: false,
 		};
 	}
 
@@ -83,6 +87,18 @@ class MenuBarOne extends React.Component {
 		alert(`Hello from ${event.target.textContent}`);
 	};
 
+	onToggleCheckboxParent = () => {
+	};
+
+	onToggleCheckboxChild1 = () => {
+	};
+
+	onToggleCheckboxChild2 = () => {
+	};
+
+	onToggleCheckboxChild3 = () => {
+	};
+
 	//---- Rendering ----
 	render() {
 		return (
@@ -95,6 +111,7 @@ class MenuBarOne extends React.Component {
 		const {
 			radioGroupOne, checkboxOneState, checkboxTwoState, radioGroupTwo,
 			radioGroupThree, radioGroupFour, checkboxThreeState,
+			checkboxParent, checkboxChild1, checkboxChild2, checkboxChild3
 		} = this.state;
 
 		return [
@@ -269,18 +286,26 @@ class MenuBarOne extends React.Component {
 					{
 						type: 'checkbox',
 						node: 'Checkbox Parent',
+						isChecked: checkboxParent,
+						onActivate: this.onToggleCheckboxParent,
 					},
 					{
 						type: 'checkbox',
 						node: 'Checkbox Child 1',
+						isChecked: checkboxChild1,
+						onActivate: this.onToggleCheckboxChild1,
 					},
 					{
 						type: 'checkbox',
 						node: 'Checkbox Child 2',
+						isChecked: checkboxChild2,
+						onActivate: this.onToggleCheckboxChild2,
 					},
 					{
 						type: 'checkbox',
 						node: 'Checkbox Child 3',
+						isChecked: checkboxChild3,
+						onActivate: this.onToggleCheckboxChild3,
 					},
 				],
 			},
