@@ -73,13 +73,13 @@ class MenuBar extends React.Component {
 		const { type, onActivate: itemOnActivate } = item;
 		let onActivate;
 
-		if(type === 'checkbox')
-			onActivate = itemOnActivate;
-		else if(type === 'radiogroup') {
+		if(type === 'radiogroup') {
 			const radioOption = item.children[subIndex];
 			const { onActivate: radioOptionOnActivate } = radioOption;
 			onActivate = radioOptionOnActivate ? radioOptionOnActivate : itemOnActivate;
 		}
+		else
+			onActivate = itemOnActivate;
 
 		//console.log(position, flattenedPosition, index, flattenedIndex, item);
 
@@ -158,7 +158,11 @@ class MenuBar extends React.Component {
 				//TODO: focus back on root item?
 			}
 			else if(type === 'item') {
-				//TODO activate the item and close the (whole?) menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				collapse(true);
+				//TODO: focus back on root item?
 			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
@@ -178,7 +182,11 @@ class MenuBar extends React.Component {
 					onActivate(event);
 			}
 			else if(type === 'item') {
-				//TODO activate the item and close the (whole?) menu
+				if(typeof onActivate === 'function')
+					onActivate(event);
+
+				collapse(true);
+				//TODO: focus back on root item?
 			}
 		}
 		else if(key === 'Home') {

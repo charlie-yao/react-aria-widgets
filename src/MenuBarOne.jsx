@@ -75,6 +75,14 @@ class MenuBarOne extends React.Component {
 		});
 	};
 
+	onActivateItem = () => {
+		alert('Hello from menubar item!');
+	};
+
+	onActivateSubmenuItem = (event) => {
+		alert(`Hello from ${event.target.textContent}`);
+	};
+
 	//---- Rendering ----
 	render() {
 		return (
@@ -159,38 +167,23 @@ class MenuBarOne extends React.Component {
 				],
 			},
 			{
+				type: 'item',
+				node: 'Hello world!',
+				onActivate: this.onActivateItem,
+			},
+			{
 				type: 'menu',
 				node: 'Parent Menuitem 2',
 				children: [
 					{
 						type: 'item',
 						node: 'Hello world!',
+						onActivate: this.onActivateSubmenuItem,
 					},
 					{
 						type: 'item',
 						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-				],
-			},
-			{
-				type: 'item',
-				node: 'Hello world!',
-			},
-			{
-				type: 'menu',
-				node: 'Parent Menuitem 3',
-				children: [
-					{
-						type: 'item',
-						node: 'Hello world!',
-					},
-					{
-						type: 'item',
-						node: 'Hello world!',
+						onActivate: this.onActivateSubmenuItem,
 					},
 					{
 						type: 'menu',
@@ -199,10 +192,12 @@ class MenuBarOne extends React.Component {
 							{
 								type: 'item',
 								node: 'Hello world!',
+								onActivate: this.onActivateSubmenuItem,
 							},
 							{
 								type: 'item',
 								node: 'Hello world!',
+								onActivate: this.onActivateSubmenuItem,
 							},
 						],
 					},
@@ -269,7 +264,7 @@ class MenuBarOne extends React.Component {
 			},
 			{
 				type: 'menu',
-				node: 'Parent Menuitem 4',
+				node: 'Parent Menuitem 3',
 				children: [
 					{
 						type: 'checkbox',
