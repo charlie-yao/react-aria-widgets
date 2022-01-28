@@ -147,22 +147,25 @@ class MenuBar extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus back on root item?
+				collapse(true, () => {
+					this.focusChild(flattenedIndex);
+				});
 			}
 			else if(type === 'radiogroup') {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus back on root item?
+				collapse(true, () => {
+					this.focusChild(flattenedIndex);
+				});
 			}
 			else if(type === 'item') {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus back on root item?
+				collapse(true, () => {
+					this.focusChild(flattenedIndex);
+				});
 			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
@@ -185,8 +188,9 @@ class MenuBar extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus back on root item?
+				collapse(true, () => {
+					this.focusChild(flattenedIndex);
+				});
 			}
 		}
 		else if(key === 'Home') {
@@ -275,6 +279,7 @@ class MenuBar extends React.Component {
 						collapse={ this.collapseChild }
 						focusPrevMenubarItem={ this.focusPrevChild }
 						focusNextMenubarItem={ this.focusNextChild }
+						focusMenubarItem={ this.focusChild }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
@@ -295,7 +300,6 @@ class MenuBar extends React.Component {
 				flattenedPosition = flattenedPosition.slice(0);
 				flattenedPosition[0] = flattenedIndex;
 
-				//TODO isChecked?
 				itemNodes.push(
 					<MenuItemCheckbox
 						key={ i }
@@ -335,7 +339,6 @@ class MenuBar extends React.Component {
 					flattenedPosition = flattenedPosition.slice(0);
 					flattenedPosition[0] = flattenedIndex;
 
-					//TODO isChecked?
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }

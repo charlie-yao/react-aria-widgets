@@ -22,6 +22,7 @@ class ParentMenuItem extends React.Component {
 		collapse: PropTypes.func.isRequired,
 		focusPrevMenubarItem: PropTypes.func,
 		focusNextMenubarItem: PropTypes.func,
+		focusMenubarItem: PropTypes.func,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
@@ -70,7 +71,7 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, orientation } = this.props;
+		const { items, collapse, focusPrevMenubarItem, focusNextMenubarItem, focusMenubarItem, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -169,22 +170,25 @@ class ParentMenuItem extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus on root item?
+				collapse(true, () => {
+					focusMenubarItem(flattenedRootIndex);
+				});
 			}
 			else if(type === 'radiogroup') {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus on root item?
+				collapse(true, () => {
+					focusMenubarItem(flattenedRootIndex);
+				});
 			}
 			else if(type === 'item') {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				collapse(true);
-				//TODO: focus on root item?
+				collapse(true, () => {
+					focusMenubarItem(flattenedRootIndex);
+				});
 			}
 		}
 		else if(key === ' ' || key === 'Spacebar') {
@@ -207,8 +211,9 @@ class ParentMenuItem extends React.Component {
 				if(typeof onActivate === 'function');
 					onActivate(event);
 
-				collapse(true);
-				//TODO focus on root item?
+				collapse(true, () => {
+					focusMenubarItem(flattenedRootIndex);
+				});
 			}
 		}
 		else if(key === 'Home') {
@@ -275,7 +280,7 @@ class ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevMenubarItem, focusNextMenubarItem, position, flattenedPosition } = this.props;
+		const { items, focusPrevMenubarItem, focusNextMenubarItem, focusMenubarItem, position, flattenedPosition } = this.props;
 		const { expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
@@ -323,6 +328,7 @@ class ParentMenuItem extends React.Component {
 						collapse={ this.collapseChild }
 						focusPrevMenubarItem={ focusPrevMenubarItem }
 						focusNextMenubarItem={ focusNextMenubarItem }
+						focusMenubarItem={ focusMenubarItem }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
@@ -380,7 +386,6 @@ class ParentMenuItem extends React.Component {
 					_flattenedPosition = flattenedPosition.slice(0);
 					_flattenedPosition[level] = flattenedIndex;
 
-					//TODO isChecked?
 					radioNodes.push(
 						<MenuItemRadio
 							key={ j }
