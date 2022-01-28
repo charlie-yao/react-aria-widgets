@@ -19,6 +19,7 @@ class MenuBarOne extends React.Component {
 			radioGroupOne: undefined,
 			checkboxOneState: false,
 			checkboxTwoState: false,
+			radioGroupTwo: undefined,
 		};
 	}
 
@@ -45,6 +46,12 @@ class MenuBarOne extends React.Component {
 		});
 	};
 
+	onToggleRadioGroupTwo = (event) => {
+		this.setState({
+			radioGroupTwo: event.target.dataset.value,
+		});
+	};
+
 	//---- Rendering ----
 	render() {
 		return (
@@ -54,7 +61,7 @@ class MenuBarOne extends React.Component {
 
 	//---- Misc. ----
 	getItems = () => {
-		const { radioGroupOne, checkboxOneState, checkboxTwoState } = this.state;
+		const { radioGroupOne, checkboxOneState, checkboxTwoState, radioGroupTwo } = this.state;
 
 		return [
 			{
@@ -104,15 +111,22 @@ class MenuBarOne extends React.Component {
 					},
 					{
 						type: 'radiogroup',
+						onActivate: this.onToggleRadioGroupTwo,
 						children: [
 							{
 								node: 'Radio Option 1',
+								isChecked: radioGroupTwo === 'option1',
+								value: 'option1',
 							},
 							{
 								node: 'Radio Option 2',
+								isChecked: radioGroupTwo === 'option2',
+								value: 'option2',
 							},
 							{
 								node: 'Radio Option 3',
+								isChecked: radioGroupTwo === 'option3',
+								value: 'option3',
 							},
 						],
 					},
