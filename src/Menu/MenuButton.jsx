@@ -319,6 +319,7 @@ class MenuButton extends React.Component {
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						collapse={ this.collapseChild }
+						focusRootItem={ this.focus }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
