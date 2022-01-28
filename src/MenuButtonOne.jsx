@@ -1,11 +1,7 @@
 import React from 'react';
-import { v4 as uuid } from 'uuid'
 
 //Components and Styles
 import MenuButton from 'src/Menu/MenuButton';
-
-//Misc.
-import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
 class MenuBarOne extends React.Component {
 	constructor(props) {
@@ -158,7 +154,7 @@ class MenuBarOne extends React.Component {
 		const {
 			radioGroupOne, checkboxOneState, checkboxTwoState, radioGroupTwo,
 			radioGroupThree, radioGroupFour, checkboxThreeState,
-			checkboxParent, checkboxChild1, checkboxChild2, checkboxChild3
+			checkboxParent, checkboxChild1, checkboxChild2, checkboxChild3,
 		} = this.state;
 
 		return [

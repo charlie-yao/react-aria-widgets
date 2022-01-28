@@ -216,7 +216,7 @@ class MenuButton extends React.Component {
 			else if(type === 'item') {
 				if(typeof onActivate === 'function')
 					onActivate(event);
-			
+
 				this.collapseButton(() => {
 					this.focus();
 				});
@@ -235,9 +235,8 @@ class MenuButton extends React.Component {
 				this.focus();
 			});
 		}
-		else if(key === 'Tab') {
+		else if(key === 'Tab')
 			this.collapseButton();
-		}
 	};
 
 	//---- Rendering ----

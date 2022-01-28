@@ -209,8 +209,9 @@ class ParentMenuItem extends React.Component {
 					onActivate(event);
 			}
 			else if(type === 'item') {
-				if(typeof onActivate === 'function');
-					onActivate(event);
+				if(typeof onActivate === 'function')
+					;
+				onActivate(event);
 
 				collapse(true, () => {
 					focusRootItem(flattenedRootIndex);

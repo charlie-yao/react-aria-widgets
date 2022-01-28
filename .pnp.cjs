@@ -50,7 +50,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.44.0"],
             ["sass-loader", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:12.3.0"],
             ["style-loader", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:3.3.1"],
-            ["uuid", "npm:8.3.2"],
             ["webpack", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:5.64.4"],
             ["webpack-cli", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:4.9.1"],
             ["webpack-dev-server", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:4.6.0"]
@@ -7077,7 +7076,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.44.0"],
             ["sass-loader", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:12.3.0"],
             ["style-loader", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:3.3.1"],
-            ["uuid", "npm:8.3.2"],
             ["webpack", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:5.64.4"],
             ["webpack-cli", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:4.9.1"],
             ["webpack-dev-server", "virtual:f411e0364179af59a120321a5134f36948febc11ff7da7835e0733d90c2c13b08221b9721532556e99fcbb95d6e3b85e070504e6f6c90e5adfd392d8f996f9fd#npm:4.6.0"]
@@ -8287,13 +8285,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/uuid-npm-3.4.0-4fd8ef88ad-58de2feed6.zip/node_modules/uuid/",
           "packageDependencies": [
             ["uuid", "npm:3.4.0"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:8.3.2", {
-          "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-5575a8a75c.zip/node_modules/uuid/",
-          "packageDependencies": [
-            ["uuid", "npm:8.3.2"]
           ],
           "linkType": "HARD",
         }]
