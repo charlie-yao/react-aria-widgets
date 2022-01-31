@@ -32,6 +32,8 @@ export default function createMenuFocusManager(Component) {
 					focusNextItem={ this.focusNextItem }
 					focusFirstItem={ this.focusFirstItem }
 					focusLastItem={ this.focusLastItem }
+					focusItemFirstChild={ this.focusItemFirstChild }
+					focusItemLastChild={ this.focusItemLastChild }
 					ref={ forwardedRef }
 					{ ...rest }
 				/>
@@ -47,6 +49,11 @@ export default function createMenuFocusManager(Component) {
 		setItemRef = (ref) => {
 			console.log(ref);
 			this.itemRefs.push(ref);
+		};
+
+		focus = () => {
+			console.log(this.managerRef);
+			this.managerRef.focus();
 		};
 
 		focusItem = (index) => {
@@ -68,6 +75,16 @@ export default function createMenuFocusManager(Component) {
 
 		focusLastItem = () => {
 			this.focusItem(this.itemRefs.length - 1);
+		};
+
+		focusItemFirstChild = (index) => {
+			console.log(this.itemRefs[index]);
+			this.itemRefs[index].props.focusFirstItem();
+		};
+
+		focusItemLastChild = (index) => {
+			console.log(this.itemRefs[index]);
+			this.itemRefs[index].props.focusLastItem();
 		};
 	}
 
