@@ -27,7 +27,6 @@ class _ParentMenuItem extends React.Component {
 		focusNextRootItem: PropTypes.func,
 		focusRootItem: PropTypes.func,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
-		parentOrientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]), //TODO isRequired? not if it comes from a menubutton?
 		label: PropTypes.string,
 		labelId: PropTypes.string,
 		isExpanded: PropTypes.bool,
@@ -48,7 +47,6 @@ class _ParentMenuItem extends React.Component {
 		focusNextRootItem: undefined,
 		focusRootItem: undefined,
 		orientation: 'vertical',
-		parentOrientation: 'vertical',
 		label: undefined,
 		labelId: undefined,
 		isExpanded: false,
@@ -387,7 +385,7 @@ class _ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition, orientation: parentOrientation } = this.props;
+		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition } = this.props;
 		const { expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
@@ -437,7 +435,6 @@ class _ParentMenuItem extends React.Component {
 						focusNextRootItem={ focusNextRootItem }
 						focusRootItem={ focusRootItem }
 						orientation={ orientation }
-						parentOrientation={ parentOrientation }
 						label={ label }
 						labelId={ labelId }
 						isExpanded={ flattenedIndex === expandedIndex }
