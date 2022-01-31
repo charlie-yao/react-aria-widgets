@@ -9,6 +9,9 @@ import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
+//HOCs
+import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
+
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
@@ -29,6 +32,14 @@ class ParentMenuItem extends React.Component {
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
+		//From MenuFocusManager
+		setManagerRef: PropTypes.func.isRequired,
+		setItemRef: PropTypes.func.isRequired,
+		focusItem: PropTypes.func.isRequired,
+		focusPrevItem: PropTypes.func.isRequired,
+		focusNextItem: PropTypes.func.isRequired,
+		focusFirstItem: PropTypes.func.isRequired,
+		focusLastItem: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -572,4 +583,4 @@ class ParentMenuItem extends React.Component {
 	};
 }
 
-export default ParentMenuItem;
+export default createMenuFocusManager(ParentMenuItem);

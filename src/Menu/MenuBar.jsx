@@ -8,6 +8,8 @@ import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
 import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
+
+//HOCs
 import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
 
 //Misc.
