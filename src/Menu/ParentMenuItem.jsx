@@ -71,111 +71,6 @@ class ParentMenuItem extends React.Component {
 	}
 	
 	//---- Events ----
-	onKeyDown = (event) => {
-		const { items, collapse, focusPrevRootItem, focusNextRootItem, focusRootItem, orientation } = this.props;
-		const { key, target } = event;
-		const position = target.dataset.position.split(',');
-		const flattenedPosition = target.dataset.flattenedposition.split(',');
-		const index = Number.parseInt(position[position.length - 1], 10);
-		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
-		const flattenedRootIndex = Number.parseInt(flattenedPosition[0], 10);
-		const level = position.length - 1;
-		const item = items[index];
-		const { type, onActivate } = item;
-
-		//console.log(position, flattenedPosition, index, flattenedIndex, level, item);
-
-		if(key === 'ArrowUp' || key === 'Up') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if(orientation === 'vertical') {
-			}
-			else {
-			}
-		}
-		else if(key === 'ArrowDown' || key === 'Down') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if(orientation === 'vertical') {
-			}
-			else {
-			}
-		}
-		else if(key === 'ArrowLeft' || key === 'Left') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if(orientation === 'vertical') {
-			}
-			else {
-			}
-		}
-		else if(key === 'ArrowRight' || key === 'Right') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if(orientation === 'vertical') {
-			}
-			else {
-			}
-		}
-		else if(key === 'Enter') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if(type === 'menu') {
-			}
-			else if(type === 'checkbox') {
-				if(typeof onActivate === 'function')
-					onActivate(event);
-			}
-			else if(type === 'radiogroup') {
-				if(typeof onActivate === 'function')
-					onActivate(event);
-			}
-			else if(type === 'item') {
-				if(typeof onActivate === 'function')
-					onActivate(event);
-			}
-		}
-		else if(key === ' ' || key === 'Spacebar') {
-			event.preventDefault();
-			event.stopPropagation();
-
-			if(type === 'menu') {
-			}
-			else if(type === 'checkbox') {
-				if(typeof onActivate === 'function')
-					onActivate(event);
-			}
-			else if(type === 'radiogroup') {
-				if(typeof onActivate === 'function')
-					onActivate(event);
-			}
-			else if(type === 'item') {
-				if(typeof onActivate === 'function')
-					onActivate(event);
-			}
-		}
-		else if(key === 'Home') {
-			event.preventDefault();
-			event.stopPropagation();
-		}
-		else if(key === 'End') {
-			event.preventDefault();
-			event.stopPropagation();
-		}
-		else if(key === 'Escape' || key === 'Esc') {
-			event.preventDefault();
-			event.stopPropagation();
-		}
-		else if(key === 'Tab') {
-			event.stopPropagation();
-		}
-	};
-
 	onChildKeyDown = (event) => {
 		const { items, collapse, focusPrevRootItem, focusNextRootItem, focusRootItem, orientation } = this.props;
 		const { key, target } = event;
@@ -349,7 +244,7 @@ class ParentMenuItem extends React.Component {
 					aria-haspopup="menu"
 					data-position={ position }
 					data-flattenedposition={ flattenedPosition }
-					onKeyDown={ this.onKeyDown /*onKeyDown */ }
+					onKeyDown={ undefined /*onKeyDown */ }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }
@@ -361,6 +256,7 @@ class ParentMenuItem extends React.Component {
 					orientation={ orientation }
 					label={ label }
 					labelId={ labelId }
+					items={ this.props.items }
 				>
 					{ this.renderItems() }
 				</Menu>
