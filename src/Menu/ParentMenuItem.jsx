@@ -15,7 +15,7 @@ import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
-class ParentMenuItem extends React.Component {
+class _ParentMenuItem extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		items: MENUITEMS_PROPTYPE.isRequired,
@@ -583,4 +583,6 @@ class ParentMenuItem extends React.Component {
 	};
 }
 
-export default createMenuFocusManager(ParentMenuItem);
+const ParentMenuItem = createMenuFocusManager(_ParentMenuItem);
+
+export default ParentMenuItem;
