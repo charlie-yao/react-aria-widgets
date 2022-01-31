@@ -208,7 +208,7 @@ class MenuBar extends React.Component {
 		const item = items[index];
 		const { type, onActivate } = item;
 
-		//console.log(position, flattenedPosition, index, flattenedIndex, item);
+		console.log(position, flattenedPosition, index, flattenedIndex, item);
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
