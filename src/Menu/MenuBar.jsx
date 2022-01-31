@@ -313,7 +313,7 @@ class MenuBar extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items } = this.props;
+		const { items, orientation: parentOrientation } = this.props;
 		const { tabbableIndex, expandedIndex } = this.state;
 		const itemNodes = [];
 		let position = [];
@@ -363,6 +363,7 @@ class MenuBar extends React.Component {
 						focusNextRootItem={ /*this.props.focusNextItem*/ this.focusNextChild }
 						focusRootItem={ /*this.props.focusItem*/ this.focusChild }
 						orientation={ orientation }
+						parentOrientation={ parentOrientation }
 						label={ label }
 						labelId={ labelId }
 						isExpanded={ flattenedIndex === expandedIndex }
