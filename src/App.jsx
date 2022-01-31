@@ -1289,7 +1289,7 @@ function App() {
 			</MenuButton>
 			*/ }
 			<MenuBarOne />
-			<MenuButtonOne />
+			{/*<MenuButtonOne />*/}
 			{ /*
 			<MenuBar label="Placeholder" items={ MENUITEMS_2 } orientation="vertical" />
 			<MenuBar label="Placeholder" items={ MENUITEMS_3 } orientation="vertical" />
