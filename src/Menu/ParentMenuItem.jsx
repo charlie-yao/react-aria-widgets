@@ -250,7 +250,7 @@ class ParentMenuItem extends React.Component {
 		const item = items[index];
 		const { type, onActivate } = item;
 
-		console.log(position, flattenedPosition, index, flattenedIndex, level, item);
+		console.log(orientation, position, flattenedPosition, index, flattenedIndex, level, item);
 
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
