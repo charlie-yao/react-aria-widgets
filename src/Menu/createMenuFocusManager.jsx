@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function createMenuFocusManager(Component) {
-	return class MenuFocusManager extends React.Component {
+	class _MenuFocusManager extends React.Component {
+		static propTypes = {
+			forwardedRef: PropTypes.object.isRequired,
+		};
+
 		constructor(props) {
 			super(props);
 
@@ -11,6 +16,8 @@ export default function createMenuFocusManager(Component) {
 
 		//---- Rendering ----
 		render() {
+			const { forwardedRef, ...rest } = this.props;
+
 			console.log(this.managerRef, this.itemRefs);
 
 			return (
@@ -22,7 +29,8 @@ export default function createMenuFocusManager(Component) {
 					focusNextItem={ this.focusNextItem }
 					focusFirstItem={ this.focusFirstItem }
 					focusLastItem={ this.focusLastItem }
-					{ ...this.props }
+					ref={ forwardedRef }
+					{ ...rest }
 				/>
 			);
 		}
@@ -59,4 +67,8 @@ export default function createMenuFocusManager(Component) {
 			this.focusItem(this.itemRefs.length - 1);
 		};
 	}
+
+	return React.forwardRef(function MenuFocusManager(props, ref) {
+		return <_MenuFocusManager {...props} forwardedRef={ ref } />;
+	});
 }
