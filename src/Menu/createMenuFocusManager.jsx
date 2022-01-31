@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 export default function createMenuFocusManager(Component) {
 	class _MenuFocusManager extends React.Component {
 		static propTypes = {
-			forwardedRef: PropTypes.object.isRequired,
+			forwardedRef: PropTypes.oneOfType([
+				PropTypes.func,
+				PropTypes.object,
+			]),
 		};
 
 		constructor(props) {
