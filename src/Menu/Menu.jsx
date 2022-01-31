@@ -31,6 +31,8 @@ class Menu extends React.Component {
 
 	//---- Events ----
 	onKeyDown = (event) => {
+		return;
+
 		const { items, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');

@@ -201,6 +201,8 @@ class MenuBar extends React.Component {
 	};
 
 	onKeyDown = (event) => {
+		return;
+
 		const { items, orientation } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
@@ -494,7 +496,10 @@ class MenuBar extends React.Component {
 		this.setState(state => {
 			const { expandedIndex } = state;
 			const wasExpanded = expandedIndex !== undefined && expandedIndex !== null;
-			const _autoExpand = targetRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
+
+			//FIXME forwardRef breaks instanceof ParentMenuItem
+			//const _autoExpand = targetRef.current instanceof ParentMenuItem && (wasExpanded || autoExpand);
+			const _autoExpand = wasExpanded || autoExpand;
 
 			return {
 				tabbableIndex: flattenedIndex,
