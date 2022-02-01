@@ -255,6 +255,54 @@ class MenuBarOne extends React.Component {
 								node: 'Hello world!',
 								onActivate: this.onActivateSubmenuItem,
 							},
+							{
+								type: 'menu',
+								node: 'Nested Parent Menuitem',
+								children: [
+									{
+										type: 'item',
+										node: 'Hello world!',
+										onActivate: this.onActivateSubmenuItem,
+									},
+									{
+										type: 'item',
+										node: 'Hello world!',
+										onActivate: this.onActivateSubmenuItem,
+									},
+								],
+							},
+							{
+								type: 'menu',
+								node: 'Nested Parent Menuitem',
+								children: [
+									{
+										type: 'item',
+										node: 'Hello world!',
+										onActivate: this.onActivateSubmenuItem,
+									},
+									{
+										type: 'item',
+										node: 'Hello world!',
+										onActivate: this.onActivateSubmenuItem,
+									},
+								],
+							},
+						],
+					},
+					{
+						type: 'menu',
+						node: 'Nested Parent Menuitem',
+						children: [
+							{
+								type: 'item',
+								node: 'Hello world!',
+								onActivate: this.onActivateSubmenuItem,
+							},
+							{
+								type: 'item',
+								node: 'Hello world!',
+								onActivate: this.onActivateSubmenuItem,
+							},
 						],
 					},
 				],

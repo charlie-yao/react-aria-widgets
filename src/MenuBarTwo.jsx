@@ -1,9 +1,9 @@
 import React from 'react';
 
 //Components and Styles
-import MenuButton from 'src/Menu/MenuButton';
+import MenuBar from 'src/Menu/MenuBar';
 
-class MenuButtonOne extends React.Component {
+class MenuBarTwo extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -143,9 +143,11 @@ class MenuButtonOne extends React.Component {
 	//---- Rendering ----
 	render() {
 		return (
-			<MenuButton label="Placeholder" items={ this.getItems() }>
-				Test Button!
-			</MenuButton>
+			<MenuBar
+				label="Placeholder"
+				items={ this.getItems() }
+				orientation="vertical"
+			/>
 		);
 	}
 
@@ -161,6 +163,7 @@ class MenuButtonOne extends React.Component {
 			{
 				type: 'menu',
 				node: 'Parent Menuitem 1',
+				orientation: 'horizontal',
 				children: [
 					{
 						type: 'radiogroup',
@@ -246,6 +249,7 @@ class MenuButtonOne extends React.Component {
 					{
 						type: 'menu',
 						node: 'Nested Parent Menuitem',
+						orientation: 'horizontal',
 						children: [
 							{
 								type: 'item',
@@ -276,6 +280,7 @@ class MenuButtonOne extends React.Component {
 							{
 								type: 'menu',
 								node: 'Nested Parent Menuitem',
+								orientation: 'horizontal',
 								children: [
 									{
 										type: 'item',
@@ -307,6 +312,7 @@ class MenuButtonOne extends React.Component {
 							},
 						],
 					},
+
 				],
 			},
 			{
@@ -400,4 +406,4 @@ class MenuButtonOne extends React.Component {
 	};
 }
 
-export default MenuButtonOne;
+export default MenuBarTwo;

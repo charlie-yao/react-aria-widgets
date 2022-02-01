@@ -161,6 +161,7 @@ class MenuButtonOne extends React.Component {
 			{
 				type: 'menu',
 				node: 'Parent Menuitem 1',
+				orientation: 'horizontal',
 				children: [
 					{
 						type: 'radiogroup',
@@ -246,6 +247,7 @@ class MenuButtonOne extends React.Component {
 					{
 						type: 'menu',
 						node: 'Nested Parent Menuitem',
+						orientation: 'horizontal',
 						children: [
 							{
 								type: 'item',
@@ -276,6 +278,7 @@ class MenuButtonOne extends React.Component {
 							{
 								type: 'menu',
 								node: 'Nested Parent Menuitem',
+								orientation: 'horizontal',
 								children: [
 									{
 										type: 'item',
@@ -307,6 +310,7 @@ class MenuButtonOne extends React.Component {
 							},
 						],
 					},
+
 				],
 			},
 			{
