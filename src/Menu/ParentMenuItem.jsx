@@ -126,7 +126,8 @@ class _ParentMenuItem extends React.Component {
 			}
 			else {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 						this.props.focusItemFirstChild(flattenedIndex);
 					});
@@ -161,7 +162,8 @@ class _ParentMenuItem extends React.Component {
 
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 						this.props.focusItemFirstChild(flattenedIndex);
 					});
@@ -181,7 +183,8 @@ class _ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
+				//this.expandChild(flattenedIndex, () => {
+				this.props.expandItem(flattenedIndex, () => {
 					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					this.props.focusItemFirstChild(flattenedIndex);
 				});
@@ -215,7 +218,8 @@ class _ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
+				//this.expandChild(flattenedIndex, () => {
+				this.props.expandItem(flattenedIndex, () => {
 					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					this.props.focusItemFirstChild(flattenedIndex);
 				});
@@ -406,8 +410,8 @@ class _ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition } = this.props;
-		const { expandedIndex } = this.state;
+		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition, expandedIndex } = this.props;
+		//const { expandedIndex } = this.state;
 		const level = position.length;
 		const itemNodes = [];
 		let _position = [];
@@ -451,7 +455,7 @@ class _ParentMenuItem extends React.Component {
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapse={ this.collapseChild }
+						collapse={ this.props.collapseItem /*this.collapseChild*/ }
 						focusPrevRootItem={ focusPrevRootItem }
 						focusNextRootItem={ focusNextRootItem }
 						focusRootItem={ focusRootItem }

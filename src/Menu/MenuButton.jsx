@@ -148,7 +148,8 @@ class MenuButton extends React.Component {
 			}
 			else {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 						this.props.focusItemFirstChild(flattenedIndex);
 					});
@@ -168,7 +169,8 @@ class MenuButton extends React.Component {
 
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 						this.props.focusItemFirstChild(flattenedIndex);
 					});
@@ -183,7 +185,8 @@ class MenuButton extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
+				//this.expandChild(flattenedIndex, () => {
+				this.props.expandItem(flattenedIndex, () => {
 					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					this.props.focusItemFirstChild(flattenedIndex);
 				});
@@ -220,7 +223,8 @@ class MenuButton extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
+				//this.expandChild(flattenedIndex, () => {
+				this.props.expandItem(flattenedIndex, () => {
 					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					this.props.focusItemFirstChild(flattenedIndex);
 				});
@@ -297,8 +301,8 @@ class MenuButton extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items } = this.props;
-		const { expandedIndex } = this.state;
+		const { items, expandedIndex } = this.props;
+		//const { expandedIndex } = this.state;
 		const itemNodes = [];
 		let position = [0];
 		let flattenedPosition = [0];
@@ -341,7 +345,7 @@ class MenuButton extends React.Component {
 						position={ position }
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapse={ this.collapseChild }
+						collapse={ this.props.collapseItem /*this.collapseChild*/ }
 						focusRootItem={ this.props.focus /*this.focus*/ }
 						orientation={ orientation }
 						label={ label }

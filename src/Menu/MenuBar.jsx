@@ -31,6 +31,7 @@ class MenuBar extends React.Component {
 		//From MenuFocusManager
 		setItemRef: PropTypes.func.isRequired,
 		tabbableIndex: PropTypes.number.isRequired,
+		expandedIndex: PropTypes.number.isRequired,
 		focusItem: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
 		focusNextItem: PropTypes.func.isRequired,
@@ -90,7 +91,8 @@ class MenuBar extends React.Component {
 
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						this.props.focusItemLastChild(flattenedIndex);
 						//this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
@@ -106,7 +108,8 @@ class MenuBar extends React.Component {
 
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						this.props.focusItemFirstChild(flattenedIndex);
 						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
@@ -126,7 +129,8 @@ class MenuBar extends React.Component {
 			}
 			else {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						this.props.focusItemLastChild(flattenedIndex);
 						//this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
@@ -142,7 +146,8 @@ class MenuBar extends React.Component {
 			}
 			else {
 				if(type === 'menu') {
-					this.expandChild(flattenedIndex, () => {
+					//this.expandChild(flattenedIndex, () => {
+					this.props.expandItem(flattenedIndex, () => {
 						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 						this.props.focusItemFirstChild(flattenedIndex);
 					});
@@ -153,7 +158,8 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
+				//this.expandChild(flattenedIndex, () => {
+				this.props.expandItem(flattenedIndex, () => {
 					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					this.props.focusItemFirstChild(flattenedIndex);
 				});
@@ -175,7 +181,8 @@ class MenuBar extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				this.expandChild(flattenedIndex, () => {
+				//this.expandChild(flattenedIndex, () => {
+				this.props.expandItem(flattenedIndex, () => {
 					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					this.props.focusItemFirstChild(flattenedIndex);
 				});
@@ -203,8 +210,10 @@ class MenuBar extends React.Component {
 			//this.focusLastChild();
 			this.props.focusLastItem();
 		}
-		else if(key === 'Tab')
-			this.collapseChild();
+		else if(key === 'Tab') {
+			//this.collapseChild();
+			this.props.collapseItem();
+		}
 	};
 
 	onKeyDown = (event) => {
@@ -321,8 +330,7 @@ class MenuBar extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, tabbableIndex } = this.props;
-		const { expandedIndex } = this.state;
+		const { items, tabbableIndex, expandedIndex } = this.props;
 		const itemNodes = [];
 		let position = [];
 		let flattenedPosition = [];
@@ -366,7 +374,7 @@ class MenuBar extends React.Component {
 						position={ position }
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapse={ this.collapseChild }
+						collapse={ this.props.collapseItem /*this.collapseChild*/ }
 						focusPrevRootItem={ this.props.focusPrevItem /*this.focusPrevChild*/ }
 						focusNextRootItem={ this.props.focusNextItem /*this.focusNextChild*/ }
 						focusRootItem={ this.props.focusItem /*this.focusChild*/ }

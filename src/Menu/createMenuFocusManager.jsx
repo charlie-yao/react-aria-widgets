@@ -32,13 +32,16 @@ export default function createMenuFocusManager(Component) {
 			const { forwardedRef, ...rest } = this.props;
 			const { tabbableIndex, expandedIndex } = this.state;
 
-			console.log(this.managerRef, this.itemRefs);
+//			console.log(this.managerRef, this.itemRefs, this.props, this.state);
 
 			return (
 				<Component
 					setManagerRef={ this.setManagerRef }
 					setItemRef={ this.setItemRef }
 					tabbableIndex={ tabbableIndex }
+					expandedIndex={ expandedIndex }
+					collapseItem={ this.collapseItem }
+					expandItem={ this.expandItem }
 					focus={ this.focus }
 					focusItem={ this.focusItem }
 					focusPrevItem={ this.focusPrevItem }
@@ -55,13 +58,37 @@ export default function createMenuFocusManager(Component) {
 
 		//---- Misc. ----
 		setManagerRef = (ref) => {
-			console.log(ref);
 			this.managerRef = ref;
 		};
 
 		setItemRef = (ref) => {
-			console.log(ref);
 			this.itemRefs.push(ref);
+		};
+
+		collapseItem = (collapseAll, callback) => {
+			const { collapse } = this.props;
+
+			console.log(collapseAll, callback);
+
+			this.setState({
+				expandedIndex: -1,
+			}, () => {
+				if(collapseAll && typeof collapse === 'function')
+					collapse(true, callback); //FIXME currently broken for MenuButton
+				else if(typeof callback === 'function')
+					callback();
+			});
+		};
+
+		expandItem = (index, callback) => {
+			console.log(index, callback);
+
+			this.setState({
+				expandedIndex: index,
+			}, () => {
+				if(typeof callback === 'function')
+					callback();
+			});
 		};
 
 		focus = () => {
@@ -99,12 +126,10 @@ export default function createMenuFocusManager(Component) {
 		};
 
 		focusItemFirstChild = (index) => {
-			console.log(this.itemRefs[index]);
 			this.itemRefs[index].props.focusFirstItem();
 		};
 
 		focusItemLastChild = (index) => {
-			console.log(this.itemRefs[index]);
 			this.itemRefs[index].props.focusLastItem();
 		};
 	}
