@@ -30,6 +30,7 @@ class MenuBar extends React.Component {
 		labelId: PropTypes.string,
 		//From MenuFocusManager
 		setItemRef: PropTypes.func.isRequired,
+		tabbableIndex: PropTypes.number.isRequired,
 		focusItem: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
 		focusNextItem: PropTypes.func.isRequired,
@@ -51,7 +52,6 @@ class MenuBar extends React.Component {
 		const { items } = props;
 
 		this.state = {
-			tabbableIndex: 0,
 			expandedIndex: undefined,
 		};
 
@@ -321,8 +321,8 @@ class MenuBar extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items } = this.props;
-		const { tabbableIndex, expandedIndex } = this.state;
+		const { items, tabbableIndex } = this.props;
+		const { expandedIndex } = this.state;
 		const itemNodes = [];
 		let position = [];
 		let flattenedPosition = [];

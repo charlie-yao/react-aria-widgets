@@ -12,6 +12,16 @@ export default function createMenuFocusManager(Component) {
 
 		constructor(props) {
 			super(props);
+			
+			//TODO: tabbableIndex is only really relevant for the root level
+			//for menubars. should we always pass down the prop and leave it
+			//to anyone consuming this HOC to decide whether or not it's
+			//worth using? or should we force it to be undefined if we know
+			//the "level" is >= 1?
+			this.state = {
+				tabbableIndex: 0,
+				expandedIndex: -1,
+			};
 
 			this.managerRef;
 			this.itemRefs = [];
@@ -20,6 +30,7 @@ export default function createMenuFocusManager(Component) {
 		//---- Rendering ----
 		render() {
 			const { forwardedRef, ...rest } = this.props;
+			const { tabbableIndex, expandedIndex } = this.state;
 
 			console.log(this.managerRef, this.itemRefs);
 
@@ -27,6 +38,7 @@ export default function createMenuFocusManager(Component) {
 				<Component
 					setManagerRef={ this.setManagerRef }
 					setItemRef={ this.setItemRef }
+					tabbableIndex={ tabbableIndex }
 					focus={ this.focus }
 					focusItem={ this.focusItem }
 					focusPrevItem={ this.focusPrevItem }
@@ -59,12 +71,15 @@ export default function createMenuFocusManager(Component) {
 		focusItem = (index) => {
 			//TODO: autoexpand capabilities?
 			const itemRef = this.itemRefs[index];
-			
-			//TODO: this feels somewhat fragile
-			if(itemRef instanceof HTMLElement)
-				itemRef.focus();
-			else
-				itemRef.props.focus();
+
+			this.setState({
+				tabbableIndex: index,
+			}, () => {
+				if(itemRef instanceof HTMLElement)
+					itemRef.focus();
+				else
+					itemRef.props.focus();
+			});
 		};
 
 		focusPrevItem = (index) => {
