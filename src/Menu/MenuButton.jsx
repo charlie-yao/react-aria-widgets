@@ -97,21 +97,24 @@ class MenuButton extends React.Component {
 			event.preventDefault();
 
 			this.expandButton(() => {
-				this.focusFirstChild();
+				//this.focusFirstChild();
+				this.props.focusFirstItem();
 			});
 		}
 		else if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
 			this.expandButton(() => {
-				this.focusLastChild();
+				//this.focusLastChild();
+				//this.props.focusLastItem();
 			});
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
 			this.expandButton(() => {
-				this.focusFirstChild();
+				//this.focusFirstChild();
+				this.props.focusFirstItem();
 			});
 		}
 	};
@@ -131,18 +134,23 @@ class MenuButton extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			if(orientation === 'vertical')
-				this.focusPrevChild(flattenedIndex);
+			if(orientation === 'vertical') {
+				//this.focusPrevChild(flattenedIndex);
+				this.props.focusPrevItem(flattenedIndex);
+			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
-			if(orientation === 'vertical')
-				this.focusNextChild(flattenedIndex);
+			if(orientation === 'vertical') {
+				//this.focusNextChild(flattenedIndex);
+				this.props.focusNextItem(flattenedIndex);
+			}
 			else {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						this.props.focusItemFirstChild(flattenedIndex);
 					});
 				}
 			}
@@ -150,8 +158,10 @@ class MenuButton extends React.Component {
 		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
-			if(orientation === 'horizontal')
-				this.focusPrevChild(flattenedIndex);
+			if(orientation === 'horizontal') {
+				//this.focusPrevChild(flattenedIndex);
+				this.props.focusPrevItem(flattenedIndex);
+			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
@@ -159,19 +169,23 @@ class MenuButton extends React.Component {
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						this.props.focusItemFirstChild(flattenedIndex);
 					});
 				}
 			}
-			else
-				this.focusNextChild(flattenedIndex);
+			else {
+				//this.focusNextChild(flattenedIndex);
+				this.props.focusNextItem(flattenedIndex);
+			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					this.props.focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -179,7 +193,8 @@ class MenuButton extends React.Component {
 					onActivate(event);
 
 				this.collapseButton(() => {
-					this.focus();
+					//this.focus();
+					this.props.focus();
 				});
 			}
 			else if(type === 'radiogroup') {
@@ -187,7 +202,8 @@ class MenuButton extends React.Component {
 					onActivate(event);
 
 				this.collapseButton(() => {
-					this.focus();
+					//this.focus();
+					this.props.focus();
 				});
 			}
 			else if(type === 'item') {
@@ -195,7 +211,8 @@ class MenuButton extends React.Component {
 					onActivate(event);
 
 				this.collapseButton(() => {
-					this.focus();
+					//this.focus();
+					this.props.focus();
 				});
 			}
 		}
@@ -204,7 +221,8 @@ class MenuButton extends React.Component {
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					this.props.focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -220,21 +238,25 @@ class MenuButton extends React.Component {
 					onActivate(event);
 
 				this.collapseButton(() => {
-					this.focus();
+					//this.focus();
+					this.props.focus();
 				});
 			}
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			this.focusFirstChild();
+			//this.focusFirstChild();
+			this.props.focusFirstItem();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			this.focusLastChild();
+			//this.focusLastChild();
+			this.props.focusLastItem();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			this.collapseButton(() => {
-				this.focus();
+				//this.focus();
+				this.props.focus();
 			});
 		}
 		else if(key === 'Tab')
@@ -320,7 +342,7 @@ class MenuButton extends React.Component {
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						collapse={ this.collapseChild }
-						focusRootItem={ this.focus }
+						focusRootItem={ this.props.focus /*this.focus*/ }
 						orientation={ orientation }
 						label={ label }
 						labelId={ labelId }
