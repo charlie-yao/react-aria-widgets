@@ -366,7 +366,7 @@ class _ParentMenuItem extends React.Component {
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }
-					ref={ /*this.props.setManagerRef*/ this.itemRef }
+					ref={ this.props.setManagerRef /*this.itemRef*/ }
 				>
 					{ children }
 				</a>
@@ -409,7 +409,7 @@ class _ParentMenuItem extends React.Component {
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
-						ref={ /*this.props.setItemRef*/ this.childItemRefs[flattenedIndex] }
+						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
 					</MenuItem>
@@ -439,7 +439,7 @@ class _ParentMenuItem extends React.Component {
 						labelId={ labelId }
 						isExpanded={ flattenedIndex === expandedIndex }
 						isDisabled={ isDisabled }
-						ref={ /*this.props.setItemRef*/ this.childItemRefs[flattenedIndex] }
+						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
 					</ParentMenuItem>
@@ -461,7 +461,7 @@ class _ParentMenuItem extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isChecked={ isChecked }
-						ref={ /*this.props.setItemRef*/ this.childItemRefs[flattenedIndex] }
+						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
 					</MenuItemCheckbox>
@@ -496,7 +496,7 @@ class _ParentMenuItem extends React.Component {
 							isDisabled={ isDisabled }
 							isChecked={ isChecked }
 							data-value={ value }
-							ref={ /*this.props.setItemRef*/ this.childItemRefs[flattenedIndex] }
+							ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 						>
 							{ node }
 						</MenuItemRadio>
