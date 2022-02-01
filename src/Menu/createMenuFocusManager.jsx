@@ -27,6 +27,7 @@ export default function createMenuFocusManager(Component) {
 				<Component
 					setManagerRef={ this.setManagerRef }
 					setItemRef={ this.setItemRef }
+					focus={ this.focus }
 					focusItem={ this.focusItem }
 					focusPrevItem={ this.focusPrevItem }
 					focusNextItem={ this.focusNextItem }
@@ -52,13 +53,18 @@ export default function createMenuFocusManager(Component) {
 		};
 
 		focus = () => {
-			console.log(this.managerRef);
 			this.managerRef.focus();
 		};
 
 		focusItem = (index) => {
 			//TODO: autoexpand capabilities?
-			this.itemRefs[index].focus();
+			const itemRef = this.itemRefs[index];
+			
+			//TODO: this feels somewhat fragile
+			if(itemRef instanceof HTMLElement)
+				itemRef.focus();
+			else
+				itemRef.props.focus();
 		};
 
 		focusPrevItem = (index) => {

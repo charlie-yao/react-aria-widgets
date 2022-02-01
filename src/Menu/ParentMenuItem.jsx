@@ -35,6 +35,7 @@ class _ParentMenuItem extends React.Component {
 		//From MenuFocusManager
 		setManagerRef: PropTypes.func.isRequired,
 		setItemRef: PropTypes.func.isRequired,
+		focus: PropTypes.func.isRequired,
 		focusItem: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
 		focusNextItem: PropTypes.func.isRequired,

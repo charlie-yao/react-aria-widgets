@@ -29,13 +29,14 @@ class MenuBar extends React.Component {
 		label: PropTypes.string,
 		labelId: PropTypes.string,
 		//From MenuFocusManager
-		setManagerRef: PropTypes.func.isRequired,
 		setItemRef: PropTypes.func.isRequired,
 		focusItem: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
 		focusNextItem: PropTypes.func.isRequired,
 		focusFirstItem: PropTypes.func.isRequired,
 		focusLastItem: PropTypes.func.isRequired,
+		focusItemFirstChild: PropTypes.func.isRequired,
+		focusItemLastChild: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -90,7 +91,8 @@ class MenuBar extends React.Component {
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusLastChild();
+						this.props.focusItemLastChild(flattenedIndex);
+						//this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
 				}
 			}
@@ -105,7 +107,8 @@ class MenuBar extends React.Component {
 			if(orientation === 'horizontal') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						this.props.focusItemFirstChild(flattenedIndex);
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
 					});
 				}
 			}
@@ -124,7 +127,8 @@ class MenuBar extends React.Component {
 			else {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusLastChild();
+						this.props.focusItemLastChild(flattenedIndex);
+						//this.childItemRefs[flattenedIndex].current.focusLastChild();
 					});
 				}
 			}
@@ -139,7 +143,8 @@ class MenuBar extends React.Component {
 			else {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						this.props.focusItemFirstChild(flattenedIndex);
 					});
 				}
 			}
@@ -149,7 +154,8 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					this.props.focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -170,7 +176,8 @@ class MenuBar extends React.Component {
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					this.props.focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
