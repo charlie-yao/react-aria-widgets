@@ -6,8 +6,10 @@
 	display: none !important;
 }
 
-[role="menuitem"][aria-expanded="false"] + [role="menu"] {
-	display: none;
+[role="menuitem"], button[aria-haspopup="menu"] {
+	&[aria-expanded="false"] + [role="menu"] {
+		display: none;
+	}	
 }
 
 [role="menubar"], [role="menu"] {

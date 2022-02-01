@@ -290,7 +290,6 @@ class MenuButton extends React.Component {
 					label={ menuLabel }
 					labelId={ id }
 					id={ menuId }
-					className={ isExpanded ? undefined : 'hidden' }
 				>
 					{ this.renderItems() }
 				</Menu>

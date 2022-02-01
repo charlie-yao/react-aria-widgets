@@ -18,7 +18,6 @@ class Menu extends React.Component {
 		label: PropTypes.string,
 		labelId: PropTypes.string,
 		id: PropTypes.string,
-		className: PropTypes.string,
 	};
 
 	static defaultProps = {
@@ -26,7 +25,6 @@ class Menu extends React.Component {
 		label: undefined,
 		labelId: undefined,
 		id: undefined,
-		className: undefined,
 	};
 
 	//---- Events ----
@@ -140,7 +138,7 @@ class Menu extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, orientation, label, labelId, id, className } = this.props;
+		const { children, orientation, label, labelId, id } = this.props;
 
 		return (
 			<ul
@@ -149,7 +147,6 @@ class Menu extends React.Component {
 				aria-label={ label }
 				aria-labelledby={ labelId }
 				id={ id }
-				className={ className }
 				onKeyDown={ this.onKeyDown }
 			>
 				{ children }
