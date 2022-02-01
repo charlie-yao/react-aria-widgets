@@ -300,8 +300,8 @@ class MenuButton extends React.Component {
 		const { items } = this.props;
 		const { expandedIndex } = this.state;
 		const itemNodes = [];
-		let position = [];
-		let flattenedPosition = [];
+		let position = [0];
+		let flattenedPosition = [0];
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {
@@ -309,9 +309,9 @@ class MenuButton extends React.Component {
 
 			if(type === 'item') {
 				position = position.slice(0);
-				position[0] = i;
+				position[1] = i;
 				flattenedPosition = flattenedPosition.slice(0);
-				flattenedPosition[0] = flattenedIndex;
+				flattenedPosition[1] = flattenedIndex;
 
 				itemNodes.push(
 					<MenuItem
@@ -330,9 +330,9 @@ class MenuButton extends React.Component {
 			}
 			else if(type === 'menu') {
 				position = position.slice(0);
-				position[0] = i;
+				position[1] = i;
 				flattenedPosition = flattenedPosition.slice(0);
-				flattenedPosition[0] = flattenedIndex;
+				flattenedPosition[1] = flattenedIndex;
 
 				itemNodes.push(
 					<ParentMenuItem
@@ -358,9 +358,9 @@ class MenuButton extends React.Component {
 			}
 			else if(type === 'checkbox') {
 				position = position.slice(0);
-				position[0] = i;
+				position[1] = i;
 				flattenedPosition = flattenedPosition.slice(0);
-				flattenedPosition[0] = flattenedIndex;
+				flattenedPosition[1] = flattenedIndex;
 
 				itemNodes.push(
 					<MenuItemCheckbox
@@ -396,9 +396,9 @@ class MenuButton extends React.Component {
 					const { node, isDisabled, isChecked, value } = radioItem;
 
 					position = position.slice(0);
-					position[0] = i;
+					position[1] = i;
 					flattenedPosition = flattenedPosition.slice(0);
-					flattenedPosition[0] = flattenedIndex;
+					flattenedPosition[1] = flattenedIndex;
 
 					radioNodes.push(
 						<MenuItemRadio
