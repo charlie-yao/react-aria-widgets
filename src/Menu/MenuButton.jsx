@@ -10,6 +10,9 @@ import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
 import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
+//HOCs
+import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
+
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 
@@ -40,6 +43,15 @@ class MenuButton extends React.Component {
 		menuLabel: PropTypes.string,
 		menuId: PropTypes.string,
 		id: PropTypes.string,
+		//From MenuFocusManager
+		setManagerRef: PropTypes.func.isRequired,
+		setItemRef: PropTypes.func.isRequired,
+		focus: PropTypes.func.isRequired,
+		focusItem: PropTypes.func.isRequired,
+		focusPrevItem: PropTypes.func.isRequired,
+		focusNextItem: PropTypes.func.isRequired,
+		focusFirstItem: PropTypes.func.isRequired,
+		focusLastItem: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -243,7 +255,7 @@ class MenuButton extends React.Component {
 					id={ id }
 					aria-expanded={ isExpanded }
 					onKeyDown={ this.onKeyDown }
-					ref={ this.buttonRef }
+					ref={ /*this.buttonRef*/ this.props.setManagerRef }
 				>
 					{ children }
 				</button>
@@ -286,7 +298,7 @@ class MenuButton extends React.Component {
 						flattenedPosition={ flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
-						ref={ this.childItemRefs[flattenedIndex] }
+						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
 					</MenuItem>
@@ -314,7 +326,7 @@ class MenuButton extends React.Component {
 						labelId={ labelId }
 						isExpanded={ flattenedIndex === expandedIndex }
 						isDisabled={ isDisabled }
-						ref={ this.childItemRefs[flattenedIndex] }
+						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
 					</ParentMenuItem>
@@ -336,7 +348,7 @@ class MenuButton extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isChecked={ isChecked }
-						ref={ this.childItemRefs[flattenedIndex] }
+						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
 					>
 						{ node }
 					</MenuItemCheckbox>
@@ -375,7 +387,7 @@ class MenuButton extends React.Component {
 							isDisabled={ isDisabled }
 							isChecked={ isChecked }
 							data-value={ value }
-							ref={ this.childItemRefs[flattenedIndex] }
+							ref={ this.props.setItemRef /* this.childItemRefs[flattenedIndex] */}
 						>
 							{ node }
 						</MenuItemRadio>
@@ -465,4 +477,4 @@ class MenuButton extends React.Component {
 	};
 }
 
-export default MenuButton;
+export default createMenuFocusManager(MenuButton);
