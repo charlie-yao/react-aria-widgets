@@ -101,26 +101,34 @@ class _ParentMenuItem extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			if(orientation === 'vertical')
-				this.focusPrevChild(flattenedIndex);
+			if(orientation === 'vertical') {
+				//this.focusPrevChild(flattenedIndex);
+				this.props.focusPrevItem(flattenedIndex);
+			}
 			else {
 				collapse(false, () => {
-					if(level === 1 && focusPrevRootItem)
+					if(level === 1 && focusPrevRootItem) {
 						focusPrevRootItem(flattenedRootIndex, true);
-					else
-						this.focus();
+					}
+					else {
+						//this.focus();
+						this.props.focus();
+					}
 				});
 			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
-			if(orientation === 'vertical')
-				this.focusNextChild(flattenedIndex);
+			if(orientation === 'vertical') {
+				//this.focusNextChild(flattenedIndex);
+				this.props.focusNextItem(flattenedIndex);
+			}
 			else {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						this.props.focusItemFirstChild(flattenedIndex);
 					});
 				}
 				else if(focusNextRootItem) {
@@ -137,12 +145,16 @@ class _ParentMenuItem extends React.Component {
 				collapse(false, () => {
 					if(level === 1 && focusPrevRootItem)
 						focusPrevRootItem(flattenedRootIndex, true);
-					else
-						this.focus();
+					else {
+						//this.focus();
+						this.props.focus();
+					}
 				});
 			}
-			else
-				this.focusPrevChild(flattenedIndex);
+			else {
+				//this.focusPrevChild(flattenedIndex);
+				this.props.focusPrevItem(flattenedIndex);
+			}
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
@@ -150,7 +162,8 @@ class _ParentMenuItem extends React.Component {
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
 					this.expandChild(flattenedIndex, () => {
-						this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+						this.props.focusItemFirstChild(flattenedIndex);
 					});
 				}
 				else if(focusNextRootItem) {
@@ -159,15 +172,18 @@ class _ParentMenuItem extends React.Component {
 					});
 				}
 			}
-			else
-				this.focusNextChild(flattenedIndex);
+			else {
+				//this.focusNextChild(flattenedIndex);
+				this.props.focusNextItem(flattenedIndex);
+			}
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					this.props.focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -200,7 +216,8 @@ class _ParentMenuItem extends React.Component {
 
 			if(type === 'menu') {
 				this.expandChild(flattenedIndex, () => {
-					this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
+					this.props.focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -222,17 +239,20 @@ class _ParentMenuItem extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			this.focusFirstChild();
+			//this.focusFirstChild();
+			this.props.focusFirstItem();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			this.focusLastChild();
+			//this.focusLastChild();
+			this.props.focusLastItem();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
 
 			collapse(false, () => {
-				this.focus();
+				//this.focus();
+				this.props.focus();
 			});
 		}
 		else if(key === 'Tab')

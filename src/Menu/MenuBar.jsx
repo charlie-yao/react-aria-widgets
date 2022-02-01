@@ -299,7 +299,6 @@ class MenuBar extends React.Component {
 		}
 	};
 
-
 	//---- Rendering ----
 	render() {
 		const { orientation, label, labelId } = this.props;
