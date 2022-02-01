@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ParentMenuItem from 'src/Menu/ParentMenuItem';
+
 export default function createMenuFocusManager(Component) {
 	class _MenuFocusManager extends React.Component {
 		static propTypes = {
@@ -95,26 +97,33 @@ export default function createMenuFocusManager(Component) {
 			this.managerRef.focus();
 		};
 
-		focusItem = (index) => {
-			//TODO: autoexpand capabilities?
+		focusItem = (index, autoExpand = false) => {
 			const itemRef = this.itemRefs[index];
+			const isMenu = !(itemRef instanceof HTMLElement); //this feels rather fragile
 
-			this.setState({
-				tabbableIndex: index,
+			this.setState(state => {
+				const { expandedIndex } = state;
+				const wasExpanded = expandedIndex !== -1;
+				const _autoExpand = isMenu && (autoExpand || wasExpanded);
+				
+				return {
+					tabbableIndex: index,
+					expandedIndex: _autoExpand ? index : -1,
+				};
 			}, () => {
-				if(itemRef instanceof HTMLElement)
-					itemRef.focus();
-				else
+				if(isMenu)
 					itemRef.props.focus();
+				else
+					itemRef.focus();
 			});
 		};
 
-		focusPrevItem = (index) => {
-			this.focusItem(index === 0 ? this.itemRefs.length - 1 : index - 1);
+		focusPrevItem = (index, autoExpand) => {
+			this.focusItem(index === 0 ? this.itemRefs.length - 1 : index - 1, autoExpand);
 		};
 
-		focusNextItem = (index) => {
-			this.focusItem(index === this.itemRefs.length - 1 ? 0 : index + 1);
+		focusNextItem = (index, autoExpand) => {
+			this.focusItem(index === this.itemRefs.length - 1 ? 0 : index + 1, autoExpand);
 		};
 
 		focusFirstItem = () => {
