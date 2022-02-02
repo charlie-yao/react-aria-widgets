@@ -35,12 +35,15 @@ class _ParentMenuItem extends React.Component {
 		//From MenuFocusManager
 		setManagerRef: PropTypes.func.isRequired,
 		setItemRef: PropTypes.func.isRequired,
-		focus: PropTypes.func.isRequired,
+		expandedIndex: PropTypes.number.isRequired,
+		collapseItem: PropTypes.func.isRequired,
+		expandItem: PropTypes.func.isRequired,
 		focusItem: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
 		focusNextItem: PropTypes.func.isRequired,
 		focusFirstItem: PropTypes.func.isRequired,
 		focusLastItem: PropTypes.func.isRequired,
+		focusItemFirstChild: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -55,37 +58,9 @@ class _ParentMenuItem extends React.Component {
 		isTabbable: false,
 	};
 
-	constructor(props) {
-		super(props);
-
-		const { items } = props;
-
-		this.state = {
-			expandedIndex: undefined,
-			isExpanded: false,
-		};
-
-		this.itemRef = React.createRef();
-		this.childItemRefs = [];
-
-		items.forEach(item => {
-			const { type, children } = item;
-
-			if(type === 'separator')
-				return;
-			if(type === 'radiogroup') {
-				children.forEach(() => {
-					this.childItemRefs.push(React.createRef());
-				});
-			}
-			else
-				this.childItemRefs.push(React.createRef());
-		});
-	}
-	
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapse, focusPrevRootItem, focusNextRootItem, focusRootItem, orientation } = this.props;
+		const { items, collapse, focusPrevRootItem, focusNextRootItem, focusRootItem, orientation, expandItem, focus, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem, focusItemFirstChild } = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -101,35 +76,26 @@ class _ParentMenuItem extends React.Component {
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			if(orientation === 'vertical') {
-				//this.focusPrevChild(flattenedIndex);
-				this.props.focusPrevItem(flattenedIndex);
-			}
+			if(orientation === 'vertical')
+				focusPrevItem(flattenedIndex);
 			else {
 				collapse(false, () => {
-					if(level === 1 && focusPrevRootItem) {
+					if(level === 1 && focusPrevRootItem)
 						focusPrevRootItem(flattenedRootIndex, true);
-					}
-					else {
-						//this.focus();
-						this.props.focus();
-					}
+					else
+						focus();
 				});
 			}
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
-			if(orientation === 'vertical') {
-				//this.focusNextChild(flattenedIndex);
-				this.props.focusNextItem(flattenedIndex);
-			}
+			if(orientation === 'vertical')
+				focusNextItem(flattenedIndex);
 			else {
 				if(type === 'menu') {
-					//this.expandChild(flattenedIndex, () => {
-					this.props.expandItem(flattenedIndex, () => {
-						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
-						this.props.focusItemFirstChild(flattenedIndex);
+					expandItem(flattenedIndex, () => {
+						focusItemFirstChild(flattenedIndex);
 					});
 				}
 				else if(focusNextRootItem) {
@@ -146,26 +112,20 @@ class _ParentMenuItem extends React.Component {
 				collapse(false, () => {
 					if(level === 1 && focusPrevRootItem)
 						focusPrevRootItem(flattenedRootIndex, true);
-					else {
-						//this.focus();
-						this.props.focus();
-					}
+					else
+						focus();
 				});
 			}
-			else {
-				//this.focusPrevChild(flattenedIndex);
-				this.props.focusPrevItem(flattenedIndex);
-			}
+			else
+				focusPrevItem(flattenedIndex);
 		}
 		else if(key === 'ArrowRight' || key === 'Right') {
 			event.preventDefault();
 
 			if(orientation === 'vertical') {
 				if(type === 'menu') {
-					//this.expandChild(flattenedIndex, () => {
-					this.props.expandItem(flattenedIndex, () => {
-						//this.childItemRefs[flattenedIndex].current.focusFirstChild();
-						this.props.focusItemFirstChild(flattenedIndex);
+					expandItem(flattenedIndex, () => {
+						focusItemFirstChild(flattenedIndex);
 					});
 				}
 				else if(focusNextRootItem) {
@@ -174,19 +134,15 @@ class _ParentMenuItem extends React.Component {
 					});
 				}
 			}
-			else {
-				//this.focusNextChild(flattenedIndex);
-				this.props.focusNextItem(flattenedIndex);
-			}
+			else
+				focusNextItem(flattenedIndex);
 		}
 		else if(key === 'Enter') {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				//this.expandChild(flattenedIndex, () => {
-				this.props.expandItem(flattenedIndex, () => {
-					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
-					this.props.focusItemFirstChild(flattenedIndex);
+				expandItem(flattenedIndex, () => {
+					focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -218,10 +174,8 @@ class _ParentMenuItem extends React.Component {
 			event.preventDefault();
 
 			if(type === 'menu') {
-				//this.expandChild(flattenedIndex, () => {
-				this.props.expandItem(flattenedIndex, () => {
-					//this.childItemRefs[flattenedIndex].current.focusFirstChild();
-					this.props.focusItemFirstChild(flattenedIndex);
+				expandItem(flattenedIndex, () => {
+					focusItemFirstChild(flattenedIndex);
 				});
 			}
 			else if(type === 'checkbox') {
@@ -243,26 +197,24 @@ class _ParentMenuItem extends React.Component {
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			//this.focusFirstChild();
-			this.props.focusFirstItem();
+			focusFirstItem();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			//this.focusLastChild();
-			this.props.focusLastItem();
+			focusLastItem();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
 			event.preventDefault();
 
 			collapse(false, () => {
-				//this.focus();
-				this.props.focus();
+				focus();
 			});
 		}
 		else if(key === 'Tab')
 			collapse(true);
 	};
-
+	
+	/*
 	onKeyDown = (event) => {
 		const { items, orientation } = this.props;
 		const { key, target } = event;
@@ -367,6 +319,7 @@ class _ParentMenuItem extends React.Component {
 			event.stopPropagation();
 		}
 	};
+	*/
 
 	//---- Rendering ----
 	render() {
@@ -374,6 +327,7 @@ class _ParentMenuItem extends React.Component {
 			children, position, flattenedPosition, onKeyDown,
 			orientation, label, labelId,
 			isExpanded, isDisabled, isTabbable,
+			setManagerRef,
 		} = this.props;
 		//const { isExpanded } = this.state;
 
@@ -387,11 +341,11 @@ class _ParentMenuItem extends React.Component {
 					aria-haspopup="menu"
 					data-position={ position }
 					data-flattenedposition={ flattenedPosition }
-					onKeyDown={ /*this.onKeyDown*/ /* undefined */ onKeyDown }
+					onKeyDown={ onKeyDown }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }
-					ref={ this.props.setManagerRef /*this.itemRef*/ }
+					ref={ setManagerRef }
 				>
 					{ children }
 				</a>
@@ -409,8 +363,7 @@ class _ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition, expandedIndex } = this.props;
-		//const { expandedIndex } = this.state;
+		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition, setItemRef, expandedIndex, collapseItem } = this.props;
 		const level = position.length;
 		const itemNodes = [];
 		let _position = [];
@@ -433,7 +386,7 @@ class _ParentMenuItem extends React.Component {
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
-						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
+						ref={ setItemRef }
 					>
 						{ node }
 					</MenuItem>
@@ -454,7 +407,7 @@ class _ParentMenuItem extends React.Component {
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ this.onChildKeyDown }
-						collapse={ this.props.collapseItem /*this.collapseChild*/ }
+						collapse={ collapseItem }
 						focusPrevRootItem={ focusPrevRootItem }
 						focusNextRootItem={ focusNextRootItem }
 						focusRootItem={ focusRootItem }
@@ -463,7 +416,7 @@ class _ParentMenuItem extends React.Component {
 						labelId={ labelId }
 						isExpanded={ flattenedIndex === expandedIndex }
 						isDisabled={ isDisabled }
-						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
+						ref={ setItemRef }
 					>
 						{ node }
 					</ParentMenuItem>
@@ -485,7 +438,7 @@ class _ParentMenuItem extends React.Component {
 						onKeyDown={ this.onChildKeyDown }
 						isDisabled={ isDisabled }
 						isChecked={ isChecked }
-						ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
+						ref={ setItemRef }
 					>
 						{ node }
 					</MenuItemCheckbox>
@@ -520,7 +473,7 @@ class _ParentMenuItem extends React.Component {
 							isDisabled={ isDisabled }
 							isChecked={ isChecked }
 							data-value={ value }
-							ref={ this.props.setItemRef /*this.childItemRefs[flattenedIndex]*/ }
+							ref={ setItemRef }
 						>
 							{ node }
 						</MenuItemRadio>
@@ -544,65 +497,6 @@ class _ParentMenuItem extends React.Component {
 		return itemNodes;
 
 		/* eslint-enable react/no-array-index-key */
-	};
-
-	//---- Misc. ---
-	expand = () => {
-		this.setState({	
-			isExpanded: true,
-		});
-	};
-
-	collapse = () => {
-		this.setState({
-			isExpanded: false,
-		});
-	};
-
-	collapseChild = (collapseAll, callback) => {
-		const { collapse } = this.props;
-
-		this.setState({
-			expandedIndex: undefined,
-		}, () => {
-			if(collapseAll)
-				collapse(true, callback);
-			else if(typeof callback === 'function')
-				callback();
-		});
-	};
-
-	expandChild = (flattenedIndex, callback) => {
-		this.setState({
-			expandedIndex: flattenedIndex,
-		}, () => {
-			if(typeof callback === 'function')
-				callback();
-		});
-	};
-
-	focusPrevChild = (flattenedIndex) => {
-		this.focusChild(flattenedIndex === 0 ? this.childItemRefs.length - 1 : flattenedIndex - 1);
-	};
-
-	focusNextChild = (flattenedIndex) => {
-		this.focusChild(flattenedIndex === this.childItemRefs.length - 1 ? 0 : flattenedIndex + 1);
-	};
-
-	focusFirstChild = () => {
-		this.focusChild(0);
-	};
-
-	focusLastChild = () => {
-		this.focusChild(this.childItemRefs.length - 1);
-	};
-
-	focusChild = (flattenedIndex) => {
-		this.childItemRefs[flattenedIndex].current.focus();
-	};
-
-	focus = () => {
-		this.itemRef.current.focus();
 	};
 }
 
