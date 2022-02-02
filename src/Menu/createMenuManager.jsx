@@ -68,14 +68,14 @@ export default function createMenuManager(Component) {
 		setItemRef = (ref) => {
 			this.itemRefs.push(ref);
 		};
-
-		collapseItem = (collapseAll, callback) => {
+		
+		collapseItem = (collapseAllParents, callback) => {
 			const { collapse } = this.props;
 
 			this.setState({
 				expandedIndex: -1,
 			}, () => {
-				if(collapseAll) {
+				if(collapseAllParents) {
 					if(typeof collapse === 'function')
 						collapse(true, callback); //FIXME currently broken for MenuButton
 					else if(typeof callback === 'function')
