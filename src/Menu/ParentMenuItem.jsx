@@ -38,7 +38,7 @@ class _ParentMenuItem extends React.Component {
 		expandedIndex: PropTypes.number.isRequired,
 		collapseItem: PropTypes.func.isRequired,
 		expandItem: PropTypes.func.isRequired,
-		focusItem: PropTypes.func.isRequired,
+		focus: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
 		focusNextItem: PropTypes.func.isRequired,
 		focusFirstItem: PropTypes.func.isRequired,

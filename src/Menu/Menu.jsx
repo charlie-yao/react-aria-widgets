@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//Misc.
-import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
-
 /*
  * Note:
  *
