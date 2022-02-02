@@ -103,8 +103,6 @@ export default function createMenuManager(Component) {
 			const itemRef = this.itemRefs[index];
 			const isMenu = !(itemRef instanceof HTMLElement); //this feels rather fragile
 
-			console.log(index, itemRef);
-
 			this.setState(state => {
 				const { expandedIndex } = state;
 				const wasExpanded = expandedIndex !== -1;
