@@ -67,6 +67,7 @@ class _ParentMenuItem extends React.Component {
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const isDisabled = target.ariaDisabled === 'true'; //can't use isDisabled on the item for radiogroups
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const flattenedRootIndex = Number.parseInt(flattenedPosition[0], 10);
@@ -145,6 +146,9 @@ class _ParentMenuItem extends React.Component {
 		else if(key === 'Enter') {
 			event.preventDefault();
 
+			if(isDisabled)
+				return;
+
 			if(type === 'menu') {
 				expandItem(flattenedIndex, () => {
 					focusItemFirstChild(flattenedIndex);
@@ -177,6 +181,9 @@ class _ParentMenuItem extends React.Component {
 		}
 		else if(key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
+
+			if(isDisabled)
+				return;
 
 			if(type === 'menu') {
 				expandItem(flattenedIndex, () => {

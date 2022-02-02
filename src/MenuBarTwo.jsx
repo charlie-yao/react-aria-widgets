@@ -389,6 +389,7 @@ class MenuBarTwo extends React.Component {
 						node: 'Radio Option 3',
 						isChecked: radioGroupFour === 'option3',
 						value: 'option3',
+						isDisabled: true,
 					},
 				],
 			},
@@ -400,6 +401,7 @@ class MenuBarTwo extends React.Component {
 				node: 'Checkbox 3',
 				onActivate: this.onToggleCheckboxThree,
 				isChecked: checkboxThreeState,
+				isDisabled: true,
 			},
 			{
 				type: 'checkbox',
