@@ -10,7 +10,7 @@ import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //HOCs
-import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
+import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -32,7 +32,7 @@ class _ParentMenuItem extends React.Component {
 		isExpanded: PropTypes.bool,
 		isDisabled: PropTypes.bool,
 		isTabbable: PropTypes.bool,
-		//From MenuFocusManager
+		//From MenuManager
 		setManagerRef: PropTypes.func.isRequired,
 		setItemRef: PropTypes.func.isRequired,
 		expandedIndex: PropTypes.number.isRequired,
@@ -398,6 +398,6 @@ class _ParentMenuItem extends React.Component {
 	};
 }
 
-const ParentMenuItem = createMenuFocusManager(_ParentMenuItem);
+const ParentMenuItem = createMenuManager(_ParentMenuItem);
 
 export default ParentMenuItem;

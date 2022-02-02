@@ -11,7 +11,7 @@ import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //HOCs
-import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
+import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -43,7 +43,7 @@ class MenuButton extends React.Component {
 		menuLabel: PropTypes.string,
 		menuId: PropTypes.string,
 		id: PropTypes.string,
-		//From MenuFocusManager
+		//From MenuManager
 		setManagerRef: PropTypes.func.isRequired,
 		setItemRef: PropTypes.func.isRequired,
 		expandedIndex: PropTypes.number.isRequired,
@@ -419,4 +419,4 @@ class MenuButton extends React.Component {
 	};
 }
 
-export default createMenuFocusManager(MenuButton);
+export default createMenuManager(MenuButton);

@@ -10,7 +10,7 @@ import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //HOCs
-import createMenuFocusManager from 'src/Menu/createMenuFocusManager';
+import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
@@ -28,7 +28,7 @@ class MenuBar extends React.Component {
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
-		//From MenuFocusManager
+		//From MenuManager
 		setItemRef: PropTypes.func.isRequired,
 		tabbableIndex: PropTypes.number.isRequired,
 		expandedIndex: PropTypes.number.isRequired,
@@ -336,4 +336,4 @@ class MenuBar extends React.Component {
 	};
 }
 
-export default createMenuFocusManager(MenuBar);
+export default createMenuManager(MenuBar);
