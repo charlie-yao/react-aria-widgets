@@ -11,6 +11,7 @@ import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
 import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //HOCs
+import createMenuButtonManager from 'src/Menu/createMenuButtonManager';
 import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
@@ -43,6 +44,10 @@ class MenuButton extends React.Component {
 		menuLabel: PropTypes.string,
 		menuId: PropTypes.string,
 		id: PropTypes.string,
+		//From MenuButtonManager
+		isExpanded: PropTypes.bool.isRequired,
+		collapse: PropTypes.func.isRequired,
+		expand: PropTypes.func.isRequired,
 		//From MenuManager
 		setManagerRef: PropTypes.func.isRequired,
 		setItemRef: PropTypes.func.isRequired,
@@ -64,37 +69,29 @@ class MenuButton extends React.Component {
 		id: undefined,
 	};
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			isExpanded: false,
-		};
-	}
-
 	//---- Events ----
 	onKeyDown = (event) => {
-		const { focusFirstItem, focusLastItem } = this.props;
+		const { expand, focusFirstItem, focusLastItem } = this.props;
 		const { key } = event;
 
 		if(key === 'Enter' || key === ' ' || key === 'Spacebar') {
 			event.preventDefault();
 
-			this.expandButton(() => {
+			expand(() => {
 				focusFirstItem();
 			});
 		}
 		else if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
-			this.expandButton(() => {
+			expand(() => {
 				focusLastItem();
 			});
 		}
 		else if(key === 'ArrowDown' || key === 'Down') {
 			event.preventDefault();
 
-			this.expandButton(() => {
+			expand(() => {
 				focusFirstItem();
 			});
 		}
@@ -102,7 +99,7 @@ class MenuButton extends React.Component {
 
 	onChildKeyDown = (event) => {
 		const {
-			items, orientation,
+			items, orientation, collapse, expand,
 			expandItem, focus, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem,
 			focusItemFirstChild,
 		} = this.props;
@@ -170,7 +167,7 @@ class MenuButton extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				this.collapseButton(() => {
+				collapse(false, () => {
 					focus();
 				});
 			}
@@ -178,7 +175,7 @@ class MenuButton extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				this.collapseButton(() => {
+				collapse(false, () => {
 					focus();
 				});
 			}
@@ -186,7 +183,7 @@ class MenuButton extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				this.collapseButton(() => {
+				collapse(false, () => {
 					focus();
 				});
 			}
@@ -214,7 +211,7 @@ class MenuButton extends React.Component {
 				if(typeof onActivate === 'function')
 					onActivate(event);
 
-				this.collapseButton(() => {
+				collapse(false, () => {
 					focus();
 				});
 			}
@@ -228,18 +225,17 @@ class MenuButton extends React.Component {
 			focusLastItem();
 		}
 		else if(key === 'Escape' || key === 'Esc') {
-			this.collapseButton(() => {
+			collapse(false, () => {
 				focus();
 			});
 		}
 		else if(key === 'Tab')
-			this.collapseButton();
+			collapse();
 	};
 
 	//---- Rendering ----
 	render() {
-		const { children, orientation, menuLabel, menuId, id, setManagerRef } = this.props;
-		const { isExpanded } = this.state;
+		const { children, orientation, menuLabel, menuId, id, isExpanded, setManagerRef } = this.props;
 
 		return (
 			<Fragment>
@@ -405,25 +401,6 @@ class MenuButton extends React.Component {
 
 		/* eslint-enable react/no-array-index-key */
 	};
-
-	//---- Misc. ----
-	collapseButton = (callback) => {
-		this.setState({
-			isExpanded: false,
-		}, () => {
-			if(typeof callback === 'function')
-				callback();
-		});
-	};
-
-	expandButton = (callback) => {
-		this.setState({
-			isExpanded: true,
-		}, () => {
-			if(typeof callback === 'function')
-				callback();
-		});
-	};
 }
 
-export default createMenuManager(MenuButton);
+export default createMenuButtonManager(createMenuManager(MenuButton));

@@ -75,9 +75,11 @@ export default function createMenuManager(Component) {
 			this.setState({
 				expandedIndex: -1,
 			}, () => {
+				//This feels rather fragile. Do we need to care about children
+				//or bidirectionality?
 				if(collapseAllParents) {
 					if(typeof collapse === 'function')
-						collapse(true, callback); //FIXME currently broken for MenuButton
+						collapse(true, callback);
 					else if(typeof callback === 'function')
 						callback();
 				}
