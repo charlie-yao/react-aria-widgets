@@ -132,7 +132,9 @@ class _ParentMenuItem extends React.Component {
 					});
 				}
 				else if(focusNextRootItem) {
+					console.log('here 1');
 					collapse(true, () => {
+						console.log('here 2');
 						focusNextRootItem(flattenedRootIndex, true);
 					});
 				}
