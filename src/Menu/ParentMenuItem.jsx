@@ -399,7 +399,6 @@ class _ParentMenuItem extends React.Component {
 					orientation={ orientation }
 					label={ label }
 					labelId={ labelId }
-					items={ this.props.items }
 				>
 					{ this.renderItems() }
 				</Menu>

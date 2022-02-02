@@ -28,6 +28,7 @@ class Menu extends React.Component {
 	};
 
 	//---- Events ----
+	/*
 	onKeyDown = (event) => {
 		return;
 
@@ -134,7 +135,7 @@ class Menu extends React.Component {
 			event.stopPropagation();
 		}
 	};
-
+*/
 
 	//---- Rendering ----
 	render() {
@@ -147,7 +148,6 @@ class Menu extends React.Component {
 				aria-label={ label }
 				aria-labelledby={ labelId }
 				id={ id }
-				onKeyDown={ this.onKeyDown }
 			>
 				{ children }
 			</ul>
