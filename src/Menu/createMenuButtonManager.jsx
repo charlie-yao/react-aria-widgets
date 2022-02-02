@@ -44,5 +44,5 @@ export default function createMenuButtonManager(Component) {
 					callback();
 			});
 		};
-	}
+	};
 }

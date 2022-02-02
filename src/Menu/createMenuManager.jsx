@@ -68,7 +68,7 @@ export default function createMenuManager(Component) {
 		setItemRef = (ref) => {
 			this.itemRefs.push(ref);
 		};
-		
+
 		collapseItem = (collapseAllParents, callback) => {
 			const { collapse } = this.props;
 
