@@ -67,8 +67,6 @@ class MenuButton extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const { items } = props;
-
 		this.state = {
 			isExpanded: false,
 		};
@@ -260,7 +258,7 @@ class MenuButton extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, expandedIndex, setItemRef, collapseItem, focus } = this.props;
+		const { items, setItemRef, expandedIndex, collapseItem, focus } = this.props;
 		const itemNodes = [];
 		let position = [0];
 		let flattenedPosition = [0];
