@@ -6,6 +6,11 @@
 	display: none !important;
 }
 
+[aria-disabled="true"] {
+	opacity: 50%;
+	cursor: not-allowed;
+}
+
 [role="menuitem"], button[aria-haspopup="menu"] {
 	&[aria-expanded="false"] + [role="menu"] {
 		display: none;

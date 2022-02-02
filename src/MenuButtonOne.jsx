@@ -19,6 +19,7 @@ class MenuButtonOne extends React.Component {
 			checkboxChild1: false,
 			checkboxChild2: false,
 			checkboxChild3: false,
+			disableAll: false,
 		};
 	}
 
@@ -140,6 +141,14 @@ class MenuButtonOne extends React.Component {
 		});
 	};
 
+	onToggleDisableAll = () => {
+		this.setState(state => {
+			return {
+				disableAll: !state.disableAll,
+			};
+		});
+	};
+
 	//---- Rendering ----
 	render() {
 		return (
@@ -155,6 +164,7 @@ class MenuButtonOne extends React.Component {
 			radioGroupOne, checkboxOneState, checkboxTwoState, radioGroupTwo,
 			radioGroupThree, radioGroupFour, checkboxThreeState,
 			checkboxParent, checkboxChild1, checkboxChild2, checkboxChild3,
+			disableAll,
 		} = this.state;
 
 		return [
@@ -170,16 +180,19 @@ class MenuButtonOne extends React.Component {
 								node: 'Radio Option 1',
 								value: 'option1',
 								isChecked: radioGroupOne === 'option1',
+								isDisabled: disableAll,
 							},
 							{
 								node: 'Radio Option 2',
 								value: 'option2',
 								isChecked: radioGroupOne === 'option2',
+								isDisabled: disableAll,
 							},
 							{
 								node: 'Radio Option 3',
 								value: 'option3',
 								isChecked: radioGroupOne === 'option3',
+								isDisabled: disableAll,
 							},
 						],
 					},
@@ -191,12 +204,14 @@ class MenuButtonOne extends React.Component {
 						node: 'Checkbox 1',
 						isChecked: checkboxOneState,
 						onActivate: this.onToggleCheckboxOne,
+						isDisabled: disableAll,
 					},
 					{
 						type: 'checkbox',
 						node: 'Checkbox 2',
 						isChecked: checkboxTwoState,
 						onActivate: this.onToggleCheckboxTwo,
+						isDisabled: disableAll,
 					},
 					{
 						type: 'separator',
@@ -209,16 +224,19 @@ class MenuButtonOne extends React.Component {
 								node: 'Radio Option 1',
 								isChecked: radioGroupTwo === 'option1',
 								value: 'option1',
+								isDisabled: disableAll,
 							},
 							{
 								node: 'Radio Option 2',
 								isChecked: radioGroupTwo === 'option2',
 								value: 'option2',
+								isDisabled: disableAll,
 							},
 							{
 								node: 'Radio Option 3',
 								isChecked: radioGroupTwo === 'option3',
 								value: 'option3',
+								isDisabled: disableAll,
 							},
 						],
 					},
@@ -228,6 +246,7 @@ class MenuButtonOne extends React.Component {
 				type: 'item',
 				node: 'Hello world!',
 				onActivate: this.onActivateItem,
+				isDisabled: disableAll,
 			},
 			{
 				type: 'menu',
@@ -237,11 +256,13 @@ class MenuButtonOne extends React.Component {
 						type: 'item',
 						node: 'Hello world!',
 						onActivate: this.onActivateSubmenuItem,
+						isDisabled: disableAll,
 					},
 					{
 						type: 'item',
 						node: 'Hello world!',
 						onActivate: this.onActivateSubmenuItem,
+						isDisabled: disableAll,
 					},
 					{
 						type: 'menu',
@@ -251,11 +272,13 @@ class MenuButtonOne extends React.Component {
 								type: 'item',
 								node: 'Hello world!',
 								onActivate: this.onActivateSubmenuItem,
+								isDisabled: disableAll,
 							},
 							{
 								type: 'item',
 								node: 'Hello world!',
 								onActivate: this.onActivateSubmenuItem,
+								isDisabled: disableAll,
 							},
 							{
 								type: 'menu',
@@ -265,11 +288,13 @@ class MenuButtonOne extends React.Component {
 										type: 'item',
 										node: 'Hello world!',
 										onActivate: this.onActivateSubmenuItem,
+										isDisabled: disableAll,
 									},
 									{
 										type: 'item',
 										node: 'Hello world!',
 										onActivate: this.onActivateSubmenuItem,
+										isDisabled: disableAll,
 									},
 								],
 							},
@@ -281,11 +306,13 @@ class MenuButtonOne extends React.Component {
 										type: 'item',
 										node: 'Hello world!',
 										onActivate: this.onActivateSubmenuItem,
+										isDisabled: disableAll,
 									},
 									{
 										type: 'item',
 										node: 'Hello world!',
 										onActivate: this.onActivateSubmenuItem,
+										isDisabled: disableAll,
 									},
 								],
 							},
@@ -299,14 +326,17 @@ class MenuButtonOne extends React.Component {
 								type: 'item',
 								node: 'Hello world!',
 								onActivate: this.onActivateSubmenuItem,
+								isDisabled: disableAll,
 							},
 							{
 								type: 'item',
 								node: 'Hello world!',
 								onActivate: this.onActivateSubmenuItem,
+								isDisabled: disableAll,
 							},
 						],
 					},
+
 				],
 			},
 			{
@@ -365,6 +395,12 @@ class MenuButtonOne extends React.Component {
 				node: 'Checkbox 3',
 				onActivate: this.onToggleCheckboxThree,
 				isChecked: checkboxThreeState,
+			},
+			{
+				type: 'checkbox',
+				node: 'Disable All',
+				onActivate: this.onToggleDisableAll,
+				isChecked: disableAll,
 			},
 			{
 				type: 'menu',
