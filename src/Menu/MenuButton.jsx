@@ -101,7 +101,11 @@ class MenuButton extends React.Component {
 	};
 
 	onChildKeyDown = (event) => {
-		const { items, orientation, expandItem, focus, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem, focusItemFirstChild } = this.props;
+		const {
+			items, orientation,
+			expandItem, focus, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem,
+			focusItemFirstChild,
+		} = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');

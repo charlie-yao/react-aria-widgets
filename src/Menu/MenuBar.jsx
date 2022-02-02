@@ -51,7 +51,11 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, orientation, collapseItem, expandItem, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem, focusItemFirstChild, focusItemLastChild } = this.props;
+		const {
+			items, orientation,
+			collapseItem, expandItem, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem,
+			focusItemFirstChild, focusItemLastChild,
+		} = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -189,7 +193,10 @@ class MenuBar extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, setItemRef, collapseItem, focusItem, focusPrevItem, focusNextItem, tabbableIndex, expandedIndex } = this.props;
+		const {
+			items, setItemRef, tabbableIndex, expandedIndex,
+			collapseItem, focusItem, focusPrevItem, focusNextItem,
+		} = this.props;
 		const itemNodes = [];
 		let position = [];
 		let flattenedPosition = [];

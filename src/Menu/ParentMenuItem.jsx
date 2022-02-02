@@ -60,7 +60,10 @@ class _ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildKeyDown = (event) => {
-		const { items, collapse, focusPrevRootItem, focusNextRootItem, focusRootItem, orientation, expandItem, focus, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem, focusItemFirstChild } = this.props;
+		const {
+			items, collapse, focusPrevRootItem, focusNextRootItem, focusRootItem, orientation,
+			expandItem, focus, focusPrevItem, focusNextItem, focusFirstItem, focusLastItem, focusItemFirstChild,
+		} = this.props;
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
@@ -255,7 +258,10 @@ class _ParentMenuItem extends React.Component {
 	renderItems = () => {
 		/* eslint-disable react/no-array-index-key */
 
-		const { items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition, setItemRef, expandedIndex, collapseItem } = this.props;
+		const {
+			items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition,
+			setItemRef, expandedIndex, collapseItem,
+		} = this.props;
 		const level = position.length;
 		const itemNodes = [];
 		let _position = [];
