@@ -213,7 +213,7 @@ class _ParentMenuItem extends React.Component {
 		else if(key === 'Tab')
 			collapse(true);
 	};
-	
+
 	/*
 	onKeyDown = (event) => {
 		const { items, orientation } = this.props;

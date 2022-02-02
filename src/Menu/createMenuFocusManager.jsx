@@ -1,31 +1,35 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ParentMenuItem from 'src/Menu/ParentMenuItem';
-
 export default function createMenuFocusManager(Component) {
-	class _MenuFocusManager extends React.Component {
+	class MenuFocusManager extends React.Component {
 		static propTypes = {
 			forwardedRef: PropTypes.oneOfType([
 				PropTypes.func,
 				PropTypes.object,
 			]),
+			collapse: PropTypes.func,
+		};
+
+		static defaultProps = {
+			forwardedRef: null,
+			collapse: () => {},
 		};
 
 		constructor(props) {
 			super(props);
-			
-			//TODO: tabbableIndex is only really relevant for the root level
-			//for menubars. should we always pass down the prop and leave it
-			//to anyone consuming this HOC to decide whether or not it's
-			//worth using? or should we force it to be undefined if we know
-			//the "level" is >= 1?
+
+			//Note: tabbableIndex is only really relevant to the
+			//root menuitems in a menubar. Submenus should ignore
+			//it.
 			this.state = {
 				tabbableIndex: 0,
 				expandedIndex: -1,
 			};
 
-			this.managerRef;
+			this.managerRef = undefined;
 			this.itemRefs = [];
 		}
 
@@ -33,8 +37,6 @@ export default function createMenuFocusManager(Component) {
 		render() {
 			const { forwardedRef, ...rest } = this.props;
 			const { tabbableIndex, expandedIndex } = this.state;
-
-//			console.log(this.managerRef, this.itemRefs, this.props, this.state);
 
 			return (
 				<Component
@@ -70,8 +72,6 @@ export default function createMenuFocusManager(Component) {
 		collapseItem = (collapseAll, callback) => {
 			const { collapse } = this.props;
 
-			console.log(collapseAll, callback);
-
 			this.setState({
 				expandedIndex: -1,
 			}, () => {
@@ -83,8 +83,6 @@ export default function createMenuFocusManager(Component) {
 		};
 
 		expandItem = (index, callback) => {
-			console.log(index, callback);
-
 			this.setState({
 				expandedIndex: index,
 			}, () => {
@@ -105,7 +103,7 @@ export default function createMenuFocusManager(Component) {
 				const { expandedIndex } = state;
 				const wasExpanded = expandedIndex !== -1;
 				const _autoExpand = isMenu && (autoExpand || wasExpanded);
-				
+
 				return {
 					tabbableIndex: index,
 					expandedIndex: _autoExpand ? index : -1,
@@ -143,7 +141,7 @@ export default function createMenuFocusManager(Component) {
 		};
 	}
 
-	return React.forwardRef(function MenuFocusManager(props, ref) {
-		return <_MenuFocusManager {...props} forwardedRef={ ref } />;
+	return React.forwardRef((props, ref) => {
+		return <MenuFocusManager { ...props } forwardedRef={ ref } />;
 	});
 }

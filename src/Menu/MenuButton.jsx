@@ -260,8 +260,8 @@ class MenuButton extends React.Component {
 
 		const { items, setItemRef, expandedIndex, collapseItem, focus } = this.props;
 		const itemNodes = [];
-		let position = [0];
-		let flattenedPosition = [0];
+		let position = [ 0 ];
+		let flattenedPosition = [ 0 ];
 		let flattenedIndex = 0;
 
 		items.forEach((item, i) => {

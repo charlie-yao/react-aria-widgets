@@ -32,7 +32,7 @@ class MenuBar extends React.Component {
 		setItemRef: PropTypes.func.isRequired,
 		tabbableIndex: PropTypes.number.isRequired,
 		expandedIndex: PropTypes.number.isRequired,
-		collapseItem: PropTypes.number.isRequired,
+		collapseItem: PropTypes.func.isRequired,
 		expandItem: PropTypes.func.isRequired,
 		focusItem: PropTypes.func.isRequired,
 		focusPrevItem: PropTypes.func.isRequired,
@@ -88,7 +88,7 @@ class MenuBar extends React.Component {
 			else
 				focusNextItem(flattenedIndex);
 		}
-		else if(key === 'ArrowLeft' || key === 'Left') { 
+		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
 			if(orientation === 'horizontal')
@@ -167,7 +167,7 @@ class MenuBar extends React.Component {
 		else if(key === 'Tab')
 			collapseItem();
 	};
-	
+
 	/*
 	onKeyDown = (event) => {
 		return;
@@ -199,7 +199,7 @@ class MenuBar extends React.Component {
 			else {
 			}
 		}
-		else if(key === 'ArrowLeft' || key === 'Left') { 
+		else if(key === 'ArrowLeft' || key === 'Left') {
 			event.preventDefault();
 
 			if(orientation === 'horizontal') {

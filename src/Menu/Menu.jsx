@@ -13,7 +13,6 @@ import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 class Menu extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
-		items: MENUITEMS_PROPTYPE.isRequired,
 		orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
 		label: PropTypes.string,
 		labelId: PropTypes.string,
