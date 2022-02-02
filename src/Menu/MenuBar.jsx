@@ -59,7 +59,7 @@ class MenuBar extends React.Component {
 		const { key, target } = event;
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
-		const isDisabled = target.ariaDisabled === 'true'; //can't use isDisabled on the item for radigroups
+		const isDisabled = target.getAttribute('aria-disabled') === 'true'; //can't use isDisabled on the item for radigroups
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
 		const item = items[index];
