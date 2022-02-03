@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
-import MenuItem from 'src/Menu/MenuItem';
-import ParentMenuItem from 'src/Menu/ParentMenuItem';
-import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
-import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
-import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
-import MenuItemRadio from 'src/Menu/MenuItemRadio';
-
 //HOCs
 import createMenuManager from 'src/Menu/createMenuManager';
 

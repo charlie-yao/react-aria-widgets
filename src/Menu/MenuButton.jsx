@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 
 //Components and Styles
 import Menu from 'src/Menu/Menu';
-import MenuItem from 'src/Menu/MenuItem';
-import ParentMenuItem from 'src/Menu/ParentMenuItem';
-import MenuItemCheckbox from 'src/Menu/MenuItemCheckbox';
-import MenuItemSeparator from 'src/Menu/MenuItemSeparator';
-import MenuItemRadioGroup from 'src/Menu/MenuItemRadioGroup';
-import MenuItemRadio from 'src/Menu/MenuItemRadio';
 
 //HOCs
 import createMenuButtonManager from 'src/Menu/createMenuButtonManager';
@@ -238,7 +232,7 @@ class MenuButton extends React.Component {
 	render() {
 		const {
 			children, items, orientation, menuLabel, menuId, id, isExpanded,
-			setManagerRef, setItemRef, expandedIndex, collapseItem, focus
+			setManagerRef, setItemRef, expandedIndex, collapseItem, focus,
 		} = this.props;
 		const itemNodes = renderItems({
 			items,
@@ -246,8 +240,8 @@ class MenuButton extends React.Component {
 			expandedIndex,
 			collapseItem,
 			focusRootItem: focus,
-			position: [0],
-			flattenedPosition: [0],
+			position: [ 0 ],
+			flattenedPosition: [ 0 ],
 			onChildKeyDown: this.onChildKeyDown,
 		});
 
