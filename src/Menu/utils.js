@@ -11,13 +11,27 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
 /**
  * Renders the items in a particular menu/sub-menu.
  *
- * @param {object} optiopns
+ * @param {object} options
+ * @param {object[]} options.items
+ * @param {function} options.setItemRef
+ * @param {number} [options.tabbableIndex]
+ * @param {number} options.expandableIndex
+ * @param {function} options.collapseItem
+ * @param {function} [options.focusRootItem]
+ * @param {function} [options.focusPrevRootItem]
+ * @param {function} [options.focusNextRootItem]
+ * @param {number[]} options.position
+ * @param {number[]} options.flattenedPosition
+ * @param {function} options.onChildKeyDown
  * @returns {React.Component[]}
  */
 export function renderItems(options) {
 	/* eslint-disable react/no-array-index-key */
 
-	const { items, setItemRef, tabbableIndex, expandedIndex, collapseItem, focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition, onChildKeyDown } = options;
+	const {
+		items, setItemRef, tabbableIndex, expandedIndex, collapseItem,
+		focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition, onChildKeyDown
+	} = options;
 	const itemNodes = [];
 	const level = position.length;
 	let _position = [];

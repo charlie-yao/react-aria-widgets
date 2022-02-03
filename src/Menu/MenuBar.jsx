@@ -66,8 +66,6 @@ class MenuBar extends React.Component {
 		const item = items[index];
 		const { type, onActivate } = item;
 
-		//console.log(position, flattenedPosition, index, flattenedIndex, item);
-
 		if(key === 'ArrowUp' || key === 'Up') {
 			event.preventDefault();
 
@@ -182,16 +180,19 @@ class MenuBar extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { orientation, label, labelId } = this.props;
+		const {
+			items, orientation, label, labelId,
+			setItemRef, tabbableIndex, expandedIndex, collapseItem, focusItem, focusPrevItem, focusNextItem,
+		} = this.props;
 		const itemNodes = renderItems({
-			items: this.props.items,
-			focusRootItem: this.props.focusItem,
-			focusPrevRootItem: this.props.focusPrevItem,
-			focusNextRootItem: this.props.focusNextItem,
-			setItemRef: this.props.setItemRef,
-			tabbableIndex: this.props.tabbableIndex,
-			expandedIndex: this.props.expandedIndex,
-			collapseItem: this.props.collapseItem,
+			items,
+			setItemRef,
+			tabbableIndex,
+			expandedIndex,
+			collapseItem,
+			focusRootItem: focusItem,
+			focusPrevRootItem: focusPrevItem,
+			focusNextRootItem: focusNextItem,
 			position: [],
 			flattenedPosition: [],
 			onChildKeyDown: this.onChildKeyDown,

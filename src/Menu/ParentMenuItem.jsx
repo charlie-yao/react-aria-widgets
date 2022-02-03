@@ -228,21 +228,21 @@ class ParentMenuItem extends React.Component {
 	//---- Rendering ----
 	render() {
 		const {
-			children, position, flattenedPosition, onKeyDown,
-			orientation, label, labelId,
-			isExpanded, isDisabled, isTabbable,
-			setManagerRef,
+			children, items, position, flattenedPosition, onKeyDown,
+			focusPrevRootItem, focusNextRootItem, focusRootItem,
+			orientation, label, labelId, isExpanded, isDisabled, isTabbable,
+			setManagerRef, setItemRef, expandedIndex, collapseItem
 		} = this.props;
 		const itemNodes = renderItems({
-			items: this.props.items,
-			focusPrevRootItem: this.props.focusPrevRootItem,
-			focusNextRootItem: this.props.focusNextRootItem,
-			focusRootItem: this.props.focusRootItem,
-			setItemRef: this.props.setItemRef,
-			expandedIndex: this.props.expandedIndex,
-			collapseItem: this.props.collapseItem,
-			position: this.props.position,
-			flattenedPosition: this.props.flattenedPosition,
+			items,
+			setItemRef,
+			expandedIndex,
+			collapseItem,
+			focusRootItem,
+			focusPrevRootItem,
+			focusNextRootItem,
+			position,
+			flattenedPosition,
 			onChildKeyDown: this.onChildKeyDown,
 		});
 
