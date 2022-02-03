@@ -16,6 +16,7 @@ import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { renderItems } from 'src/Menu/utils';
 
 /*
  * Note about labels and IDs:
@@ -236,6 +237,16 @@ class MenuButton extends React.Component {
 	//---- Rendering ----
 	render() {
 		const { children, orientation, menuLabel, menuId, id, isExpanded, setManagerRef } = this.props;
+		const itemNodes = renderItems({
+			items: this.props.items,
+			setItemRef: this.props.setItemRef,
+			expandedIndex: this.props.expandedIndex,
+			collapse: this.props.collapseItem,
+			focusRootItem: this.props.focus,
+			position: [0],
+			flattenedPosition: [0],
+			onChildKeyDown: this.onChildKeyDown,
+		});
 
 		return (
 			<Fragment>
@@ -256,7 +267,7 @@ class MenuButton extends React.Component {
 					labelId={ id }
 					id={ menuId }
 				>
-					{ this.renderItems() }
+					{ itemNodes /*this.renderItems()*/ }
 				</Menu>
 			</Fragment>
 		);

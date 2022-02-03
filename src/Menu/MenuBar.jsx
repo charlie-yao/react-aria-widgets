@@ -192,6 +192,8 @@ class MenuBar extends React.Component {
 			focusRootItem: this.props.focusItem,
 			focusPrevRootItem: this.props.focusPrevItem,
 			focusNextRootItem: this.props.focusNextItem,
+			position: [],
+			flattenedPosition: [],
 			onChildKeyDown: this.onChildKeyDown,
 		});
 
@@ -204,7 +206,7 @@ class MenuBar extends React.Component {
 				aria-labelledby={ labelId }
 				aria-label={ label }
 			>
-				{ this.renderItems() }
+				{ itemNodes /*this.renderItems()*/ }
 			</ul>
 		);
 	}

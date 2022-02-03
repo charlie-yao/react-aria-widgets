@@ -15,26 +15,27 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
  * @returns {React.Component[]}
  */
 export function renderItems(options) {
-	const { items, setItemRef, tabbableIndex, expandedIndex, collapse, focusRootItem, focusPrevRootItem, focusNextRootItem, onChildKeyDown } = options;
+	const { items, setItemRef, tabbableIndex, expandedIndex, collapse, focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition, onChildKeyDown } = options;
 	const itemNodes = [];
-	let position = [];
-	let flattenedPosition = [];
+	const level = position.length;
+	let _position = [];
+	let _flattenedPosition = [];
 	let flattenedIndex = 0;
 
 	items.forEach((item, i) => {
 		const { type, node, children, orientation, label, labelId, isDisabled, isChecked } = item;
 
 		if(type === 'item') {
-			position = position.slice(0);
-			position[0] = i;
-			flattenedPosition = flattenedPosition.slice(0);
-			flattenedPosition[0] = flattenedIndex;
+			_position = position.slice(0);
+			_position[level] = i;
+			_flattenedPosition = flattenedPosition.slice(0);
+			_flattenedPosition[level] = flattenedIndex;
 
 			itemNodes.push(
 				<MenuItem
 					key={ i }
-					position={ position }
-					flattenedPosition={ flattenedPosition }
+					position={ _position }
+					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
 					isDisabled={ isDisabled }
 					isTabbable={ flattenedIndex === tabbableIndex }
@@ -47,17 +48,17 @@ export function renderItems(options) {
 			flattenedIndex++;
 		}
 		else if(type === 'menu') {
-			position = position.slice(0);
-			position[0] = i;
-			flattenedPosition = flattenedPosition.slice(0);
-			flattenedPosition[0] = flattenedIndex;
+			_position = position.slice(0);
+			_position[level] = i;
+			_flattenedPosition = flattenedPosition.slice(0);
+			_flattenedPosition[level] = flattenedIndex;
 
 			itemNodes.push(
 				<ParentMenuItem
 					key={ i }
 					items={ children }
-					position={ position }
-					flattenedPosition={ flattenedPosition }
+					position={ _position }
+					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
 					collapse={ collapse }
 					focusPrevRootItem={ focusPrevRootItem }
@@ -78,16 +79,16 @@ export function renderItems(options) {
 			flattenedIndex++;
 		}
 		else if(type === 'checkbox') {
-			position = position.slice(0);
-			position[0] = i;
-			flattenedPosition = flattenedPosition.slice(0);
-			flattenedPosition[0] = flattenedIndex;
+			_position = position.slice(0);
+			_position[level] = i;
+			_flattenedPosition = flattenedPosition.slice(0);
+			_flattenedPosition[level] = flattenedIndex;
 
 			itemNodes.push(
 				<MenuItemCheckbox
 					key={ i }
-					position={ position }
-					flattenedPosition={ flattenedPosition }
+					position={ _position }
+					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
 					isDisabled={ isDisabled }
 					isTabbable={ flattenedIndex === tabbableIndex }
@@ -113,16 +114,16 @@ export function renderItems(options) {
 			children.forEach((radioItem, j) => {
 				const { node, isDisabled, isChecked, value } = radioItem;
 
-				position = position.slice(0);
-				position[0] = i;
-				flattenedPosition = flattenedPosition.slice(0);
-				flattenedPosition[0] = flattenedIndex;
+				_position = position.slice(0);
+				_position[level] = i;
+				_flattenedPosition = flattenedPosition.slice(0);
+				_flattenedPosition[level] = flattenedIndex;
 
 				radioNodes.push(
 					<MenuItemRadio
 						key={ j }
-						position={ position }
-						flattenedPosition={ flattenedPosition }
+						position={ _position }
+						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ onChildKeyDown }
 						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
