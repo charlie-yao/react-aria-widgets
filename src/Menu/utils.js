@@ -15,7 +15,9 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
  * @returns {React.Component[]}
  */
 export function renderItems(options) {
-	const { items, setItemRef, tabbableIndex, expandedIndex, collapse, focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition, onChildKeyDown } = options;
+	/* eslint-disable react/no-array-index-key */
+
+	const { items, setItemRef, tabbableIndex, expandedIndex, collapseItem, focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition, onChildKeyDown } = options;
 	const itemNodes = [];
 	const level = position.length;
 	let _position = [];
@@ -60,7 +62,7 @@ export function renderItems(options) {
 					position={ _position }
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
-					collapse={ collapse }
+					collapse={ collapseItem }
 					focusPrevRootItem={ focusPrevRootItem }
 					focusNextRootItem={ focusNextRootItem }
 					focusRootItem={ focusRootItem }
@@ -151,4 +153,6 @@ export function renderItems(options) {
 	});
 
 	return itemNodes;
+
+	/* eslint-enable react/no-array-index-key */
 }

@@ -14,6 +14,7 @@ import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { renderItems } from 'src/Menu/utils';
 
 class _ParentMenuItem extends React.Component {
 	static propTypes = {
@@ -232,6 +233,18 @@ class _ParentMenuItem extends React.Component {
 			isExpanded, isDisabled, isTabbable,
 			setManagerRef,
 		} = this.props;
+		const itemNodes = renderItems({
+			items: this.props.items,
+			focusPrevRootItem: this.props.focusPrevRootItem,
+			focusNextRootItem: this.props.focusNextRootItem,
+			focusRootItem: this.props.focusRootItem,
+			setItemRef: this.props.setItemRef,
+			expandedIndex: this.props.expandedIndex,
+			collapseItem: this.props.collapseItem,
+			position: this.props.position,
+			flattenedPosition: this.props.flattenedPosition,
+			onChildKeyDown: this.onChildKeyDown,
+		});
 
 		//console.log(this.props, this.state, this.itemRef, this.childItemRefs);
 
@@ -256,7 +269,7 @@ class _ParentMenuItem extends React.Component {
 					label={ label }
 					labelId={ labelId }
 				>
-					{ this.renderItems() }
+					{ itemNodes /*this.renderItems()*/ }
 				</Menu>
 			</li>
 		);

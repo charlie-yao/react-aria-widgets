@@ -185,13 +185,13 @@ class MenuBar extends React.Component {
 		const { orientation, label, labelId } = this.props;
 		const itemNodes = renderItems({
 			items: this.props.items,
-			setItemRef: this.props.setItemRef,
-			tabbableIndex: this.props.tabbableIndex,
-			expandedIndex: this.props.expandedIndex,
-			collapse: this.props.collapseItem,
 			focusRootItem: this.props.focusItem,
 			focusPrevRootItem: this.props.focusPrevItem,
 			focusNextRootItem: this.props.focusNextItem,
+			setItemRef: this.props.setItemRef,
+			tabbableIndex: this.props.tabbableIndex,
+			expandedIndex: this.props.expandedIndex,
+			collapseItem: this.props.collapseItem,
 			position: [],
 			flattenedPosition: [],
 			onChildKeyDown: this.onChildKeyDown,

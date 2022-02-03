@@ -239,10 +239,10 @@ class MenuButton extends React.Component {
 		const { children, orientation, menuLabel, menuId, id, isExpanded, setManagerRef } = this.props;
 		const itemNodes = renderItems({
 			items: this.props.items,
+			focusRootItem: this.props.focus,
 			setItemRef: this.props.setItemRef,
 			expandedIndex: this.props.expandedIndex,
-			collapse: this.props.collapseItem,
-			focusRootItem: this.props.focus,
+			collapseItem: this.props.collapseItem,
 			position: [0],
 			flattenedPosition: [0],
 			onChildKeyDown: this.onChildKeyDown,
