@@ -14,6 +14,7 @@ import createMenuManager from 'src/Menu/createMenuManager';
 
 //Misc.
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
+import { renderItems } from 'src/Menu/utils';
 
 /*
  * Note:
@@ -182,6 +183,17 @@ class MenuBar extends React.Component {
 	//---- Rendering ----
 	render() {
 		const { orientation, label, labelId } = this.props;
+		const itemNodes = renderItems({
+			items: this.props.items,
+			setItemRef: this.props.setItemRef,
+			tabbableIndex: this.props.tabbableIndex,
+			expandedIndex: this.props.expandedIndex,
+			collapse: this.props.collapseItem,
+			focusRootItem: this.props.focusItem,
+			focusPrevRootItem: this.props.focusPrevItem,
+			focusNextRootItem: this.props.focusNextItem,
+			onChildKeyDown: this.onChildKeyDown,
+		});
 
 		//console.log(this.props, this.state, this.childItemRefs);
 
