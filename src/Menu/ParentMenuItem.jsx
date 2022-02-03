@@ -16,7 +16,7 @@ import createMenuManager from 'src/Menu/createMenuManager';
 import { MENUITEMS_PROPTYPE } from 'src/utils/propTypes';
 import { renderItems } from 'src/Menu/utils';
 
-class _ParentMenuItem extends React.Component {
+class ParentMenuItem extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
 		items: MENUITEMS_PROPTYPE.isRequired,
@@ -246,8 +246,6 @@ class _ParentMenuItem extends React.Component {
 			onChildKeyDown: this.onChildKeyDown,
 		});
 
-		//console.log(this.props, this.state, this.itemRef, this.childItemRefs);
-
 		return (
 			<li role="none">
 				<a
@@ -269,155 +267,11 @@ class _ParentMenuItem extends React.Component {
 					label={ label }
 					labelId={ labelId }
 				>
-					{ itemNodes /*this.renderItems()*/ }
+					{ itemNodes }
 				</Menu>
 			</li>
 		);
 	}
-
-	renderItems = () => {
-		/* eslint-disable react/no-array-index-key */
-
-		const {
-			items, focusPrevRootItem, focusNextRootItem, focusRootItem, position, flattenedPosition,
-			setItemRef, expandedIndex, collapseItem,
-		} = this.props;
-		const level = position.length;
-		const itemNodes = [];
-		let _position = [];
-		let _flattenedPosition = [];
-		let flattenedIndex = 0;
-
-		items.forEach((item, i) => {
-			const { type, node, children, orientation, label, labelId, isDisabled, isChecked } = item;
-
-			if(type === 'item') {
-				_position = position.slice(0);
-				_position[level] = i;
-				_flattenedPosition = flattenedPosition.slice(0);
-				_flattenedPosition[level] = flattenedIndex;
-
-				itemNodes.push(
-					<MenuItem
-						key={ i }
-						position={ _position }
-						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
-						isDisabled={ isDisabled }
-						ref={ setItemRef }
-					>
-						{ node }
-					</MenuItem>
-				);
-
-				flattenedIndex++;
-			}
-			else if(type === 'menu') {
-				_position = position.slice(0);
-				_position[level] = i;
-				_flattenedPosition = flattenedPosition.slice(0);
-				_flattenedPosition[level] = flattenedIndex;
-
-				itemNodes.push(
-					<ParentMenuItem
-						key={ i }
-						items={ children }
-						position={ _position }
-						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
-						collapse={ collapseItem }
-						focusPrevRootItem={ focusPrevRootItem }
-						focusNextRootItem={ focusNextRootItem }
-						focusRootItem={ focusRootItem }
-						orientation={ orientation }
-						label={ label }
-						labelId={ labelId }
-						isExpanded={ flattenedIndex === expandedIndex }
-						isDisabled={ isDisabled }
-						ref={ setItemRef }
-					>
-						{ node }
-					</ParentMenuItem>
-				);
-
-				flattenedIndex++;
-			}
-			else if(type === 'checkbox') {
-				_position = position.slice(0);
-				_position[level] = i;
-				_flattenedPosition = flattenedPosition.slice(0);
-				_flattenedPosition[level] = flattenedIndex;
-
-				itemNodes.push(
-					<MenuItemCheckbox
-						key={ i }
-						position={ _position }
-						flattenedPosition={ _flattenedPosition }
-						onKeyDown={ this.onChildKeyDown }
-						isDisabled={ isDisabled }
-						isChecked={ isChecked }
-						ref={ setItemRef }
-					>
-						{ node }
-					</MenuItemCheckbox>
-				);
-
-				flattenedIndex++;
-			}
-			else if(type === 'separator') {
-				itemNodes.push(
-					<MenuItemSeparator key={ i } orientation={ orientation }>
-						{ node }
-					</MenuItemSeparator>
-				);
-			}
-			else if(type === 'radiogroup') {
-				const radioNodes = [];
-
-				children.forEach((radioItem, j) => {
-					const { node, isDisabled, isChecked, value } = radioItem;
-
-					_position = position.slice(0);
-					_position[level] = i;
-					_flattenedPosition = flattenedPosition.slice(0);
-					_flattenedPosition[level] = flattenedIndex;
-
-					radioNodes.push(
-						<MenuItemRadio
-							key={ j }
-							position={ _position }
-							flattenedPosition={ _flattenedPosition }
-							onKeyDown={ this.onChildKeyDown }
-							isDisabled={ isDisabled }
-							isChecked={ isChecked }
-							data-value={ value }
-							ref={ setItemRef }
-						>
-							{ node }
-						</MenuItemRadio>
-					);
-
-					flattenedIndex++;
-				});
-
-				itemNodes.push(
-					<MenuItemRadioGroup
-						key={ i }
-						label={ label }
-						labelId={ labelId }
-					>
-						{ radioNodes }
-					</MenuItemRadioGroup>
-				);
-			}
-		});
-
-		return itemNodes;
-
-		/* eslint-enable react/no-array-index-key */
-	};
 }
 
-const ParentMenuItem = createMenuManager(_ParentMenuItem);
-
-export default ParentMenuItem;
+export default createMenuManager(ParentMenuItem);
