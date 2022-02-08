@@ -209,9 +209,12 @@ class MenuBar extends React.Component {
 		const item = items[index];
 		const { type } = item;
 		
+		if(expandedIndex === -1)
+			return;
+
 		focusItem(flattenedIndex);
 
-		if(type === 'menu' && expandedIndex !== -1)
+		if(type === 'menu')
 			expandItem(flattenedIndex);
 	};
 
