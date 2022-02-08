@@ -19,7 +19,7 @@ class ParentMenuItem extends React.Component {
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		onClick: PropTypes.func.isRequired,
-		onMouseEnter: PropTypes.func.isRequired,
+		onMouseOver: PropTypes.func.isRequired,
 		onMouseLeave: PropTypes.func.isRequired,
 		collapse: PropTypes.func.isRequired,
 		focusPrevRootItem: PropTypes.func,
@@ -252,7 +252,23 @@ class ParentMenuItem extends React.Component {
 			collapse(true);
 	};
 
-	onChildEnter = () => {
+	onChildOver = () => {
+		const { items, expandedIndex, expandItem, focusItem } = this.props;
+		const { target } = event;
+
+		console.log(target);
+
+		const position = target.dataset.position.split(',');
+		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const index = Number.parseInt(position[position.length - 1], 10);
+		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const item = items[index];
+		const { type } = item;
+		
+		focusItem(flattenedIndex);
+
+		if(type === 'menu' && expandedIndex !== -1)
+			expandItem(flattenedIndex);
 	};
 
 	onChildLeave = () => {
@@ -262,7 +278,7 @@ class ParentMenuItem extends React.Component {
 	render() {
 		const {
 			children, items, position, flattenedPosition,
-			onKeyDown, onClick, onMouseEnter, onMouseLeave,
+			onKeyDown, onClick, onMouseOver, onMouseLeave,
 			focusPrevRootItem, focusNextRootItem, focusRootItem,
 			orientation, label, labelId, isExpanded, isDisabled, isTabbable,
 			setManagerRef, setItemRef, expandedIndex, collapseItem,
@@ -279,7 +295,7 @@ class ParentMenuItem extends React.Component {
 			flattenedPosition,
 			onChildKeyDown: this.onChildKeyDown,
 			onChildClick: this.onChildClick,
-			onChildEnter: this.onChildEnter,
+			onChildOver: this.onChildOver,
 			onChildLeave: this.onChildLeave,
 		});
 
@@ -293,7 +309,7 @@ class ParentMenuItem extends React.Component {
 					data-flattenedposition={ flattenedPosition }
 					onKeyDown={ onKeyDown }
 					onClick={ onClick }
-					onMouseEnter={ onMouseEnter }
+					onMouseOver={ onMouseOver }
 					onMouseLeave={ onMouseLeave }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }

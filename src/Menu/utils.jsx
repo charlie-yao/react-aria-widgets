@@ -24,7 +24,7 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
  * @param {number[]} options.flattenedPosition
  * @param {function} options.onChildKeyDown
  * @param {function} options.onChildClick
- * @param {function} options.onChildEnter
+ * @param {function} options.onChildOver
  * @param {function} options.onChildLeave
  * @returns {React.Component[]}
  */
@@ -34,7 +34,7 @@ export function renderItems(options) {
 	const {
 		items, setItemRef, tabbableIndex, expandedIndex, collapseItem,
 		focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition,
-		onChildKeyDown, onChildClick, onChildEnter, onChildLeave
+		onChildKeyDown, onChildClick, onChildOver, onChildLeave
 	} = options;
 	const itemNodes = [];
 	const level = position.length;
@@ -58,7 +58,7 @@ export function renderItems(options) {
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
 					onClick={ onChildClick }
-					onMouseEnter={ onChildEnter }
+					onMouseOver={ onChildOver }
 					onMouseLeave={ onChildLeave }
 					isDisabled={ isDisabled }
 					isTabbable={ flattenedIndex === tabbableIndex }
@@ -84,7 +84,7 @@ export function renderItems(options) {
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
 					onClick={ onChildClick }
-					onMouseEnter={ onChildEnter }
+					onMouseOver={ onChildOver }
 					onMouseLeave={ onChildLeave }
 					collapse={ collapseItem }
 					focusPrevRootItem={ focusPrevRootItem }
@@ -117,7 +117,7 @@ export function renderItems(options) {
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
 					onClick={ onChildClick }
-					onMouseEnter={ onChildEnter }
+					onMouseOver={ onChildOver }
 					onMouseLeave={ onChildLeave }
 					isDisabled={ isDisabled }
 					isTabbable={ flattenedIndex === tabbableIndex }
@@ -155,7 +155,7 @@ export function renderItems(options) {
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ onChildKeyDown }
 						onClick={ onChildClick }
-						onMouseEnter={ onChildEnter }
+						onMouseOver={ onChildOver }
 						onMouseLeave={ onChildLeave }
 						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
