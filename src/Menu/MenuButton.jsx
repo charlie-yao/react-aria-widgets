@@ -65,6 +65,15 @@ class MenuButton extends React.Component {
 	};
 
 	//---- Events ----
+	onClick = () => {
+		const { isExpanded, collapse, expand } = this.props;
+
+		if(isExpanded)
+			collapse();
+		else
+			expand();
+	};
+
 	onKeyDown = (event) => {
 		const { expand, focusFirstItem, focusLastItem } = this.props;
 		const { key } = event;
@@ -252,6 +261,7 @@ class MenuButton extends React.Component {
 					id={ id }
 					aria-expanded={ isExpanded }
 					onKeyDown={ this.onKeyDown }
+					onClick={ this.onClick }
 					ref={ setManagerRef }
 				>
 					{ children }
