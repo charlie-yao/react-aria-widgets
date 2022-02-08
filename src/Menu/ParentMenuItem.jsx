@@ -57,13 +57,14 @@ class ParentMenuItem extends React.Component {
 
 	//---- Events ----
 	onChildClick = (event) => {
-		const { items, expandedIndex, collapseItem, expandItem } = this.props
+		const { items, collapse, focusRootItem, expandedIndex, collapseItem, expandItem } = this.props
 		const { target } = event;
 		const isDisabled = target.getAttribute('aria-disabled') === 'true'; //can't use isDisabled on the item for radigroups
 		const position = target.dataset.position.split(',');
 		const flattenedPosition = target.dataset.flattenedposition.split(',');
 		const index = Number.parseInt(position[position.length - 1], 10);
 		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const flattenedRootIndex = Number.parseInt(flattenedPosition[0], 10);
 		const item = items[index];
 		const { type, onActivate } = item;
 
@@ -73,12 +74,17 @@ class ParentMenuItem extends React.Component {
 			else
 				expandItem(flattenedIndex);
 		}
-		else if(type === 'checkbox') {
-		}
-		else if(type === 'radiogroup') {
-		}
-		else if(type === 'item') {
-		}
+		else if(type === 'checkbox' || type === 'radiogroup' || type === 'item') {
+			if(isDisabled)
+				return;
+
+			if(typeof onActivate === 'function')
+				onActivate(event);
+
+			collapse(true, () => {
+				focusRootItem(flattenedRootIndex);
+			});
+		} 
 	};
 
 	onChildKeyDown = (event) => {

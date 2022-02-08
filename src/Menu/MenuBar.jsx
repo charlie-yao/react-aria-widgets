@@ -60,11 +60,12 @@ class MenuBar extends React.Component {
 			else
 				expandItem(flattenedIndex);
 		}
-		else if(type === 'checkbox') {
-		}
-		else if(type === 'radiogroup') {
-		}
-		else if(type === 'item') {
+		else if(type === 'checkbox' || type === 'radiogroup' || type === 'item') {
+			if(isDisabled)
+				return;
+
+			if(typeof onActivate === 'function')
+				onActivate(event);
 		}
 	};
 

@@ -102,7 +102,7 @@ class MenuButton extends React.Component {
 	};
 
 	onChildClick = (event) => {
-		const { items, expandedIndex, collapseItem, expandItem } = this.props
+		const { items, collapse, expandedIndex, collapseItem, expandItem, focus } = this.props
 		const { target } = event;
 		const isDisabled = target.getAttribute('aria-disabled') === 'true'; //can't use isDisabled on the item for radigroups
 		const position = target.dataset.position.split(',');
@@ -118,11 +118,16 @@ class MenuButton extends React.Component {
 			else
 				expandItem(flattenedIndex);
 		}
-		else if(type === 'checkbox') {
-		}
-		else if(type === 'radiogroup') {
-		}
-		else if(type === 'item') {
+		else if(type === 'checkbox' || type === 'radiogroup' || type === 'item') {
+			if(isDisabled)
+				return;
+
+			if(typeof onActivate === 'function')
+				onActivate(event);
+
+			collapse(false, () => {
+				focus();
+			});
 		}
 	};
 
