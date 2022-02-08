@@ -4,7 +4,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
-	const { children, position, flattenedPosition, onKeyDown, onClick, isDisabled, isTabbable, isChecked, ...rest } = props;
+	const {
+		children, position, flattenedPosition,
+		onKeyDown, onClick, onMouseEnter, onMouseLeave,
+		isDisabled, isTabbable, isChecked, ...rest
+	} = props;
 
 	return (
 		<li
@@ -13,6 +17,8 @@ const MenuItemRadio = React.forwardRef(function MenuItemRadio(props, ref) {
 			data-flattenedposition={ flattenedPosition }
 			onKeyDown={ onKeyDown }
 			onClick={ onClick }
+			onMouseEnter={ onMouseEnter }
+			onMouseLeave={ onMouseLeave }
 			aria-disabled={ isDisabled }
 			tabIndex={ isTabbable ? '0' : '-1' }
 			aria-checked={ isChecked }
@@ -30,6 +36,8 @@ MenuItemRadio.propTypes = {
 	flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	onClick: PropTypes.func.isRequired,
+	onMouseEnter: PropTypes.func.isRequired,
+	onMouseLeave: PropTypes.func.isRequired,
 	isDisabled: PropTypes.bool,
 	isTabbable: PropTypes.bool,
 	isChecked: PropTypes.bool,

@@ -19,6 +19,8 @@ class ParentMenuItem extends React.Component {
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
 		onClick: PropTypes.func.isRequired,
+		onMouseEnter: PropTypes.func.isRequired,
+		onMouseLeave: PropTypes.func.isRequired,
 		collapse: PropTypes.func.isRequired,
 		focusPrevRootItem: PropTypes.func,
 		focusNextRootItem: PropTypes.func,
@@ -250,10 +252,17 @@ class ParentMenuItem extends React.Component {
 			collapse(true);
 	};
 
+	onChildEnter = () => {
+	};
+
+	onChildLeave = () => {
+	};
+
 	//---- Rendering ----
 	render() {
 		const {
-			children, items, position, flattenedPosition, onKeyDown, onClick,
+			children, items, position, flattenedPosition,
+			onKeyDown, onClick, onMouseEnter, onMouseLeave,
 			focusPrevRootItem, focusNextRootItem, focusRootItem,
 			orientation, label, labelId, isExpanded, isDisabled, isTabbable,
 			setManagerRef, setItemRef, expandedIndex, collapseItem,
@@ -270,6 +279,8 @@ class ParentMenuItem extends React.Component {
 			flattenedPosition,
 			onChildKeyDown: this.onChildKeyDown,
 			onChildClick: this.onChildClick,
+			onChildEnter: this.onChildEnter,
+			onChildLeave: this.onChildLeave,
 		});
 
 		return (
@@ -282,6 +293,8 @@ class ParentMenuItem extends React.Component {
 					data-flattenedposition={ flattenedPosition }
 					onKeyDown={ onKeyDown }
 					onClick={ onClick }
+					onMouseEnter={ onMouseEnter }
+					onMouseLeave={ onMouseLeave }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }

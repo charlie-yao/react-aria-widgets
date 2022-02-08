@@ -196,6 +196,27 @@ class MenuBar extends React.Component {
 			collapseItem();
 	};
 
+	onChildEnter = (event) => {
+		const { items, expandedIndex, expandItem, focusItem } = this.props;
+		const { target } = event;
+		const position = target.dataset.position.split(',');
+		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const index = Number.parseInt(position[position.length - 1], 10);
+		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const item = items[index];
+		const { type } = item;
+		
+		/*
+		focusItem(flattenedIndex);
+
+		if(type === 'menu' && expandedIndex !== -1)
+			expandItem(flattenedIndex);
+		*/
+	};
+
+	onChildLeave = () => {
+	};
+
 	//---- Rendering ----
 	render() {
 		const {
@@ -215,6 +236,8 @@ class MenuBar extends React.Component {
 			flattenedPosition: [],
 			onChildKeyDown: this.onChildKeyDown,
 			onChildClick: this.onChildClick,
+			onChildEnter: this.onChildEnter,
+			onChildLeave: this.onChildLeave,
 		});
 
 		return (

@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MenuItemCheckbox = React.forwardRef(function MenuItemCheckbox(props, ref) {
-	const { children, position, flattenedPosition, onKeyDown, onClick, isDisabled, isTabbable, isChecked } = props;
+	const {
+		children, position, flattenedPosition,
+		onKeyDown, onClick, onMouseEnter, onMouseLeave,
+		isDisabled, isTabbable, isChecked
+	} = props;
 
 	return (
 		<li
@@ -11,6 +15,8 @@ const MenuItemCheckbox = React.forwardRef(function MenuItemCheckbox(props, ref) 
 			data-flattenedposition={ flattenedPosition }
 			onKeyDown={ onKeyDown }
 			onClick={ onClick }
+			onMouseEnter={ onMouseEnter }
+			onMouseLeave={ onMouseLeave }
 			aria-disabled={ isDisabled }
 			tabIndex={ isTabbable ? '0' : '-1' }
 			aria-checked={ isChecked }
@@ -27,6 +33,8 @@ MenuItemCheckbox.propTypes = {
 	flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	onClick: PropTypes.func.isRequired,
+	onMouseEnter: PropTypes.func.isRequired,
+	onMouseLeave: PropTypes.func.isRequired,
 	isDisabled: PropTypes.bool,
 	isTabbable: PropTypes.bool,
 	isChecked: PropTypes.oneOfType([

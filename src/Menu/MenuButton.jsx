@@ -265,6 +265,12 @@ class MenuButton extends React.Component {
 			collapse();
 	};
 
+	onChildEnter = () => {
+	};
+
+	onChildLeave = () => {
+	};
+
 	//---- Rendering ----
 	render() {
 		const {
@@ -281,6 +287,8 @@ class MenuButton extends React.Component {
 			flattenedPosition: [ 0 ],
 			onChildKeyDown: this.onChildKeyDown,
 			onChildClick: this.onChildClick,
+			onChildEnter: this.onChildEnter,
+			onChildLeave: this.onChildLeave,
 		});
 
 		return (
