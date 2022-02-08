@@ -108,11 +108,10 @@ export default function createMenuManager(Component) {
 			this.setState(state => {
 				const { expandedIndex } = state;
 				const wasExpanded = expandedIndex !== -1;
-				const _autoExpand = isMenu && (autoExpand || wasExpanded);
 
 				return {
 					tabbableIndex: index,
-					expandedIndex: _autoExpand ? index : -1,
+					expandedIndex: autoExpand || wasExpanded ? index : -1,
 				};
 			}, () => {
 				if(isMenu)
