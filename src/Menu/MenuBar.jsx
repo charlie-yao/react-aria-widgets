@@ -44,7 +44,7 @@ class MenuBar extends React.Component {
 
 	//---- Events ----
 	onChildClick = (event) => {
-		const { items, expandItem } = this.props
+		const { items, expandedIndex, collapseItem, expandItem } = this.props
 		const { target } = event;
 		const isDisabled = target.getAttribute('aria-disabled') === 'true'; //can't use isDisabled on the item for radigroups
 		const position = target.dataset.position.split(',');
@@ -54,10 +54,11 @@ class MenuBar extends React.Component {
 		const item = items[index];
 		const { type, onActivate } = item;
 
-		console.log(items, expandItem);
-
 		if(type === 'menu') {
-			expandItem(flattenedIndex);
+			if(expandedIndex === flattenedIndex)
+				collapseItem();
+			else
+				expandItem(flattenedIndex);
 		}
 		else if(type === 'checkbox') {
 		}
