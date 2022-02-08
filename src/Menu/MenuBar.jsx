@@ -43,6 +43,30 @@ class MenuBar extends React.Component {
 	};
 
 	//---- Events ----
+	onChildClick = (event) => {
+		const { items, expandItem } = this.props
+		const { target } = event;
+		const isDisabled = target.getAttribute('aria-disabled') === 'true'; //can't use isDisabled on the item for radigroups
+		const position = target.dataset.position.split(',');
+		const flattenedPosition = target.dataset.flattenedposition.split(',');
+		const index = Number.parseInt(position[position.length - 1], 10);
+		const flattenedIndex = Number.parseInt(flattenedPosition[flattenedPosition.length - 1], 10);
+		const item = items[index];
+		const { type, onActivate } = item;
+
+		console.log(items, expandItem);
+
+		if(type === 'menu') {
+			expandItem(flattenedIndex);
+		}
+		else if(type === 'checkbox') {
+		}
+		else if(type === 'radiogroup') {
+		}
+		else if(type === 'item') {
+		}
+	};
+
 	onChildKeyDown = (event) => {
 		const {
 			items, orientation,
@@ -188,6 +212,7 @@ class MenuBar extends React.Component {
 			position: [],
 			flattenedPosition: [],
 			onChildKeyDown: this.onChildKeyDown,
+			onChildClick: this.onChildClick,
 		});
 
 		return (

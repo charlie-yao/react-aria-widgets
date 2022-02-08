@@ -18,6 +18,7 @@ class ParentMenuItem extends React.Component {
 		position: PropTypes.arrayOf(PropTypes.number).isRequired,
 		flattenedPosition: PropTypes.arrayOf(PropTypes.number).isRequired,
 		onKeyDown: PropTypes.func.isRequired,
+		onClick: PropTypes.func.isRequired,
 		collapse: PropTypes.func.isRequired,
 		focusPrevRootItem: PropTypes.func,
 		focusNextRootItem: PropTypes.func,
@@ -221,7 +222,7 @@ class ParentMenuItem extends React.Component {
 	//---- Rendering ----
 	render() {
 		const {
-			children, items, position, flattenedPosition, onKeyDown,
+			children, items, position, flattenedPosition, onKeyDown, onClick,
 			focusPrevRootItem, focusNextRootItem, focusRootItem,
 			orientation, label, labelId, isExpanded, isDisabled, isTabbable,
 			setManagerRef, setItemRef, expandedIndex, collapseItem,
@@ -248,6 +249,7 @@ class ParentMenuItem extends React.Component {
 					data-position={ position }
 					data-flattenedposition={ flattenedPosition }
 					onKeyDown={ onKeyDown }
+					onClick={ onClick }
 					aria-expanded={ isExpanded }
 					aria-disabled={ isDisabled }
 					tabIndex={ isTabbable ? '0' : '-1' }

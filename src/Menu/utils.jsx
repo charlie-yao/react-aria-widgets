@@ -23,6 +23,7 @@ import MenuItemRadio from 'src/Menu/MenuItemRadio';
  * @param {number[]} options.position
  * @param {number[]} options.flattenedPosition
  * @param {function} options.onChildKeyDown
+ * @param {function} options.onChildClick
  * @returns {React.Component[]}
  */
 export function renderItems(options) {
@@ -30,7 +31,8 @@ export function renderItems(options) {
 
 	const {
 		items, setItemRef, tabbableIndex, expandedIndex, collapseItem,
-		focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition, onChildKeyDown,
+		focusRootItem, focusPrevRootItem, focusNextRootItem, position, flattenedPosition,
+		onChildKeyDown, onChildClick,
 	} = options;
 	const itemNodes = [];
 	const level = position.length;
@@ -53,6 +55,7 @@ export function renderItems(options) {
 					position={ _position }
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
+					onClick={ onChildClick }
 					isDisabled={ isDisabled }
 					isTabbable={ flattenedIndex === tabbableIndex }
 					ref={ setItemRef }
@@ -76,6 +79,7 @@ export function renderItems(options) {
 					position={ _position }
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
+					onClick={ onChildClick }
 					collapse={ collapseItem }
 					focusPrevRootItem={ focusPrevRootItem }
 					focusNextRootItem={ focusNextRootItem }
@@ -106,6 +110,7 @@ export function renderItems(options) {
 					position={ _position }
 					flattenedPosition={ _flattenedPosition }
 					onKeyDown={ onChildKeyDown }
+					onClick={ onChildClick }
 					isDisabled={ isDisabled }
 					isTabbable={ flattenedIndex === tabbableIndex }
 					isChecked={ isChecked }
@@ -141,6 +146,7 @@ export function renderItems(options) {
 						position={ _position }
 						flattenedPosition={ _flattenedPosition }
 						onKeyDown={ onChildKeyDown }
+						onClick={ onChildClick }
 						isDisabled={ isDisabled }
 						isTabbable={ flattenedIndex === tabbableIndex }
 						isChecked={ isChecked }
