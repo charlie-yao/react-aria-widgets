@@ -280,7 +280,7 @@ class MenuButton extends React.Component {
 		
 		focusItem(flattenedIndex);
 
-		if(type === 'menu' && expandedIndex !== -1)
+		if(type === 'menu')
 			expandItem(flattenedIndex);
 	};
 
