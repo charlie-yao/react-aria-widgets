@@ -32,9 +32,8 @@ class Accordion extends React.Component {
 
 	//---- Events ----
 	onTriggerClick = (event) => {
-		const { sections, toggleSection } = this.props;
-		const index = Number.parseInt(event.target.dataset.index, 10);
-		toggleSection(sections[index].id);
+		const { toggleSection } = this.props;
+		toggleSection(event.target.id);
 	};
 
 	onTriggerKeyDown = (event) => {
