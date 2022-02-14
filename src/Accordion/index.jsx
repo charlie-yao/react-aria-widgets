@@ -94,7 +94,7 @@ class Accordion extends React.Component {
 			<Fragment key={ id }>
 				<AccordionHeader
 					id={ id }
-					panelId={ `${id}Panel` }
+					controlsId={ `${id}Panel` }
 					headerLevel={ headerLevel }
 					index={ i }
 					isExpanded={ isExpanded }

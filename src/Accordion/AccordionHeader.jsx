@@ -1,52 +1,58 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
+
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-const AccordionHeader = React.forwardRef(function AccordionHeader(props, ref) {
+const AccordionHeader = React.forwardRef((props, ref) => {
 	const {
-		headerLevel, children, id, panelId, onClick, onKeyDown,
-		isExpanded, isDisabled, index,
+		children, id, controlsId, onClick, onKeyDown, headerLevel, index,
+		isExpanded, isDisabled, headerProps, buttonProps
 	} = props;
-	const HeaderElement = `h${headerLevel}`;
+	const _buttonProps = Object.assign({}, buttonProps, {
+		'data-index': index,
+	});
 
 	return (
-		<HeaderElement>
-			<button
-				id={ id }
-				type="button"
-				aria-controls={ panelId }
-				aria-expanded={ isExpanded }
-				aria-disabled={ isDisabled }
-				data-index={ index }
-				ref={ ref }
-				onClick={ onClick }
-				onKeyDown={ onKeyDown }
-			>
-				{ children }
-			</button>
-		</HeaderElement>
+		<BaseAccordionHeader
+			id={ id }
+			controlsId={ controlsId }
+			onClick={ onClick }
+			onKeyDown={ onKeyDown }
+			headerLevel={ headerLevel }
+			isExpanded={ isExpanded }
+			isDisabled={ isDisabled }
+			headerProps={ headerProps }
+			buttonProps={ _buttonProps }
+			ref={ ref }
+		>
+			{ children }
+		</BaseAccordionHeader>
 	);
 });
 
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	panelId: PropTypes.string.isRequired,
+	controlsId: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
-	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
+	index: PropTypes.number.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
+	headerProps: PropTypes.object,
+	buttonProps: PropTypes.object,
 };
 
 AccordionHeader.defaultProps = {
 	isExpanded: false,
 	isDisabled: false,
+	headerProps: {},
+	buttonProps: {},
 };
-
-AccordionHeader.displayName = 'AccordionHeader';
 
 export default AccordionHeader;
