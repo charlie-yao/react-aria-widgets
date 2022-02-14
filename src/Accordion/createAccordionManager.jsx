@@ -6,6 +6,11 @@ import PropTypes from 'prop-types';
 function createAccordionManager(Component) {
 	return class AccordionManager extends React.Component {
 		static propTypes = {
+			sections: PropTypes.arrayOf(PropTypes.shape({
+				id: PropTypes.string.isRequired,
+				header: PropTypes.node.isRequired,
+				panel: PropTypes.node.isRequired,
+			})).isRequired,
 			allowMultiple: PropTypes.bool,
 			allowToggle: PropTypes.bool,
 		};
@@ -18,9 +23,13 @@ function createAccordionManager(Component) {
 		constructor(props) {
 			super(props);
 
+			const { sections } = props;
+
 			this.state = {
 				expandedSections: new Set(),
 			};
+
+			this.sectionRefs = [];
 		}
 
 		//---- Rendering ----
@@ -33,6 +42,11 @@ function createAccordionManager(Component) {
 					toggleSection={ this.toggleSection }
 					allowToggle={ this.getAllowToggle() }
 					expandedSections={ expandedSections }
+					setSectionRef={ this.setSectionRef }
+					focusPrevSection={ this.focusPrevSection }
+					focusNextSection={ this.focusNextSection }
+					focusFirstSection={ this.focusFirstSection }
+					focusLastSection={ this.focusLastSection }
 					{ ...rest }
 				/>
 			);
@@ -73,6 +87,30 @@ function createAccordionManager(Component) {
 					expandedSections,
 				};
 			});
+		};
+
+		setSectionRef = (ref) => {
+			this.sectionRefs.push(ref);
+		};
+
+		focusSection = (index) => {
+			this.sectionRefs[index].focus();
+		};
+
+		focusPrevSection = (index) => {	
+			this.focusSection(index === 0 ? this.sectionRefs.length - 1 : index - 1);
+		};
+
+		focusNextSection = (index) => {
+			this.focusSection(index === this.sectionRefs.length - 1 ? 0 : index + 1);
+		};
+
+		focusFirstSection = () => {
+			this.focusSection(0);
+		};
+
+		focusLastSection = () => {
+			this.focusSection(this.sectionRefs.length - 1);
 		};
 	};
 }
