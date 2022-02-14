@@ -10,7 +10,7 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 const AccordionHeader = React.forwardRef((props, ref) => {
 	const {
 		children, id, controlsId, onClick, onKeyDown, headerLevel, index,
-		isExpanded, isDisabled, headerProps, buttonProps
+		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,
@@ -54,5 +54,7 @@ AccordionHeader.defaultProps = {
 	headerProps: {},
 	buttonProps: {},
 };
+
+AccordionHeader.displayName = 'AccordionHeader';
 
 export default AccordionHeader;

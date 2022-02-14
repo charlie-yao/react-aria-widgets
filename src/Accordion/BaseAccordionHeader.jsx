@@ -9,7 +9,7 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 const BaseAccordionHeader = React.forwardRef((props, ref) => {
 	const {
 		children, id, controlsId, onClick, onKeyDown, headerLevel,
-		isExpanded, isDisabled, headerProps, buttonProps
+		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
 	const HeaderElement = `h${headerLevel}`;
 
@@ -51,5 +51,7 @@ BaseAccordionHeader.defaultProps = {
 	headerProps: {},
 	buttonProps: {},
 };
+
+BaseAccordionHeader.displayName = 'BaseAccordionHeader';
 
 export default BaseAccordionHeader;
