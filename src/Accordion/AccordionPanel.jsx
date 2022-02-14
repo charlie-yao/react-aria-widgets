@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+
 function AccordionPanel(props) {
-	const { children, id, headerId, isExpanded, className } = props;
+	const { children, id, labelId, isExpanded, className } = props;
 
 	return (
-		<section
+		<BaseAccordionPanel
 			id={ id }
-			aria-labelledby={ headerId }
+			labelId={ labelId }
 			className={ `${className} ${isExpanded ? '' : 'hidden'}` }
 		>
 			{ children }
-		</section>
+		</BaseAccordionPanel>
 	);
 }
 
 AccordionPanel.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	headerId: PropTypes.string.isRequired,
+	labelId: PropTypes.string.isRequired,
 	isExpanded: PropTypes.bool,
 	className: PropTypes.string,
 };

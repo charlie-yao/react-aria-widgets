@@ -107,7 +107,7 @@ class Accordion extends React.Component {
 				</AccordionHeader>
 				<AccordionPanel
 					id={ `${id}Panel` }
-					headerId={ id }
+					labelId={ id }
 					isExpanded={ isExpanded }
 				>
 					{ panel }
