@@ -6,11 +6,6 @@ import PropTypes from 'prop-types';
 function createAccordionManager(Component) {
 	return class AccordionManager extends React.Component {
 		static propTypes = {
-			sections: PropTypes.arrayOf(PropTypes.shape({
-				id: PropTypes.string.isRequired,
-				header: PropTypes.node.isRequired,
-				panel: PropTypes.node.isRequired,
-			})).isRequired,
 			allowMultiple: PropTypes.bool,
 			allowToggle: PropTypes.bool,
 		};
@@ -22,8 +17,6 @@ function createAccordionManager(Component) {
 
 		constructor(props) {
 			super(props);
-
-			const { sections } = props;
 
 			this.state = {
 				expandedSections: new Set(),
@@ -97,7 +90,7 @@ function createAccordionManager(Component) {
 			this.sectionRefs[index].focus();
 		};
 
-		focusPrevSection = (index) => {	
+		focusPrevSection = (index) => {
 			this.focusSection(index === 0 ? this.sectionRefs.length - 1 : index - 1);
 		};
 
