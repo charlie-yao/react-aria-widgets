@@ -13,16 +13,16 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 class Accordion extends React.Component {
 	static propTypes = {
-		headerLevel: validateHeaderLevelProp.isRequired,
 		sections: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			header: PropTypes.node.isRequired,
 			panel: PropTypes.node.isRequired,
 		})).isRequired,
+		headerLevel: validateHeaderLevelProp.isRequired,
 		//From <AccordionManager>
-		expandedSections: PropTypes.instanceOf(Set).isRequired,
-		allowToggle: PropTypes.bool.isRequired,
 		toggleSection: PropTypes.func.isRequired,
+		allowToggle: PropTypes.bool.isRequired,
+		expandedSections: PropTypes.instanceOf(Set).isRequired,
 		setSectionRef: PropTypes.func.isRequired,
 		focusPrevSection: PropTypes.func.isRequired,
 		focusNextSection: PropTypes.func.isRequired,
@@ -67,7 +67,7 @@ class Accordion extends React.Component {
 	}
 
 	renderSection = (section, i) => {
-		const { allowToggle, headerLevel, expandedSections, setSectionRef } = this.props;
+		const { headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
 		const { id, header, panel } = section;
 		const isExpanded = expandedSections.has(id);
 
@@ -76,13 +76,13 @@ class Accordion extends React.Component {
 				<AccordionHeader
 					id={ id }
 					controlsId={ `${id}Panel` }
+					onClick={ this.onTriggerClick }
+					onKeyDown={ this.onTriggerKeyDown }
 					headerLevel={ headerLevel }
 					index={ i }
 					isExpanded={ isExpanded }
 					isDisabled={ !allowToggle && isExpanded }
 					ref={ setSectionRef }
-					onClick={ this.onTriggerClick }
-					onKeyDown={ this.onTriggerKeyDown }
 				>
 					{ header }
 				</AccordionHeader>
