@@ -19,23 +19,16 @@ class Accordion extends React.Component {
 			header: PropTypes.node.isRequired,
 			panel: PropTypes.node.isRequired,
 		})).isRequired,
-		//From <AccordionManager> or another state manager
+		//From <AccordionManager>
 		expandedSections: PropTypes.instanceOf(Set).isRequired,
 		allowToggle: PropTypes.bool.isRequired,
 		toggleSection: PropTypes.func.isRequired,
+		setSectionRef: PropTypes.func.isRequired,
+		focusPrevSection: PropTypes.func.isRequired,
+		focusNextSection: PropTypes.func.isRequired,
+		focusFirstSection: PropTypes.func.isRequired,
+		focusLastSection: PropTypes.func.isRequired,
 	};
-
-	constructor(props) {
-		super(props);
-
-		const { sections } = props;
-
-		this.triggerRefs = [];
-
-		sections.forEach((section, i) => {
-			this.triggerRefs[i] = React.createRef();
-		});
-	}
 
 	//---- Events ----
 	onTriggerClick = (event) => {
@@ -45,37 +38,25 @@ class Accordion extends React.Component {
 	};
 
 	onTriggerKeyDown = (event) => {
-		const { sections } = this.props;
+		const { focusPrevSection, focusNextSection, focusFirstSection, focusLastSection } = this.props;
 		const { key } = event;
 		const index = Number.parseInt(event.target.dataset.index, 10);
 
-		switch(key) {
-			case 'ArrowUp':
-				event.preventDefault();
-
-				if(index === 0)
-					this.triggerRefs[sections.length - 1].current.focus();
-				else
-					this.triggerRefs[index - 1].current.focus();
-
-				break;
-			case 'ArrowDown':
-				event.preventDefault();
-
-				if(index === sections.length - 1)
-					this.triggerRefs[0].current.focus();
-				else
-					this.triggerRefs[index + 1].current.focus();
-
-				break;
-			case 'Home':
-				event.preventDefault();
-				this.triggerRefs[0].current.focus();
-				break;
-			case 'End':
-				event.preventDefault();
-				this.triggerRefs[sections.length - 1].current.focus();
-				break;
+		if(key === 'ArrowUp') {
+			event.preventDefault();
+			focusPrevSection(index);
+		}
+		else if(key === 'ArrowDown') {
+			event.preventDefault();
+			focusNextSection(index);
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+			focusFirstSection();
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+			focusLastSection();
 		}
 	};
 
@@ -86,7 +67,7 @@ class Accordion extends React.Component {
 	}
 
 	renderSection = (section, i) => {
-		const { allowToggle, headerLevel, expandedSections } = this.props;
+		const { allowToggle, headerLevel, expandedSections, setSectionRef } = this.props;
 		const { id, header, panel } = section;
 		const isExpanded = expandedSections.has(id);
 
@@ -99,7 +80,7 @@ class Accordion extends React.Component {
 					index={ i }
 					isExpanded={ isExpanded }
 					isDisabled={ !allowToggle && isExpanded }
-					ref={ this.triggerRefs[i] }
+					ref={ setSectionRef }
 					onClick={ this.onTriggerClick }
 					onKeyDown={ this.onTriggerKeyDown }
 				>
