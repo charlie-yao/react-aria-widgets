@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
+import AccordionSection from 'src/Accordion/AccordionSection';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
@@ -61,8 +62,30 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { sections } = this.props;
-		return sections.map(this.renderSection);
+		//const { sections } = this.props;
+		//return sections.map(this.renderSection);
+
+		const { children, headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
+		const sections = React.Children.map(children, (child, i) => {
+			const { type, props } = child;
+			const { id } = props;
+			const isExpanded = expandedSections.has(id);
+
+			if(type !== AccordionSection)
+				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
+
+			return React.cloneElement(child, {
+				headerLevel,
+				onClick: this.onTriggerClick,
+				onKeyDown: this.onTriggerKeyDown,
+				index: i,
+				isExpanded,
+				isDisabled: !allowToggle && isExpanded,
+				setSectionRef,
+			});
+		});
+
+		return sections;
 	}
 
 	renderSection = (section, i) => {
@@ -74,7 +97,7 @@ class Accordion extends React.Component {
 			<Fragment key={ id }>
 				<AccordionHeader
 					id={ id }
-					controlsId={ `${id}Panel` }
+					controlsId={ this.getPanelId(id) }
 					onClick={ this.onTriggerClick }
 					onKeyDown={ this.onTriggerKeyDown }
 					headerLevel={ headerLevel }
@@ -86,7 +109,7 @@ class Accordion extends React.Component {
 					{ header }
 				</AccordionHeader>
 				<AccordionPanel
-					id={ `${id}Panel` }
+					id={ this.getPanelId(id) }
 					labelId={ id }
 					isExpanded={ isExpanded }
 				>
@@ -94,6 +117,11 @@ class Accordion extends React.Component {
 				</AccordionPanel>
 			</Fragment>
 		);
+	};
+
+	//---- Misc. ----
+	getPanelId = (id) => {
+		return `${id}-panel`;
 	};
 }
 

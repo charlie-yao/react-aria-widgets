@@ -2,6 +2,9 @@ import React from 'react';
 
 //Components and Styles
 import Accordion from 'src/Accordion';
+import AccordionSection from 'src/Accordion/AccordionSection';
+import AccordionHeader from 'src/Accordion/AccordionHeader';
+import AccordionPanel from 'src/Accordion/AccordionPanel';
 
 class DemoAccordion extends React.Component {
 	//---- Events ----
@@ -12,7 +15,32 @@ class DemoAccordion extends React.Component {
 	//---- Rendering ----
 	render() {
 		return (
-			<Accordion headerLevel={ 2 } sections={ this.getSections() } />
+			<Accordion headerLevel={ 2 }>
+				<AccordionSection id="section1">
+					<AccordionHeader>
+						Section 1
+					</AccordionHeader>
+					<AccordionPanel>
+						Hello world!
+					</AccordionPanel>
+				</AccordionSection>
+				<AccordionSection id="section2">
+					<AccordionHeader>
+						Section 2
+					</AccordionHeader>
+					<AccordionPanel>
+						Hello world!
+					</AccordionPanel>
+				</AccordionSection>
+				<AccordionSection id="section3">
+					<AccordionHeader>
+						Section 3
+					</AccordionHeader>
+					<AccordionPanel>
+						Hello world!
+					</AccordionPanel>
+				</AccordionSection>
+			</Accordion>
 		);
 	}
 
@@ -34,7 +62,7 @@ class DemoAccordion extends React.Component {
 			},
 			{
 				id: 'section2',
-				header: 'Section 2',
+				header: <span>Section 2</span>,
 				panel: 'Section 2 content',
 			},
 			{
