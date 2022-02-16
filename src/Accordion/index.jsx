@@ -81,7 +81,6 @@ class Accordion extends React.Component {
 			return React.cloneElement(child, {
 				onKeyDown: this.onTriggerKeyDown,
 				index: i,
-				setSectionRef,
 			});
 		});
 
@@ -93,6 +92,7 @@ class Accordion extends React.Component {
 				toggleSection,
 				allowToggle,
 				expandedSections,
+				setSectionRef,
 			}}>
 				{ children }
 			</AccordionContext.Provider>

@@ -9,12 +9,12 @@ import { AccordionSectionContext } from 'src/Accordion/AccordionSection';
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 
-const AccordionHeader = React.forwardRef((props, ref) => {
+function AccordionHeader(props) {
 	const {
 		children, onKeyDown, index,
 		headerProps, buttonProps,
 	} = props;
-	const { headerLevel, toggleSection, allowToggle, expandedSections } = useContext(AccordionContext);
+	const { headerLevel, toggleSection, allowToggle, expandedSections, setSectionRef } = useContext(AccordionContext);
 	const { id } = useContext(AccordionSectionContext);
 	const isExpanded = expandedSections.has(id);
 	const isDisabled = !allowToggle && isExpanded;
@@ -38,12 +38,12 @@ const AccordionHeader = React.forwardRef((props, ref) => {
 			isDisabled={ isDisabled }
 			headerProps={ headerProps }
 			buttonProps={ _buttonProps }
-			ref={ ref }
+			ref={ setSectionRef }
 		>
 			{ children }
 		</BaseAccordionHeader>
 	);
-});
+}
 
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
@@ -57,7 +57,5 @@ AccordionHeader.defaultProps = {
 	headerProps: {},
 	buttonProps: {},
 };
-
-AccordionHeader.displayName = 'AccordionHeader';
 
 export default AccordionHeader;

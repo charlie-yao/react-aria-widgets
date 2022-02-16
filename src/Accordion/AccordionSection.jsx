@@ -45,7 +45,7 @@ class AccordionSection extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, onKeyDown, index, setSectionRef } = this.props;
+		const { children, onKeyDown, index } = this.props;
 		const { id } = this.state;
 		const section = React.Children.map(children, (child) => {
 			const { type, props } = child;
@@ -54,7 +54,6 @@ class AccordionSection extends React.Component {
 				return React.cloneElement(child, {
 					onKeyDown,
 					index,
-					ref: setSectionRef,
 				});
 			}
 			else if(type === AccordionPanel)
