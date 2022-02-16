@@ -12,6 +12,8 @@ import createAccordionManager from 'src/Accordion/createAccordionManager';
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
+export const AccordionContext = React.createContext();
+
 class Accordion extends React.Component {
 	static propTypes = {
 		sections: PropTypes.arrayOf(PropTypes.shape({
@@ -85,7 +87,15 @@ class Accordion extends React.Component {
 			});
 		});
 
-		return sections;
+		//return sections;
+
+		return (
+			<AccordionContext.Provider value={{
+				headerLevel,
+			}}>
+				{ children }
+			</AccordionContext.Provider>
+		);
 	}
 
 	renderSection = (section, i) => {

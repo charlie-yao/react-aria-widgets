@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 //Components and Styles
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
+import { AccordionContext } from 'src/Accordion';
 
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
@@ -12,25 +13,36 @@ const AccordionHeader = React.forwardRef((props, ref) => {
 		children, id, controlsId, onClick, onKeyDown, headerLevel, index,
 		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
+
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,
 	});
 
+	const renderChildren = value => {
+		const { headerLevel } = value;
+
+		return (
+			<BaseAccordionHeader
+				id={ id }
+				controlsId={ controlsId }
+				onClick={ onClick }
+				onKeyDown={ onKeyDown }
+				headerLevel={ headerLevel }
+				isExpanded={ isExpanded }
+				isDisabled={ isDisabled }
+				headerProps={ headerProps }
+				buttonProps={ _buttonProps }
+				ref={ ref }
+			>
+				{ children }
+			</BaseAccordionHeader>
+		);
+	};
+
 	return (
-		<BaseAccordionHeader
-			id={ id }
-			controlsId={ controlsId }
-			onClick={ onClick }
-			onKeyDown={ onKeyDown }
-			headerLevel={ headerLevel }
-			isExpanded={ isExpanded }
-			isDisabled={ isDisabled }
-			headerProps={ headerProps }
-			buttonProps={ _buttonProps }
-			ref={ ref }
-		>
-			{ children }
-		</BaseAccordionHeader>
+		<AccordionContext.Consumer>
+			{ renderChildren }
+		</AccordionContext.Consumer>
 	);
 });
 
