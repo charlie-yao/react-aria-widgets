@@ -68,17 +68,11 @@ class AccordionSection extends React.Component {
 		return (
 			<AccordionSectionContext.Provider value={{
 				id,
-				panelId: this.getPanelId(id),
 			}}>
 				{ children }
 			</AccordionSectionContext.Provider>
 		);
 	}
-
-	//---- Misc. ----
-	getPanelId = (id) => {
-		return `${id}-panel`;
-	};
 }
 
 export default AccordionSection;
