@@ -74,7 +74,6 @@ class Accordion extends React.Component {
 		const { children, headerLevel, toggleSection, allowToggle, expandedSections, setSectionRef } = this.props;
 		const sections = React.Children.map(children, (child, i) => {
 			const { type, props } = child;
-			const { id } = props;
 
 			if(type !== AccordionSection)
 				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
