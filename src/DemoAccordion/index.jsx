@@ -24,7 +24,7 @@ class DemoAccordion extends React.Component {
 						Hello world!
 					</AccordionPanel>
 				</AccordionSection>
-				<AccordionSection id="section2">
+				<AccordionSection>
 					<AccordionHeader>
 						Section 2
 					</AccordionHeader>
@@ -32,7 +32,7 @@ class DemoAccordion extends React.Component {
 						Hello world!
 					</AccordionPanel>
 				</AccordionSection>
-				<AccordionSection id="section3">
+				<AccordionSection>
 					<AccordionHeader>
 						Section 3
 					</AccordionHeader>
