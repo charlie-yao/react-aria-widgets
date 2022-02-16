@@ -5,12 +5,9 @@ import PropTypes from 'prop-types';
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 import { AccordionContext } from 'src/Accordion';
 
-//Misc.
-import { validateHeaderLevelProp } from 'src/utils/propTypes';
-
 const AccordionHeader = React.forwardRef((props, ref) => {
 	const {
-		children, id, controlsId, onClick, onKeyDown, headerLevel, index,
+		children, id, controlsId, onClick, onKeyDown, index,
 		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
 
@@ -52,7 +49,6 @@ AccordionHeader.propTypes = {
 	controlsId: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
-	headerLevel: validateHeaderLevelProp.isRequired,
 	index: PropTypes.number.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,

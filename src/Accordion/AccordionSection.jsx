@@ -5,13 +5,9 @@ import PropTypes from 'prop-types';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
-//Misc.
-import { validateHeaderLevelProp } from 'src/utils/propTypes';
-
 class AccordionSection extends React.Component {
 	static propTypes = {
 		id: PropTypes.string.isRequired,
-		headerLevel: validateHeaderLevelProp.isRequired,
 	};
 
 	static defaultProps = {
@@ -19,7 +15,7 @@ class AccordionSection extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, id, onClick, onKeyDown, headerLevel, index, isExpanded, isDisabled, setSectionRef } = this.props;
+		const { children, id, onClick, onKeyDown, index, isExpanded, isDisabled, setSectionRef } = this.props;
 		const section = React.Children.map(children, (child) => {
 			const { type, props } = child;
 
@@ -29,7 +25,6 @@ class AccordionSection extends React.Component {
 					controlsId: this.getPanelId(),
 					onClick,
 					onKeyDown,
-					headerLevel,
 					index,
 					isExpanded,
 					isDisabled,

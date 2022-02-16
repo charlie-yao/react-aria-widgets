@@ -21,7 +21,7 @@ class Accordion extends React.Component {
 			header: PropTypes.node.isRequired,
 			panel: PropTypes.node.isRequired,
 		})).isRequired,
-		headerLevel: validateHeaderLevelProp.isRequired,
+		headerLevel: validateHeaderLevelProp,
 		//From <AccordionManager>
 		toggleSection: PropTypes.func.isRequired,
 		allowToggle: PropTypes.bool.isRequired,
@@ -31,6 +31,10 @@ class Accordion extends React.Component {
 		focusNextSection: PropTypes.func.isRequired,
 		focusFirstSection: PropTypes.func.isRequired,
 		focusLastSection: PropTypes.func.isRequired,
+	};
+
+	static defaultProps = {
+		headerLevel: 2,
 	};
 
 	//---- Events ----
@@ -77,7 +81,6 @@ class Accordion extends React.Component {
 				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
 
 			return React.cloneElement(child, {
-				headerLevel,
 				onClick: this.onTriggerClick,
 				onKeyDown: this.onTriggerKeyDown,
 				index: i,
