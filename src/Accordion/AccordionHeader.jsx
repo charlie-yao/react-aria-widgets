@@ -6,6 +6,9 @@ import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 import { AccordionContext } from 'src/Accordion';
 import { AccordionSectionContext } from 'src/Accordion/AccordionSection';
 
+//HOCs
+import { createNoOpHOC } from 'src/utils';
+
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 
@@ -58,4 +61,4 @@ AccordionHeader.defaultProps = {
 	buttonProps: {},
 };
 
-export default AccordionHeader;
+export default createNoOpHOC(AccordionHeader);

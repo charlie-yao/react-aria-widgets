@@ -6,10 +6,14 @@ import { v4 as uuidv4 } from 'uuid';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
+//HOCs
+import { createNoOpHOC } from 'src/utils';
+
 export const AccordionSectionContext = React.createContext();
 
 class AccordionSection extends React.Component {
 	static propTypes = {
+		index: PropTypes.number.isRequired,
 		id: PropTypes.string,
 	};
 
@@ -61,17 +65,15 @@ class AccordionSection extends React.Component {
 			else
 				throw new Error('Only <AccordionHeader> and <AccordionPanel> are valid children of <AccordionSection>.');
 		});
-		
-		//return section;
 
 		return (
 			<AccordionSectionContext.Provider value={{
 				id,
 			}}>
-				{ children }
+				{ section }
 			</AccordionSectionContext.Provider>
 		);
 	}
 }
 
-export default AccordionSection;
+export default createNoOpHOC(AccordionSection);

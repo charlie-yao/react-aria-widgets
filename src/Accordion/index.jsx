@@ -84,8 +84,6 @@ class Accordion extends React.Component {
 			});
 		});
 
-		//return sections;
-
 		return (
 			<AccordionContext.Provider value={{
 				headerLevel,
@@ -94,7 +92,7 @@ class Accordion extends React.Component {
 				expandedSections,
 				setSectionRef,
 			}}>
-				{ children }
+				{ sections }
 			</AccordionContext.Provider>
 		);
 	}
