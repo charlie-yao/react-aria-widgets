@@ -10,12 +10,9 @@ class AccordionSection extends React.Component {
 		id: PropTypes.string.isRequired,
 	};
 
-	static defaultProps = {
-	};
-
 	//---- Rendering ----
 	render() {
-		const { children, id, onClick, onKeyDown, index, isExpanded, isDisabled, setSectionRef } = this.props;
+		const { children, id, onKeyDown, index, setSectionRef } = this.props;
 		const section = React.Children.map(children, (child) => {
 			const { type, props } = child;
 
@@ -23,11 +20,8 @@ class AccordionSection extends React.Component {
 				return React.cloneElement(child, {
 					id,
 					controlsId: this.getPanelId(),
-					onClick,
 					onKeyDown,
 					index,
-					isExpanded,
-					isDisabled,
 					ref: setSectionRef,
 				});
 			}
@@ -35,7 +29,6 @@ class AccordionSection extends React.Component {
 				return React.cloneElement(child, {
 					id: this.getPanelId(id),
 					labelId: id,
-					isExpanded,
 				});
 			}
 			else

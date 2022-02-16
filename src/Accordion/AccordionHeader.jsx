@@ -7,8 +7,8 @@ import { AccordionContext } from 'src/Accordion';
 
 const AccordionHeader = React.forwardRef((props, ref) => {
 	const {
-		children, id, controlsId, onClick, onKeyDown, index,
-		isExpanded, isDisabled, headerProps, buttonProps,
+		children, id, controlsId, onKeyDown, index,
+		headerProps, buttonProps,
 	} = props;
 
 	const _buttonProps = Object.assign({}, buttonProps, {
@@ -16,7 +16,12 @@ const AccordionHeader = React.forwardRef((props, ref) => {
 	});
 
 	const renderChildren = value => {
-		const { headerLevel } = value;
+		const { headerLevel, toggleSection, allowToggle, expandedSections } = value;
+		const isExpanded = expandedSections.has(id);
+		const isDisabled = !allowToggle && isExpanded;
+		const onClick = (event) => {
+			toggleSection(event.target.id);
+		};
 
 		return (
 			<BaseAccordionHeader
@@ -47,18 +52,13 @@ AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
 	controlsId: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
-	isExpanded: PropTypes.bool,
-	isDisabled: PropTypes.bool,
 	headerProps: PropTypes.object,
 	buttonProps: PropTypes.object,
 };
 
 AccordionHeader.defaultProps = {
-	isExpanded: false,
-	isDisabled: false,
 	headerProps: {},
 	buttonProps: {},
 };

@@ -71,21 +71,17 @@ class Accordion extends React.Component {
 		//const { sections } = this.props;
 		//return sections.map(this.renderSection);
 
-		const { children, headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
+		const { children, headerLevel, toggleSection, allowToggle, expandedSections, setSectionRef } = this.props;
 		const sections = React.Children.map(children, (child, i) => {
 			const { type, props } = child;
 			const { id } = props;
-			const isExpanded = expandedSections.has(id);
 
 			if(type !== AccordionSection)
 				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
 
 			return React.cloneElement(child, {
-				onClick: this.onTriggerClick,
 				onKeyDown: this.onTriggerKeyDown,
 				index: i,
-				isExpanded,
-				isDisabled: !allowToggle && isExpanded,
 				setSectionRef,
 			});
 		});
@@ -95,6 +91,9 @@ class Accordion extends React.Component {
 		return (
 			<AccordionContext.Provider value={{
 				headerLevel,
+				toggleSection,
+				allowToggle,
+				expandedSections,
 			}}>
 				{ children }
 			</AccordionContext.Provider>

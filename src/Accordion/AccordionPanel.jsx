@@ -3,18 +3,29 @@ import PropTypes from 'prop-types';
 
 //Components and Styles
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+import { AccordionContext } from 'src/Accordion';
 
 function AccordionPanel(props) {
-	const { children, id, labelId, isExpanded, className } = props;
+	const { children, id, labelId, className } = props;
+	const renderChildren = value => {
+		const { expandedSections } = value;
+		const isExpanded = expandedSections.has(labelId);
+
+		return (
+			<BaseAccordionPanel
+				id={ id }
+				labelId={ labelId }
+				className={ `${className} ${isExpanded ? '' : 'hidden'}` }
+			>
+				{ children }
+			</BaseAccordionPanel>
+		);
+	};
 
 	return (
-		<BaseAccordionPanel
-			id={ id }
-			labelId={ labelId }
-			className={ `${className} ${isExpanded ? '' : 'hidden'}` }
-		>
-			{ children }
-		</BaseAccordionPanel>
+		<AccordionContext.Consumer>
+			{ renderChildren }
+		</AccordionContext.Consumer>
 	);
 }
 
@@ -22,12 +33,10 @@ AccordionPanel.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
 	labelId: PropTypes.string.isRequired,
-	isExpanded: PropTypes.bool,
 	className: PropTypes.string,
 };
 
 AccordionPanel.defaultProps = {
-	isExpanded: false,
 	className: '',
 };
 
