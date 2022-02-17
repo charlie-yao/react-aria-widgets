@@ -554,7 +554,7 @@ module.exports = {
 		],
 		'react/jsx-first-prop-new-line': [
 			'error',
-			'multiline',
+			'multiline-multiprop',
 		],
 		'react/jsx-handler-names': [
 			'error',
