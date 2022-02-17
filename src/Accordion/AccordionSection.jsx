@@ -12,6 +12,8 @@ import { createNoOpHOC } from 'src/utils';
 class AccordionSection extends React.Component {
 	static propTypes = {
 		index: PropTypes.number.isRequired,
+		onTriggerClick: PropTypes.func.isRequired,
+		onTriggerKeyDown: PropTypes.func.isRequired,
 		id: PropTypes.string,
 	};
 
@@ -47,15 +49,16 @@ class AccordionSection extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, onKeyDown, index } = this.props;
+		const { children, index, onTriggerClick, onTriggerKeyDown } = this.props;
 		const { id } = this.state;
 		const section = React.Children.map(children, (child) => {
 			const { type, props } = child;
 
 			if(type === AccordionHeader) {
 				return React.cloneElement(child, {
-					onKeyDown,
 					index,
+					onClick: onTriggerClick,
+					onKeyDown: onTriggerKeyDown,
 					id,
 				});
 			}

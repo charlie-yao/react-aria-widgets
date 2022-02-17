@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 import { AccordionContext } from 'src/Accordion';
 
+//HOCs
+import { createNoOpHOC } from 'src/utils';
+
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 
@@ -34,4 +37,4 @@ AccordionPanel.defaultProps = {
 	className: '',
 };
 
-export default AccordionPanel;
+export default createNoOpHOC(AccordionPanel);

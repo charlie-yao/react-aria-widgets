@@ -13,20 +13,16 @@ import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionHeader(props) {
 	const {
-		children, id, onKeyDown, index,
+		children, id, index, onClick, onKeyDown,
 		headerProps, buttonProps,
 	} = props;
-	const { headerLevel, toggleSection, allowToggle, expandedSections, setSectionRef } = useContext(AccordionContext);
+	const { headerLevel, allowToggle, expandedSections, setSectionRef } = useContext(AccordionContext);
 	const isExpanded = expandedSections.has(id);
 	const isDisabled = !allowToggle && isExpanded;
 
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,
 	});
-
-	const onClick = (event) => {
-		toggleSection(event.target.id);
-	};
 
 	return (
 		<BaseAccordionHeader
@@ -49,8 +45,9 @@ function AccordionHeader(props) {
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
+	onClick: PropTypes.func.isRequired,
+	onKeyDown: PropTypes.func.isRequired,
 	headerProps: PropTypes.object,
 	buttonProps: PropTypes.object,
 };
