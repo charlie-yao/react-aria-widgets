@@ -72,7 +72,7 @@ class Accordion extends React.Component {
 		//return sections.map(this.renderSection);
 
 		const { children, headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
-		const sections = React.Children.map(children, (child, i) => {
+		const mappedChildren = React.Children.map(children, (child, i) => {
 			const { type, props } = child;
 
 			if(type !== AccordionSection)
@@ -92,7 +92,7 @@ class Accordion extends React.Component {
 				expandedSections,
 				setSectionRef,
 			}}>
-				{ sections }
+				{ mappedChildren }
 			</AccordionContext.Provider>
 		);
 	}
