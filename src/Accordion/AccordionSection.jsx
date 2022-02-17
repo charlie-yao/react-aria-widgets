@@ -9,8 +9,6 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 //HOCs
 import { createNoOpHOC } from 'src/utils';
 
-export const AccordionSectionContext = React.createContext();
-
 class AccordionSection extends React.Component {
 	static propTypes = {
 		index: PropTypes.number.isRequired,
@@ -58,21 +56,19 @@ class AccordionSection extends React.Component {
 				return React.cloneElement(child, {
 					onKeyDown,
 					index,
+					id,
 				});
 			}
-			else if(type === AccordionPanel)
-				return child;
+			else if(type === AccordionPanel) {
+				return React.cloneElement(child, {
+					id,
+				});
+			}
 			else
 				throw new Error('Only <AccordionHeader> and <AccordionPanel> are valid children of <AccordionSection>.');
 		});
 
-		return (
-			<AccordionSectionContext.Provider value={{
-				id,
-			}}>
-				{ section }
-			</AccordionSectionContext.Provider>
-		);
+		return section;
 	}
 }
 

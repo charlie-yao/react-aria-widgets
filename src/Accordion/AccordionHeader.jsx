@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 import { AccordionContext } from 'src/Accordion';
-import { AccordionSectionContext } from 'src/Accordion/AccordionSection';
 
 //HOCs
 import { createNoOpHOC } from 'src/utils';
@@ -14,11 +13,10 @@ import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionHeader(props) {
 	const {
-		children, onKeyDown, index,
+		children, id, onKeyDown, index,
 		headerProps, buttonProps,
 	} = props;
 	const { headerLevel, toggleSection, allowToggle, expandedSections, setSectionRef } = useContext(AccordionContext);
-	const { id } = useContext(AccordionSectionContext);
 	const isExpanded = expandedSections.has(id);
 	const isDisabled = !allowToggle && isExpanded;
 
@@ -50,6 +48,7 @@ function AccordionHeader(props) {
 
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
+	id: PropTypes.string.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
 	headerProps: PropTypes.object,
