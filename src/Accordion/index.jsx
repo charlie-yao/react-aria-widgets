@@ -80,13 +80,13 @@ class Accordion extends React.Component {
 
 			return React.cloneElement(child, {
 				index: i,
-				onTriggerClick: this.onTriggerClick,
-				onTriggerKeyDown: this.onTriggerKeyDown,
 			});
 		});
 
 		return (
 			<AccordionContext.Provider value={{
+				onTriggerClick: this.onTriggerClick,
+				onTriggerKeyDown: this.onTriggerKeyDown,
 				headerLevel,
 				allowToggle,
 				expandedSections,
