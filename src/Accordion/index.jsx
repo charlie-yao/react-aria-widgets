@@ -16,6 +16,7 @@ export const AccordionContext = React.createContext();
 
 class Accordion extends React.Component {
 	static propTypes = {
+		children: PropTypes.node.isRequired,
 		sections: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.string.isRequired,
 			header: PropTypes.node.isRequired,
@@ -73,7 +74,7 @@ class Accordion extends React.Component {
 
 		const { children, headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
 		const mappedChildren = React.Children.map(children, (child, i) => {
-			const { type, props } = child;
+			const { type } = child;
 
 			if(type !== AccordionSection)
 				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');

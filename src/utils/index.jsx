@@ -15,6 +15,8 @@ import React from 'react';
  * @return {Object}
  */
 export function createNoOpHOC(Component) {
+	/* eslint-disable react/jsx-props-no-spreading */
+
 	const NoOpHOC = React.forwardRef((props, ref) => (
 		<Component { ...props } ref={ ref } />
 	));
@@ -22,6 +24,8 @@ export function createNoOpHOC(Component) {
 	NoOpHOC.displayName = `NoOpHOC-${getDisplayName(Component)}`;
 
 	return NoOpHOC;
+
+	/* eslint-enable react/jsx-props-no-spreading */
 }
 
 /**
