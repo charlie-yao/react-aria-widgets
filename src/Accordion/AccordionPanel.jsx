@@ -13,8 +13,8 @@ import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionPanel(props) {
 	const { children, id, className } = props;
-	const { expandedSections } = useContext(AccordionContext);
-	const isExpanded = expandedSections.has(id);
+	const { getIsExpanded } = useContext(AccordionContext);
+	const isExpanded = getIsExpanded(id);
 
 	return (
 		<BaseAccordionPanel

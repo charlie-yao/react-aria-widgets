@@ -18,8 +18,8 @@ class Accordion extends React.Component {
 		headerLevel: validateHeaderLevelProp,
 		//From <AccordionManager>
 		toggleSection: PropTypes.func.isRequired,
-		allowToggle: PropTypes.bool.isRequired,
-		expandedSections: PropTypes.instanceOf(Set).isRequired,
+		getIsExpanded: PropTypes.func.isRequired,
+		getIsDisabled: PropTypes.func.isRequired,
 		setSectionRef: PropTypes.func.isRequired,
 		focusPrevSection: PropTypes.func.isRequired,
 		focusNextSection: PropTypes.func.isRequired,
@@ -62,7 +62,7 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
+		const { children, headerLevel, getIsExpanded, getIsDisabled, setSectionRef } = this.props;
 		const mappedChildren = React.Children.map(children, (child, i) => {
 			const { type } = child;
 
@@ -79,8 +79,8 @@ class Accordion extends React.Component {
 				onTriggerClick: this.onTriggerClick,
 				onTriggerKeyDown: this.onTriggerKeyDown,
 				headerLevel,
-				allowToggle,
-				expandedSections,
+				getIsExpanded,
+				getIsDisabled,
 				setSectionRef,
 			}}>
 				{ mappedChildren }
@@ -90,4 +90,3 @@ class Accordion extends React.Component {
 }
 
 export default createAccordionManager(Accordion);
-export { Accordion };

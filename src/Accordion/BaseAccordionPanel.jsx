@@ -3,10 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-/*
- * Note that by itself, there is no way to control the
- * visibility of this component.
- */
 function BaseAccordionPanel(props) {
 	const { children, id, labelId, ...rest } = props;
 

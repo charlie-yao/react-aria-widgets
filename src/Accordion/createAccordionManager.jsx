@@ -33,8 +33,8 @@ function createAccordionManager(Component) {
 			return (
 				<Component
 					toggleSection={ this.toggleSection }
-					allowToggle={ this.getAllowToggle() }
-					expandedSections={ expandedSections }
+					getIsExpanded={ this.getIsExpanded }
+					getIsDisabled={ this.getIsDisabled }
 					setSectionRef={ this.setSectionRef }
 					focusPrevSection={ this.focusPrevSection }
 					focusNextSection={ this.focusNextSection }
@@ -53,6 +53,15 @@ function createAccordionManager(Component) {
 			//multiple accordion sections are expanded with no way of closing them.
 			const { allowToggle, allowMultiple } = this.props;
 			return allowMultiple ? true : allowToggle;
+		};
+
+		getIsExpanded = (id) => {
+			const { expandedSections } = this.state;
+			return expandedSections.has(id);
+		};
+
+		getIsDisabled = (id) => {
+			return !this.getAllowToggle() && this.getIsExpanded(id);
 		};
 
 		toggleSection = (sectionId) => {

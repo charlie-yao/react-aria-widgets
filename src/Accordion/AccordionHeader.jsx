@@ -13,9 +13,9 @@ import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionHeader(props) {
 	const { children, id, index, headerProps, buttonProps } = props;
-	const { headerLevel, allowToggle, expandedSections, setSectionRef, onTriggerClick, onTriggerKeyDown } = useContext(AccordionContext);
-	const isExpanded = expandedSections.has(id);
-	const isDisabled = !allowToggle && isExpanded;
+	const { headerLevel, getIsExpanded, getIsDisabled, setSectionRef, onTriggerClick, onTriggerKeyDown } = useContext(AccordionContext);
+	const isExpanded = getIsExpanded(id);
+	const isDisabled = getIsDisabled(id);
 
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,

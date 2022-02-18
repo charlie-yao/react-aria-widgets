@@ -23,8 +23,8 @@ class AccordionSection extends React.Component {
 
 			if(type === AccordionHeader) {
 				return React.cloneElement(child, {
-					index,
 					id,
+					index,
 				});
 			}
 			else if(type === AccordionPanel) {
