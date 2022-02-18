@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,44 +12,14 @@ import { createNoOpHOC } from 'src/utils';
 class AccordionSection extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
+		id: PropTypes.string.isRequired,
 		index: PropTypes.number.isRequired,
-		id: PropTypes.string,
 	};
-
-	static defaultProps = {
-		id: undefined,
-	};
-
-	constructor(props) {
-		super(props);
-
-		const { id } = props;
-
-		this.state = {
-			prevIdProp: id,
-			id: id ? id : uuidv4(),
-		};
-	}
-
-	//---- React Lifecycle Methods ----
-	static getDerivedStateFromProps(props, state) {
-		const { id } = props;
-		const { prevIdProp } = state;
-
-		if(id === prevIdProp)
-			return null;
-
-		return {
-			prevIdProp: id,
-			id: id ? id : uuidv4(),
-		};
-	}
 
 	//---- Rendering ----
 	render() {
-		const { children, index } = this.props;
-		const { id } = this.state;
-		const section = React.Children.map(children, (child) => {
+		const { children, id, index } = this.props;
+		const mappedChildren = React.Children.map(children, child => {
 			const { type } = child;
 
 			if(type === AccordionHeader) {
@@ -67,7 +37,11 @@ class AccordionSection extends React.Component {
 				throw new Error('Only <AccordionHeader> and <AccordionPanel> are valid children of <AccordionSection>.');
 		});
 
-		return section;
+		return (
+			<Fragment>
+				{ mappedChildren }
+			</Fragment>
+		);
 	}
 }
 
