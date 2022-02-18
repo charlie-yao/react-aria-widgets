@@ -1,10 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
 import AccordionSection from 'src/Accordion/AccordionSection';
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
 
 //HOCs
 import createAccordionManager from 'src/Accordion/createAccordionManager';
@@ -17,11 +15,6 @@ export const AccordionContext = React.createContext();
 class Accordion extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
-		sections: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.string.isRequired,
-			header: PropTypes.node.isRequired,
-			panel: PropTypes.node.isRequired,
-		})).isRequired,
 		headerLevel: validateHeaderLevelProp,
 		//From <AccordionManager>
 		toggleSection: PropTypes.func.isRequired,
@@ -69,9 +62,6 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		//const { sections } = this.props;
-		//return sections.map(this.renderSection);
-
 		const { children, headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
 		const mappedChildren = React.Children.map(children, (child, i) => {
 			const { type } = child;
@@ -97,42 +87,6 @@ class Accordion extends React.Component {
 			</AccordionContext.Provider>
 		);
 	}
-
-	renderSection = (section, i) => {
-		const { headerLevel, allowToggle, expandedSections, setSectionRef } = this.props;
-		const { id, header, panel } = section;
-		const isExpanded = expandedSections.has(id);
-
-		return (
-			<Fragment key={ id }>
-				<AccordionHeader
-					id={ id }
-					controlsId={ this.getPanelId(id) }
-					onClick={ this.onTriggerClick }
-					onKeyDown={ this.onTriggerKeyDown }
-					headerLevel={ headerLevel }
-					index={ i }
-					isExpanded={ isExpanded }
-					isDisabled={ !allowToggle && isExpanded }
-					ref={ setSectionRef }
-				>
-					{ header }
-				</AccordionHeader>
-				<AccordionPanel
-					id={ this.getPanelId(id) }
-					labelId={ id }
-					isExpanded={ isExpanded }
-				>
-					{ panel }
-				</AccordionPanel>
-			</Fragment>
-		);
-	};
-
-	//---- Misc. ----
-	getPanelId = (id) => {
-		return `${id}-panel`;
-	};
 }
 
 export default createAccordionManager(Accordion);

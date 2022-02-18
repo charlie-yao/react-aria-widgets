@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { v4 as uuidv4 } from 'uuid';
 
 //Components and Styles
 import AccordionHeader from 'src/Accordion/AccordionHeader';
@@ -37,11 +36,7 @@ class AccordionSection extends React.Component {
 				throw new Error('Only <AccordionHeader> and <AccordionPanel> are valid children of <AccordionSection>.');
 		});
 
-		return (
-			<Fragment>
-				{ mappedChildren }
-			</Fragment>
-		);
+		return mappedChildren;
 	}
 }
 

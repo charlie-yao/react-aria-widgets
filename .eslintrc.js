@@ -548,9 +548,6 @@ module.exports = {
 		],
 		'react/jsx-filename-extension': [
 			'error',
-			{
-				allow: 'as-needed',
-			},
 		],
 		'react/jsx-first-prop-new-line': [
 			'error',
