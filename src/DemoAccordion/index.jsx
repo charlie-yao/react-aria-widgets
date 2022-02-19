@@ -19,14 +19,14 @@ function DemoAccordion() {
 			</AccordionSection>
 			<AccordionSection id="section2">
 				{
-					(props) => {
+					(args) => {
 						const {
 							id, index, headerLevel, getIsExpanded, getIsDisabled,
-							setSectionRef, onTriggerClick, onTriggerKeyDown
-						} = props;
+							setSectionRef, onTriggerClick, onTriggerKeyDown,
+						} = args;
 						const isExpanded = getIsExpanded(id);
 						const isDisabled = getIsDisabled(id);
-						
+
 						return (
 							<Fragment>
 								<AccordionHeader

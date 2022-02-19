@@ -15,7 +15,7 @@ function AccordionHeader(props) {
 	const {
 		children, id, index, headerLevel,
 		setSectionRef, onTriggerClick, onTriggerKeyDown,
-		isExpanded, isDisabled, headerProps, buttonProps
+		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
 
 	const _buttonProps = Object.assign({}, buttonProps, {

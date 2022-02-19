@@ -40,7 +40,7 @@ class AccordionSection extends React.Component {
 		const { children, ...rest } = this.props;
 		const {
 			id, index, headerLevel, onTriggerClick, onTriggerKeyDown,
-			getIsExpanded, getIsDisabled, setSectionRef
+			getIsExpanded, getIsDisabled, setSectionRef,
 		} = rest;
 
 		if(typeof children === 'function')

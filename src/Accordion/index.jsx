@@ -66,7 +66,7 @@ class Accordion extends React.Component {
 		const {
 			children, headerLevel, allowMultiple, allowToggle,
 			getIsExpanded, getIsDisabled, toggleSection, setSectionRef, focusSection,
-			focusPrevSection, focusNextSection, focusFirstSection, focusLastSection
+			focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
 		} = this.props;
 
 		const mappedChildren = React.Children.map(children, (child, i) => {
@@ -74,7 +74,7 @@ class Accordion extends React.Component {
 
 			if(type !== AccordionSection)
 				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
-			
+
 			return React.cloneElement(child, {
 				index: i,
 				onTriggerClick: this.onTriggerClick,
@@ -94,7 +94,7 @@ class Accordion extends React.Component {
 			});
 		});
 
-		return mappedChildren;	
+		return mappedChildren;
 	}
 }
 
