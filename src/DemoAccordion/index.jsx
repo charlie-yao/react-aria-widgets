@@ -22,7 +22,15 @@ function DemoAccordion() {
 					Section 2
 				</AccordionHeader>
 				<AccordionPanel>
-					Hello world!
+					{
+						({ id, isExpanded }) => {
+							return (
+								<AccordionPanel id={ id } isExpanded={ isExpanded }>
+									Hello World!
+								</AccordionPanel>
+							);
+						}
+					}
 				</AccordionPanel>
 			</AccordionSection>
 			<AccordionSection id="section3">

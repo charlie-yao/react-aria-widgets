@@ -68,12 +68,20 @@ class Accordion extends React.Component {
 
 			if(type !== AccordionSection)
 				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
-
+			
 			return React.cloneElement(child, {
 				index: i,
+				onTriggerClick: this.onTriggerClick,
+				onTriggerKeyDown: this.onTriggerKeyDown,
+				headerLevel,
+				getIsExpanded,
+				getIsDisabled,
+				setSectionRef,
 			});
 		});
 
+		return mappedChildren;	
+		/*
 		return (
 			<AccordionContext.Provider value={{
 				onTriggerClick: this.onTriggerClick,
@@ -86,6 +94,7 @@ class Accordion extends React.Component {
 				{ mappedChildren }
 			</AccordionContext.Provider>
 		);
+		*/
 	}
 }
 
