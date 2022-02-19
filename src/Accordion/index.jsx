@@ -17,10 +17,13 @@ class Accordion extends React.Component {
 		children: PropTypes.node.isRequired,
 		headerLevel: validateHeaderLevelProp,
 		//From <AccordionManager>
-		toggleSection: PropTypes.func.isRequired,
+		allowMultiple: PropTypes.bool.isRequired,
+		allowToggle: PropTypes.bool.isRequired,
 		getIsExpanded: PropTypes.func.isRequired,
 		getIsDisabled: PropTypes.func.isRequired,
+		toggleSection: PropTypes.func.isRequired,
 		setSectionRef: PropTypes.func.isRequired,
+		focusSection: PropTypes.func.isRequired,
 		focusPrevSection: PropTypes.func.isRequired,
 		focusNextSection: PropTypes.func.isRequired,
 		focusFirstSection: PropTypes.func.isRequired,
@@ -62,7 +65,12 @@ class Accordion extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		const { children, headerLevel, getIsExpanded, getIsDisabled, setSectionRef } = this.props;
+		const {
+			children, headerLevel, allowMultiple, allowToggle,
+			getIsExpanded, getIsDisabled, toggleSection, setSectionRef, focusSection,
+			focusPrevSection, focusNextSection, focusFirstSection, focusLastSection
+		} = this.props;
+
 		const mappedChildren = React.Children.map(children, (child, i) => {
 			const { type } = child;
 
@@ -74,9 +82,17 @@ class Accordion extends React.Component {
 				onTriggerClick: this.onTriggerClick,
 				onTriggerKeyDown: this.onTriggerKeyDown,
 				headerLevel,
+				allowMultiple,
+				allowToggle,
 				getIsExpanded,
 				getIsDisabled,
+				toggleSection,
 				setSectionRef,
+				focusSection,
+				focusPrevSection,
+				focusNextSection,
+				focusFirstSection,
+				focusLastSection,
 			});
 		});
 

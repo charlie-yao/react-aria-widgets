@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 //Components and Styles
 import Accordion from 'src/Accordion';
@@ -18,20 +18,34 @@ function DemoAccordion() {
 				</AccordionPanel>
 			</AccordionSection>
 			<AccordionSection id="section2">
-				<AccordionHeader>
-					Section 2
-				</AccordionHeader>
-				<AccordionPanel>
-					{
-						({ id, isExpanded }) => {
-							return (
-								<AccordionPanel id={ id } isExpanded={ isExpanded }>
-									Hello World!
+				{
+					(props) => {
+						const {
+							id, index, headerLevel, getIsExpanded, getIsDisabled,
+							setSectionRef, onTriggerClick, onTriggerKeyDown
+						} = props;
+						
+						return (
+							<Fragment>
+								<AccordionHeader
+									id={ id }
+									index={ index }
+									headerLevel={ headerLevel }
+									getIsExpanded={ getIsExpanded }
+									getIsDisabled={ getIsDisabled }
+									setSectionRef={ setSectionRef }
+									onTriggerClick={ onTriggerClick }
+									onTriggerKeyDown={ onTriggerKeyDown }
+								>
+									Section 2
+								</AccordionHeader>
+								<AccordionPanel id={ id } getIsExpanded={ getIsExpanded }>
+									Hello world!
 								</AccordionPanel>
-							);
-						}
+							</Fragment>
+						);
 					}
-				</AccordionPanel>
+				}
 			</AccordionSection>
 			<AccordionSection id="section3">
 				<AccordionHeader>

@@ -18,48 +18,19 @@ function AccordionPanel(props) {
 
 	const { children, id, className, isExpanded } = props;
 
-	if(typeof children === 'function')
-		return children(props);
-	else {
-		return (
-			<BaseAccordionPanel
-				id={ getPanelId(id) }
-				labelId={ id }
-				className={ `${className} ${isExpanded ? '' : 'hidden'}` }
-			>
-				{ children }
-			</BaseAccordionPanel>
-		);
-	}
+	return (
+		<BaseAccordionPanel
+			id={ getPanelId(id) }
+			labelId={ id }
+			className={ `${className} ${isExpanded ? '' : 'hidden'}` }
+		>
+			{ children }
+		</BaseAccordionPanel>
+	);
 }
 
-/*
- * TODO:
- * In an attempt to have an unopinionated isExpanded...
- * would it make sense to have a component that automatically
- * rendered <BaseAccordionPanel> and also automatically accepts
- * isExpanded (from AccordionSection? HOC that wraps component
- * in an AccordionContext.Consumer?)?
- *
- * <AccordionSection>
- *		<AccordionHeader>
- *			Section 1
- *		</AccordionHeader>
- *		<CustomAccordionPanel>
- *			Section 1 Content
- *		</CustomAccordionPanel>
- * </AccordionSection>
- *
- * I'm thinking... I don't necessarily want to implement
- * hiding the panel because it's somewhat opinionated
- * (class name, do it via styles, etc.)...
- */
-
 AccordionPanel.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.func,
-	]).isRequired,
+	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
 	className: PropTypes.string,
 };

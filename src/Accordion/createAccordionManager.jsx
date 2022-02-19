@@ -27,15 +27,18 @@ function createAccordionManager(Component) {
 
 		//---- Rendering ----
 		render() {
-			const { allowMultiple: amIgnored, allowToggle: atIgnored, ...rest } = this.props;
+			const { allowMultiple, allowToggle: atIgnored, ...rest } = this.props;
 			const { expandedSections } = this.state;
 
 			return (
 				<Component
-					toggleSection={ this.toggleSection }
+					allowMultiple={ allowMultiple }
+					allowToggle={ this.getAllowToggle() }
 					getIsExpanded={ this.getIsExpanded }
 					getIsDisabled={ this.getIsDisabled }
+					toggleSection={ this.toggleSection }
 					setSectionRef={ this.setSectionRef }
+					focusSection={ this.focusSection }
 					focusPrevSection={ this.focusPrevSection }
 					focusNextSection={ this.focusNextSection }
 					focusFirstSection={ this.focusFirstSection }
