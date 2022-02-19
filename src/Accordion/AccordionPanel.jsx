@@ -13,7 +13,7 @@ import { createNoOpHOC } from 'src/utils';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionPanel(props) {
-	const { children, id, className, isExpanded, ...rest } = props;
+	const { children, id, isExpanded, className, ...rest } = props;
 
 	return (
 		<BaseAccordionPanel
@@ -30,6 +30,7 @@ function AccordionPanel(props) {
 AccordionPanel.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
+	isExpanded: PropTypes.bool.isRequired,
 	className: PropTypes.string,
 };
 

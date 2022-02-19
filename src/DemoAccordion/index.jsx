@@ -24,6 +24,8 @@ function DemoAccordion() {
 							id, index, headerLevel, getIsExpanded, getIsDisabled,
 							setSectionRef, onTriggerClick, onTriggerKeyDown
 						} = props;
+						const isExpanded = getIsExpanded(id);
+						const isDisabled = getIsDisabled(id);
 						
 						return (
 							<Fragment>
@@ -31,15 +33,15 @@ function DemoAccordion() {
 									id={ id }
 									index={ index }
 									headerLevel={ headerLevel }
-									getIsExpanded={ getIsExpanded }
-									getIsDisabled={ getIsDisabled }
+									isExpanded={ isExpanded }
+									isDisabled={ isDisabled }
 									setSectionRef={ setSectionRef }
 									onTriggerClick={ onTriggerClick }
 									onTriggerKeyDown={ onTriggerKeyDown }
 								>
 									Section 2
 								</AccordionHeader>
-								<AccordionPanel id={ id } getIsExpanded={ getIsExpanded }>
+								<AccordionPanel id={ id } isExpanded={ isExpanded }>
 									Hello world!
 								</AccordionPanel>
 							</Fragment>

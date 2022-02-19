@@ -19,9 +19,9 @@ class AccordionSection extends React.Component {
 		]).isRequired,
 		id: PropTypes.string.isRequired,
 		index: PropTypes.number.isRequired,
+		headerLevel: validateHeaderLevelProp.isRequired,
 		onTriggerClick: PropTypes.func.isRequired,
 		onTriggerKeyDown: PropTypes.func.isRequired,
-		headerLevel: validateHeaderLevelProp,
 		allowMultiple: PropTypes.bool.isRequired,
 		allowToggle: PropTypes.bool.isRequired,
 		getIsExpanded: PropTypes.func.isRequired,
@@ -39,7 +39,7 @@ class AccordionSection extends React.Component {
 	render() {
 		const { children, ...rest } = this.props;
 		const {
-			id, index, onTriggerClick, onTriggerKeyDown, headerLevel,
+			id, index, headerLevel, onTriggerClick, onTriggerKeyDown,
 			getIsExpanded, getIsDisabled, setSectionRef
 		} = rest;
 
@@ -55,9 +55,9 @@ class AccordionSection extends React.Component {
 					return React.cloneElement(child, {
 						id,
 						index,
+						headerLevel,
 						onTriggerClick,
 						onTriggerKeyDown,
-						headerLevel,
 						isExpanded,
 						isDisabled,
 						setSectionRef,

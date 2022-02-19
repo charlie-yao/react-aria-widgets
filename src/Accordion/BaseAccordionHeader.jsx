@@ -8,7 +8,7 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 const BaseAccordionHeader = React.forwardRef((props, ref) => {
 	const {
-		children, id, controlsId, onClick, onKeyDown, headerLevel,
+		children, id, controlsId, headerLevel, onClick, onKeyDown,
 		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
 	const HeaderElement = `h${headerLevel}`;
@@ -36,9 +36,9 @@ BaseAccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
 	controlsId: PropTypes.string.isRequired,
+	headerLevel: validateHeaderLevelProp.isRequired,
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
-	headerLevel: validateHeaderLevelProp.isRequired,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	headerProps: PropTypes.object,
