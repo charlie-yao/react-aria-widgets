@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import AccordionSection from 'src/Accordion/AccordionSection';
 
 //HOCs
-import createAccordionManager from 'src/Accordion/createAccordionManager';
+import withAccordionManager from 'src/Accordion/withAccordionManager';
 
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
@@ -98,4 +98,4 @@ class Accordion extends React.Component {
 	}
 }
 
-export default createAccordionManager(Accordion);
+export default withAccordionManager(Accordion);
