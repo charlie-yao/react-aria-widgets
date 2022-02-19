@@ -10,8 +10,6 @@ import createAccordionManager from 'src/Accordion/createAccordionManager';
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-export const AccordionContext = React.createContext();
-
 class Accordion extends React.Component {
 	static propTypes = {
 		children: PropTypes.node.isRequired,
@@ -97,20 +95,6 @@ class Accordion extends React.Component {
 		});
 
 		return mappedChildren;	
-		/*
-		return (
-			<AccordionContext.Provider value={{
-				onTriggerClick: this.onTriggerClick,
-				onTriggerKeyDown: this.onTriggerKeyDown,
-				headerLevel,
-				getIsExpanded,
-				getIsDisabled,
-				setSectionRef,
-			}}>
-				{ mappedChildren }
-			</AccordionContext.Provider>
-		);
-		*/
 	}
 }
 

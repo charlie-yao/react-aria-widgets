@@ -37,7 +37,6 @@ class AccordionSection extends React.Component {
 
 	//---- Rendering ----
 	render() {
-		//const { children, id, index } = this.props;
 		const { children, ...rest } = this.props;
 		const {
 			id, index, onTriggerClick, onTriggerKeyDown, headerLevel,

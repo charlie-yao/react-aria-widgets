@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
-import { AccordionContext } from 'src/Accordion';
 
 //HOCs
 import { createNoOpHOC } from 'src/utils';
@@ -12,9 +11,7 @@ import { createNoOpHOC } from 'src/utils';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionHeader(props) {
-	//const { children, id, index, headerProps, buttonProps } = props;
 	const { children, id, index, headerProps, buttonProps, headerLevel, getIsExpanded, getIsDisabled, setSectionRef, onTriggerClick, onTriggerKeyDown } = props;
-	//const { headerLevel, getIsExpanded, getIsDisabled, setSectionRef, onTriggerClick, onTriggerKeyDown } = useContext(AccordionContext);
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
 

@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
-import { AccordionContext } from 'src/Accordion';
 
 //HOCs
 import { createNoOpHOC } from 'src/utils';
@@ -12,10 +11,6 @@ import { createNoOpHOC } from 'src/utils';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionPanel(props) {
-	//const { children, id, className } = props;
-	//const { getIsExpanded } = useContext(AccordionContext);
-	//const isExpanded = getIsExpanded(id);
-
 	const { children, id, className, isExpanded } = props;
 
 	return (
