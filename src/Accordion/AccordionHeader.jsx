@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 //HOCs
-import { createNoOpHOC } from 'src/utils';
+import withNoOp from 'src/hocs/withNoOp';
 
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
@@ -59,4 +59,4 @@ AccordionHeader.defaultProps = {
 	buttonProps: {},
 };
 
-export default createNoOpHOC(AccordionHeader);
+export default withNoOp(AccordionHeader);

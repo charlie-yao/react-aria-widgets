@@ -6,7 +6,7 @@ import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
 //HOCs
-import { createNoOpHOC } from 'src/utils';
+import withNoOp from 'src/hocs/withNoOp';
 
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
@@ -73,4 +73,4 @@ AccordionSection.propTypes = {
 	focusLastSection: PropTypes.func.isRequired,
 };
 
-export default createNoOpHOC(AccordionSection);
+export default withNoOp(AccordionSection);
