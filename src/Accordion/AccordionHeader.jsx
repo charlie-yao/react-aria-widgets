@@ -11,9 +11,10 @@ import { createNoOpHOC } from 'src/utils';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionHeader(props) {
-	const { children, id, index, headerProps, buttonProps, headerLevel, getIsExpanded, getIsDisabled, setSectionRef, onTriggerClick, onTriggerKeyDown } = props;
-	const isExpanded = getIsExpanded(id);
-	const isDisabled = getIsDisabled(id);
+	const {
+		children, id, index, headerProps, buttonProps, headerLevel, isExpanded, isDisabled,
+		setSectionRef, onTriggerClick, onTriggerKeyDown,
+	} = props;
 
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,

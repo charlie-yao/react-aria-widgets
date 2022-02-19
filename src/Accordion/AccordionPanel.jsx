@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,13 +13,14 @@ import { createNoOpHOC } from 'src/utils';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionPanel(props) {
-	const { children, id, className, isExpanded } = props;
+	const { children, id, className, isExpanded, ...rest } = props;
 
 	return (
 		<BaseAccordionPanel
 			id={ getPanelId(id) }
 			labelId={ id }
 			className={ `${className} ${isExpanded ? '' : 'hidden'}` }
+			{ ...rest }
 		>
 			{ children }
 		</BaseAccordionPanel>

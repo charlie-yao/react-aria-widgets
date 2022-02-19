@@ -48,6 +48,8 @@ class AccordionSection extends React.Component {
 		else {
 			return React.Children.map(children, child => {
 				const { type } = child;
+				const isExpanded = getIsExpanded(id);
+				const isDisabled = getIsDisabled(id);
 
 				if(type === AccordionHeader) {
 					return React.cloneElement(child, {
@@ -56,15 +58,15 @@ class AccordionSection extends React.Component {
 						onTriggerClick,
 						onTriggerKeyDown,
 						headerLevel,
-						getIsExpanded,
-						getIsDisabled,
+						isExpanded,
+						isDisabled,
 						setSectionRef,
 					});
 				}
 				else if(type === AccordionPanel) {
 					return React.cloneElement(child, {
 						id,
-						isExpanded: getIsExpanded(id),
+						isExpanded,
 					});
 				}
 				else
