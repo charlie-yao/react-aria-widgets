@@ -38,7 +38,7 @@ BaseAccordionHeader.propTypes = {
 	controlsId: PropTypes.string.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
 	onClick: PropTypes.func.isRequired,
-	onKeyDown: PropTypes.func.isRequired,
+	onKeyDown: PropTypes.func,
 	isExpanded: PropTypes.bool,
 	isDisabled: PropTypes.bool,
 	headerProps: PropTypes.object,
@@ -46,6 +46,7 @@ BaseAccordionHeader.propTypes = {
 };
 
 BaseAccordionHeader.defaultProps = {
+	onKeyDown: undefined,
 	isExpanded: false,
 	isDisabled: false,
 	headerProps: {},
