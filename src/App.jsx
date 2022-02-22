@@ -1,47 +1,17 @@
 import React from 'react';
 
 //Components and Styles
-import Accordion from 'src/Accordion';
+import DemoAccordion from 'src/DemoAccordion';
 import MenuBarOne from 'src/MenuBarOne';
 import MenuBarTwo from 'src/MenuBarTwo';
 import MenuButtonOne from 'src/MenuButtonOne';
 import MenuButtonTwo from 'src/MenuButtonTwo';
 
-function onDummySubmit(event) {
-	event.preventDefault();
-}
-
-const DUMMY_ACCORDION_SECTIONS = [
-	{
-		id: 'section1',
-		header: 'Section 1',
-		panel: (
-			<form onSubmit={ onDummySubmit }>
-				<label htmlFor="section1Input1">Dummy Input #1</label>
-				<input type="text" id="section1Input1" required />
-				<label htmlFor="section1Input2">Dummy Input #2</label>
-				<input type="number" min="0" max="100" required step="1" id="section1Input2" />
-				<button type="submit">Submit</button>
-			</form>
-		),
-	},
-	{
-		id: 'section2',
-		header: 'Section 2',
-		panel: 'Section 2 content',
-	},
-	{
-		id: 'section3',
-		header: 'Section 3',
-		panel: 'Section 3 content',
-	},
-];
-
 function App() {
 	return (
 		<main>
 			<h1>Accordion</h1>
-			<Accordion headerLevel={ 2 } sections={ DUMMY_ACCORDION_SECTIONS } />
+			<DemoAccordion />
 			<h1>Menu, Menubar, Menu Button</h1>
 			<MenuBarOne />
 			<MenuBarTwo />

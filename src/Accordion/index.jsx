@@ -1,121 +1,101 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
+import AccordionSection from 'src/Accordion/AccordionSection';
 
 //HOCs
-import createAccordionManager from 'src/Accordion/createAccordionManager';
+import withAccordionManager from 'src/Accordion/withAccordionManager';
 
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 class Accordion extends React.Component {
 	static propTypes = {
-		headerLevel: validateHeaderLevelProp.isRequired,
-		sections: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.string.isRequired,
-			header: PropTypes.node.isRequired,
-			panel: PropTypes.node.isRequired,
-		})).isRequired,
-		//From <AccordionManager> or another state manager
-		expandedSections: PropTypes.instanceOf(Set).isRequired,
+		children: PropTypes.node.isRequired,
+		headerLevel: validateHeaderLevelProp,
+		//From <AccordionManager>
+		allowMultiple: PropTypes.bool.isRequired,
 		allowToggle: PropTypes.bool.isRequired,
+		getIsExpanded: PropTypes.func.isRequired,
+		getIsDisabled: PropTypes.func.isRequired,
 		toggleSection: PropTypes.func.isRequired,
+		setSectionRef: PropTypes.func.isRequired,
+		focusSection: PropTypes.func.isRequired,
+		focusPrevSection: PropTypes.func.isRequired,
+		focusNextSection: PropTypes.func.isRequired,
+		focusFirstSection: PropTypes.func.isRequired,
+		focusLastSection: PropTypes.func.isRequired,
 	};
 
-	constructor(props) {
-		super(props);
-
-		const { sections } = props;
-
-		this.triggerRefs = [];
-
-		sections.forEach((section, i) => {
-			this.triggerRefs[i] = React.createRef();
-		});
-	}
+	static defaultProps = {
+		headerLevel: 2,
+	};
 
 	//---- Events ----
 	onTriggerClick = (event) => {
-		const { sections, toggleSection } = this.props;
-		const index = Number.parseInt(event.target.dataset.index, 10);
-		toggleSection(sections[index].id);
+		const { toggleSection } = this.props;
+		toggleSection(event.target.id);
 	};
 
 	onTriggerKeyDown = (event) => {
-		const { sections } = this.props;
+		const { focusPrevSection, focusNextSection, focusFirstSection, focusLastSection } = this.props;
 		const { key } = event;
 		const index = Number.parseInt(event.target.dataset.index, 10);
 
-		switch(key) {
-			case 'ArrowUp':
-				event.preventDefault();
-
-				if(index === 0)
-					this.triggerRefs[sections.length - 1].current.focus();
-				else
-					this.triggerRefs[index - 1].current.focus();
-
-				break;
-			case 'ArrowDown':
-				event.preventDefault();
-
-				if(index === sections.length - 1)
-					this.triggerRefs[0].current.focus();
-				else
-					this.triggerRefs[index + 1].current.focus();
-
-				break;
-			case 'Home':
-				event.preventDefault();
-				this.triggerRefs[0].current.focus();
-				break;
-			case 'End':
-				event.preventDefault();
-				this.triggerRefs[sections.length - 1].current.focus();
-				break;
+		if(key === 'ArrowUp') {
+			event.preventDefault();
+			focusPrevSection(index);
+		}
+		else if(key === 'ArrowDown') {
+			event.preventDefault();
+			focusNextSection(index);
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+			focusFirstSection();
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+			focusLastSection();
 		}
 	};
 
 	//---- Rendering ----
 	render() {
-		const { sections } = this.props;
-		return sections.map(this.renderSection);
+		const {
+			children, headerLevel, allowMultiple, allowToggle,
+			getIsExpanded, getIsDisabled, toggleSection, setSectionRef, focusSection,
+			focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
+		} = this.props;
+
+		const mappedChildren = React.Children.map(children, (child, i) => {
+			const { type } = child;
+
+			if(type !== AccordionSection)
+				throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
+
+			return React.cloneElement(child, {
+				index: i,
+				onTriggerClick: this.onTriggerClick,
+				onTriggerKeyDown: this.onTriggerKeyDown,
+				headerLevel,
+				allowMultiple,
+				allowToggle,
+				getIsExpanded,
+				getIsDisabled,
+				toggleSection,
+				setSectionRef,
+				focusSection,
+				focusPrevSection,
+				focusNextSection,
+				focusFirstSection,
+				focusLastSection,
+			});
+		});
+
+		return mappedChildren;
 	}
-
-	renderSection = (section, i) => {
-		const { allowToggle, headerLevel, expandedSections } = this.props;
-		const { id, header, panel } = section;
-		const isExpanded = expandedSections.has(id);
-
-		return (
-			<Fragment key={ id }>
-				<AccordionHeader
-					id={ id }
-					panelId={ `${id}Panel` }
-					headerLevel={ headerLevel }
-					index={ i }
-					isExpanded={ isExpanded }
-					isDisabled={ !allowToggle && isExpanded }
-					ref={ this.triggerRefs[i] }
-					onClick={ this.onTriggerClick }
-					onKeyDown={ this.onTriggerKeyDown }
-				>
-					{ header }
-				</AccordionHeader>
-				<AccordionPanel
-					id={ `${id}Panel` }
-					headerId={ id }
-					isExpanded={ isExpanded }
-				>
-					{ panel }
-				</AccordionPanel>
-			</Fragment>
-		);
-	};
 }
 
-export default createAccordionManager(Accordion);
-export { Accordion };
+export default withAccordionManager(Accordion);
