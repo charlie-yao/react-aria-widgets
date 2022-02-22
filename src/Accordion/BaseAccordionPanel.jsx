@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
  */
 function BaseAccordionPanel(props) {
 	const { children, id, labelId, tagName: Component, ...rest } = props;
-	
+
 	return (
 		<Component id={ id } aria-labelledby={ labelId } { ...rest }>
 			{ children }
@@ -35,7 +35,7 @@ BaseAccordionPanel.propTypes = {
 	tagName: PropTypes.string,
 };
 
-BaseAccordionPanel.propTypes = {
+BaseAccordionPanel.defaultProps = {
 	labelId: undefined,
 	tagName: 'section',
 };
