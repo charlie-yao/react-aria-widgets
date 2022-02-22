@@ -1,29 +1,41 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+
+//HOCs
+import withNoOp from 'src/hocs/withNoOp';
+
+//Misc.
+import { getPanelId } from 'src/Accordion/utils';
+
 function AccordionPanel(props) {
-	const { children, id, headerId, isExpanded } = props;
+	const { children, id, isExpanded, className, ...rest } = props;
 
 	return (
-		<section
-			id={ id }
-			aria-labelledby={ headerId }
-			hidden={ !isExpanded }
+		<BaseAccordionPanel
+			id={ getPanelId(id) }
+			labelId={ id }
+			className={ `${className} ${isExpanded ? '' : 'hidden'}` }
+			{ ...rest }
 		>
 			{ children }
-		</section>
+		</BaseAccordionPanel>
 	);
 }
 
 AccordionPanel.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	headerId: PropTypes.string.isRequired,
-	isExpanded: PropTypes.bool,
+	isExpanded: PropTypes.bool.isRequired,
+	className: PropTypes.string,
 };
 
 AccordionPanel.defaultProps = {
-	isExpanded: false,
+	className: '',
 };
 
-export default AccordionPanel;
+export default withNoOp(AccordionPanel);

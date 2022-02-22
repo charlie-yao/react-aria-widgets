@@ -1,52 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//Components and Styles
+import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
+
+//HOCs
+import withNoOp from 'src/hocs/withNoOp';
+
 //Misc.
+import { getPanelId } from 'src/Accordion/utils';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-const AccordionHeader = React.forwardRef(function AccordionHeader(props, ref) {
+function AccordionHeader(props) {
 	const {
-		headerLevel, children, id, panelId, onClick, onKeyDown,
-		isExpanded, isDisabled, index,
+		children, id, index, headerLevel,
+		setSectionRef, onTriggerClick, onTriggerKeyDown,
+		isExpanded, isDisabled, headerProps, buttonProps,
 	} = props;
-	const HeaderElement = `h${headerLevel}`;
+
+	const _buttonProps = Object.assign({}, buttonProps, {
+		'data-index': index,
+	});
 
 	return (
-		<HeaderElement>
-			<button
-				id={ id }
-				type="button"
-				aria-controls={ panelId }
-				aria-expanded={ isExpanded }
-				aria-disabled={ isDisabled }
-				data-index={ index }
-				ref={ ref }
-				onClick={ onClick }
-				onKeyDown={ onKeyDown }
-			>
-				{ children }
-			</button>
-		</HeaderElement>
+		<BaseAccordionHeader
+			id={ id }
+			controlsId={ getPanelId(id) }
+			headerLevel={ headerLevel }
+			onClick={ onTriggerClick }
+			onKeyDown={ onTriggerKeyDown }
+			isExpanded={ isExpanded }
+			isDisabled={ isDisabled }
+			headerProps={ headerProps }
+			buttonProps={ _buttonProps }
+			ref={ setSectionRef }
+		>
+			{ children }
+		</BaseAccordionHeader>
 	);
-});
+}
 
 AccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
-	panelId: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired,
-	onKeyDown: PropTypes.func.isRequired,
 	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
-	isExpanded: PropTypes.bool,
-	isDisabled: PropTypes.bool,
+	setSectionRef: PropTypes.func.isRequired,
+	onTriggerClick: PropTypes.func.isRequired,
+	onTriggerKeyDown: PropTypes.func.isRequired,
+	isExpanded: PropTypes.bool.isRequired,
+	isDisabled: PropTypes.bool.isRequired,
+	headerProps: PropTypes.object,
+	buttonProps: PropTypes.object,
 };
 
 AccordionHeader.defaultProps = {
-	isExpanded: false,
-	isDisabled: false,
+	headerProps: {},
+	buttonProps: {},
 };
 
-AccordionHeader.displayName = 'AccordionHeader';
-
-export default AccordionHeader;
+export default withNoOp(AccordionHeader);
