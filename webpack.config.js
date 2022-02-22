@@ -10,7 +10,7 @@ module.exports = {
 			src: path.resolve(__dirname, 'src/'),
 		},
 	},
-	entry: './src/index.jsx',
+	entry: './src/demoIndex.jsx',
 	output: {
 		filename: 'index.js',
 		path: path.resolve(__dirname, 'dist'),
