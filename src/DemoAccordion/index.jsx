@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
 
 //Components and Styles
-import Accordion from 'src/Accordion';
-import AccordionSection from 'src/Accordion/AccordionSection';
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
+import {
+	Accordion,
+	AccordionSection,
+	AccordionHeader,
+	AccordionPanel,
+} from 'src/Accordion';
 
 function DemoAccordion() {
 	return (
