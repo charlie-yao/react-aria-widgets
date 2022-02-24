@@ -10,9 +10,12 @@ module.exports = {
 			src: path.resolve(__dirname, 'src/'),
 		},
 	},
-	entry: './src/demoIndex.jsx',
+	entry: {
+		index: './src/index.jsx',
+		accordion: './src/Accordion/index.js',
+	},
 	output: {
-		filename: 'index.js',
+		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
 	},
