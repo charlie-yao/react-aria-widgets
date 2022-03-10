@@ -24,13 +24,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       },
       {
         "name": "@charlie-yao/react-aria-widgets",
-        "reference": "workspace:packages/react-aria-widgets"
+        "reference": "workspace:packages/react-aria-widgets-old"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@charlie-yao/react-aria-widgets", ["workspace:packages/react-aria-widgets"]],
+      ["@charlie-yao/react-aria-widgets", ["workspace:packages/react-aria-widgets-old"]],
       ["react-aria-widgets", ["workspace:."]]
     ],
     "fallbackPool": [
@@ -2607,10 +2607,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@charlie-yao/react-aria-widgets", [
-        ["workspace:packages/react-aria-widgets", {
-          "packageLocation": "./packages/react-aria-widgets/",
+        ["workspace:packages/react-aria-widgets-old", {
+          "packageLocation": "./packages/react-aria-widgets-old/",
           "packageDependencies": [
-            ["@charlie-yao/react-aria-widgets", "workspace:packages/react-aria-widgets"]
+            ["@charlie-yao/react-aria-widgets", "workspace:packages/react-aria-widgets-old"]
           ],
           "linkType": "SOFT",
         }]
