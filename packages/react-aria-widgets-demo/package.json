@@ -1,29 +1,33 @@
 {
-  "name": "@charlie-yao/react-aria-widgets-demo",
-  "version": "0.0.0",
-  "description": "Demo and documentation for react-aria-widgets",
-  "author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
-  "homepage": "https://github.com/charlie-yao/react-aria-widgets#readme",
-  "license": "MIT",
-  "main": "lib/react-aria-widgets-demo.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/charlie-yao/react-aria-widgets/issues"
-  }
+	"name": "@charlie-yao/react-aria-widgets-demo",
+	"version": "0.0.0",
+	"description": "Demo and documentation for react-aria-widgets",
+	"author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
+	"homepage": "https://github.com/charlie-yao/react-aria-widgets#readme",
+	"license": "MIT",
+	"main": "lib/react-aria-widgets-demo.js",
+	"directories": {
+		"lib": "lib",
+		"test": "__tests__"
+	},
+	"files": [
+		"lib"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
+	},
+	"dependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	}
 }
