@@ -1573,8 +1573,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@charlie-yao/react-aria-widgets@workspace:packages/react-aria-widgets"
   peerDependencies:
-    react: ^17
-    react-dom: ^17
+    react: ^17.0.2
+    react-dom: ^17.0.2
   languageName: unknown
   linkType: soft
 
@@ -8558,30 +8558,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-aria-widgets@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-aria-widgets@workspace:."
-  dependencies:
-    "@babel/core": ^7.17.5
-    "@babel/eslint-parser": ^7.17.0
-    "@babel/preset-env": ^7.16.11
-    "@babel/preset-react": ^7.16.7
-    babel-loader: ^8.2.3
-    css-loader: ^6.7.1
-    eslint: ^8.3.0
-    eslint-plugin-react: ^7.27.1
-    html-webpack-plugin: ^5.5.0
-    lerna: ^4.0.0
-    prop-types: ^15.8.1
-    sass: ^1.44.0
-    sass-loader: ^12.3.0
-    style-loader: ^3.3.1
-    webpack: ^5.64.4
-    webpack-cli: ^4.9.1
-    webpack-dev-server: ^4.6.0
-  languageName: unknown
-  linkType: soft
-
 "react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
@@ -9127,6 +9103,32 @@ __metadata:
   checksum: 87f4164e396f0171b0a3386cc1877a817f572148ee13a7e113b238e48e8a9f2f31d009a92ec38a591ff1567d9662c6b67fd8818a2dbbaed74bc26a87a2a4a9a0
   languageName: node
   linkType: hard
+
+"root@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root@workspace:."
+  dependencies:
+    "@babel/core": ^7.17.5
+    "@babel/eslint-parser": ^7.17.0
+    "@babel/preset-env": ^7.16.11
+    "@babel/preset-react": ^7.16.7
+    babel-loader: ^8.2.3
+    css-loader: ^6.7.1
+    eslint: ^8.3.0
+    eslint-plugin-react: ^7.27.1
+    html-webpack-plugin: ^5.5.0
+    lerna: ^4.0.0
+    prop-types: ^15.8.1
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    sass: ^1.44.0
+    sass-loader: ^12.3.0
+    style-loader: ^3.3.1
+    webpack: ^5.64.4
+    webpack-cli: ^4.9.1
+    webpack-dev-server: ^4.6.0
+  languageName: unknown
+  linkType: soft
 
 "run-async@npm:^2.4.0":
   version: 2.4.1
