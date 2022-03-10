@@ -5,6 +5,7 @@
 	"author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
 	"homepage": "https://github.com/charlie-yao/react-aria-widgets#readme",
 	"license": "MIT",
+	"private": true,
 	"main": "lib/react-aria-widgets-demo.js",
 	"directories": {
 		"lib": "lib",
