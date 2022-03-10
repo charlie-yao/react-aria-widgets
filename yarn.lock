@@ -1560,6 +1560,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@charlie-yao/react-aria-widgets-demo@workspace:packages/react-aria-widgets-demo":
+  version: 0.0.0-use.local
+  resolution: "@charlie-yao/react-aria-widgets-demo@workspace:packages/react-aria-widgets-demo"
+  languageName: unknown
+  linkType: soft
+
 "@charlie-yao/react-aria-widgets@workspace:packages/react-aria-widgets":
   version: 0.0.0-use.local
   resolution: "@charlie-yao/react-aria-widgets@workspace:packages/react-aria-widgets"
@@ -6889,7 +6895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -8561,8 +8567,6 @@ __metadata:
     html-webpack-plugin: ^5.5.0
     lerna: ^4.0.0
     prop-types: ^15.8.1
-    react: ^17.0.2
-    react-dom: ^17.0.2
     sass: ^1.44.0
     sass-loader: ^12.3.0
     style-loader: ^3.3.1
@@ -8572,33 +8576,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"react-dom@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
-  peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^16.13.1, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
-  languageName: node
-  linkType: hard
-
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
   languageName: node
   linkType: hard
 
@@ -9195,16 +9176,6 @@ __metadata:
   bin:
     sass: sass.js
   checksum: 35b5b21ee5f9ca4012793052c203df0b4114f33b8c33bb4cba21c90d3141337a8a19e3ed934f2c783ace80a3534333c5248dc1a2f2e5ba45ce326591d3a08051
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 
