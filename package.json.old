@@ -2,20 +2,25 @@
 	"name": "react-aria-widgets",
 	"packageManager": "yarn@3.1.1",
 	"workspaces": [
-		"packages/*"
+		"packages/*",
 	],
 	"scripts": {
 		"build": "webpack",
 		"start": "webpack serve",
 		"lint": "eslint --fix --ext .jsx,.js ./"
 	},
+	"dependencies": {
+		"prop-types": "^15.7.2",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
 	"devDependencies": {
-		"@babel/core": "^7.17.5",
-		"@babel/eslint-parser": "^7.17.0",
-		"@babel/preset-env": "^7.16.11",
-		"@babel/preset-react": "^7.16.7",
+		"@babel/core": "^7.16.0",
+		"@babel/eslint-parser": "^7.16.3",
+		"@babel/preset-env": "^7.16.4",
+		"@babel/preset-react": "^7.16.0",
 		"babel-loader": "^8.2.3",
-		"css-loader": "^6.7.1",
+		"css-loader": "^6.5.1",
 		"eslint": "^8.3.0",
 		"eslint-plugin-react": "^7.27.1",
 		"html-webpack-plugin": "^5.5.0",
@@ -26,10 +31,5 @@
 		"webpack": "^5.64.4",
 		"webpack-cli": "^4.9.1",
 		"webpack-dev-server": "^4.6.0"
-	},
-	"dependencies": {
-		"prop-types": "^15.8.1",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
 	}
 }
