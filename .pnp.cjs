@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["core-js", "npm:3.21.1"],
             ["lerna", "npm:4.0.0"]
           ],
           "linkType": "SOFT",
@@ -20425,6 +20426,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["root", "workspace:."],
+            ["core-js", "npm:3.21.1"],
             ["lerna", "npm:4.0.0"]
           ],
           "linkType": "SOFT",
