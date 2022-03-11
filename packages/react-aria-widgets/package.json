@@ -27,9 +27,7 @@
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"build": "webpack",
 		"start": "webpack serve",
-		"lint": "eslint --fix --ext .jsx,.js ./",
-		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"lint": "eslint --fix --ext .jsx,.js ./"
 	},
 	"bugs": {
 		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
@@ -44,20 +42,10 @@
 		"@babel/preset-env": "^7.16.11",
 		"@babel/preset-react": "^7.16.7",
 		"@mdx-js/react": "^1.6.22",
-		"@storybook/addon-actions": "^6.4.19",
-		"@storybook/addon-docs": "^6.4.19",
-		"@storybook/addon-essentials": "^6.4.19",
-		"@storybook/addon-interactions": "^6.4.19",
-		"@storybook/addon-links": "^6.4.19",
-		"@storybook/builder-webpack5": "^6.4.19",
-		"@storybook/manager-webpack5": "^6.4.19",
-		"@storybook/react": "^6.4.19",
-		"@storybook/testing-library": "^0.0.9",
 		"babel-loader": "^8.2.3",
 		"css-loader": "^6.7.1",
 		"eslint": "^8.3.0",
 		"eslint-plugin-react": "^7.27.1",
-		"eslint-plugin-storybook": "^0.5.7",
 		"html-webpack-plugin": "^5.5.0",
 		"prop-types": "^15.8.1",
 		"react": "^17.0.2",

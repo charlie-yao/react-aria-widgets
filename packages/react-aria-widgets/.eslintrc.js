@@ -7,7 +7,7 @@ module.exports = {
 		es2021: true,
 		node: true
 	},
-	extends: ["eslint:recommended", "plugin:react/recommended", "plugin:storybook/recommended"],
+	extends: ["eslint:recommended", "plugin:react/recommended"],
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true
