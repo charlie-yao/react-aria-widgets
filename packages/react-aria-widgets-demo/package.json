@@ -1,21 +1,17 @@
 {
 	"name": "@charlie-yao/react-aria-widgets-demo",
 	"version": "0.0.0",
-	"description": "Demo and documentation for react-aria-widgets",
+	"description": "Demo and documentation website for react-aria-widgets",
 	"author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
-	"homepage": "https://github.com/charlie-yao/react-aria-widgets#readme",
+	"homepage": "https://github.com/charlie-yao/react-aria-widgets",
 	"license": "MIT",
 	"private": true,
-	"main": "lib/react-aria-widgets-demo.js",
-	"directories": {
-		"lib": "lib",
-		"test": "__tests__"
-	},
+	"main": "dist/index.bundle.js",
 	"files": [
-		"lib"
+		"dist/**/*"
 	],
 	"publishConfig": {
-		"access": "public"
+		"access": "private"
 	},
 	"repository": {
 		"type": "git",

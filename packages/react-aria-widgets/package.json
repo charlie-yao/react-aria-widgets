@@ -10,9 +10,9 @@
 		"accessibility"
 	],
 	"author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
-	"homepage": "https://github.com/charlie-yao/react-aria-widgets#readme",
+	"homepage": "https://github.com/charlie-yao/react-aria-widgets",
 	"license": "MIT",
-	"main": "dist/index.js",
+	"main": "dist/index.bundle.js",
 	"files": [
 		"dist/**/*"
 	],
