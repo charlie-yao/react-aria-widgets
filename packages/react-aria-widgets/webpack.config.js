@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
@@ -64,12 +63,6 @@ module.exports = {
 			},
 		],
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			title: 'Hello world!',
-			template: 'template.html',
-		}),
-	],
 	devServer: {
 		static: './dist',
 	},
