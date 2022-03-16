@@ -24,7 +24,6 @@
 		"url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1",
 		"build": "webpack",
 		"start": "webpack serve",
 		"lint": "eslint --fix --ext .jsx,.js ./",
