@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Components and Styles
-import BaseAccordionHeader from './BaseAccordionHeader';
+import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 export default {
 	title: 'Accordion/BaseAccordionHeader',

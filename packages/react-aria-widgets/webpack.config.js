@@ -1,5 +1,10 @@
 const path = require('path');
 
+const SCSS_LOADER = {
+	test: /\.scss$/u,
+	use: [ 'style-loader', 'css-loader', 'sass-loader' ],
+};
+
 module.exports = {
 	mode: 'development',
 	devtool: 'inline-source-map',
@@ -53,10 +58,9 @@ module.exports = {
 				test: /\.css$/u,
 				use: [ 'style-loader', 'css-loader' ],
 			},
-			{
-				test: /\.scss$/u,
-				use: [ 'style-loader', 'css-loader', 'sass-loader' ],
-			},
+			SCSS_LOADER,
 		],
 	},
 };
+
+module.exports.SCSS_LOADER = SCSS_LOADER;

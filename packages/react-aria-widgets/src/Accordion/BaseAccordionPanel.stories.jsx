@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Components and Styles
-import BaseAccordionPanel from './BaseAccordionPanel';
+import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
 export default {
 	title: 'Accordion/BaseAccordionPanel',
