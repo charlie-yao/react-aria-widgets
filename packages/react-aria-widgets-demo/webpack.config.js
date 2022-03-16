@@ -26,7 +26,6 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js$/u,
-				exclude: /\.yarn/u,
 				use: {
 					loader: 'babel-loader',
 					options: {
@@ -36,7 +35,6 @@ module.exports = {
 			},
 			{
 				test: /\.jsx$/u,
-				exclude: /\.yarn/u,
 				use: {
 					loader: 'babel-loader',
 					options: {
@@ -46,12 +44,10 @@ module.exports = {
 			},
 			{
 				test: /\.css$/u,
-				exclude: /\.yarn/u,
 				use: [ 'style-loader', 'css-loader' ],
 			},
 			{
 				test: /\.scss$/u,
-				exclude: /\.yarn/u,
 				use: [ 'style-loader', 'css-loader', 'sass-loader' ],
 			},
 		],
