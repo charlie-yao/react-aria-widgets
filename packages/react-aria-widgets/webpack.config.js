@@ -13,18 +13,22 @@ module.exports = {
 	entry: {
 		index: {
 			import: './src/index.jsx',
-			dependOn: 'vendor',
+			//dependOn: 'vendor',
 		},
 		accordion: {
 			import: './src/Accordion/index.js',
-			dependOn: 'vendor',
+			//dependOn: 'vendor',
 		},
-		vendor: [ 'react', 'react-dom', 'prop-types' ],
+		//vendor: [ 'react', 'react-dom', 'prop-types' ],
 	},
 	output: {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
+		library: {
+			name: '[name]',
+			type: 'umd',
+		},
 	},
 	module: {
 		rules: [
