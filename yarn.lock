@@ -1613,7 +1613,6 @@ __metadata:
     webpack-cli: ^4.9.1
   peerDependencies:
     react: ^17
-    react-dom: ^17
   languageName: unknown
   linkType: soft
 

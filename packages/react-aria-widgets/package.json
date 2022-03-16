@@ -35,8 +35,7 @@
 		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
 	},
 	"peerDependencies": {
-		"react": "^17",
-		"react-dom": "^17"
+		"react": "^17"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",

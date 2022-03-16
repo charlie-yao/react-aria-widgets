@@ -2764,7 +2764,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/react", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:6.4.19"],
             ["@storybook/testing-library", "npm:0.0.9"],
             ["@types/react", null],
-            ["@types/react-dom", null],
             ["babel-loader", "virtual:c93eb2dea05f705b4ff8512133cb00adce32b512951ec3a83f1569337875bf6e63f99cc832631d6d5f987d1919ccbc4866c11df45097ea1f71fbe0eff3f4fa75#npm:8.2.3"],
             ["css-loader", "virtual:c93eb2dea05f705b4ff8512133cb00adce32b512951ec3a83f1569337875bf6e63f99cc832631d6d5f987d1919ccbc4866c11df45097ea1f71fbe0eff3f4fa75#npm:6.7.1"],
             ["eslint", "npm:8.11.0"],
@@ -2780,9 +2779,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["webpack-cli", "virtual:c93eb2dea05f705b4ff8512133cb00adce32b512951ec3a83f1569337875bf6e63f99cc832631d6d5f987d1919ccbc4866c11df45097ea1f71fbe0eff3f4fa75#npm:4.9.2"]
           ],
           "packagePeers": [
-            "@types/react-dom",
             "@types/react",
-            "react-dom",
             "react"
           ],
           "linkType": "SOFT",
