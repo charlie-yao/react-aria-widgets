@@ -5,3 +5,7 @@ import 'src/styles.scss';
 export default {
 	Accordion,
 };
+
+export {
+	Accordion,
+};

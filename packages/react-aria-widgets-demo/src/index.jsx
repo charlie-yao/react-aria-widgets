@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import blah from '@charlie-yao/react-aria-widgets';
+//Components and Styles
+import App from 'src/App';
 
-console.log(blah);
-
-ReactDOM.render(<div>Hello world!</div>, document.getElementById('reactRoot'));
+ReactDOM.render(<App />, document.getElementById('reactRoot'));
