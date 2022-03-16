@@ -8,7 +8,7 @@ export default {
 	component: BaseAccordionPanel,
 };
 
-const Template = (args) => <BaseAccordionPanel {...args} />;
+const Template = args => <BaseAccordionPanel {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
