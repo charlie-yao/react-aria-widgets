@@ -15,10 +15,6 @@ module.exports = {
 			import: './src/index.jsx',
 			dependOn: 'vendor',
 		},
-		accordion: {
-			import: './src/Accordion/index.js',
-			dependOn: 'vendor',
-		},
 		vendor: [ 'react', 'react-dom', 'prop-types' ],
 	},
 	output: {
