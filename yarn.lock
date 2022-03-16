@@ -1562,6 +1562,7 @@ __metadata:
     "@babel/eslint-parser": ^7.17.0
     "@babel/preset-env": ^7.16.11
     "@babel/preset-react": ^7.16.7
+    "@charlie-yao/react-aria-widgets": "workspace:*"
     babel-loader: ^8.2.3
     css-loader: ^6.7.1
     eslint: ^8.3.0
@@ -1579,7 +1580,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@charlie-yao/react-aria-widgets@workspace:packages/react-aria-widgets":
+"@charlie-yao/react-aria-widgets@workspace:*, @charlie-yao/react-aria-widgets@workspace:packages/react-aria-widgets":
   version: 0.0.0-use.local
   resolution: "@charlie-yao/react-aria-widgets@workspace:packages/react-aria-widgets"
   dependencies:
