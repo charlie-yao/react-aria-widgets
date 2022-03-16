@@ -13,13 +13,10 @@ module.exports = {
 	entry: {
 		index: {
 			import: './src/index.jsx',
-			//dependOn: 'vendor',
 		},
 		accordion: {
 			import: './src/Accordion/index.js',
-			//dependOn: 'vendor',
 		},
-		//vendor: [ 'react', 'react-dom', 'prop-types' ],
 	},
 	output: {
 		filename: '[name].bundle.js',
@@ -29,6 +26,9 @@ module.exports = {
 			name: '[name]',
 			type: 'umd',
 		},
+	},
+	externals: {
+		react: 'react',
 	},
 	module: {
 		rules: [
