@@ -1,5 +1,6 @@
 //Misc.
 const customConfig = require('../webpack.config.js');
+const { SCSS_LOADER } = require('../webpack.common.js');
 
 module.exports = {
 	"stories": ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -27,7 +28,7 @@ module.exports = {
 		 *
 		 * See: https://storybook.js.org/docs/react/configure/webpack#using-your-existing-config
 		 */
-		config.module.rules.push(customConfig.SCSS_LOADER);
+		config.module.rules.push(SCSS_LOADER);
 
 		return config;
 	},

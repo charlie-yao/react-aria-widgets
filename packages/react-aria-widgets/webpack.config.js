@@ -1,9 +1,5 @@
 const path = require('path');
-
-const SCSS_LOADER = {
-	test: /\.scss$/u,
-	use: [ 'style-loader', 'css-loader', 'sass-loader' ],
-};
+const { SCSS_LOADER } = require('./webpack.common.js');
 
 module.exports = {
 	mode: 'development',
@@ -62,5 +58,3 @@ module.exports = {
 		],
 	},
 };
-
-module.exports.SCSS_LOADER = SCSS_LOADER;
