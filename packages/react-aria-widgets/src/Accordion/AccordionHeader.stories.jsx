@@ -17,7 +17,9 @@ export default {
 	},
 };
 
-const Template = args => <AccordionHeader {...args} />;
+function Template(args) {
+	return <AccordionHeader { ...args } />;
+}
 
 export const Expanded = Template.bind({});
 Expanded.args = {

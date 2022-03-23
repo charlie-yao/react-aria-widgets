@@ -13,14 +13,16 @@ export default {
 	},
 };
 
-const Template = args => <BaseAccordionPanel {...args} />;
+function Template(args) {
+	return <BaseAccordionPanel { ...args } />;
+}
 
 export const Default = Template.bind({});
 
 export const WithSectionRole = Template.bind({});
 WithSectionRole.args = {
 	tagName: 'div',
-	role: 'section'
+	role: 'section',
 };
 
 export const WithoutSectionRole = Template.bind({});

@@ -28,11 +28,15 @@ export default {
 	},
 };
 
-const Template = ({ items, ...args }) => (
-	<Accordion {...args}>
-		{ items.map(item => <AccordionSection key={ item.id } {...item} />) }
-	</Accordion>
-);
+function Template(args) {
+	const { items, ...rest } = args;
+
+	return (
+		<Accordion { ...rest }>
+			{ items.map(item => <AccordionSection key={ item.id } { ...item } />) }
+		</Accordion>
+	);
+}
 
 export const MultipleToggle = Template.bind({});
 MultipleToggle.args = {

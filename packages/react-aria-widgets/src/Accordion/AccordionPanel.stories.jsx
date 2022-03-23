@@ -12,7 +12,9 @@ export default {
 	},
 };
 
-const Template = args => <AccordionPanel {...args} />;
+function Template(args) {
+	return <AccordionPanel { ...args } />;
+}
 
 export const Expanded = Template.bind({});
 Expanded.args = {

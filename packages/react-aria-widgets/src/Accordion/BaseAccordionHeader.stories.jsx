@@ -7,7 +7,7 @@ export default {
 	title: 'Accordion/BaseAccordionHeader',
 	component: BaseAccordionHeader,
 	args: {
-		children: 'Hello world!',	
+		children: 'Hello world!',
 		id: 'headerId',
 		controlsId: 'panelId',
 		headerLevel: 2,
@@ -15,7 +15,9 @@ export default {
 	},
 };
 
-const Template = args => <BaseAccordionHeader {...args} />;
+function Template(args) {
+	return <BaseAccordionHeader { ...args } />;
+}
 
 export const Expanded = Template.bind({});
 Expanded.args = {

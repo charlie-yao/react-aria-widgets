@@ -13,26 +13,28 @@ export default {
 		id: 'accordionId',
 	},
 	decorators: [
-		(Story) => (
+		(story) => (
 			<Accordion headerLevel={ 2 }>
-				{ Story() }
+				{ story() }
 			</Accordion>
 		),
 	],
 };
 
-const Template = args => <AccordionSection {...args} />;
+function Template(args) {
+	return <AccordionSection { ...args } />;
+}
 
 export const Default = Template.bind({});
 Default.args = {
 	children: [
 		(
-			<AccordionHeader>
+			<AccordionHeader key={ 0 }>
 				Header
 			</AccordionHeader>
 		),
 		(
-			<AccordionPanel>
+			<AccordionPanel key={ 1 }>
 				Hello world!
 			</AccordionPanel>
 		),
@@ -68,5 +70,5 @@ RenderFunction.args = {
 				</AccordionPanel>
 			</Fragment>
 		);
-	}
+	},
 };
