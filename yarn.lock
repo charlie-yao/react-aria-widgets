@@ -1611,6 +1611,7 @@ __metadata:
     style-loader: ^3.3.1
     webpack: ^5.64.4
     webpack-cli: ^4.9.1
+    webpack-merge: ^5.8.0
   peerDependencies:
     react: ^17
   languageName: unknown
@@ -18192,7 +18193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-merge@npm:^5.7.3":
+"webpack-merge@npm:^5.7.3, webpack-merge@npm:^5.8.0":
   version: 5.8.0
   resolution: "webpack-merge@npm:5.8.0"
   dependencies:
