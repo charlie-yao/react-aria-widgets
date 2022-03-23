@@ -30,6 +30,9 @@ module.exports = {
 	externals: {
 		react: 'react',
 	},
+	optimization: {
+		usedExports: true,
+	},
 	module: {
 		rules: [
 			{
