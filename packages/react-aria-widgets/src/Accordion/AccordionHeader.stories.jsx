@@ -10,7 +10,7 @@ export default {
 		children: 'Hello world!',
 		id: 'accordionId',
 		index: 1,
-		headerLevel: 'h2',
+		headerLevel: 2,
 		onTriggerClick: () => {},
 		onTriggerKeyDown: () => {},
 		setSectionRef: () => {},

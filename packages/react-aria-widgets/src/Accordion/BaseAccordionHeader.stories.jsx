@@ -10,7 +10,7 @@ export default {
 		children: 'Hello world!',	
 		id: 'headerId',
 		controlsId: 'panelId',
-		headerLevel: 'h2',
+		headerLevel: 2,
 		onClick: () => {},
 	},
 };
