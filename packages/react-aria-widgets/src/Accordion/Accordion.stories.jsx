@@ -30,7 +30,7 @@ export default {
 
 const Template = ({ items, ...args }) => (
 	<Accordion {...args}>
-		{ items.map(item => <AccordionSection {...item} />) }
+		{ items.map(item => <AccordionSection key={ item.id } {...item} />) }
 	</Accordion>
 );
 
