@@ -1,6 +1,5 @@
 //Misc.
-const customConfig = require('../webpack.config.js');
-const { SCSS_LOADER } = require('../webpack.common.js');
+const { SCSS_LOADER, MINI_CSS_EXTRACT_PLUGIN, commonConfig } = require('../webpack.common.js');
 
 module.exports = {
 	"stories": ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -10,7 +9,7 @@ module.exports = {
 		builder: "webpack5",
 	},
 	webpackFinal: async (config) => {
-		Object.assign(config.resolve.alias, customConfig.resolve.alias);
+		Object.assign(config.resolve.alias, commonConfig.resolve.alias);
 		
 		/*
 		 * Even though React Storybook gives a suggestion that we can do
@@ -29,6 +28,7 @@ module.exports = {
 		 * See: https://storybook.js.org/docs/react/configure/webpack#using-your-existing-config
 		 */
 		config.module.rules.push(SCSS_LOADER);
+		config.plugins.push(MINI_CSS_EXTRACT_PLUGIN);
 
 		return config;
 	},

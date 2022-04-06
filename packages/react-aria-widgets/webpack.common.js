@@ -1,13 +1,19 @@
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 const SCSS_LOADER = {
 	test: /\.scss$/u,
-	use: [ 'style-loader', 'css-loader', 'sass-loader' ],
+	use: [ MiniCSSExtractPlugin.loader, 'css-loader', 'sass-loader' ],
 };
 
+const MINI_CSS_EXTRACT_PLUGIN = new MiniCSSExtractPlugin({
+	filename: '[name].css',
+	chunkFilename: '[id].css',
+});
 
 module.exports = {
 	SCSS_LOADER,
+	MINI_CSS_EXTRACT_PLUGIN,
 	commonConfig: {
 		resolve: {
 			extensions: [ '.js', '.json', '.jsx' ],
@@ -57,10 +63,13 @@ module.exports = {
 				},
 				{
 					test: /\.css$/u,
-					use: [ 'style-loader', 'css-loader' ],
+					use: [ MiniCSSExtractPlugin.loader, 'css-loader' ],
 				},
 				SCSS_LOADER,
 			],
 		},
+		plugins: [
+			MINI_CSS_EXTRACT_PLUGIN,
+		],
 	},
 };
