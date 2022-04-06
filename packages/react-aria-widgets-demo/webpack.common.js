@@ -2,8 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	mode: 'development',
-	devtool: 'inline-source-map',
 	resolve: {
 		extensions: [ '.js', '.json', '.jsx' ],
 		alias: {
@@ -58,7 +56,4 @@ module.exports = {
 			template: 'template.html',
 		}),
 	],
-	devServer: {
-		static: './dist',
-	},
 };
