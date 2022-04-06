@@ -19,7 +19,7 @@ function AccordionPanel(props) {
 		<BaseAccordionPanel
 			id={ getPanelId(id) }
 			labelId={ id }
-			className={ `${className} ${isExpanded ? '' : 'hidden'}` }
+			className={ `${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
 			{ ...rest }
 		>
 			{ children }
