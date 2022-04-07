@@ -1,0 +1,82 @@
+{
+	"name": "@charlie-yao/react-aria-widgets",
+	"version": "0.0.0",
+	"description": "React implementations of the WAI-ARIA Authoring Practices 1.2 design patterns and widgets.",
+	"keywords": [
+		"react",
+		"aria",
+		"accessible",
+		"a11y",
+		"accessibility"
+	],
+	"author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
+	"homepage": "https://github.com/charlie-yao/react-aria-widgets",
+	"license": "MIT",
+	"main": "dist/index.bundle.js",
+	"files": [
+		"dist/**/*"
+	],
+	"exports": {
+		".": "dist/index.bundle.js",
+		"./accordion": "dist/accordion.bundle.js",
+		"./styles.css": "dist/index.css"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
+	},
+	"scripts": {
+		"build": "webpack --config webpack.prod.js",
+		"build-dev": "webpack --config webpack.dev.js",
+		"lint": "eslint --fix --ext .jsx,.js ./",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook"
+	},
+	"bugs": {
+		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
+	},
+	"sideEffects": [
+		"**/*.css",
+		"**/*.scss"
+	],
+	"dependencies": {
+		"prop-types": "^15.8.1"
+	},
+	"peerDependencies": {
+		"react": "^17"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.17.5",
+		"@babel/eslint-parser": "^7.17.0",
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-react": "^7.16.7",
+		"@mdx-js/react": "^1.6.22",
+		"@storybook/addon-actions": "^6.4.19",
+		"@storybook/addon-docs": "^6.4.19",
+		"@storybook/addon-essentials": "^6.4.19",
+		"@storybook/addon-interactions": "^6.4.19",
+		"@storybook/addon-links": "^6.4.19",
+		"@storybook/builder-webpack5": "^6.4.19",
+		"@storybook/manager-webpack5": "^6.4.19",
+		"@storybook/react": "^6.4.19",
+		"@storybook/testing-library": "^0.0.9",
+		"babel-loader": "^8.2.3",
+		"css-loader": "^6.7.1",
+		"css-minimizer-webpack-plugin": "^3.4.1",
+		"eslint": "^8.3.0",
+		"eslint-plugin-react": "^7.27.1",
+		"eslint-plugin-storybook": "^0.5.7",
+		"mini-css-extract-plugin": "^2.6.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"sass": "^1.44.0",
+		"sass-loader": "^12.3.0",
+		"style-loader": "^3.3.1",
+		"webpack": "^5.64.4",
+		"webpack-cli": "^4.9.1",
+		"webpack-merge": "^5.8.0"
+	}
+}
