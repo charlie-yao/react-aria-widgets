@@ -14,3 +14,4 @@
 *.swo
 
 dist
+node_modules
