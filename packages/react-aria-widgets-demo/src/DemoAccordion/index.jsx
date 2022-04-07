@@ -1,12 +1,5 @@
 import React, { Fragment } from 'react';
-import { Accordion as _Accordion } from '@charlie-yao/react-aria-widgets';
-
-const {
-	Accordion,
-	AccordionSection,
-	AccordionHeader,
-	AccordionPanel,
-} = _Accordion;
+import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
 function DemoAccordion() {
 	return (

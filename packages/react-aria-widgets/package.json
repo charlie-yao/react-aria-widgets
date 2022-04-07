@@ -16,6 +16,11 @@
 	"files": [
 		"dist/**/*"
 	],
+	"exports": {
+		".": "dist/index.bundle.js",
+		"./accordion": "dist/accordion.bundle.js",
+		"./styles.css": "dist/index.css"
+	},
 	"publishConfig": {
 		"access": "public"
 	},

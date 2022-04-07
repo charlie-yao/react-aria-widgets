@@ -1,4 +1,5 @@
 import React from 'react';
+import '@charlie-yao/react-aria-widgets/styles.css';
 
 //Components and Styles
 import DemoAccordion from 'src/DemoAccordion';
