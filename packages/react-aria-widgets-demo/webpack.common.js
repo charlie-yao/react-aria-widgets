@@ -53,7 +53,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Hello world!',
+			title: 'React Aria Widgets',
 			template: 'template.html',
 		}),
 		new MiniCSSExtractPlugin({
