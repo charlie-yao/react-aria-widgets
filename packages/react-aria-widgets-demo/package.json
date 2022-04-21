@@ -15,10 +15,14 @@
 		"url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
 	},
 	"scripts": {
-		"build": "webpack --config webpack.prod.js",
-		"build-dev": "webpack --config webpack.dev.js",
-		"start": "webpack serve --config webpack.dev.js",
-		"lint": "eslint --fix --ext .jsx,.js ./"
+		"build-old": "webpack --config webpack.prod.js",
+		"build-dev-old": "webpack --config webpack.dev.js",
+		"start-old": "webpack serve --config webpack.dev.js",
+		"lint-old": "eslint --fix --ext .jsx,.js ./",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
 	},
 	"bugs": {
 		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
