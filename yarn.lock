@@ -1577,10 +1577,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@charlie-yao/react-aria-widgets-demo@workspace:packages/react-aria-widgets-demo"
   dependencies:
-    "@babel/core": ^7.17.5
-    "@babel/eslint-parser": ^7.17.0
-    "@babel/preset-env": ^7.16.11
-    "@babel/preset-react": ^7.16.7
     "@charlie-yao/react-aria-widgets": "workspace:*"
     eslint: ^8.3.0
     eslint-config-next: 12.1.5

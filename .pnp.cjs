@@ -2849,10 +2849,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/react-aria-widgets-demo/",
           "packageDependencies": [
             ["@charlie-yao/react-aria-widgets-demo", "workspace:packages/react-aria-widgets-demo"],
-            ["@babel/core", "npm:7.17.5"],
-            ["@babel/eslint-parser", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:7.17.0"],
-            ["@babel/preset-env", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:7.16.11"],
-            ["@babel/preset-react", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:7.16.7"],
             ["@charlie-yao/react-aria-widgets", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#workspace:packages/react-aria-widgets"],
             ["eslint", "npm:8.11.0"],
             ["eslint-config-next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:12.1.5"],
