@@ -2,7 +2,7 @@ module.exports = {
 	root: true,
 	extends: [
 		'eslint:recommended',
-		'next/core-web-vitals'
+		'next/core-web-vitals',
 	],
 	rules: {
 		indent: [ 'error', 'tab', {
