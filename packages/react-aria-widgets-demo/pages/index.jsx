@@ -1,7 +1,7 @@
 export default function HomePage() {
 	return (
-		<div>
-			Placeholder home page!
-		</div>
+		<>
+			<h1>React Aria Widgets</h1>
+		</>
 	);
 }

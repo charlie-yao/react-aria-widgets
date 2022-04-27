@@ -1,7 +1,7 @@
 export default function AccordionPage() {
 	return (
-		<div>
-			Placeholder accordion page!
-		</div>
+		<>
+			<h1>Accordion</h1>
+		</>
 	);
 }
