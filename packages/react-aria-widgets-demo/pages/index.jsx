@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function HomePage() {
 	return (
 		<article>
@@ -17,7 +19,8 @@ export default function HomePage() {
 			<h2>Features</h2>
 			<ul>
 				<li>
-					Mostly* unstyled and easily customizable
+					<Link href="support/#faq-mostly-unstyled"><a>(Mostly) unstyled</a></Link> components
+					that are easily composable and customizable.
 				</li>
 				<li>
 					Modular components that separate out stateful logic into higher-order components (HOCs).

@@ -19,6 +19,11 @@ export default function Navigation() {
 						<a>Accordion</a>
 					</Link>
 				</li>
+				<li>
+					<Link href="/support">
+						<a>Support</a>
+					</Link>
+				</li>
 			</ul>
 		</nav>
 	);
