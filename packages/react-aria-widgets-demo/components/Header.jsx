@@ -1,7 +1,7 @@
 export default function Header() {
 	return (
 		<header>
-			Placeholder header!
+			React Aria Widgets
 		</header>
 	);
 }

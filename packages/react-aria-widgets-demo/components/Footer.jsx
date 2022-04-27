@@ -1,7 +1,7 @@
 export default function Footer() {
 	return (
 		<footer>
-			Placeholder footer!
+			Copyright © 2022. MIT License.
 		</footer>
 	);
 }
