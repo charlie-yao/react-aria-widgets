@@ -29,7 +29,7 @@ export default function HomePage() {
 					Full keyboard support.
 				</li>
 				<li>
-					Adheres to the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/">WAI-ARIA Authoring Practices 1.2</a>.\
+					Adheres to the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/">WAI-ARIA Authoring Practices 1.2</a>.
 				</li>
 			</ul>
 		</article>
