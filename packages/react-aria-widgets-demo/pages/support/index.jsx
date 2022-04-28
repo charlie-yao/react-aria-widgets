@@ -20,7 +20,7 @@ export default function SupportPage() {
 				but there are cases where styling is included by default. For example, the accordion widget
 				uses <code>display: none !important;</code> by default to handle the expand/collapse states.
 				However, whenever possible, React Aria Widgets will try to provide access to the underlying
-				state so that developers can use their own CSS.
+				state so that developers can use the implementation that suits them best.
 			</p>
 			<h3 id="faq-hidden-vs-display-none">
 				<code>hidden</code> versus <code>display: none;</code>
@@ -46,13 +46,13 @@ export default function SupportPage() {
 				In this <a href="https://github.com/whatwg/html/issues/4904">GitHub thread</a>, it's argued that
 				the WAI-ARIA examples are using tabs as a presentational choice rather than to convey semantics,
 				and that <code>display: none;</code> should be used rather than <code>hidden</code>. Though
-				the WAI-ARIA examples that are currently live have yet to reflect those changes, their source
+				the WAI-ARIA examples that are currently live still do not reflect those changes, their source
 				code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
 			</p>
 			<p>
 				React Aria Widgets will use <code>display: none;</code> by default, but whenever possible it
-				will also give developers access to the underlying state should they decide to use <code>hidden</code>,
-				or <code>display: none;</code> through a custom CSS class, or something else entirely.
+				will also give developers access to the underlying state should they decide to use <code>hidden
+				</code>, custom <code>display: none;</code> styling, or something else entirely.
 			</p>
 		</article>
 	);

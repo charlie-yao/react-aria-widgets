@@ -23,13 +23,16 @@ export default function HomePage() {
 					that are easily composable and customizable.
 				</li>
 				<li>
-					Modular components that separate out stateful logic into higher-order components (HOCs).
+					Modular design that abstracts stateful logic into higher-order components (HOCs) and React hooks.
 				</li>
 				<li>
-					Full keyboard support.
+					Unopinionated <Link href="getting-started/#getting-started-base-components"><a>base
+					components</a></Link> with PropTypes that dictate the necessary HTML/ARIA attributes
+					for developers who need more fine-tuned control.
 				</li>
 				<li>
-					Adheres to the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/">WAI-ARIA Authoring Practices 1.2</a>.
+					Adheres to the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/">WAI-ARIA Authoring
+					Practices 1.2</a> with focus control and full keyboard support.
 				</li>
 			</ul>
 		</article>
