@@ -30,6 +30,43 @@ export default function AccordionPage() {
 				and each <code>&lt;AccordionSection&gt;</code> must have a unique <code>id</code> prop.
 			</p>
 			<DefaultAccordion />
+			<pre>
+				<code>{`
+import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+
+export default function DefaultAccordion() {
+	return (
+		<Accordion headerLevel={ 2 }>
+			<AccordionSection id="default-section1">
+				<AccordionHeader>
+					Default Accordion Example - Section 1
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="default-section2">
+				<AccordionHeader>
+					Default Accordion Example - Section 2
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="default-section3">
+				<AccordionHeader>
+					Default Accordion Example - Section 3
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+		</Accordion>
+	);
+}
+				`}</code>
+			</pre>
+			<h3>Using <code>allowMultiple</code> and <code>allowToggle</code></h3>
 			<p>
 				By default, multiple sections can be expanded and closed at the same time. Note that
 				if the <code>allowMultiple</code> prop is <code>true</code>, then
