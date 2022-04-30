@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import PropTypes from 'prop-types';
+import '@charlie-yao/react-aria-widgets/styles.css';
 
 //Components
 import Layout from '../components/Layout';

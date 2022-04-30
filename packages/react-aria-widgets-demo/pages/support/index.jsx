@@ -54,6 +54,13 @@ export default function SupportPage() {
 				will also give developers access to the underlying state should they decide to use <code>hidden
 				</code>, custom <code>display: none;</code> styling, or something else entirely.
 			</p>
+			<h3>Styles from React Aria Widgets Are Not Appearing</h3>
+			<p>
+				Remember to import the stylesheet!
+			</p>
+			<pre>
+				<code>import '@charlie-yao/react-aria-widgets/styles.css';</code>
+			</pre>
 		</article>
 	);
 }
