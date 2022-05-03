@@ -87,15 +87,10 @@ export default function AccordionPage() {
 			</pre>
 			<h3>Customization</h3>
 			<p>
-				Instead of <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
+				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
 				a rendering function can be used as the <code>children</code> prop
 				in <code>&lt;AccordionSection&gt;</code>. <code>&lt;AccordionSection&gt;</code> will
 				pass down every prop it receives to the rendering function.
-			</p>
-			<p>
-				<strong>Note to Charlie: expand upon this in "Building Your Own Accordion"?</strong> E.g.,
-				explain that id and index are needed to identify things, document which props are being
-				passed down (possibly useful for custom focus handling instead of using the premade events?)
 			</p>
 			<CustomRenderingAccordion />
 			<pre>
@@ -117,6 +112,11 @@ export default function AccordionPage() {
 			<ul>
 				<li>mention using <code>&lt;section&gt;</code> versus <code>&lt;div&gt;</code></li>
 				<li>where to put render function documentation? in usage and examples? in accordion section?</li>
+				<li>
+					expand upon this in "Building Your Own Accordion"? E.g., explain that id and
+					index are needed to identify things, document which props are being passed down
+					(possibly useful for custom focus handling instead of using the premade events?)
+				</li>
 			</ul>
 		</article>
 	);
