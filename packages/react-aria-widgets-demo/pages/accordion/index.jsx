@@ -178,7 +178,7 @@ export default function DisableToggleAccordion() {
 }`
 				}</code>
 			</pre>
-			<h3>Custom Rendering</h3>
+			<h3>Customization</h3>
 			<p>
 				Instead of <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
 				a rendering function can be used as the <code>children</code> prop
@@ -251,7 +251,6 @@ export default function CustomRenderingAccordion() {
 }`
 				}</code>
 			</pre>
-			<h2>Building Your Own Accordion</h2>
 			<h2>API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager</code></h4>
