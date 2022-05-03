@@ -251,14 +251,15 @@ export default function CustomRenderingAccordion() {
 }`
 				}</code>
 			</pre>
-			<h2>Components</h2>
-			<h3><code>&lt;Accordion&gt;</code></h3>
-			<h3><code>&lt;AccordionSection&gt;</code></h3>
-			<h3><code>&lt;AccordionHeader&gt;</code></h3>
-			<h3><code>&lt;AccordionPanel&gt;</code></h3>
 			<h2>Building Your Own Accordion</h2>
+			<h2>API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager</code></h4>
+			<h3>Components</h3>
+			<h4><code>&lt;Accordion&gt;</code></h4>
+			<h4><code>&lt;AccordionSection&gt;</code></h4>
+			<h4><code>&lt;AccordionHeader&gt;</code></h4>
+			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<h3>Base Components</h3>
 			<h4><code>&lt;BaseAccordionHeader&gt;</code></h4>
 			<h4><code>&lt;BaseAccordionPanel&gt;</code></h4>
