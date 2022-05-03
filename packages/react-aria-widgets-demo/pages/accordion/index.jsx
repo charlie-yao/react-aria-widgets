@@ -8,6 +8,22 @@ const DefaultAccordion = dynamic(
 	},
 );
 
+const DisableMultipleAccordion = dynamic(
+	() => import('./DisableMultipleAccordion'),
+	{
+		ssr: false,
+		loading: () => <p>Loading, please wait...</p>,
+	},
+);
+
+const DisableToggleAccordion = dynamic(
+	() => import('./DisableToggleAccordion'),
+	{
+		ssr: false,
+		loading: () => <p>Loading, please wait...</p>,
+	},
+);
+
 export default function AccordionPage() {
 	return (
 		<article>
@@ -31,15 +47,15 @@ export default function AccordionPage() {
 			</p>
 			<DefaultAccordion />
 			<pre>
-				<code>{`
-import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+				<code>{
+`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
 export default function DefaultAccordion() {
 	return (
-		<Accordion headerLevel={ 2 }>
+		<Accordion headerLevel={ 4 }>
 			<AccordionSection id="default-section1">
 				<AccordionHeader>
-					Default Accordion Example - Section 1
+					DefaultAccordion - Section 1
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
@@ -47,7 +63,7 @@ export default function DefaultAccordion() {
 			</AccordionSection>
 			<AccordionSection id="default-section2">
 				<AccordionHeader>
-					Default Accordion Example - Section 2
+					DefaultAccordion - Section 2
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
@@ -55,7 +71,7 @@ export default function DefaultAccordion() {
 			</AccordionSection>
 			<AccordionSection id="default-section3">
 				<AccordionHeader>
-					Default Accordion Example - Section 3
+					DefaultAccordion - Section 3
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
@@ -63,28 +79,110 @@ export default function DefaultAccordion() {
 			</AccordionSection>
 		</Accordion>
 	);
-}
-				`}</code>
+}`
+				}</code>
 			</pre>
-			<h3>Using <code>allowMultiple</code> and <code>allowToggle</code></h3>
+			<h3><code>allowMultiple</code> and <code>allowToggle</code></h3>
 			<p>
-				By default, multiple sections can be expanded and closed at the same time. Note that
-				if the <code>allowMultiple</code> prop is <code>true</code>, then
-				the <code>allowToggle</code> will also always be true. Otherwise, users could run into a
-				situation with many open sections that can't be closed.
+				By default, multiple sections can be expanded and closed at the same time. One can use
+				the <code>allowMultiple</code> prop to toggle whether or not multiple sections can be
+				opened at the same time. The <code>allowToggle</code> prop can also be used to toggle
+				whether or not a section can be collapsed once it's expanded.
 			</p>
-			<h2>Higher-Order Components and Hooks</h2>
-			<h3><code>withAccordionManager</code></h3>
+			<p>
+				Note that if <code>allowMultiple</code> is <code>true</code>, then
+				the <code>allowToggle</code> will always be <code>true</code>. Otherwise, users could
+				run into a situation where there are many open sections that can't be closed.
+			</p>
+			<h4>Disabling <code>allowMultiple</code></h4>
+			<DisableMultipleAccordion />
+			<pre>
+				<code>{
+`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+
+export default function DisableMultipleAccordion() {
+	return (
+		<Accordion headerLevel={ 5 } allowMultiple={ false }>
+			<AccordionSection id="disable-multiple-section1">
+				<AccordionHeader>
+					DisableMultipleAccordion - Section 1
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="disable-multiple-section2">
+				<AccordionHeader>
+					DisableMultipleAccordion - Section 2
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="disable-multiple-section3">
+				<AccordionHeader>
+					DisableMultipleAccordion - Section 3
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+		</Accordion>
+	);
+}`
+				}</code>
+			</pre>
+			<h4>Disabling <code>allowToggle</code></h4>
+			<DisableToggleAccordion />
+			<pre>
+				<code>{
+`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+
+export default function DisableToggleAccordion() {
+	return (
+		<Accordion headerLevel={ 5 } allowMultiple={ false } allowToggle={ false }>
+			<AccordionSection id="disable-toggle-section1">
+				<AccordionHeader>
+					DisableToggleAccordion - Section 1
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="disable-toggle-section2">
+				<AccordionHeader>
+					DisableToggleAccordion - Section 2
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="disable-toggle-section3">
+				<AccordionHeader>
+					DisableToggleAccordion - Section 3
+				</AccordionHeader>
+				<AccordionPanel>
+					Hello world!
+				</AccordionPanel>
+			</AccordionSection>
+		</Accordion>
+	);
+}`
+				}</code>
+			</pre>
 			<h2>Components</h2>
 			<h3><code>&lt;Accordion&gt;</code></h3>
 			<h3><code>&lt;AccordionSection&gt;</code></h3>
 			<h3><code>&lt;AccordionHeader&gt;</code></h3>
 			<h3><code>&lt;AccordionPanel&gt;</code></h3>
+			<h2>Building Your Own Accordion</h2>
+			<h3>Higher-Order Components and Hooks</h3>
+			<h4><code>withAccordionManager</code></h4>
+			<h3>Base Components</h3>
+			<h4><code>&lt;BaseAccordionHeader&gt;</code></h4>
+			<h4><code>&lt;BaseAccordionPanel&gt;</code></h4>
 			<h2>Keyboard Support</h2>
 			<h2>Notes</h2>
-			<h2>Base Components</h2>
-			<h3><code>&lt;BaseAccordionHeader&gt;</code></h3>
-			<h3><code>&lt;BaseAccordionPanel&gt;</code></h3>
 			<ul>
 				<li>mention using <code>&lt;section&gt;</code> versus <code>&lt;div&gt;</code></li>
 				<li>where to put render function documentation? in usage and examples? in accordion section?</li>

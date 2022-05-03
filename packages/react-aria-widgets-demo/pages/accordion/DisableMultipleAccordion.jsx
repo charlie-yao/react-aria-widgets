@@ -1,27 +1,27 @@
 import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
-export default function DefaultAccordion() {
+export default function DisableMultipleAccordion() {
 	return (
-		<Accordion headerLevel={ 4 }>
-			<AccordionSection id="default-section1">
+		<Accordion headerLevel={ 5 } allowMultiple={ false }>
+			<AccordionSection id="disable-multiple-section1">
 				<AccordionHeader>
-					DefaultAccordion - Section 1
+					DisableMultipleAccordion - Section 1
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
 				</AccordionPanel>
 			</AccordionSection>
-			<AccordionSection id="default-section2">
+			<AccordionSection id="disable-multiple-section2">
 				<AccordionHeader>
-					DefaultAccordion - Section 2
+					DisableMultipleAccordion - Section 2
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
 				</AccordionPanel>
 			</AccordionSection>
-			<AccordionSection id="default-section3">
+			<AccordionSection id="disable-multiple-section3">
 				<AccordionHeader>
-					DefaultAccordion - Section 3
+					DisableMultipleAccordion - Section 3
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
