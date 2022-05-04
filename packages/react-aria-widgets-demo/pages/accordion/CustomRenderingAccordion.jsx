@@ -15,29 +15,66 @@ export default function CustomRenderingAccordion() {
 				{
 					(args) => {
 						const {
-							id, index, headerLevel, getIsExpanded, getIsDisabled,
-							setSectionRef, onTriggerClick, onTriggerKeyDown,
+							id, index, headerLevel, getIsExpanded, getIsDisabled, setSectionRef, toggleSection,
+							focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
 						} = args;
 						const isExpanded = getIsExpanded(id);
 						const isDisabled = getIsDisabled(id);
+						const HeaderElement = `h${headerLevel}`;
+						const contentId = `${id}-content`;
+						const style = {};
+
+						const onClick = (event) => {
+							toggleSection(event.target.id);	
+						};
+
+						const onKeyDown = (event) => {
+							const { key } = event;
+
+							if(key === 'ArrowUp') {
+								event.preventDefault();
+								focusPrevSection(index);
+							}
+							else if(key === 'ArrowDown') {
+								event.preventDefault();
+								focusNextSection(index);
+							}
+							else if(key === 'Home') {
+								event.preventDefault();
+								focusFirstSection();
+							}
+							else if(key === 'End') {
+								event.preventDefault();
+								focusLastSection();
+							}
+						};
+
+						if(!isExpanded)
+							style.display = 'none';
 
 						return (
-							<>
-								<AccordionHeader
-									id={ id }
-									index={ index }
-									headerLevel={ headerLevel }
-									isExpanded={ isExpanded }
-									isDisabled={ isDisabled }
-									setSectionRef={ setSectionRef }
-									onTriggerClick={ onTriggerClick }
-									onTriggerKeyDown={ onTriggerKeyDown }
+							<> 
+								<HeaderElement>
+									<button
+										type="button"
+										id={ id }
+										aria-controls={ contentId }
+										aria-expanded={ isExpanded }
+										aria-disabled={ isDisabled }
+										onClick={ onClick }
+										onKeyDown={ onKeyDown }
+										ref={ setSectionRef }
+									>
+										CustomRenderingAccordion - Section 2
+									</button>
+								</HeaderElement>
+								<section
+									id={ contentId }
+									aria-labelledby={ id }
+									style={ style }
 								>
-									CustomRenderingAccordion - Section 2
-								</AccordionHeader>
-								<AccordionPanel id={ id } isExpanded={ isExpanded }>
 									Hello world!
-								</AccordionPanel>
+								</section>
 							</>
 						);
 					}

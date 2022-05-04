@@ -96,6 +96,9 @@ export default function AccordionPage() {
 			<pre>
 				<code>{ renderFunctionExample }</code>
 			</pre>
+			<p>
+				However, there are a few caveats to using a rendering function.
+			</p>
 			<h2>API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager</code></h4>
