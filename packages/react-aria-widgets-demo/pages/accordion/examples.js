@@ -100,7 +100,7 @@ export default function DisableToggleAccordion() {
 	);
 }`;
 
-export const renderFunctionExample =
+export const renderFunctionExampleOne =
 `import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
 export default function CustomRenderingAccordion() {

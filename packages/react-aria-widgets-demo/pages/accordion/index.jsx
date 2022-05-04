@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 //Misc.
 import {
 	defaultAccordionExample, disableMultipleExample, disableToggleExample,
-	renderFunctionExample
+	renderFunctionExampleOne
 } from './examples';
 
 const DefaultAccordion = dynamic(
@@ -30,8 +30,8 @@ const DisableToggleAccordion = dynamic(
 	},
 );
 
-const CustomRenderingAccordion = dynamic(
-	() => import('./CustomRenderingAccordion'),
+const RenderFunctionAccordionOne = dynamic(
+	() => import('./RenderFunctionAccordionOne'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -92,9 +92,9 @@ export default function AccordionPage() {
 				in <code>&lt;AccordionSection&gt;</code>. <code>&lt;AccordionSection&gt;</code> will
 				pass down every prop it receives to the rendering function.
 			</p>
-			<CustomRenderingAccordion />
+			<RenderFunctionAccordionOne />
 			<pre>
-				<code>{ renderFunctionExample }</code>
+				<code>{ renderFunctionExampleOne }</code>
 			</pre>
 			<p>
 				However, there are a few caveats to using a rendering function.

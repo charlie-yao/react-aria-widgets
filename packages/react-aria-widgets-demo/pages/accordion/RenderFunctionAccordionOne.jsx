@@ -1,11 +1,11 @@
 import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
-export default function CustomRenderingAccordion() {
+export default function RenderFunctionAccordionOne() {
 	return (
 		<Accordion headerLevel={ 4 }>
 			<AccordionSection id="custom-rendering-section1">
 				<AccordionHeader>
-					CustomRenderingAccordion - Section 1
+					RenderFunctionAccordionOne - Section 1
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
@@ -65,7 +65,7 @@ export default function CustomRenderingAccordion() {
 										onKeyDown={ onKeyDown }
 										ref={ setSectionRef }
 									>
-										CustomRenderingAccordion - Section 2
+										RenderFunctionAccordionOne - Section 2
 									</button>
 								</HeaderElement>
 								<section
@@ -82,7 +82,7 @@ export default function CustomRenderingAccordion() {
 			</AccordionSection>
 			<AccordionSection id="custom-rendering-section3">
 				<AccordionHeader>
-					CustomRenderingAccordion - Section 3
+					RenderFunctionAccordionOne - Section 3
 				</AccordionHeader>
 				<AccordionPanel>
 					Hello world!
