@@ -12,73 +12,7 @@ export default function RenderFunctionAccordionOne() {
 				</AccordionPanel>
 			</AccordionSection>
 			<AccordionSection id="custom-rendering-section2">
-				{
-					(args) => {
-						const {
-							id, index, headerLevel, getIsExpanded, getIsDisabled, setSectionRef, toggleSection,
-							focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
-						} = args;
-						const isExpanded = getIsExpanded(id);
-						const isDisabled = getIsDisabled(id);
-						const HeaderElement = `h${headerLevel}`;
-						const contentId = `${id}-content`;
-						const style = {};
-
-						const onClick = (event) => {
-							toggleSection(event.target.id);	
-						};
-
-						const onKeyDown = (event) => {
-							const { key } = event;
-
-							if(key === 'ArrowUp') {
-								event.preventDefault();
-								focusPrevSection(index);
-							}
-							else if(key === 'ArrowDown') {
-								event.preventDefault();
-								focusNextSection(index);
-							}
-							else if(key === 'Home') {
-								event.preventDefault();
-								focusFirstSection();
-							}
-							else if(key === 'End') {
-								event.preventDefault();
-								focusLastSection();
-							}
-						};
-
-						if(!isExpanded)
-							style.display = 'none';
-
-						return (
-							<> 
-								<HeaderElement>
-									<button
-										type="button"
-										id={ id }
-										aria-controls={ contentId }
-										aria-expanded={ isExpanded }
-										aria-disabled={ isDisabled }
-										onClick={ onClick }
-										onKeyDown={ onKeyDown }
-										ref={ setSectionRef }
-									>
-										RenderFunctionAccordionOne - Section 2
-									</button>
-								</HeaderElement>
-								<section
-									id={ contentId }
-									aria-labelledby={ id }
-									style={ style }
-								>
-									Hello world!
-								</section>
-							</>
-						);
-					}
-				}
+				{ renderFunction }
 			</AccordionSection>
 			<AccordionSection id="custom-rendering-section3">
 				<AccordionHeader>
@@ -91,3 +25,69 @@ export default function RenderFunctionAccordionOne() {
 		</Accordion>
 	);
 }
+
+const renderFunction = (args) => {
+	const {
+		id, index, headerLevel, getIsExpanded, getIsDisabled, setSectionRef, toggleSection,
+		focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
+	} = args;
+	const isExpanded = getIsExpanded(id);
+	const isDisabled = getIsDisabled(id);
+	const HeaderElement = `h${headerLevel}`;
+	const contentId = `${id}-content`;
+	const style = {};
+
+	const onClick = (event) => {
+		toggleSection(event.target.id);	
+	};
+
+	const onKeyDown = (event) => {
+		const { key } = event;
+
+		if(key === 'ArrowUp') {
+			event.preventDefault();
+			focusPrevSection(index);
+		}
+		else if(key === 'ArrowDown') {
+			event.preventDefault();
+			focusNextSection(index);
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+			focusFirstSection();
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+			focusLastSection();
+		}
+	};
+
+	if(!isExpanded)
+		style.display = 'none';
+
+	return (
+		<> 
+			<HeaderElement>
+				<button
+					type="button"
+					id={ id }
+					aria-controls={ contentId }
+					aria-expanded={ isExpanded }
+					aria-disabled={ isDisabled }
+					onClick={ onClick }
+					onKeyDown={ onKeyDown }
+					ref={ setSectionRef }
+				>
+					RenderFunctionAccordionOne - Section 2
+				</button>
+			</HeaderElement>
+			<section
+				id={ contentId }
+				aria-labelledby={ id }
+				style={ style }
+			>
+				Hello world!
+			</section>
+		</>
+	);
+};
