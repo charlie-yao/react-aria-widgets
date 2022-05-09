@@ -43,9 +43,8 @@ export default function AccordionPage() {
 		<article>
 			<h1>Accordion</h1>
 			<p>
-				An <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">accordion</a> is
-				a collection of vertically-stacked content where each bit of content has an interactive
-				heading and the content itself. The heading is used to control the visibility of the content.
+				An accordion is a collection of vertically-stacked content where each section has a heading
+				and the content itself. The heading is used to control the visibility of the content.
 			</p>
 			<h2>Usage and Examples</h2>
 			<h3>Default</h3>
@@ -89,20 +88,41 @@ export default function AccordionPage() {
 			<p>
 				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
 				a rendering function can be used as the <code>children</code> prop
-				in <code>&lt;AccordionSection&gt;</code>. <code>&lt;AccordionSection&gt;</code> will
-				pass down every prop it receives to the rendering function.
+				in <code>&lt;AccordionSection&gt;</code>. The rendering function provides access to
+				the underlying fields and methods that manage the accordion's state and allows
+				for custom rendering.
+			</p>
+			<p>
+				Note that the button that controls the accordion section must use the callback
+				ref <code>setSectionRef()</code>. Otherwise, focus management will not work properly.
+				Additionally, though giving the button an <code>id</code> attribute isn't strictly necessary
+				to use <code>toggleSection()</code>, the WAI-ARIA Authoring Practices 1.2 recommends 
+				it so that the content can have an <code>aria-labelledby</code> attribute that points
+				to the button controlling it.
+			</p>
+			<p>
+				For the full list of props that the rendering function has access to, see
+				the <a href="/accordion#accordion-api">"API" section</a> below.
 			</p>
 			<RenderFunctionAccordionOne />
 			<pre>
 				<code>{ renderFunctionExampleOne }</code>
 			</pre>
 			<p>
-				However, there are a few caveats to using a rendering function.
+				In addition to the actual methods that manipulate the underlying state, the render function
+				also receives event handlers that already implement the mouse and keyboard behaviors. In you wish to
+				use these event handlers, the button must have an <code>id</code> attribute and
+				a <code>data-index</code> attribute that corresponds to the <code>id</code> and <code>index</code> props
+				provided to the render function.
 			</p>
 			<p>
-				The fields and methods available to the rendering function are listed below in the "API" section.
+				Note that this example uses
+				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components.
 			</p>
-			<h2>API</h2>
+			<p>
+				However, there are a few caveats to using a rendering function.
+			</p>
+			<h2 id="accordion-api">API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager</code></h4>
 			<h3>Components</h3>
@@ -122,6 +142,9 @@ export default function AccordionPage() {
 					expand upon this in "Building Your Own Accordion"? E.g., explain that id and
 					index are needed to identify things, document which props are being passed down
 					(possibly useful for custom focus handling instead of using the premade events?)
+				</li>
+				<li>
+					<a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-Aria Authoring Practices 1.2 Accordion Specifications</a>
 				</li>
 			</ul>
 		</article>

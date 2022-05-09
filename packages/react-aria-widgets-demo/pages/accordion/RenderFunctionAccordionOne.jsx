@@ -3,7 +3,7 @@ import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@c
 export default function RenderFunctionAccordionOne() {
 	return (
 		<Accordion headerLevel={ 4 }>
-			<AccordionSection id="custom-rendering-section1">
+			<AccordionSection id="render-function-one-section1">
 				<AccordionHeader>
 					RenderFunctionAccordionOne - Section 1
 				</AccordionHeader>
@@ -11,10 +11,10 @@ export default function RenderFunctionAccordionOne() {
 					Hello world!
 				</AccordionPanel>
 			</AccordionSection>
-			<AccordionSection id="custom-rendering-section2">
+			<AccordionSection id="render-function-one-section2">
 				{ renderFunction }
 			</AccordionSection>
-			<AccordionSection id="custom-rendering-section3">
+			<AccordionSection id="render-function-one-section3">
 				<AccordionHeader>
 					RenderFunctionAccordionOne - Section 3
 				</AccordionHeader>
@@ -37,8 +37,8 @@ const renderFunction = (args) => {
 	const contentId = `${id}-content`;
 	const style = {};
 
-	const onClick = (event) => {
-		toggleSection(event.target.id);	
+	const onClick = () => {
+		toggleSection(id);	
 	};
 
 	const onKeyDown = (event) => {
