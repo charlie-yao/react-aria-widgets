@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 //Misc.
 import {
 	defaultAccordionExample, disableMultipleExample, disableToggleExample,
-	renderFunctionExampleOne
+	renderFunctionExampleOne, renderFunctionExampleTwo
 } from './examples';
 
 const DefaultAccordion = dynamic(
@@ -32,6 +32,14 @@ const DisableToggleAccordion = dynamic(
 
 const RenderFunctionAccordionOne = dynamic(
 	() => import('./RenderFunctionAccordionOne'),
+	{
+		ssr: false,
+		loading: () => <p>Loading, please wait...</p>,
+	},
+);
+
+const RenderFunctionAccordionTwo = dynamic(
+	() => import('./RenderFunctionAccordionTwo'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -95,14 +103,10 @@ export default function AccordionPage() {
 			<p>
 				Note that the button that controls the accordion section must use the callback
 				ref <code>setSectionRef()</code>. Otherwise, focus management will not work properly.
-				Additionally, though giving the button an <code>id</code> attribute isn't strictly necessary
-				to use <code>toggleSection()</code>, the WAI-ARIA Authoring Practices 1.2 recommends 
-				it so that the content can have an <code>aria-labelledby</code> attribute that points
-				to the button controlling it.
 			</p>
 			<p>
 				For the full list of props that the rendering function has access to, see
-				the <a href="/accordion#accordion-api">"API" section</a> below.
+				the <a href="/accordion#accordion-api">API section</a> below.
 			</p>
 			<RenderFunctionAccordionOne />
 			<pre>
@@ -111,17 +115,20 @@ export default function AccordionPage() {
 			<p>
 				In addition to the actual methods that manipulate the underlying state, the render function
 				also receives event handlers that already implement the mouse and keyboard behaviors. In you wish to
-				use these event handlers, the button must have an <code>id</code> attribute and
+				use these event handlers, the button must also have an <code>id</code> attribute and
 				a <code>data-index</code> attribute that corresponds to the <code>id</code> and <code>index</code> props
 				provided to the render function.
 			</p>
 			<p>
-				Note that this example uses
-				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components.
+				(In the previous example, giving the button an <code>id</code> attribute isn't a strict
+				necessity, but it was added because the WAI-ARIA Authoring Practices 1.2 recommends it
+				so that the content can have an <code>aria-labelledby</code> attribute that points to the
+				button.)
 			</p>
-			<p>
-				However, there are a few caveats to using a rendering function.
-			</p>
+			<RenderFunctionAccordionTwo />
+			<pre>
+				<code>{ renderFunctionExampleTwo }</code>
+			</pre>
 			<h2 id="accordion-api">API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager</code></h4>
