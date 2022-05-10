@@ -172,7 +172,41 @@ export default function AccordionPage() {
 					</tr>
 				</tbody>
 			</table>
-			<h5>Fields and Methods</h5>
+			<h5>Fields</h5>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>allowMultiple</code></td>
+						<td>Boolean</td>
+						<td>
+							Lets child components know whether or not multiple sections can be
+							expanded simultaneously.
+						</td>
+					</tr>
+					<tr>
+						<td><code>allowToggle</code></td>
+						<td>Boolean</td>
+						<td>
+							Lets child components know whether or not sections can be collapsed
+							once they've been expanded. Unlike with <code>allowMultiple</code>, the HOC does
+							not simply pass down the value it received for <code>allowToggle</code>. Even if it
+							received <code>true</code> as a prop, if <code>allowMultiple</code> is <code>false</code>,
+							child components will see <code>allowToggle</code> as <code>false</code> to reflect the actual
+							behavior of the accordion.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h5>Methods</h5>
+			<table>
+			</table>
 			<h3>Components</h3>
 			<h4><code>&lt;Accordion&gt;</code></h4>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
