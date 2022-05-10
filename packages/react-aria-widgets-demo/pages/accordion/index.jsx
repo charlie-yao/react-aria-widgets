@@ -151,14 +151,14 @@ export default function AccordionPage() {
 				<tbody>
 					<tr>
 						<td><code>allowMultiple</code></td>
-						<td>Boolean</td>
+						<td><code>boolean</code></td>
 						<td><code>true</code></td>
 						<td></td>
 						<td>Controls whether or not multiple sections can be expanded at the same time.</td>
 					</tr>
 					<tr>
 						<td><code>allowToggle</code></td>
-						<td>Boolean</td>
+						<td><code>boolean</code></td>
 						<td><code>true</code></td>
 						<td></td>
 						<td>
@@ -183,7 +183,7 @@ export default function AccordionPage() {
 				<tbody>
 					<tr>
 						<td><code>allowMultiple</code></td>
-						<td>Boolean</td>
+						<td><code>boolean</code></td>
 						<td>
 							Lets child components know whether or not multiple sections can be
 							expanded simultaneously.
@@ -191,7 +191,7 @@ export default function AccordionPage() {
 					</tr>
 					<tr>
 						<td><code>allowToggle</code></td>
-						<td>Boolean</td>
+						<td><code>boolean</code></td>
 						<td>
 							Lets child components know whether or not sections can be collapsed
 							once they've been expanded. Unlike with <code>allowMultiple</code>, the HOC does
@@ -250,6 +250,69 @@ export default function AccordionPage() {
 			</p>
 			<h3>Components</h3>
 			<h4><code>&lt;Accordion&gt;</code></h4>
+			<p>
+				<code>&lt;Accordion&gt;</code>s use the <code>withAccordionManager</code> HOC and
+				wrap around <code>&lt;AccordionSection&gt;</code>s. They also forward the props
+				they receive from <code>withAccordionManager</code> to their children.
+			</p>
+			<p>
+				<code>&lt;Accordion&gt;</code>s only accept <code>&lt;AccordionSection&gt;</code> as children.
+				Anything else will throw an error.
+			</p>
+			<h5>Props</h5>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default Value</th>
+						<th scope="col">Required?</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>children</code></td>
+						<td>TBD</td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							A set of one or more <code>&lt;AccordionSection&gt;</code>s. An error will be thrown
+							if there are any React nodes that are not an <code>&lt;AccordionSection&gt;</code>.
+						</td>
+					</tr>
+					<tr>
+						<td><code>headerLevel</code></td>
+						<td><code>number</code></td>
+						<td><code>2</code></td>
+						<td></td>
+						<td>
+							An integer from 1 to 6 (inclusive), representing the &lt;h1&gt;, &lt;h2&gt;, ..., &lt;h6&gt; tags.
+							All of the headers in an accordion will use the same level.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h5>Fields</h5>
+			<p>
+				In addition to the fields from <code>withAccordionManager</code>,
+				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
+			</p>
+			<table>
+				<thead>
+					<tr>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+			<h5>Methods</h5>
+			<p>
+				In addition to the methods from <code>withAccordionManager</code>,
+				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
+			</p>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
 			<h4><code>&lt;AccordionHeader&gt;</code></h4>
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
