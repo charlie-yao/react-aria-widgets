@@ -105,7 +105,7 @@ export default function AccordionPage() {
 				ref <code>setSectionRef()</code>. Otherwise, focus management will not work properly.
 			</p>
 			<p>
-				For the full list of props that the rendering function has access to, see
+				For the full list of props that the rendering function has access to, see below.
 				the <a href="/accordion#accordion-api">API section</a> below.
 			</p>
 			<RenderFunctionAccordionOne />
@@ -197,15 +197,21 @@ export default function AccordionPage() {
 							Lets child components know whether or not sections can be collapsed
 							once they've been expanded. Unlike with <code>allowMultiple</code>, the HOC does
 							not simply pass down the value it received for <code>allowToggle</code>. Even if it
-							received <code>true</code> as a prop, if <code>allowMultiple</code> is <code>false</code>,
-							child components will see <code>allowToggle</code> as <code>false</code> to reflect the actual
-							behavior of the accordion.
+							received <code>false</code> as its <code>allowToggle</code> prop,
+							if <code>allowMultiple</code> is <code>true</code>, child components will
+							see <code>allowToggle</code> as <code>true</code> to reflect how the accordion
+							will actually behave.
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<h5>Methods</h5>
+			<h6><code>getIsExpanded(id: number):</code></h6>
 			<table>
+				<thead>
+				</thead>
+				<tbody>
+				</tbody>
 			</table>
 			<h3>Components</h3>
 			<h4><code>&lt;Accordion&gt;</code></h4>
