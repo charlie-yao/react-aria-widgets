@@ -121,17 +121,58 @@ export default function AccordionPage() {
 			</p>
 			<p>
 				(In the previous example, giving the button an <code>id</code> attribute isn't a strict
-				necessity, but it was added because the WAI-ARIA Authoring Practices 1.2 recommends it
-				so that the content can have an <code>aria-labelledby</code> attribute that points to the
-				button.)
+				necessity for expanding/collapsing the content, but it was added because the
+				WAI-ARIA Authoring Practices 1.2 recommends it so that the content can have
+				an <code>aria-labelledby</code> attribute that points to the button.)
 			</p>
 			<RenderFunctionAccordionTwo />
 			<pre>
 				<code>{ renderFunctionExampleTwo }</code>
 			</pre>
+			<h4>Styling</h4>
 			<h2 id="accordion-api">API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager</code></h4>
+			<p>
+				<code>withAccordionManager</code> is a HOC that manages the underlying state for an accordion. It
+				controls which sections are expanded/collapsed, which sections can/cannot be interacted with, and
+				manages focus for keyboard users.
+			</p>
+			<h5>Props</h5>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default Value</th>
+						<th scope="col">Required?</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>allowMultiple</code></td>
+						<td>Boolean</td>
+						<td><code>true</code></td>
+						<td></td>
+						<td>Controls whether or not multiple sections can be expanded at the same time.</td>
+					</tr>
+					<tr>
+						<td><code>allowToggle</code></td>
+						<td>Boolean</td>
+						<td><code>true</code></td>
+						<td></td>
+						<td>
+							Controls whether or not a section can be collapsed after it has been expanded. Note
+							that if <code>allowMultiple</code> is <code>true</code>, then sections will always
+							be collapsible even if <code>allowToggle</code> is <code>false</code>. This
+							is to prevent situations where there would otherwise be multiple expanded sections
+							that can't be collapsed.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h5>Fields and Methods</h5>
 			<h3>Components</h3>
 			<h4><code>&lt;Accordion&gt;</code></h4>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
