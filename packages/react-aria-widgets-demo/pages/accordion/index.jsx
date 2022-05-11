@@ -287,8 +287,8 @@ export default function AccordionPage() {
 						<td><code>2</code></td>
 						<td></td>
 						<td>
-							An integer from 1 to 6 (inclusive), representing the &lt;h1&gt;, &lt;h2&gt;, ..., &lt;h6&gt; tags.
-							All of the headers in an accordion will use the same level.
+							An integer from 1 to 6 (inclusive) representing the <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>,
+							..., <code>&lt;h6&gt;</code> tags. By default, all of the headers in an accordion use the same level.
 						</td>
 					</tr>
 				</tbody>
@@ -301,10 +301,21 @@ export default function AccordionPage() {
 			<table>
 				<thead>
 					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Description</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
+						<td><code>headerLevel</code></td>
+						<td><code>number</code></td>
+						<td>An integer from 1 - 6 (inclusive) representing the HTML section heading elements.</td>
+					</tr>
+					<tr>
+						<td><code>index</code></td>
+						<td><code>number</code></td>
+						<td>An integer representing the position of a section in an accordion.</td>
 					</tr>
 				</tbody>
 			</table>
