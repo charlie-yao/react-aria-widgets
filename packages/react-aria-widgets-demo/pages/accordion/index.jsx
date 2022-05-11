@@ -287,8 +287,9 @@ export default function AccordionPage() {
 						<td><code>2</code></td>
 						<td></td>
 						<td>
-							An integer from 1 to 6 (inclusive) representing the <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>,
-							..., <code>&lt;h6&gt;</code> tags. By default, all of the headers in an accordion use the same level.
+							An integer from 1 to 6 (inclusive) representing the HTML section heading elements
+							(e.g. <code>&lt;h1&gt;</code>). By default, all of the headers in an accordion use
+							the same level.
 						</td>
 					</tr>
 				</tbody>
@@ -323,6 +324,18 @@ export default function AccordionPage() {
 			<p>
 				In addition to the methods from <code>withAccordionManager</code>,
 				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
+			</p>
+			<h6><code>onTriggerClick(event: SyntheticEvent&lt;&gt;): void</code></h6>
+			<p>
+				A premade event handler that can be attached to accordion header buttons
+				to handle expanding/collapsing a particular section. Used by <code>&lt;AccordionHeader&gt;</code>.
+			</p>
+			<h6><code>onTriggerKeyDown(event: SyntheticEvent&lt;&gt;): void</code></h6>
+			<p>
+				A premade event handler that can be attached to accordion header buttons to handle
+				focus management. Implements the keyboard interactions described in
+				the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-ARIA
+				Authoring Practices 1.2</a> and is used by <code>&lt;AccordionHeader&gt;</code>.
 			</p>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
 			<h4><code>&lt;AccordionHeader&gt;</code></h4>
