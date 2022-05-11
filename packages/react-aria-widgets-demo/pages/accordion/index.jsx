@@ -273,7 +273,7 @@ export default function AccordionPage() {
 				<tbody>
 					<tr>
 						<td><code>children</code></td>
-						<td>TBD</td>
+						<td><code>React.ChildrenArray&lt;React.Element&lt;typeof AccordionSection&gt;&gt;</code></td>
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
