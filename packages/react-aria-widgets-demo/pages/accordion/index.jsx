@@ -340,9 +340,9 @@ export default function AccordionPage() {
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
 			<p>
 				Represents a section of an accordion consisting of a header and the section's content. Wraps around
-				either a combination of an <code>&lt;AccordionHeader&gt;</code> and
-				an <code>&lt;AccordionPanel&gt;</code>, or a render function. Will automatically passes down
-				props from <code>withAccordionManager()</code> and <code>&lt;Accordion&gt;</code> to its children.
+				either a set of React nodes or a render function. Will automatically pass down the props it
+				receives from <code>withAccordionManager()</code> and <code>&lt;Accordion&gt;</code> to
+				its children.
 			</p>
 			<h5>Props</h5>
 			<table>
@@ -384,6 +384,22 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h5>Fields</h5>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>id</code></td>
+						<td><code>string</code></td>
+						<td>A unique identifier for the header and content.</td>
+					</tr>
+				</tbody>
+			</table>
 			<h4><code>&lt;AccordionHeader&gt;</code></h4>
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<h3>Base Components</h3>
