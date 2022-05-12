@@ -61,6 +61,11 @@ export default function SupportPage() {
 			<pre>
 				<code>import '@charlie-yao/react-aria-widgets/styles.css';</code>
 			</pre>
+			<h3>Type Notation in the API</h3>
+			<p>
+				<a href="https://flow.org/">Flow</a> is used notate types in the API documentation, though
+				the project itself doesn't use Flow internally.
+			</p>
 		</article>
 	);
 }

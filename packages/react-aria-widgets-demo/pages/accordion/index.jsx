@@ -131,9 +131,9 @@ export default function AccordionPage() {
 			<h4>Styling</h4>
 			<h2>API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
-			<h4><code>withAccordionManager</code></h4>
+			<h4><code>withAccordionManager()</code></h4>
 			<p>
-				<code>withAccordionManager</code> is a HOC that manages the underlying state for an accordion. It
+				<code>withAccordionManager()</code> is a HOC that manages the underlying state for an accordion. It
 				controls which sections are expanded/collapsed, which sections can/cannot be interacted with, and
 				manages focus for keyboard users.
 			</p>
@@ -251,9 +251,9 @@ export default function AccordionPage() {
 			<h3>Components</h3>
 			<h4><code>&lt;Accordion&gt;</code></h4>
 			<p>
-				<code>&lt;Accordion&gt;</code>s use the <code>withAccordionManager</code> HOC and
+				<code>&lt;Accordion&gt;</code>s use the <code>withAccordionManager()</code> HOC and
 				wrap around <code>&lt;AccordionSection&gt;</code>s. They also forward the props
-				they receive from <code>withAccordionManager</code> to their children.
+				they receive from <code>withAccordionManager()</code> to their children.
 			</p>
 			<p>
 				<code>&lt;Accordion&gt;</code>s only accept <code>&lt;AccordionSection&gt;</code> as children.
@@ -296,7 +296,7 @@ export default function AccordionPage() {
 			</table>
 			<h5>Fields</h5>
 			<p>
-				In addition to the fields from <code>withAccordionManager</code>,
+				In addition to the fields from <code>withAccordionManager()</code>,
 				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
 			</p>
 			<table>
@@ -322,7 +322,7 @@ export default function AccordionPage() {
 			</table>
 			<h5>Methods</h5>
 			<p>
-				In addition to the methods from <code>withAccordionManager</code>,
+				In addition to the methods from <code>withAccordionManager()</code>,
 				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
 			</p>
 			<h6><code>onTriggerClick(event: SyntheticEvent&lt;&gt;): void</code></h6>
@@ -338,6 +338,52 @@ export default function AccordionPage() {
 				Authoring Practices 1.2</a> and is used by <code>&lt;AccordionHeader&gt;</code>.
 			</p>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
+			<p>
+				Represents a section of an accordion consisting of a header and the section's content. Wraps around
+				either a combination of an <code>&lt;AccordionHeader&gt;</code> and
+				an <code>&lt;AccordionPanel&gt;</code>, or a render function. Will automatically passes down
+				props from <code>withAccordionManager()</code> and <code>&lt;Accordion&gt;</code> to its children.
+			</p>
+			<h5>Props</h5>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default Value</th>
+						<th scope="col">Required?</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>children</code></td>
+						<td><code>(props: Object): React.Node | React.ChildrenArray&lt;T&gt;</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							<code>children</code> can either be a rendering function or a set of React nodes.
+							In addition to the <code>id</code> prop, <code>&lt;AccordionSection&gt;</code> also
+							passes down all of the props it receives from <code>&lt;Accordion&gt;</code>, including
+							props that actually originate from <code>withAccordionManager()</code>.
+						</td>
+					</tr>
+					<tr>
+						<td><code>id</code></td>
+						<td><code>string</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							An identifier for the accordion section. Must be unique to the whole document as
+							it's used as the HTML <code>id</code> on the header button and
+							an <code>aria-labelledby</code> pointing to it. Also
+							used to generate an HTML <code>id</code> for the section's content and
+							an <code>aria-controls</code> pointing to it.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h5>Fields</h5>
 			<h4><code>&lt;AccordionHeader&gt;</code></h4>
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<h3>Base Components</h3>
