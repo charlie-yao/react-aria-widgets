@@ -504,9 +504,67 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
+			<p>
+				An <code>&lt;AccordionPanel&gt;</code> is a thin, opinionated wrapper
+				over <code>&lt;BaseAccordionPanel&gt;</code> (which is itself just a
+				wrapper over basic HTML elements) that is designed to be used
+				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
+			</p>
+			<p>
+				By default, this component uses a CSS class with <code>display: none;</code> to represent
+				the collapsed state, which may or may not be desired. For more information, see
+				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
+			</p>
+			<h5>Props</h5>
+			<p>
+				<code>&lt;AccordionPanel&gt;</code> expects, and automatically gets passed, certain props
+				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionHeader&gt;</code> such
+				as <code>id</code>. The following props are also accepted, and any props not listed are
+				automatically spread onto the underlying <code>&lt;BaseAccordionPanel&gt;</code>.
+			</p>
+			<p>
+				Note that the underlying HTML element that contains the actual content of the
+				accordion section defaults to <code>&lt;section&gt;</code>. This can be changed by
+				passing in a <code>tagName</code> prop. See <a href="#base-accordion-panel">
+				<code>&lt;BaseAccordionPanel&gt;</code></a> below.
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default Value</th>
+						<th scope="col">Required?</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>children</code></td>
+						<td><code>React.Node</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							A string, React component, etc. that represents the actual
+							content for this accordion section.
+						</td>
+					</tr>
+					<tr>
+						<td><code>className</code></td>
+						<td><code>string</code></td>
+						<td><code>''</code></td>
+						<td></td>
+						<td>
+							A string representing a CSS class. If this section is collapsed, the
+							class <code>"react-aria-widgets-hidden"</code> will be automatically
+							concatenated.
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			<h3>Base Components</h3>
 			<h4><code>&lt;BaseAccordionHeader&gt;</code></h4>
-			<h4><code>&lt;BaseAccordionPanel&gt;</code></h4>
+			<h4 id="base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></h4>
 			<h2>Keyboard Support</h2>
 			<h2>Notes</h2>
 			<ul>
