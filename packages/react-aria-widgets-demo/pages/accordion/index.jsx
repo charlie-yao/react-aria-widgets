@@ -444,7 +444,7 @@ export default function AccordionPage() {
 								Though this may seem like a minor detail, it has some accessibility
 								implications such as potentially failing to
 								meet <a href="https://www.w3.org/TR/WCAG22/#parsing">
-								Success Criterion 4.4.1 Parsing</a> in the WCAG 2.2 guidelines.
+								Success Criterion 4.4.1</a> of the WCAG 2.2 guidelines.
 							</p>
 							<p>
 								See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
