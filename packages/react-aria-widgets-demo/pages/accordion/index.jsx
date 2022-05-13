@@ -602,10 +602,10 @@ export default function AccordionPage() {
 								A unique identifier for the underlying <code>&lt;button&gt;</code>.
 							</p>
 							<p>
-								Note that it's also recommended to give the accordion section's
-								content an <code>aria-labelledby</code> attribute that points to this
-								button (e.g. giving a corresponding <code>&lt;BaseAccordionPanel&gt;</code> a
-								<code>labelId</code> prop with the same value).
+								Note that it's also recommended to give the accordion section's content
+								an <code>aria-labelledby</code> attribute that points to this button (e.g. giving a
+								corresponding <code>&lt;BaseAccordionPanel&gt;</code> a <code>labelId</code> prop
+								with the same value).
 							</p>
 						</td>
 					</tr>
@@ -741,6 +741,9 @@ export default function AccordionPage() {
 					instead of listing redundant props in accordion header/base accordion header (and panel),
 					maybe list out everything in the base components, but specify which ones DON'T
 					need to be passed if using the opinionated version?
+				</li>
+				<li>
+					arrange props alphabetically?
 				</li>
 				<li>
 					<a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-Aria Authoring Practices 1.2 Accordion Specifications</a>
