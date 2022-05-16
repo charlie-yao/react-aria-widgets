@@ -724,10 +724,100 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h4 id="base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></h4>
+			<p>
+				<code>&lt;BaseAccordionPanel&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
+				designed to help implement accordions according to the WAI-ARIA Authoring Practices 1.2. It is the
+				underlying component for <code>&lt;AccordionPanel&gt;</code>, and can be used for
+				other accordion implementations.
+			</p>
+			<h5>Props</h5>
+			<p>
+				This component accepts the following props, and any props not explicitly listed here
+				will be spread onto the underlying HTML element.
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Type</th>
+						<th scope="col">Default Value</th>
+						<th scope="col">Required?</th>
+						<th scope="col">Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>children</code></td>
+						<td><code>React.Node</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							A string, React component, etc., that represents the actual
+							content for an accordion section.
+						</td>
+					</tr>
+					<tr>
+						<td><code>id</code></td>
+						<td><code>string</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							A unique identifier for the underlying HTML element. Note that the corresponding
+							accordion header should also have an <code>aria-controls</code> attribute
+							with the same value. This can be accomplished by passing in
+							a <code>controlsId</code> prop to a <code>&lt;BaseAccordionHeader&gt;</code>.
+						</td>
+					</tr>
+					<tr>
+						<td><code>labelId</code></td>
+						<td><code>string</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713 (see description)' }</td>
+						<td>
+							<p>
+								A unique identifier for the accordion header that controls this element's
+								visibility. Maps to the <code>aria-labelledby</code> attribute.
+							</p>
+							<p>
+								Note that this prop is optional if the underlying HTML element
+								does NOT have the <code>region</code> role. Because
+								this component defaults to using the <code>&lt;section&gt;</code> element
+								(which has the <code>region</code> role), this prop is required by default.
+							</p>
+							<p>
+								See the <a href="https://w3c.github.io/aria/#region">
+								<code>region</code> specification</a> for more information.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td><code>tagName</code></td>
+						<td><code>string</code></td>
+						<td><code>'section'</code></td>
+						<td></td>
+						<td>
+							<p>
+								A string representing what the underlying HTML element will be rendered as.
+								Because this prop defaults to an element with the <code>region</code> role,
+								the <code>labelId</code> is also required by default.
+							</p>
+							<p>
+								However, the underlying HTML element does NOT need to have the
+								role <code>region</code>. In fact, according to the WAI-ARIA
+								Authoring Practices 1.2:
+							</p>
+							<blockquote cite="https://w3c.github.io/aria-practices/#accordion">
+								Avoid using the <code>region</code> role in circumstances that create landmark
+								region proliferation, e.g. in an accordion that contains more than approximately
+								6 panels that can be expanded at the same time.
+							</blockquote>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			<h2>Keyboard Support</h2>
 			<h2>Notes</h2>
 			<ul>
-				<li>mention using <code>&lt;section&gt;</code> versus <code>&lt;div&gt;</code></li>
 				<li>where to put render function documentation? in usage and examples? in accordion section?</li>
 				<li>
 					expand upon this in "Building Your Own Accordion"? E.g., explain that id and
@@ -746,7 +836,9 @@ export default function AccordionPage() {
 					arrange props alphabetically?
 				</li>
 				<li>
-					<a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-Aria Authoring Practices 1.2 Accordion Specifications</a>
+					<a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
+						WAI-Aria Authoring Practices 1.2 Accordion Specification
+					</a>
 				</li>
 			</ul>
 		</article>
