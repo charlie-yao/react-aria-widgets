@@ -66,25 +66,25 @@ export default function withAccordionManager(Component) {
 			return !this.getAllowToggle() && this.getIsExpanded(id);
 		};
 
-		toggleSection = (sectionId) => {
+		toggleSection = (id) => {
 			const { allowMultiple } = this.props;
 			const allowToggle = this.getAllowToggle();
 
 			this.setState(prevState => {
 				const { expandedSections } = prevState;
-				const alreadyExpanded = expandedSections.has(sectionId);
+				const alreadyExpanded = expandedSections.has(id);
 
 				if(allowMultiple) {
 					if(alreadyExpanded)
-						expandedSections.delete(sectionId);
+						expandedSections.delete(id);
 					else
-						expandedSections.add(sectionId);
+						expandedSections.add(id);
 				}
 				else {
 					expandedSections.clear();
 
 					if(!alreadyExpanded || (alreadyExpanded && !allowToggle))
-						expandedSections.add(sectionId);
+						expandedSections.add(id);
 				}
 
 				return {
