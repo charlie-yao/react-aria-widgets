@@ -15,8 +15,10 @@ function AccordionHeader(props) {
 	const {
 		children, id, index, headerLevel,
 		setSectionRef, onTriggerClick, onTriggerKeyDown,
-		isExpanded, isDisabled, headerProps, buttonProps,
+		getIsExpanded, getIsDisabled, headerProps, buttonProps,
 	} = props;
+	const isExpanded = getIsExpanded(id);
+	const isDisabled = getIsDisabled(id);
 
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,
@@ -48,8 +50,8 @@ AccordionHeader.propTypes = {
 	setSectionRef: PropTypes.func.isRequired,
 	onTriggerClick: PropTypes.func.isRequired,
 	onTriggerKeyDown: PropTypes.func.isRequired,
-	isExpanded: PropTypes.bool.isRequired,
-	isDisabled: PropTypes.bool.isRequired,
+	getIsExpanded: PropTypes.func.isRequired,
+	getIsDisabled: PropTypes.func.isRequired,
 	headerProps: PropTypes.object,
 	buttonProps: PropTypes.object,
 };

@@ -13,41 +13,10 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 function AccordionSection(props) {
 	const { children, ...rest } = props;
-	const {
-		id, index, headerLevel, onTriggerClick, onTriggerKeyDown,
-		getIsExpanded, getIsDisabled, setSectionRef,
-	} = rest;
 
-	if(typeof children === 'function')
-		return children(rest);
-	else {
-		return React.Children.map(children, child => {
-			const { type } = child;
-			const isExpanded = getIsExpanded(id);
-			const isDisabled = getIsDisabled(id);
-
-			if(type === AccordionHeader) {
-				return React.cloneElement(child, {
-					id,
-					index,
-					headerLevel,
-					onTriggerClick,
-					onTriggerKeyDown,
-					isExpanded,
-					isDisabled,
-					setSectionRef,
-				});
-			}
-			else if(type === AccordionPanel) {
-				return React.cloneElement(child, {
-					id,
-					isExpanded,
-				});
-			}
-			else
-				throw new Error('Only <AccordionHeader> and <AccordionPanel> are valid children of <AccordionSection>.');
-		});
-	}
+	return React.Children.map(children, child => {
+		return React.cloneElement(child, rest);
+	});
 }
 
 AccordionSection.propTypes = {
