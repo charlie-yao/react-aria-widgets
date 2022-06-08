@@ -14,13 +14,20 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 function AccordionSection(props) {
 	const { children, ...rest } = props;
 
-	return React.Children.map(children, child => {
-		return React.cloneElement(child, rest);
-	});
+	if(typeof children === 'function')
+		return children(rest);
+	else {
+		return React.Children.map(children, child => {
+			return React.cloneElement(child, rest);
+		});
+	}
 }
 
 AccordionSection.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.node,
+		PropTypes.func,
+	]).isRequired,
 	id: PropTypes.string.isRequired,
 	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,

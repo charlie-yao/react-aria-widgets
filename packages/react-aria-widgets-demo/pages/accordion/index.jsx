@@ -117,6 +117,9 @@ export default function AccordionPage() {
 				which HTML and ARIA attributes are needed to conform to the WAI-ARIA Authoring Practices 1.2.
 			</p>
 			<p>
+				<code>&lt;AccordionSection&lt;</code> also accepts a render function as its <code>children</code> prop:
+			</p>
+			<p>
 				There are a couple caveats to making custom implementations, though.
 			</p>
 			<p>
