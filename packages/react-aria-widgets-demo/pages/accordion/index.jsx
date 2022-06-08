@@ -117,7 +117,19 @@ export default function AccordionPage() {
 				which HTML and ARIA attributes are needed to conform to the WAI-ARIA Authoring Practices 1.2.
 			</p>
 			<p>
-				Note that there are a couple caveats to custom implementations, though.
+				There are a couple caveats to making custom implementations, though.
+			</p>
+			<p>
+				The first is that when using <code>withAccordionManager</code>, any button
+				that controls a particular accordion section must use the
+				provided <code>setSectionRef()</code> callback ref. Otherwise, focus management will
+				not work properly.
+			</p>
+			<p>
+				The second is that, if you wish to use the keyboard and mouse event handlers provided
+				by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
+				section must have an <code>id</code> and a <code>data-index</code> attribute that corresponds
+				to its <code>&lt;AccordionSection&gt;</code>.
 			</p>
 			{/*
 			<p>
