@@ -94,6 +94,33 @@ export default function AccordionPage() {
 			</pre>
 			<h3>Customization</h3>
 			<p>
+				The <code>&lt;Accordion&gt;</code> component uses the <code>withAccordionManager</code> HOC, which
+				handles all of the stateful logic for an accordion. This HOC can be used independently of the
+				other accordion components in React Aria Widgets, allowing developers to create their
+				own accordion implementations.
+			</p>
+			<p>
+				<code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> provide
+				some conveniences though, such as keyboard event handlers, uniform header
+				levels, and consistent HTML IDs for each header/content combination.
+				Additionally, <code>&lt;AccordionSection&gt;</code> automatically passes down all of the props
+				it receives (including props from <code>&lt;Accordion&gt;</code> and,
+				by extension, <code>withAccordionManager</code>) to all of its children.
+			</p>
+			<p>
+				In other words, for developers who wish to use those components but
+				find <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
+				be insufficiently flexible, they can create their own accordion header/content section
+				implementations. For these situations, React Aria Widgets also provides
+				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components.
+				Unlike the non-base versions, these are unopinionated components that exist solely to simplify
+				which HTML and ARIA attributes are needed to conform to the WAI-ARIA Authoring Practices 1.2.
+			</p>
+			<p>
+				Note that there are a couple caveats to custom implementations, though.
+			</p>
+			{/*
+			<p>
 				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
 				a rendering function can be used as the <code>children</code> prop
 				in <code>&lt;AccordionSection&gt;</code>. The rendering function provides access to
@@ -129,6 +156,7 @@ export default function AccordionPage() {
 				<code>{ renderFunctionExampleTwo }</code>
 			</pre>
 			<h4>Styling</h4>
+			*/}
 			<h2>API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager()</code></h4>
