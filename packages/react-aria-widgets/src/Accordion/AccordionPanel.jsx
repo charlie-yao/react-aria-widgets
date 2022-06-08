@@ -13,7 +13,15 @@ import withNoOp from 'src/hocs/withNoOp';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionPanel(props) {
-	const { children, id, getIsExpanded, className, ...rest } = props;
+	const {
+		children, id, getIsExpanded, className,
+		//Pull out props received from <AccordionSection> that shouldn't get passed down
+		index, headerLevel, onTriggerClick, onTriggerKeyDown,
+		allowMultiple, allowToggle, getIsDisabled,
+		toggleSection, setSectionRef, focusSection,
+		focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
+		...rest
+	} = props;
 	const isExpanded = getIsExpanded(id);
 
 	return (

@@ -20,10 +20,7 @@ function AccordionSection(props) {
 }
 
 AccordionSection.propTypes = {
-	children: PropTypes.oneOfType([
-		PropTypes.node,
-		PropTypes.func,
-	]).isRequired,
+	children: PropTypes.node.isRequired,
 	id: PropTypes.string.isRequired,
 	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
