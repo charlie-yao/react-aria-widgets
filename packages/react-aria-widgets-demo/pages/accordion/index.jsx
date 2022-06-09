@@ -2,8 +2,11 @@ import dynamic from 'next/dynamic';
 
 //Misc.
 import {
-	defaultAccordionExample, disableMultipleExample, disableToggleExample,
-	renderFunctionExampleOne, renderFunctionExampleTwo
+	defaultAccordionExample,
+	disableMultipleExample,
+	disableToggleExample,
+	renderFunctionExampleOne,
+	renderFunctionExampleTwo,
 } from './examples';
 
 const DefaultAccordion = dynamic(
@@ -24,6 +27,14 @@ const DisableMultipleAccordion = dynamic(
 
 const DisableToggleAccordion = dynamic(
 	() => import('./DisableToggleAccordion'),
+	{
+		ssr: false,
+		loading: () => <p>Loading, please wait...</p>,
+	},
+);
+
+const CustomAccordion = dynamic(
+	() => import('./CustomAccordion'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -138,6 +149,7 @@ export default function AccordionPage() {
 				use <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>, they
 				can simply pass in props for styles/CSS classes (details below).
 			</p>
+			<CustomAccordion />
 			{/*
 			<p>
 				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
