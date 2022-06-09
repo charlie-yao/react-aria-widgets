@@ -129,25 +129,26 @@ export default function AccordionPage() {
 				which HTML and ARIA attributes are needed to conform to the WAI-ARIA Authoring Practices 1.2.
 			</p>
 			<p>
-				There are a couple caveats to making custom implementations though:
+				There are a few caveats to making custom implementations though:
 			</p>
-			<p>
-				The first is that when using <code>withAccordionManager</code>, any button
-				that controls a particular accordion section must use the
-				provided <code>setSectionRef()</code> callback ref. Otherwise, focus management will
-				not work properly.
-			</p>
-			<p>
-				The second is that, if you wish to use the keyboard and mouse event handlers provided
-				by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
-				section must have an <code>id</code> and a <code>data-index</code> attribute that corresponds
-				to its <code>&lt;AccordionSection&gt;</code>.
-			</p>
+			<ul>
+				<li>
+					When using <code>withAccordionManager</code>, any button that controls a
+					particular accordion section must use the <code>setSectionRef()</code> callback
+					ref. Otherwise, focus management will not work properly.
+				</li>
+				<li>
+					If you wish to use the keyboard and mouse event handlers provided
+					by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
+					section must have an <code>id</code> and a <code>data-index</code> attribute that
+					corresponds to its <code>&lt;AccordionSection&gt;</code>.
+				</li>
+			</ul>
 			<p>
 				Since React Aria Widgets places no restrictions on the underlying HTML, accordions can
 				be styled in many different ways. For developers who wish to
 				use <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>, they
-				can simply pass in props for styles/CSS classes (details below).
+				can simply pass in props for styles/CSS classes.
 			</p>
 			<CustomAccordion />
 			{/*
