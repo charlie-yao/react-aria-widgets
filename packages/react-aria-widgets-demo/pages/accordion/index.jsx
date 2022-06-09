@@ -103,12 +103,13 @@ export default function AccordionPage() {
 				<code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> provide
 				some conveniences though, such as keyboard event handlers, uniform header
 				levels, and consistent HTML IDs for each header/content combination.
-				Additionally, <code>&lt;AccordionSection&gt;</code> automatically passes down all of the props
+				Additionally, <code>&lt;AccordionSection&gt;</code> accepts either React nodes or a
+				render function as its children, and automatically passes down all of the props
 				it receives (including props from <code>&lt;Accordion&gt;</code> and,
-				by extension, <code>withAccordionManager</code>) to all of its children.
+				by extension, <code>withAccordionManager</code>) to them.
 			</p>
 			<p>
-				In other words, for developers who wish to use those components but
+				In other words, for developers who wish to use those components, but
 				find <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
 				be insufficiently flexible, they can create their own accordion header/content section
 				implementations. For these situations, React Aria Widgets also provides
@@ -117,10 +118,7 @@ export default function AccordionPage() {
 				which HTML and ARIA attributes are needed to conform to the WAI-ARIA Authoring Practices 1.2.
 			</p>
 			<p>
-				<code>&lt;AccordionSection&lt;</code> also accepts a render function as its <code>children</code> prop:
-			</p>
-			<p>
-				There are a couple caveats to making custom implementations, though.
+				There are a couple caveats to making custom implementations though:
 			</p>
 			<p>
 				The first is that when using <code>withAccordionManager</code>, any button
@@ -133,6 +131,12 @@ export default function AccordionPage() {
 				by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
 				section must have an <code>id</code> and a <code>data-index</code> attribute that corresponds
 				to its <code>&lt;AccordionSection&gt;</code>.
+			</p>
+			<p>
+				Since React Aria Widgets places no restrictions on the underlying HTML, accordions can
+				be styled in many different ways. For developers who wish to
+				use <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>, they
+				can simply pass in props for styles/CSS classes (details below).
 			</p>
 			{/*
 			<p>
