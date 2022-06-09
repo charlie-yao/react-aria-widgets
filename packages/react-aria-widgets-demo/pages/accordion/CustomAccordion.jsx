@@ -7,6 +7,10 @@ import {
 	BaseAccordionPanel,
 } from '@charlie-yao/react-aria-widgets/accordion';
 
+//Components
+import StyledAccordionHeader from './StyledAccordionHeader';
+import StyledAccordionPanel from './StyledAccordionPanel';
+
 /*
  * Section 1: Basic accordion with custom classes
  * Section 2: Composing <AccordionPanel> and <AccordionHeader> to have default styling
@@ -17,10 +21,7 @@ export default function CustomAccordion(props) {
 	return (
 		<Accordion headerlevel={ 4 }>
 			<AccordionSection id="custom-accordion-section1">
-				<AccordionHeader
-					headerProps={{ className: 'headerClass' }}
-					buttonProps={{ className: 'buttonClass' }}
-				>
+				<AccordionHeader headerProps={{ className: 'headerClass' }} buttonProps={{ className: 'buttonClass' }}>
 					CustomAccordion - Section 1	
 				</AccordionHeader>
 				<AccordionPanel className="panelClass">
@@ -47,38 +48,6 @@ export default function CustomAccordion(props) {
 				{ renderFunction }
 			</AccordionSection>
 		</Accordion>
-	);
-}
-
-function StyledAccordionHeader(props) {
-	const { headerProps, buttonProps, ...rest } = props;
-	
-	//Since the point is to demonstrate an <AccordionHeader> with a default custom
-	//CSS class, we can't just spread props onto <AccordionHeader> as we may
-	//inadvertently overwrite headerProps or buttonProps
-	const _headerProps = Object.assign({}, headerProps, {
-		className: 'headerClass',
-	});
-
-	const _buttonProps = Object.assign({}, headerProps, {
-		className: 'buttonClass',
-	});
-
-	return (
-		<AccordionHeader
-			headerProps={ _headerProps }
-			buttonProps={ _buttonProps }
-			{...rest}
-		/>
-	);
-}
-
-function StyledAccordionPanel(props) {
-	return (
-		<AccordionPanel
-			className="panelClass"
-			{...props}
-		/>
 	);
 }
 
