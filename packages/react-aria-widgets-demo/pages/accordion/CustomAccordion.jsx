@@ -9,10 +9,9 @@ import {
 
 /*
  * Section 1: Basic accordion with custom classes
- * Section 2: Custom <AccordionPanel> and <AccordionHeader> with default styling
- * Section 3: Custom components that wrap over <BaseAccordionPanel> and <BaseAccordionHeader>
+ * Section 2: Composing <AccordionPanel> and <AccordionHeader> to have default styling
+ * Section 3: Composing <BaseAccordionPanel> and <BaseAccordionHeader>
  * Section 4: Using a render function
- * Section 5: Using a render function with custom event handlers
  */
 export default function CustomAccordion(props) {
 	return (
