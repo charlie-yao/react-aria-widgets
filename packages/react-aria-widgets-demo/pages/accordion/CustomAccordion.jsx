@@ -34,7 +34,7 @@ export default function CustomAccordion(props) {
 			</AccordionSection>
 			<AccordionSection id="custom-accordion-section3">
 				<CustomAccordionHeader>
-					Custom Accordion - Section 3
+					CustomAccordion - Section 3
 				</CustomAccordionHeader>
 				<CustomAccordionPanel>
 					Hello world!
@@ -153,7 +153,7 @@ function CustomAccordionPanel(props) {
 	} = props;
 	const panelId = `${id}-panel`;
 	const isExpanded = getIsExpanded(id);
-	const _className = `buttonClass ${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}`;
+	const _className = `panelClass ${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}`;
 
 	return (
 		<BaseAccordionPanel
@@ -172,39 +172,69 @@ function renderFunction(props) {
 		id,
 		index,
 		headerLevel,
-		setSectionRef,
-		onTriggerClick,
-		onTriggerKeyDown,
 		getIsExpanded,
 		getIsDisabled,
+		setSectionRef,
+		toggleSection,
+		focusPrevSection,
+		focusNextSection,
+		focusFirstSection,
+		focusLastSection,
 	} = props;
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
-	const panelId = `${id}-panel`;
+	const HeaderElement = `h${headerLevel}`;
+	const contentId = `${id}-content`;
+
+	const onClick = () => {
+		toggleSection(id);	
+	};
+
+	const onKeyDown = (event) => {
+		const { key } = event;
+
+		if(key === 'ArrowUp') {
+			event.preventDefault();
+			focusPrevSection(index);
+		}
+		else if(key === 'ArrowDown') {
+			event.preventDefault();
+			focusNextSection(index);
+		}
+		else if(key === 'Home') {
+			event.preventDefault();
+			focusFirstSection();
+		}
+		else if(key === 'End') {
+			event.preventDefault();
+			focusLastSection();
+		}
+	};
 
 	return (
 		<> 
-			<BaseAccordionHeader
-				id={ id }
-				controlsId={ panelId }
-				headerLevel={ headerLevel }
-				onClick={ onTriggerClick }
-				onKeyDown={ onTriggerKeyDown }
-				isExpanded={ isExpanded }
-				isDisabled={ isDisabled }
-				headerProps={{ className: 'headerClass' }}
-				buttonProps={{ className: 'buttonClass', 'data-index': index }}
-				ref={ setSectionRef }
-			>
-				CustomAccordion - Section 4
-			</BaseAccordionHeader>
-			<BaseAccordionPanel
-				id={ panelId }
-				labelId={ id }
-				className={ `buttonClass ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
+			<HeaderElement className="headerClass">
+				<button
+					type="button"
+					className="buttonClass"
+					id={ id }
+					aria-controls={ contentId }
+					aria-expanded={ isExpanded }
+					aria-disabled={ isDisabled }
+					onClick={ onClick }
+					onKeyDown={ onKeyDown }
+					ref={ setSectionRef }
+				>
+					CustomAccordion - Section 4
+				</button>
+			</HeaderElement>
+			<section
+				id={ contentId }
+				aria-labelledby={ id }
+				className={ `panelClass ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
 			>
 				Hello world!
-			</BaseAccordionPanel>
+			</section>
 		</>
 	);
 }
