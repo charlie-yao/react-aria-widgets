@@ -140,8 +140,16 @@ export default function AccordionPage() {
 				<li>
 					If you wish to use the keyboard and mouse event handlers provided
 					by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
-					section must have an <code>id</code> and a <code>data-index</code> attribute that
+					section must have an <code>id</code> attribute and a <code>data-index</code> attribute that
 					corresponds to its <code>&lt;AccordionSection&gt;</code>.
+				</li>
+				<li>
+					If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
+					already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
+					This means that if a developer writes a wrapper over <code>&lt;BaseAccordionPanel&gt;</code> that's
+					used in conjunction with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>,
+					they must take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
+					passes down.
 				</li>
 			</ul>
 			<p>
