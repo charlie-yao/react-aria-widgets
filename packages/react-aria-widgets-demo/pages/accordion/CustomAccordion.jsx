@@ -17,7 +17,7 @@ import {
 export default function CustomAccordion(props) {
 	return (
 		<Accordion headerlevel={ 4 }>
-			<AccordionSection id="custom-accordion-one-section1">
+			<AccordionSection id="custom-accordion-section1">
 				<AccordionHeader headerProps={{ className: 'headerClass' }} buttonProps={{ className: 'buttonClass' }}>
 					CustomAccordion - Section 1	
 				</AccordionHeader>
@@ -25,7 +25,7 @@ export default function CustomAccordion(props) {
 					Hello world!
 				</AccordionPanel>
 			</AccordionSection>
-			<AccordionSection id="custom-accordion-one-section2">
+			<AccordionSection id="custom-accordion-section2">
 				<StyledAccordionHeader>
 					CustomAccordion - Section 2
 				</StyledAccordionHeader>
@@ -33,13 +33,16 @@ export default function CustomAccordion(props) {
 					Hello world!
 				</StyledAccordionPanel>
 			</AccordionSection>
-			<AccordionSection id="custom-accordion-one-section3">
+			<AccordionSection id="custom-accordion-section3">
 				<CustomAccordionHeader>
 					Custom Accordion - Section 3
 				</CustomAccordionHeader>
 				<CustomAccordionPanel>
 					Hello world!
 				</CustomAccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="custom-accordion-section4">
+				{ renderFunction }
 			</AccordionSection>
 		</Accordion>
 	);
@@ -131,7 +134,7 @@ function CustomAccordionPanel(props) {
 		children,
 		id,
 		getIsExpanded,
-		className,
+		className = '',
 		//Pull out the props from <AccordionSection> that shouldn't get passed down
 		index,
 		headerLevel,
@@ -166,4 +169,43 @@ function CustomAccordionPanel(props) {
 }
 
 function renderFunction(props) {
+	const {
+		id,
+		index,
+		headerLevel,
+		setSectionRef,
+		onTriggerClick,
+		onTriggerKeyDown,
+		getIsExpanded,
+		getIsDisabled,
+	} = props;
+	const isExpanded = getIsExpanded(id);
+	const isDisabled = getIsDisabled(id);
+	const panelId = `${id}-panel`;
+
+	return (
+		<> 
+			<BaseAccordionHeader
+				id={ id }
+				controlsId={ panelId }
+				headerLevel={ headerLevel }
+				onClick={ onTriggerClick }
+				onKeyDown={ onTriggerKeyDown }
+				isExpanded={ isExpanded }
+				isDisabled={ isDisabled }
+				headerProps={{ className: 'headerClass' }}
+				buttonProps={{ className: 'buttonClass', 'data-index': index }}
+				ref={ setSectionRef }
+			>
+				CustomAccordion - Section 4
+			</BaseAccordionHeader>
+			<BaseAccordionPanel
+				id={ panelId }
+				labelId={ id }
+				className={ `buttonClass ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
+			>
+				Hello world!
+			</BaseAccordionPanel>
+		</>
+	);
 }
