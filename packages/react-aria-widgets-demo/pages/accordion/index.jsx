@@ -138,10 +138,15 @@ export default function AccordionPage() {
 					ref. Otherwise, focus management will not work properly.
 				</li>
 				<li>
-					If you wish to use the keyboard and mouse event handlers provided
+					If one wishes to use the keyboard and mouse event handlers provided
 					by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
 					section must have an <code>id</code> attribute and a <code>data-index</code> attribute that
 					corresponds to its <code>&lt;AccordionSection&gt;</code>.
+				</li>
+				<li>
+					Be careful when using the spread operator and <code>headerProps</code> or <code>buttonProps</code> in
+					<code>&lt;AccordionPanel&gt;</code> as one can easily overwrite which props should actually
+					be passed down.
 				</li>
 				<li>
 					If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
