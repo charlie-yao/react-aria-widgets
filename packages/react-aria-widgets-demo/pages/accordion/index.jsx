@@ -157,16 +157,25 @@ export default function AccordionPage() {
 					If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
 					already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
 					This means that if a developer writes a wrapper over <code>&lt;BaseAccordionPanel&gt;</code> that's
-					used in conjunction with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>,
-					they must take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
+					used in conjunction with <code>&lt;AccordionSection&gt;</code> (and, by extension,
+					<code>&lt;Accordion&gt;</code> and <code>withAccordionManager()</code>), they must
+					take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
 					passes down.
 				</li>
 			</ul>
+			<h4>Styling</h4>
 			<p>
-				Since React Aria Widgets places no restrictions on the underlying HTML, accordions can
-				be styled in many different ways. For developers who wish to
-				use <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>, they
-				can simply pass in props for styles/CSS classes.
+				<code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
+				be styled simply by passing in props. For anyone who wishes to use any
+				of the various customization options, React Aria Widgets ultimately places no
+				restrictions on the underlying HTML (though we recommend taking care to adhere to the
+				WAI-ARIA Authoring Practices!), meaning developers have complete control over how
+				their accordions are styled.
+			</p>
+			<p>
+				This also means developers are not tied to using <code>display: none;</code> to
+				represent the collapsed state, which may or may not be desired. For more information,
+				see the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
 			</p>
 			<CustomAccordion />
 			<pre>
@@ -184,6 +193,45 @@ export default function AccordionPage() {
 			<pre>
 				{ CustomAccordionPanelExample }
 			</pre>
+			<p>
+				This example shows four different ways of creating custom accordions.
+			</p>
+			<p>
+				The first accordion section shows a simple way to add styling by passing in
+				props to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
+			</p>
+			<p>
+				The second accordion section shows how to add default styles
+				to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> by
+				composing these components. Note that we can't simply
+				spread <code>props</code> onto <code>&lt;AccordionHeader&gt;</code> in <code>&lt;StyledAccordionHeader&gt;</code>.
+				We have to make sure we only pass down the merged versions
+				of <code>headerProps</code> and <code>buttonProps</code>. Otherwise, we would lose either
+				the default styling or any of the props we may be passing down in those objects.
+			</p>
+			<p>
+				Here, we don't have to worry about using <code>setSectionRef()</code>, adding
+				the <code>id</code> and <code>data-index</code> attributes, or taking out props
+				from <code>&lt;AccordionSection&gt;</code> because that's already being handled
+				by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
+			</p>
+			<p>
+				The third accordion section shows how to customize sections by composing
+				over <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code>.
+				These components give developers greater control, but it means we have to manually
+				set <code>setSectionRef()</code>, add the <code>id</code> and <code>data-index</code> attributes
+				(because we're using the event handlers provided by <code>&lt;Accordion&gt;</code>), and pull out
+				the props from <code>&lt;AccordionSection&gt;</code> that shouldn't be passed down
+				to <code>&lt;BaseAccordionPanel&gt;</code>, while also being mindful of how we're passing
+				down <code>headerProps</code> and <code>buttonProps</code> to <code>&lt;BaseAccordionHeader&gt;</code>.
+			</p>
+			<p>
+				The fourth accordion section shows how to use a render function. The render function
+				has access to the same props as the other examples, and it bypasses some of the above
+				caveats by implementing its own event handlers and directly passing styles to the
+				HTML elements. <code>setSectionRef()</code> still needs to be set, however, in order to
+				use the methods provided by <code>withAccordionManager()</code>.
+			</p>
 			{/*
 			<p>
 				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
