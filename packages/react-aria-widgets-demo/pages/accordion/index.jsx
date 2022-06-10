@@ -5,8 +5,6 @@ import {
 	defaultAccordionExample,
 	disableMultipleExample,
 	disableToggleExample,
-	renderFunctionExampleOne,
-	renderFunctionExampleTwo,
 	CustomAccordionExample,
 	StyledAccordionHeaderExample,
 	StyledAccordionPanelExample,
@@ -40,22 +38,6 @@ const DisableToggleAccordion = dynamic(
 
 const CustomAccordion = dynamic(
 	() => import('./CustomAccordion'),
-	{
-		ssr: false,
-		loading: () => <p>Loading, please wait...</p>,
-	},
-);
-
-const RenderFunctionAccordionOne = dynamic(
-	() => import('./RenderFunctionAccordionOne'),
-	{
-		ssr: false,
-		loading: () => <p>Loading, please wait...</p>,
-	},
-);
-
-const RenderFunctionAccordionTwo = dynamic(
-	() => import('./RenderFunctionAccordionTwo'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -232,44 +214,6 @@ export default function AccordionPage() {
 				HTML elements. <code>setSectionRef()</code> still needs to be set, however, in order to
 				use the methods provided by <code>withAccordionManager()</code>.
 			</p>
-			{/*
-			<p>
-				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,
-				a rendering function can be used as the <code>children</code> prop
-				in <code>&lt;AccordionSection&gt;</code>. The rendering function provides access to
-				the underlying fields and methods that manage the accordion's state and allows
-				for custom rendering.
-			</p>
-			<p>
-				Note that the button that controls the accordion section must use the callback
-				ref <code>setSectionRef()</code>. Otherwise, focus management will not work properly.
-			</p>
-			<p>
-				For the full list of props that the rendering function has access to, see below.
-			</p>
-			<RenderFunctionAccordionOne />
-			<pre>
-				<code>{ renderFunctionExampleOne }</code>
-			</pre>
-			<p>
-				In addition to the actual methods that manipulate the underlying state, the render function
-				also receives event handlers that already implement the mouse and keyboard behaviors. In you wish to
-				use these event handlers, the button must also have an <code>id</code> attribute and
-				a <code>data-index</code> attribute that corresponds to the <code>id</code> and <code>index</code> props
-				provided to the render function.
-			</p>
-			<p>
-				(In the previous example, giving the button an <code>id</code> attribute isn't a strict
-				necessity for expanding/collapsing the content, but it was added because the
-				WAI-ARIA Authoring Practices 1.2 recommends it so that the content can have
-				an <code>aria-labelledby</code> attribute that points to the button.)
-			</p>
-			<RenderFunctionAccordionTwo />
-			<pre>
-				<code>{ renderFunctionExampleTwo }</code>
-			</pre>
-			<h4>Styling</h4>
-			*/}
 			<h2>API</h2>
 			<h3>Higher-Order Components and Hooks</h3>
 			<h4><code>withAccordionManager()</code></h4>
