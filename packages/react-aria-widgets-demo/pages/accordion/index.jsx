@@ -10,6 +10,7 @@ import {
 	StyledAccordionPanelExample,
 	CustomAccordionHeaderExample,
 	CustomAccordionPanelExample,
+	customRenderFunctionExample,
 } from './examples';
 
 const DefaultAccordion = dynamic(
@@ -174,6 +175,9 @@ export default function AccordionPage() {
 			</pre>
 			<pre>
 				{ CustomAccordionPanelExample }
+			</pre>
+			<pre>
+				{ customRenderFunctionExample }
 			</pre>
 			<p>
 				This example shows four different ways of creating custom accordions.
