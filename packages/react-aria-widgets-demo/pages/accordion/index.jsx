@@ -7,6 +7,11 @@ import {
 	disableToggleExample,
 	renderFunctionExampleOne,
 	renderFunctionExampleTwo,
+	CustomAccordionExample,
+	StyledAccordionHeaderExample,
+	StyledAccordionPanelExample,
+	CustomAccordionHeaderExample,
+	CustomAccordionPanelExample,
 } from './examples';
 
 const DefaultAccordion = dynamic(
@@ -164,6 +169,21 @@ export default function AccordionPage() {
 				can simply pass in props for styles/CSS classes.
 			</p>
 			<CustomAccordion />
+			<pre>
+				{ CustomAccordionExample }
+			</pre>
+			<pre>
+				{ StyledAccordionHeaderExample }
+			</pre>
+			<pre>
+				{ StyledAccordionPanelExample }
+			</pre>
+			<pre>
+				{ CustomAccordionHeaderExample }
+			</pre>
+			<pre>
+				{ CustomAccordionPanelExample }
+			</pre>
 			{/*
 			<p>
 				Instead of using <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>,

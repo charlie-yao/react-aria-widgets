@@ -3,20 +3,14 @@ import {
 	AccordionSection,
 	AccordionHeader,
 	AccordionPanel,
-	BaseAccordionHeader,
-	BaseAccordionPanel,
 } from '@charlie-yao/react-aria-widgets/accordion';
 
 //Components
 import StyledAccordionHeader from './StyledAccordionHeader';
 import StyledAccordionPanel from './StyledAccordionPanel';
+import CustomAccordionHeader from './CustomAccordionHeader';
+import CustomAccordionPanel from './CustomAccordionPanel';
 
-/*
- * Section 1: Basic accordion with custom classes
- * Section 2: Composing <AccordionPanel> and <AccordionHeader> to have default styling
- * Section 3: Composing <BaseAccordionPanel> and <BaseAccordionHeader>
- * Section 4: Using a render function
- */
 export default function CustomAccordion(props) {
 	return (
 		<Accordion headerlevel={ 4 }>
@@ -51,94 +45,6 @@ export default function CustomAccordion(props) {
 	);
 }
 
-function CustomAccordionHeader(props) {
-	const {
-		children,
-		id,
-		index,
-		headerLevel,
-		setSectionRef,
-		onTriggerClick,
-		onTriggerKeyDown,
-		getIsExpanded,
-		getIsDisabled,
-		headerProps,
-		buttonProps,
-	} = props;
-	const isExpanded = getIsExpanded(id);
-	const isDisabled = getIsDisabled(id);
-	const panelId = `${id}-panel`;
-	
-	const _headerProps = Object.assign({}, headerProps, {
-		className: 'headerClass',
-	});
-
-	const _buttonProps = Object.assign({}, buttonProps, {
-		'data-index': index,
-		className: 'buttonClass',
-	});
-
-	return (
-		<BaseAccordionHeader
-			id={ id }
-			controlsId={ panelId }
-			headerLevel={ headerLevel }
-			onClick={ onTriggerClick }
-			onKeyDown={ onTriggerKeyDown }
-			isExpanded={ isExpanded }
-			isDisabled={ isDisabled }
-			headerProps={ _headerProps }
-			buttonProps={ _buttonProps }
-			ref={ setSectionRef }
-		>
-			{ children }
-		</BaseAccordionHeader>
-	);
-}
-
-function CustomAccordionPanel(props) {
-	//Note that <BaseAccordionPanel> assumes that if it is given a prop that isn't already
-	//defined, it's meant to be spread onto the underlying HTML as an attribute. That means
-	//if we want to add custom HTML attributes, we can't just spread props onto <BaseAccordionPanel>
-	//because it's already receiving a number of props from <AccordionSection>.
-	const {
-		children,
-		id,
-		getIsExpanded,
-		className = '',
-		//Pull out the props from <AccordionSection> that shouldn't get passed down
-		index,
-		headerLevel,
-		onTriggerClick,
-		onTriggerKeyDown,
-		allowMultiple,
-		allowToggle,
-		getIsDisabled,
-		toggleSection,
-		setSectionRef,
-		focusSection,
-		focusPrevSection,
-		focusNextSection,
-		focusFirstSection,
-		focusLastSection,
-		...rest
-	} = props;
-	const panelId = `${id}-panel`;
-	const isExpanded = getIsExpanded(id);
-	const _className = `panelClass ${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}`;
-
-	return (
-		<BaseAccordionPanel
-			id={ panelId }
-			labelId={ id }
-			className={ _className }
-			{ ...rest }
-		>
-			{ children }
-		</BaseAccordionPanel>
-	);
-}
-
 function renderFunction(props) {
 	const {
 		id,
@@ -156,7 +62,8 @@ function renderFunction(props) {
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
 	const HeaderElement = `h${headerLevel}`;
-	const contentId = `${id}-content`;
+	const contentId = `${id}-panel`;
+	const style = {};
 
 	const onClick = () => {
 		toggleSection(id);	
@@ -183,6 +90,9 @@ function renderFunction(props) {
 		}
 	};
 
+	if(!isExpanded)
+		style.display = 'none';
+
 	return (
 		<> 
 			<HeaderElement className="headerClass">
@@ -203,7 +113,8 @@ function renderFunction(props) {
 			<section
 				id={ contentId }
 				aria-labelledby={ id }
-				className={ `panelClass ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
+				className="panelClass"
+				style={ style }
 			>
 				Hello world!
 			</section>

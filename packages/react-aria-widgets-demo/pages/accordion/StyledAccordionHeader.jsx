@@ -1,12 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
 
-export default function StyledAccordionHeader(props) {
+function StyledAccordionHeader(props) {
 	const { headerProps, buttonProps, ...rest } = props;
 	
-	//Since the point is to demonstrate an <AccordionHeader> with a default custom
-	//CSS class, we can't just spread props onto <AccordionHeader> as we may
-	//inadvertently overwrite headerProps or buttonProps
 	const _headerProps = Object.assign({}, headerProps, {
 		className: 'headerClass',
 	});
@@ -23,3 +21,15 @@ export default function StyledAccordionHeader(props) {
 		/>
 	);
 }
+
+StyledAccordionHeader.propTypes = {
+	headerProps: PropTypes.object,
+	buttonProps: PropTypes.object,
+};
+
+StyledAccordionHeader.defaultProps = {
+	headerProps: {},
+	buttonProps: {},
+};
+
+export default StyledAccordionHeader;
