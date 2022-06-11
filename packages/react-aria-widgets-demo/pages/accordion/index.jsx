@@ -240,7 +240,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
@@ -362,7 +362,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
@@ -460,7 +460,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
@@ -532,7 +532,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
@@ -626,7 +626,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
@@ -672,7 +672,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
@@ -850,7 +850,7 @@ export default function AccordionPage() {
 						<th scope="col">Name</th>
 						<th scope="col">Type</th>
 						<th scope="col">Default Value</th>
-						<th scope="col">Required?</th>
+						<th scope="col">Required</th>
 						<th scope="col">Description</th>
 					</tr>
 				</thead>
