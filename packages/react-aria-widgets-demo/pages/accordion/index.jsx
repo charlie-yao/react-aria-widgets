@@ -458,7 +458,7 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							<code>children</code> can either be a rendering function or a set of React nodes.
+							<code>children</code> can either be a render function or a set of React nodes.
 							In addition to the <code>id</code> prop, <code>&lt;AccordionSection&gt;</code> also
 							passes down all of the props it receives from <code>&lt;Accordion&gt;</code>, including
 							props that actually originate from <code>withAccordionManager()</code>.
@@ -914,7 +914,6 @@ export default function AccordionPage() {
 			<h2>Keyboard Support</h2>
 			<h2>Notes</h2>
 			<ul>
-				<li>where to put render function documentation? in usage and examples? in accordion section?</li>
 				<li>
 					expand upon this in "Building Your Own Accordion"? E.g., explain that id and
 					index are needed to identify things, document which props are being passed down
