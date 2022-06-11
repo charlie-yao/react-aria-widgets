@@ -539,6 +539,19 @@ export default function AccordionPage() {
 				</thead>
 				<tbody>
 					<tr>
+						<td><code>buttonProps</code></td>
+						<td><code>{ '{ [key: string]: any }' }</code></td>
+						<td><code>{ '{}' }</code></td>
+						<td></td>
+						<td>
+							<p>
+								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
+								supply props and HTML attributes to it. For more information,
+								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
+							</p>
+						</td>
+					</tr>
+					<tr>
 						<td><code>children</code></td>
 						<td><code>React.Node</code></td>
 						<td><code>undefined</code></td>
@@ -552,19 +565,6 @@ export default function AccordionPage() {
 							<p>
 								See <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a> for
 								more information.
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td><code>buttonProps</code></td>
-						<td><code>{ '{ [key: string]: any }' }</code></td>
-						<td><code>{ '{}' }</code></td>
-						<td></td>
-						<td>
-							<p>
-								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
-								supply props and HTML attributes to it. For more information,
-								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
 							</p>
 						</td>
 					</tr>
