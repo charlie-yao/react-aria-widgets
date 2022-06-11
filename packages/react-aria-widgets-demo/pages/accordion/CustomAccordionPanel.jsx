@@ -11,8 +11,8 @@ function CustomAccordionPanel(props) {
 		//Pull out the props from <AccordionSection> that shouldn't get passed down
 		index,
 		headerLevel,
-		onTriggerClick,
-		onTriggerKeyDown,
+		onClick,
+		onKeyDown,
 		allowMultiple,
 		allowToggle,
 		getIsDisabled,

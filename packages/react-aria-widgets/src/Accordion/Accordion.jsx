@@ -33,12 +33,12 @@ class Accordion extends React.Component {
 	};
 
 	//---- Events ----
-	onTriggerClick = (event) => {
+	onClick = (event) => {
 		const { toggleSection } = this.props;
 		toggleSection(event.target.id);
 	};
 
-	onTriggerKeyDown = (event) => {
+	onKeyDown = (event) => {
 		const { focusPrevSection, focusNextSection, focusFirstSection, focusLastSection } = this.props;
 		const { key } = event;
 		const index = Number.parseInt(event.target.dataset.index, 10);
@@ -77,8 +77,8 @@ class Accordion extends React.Component {
 
 			return React.cloneElement(child, {
 				index: i,
-				onTriggerClick: this.onTriggerClick,
-				onTriggerKeyDown: this.onTriggerKeyDown,
+				onClick: this.onClick,
+				onKeyDown: this.onKeyDown,
 				headerLevel,
 				allowMultiple,
 				allowToggle,

@@ -14,7 +14,7 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 function AccordionHeader(props) {
 	const {
 		children, id, index, headerLevel,
-		setSectionRef, onTriggerClick, onTriggerKeyDown,
+		setSectionRef, onClick, onKeyDown,
 		getIsExpanded, getIsDisabled, headerProps, buttonProps,
 	} = props;
 	const isExpanded = getIsExpanded(id);
@@ -29,8 +29,8 @@ function AccordionHeader(props) {
 			id={ id }
 			controlsId={ getPanelId(id) }
 			headerLevel={ headerLevel }
-			onClick={ onTriggerClick }
-			onKeyDown={ onTriggerKeyDown }
+			onClick={ onClick }
+			onKeyDown={ onKeyDown }
 			isExpanded={ isExpanded }
 			isDisabled={ isDisabled }
 			headerProps={ headerProps }
@@ -48,8 +48,8 @@ AccordionHeader.propTypes = {
 	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
 	setSectionRef: PropTypes.func.isRequired,
-	onTriggerClick: PropTypes.func.isRequired,
-	onTriggerKeyDown: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired,
+	onKeyDown: PropTypes.func.isRequired,
 	getIsExpanded: PropTypes.func.isRequired,
 	getIsDisabled: PropTypes.func.isRequired,
 	headerProps: PropTypes.object,

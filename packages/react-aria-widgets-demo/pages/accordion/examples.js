@@ -218,8 +218,8 @@ function CustomAccordionHeader(props) {
 		index,
 		headerLevel,
 		setSectionRef,
-		onTriggerClick,
-		onTriggerKeyDown,
+		onClick,
+		onKeyDown,
 		getIsExpanded,
 		getIsDisabled,
 		headerProps,
@@ -243,8 +243,8 @@ function CustomAccordionHeader(props) {
 			id={ id }
 			controlsId={ panelId }
 			headerLevel={ headerLevel }
-			onClick={ onTriggerClick }
-			onKeyDown={ onTriggerKeyDown }
+			onClick={ onClick }
+			onKeyDown={ onKeyDown }
 			isExpanded={ isExpanded }
 			isDisabled={ isDisabled }
 			headerProps={ _headerProps }
@@ -262,8 +262,8 @@ CustomAccordionHeader.propTypes = {
 	index: PropTypes.number.isRequired,
 	headerLevel: PropTypes.number.isRequired,
 	setSectionRef: PropTypes.func.isRequired,
-	onTriggerClick: PropTypes.func.isRequired,
-	onTriggerKeyDown: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired,
+	onKeyDown: PropTypes.func.isRequired,
 	getIsExpanded: PropTypes.func.isRequired,
 	getIsDisabled: PropTypes.func.isRequired,
 	headerProps: PropTypes.object,
@@ -293,8 +293,8 @@ function CustomAccordionPanel(props) {
 		//Pull out the props from <AccordionSection> that shouldn't get passed down
 		index,
 		headerLevel,
-		onTriggerClick,
-		onTriggerKeyDown,
+		onClick,
+		onKeyDown,
 		allowMultiple,
 		allowToggle,
 		getIsDisabled,

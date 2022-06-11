@@ -16,7 +16,7 @@ function AccordionPanel(props) {
 	const {
 		children, id, getIsExpanded, className,
 		//Pull out props received from <AccordionSection> that shouldn't get passed down
-		index, headerLevel, onTriggerClick, onTriggerKeyDown,
+		index, headerLevel, onClick, onKeyDown,
 		allowMultiple, allowToggle, getIsDisabled,
 		toggleSection, setSectionRef, focusSection,
 		focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
