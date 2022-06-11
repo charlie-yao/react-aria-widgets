@@ -429,12 +429,22 @@ export default function AccordionPage() {
 				A premade event handler that can be attached to accordion header buttons
 				to handle expanding/collapsing a particular section. Used by <code>&lt;AccordionHeader&gt;</code>.
 			</p>
+			<p>
+				If you wish to use this event handler with a custom accordion header, note that
+				the button must have an <code>id</code> attribute corresponding to the ID
+				of the accordion header/panel pair.
+			</p>
 			<h6><code>onTriggerKeyDown(event: SyntheticEvent&lt;&gt;): void</code></h6>
 			<p>
 				A premade event handler that can be attached to accordion header buttons to handle
 				focus management. Implements the keyboard interactions described in
 				the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-ARIA
 				Authoring Practices 1.2</a> and is used by <code>&lt;AccordionHeader&gt;</code>.
+			</p>
+			<p>
+				If you wish to use this event handler with a custom accordion header, note that
+				the button must have a <code>data-index</code> attribute corresponding to the
+				position of the accordion header/panel pair.
 			</p>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
 			<p>
@@ -917,11 +927,6 @@ export default function AccordionPage() {
 			<h2>Keyboard Support</h2>
 			<h2>Notes</h2>
 			<ul>
-				<li>
-					expand upon this in "Building Your Own Accordion"? E.g., explain that id and
-					index are needed to identify things, document which props are being passed down
-					(possibly useful for custom focus handling instead of using the premade events?)
-				</li>
 				<li>
 					should booleans in base components be required? they're supposed to be controlled...
 				</li>
