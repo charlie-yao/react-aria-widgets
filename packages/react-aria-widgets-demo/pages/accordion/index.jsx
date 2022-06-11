@@ -292,8 +292,7 @@ export default function AccordionPage() {
 						<td><code>boolean</code></td>
 						<td>
 							Lets child components know whether or not sections can be collapsed
-							once they've been expanded. Unlike with <code>allowMultiple</code>, the HOC does
-							not simply pass down the value it received for <code>allowToggle</code>. Even if it
+							once they've been expanded. Note that even if the HOC
 							received <code>false</code> as its <code>allowToggle</code> prop,
 							if <code>allowMultiple</code> is <code>true</code>, child components will
 							see <code>allowToggle</code> as <code>true</code> to reflect how the accordion
