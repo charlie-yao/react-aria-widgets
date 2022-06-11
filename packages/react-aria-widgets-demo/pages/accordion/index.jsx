@@ -100,24 +100,26 @@ export default function AccordionPage() {
 			</p>
 			<p>
 				<code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> provide
-				some conveniences though, such as keyboard event handlers, uniform header
+				some conveniences though, such as event handlers, uniform header
 				levels, and consistent HTML IDs for each header/content combination.
 				Additionally, <code>&lt;AccordionSection&gt;</code> accepts either React nodes or a
 				render function as its children, and automatically passes down all of the props
 				it receives (including props from <code>&lt;Accordion&gt;</code> and,
-				by extension, <code>withAccordionManager</code>) to them.
-			</p>
-			<p>
-				In other words, for developers who wish to use those components, but
+				by extension, <code>withAccordionManager</code>) to them. In other words,
+				for developers who wish to use those components, but
 				find <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
 				be insufficiently flexible, they can create their own accordion header/content section
-				implementations. For these situations, React Aria Widgets also provides
-				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components.
-				Unlike the non-base versions, these are unopinionated components that exist solely to simplify
-				which HTML and ARIA attributes are needed to conform to the WAI-ARIA Authoring Practices 1.2.
+				implementations.
 			</p>
 			<p>
-				There are a few caveats to making custom implementations though:
+				React Aria Widgets also provides
+				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
+				that can be used independently from the HOC or any of the other components. Unlike the non-base
+				versions, these are unopinionated components that exist solely to simplify which HTML and
+				ARIA attributes are needed to conform to the ARIA Authoring Practices.
+			</p>
+			<p>
+				There are a few caveats to making custom implementations, though:
 			</p>
 			<ul>
 				<li>
@@ -140,8 +142,8 @@ export default function AccordionPage() {
 					If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
 					already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
 					This means that if a developer writes a wrapper over <code>&lt;BaseAccordionPanel&gt;</code> that's
-					used in conjunction with <code>&lt;AccordionSection&gt;</code> (and, by extension,
-					<code>&lt;Accordion&gt;</code> and <code>withAccordionManager()</code>), they must
+					used in conjunction with <code>&lt;AccordionSection&gt;</code> (and, by
+					extension, <code>&lt;Accordion&gt;</code> and <code>withAccordionManager()</code>), they must
 					take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
 					passes down.
 				</li>
@@ -159,13 +161,13 @@ export default function AccordionPage() {
 				be styled simply by passing in props. For anyone who wishes to use any
 				of the various customization options, React Aria Widgets ultimately places no
 				restrictions on the underlying HTML (though we recommend taking care to adhere to the
-				WAI-ARIA Authoring Practices!), meaning developers have complete control over how
+				ARIA Authoring Practices!), meaning developers have complete control over how
 				their accordions are styled.
 			</p>
 			<p>
 				This also means developers are not tied to using <code>display: none;</code> to
-				represent the collapsed state, which may or may not be desired. For more information,
-				see the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
+				represent the collapsed state, which may or may not be desired. For more information
+				on this, see the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
 			</p>
 			<CustomAccordion />
 			<pre>
@@ -196,7 +198,7 @@ export default function AccordionPage() {
 			<p>
 				The second accordion section shows how to add default styles
 				to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> by
-				composing these components. Note that we can't simply
+				using component composition. Note that we can't simply
 				spread <code>props</code> onto <code>&lt;AccordionHeader&gt;</code> in <code>&lt;StyledAccordionHeader&gt;</code>.
 				We have to make sure we only pass down the merged versions
 				of <code>headerProps</code> and <code>buttonProps</code>. Otherwise, we would lose either
@@ -936,6 +938,13 @@ export default function AccordionPage() {
 				</li>
 				<li>
 					arrange props alphabetically?
+				</li>
+				<li>
+					rename onTrigger* events to just on* ?
+				</li>
+				<li>
+					should AccordionSection pass down ALL props? or just the
+					ones it receives from Accordion/withAccordionManager?
 				</li>
 			</ul>
 			<h2>Links</h2>
