@@ -556,19 +556,6 @@ export default function AccordionPage() {
 						</td>
 					</tr>
 					<tr>
-						<td><code>headerProps</code></td>
-						<td><code>{ '{ [key: string]: any }' }</code></td>
-						<td><code>{ '{}' }</code></td>
-						<td></td>
-						<td>
-							<p>
-								An object that is spread over the underlying HTML section heading element
-								in order to supply props and HTML attributes to it. For more information,
-								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
-							</p>
-						</td>
-					</tr>
-					<tr>
 						<td><code>buttonProps</code></td>
 						<td><code>{ '{ [key: string]: any }' }</code></td>
 						<td><code>{ '{}' }</code></td>
@@ -577,6 +564,19 @@ export default function AccordionPage() {
 							<p>
 								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
 								supply props and HTML attributes to it. For more information,
+								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td><code>headerProps</code></td>
+						<td><code>{ '{ [key: string]: any }' }</code></td>
+						<td><code>{ '{}' }</code></td>
+						<td></td>
+						<td>
+							<p>
+								An object that is spread over the underlying HTML section heading element
+								in order to supply props and HTML attributes to it. For more information,
 								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
 							</p>
 						</td>
