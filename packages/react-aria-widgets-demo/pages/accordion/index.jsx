@@ -146,6 +146,13 @@ export default function AccordionPage() {
 					passes down.
 				</li>
 			</ul>
+			{/*
+			TODO: keep this in mind when proofreading the document?
+			<p>
+				Developers should be aware that there may be additional note-worthy details
+				mentioned in the API documentation below.
+			</p>
+			*/}
 			<h4>Styling</h4>
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
@@ -307,8 +314,8 @@ export default function AccordionPage() {
 			</p>
 			<h6><code>toggleSection(id: string): void</code></h6>
 			<p>
-				Expands/collapse a section of the accordion. Respects
-				the <code>allowMultiple</code> and <code>allowToggle</code> props.
+				Expands/collapse a section of the accordion.
+				Respects <code>allowMultiple</code> and <code>allowToggle</code>.
 			</p>
 			<h6><code>focusSection(index: number): void</code></h6>
 			<p>
