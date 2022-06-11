@@ -101,12 +101,11 @@ export default function AccordionPage() {
 			<p>
 				<code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> provide
 				some conveniences though, such as event handlers, uniform header
-				levels, and consistent HTML IDs for each header/content combination.
+				levels, and indices for each header/content combination.
 				Additionally, <code>&lt;AccordionSection&gt;</code> accepts either React nodes or a
-				render function as its children, and automatically passes down all of the props
-				it receives (including props from <code>&lt;Accordion&gt;</code> and,
-				by extension, <code>withAccordionManager</code>) to them. In other words,
-				for developers who wish to use those components, but
+				render function as its children, and automatically passes down all of the fields and methods
+				it receives from <code>&lt;Accordion&gt;</code> (and, by extension, <code>withAccordionManager()</code>)
+				to them. In other words, for developers who wish to use those components, but
 				find <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
 				be insufficiently flexible, they can create their own accordion header/content section
 				implementations.
@@ -114,7 +113,7 @@ export default function AccordionPage() {
 			<p>
 				React Aria Widgets also provides
 				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
-				that can be used independently from the HOC or any of the other components. Unlike the non-base
+				that can be used independently of the HOC or any of the other components. Unlike the non-base
 				versions, these are unopinionated components that exist solely to simplify which HTML and
 				ARIA attributes are needed to conform to the ARIA Authoring Practices.
 			</p>
@@ -123,7 +122,7 @@ export default function AccordionPage() {
 			</p>
 			<ul>
 				<li>
-					When using <code>withAccordionManager</code>, any button that controls a
+					When using <code>withAccordionManager()</code>, any button that controls a
 					particular accordion section must use the <code>setSectionRef()</code> callback
 					ref. Otherwise, focus management will not work properly.
 				</li>
@@ -200,14 +199,15 @@ export default function AccordionPage() {
 				to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> by
 				using component composition. Note that we can't simply
 				spread <code>props</code> onto <code>&lt;AccordionHeader&gt;</code> in <code>&lt;StyledAccordionHeader&gt;</code>.
-				We have to make sure we only pass down the merged versions
-				of <code>headerProps</code> and <code>buttonProps</code>. Otherwise, we would lose either
-				the default styling or any of the props we may be passing down in those objects.
+				We have to make sure that the merged versions
+				of <code>headerProps</code> and <code>buttonProps</code> are ultimately what gets
+				passed down. Otherwise, we would lose either the styling or any of the props we
+				may be trying to pass down in those objects.
 			</p>
 			<p>
 				Here, we don't have to worry about using <code>setSectionRef()</code>, adding
 				the <code>id</code> and <code>data-index</code> attributes, or taking out props
-				from <code>&lt;AccordionSection&gt;</code> because that's already being handled
+				from <code>&lt;AccordionSection&gt;</code> because they're already being handled
 				by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
 			</p>
 			<p>
@@ -349,12 +349,8 @@ export default function AccordionPage() {
 			<h4><code>&lt;Accordion&gt;</code></h4>
 			<p>
 				<code>&lt;Accordion&gt;</code>s use the <code>withAccordionManager()</code> HOC and
-				wrap around <code>&lt;AccordionSection&gt;</code>s. They also forward the props
-				they receive from <code>withAccordionManager()</code> to their children.
-			</p>
-			<p>
-				<code>&lt;Accordion&gt;</code>s only accept <code>&lt;AccordionSection&gt;</code> as children.
-				Anything else will throw an error.
+				wrap around one or more <code>&lt;AccordionSection&gt;</code>s. They also forward the fields
+				and methods they receive from <code>withAccordionManager()</code> to their children.
 			</p>
 			<h5>Props</h5>
 			<table>
@@ -384,18 +380,13 @@ export default function AccordionPage() {
 						<td><code>2</code></td>
 						<td></td>
 						<td>
-							An integer from 1 to 6 (inclusive) representing the HTML section heading elements
-							(e.g. <code>&lt;h2&gt;</code>). By default, all of the headers in an accordion use
-							the same level.
+							An integer from 1 to 6 (inclusive) representing which HTML section heading element
+							(e.g. <code>&lt;h2&gt;</code>) to use for each accordion header.
 						</td>
 					</tr>
 				</tbody>
 			</table>
 			<h5>Fields</h5>
-			<p>
-				In addition to the fields from <code>withAccordionManager()</code>,
-				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
-			</p>
 			<table>
 				<thead>
 					<tr>
@@ -409,8 +400,8 @@ export default function AccordionPage() {
 						<td><code>headerLevel</code></td>
 						<td><code>number</code></td>
 						<td>
-							An integer from 1 - 6 (inclusive) representing which HTML section heading element
-							to use for each accordion header.
+							An integer from 1 to 6 (inclusive) representing which HTML section heading element
+							(e.g. <code>&lt;h2&gt;</code>) to use for each accordion header.
 						</td>
 					</tr>
 					<tr>
@@ -421,10 +412,6 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h5>Methods</h5>
-			<p>
-				In addition to the methods from <code>withAccordionManager()</code>,
-				an <code>&lt;Accordion&gt;</code> will pass down the following to its children:
-			</p>
 			<h6><code>onClick(event: SyntheticEvent&lt;&gt;): void</code></h6>
 			<p>
 				A premade event handler that can be attached to accordion header buttons
@@ -449,10 +436,11 @@ export default function AccordionPage() {
 			</p>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
 			<p>
-				Represents a section of an accordion consisting of a header and the section's content. Wraps around
-				either a set of React nodes or a render function. Will automatically pass down the props it
-				receives from <code>withAccordionManager()</code> and <code>&lt;Accordion&gt;</code> to
-				its children.
+				Represents a section of an accordion consisting of a header and the section's content.
+				Wraps around either a set of React nodes or a render function. Will automatically
+				pass down the fields and methods it receives
+				from <code>&lt;Accordion&gt;</code> (and, by extension, <code>withAccordionManager()</code>)
+				to its children.
 			</p>
 			<h5>Props</h5>
 			<table>
@@ -472,10 +460,10 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							<code>children</code> can either be a render function or a set of React nodes.
-							In addition to the <code>id</code> prop, <code>&lt;AccordionSection&gt;</code> also
-							passes down all of the props it receives from <code>&lt;Accordion&gt;</code>, including
-							props that actually originate from <code>withAccordionManager()</code>.
+							<code>children</code> can either be a render function or a set of React nodes
+							that represent an accordion header/panel pair. Children of this component
+							receive all of the fields and methods from <code>&lt;Accordion&gt;</code>, including
+							those that actually originate from <code>withAccordionManager()</code>.
 						</td>
 					</tr>
 					<tr>
@@ -744,7 +732,7 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A number from 1-6 (inclusive) representing the HTML section heading elements
+							A number from 1 to 6 (inclusive) representing an HTML section heading element
 							(e.g. <code>&lt;h2&gt;</code>).
 						</td>
 					</tr>
@@ -788,7 +776,7 @@ export default function AccordionPage() {
 						<td></td>
 						<td>
 							<p>
-								Used to set the <code>aria-disabled</code> attribute. Useful for communicating to
+								Used to set the <code>aria-disabled</code> attribute. Communicates to
 								assitive technologies situations where, e.g., there's an accordion that disallows
 								toggling expand/collapse states and the current accordion section is already expanded.
 							</p>
@@ -806,7 +794,8 @@ export default function AccordionPage() {
 						<td></td>
 						<td>
 							Used to set the <code>aria-expanded</code> attribute. Note that this attribute does not
-							actually control whether or not the content is expanded or collapsed.
+							actually control whether or not the content is expanded or collapsed as it does
+							not affect the visibility of the relevant accordion panel.
 						</td>
 					</tr>
 					<tr>
@@ -825,7 +814,7 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td></td>
 						<td>
-							Primarily used to implement focus management.. Is considered optional by the
+							Primarily used to implement focus management. Is considered optional by the
 							WAI-ARIA Authoring Practices 1.2, and the mandatory interactions
 							(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
 							should already be handled by the browser and by supplying an <code>onClick</code> prop.

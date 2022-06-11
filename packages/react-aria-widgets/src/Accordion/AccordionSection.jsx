@@ -12,13 +12,66 @@ import withNoOp from 'src/hocs/withNoOp';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 function AccordionSection(props) {
-	const { children, ...rest } = props;
+	const {
+		children,
+		id,
+		index,
+		headerLevel,
+		onClick,
+		onKeyDown,
+		allowMultiple,
+		allowToggle,
+		getIsExpanded,
+		getIsDisabled,
+		toggleSection,
+		setSectionRef,
+		focusSection,
+		focusPrevSection,
+		focusNextSection,
+		focusFirstSection,
+		focusLastSection,
+	} = props;
 
-	if(typeof children === 'function')
-		return children(rest);
+	if(typeof children === 'function') {
+		return children({
+			id,
+			index,
+			headerLevel,
+			onClick,
+			onKeyDown,
+			allowMultiple,
+			allowToggle,
+			getIsExpanded,
+			getIsDisabled,
+			toggleSection,
+			setSectionRef,
+			focusSection,
+			focusPrevSection,
+			focusNextSection,
+			focusFirstSection,
+			focusLastSection,
+		});
+	}
 	else {
 		return React.Children.map(children, child => {
-			return React.cloneElement(child, rest);
+			return React.cloneElement(child, {
+				id,
+				index,
+				headerLevel,
+				onClick,
+				onKeyDown,
+				allowMultiple,
+				allowToggle,
+				getIsExpanded,
+				getIsDisabled,
+				toggleSection,
+				setSectionRef,
+				focusSection,
+				focusPrevSection,
+				focusNextSection,
+				focusFirstSection,
+				focusLastSection,
+			});
 		});
 	}
 }
