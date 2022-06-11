@@ -928,9 +928,6 @@ export default function AccordionPage() {
 			<h2>Notes</h2>
 			<ul>
 				<li>
-					should booleans in base components be required? they're supposed to be controlled...
-				</li>
-				<li>
 					instead of listing redundant props in accordion header/base accordion header (and panel),
 					maybe list out everything in the base components, but specify which ones DON'T
 					need to be passed if using the opinionated version?
