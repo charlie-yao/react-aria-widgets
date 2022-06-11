@@ -302,10 +302,6 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h5>Methods</h5>
-			<h6><code>focusSection(index: number): void</code></h6>
-			<p>
-				Sets the focus to an arbitrary accordion section's header button.
-			</p>
 			<h6><code>focusFirstSection(): void</code></h6>
 			<p>
 				Sets the focus to the first accordion section's header button.
@@ -323,6 +319,10 @@ export default function AccordionPage() {
 			<p>
 				Sets the focus to the previous (relative to <code>index</code>) accordion
 				section's header button.
+			</p>
+			<h6><code>focusSection(index: number): void</code></h6>
+			<p>
+				Sets the focus to an arbitrary accordion section's header button.
 			</p>
 			<h6><code>getIsDisabled(id: string): boolean</code></h6>
 			<p>
