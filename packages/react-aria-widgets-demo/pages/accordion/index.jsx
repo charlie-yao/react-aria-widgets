@@ -909,7 +909,7 @@ export default function AccordionPage() {
 							<p>
 								A string representing what the underlying HTML element will be rendered as.
 								Because this prop defaults to an element with the <code>region</code> role,
-								the <code>labelId</code> is also required by default.
+								the <code>labelId</code> prop is also required by default.
 							</p>
 							<p>
 								However, the underlying HTML element does NOT need to have the
@@ -934,9 +934,6 @@ export default function AccordionPage() {
 					instead of listing redundant props in accordion header/base accordion header (and panel),
 					maybe list out everything in the base components, but specify which ones DON'T
 					need to be passed if using the opinionated version?
-				</li>
-				<li>
-					arrange props alphabetically?
 				</li>
 				<li>
 					rename onTrigger* events to just on* ?
