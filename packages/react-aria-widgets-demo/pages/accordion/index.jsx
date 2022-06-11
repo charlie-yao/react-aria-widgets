@@ -302,35 +302,9 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h5>Methods</h5>
-			<h6><code>getIsExpanded(id: string): boolean</code></h6>
-			<p>
-				Returns a boolean indicating if an accordion section is
-				collapsed or expanded.
-			</p>
-			<h6><code>getIsDisabled(id: string): boolean</code></h6>
-			<p>
-				Returns a boolean indicating if an accordion section cannot be
-				interacted with. At the moment, an accordion section is only
-				considered disabled if a section is expanded and <code>allowToggle</code> is <code>false</code>.
-			</p>
-			<h6><code>toggleSection(id: string): void</code></h6>
-			<p>
-				Expands/collapse a section of the accordion.
-				Respects <code>allowMultiple</code> and <code>allowToggle</code>.
-			</p>
 			<h6><code>focusSection(index: number): void</code></h6>
 			<p>
 				Sets the focus to an arbitrary accordion section's header button.
-			</p>
-			<h6><code>focusPrevSection(index: number): void</code></h6>
-			<p>
-				Sets the focus to the previous (relative to <code>index</code>) accordion
-				section's header button.
-			</p>
-			<h6><code>focusNextSection(index: number): void</code></h6>
-			<p>
-				Sets the focus to the next (relative to <code>index</code>) accordion
-				section's header button.
 			</p>
 			<h6><code>focusFirstSection(): void</code></h6>
 			<p>
@@ -340,10 +314,36 @@ export default function AccordionPage() {
 			<p>
 				Sets the focus to the last accordion section's header button.
 			</p>
+			<h6><code>focusNextSection(index: number): void</code></h6>
+			<p>
+				Sets the focus to the next (relative to <code>index</code>) accordion
+				section's header button.
+			</p>
+			<h6><code>focusPrevSection(index: number): void</code></h6>
+			<p>
+				Sets the focus to the previous (relative to <code>index</code>) accordion
+				section's header button.
+			</p>
+			<h6><code>getIsDisabled(id: string): boolean</code></h6>
+			<p>
+				Returns a boolean indicating if an accordion section cannot be
+				interacted with. At the moment, an accordion section is only
+				considered disabled if a section is expanded and <code>allowToggle</code> is <code>false</code>.
+			</p>
+			<h6><code>getIsExpanded(id: string): boolean</code></h6>
+			<p>
+				Returns a boolean indicating if an accordion section is
+				collapsed or expanded.
+			</p>
 			<h6><code>setSectionRef(ref: Object): void</code></h6>
 			<p>
 				A React callback ref that must be used by each accordion header button in order to properly
 				manage focus.
+			</p>
+			<h6><code>toggleSection(id: string): void</code></h6>
+			<p>
+				Expands/collapse a section of the accordion.
+				Respects <code>allowMultiple</code> and <code>allowToggle</code>.
 			</p>
 			<h3>Components</h3>
 			<h4><code>&lt;Accordion&gt;</code></h4>
