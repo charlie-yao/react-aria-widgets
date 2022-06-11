@@ -407,7 +407,10 @@ export default function AccordionPage() {
 					<tr>
 						<td><code>headerLevel</code></td>
 						<td><code>number</code></td>
-						<td>An integer from 1 - 6 (inclusive) representing the HTML section heading elements.</td>
+						<td>
+							An integer from 1 - 6 (inclusive) representing which HTML section heading element
+							to use for each accordion header.
+						</td>
 					</tr>
 					<tr>
 						<td><code>index</code></td>
