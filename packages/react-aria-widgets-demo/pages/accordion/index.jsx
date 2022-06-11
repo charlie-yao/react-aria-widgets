@@ -679,6 +679,25 @@ export default function AccordionPage() {
 				</thead>
 				<tbody>
 					<tr>
+						<td><code>buttonProps</code></td>
+						<td><code>{ '{ [key: string]: any }' }</code></td>
+						<td><code>{ '{}' }</code></td>
+						<td></td>
+						<td>
+							<p>
+								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
+								supply props and HTML attributes to it. Note that because it is spread after other
+								props are applied to the <code>&lt;button&gt;</code>, fields
+								in <code>buttonProps</code> can overwrite those props.
+							</p>
+							<p>
+								While this may provide greater flexibility, developers should take care to not
+								overwrite attributes such as <code>aria-expanded</code> as they may be
+								improperly set.
+							</p>
+						</td>
+					</tr>
+					<tr>
 						<td><code>children</code></td>
 						<td><code>React.Node</code></td>
 						<td><code>undefined</code></td>
@@ -699,23 +718,6 @@ export default function AccordionPage() {
 							<p>
 								See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
 								MDN Web Docs</a> for more information.
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td><code>id</code></td>
-						<td><code>string</code></td>
-						<td><code>undefined</code></td>
-						<td>{ '\u2713' }</td>
-						<td>
-							<p>
-								A unique identifier for the underlying <code>&lt;button&gt;</code>.
-							</p>
-							<p>
-								Note that it's also recommended to give the accordion section's content
-								an <code>aria-labelledby</code> attribute that points to this button (e.g. giving a
-								corresponding <code>&lt;BaseAccordionPanel&gt;</code> a <code>labelId</code> prop
-								with the same value).
 							</p>
 						</td>
 					</tr>
@@ -747,35 +749,36 @@ export default function AccordionPage() {
 						</td>
 					</tr>
 					<tr>
-						<td><code>onClick</code></td>
-						<td><code>(SyntheticEvent&lt;T&gt;) => void</code></td>
+						<td><code>headerProps</code></td>
+						<td><code>{ '{ [key: string]: any }' }</code></td>
+						<td><code>{ '{}' }</code></td>
+						<td></td>
+						<td>
+							<p>
+								An object that is spread over the underlying heading element in order to directly
+								supply props and HTML attributes to it. For example, one can provide custom styling
+								with:
+							</p>
+							<pre>
+								<code>{ '<BaseAccordionHeader headerProps={{ className: \'custom-h2-class\' }} />' }</code>
+							</pre>
+						</td>
+					</tr>
+					<tr>
+						<td><code>id</code></td>
+						<td><code>string</code></td>
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A click event handler for the underlying <code>&lt;button&gt;</code>. Should be used
-							to handle expanding/collapsing the accordion section's content.
-						</td>
-					</tr>
-					<tr>
-						<td><code>onKeyDown</code></td>
-						<td><code>(SyntheticEvent&lt;T&gt;) => void</code></td>
-						<td><code>undefined</code></td>
-						<td></td>
-						<td>
-							Primarily used to implement focus management.. Is considered optional by the
-							WAI-ARIA Authoring Practices 1.2, and the mandatory interactions
-							(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
-							should already be handled by the browser and by supplying an <code>onClick</code> prop.
-						</td>
-					</tr>
-					<tr>
-						<td><code>isExpanded</code></td>
-						<td><code>boolean</code></td>
-						<td><code>false</code></td>
-						<td></td>
-						<td>
-							Used to set the <code>aria-expanded</code> attribute. Note that this attribute does not
-							actually control whether or not the content is expanded or collapsed.
+							<p>
+								A unique identifier for the underlying <code>&lt;button&gt;</code>.
+							</p>
+							<p>
+								Note that it's also recommended to give the accordion section's content
+								an <code>aria-labelledby</code> attribute that points to this button (e.g. giving a
+								corresponding <code>&lt;BaseAccordionPanel&gt;</code> a <code>labelId</code> prop
+								with the same value).
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -797,38 +800,35 @@ export default function AccordionPage() {
 						</td>
 					</tr>
 					<tr>
-						<td><code>headerProps</code></td>
-						<td><code>{ '{ [key: string]: any }' }</code></td>
-						<td><code>{ '{}' }</code></td>
+						<td><code>isExpanded</code></td>
+						<td><code>boolean</code></td>
+						<td><code>false</code></td>
 						<td></td>
 						<td>
-							<p>
-								An object that is spread over the underlying heading element in order to directly
-								supply props and HTML attributes to it. For example, one can provide custom styling
-								with:
-							</p>
-							<pre>
-								<code>{ '<BaseAccordionHeader headerProps={{ className: \'custom-h2-class\' }} />' }</code>
-							</pre>
+							Used to set the <code>aria-expanded</code> attribute. Note that this attribute does not
+							actually control whether or not the content is expanded or collapsed.
 						</td>
 					</tr>
 					<tr>
-						<td><code>buttonProps</code></td>
-						<td><code>{ '{ [key: string]: any }' }</code></td>
-						<td><code>{ '{}' }</code></td>
+						<td><code>onClick</code></td>
+						<td><code>(SyntheticEvent&lt;T&gt;) => void</code></td>
+						<td><code>undefined</code></td>
+						<td>{ '\u2713' }</td>
+						<td>
+							A click event handler for the underlying <code>&lt;button&gt;</code>. Should be used
+							to handle expanding/collapsing the accordion section's content.
+						</td>
+					</tr>
+					<tr>
+						<td><code>onKeyDown</code></td>
+						<td><code>(SyntheticEvent&lt;T&gt;) => void</code></td>
+						<td><code>undefined</code></td>
 						<td></td>
 						<td>
-							<p>
-								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
-								supply props and HTML attributes to it. Note that because it is spread after other
-								props are applied to the <code>&lt;button&gt;</code>, fields
-								in <code>buttonProps</code> can overwrite those props.
-							</p>
-							<p>
-								While this may provide greater flexibility, developers should take care to not
-								overwrite attributes such as <code>aria-expanded</code> as they may be
-								improperly set.
-							</p>
+							Primarily used to implement focus management.. Is considered optional by the
+							WAI-ARIA Authoring Practices 1.2, and the mandatory interactions
+							(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
+							should already be handled by the browser and by supplying an <code>onClick</code> prop.
 						</td>
 					</tr>
 				</tbody>
