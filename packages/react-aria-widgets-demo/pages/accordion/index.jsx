@@ -924,7 +924,6 @@ export default function AccordionPage() {
 					</tr>
 				</tbody>
 			</table>
-			<h2>Keyboard Support</h2>
 			<h2>Notes</h2>
 			<ul>
 				<li>
@@ -938,9 +937,12 @@ export default function AccordionPage() {
 				<li>
 					arrange props alphabetically?
 				</li>
+			</ul>
+			<h2>Links</h2>
+			<ul>
 				<li>
-					<a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
-						WAI-Aria Authoring Practices 1.2 Accordion Specification
+					<a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+						ARIA Authoring Practices Guide - Accordion
 					</a>
 				</li>
 			</ul>
