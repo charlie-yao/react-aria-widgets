@@ -50,8 +50,19 @@ export default function AccordionPage() {
 		<article>
 			<h1>Accordion</h1>
 			<p>
-				An accordion is a collection of vertically-stacked content where each section has a heading
-				and the content itself. The heading is used to control the visibility of the content.
+				To quote the ARIA Authoring Practices Guide (APG):
+			</p>
+			<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+				An accordion is a vertically stacked set of interactive headings that each contain
+				a title, content snippet, or thumbnail representing a section of content. The headings
+				function as controls that enable users to reveal or hide their associated sections of
+				content. Accordions are commonly used to reduce the need to scroll when presenting
+				multiple sections of content on a single page.
+			</blockquote>
+			<p>
+				Like the APG, we will use the term "accordion header" to reference the label
+				that controls a section of content, and "accordion panel" to reference the
+				actual content that is associated with an accordion header.
 			</p>
 			<h2>Usage and Examples</h2>
 			<h3>Default</h3>
