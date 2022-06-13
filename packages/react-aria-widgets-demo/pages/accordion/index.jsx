@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 
 //Misc.
 import {
-	defaultAccordionExample,
+	basicAccordionExample,
 	disableMultipleExample,
 	disableToggleExample,
 	CustomAccordionExample,
@@ -13,8 +13,8 @@ import {
 	customRenderFunctionExample,
 } from './examples';
 
-const DefaultAccordion = dynamic(
-	() => import('./DefaultAccordion'),
+const BasicAccordion = dynamic(
+	() => import('./BasicAccordion'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -65,7 +65,6 @@ export default function AccordionPage() {
 				actual content that is associated with an accordion header.
 			</p>
 			<h2>Usage and Examples</h2>
-			<h3>Default</h3>
 			<p>
 				A basic accordion consists of an <code>&lt;Accordion&gt;</code> wrapping around
 				one or more <code>&lt;AccordionSection&gt;</code>s, where
@@ -76,9 +75,9 @@ export default function AccordionPage() {
 				A <code>headerLevel</code> prop must be supplied to the <code>&lt;Accordion&gt;</code>,
 				and each <code>&lt;AccordionSection&gt;</code> must have a unique <code>id</code> prop.
 			</p>
-			<DefaultAccordion />
+			<BasicAccordion />
 			<pre>
-				<code>{ defaultAccordionExample }</code>
+				<code>{ basicAccordionExample }</code>
 			</pre>
 			<h3><code>allowMultiple</code> and <code>allowToggle</code></h3>
 			<p>
