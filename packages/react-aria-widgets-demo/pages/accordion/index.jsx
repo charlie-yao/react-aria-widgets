@@ -63,7 +63,7 @@ export default function AccordionPage() {
 			<p>
 				Like the APG, we will use the term "accordion header" to reference the label
 				that controls a section of content, and "accordion panel" to reference the
-				actual content that is associated with an accordion header.
+				content that is associated with an accordion header.
 			</p>
 			<h2>Usage and Examples</h2>
 			<p>
@@ -82,15 +82,15 @@ export default function AccordionPage() {
 			</pre>
 			<h3><code>allowMultiple</code> and <code>allowToggle</code></h3>
 			<p>
-				By default, multiple sections can be expanded and closed at the same time. One can use
-				the <code>allowMultiple</code> prop to toggle whether or not multiple sections can be
-				opened at the same time. The <code>allowToggle</code> prop can also be used to toggle
-				whether or not a section can be collapsed once it's expanded.
+				By default, multiple panels can be expanded and closed at the same time, but this behavior
+				can be toggled on/off with the <code>allowMultiple</code> prop.
+				The <code>allowToggle</code> prop can also be used to toggle
+				whether or not a panel can be collapsed once it's expanded.
 			</p>
 			<p>
 				Note that if <code>allowMultiple</code> is <code>true</code>, then
 				the <code>allowToggle</code> will always be <code>true</code>. Otherwise, users could
-				run into a situation where there are many open sections that can't be closed.
+				run into a situation where there are many open panels that can't be closed.
 			</p>
 			<h4>Disabling <code>allowMultiple</code></h4>
 			<DisableMultipleAccordion />
@@ -134,7 +134,7 @@ export default function AccordionPage() {
 				<li>
 					<p>
 						When using <code>withAccordionManager()</code>, any header button that controls a
-						particular accordion section must use the <code>setSectionRef()</code> callback
+						particular accordion panel must use the <code>setSectionRef()</code> callback
 						ref. Otherwise, focus management will not work.
 					</p>
 					<p>
@@ -255,7 +255,7 @@ export default function AccordionPage() {
 			<h4><code>withAccordionManager()</code></h4>
 			<p>
 				<code>withAccordionManager()</code> is a HOC that manages the underlying state for an accordion. It
-				controls which sections are expanded/collapsed, which sections can/cannot be interacted with, and
+				controls which panels are expanded/collapsed, which headers can/cannot be interacted with, and
 				manages focus for keyboard users.
 			</p>
 			<h5>Props</h5>
@@ -275,7 +275,7 @@ export default function AccordionPage() {
 						<td><code>boolean</code></td>
 						<td><code>true</code></td>
 						<td></td>
-						<td>Controls whether or not multiple sections can be expanded at the same time.</td>
+						<td>Controls whether or not multiple panels can be expanded at the same time.</td>
 					</tr>
 					<tr>
 						<td><code>allowToggle</code></td>
@@ -283,10 +283,10 @@ export default function AccordionPage() {
 						<td><code>true</code></td>
 						<td></td>
 						<td>
-							Controls whether or not a section can be collapsed after it has been expanded. Note
-							that if <code>allowMultiple</code> is <code>true</code>, then sections will always
+							Controls whether or not a panel can be collapsed after it has been expanded. Note
+							that if <code>allowMultiple</code> is <code>true</code>, then panels will always
 							be collapsible even if <code>allowToggle</code> is <code>false</code>. This
-							is to prevent situations where there would otherwise be multiple expanded sections
+							is to prevent situations where there would otherwise be multiple expanded panels
 							that can't be collapsed.
 						</td>
 					</tr>
@@ -306,7 +306,7 @@ export default function AccordionPage() {
 						<td><code>allowMultiple</code></td>
 						<td><code>boolean</code></td>
 						<td>
-							Lets child components know whether or not multiple sections can be
+							Lets child components know whether or not multiple panels can be
 							expanded simultaneously.
 						</td>
 					</tr>
@@ -314,7 +314,7 @@ export default function AccordionPage() {
 						<td><code>allowToggle</code></td>
 						<td><code>boolean</code></td>
 						<td>
-							Lets child components know whether or not sections can be collapsed
+							Lets child components know whether or not panels can be collapsed
 							once they've been expanded. Note that even if the HOC
 							received <code>false</code> as its <code>allowToggle</code> prop,
 							if <code>allowMultiple</code> is <code>true</code>, child components will
@@ -327,35 +327,35 @@ export default function AccordionPage() {
 			<h5>Methods</h5>
 			<h6><code>focusFirstSection(): void</code></h6>
 			<p>
-				Sets the focus to the first accordion section's header button.
+				Sets the focus to the first accordion header button.
 			</p>
 			<h6><code>focusLastSection(): void</code></h6>
 			<p>
-				Sets the focus to the last accordion section's header button.
+				Sets the focus to the last accordion header button.
 			</p>
 			<h6><code>focusNextSection(index: number): void</code></h6>
 			<p>
 				Sets the focus to the next (relative to <code>index</code>) accordion
-				section's header button.
+				header button.
 			</p>
 			<h6><code>focusPrevSection(index: number): void</code></h6>
 			<p>
 				Sets the focus to the previous (relative to <code>index</code>) accordion
-				section's header button.
+				header button.
 			</p>
 			<h6><code>focusSection(index: number): void</code></h6>
 			<p>
-				Sets the focus to an arbitrary accordion section's header button.
+				Sets the focus to an arbitrary accordion header button.
 			</p>
 			<h6><code>getIsDisabled(id: string): boolean</code></h6>
 			<p>
-				Returns a boolean indicating if an accordion section cannot be
-				interacted with. At the moment, an accordion section is only
-				considered disabled if a section is expanded and <code>allowToggle</code> is <code>false</code>.
+				Returns a boolean indicating if an accordion headern cannot be
+				interacted with. At the moment, an accordion header is only
+				considered disabled if its panel is expanded and <code>allowToggle</code> is <code>false</code>.
 			</p>
 			<h6><code>getIsExpanded(id: string): boolean</code></h6>
 			<p>
-				Returns a boolean indicating if an accordion section is
+				Returns a boolean indicating if an accordion panel is
 				collapsed or expanded.
 			</p>
 			<h6><code>setSectionRef(ref: Object): void</code></h6>
@@ -365,7 +365,7 @@ export default function AccordionPage() {
 			</p>
 			<h6><code>toggleSection(id: string): void</code></h6>
 			<p>
-				Expands/collapse a section of the accordion.
+				Expands/collapses a panel of the accordion.
 				Respects <code>allowMultiple</code> and <code>allowToggle</code>.
 			</p>
 			<h3>Components</h3>
@@ -438,7 +438,7 @@ export default function AccordionPage() {
 			<h6><code>onClick(event: SyntheticEvent&lt;&gt;): void</code></h6>
 			<p>
 				A premade event handler that can be attached to accordion header buttons
-				to handle expanding/collapsing a particular section. Used by <code>&lt;AccordionHeader&gt;</code>.
+				to handle expanding/collapsing a particular panel. Used by <code>&lt;AccordionHeader&gt;</code>.
 			</p>
 			<p>
 				If you wish to use this event handler with a custom accordion header, note that
@@ -664,7 +664,7 @@ export default function AccordionPage() {
 						<td>{ '\u2713' }</td>
 						<td>
 							A string, React component, etc. that represents the actual
-							content for this accordion section.
+							content of the panel.
 						</td>
 					</tr>
 					<tr>
@@ -673,7 +673,7 @@ export default function AccordionPage() {
 						<td><code>''</code></td>
 						<td></td>
 						<td>
-							A string representing a CSS class. If this section is collapsed, the
+							A string representing a CSS class. If the panel is collapsed, the
 							class <code>"react-aria-widgets-hidden"</code> will be automatically
 							concatenated.
 						</td>
@@ -819,11 +819,11 @@ export default function AccordionPage() {
 							<p>
 								Used to set the <code>aria-disabled</code> attribute. Communicates to
 								assitive technologies situations where, e.g., the accordion disallows
-								toggling expand/collapse states and the current accordion section is already
+								toggling expand/collapse states and the current accordion panel is already
 								expanded.
 							</p>
 							<p>
-								Note that unlike the HTML <code>disabled</code> attribute, even if an HTML
+								Note that unlike the HTML <code>disabled</code> attribute, if an HTML
 								element is given <code>aria-disabled="true"</code>, browsers will often still let
 								interactions go through.
 							</p>
@@ -900,7 +900,7 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								A string, React component, etc., that represents the actual
-								content for an accordion section.
+								content for a panel.
 							</p>
 						</td>
 					</tr>
