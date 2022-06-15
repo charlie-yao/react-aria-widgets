@@ -522,6 +522,8 @@ export default function AccordionPage() {
 				<code>&lt;AccordionHeader&gt;</code> is a thin, opinionated wrapper
 				over <code>&lt;BaseAccordionHeader&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
+			</p>
+			<p>
 				Because <code>&lt;AccordionHeader&gt;</code> isn't meant to be used in a standalone manner,
 				if you wish to write your own header implementation, <code>&lt;BaseAccordionHeader&gt;</code> may
 				be a more suitable option.
@@ -613,14 +615,18 @@ export default function AccordionPage() {
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<p>
 				An <code>&lt;AccordionPanel&gt;</code> is a thin, opinionated wrapper
-				over <code>&lt;BaseAccordionPanel&gt;</code> (which is itself just a
-				wrapper over basic HTML elements) that is designed to be used
+				over <code>&lt;BaseAccordionPanel&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
 			</p>
 			<p>
-				By default, this component uses a CSS class with <code>display: none;</code> to represent
+				This component uses a CSS class with <code>display: none;</code> to represent
 				the collapsed state, which may or may not be desired. For more information, see
 				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
+			</p>
+			<p>
+				Because <code>&lt;AccordionPanel&gt;</code> isn't meant to be used in a standalone manner,
+				if you wish to write your own panel implementation, <code>&lt;BaseAccordionPanel&gt;</code> may
+				be a more suitable option.
 			</p>
 			<h5>Props</h5>
 			<p>
