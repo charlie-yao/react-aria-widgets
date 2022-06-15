@@ -446,9 +446,8 @@ export default function AccordionPage() {
 			</p>
 			<h4><code>&lt;AccordionSection&gt;</code></h4>
 			<p>
-				Represents a section of an accordion consisting of a header and the section's content.
-				Wraps around either a set of React nodes or a render function. Will automatically
-				pass down the fields and methods it receives
+				Represents a section of an accordion (i.e. a header/panel pair). Wraps around either a set of
+				React nodes or a render function. Will automatically pass down the fields and methods it receives
 				from <code>&lt;Accordion&gt;</code> (and, by extension, <code>withAccordionManager()</code>)
 				to its children.
 			</p>
