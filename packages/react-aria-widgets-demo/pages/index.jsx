@@ -5,17 +5,15 @@ export default function HomePage() {
 		<article>
 			<h1>React ARIA Widgets</h1>
 			<p>
-				React ARIA Widgets is a collection of low-level React components designed
-				to help developers implement the design patterns and widgets found
-				in <a href="https://www.w3.org/TR/wai-aria-practices-1.2/">WAI-ARIA Authoring Practices 1.2</a>.
+				React ARIA Widgets is a collection of React components designed
+				to help developers implement the patterns found in
+				the <a href="https://www.w3.org/WAI/ARIA/apg/">ARIA Authoring Practices Guide (APG)</a>.
 			</p>
-			<aside>
-				<p>
-					<small>Please note that this library should <strong>NOT</strong> be used in a production environment! 
-					It was developed primarily for educational purposes, and I cannot guarantee longterm
-					support in the form of additional features, bug fixes, maintenance, etc.!</small>
-				</p>
-			</aside>
+			<p>
+				Please note that this library should <strong>NOT</strong> be used in a production environment! 
+				It was developed primarily for educational purposes, and I cannot guarantee longterm
+				support in the form of additional features, bug fixes, maintenance, etc.!
+			</p>
 			<h2>Features</h2>
 			<ul>
 				<li>
@@ -31,8 +29,7 @@ export default function HomePage() {
 					for developers who need more fine-tuned control.
 				</li>
 				<li>
-					Adheres to the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/">WAI-ARIA Authoring
-					Practices 1.2</a> with focus control and full keyboard support.
+					Adheres to the APG complete with focus control and full keyboard support.
 				</li>
 			</ul>
 		</article>
