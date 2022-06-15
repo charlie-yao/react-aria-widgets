@@ -18,7 +18,7 @@ function AccordionPanel(props) {
 		//Pull out props received from <AccordionSection> that shouldn't get passed down
 		index, headerLevel, onClick, onKeyDown,
 		allowMultiple, allowToggle, getIsDisabled,
-		toggleSection, setSectionRef, focusSection,
+		toggleSection, setHeaderRef, focusSection,
 		focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
 		...rest
 	} = props;

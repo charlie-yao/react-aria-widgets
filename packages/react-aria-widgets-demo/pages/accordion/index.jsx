@@ -134,7 +134,7 @@ export default function AccordionPage() {
 				<li>
 					<p>
 						When using <code>withAccordionManager()</code>, any header button that controls a
-						particular accordion panel must use the <code>setSectionRef()</code> callback
+						particular accordion panel must use the <code>setHeaderRef()</code> callback
 						ref. Otherwise, focus management will not work.
 					</p>
 					<p>
@@ -228,7 +228,7 @@ export default function AccordionPage() {
 				may be trying to pass down in those objects.
 			</p>
 			<p>
-				Here, we don't have to worry about using <code>setSectionRef()</code>, adding
+				Here, we don't have to worry about using <code>setHeaderRef()</code>, adding
 				the <code>id</code> and <code>data-index</code> attributes, or taking out props
 				from <code>&lt;AccordionSection&gt;</code> because they're already being handled
 				by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
@@ -237,7 +237,7 @@ export default function AccordionPage() {
 				The third accordion section shows how to customize sections by composing
 				over <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code>.
 				These components give developers greater control, but it means we have to manually
-				set <code>setSectionRef()</code>, add the <code>id</code> and <code>data-index</code> attributes
+				set <code>setHeaderRef()</code>, add the <code>id</code> and <code>data-index</code> attributes
 				(because we're using the event handlers provided by <code>&lt;Accordion&gt;</code>), and pull out
 				the props from <code>&lt;AccordionSection&gt;</code> that shouldn't be passed down
 				to <code>&lt;BaseAccordionPanel&gt;</code>, while also being mindful of how we're passing
@@ -247,7 +247,7 @@ export default function AccordionPage() {
 				The fourth accordion section shows how to use a render function. The render function
 				has access to the same props as the other examples, and it bypasses some of the above
 				caveats by implementing its own event handlers and directly passing styles to the
-				HTML elements. <code>setSectionRef()</code> still needs to be set, however, in order to
+				HTML elements. <code>setAccordionRef()</code> still needs to be set, however, in order to
 				use the methods provided by <code>withAccordionManager()</code>.
 			</p>
 			<h2>API</h2>
@@ -358,7 +358,7 @@ export default function AccordionPage() {
 				Returns a boolean indicating if an accordion panel is
 				collapsed or expanded.
 			</p>
-			<h6><code>setSectionRef(ref: Object): void</code></h6>
+			<h6><code>setAccordionSectionRef(ref: Object): void</code></h6>
 			<p>
 				A React callback ref that must be used by each accordion header button in order to properly
 				manage focus.
@@ -532,7 +532,7 @@ export default function AccordionPage() {
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> expects, and automatically gets passed, certain props
 				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> such
-				as <code>headerLevel</code> and <code>setSectionRef()</code>. It can also receive
+				as <code>headerLevel</code> and <code>setHeaderRef()</code>. It can also receive
 				the following props:
 			</p>
 			<table>

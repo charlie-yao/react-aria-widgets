@@ -36,7 +36,7 @@ export default function withAccordionManager(Component) {
 					getIsExpanded={ this.getIsExpanded }
 					getIsDisabled={ this.getIsDisabled }
 					toggleSection={ this.toggleSection }
-					setSectionRef={ this.setSectionRef }
+					setHeaderRef={ this.setHeaderRef }
 					focusSection={ this.focusSection }
 					focusPrevSection={ this.focusPrevSection }
 					focusNextSection={ this.focusNextSection }
@@ -97,7 +97,7 @@ export default function withAccordionManager(Component) {
 			});
 		};
 
-		setSectionRef = (ref) => {
+		setHeaderRef = (ref) => {
 			this.sectionRefs.push(ref);
 		};
 

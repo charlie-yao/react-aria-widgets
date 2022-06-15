@@ -7,7 +7,7 @@ export default function renderFunction(props) {
 		headerLevel,
 		getIsExpanded,
 		getIsDisabled,
-		setSectionRef,
+		setHeaderRef,
 		toggleSection,
 		focusPrevSection,
 		focusNextSection,
@@ -60,7 +60,7 @@ export default function renderFunction(props) {
 					aria-disabled={ isDisabled }
 					onClick={ onClick }
 					onKeyDown={ onKeyDown }
-					ref={ setSectionRef }
+					ref={ setHeaderRef }
 				>
 					CustomAccordion - Section 4
 				</button>

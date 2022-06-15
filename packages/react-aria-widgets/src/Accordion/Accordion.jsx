@@ -20,7 +20,7 @@ class Accordion extends React.Component {
 		getIsExpanded: PropTypes.func.isRequired,
 		getIsDisabled: PropTypes.func.isRequired,
 		toggleSection: PropTypes.func.isRequired,
-		setSectionRef: PropTypes.func.isRequired,
+		setHeaderRef: PropTypes.func.isRequired,
 		focusSection: PropTypes.func.isRequired,
 		focusPrevSection: PropTypes.func.isRequired,
 		focusNextSection: PropTypes.func.isRequired,
@@ -65,7 +65,7 @@ class Accordion extends React.Component {
 	render() {
 		const {
 			children, headerLevel, allowMultiple, allowToggle,
-			getIsExpanded, getIsDisabled, toggleSection, setSectionRef, focusSection,
+			getIsExpanded, getIsDisabled, toggleSection, setHeaderRef, focusSection,
 			focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
 		} = this.props;
 
@@ -85,7 +85,7 @@ class Accordion extends React.Component {
 				getIsExpanded,
 				getIsDisabled,
 				toggleSection,
-				setSectionRef,
+				setHeaderRef,
 				focusSection,
 				focusPrevSection,
 				focusNextSection,

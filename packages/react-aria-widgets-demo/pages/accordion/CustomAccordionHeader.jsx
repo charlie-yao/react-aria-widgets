@@ -8,7 +8,7 @@ function CustomAccordionHeader(props) {
 		id,
 		index,
 		headerLevel,
-		setSectionRef,
+		setHeaderRef,
 		onClick,
 		onKeyDown,
 		getIsExpanded,
@@ -40,7 +40,7 @@ function CustomAccordionHeader(props) {
 			isDisabled={ isDisabled }
 			headerProps={ _headerProps }
 			buttonProps={ _buttonProps }
-			ref={ setSectionRef }
+			ref={ setHeaderRef }
 		>
 			{ children }
 		</BaseAccordionHeader>
@@ -52,7 +52,7 @@ CustomAccordionHeader.propTypes = {
 	id: PropTypes.string.isRequired,
 	index: PropTypes.number.isRequired,
 	headerLevel: PropTypes.number.isRequired,
-	setSectionRef: PropTypes.func.isRequired,
+	setHeaderRef: PropTypes.func.isRequired,
 	onClick: PropTypes.func.isRequired,
 	onKeyDown: PropTypes.func.isRequired,
 	getIsExpanded: PropTypes.func.isRequired,

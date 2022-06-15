@@ -17,7 +17,7 @@ function CustomAccordionPanel(props) {
 		allowToggle,
 		getIsDisabled,
 		toggleSection,
-		setSectionRef,
+		setHeaderRef,
 		focusSection,
 		focusPrevSection,
 		focusNextSection,

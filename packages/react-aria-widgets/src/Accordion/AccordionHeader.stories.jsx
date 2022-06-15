@@ -13,7 +13,7 @@ export default {
 		headerLevel: 2,
 		onClick: () => {},
 		onKeyDown: () => {},
-		setSectionRef: () => {},
+		setHeaderRef: () => {},
 	},
 };
 

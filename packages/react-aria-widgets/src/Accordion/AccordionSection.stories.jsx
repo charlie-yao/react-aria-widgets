@@ -46,7 +46,7 @@ RenderFunction.args = {
 	children: (args) => {
 		const {
 			id, index, headerLevel, getIsExpanded, getIsDisabled,
-			setSectionRef, onClick, onKeyDown,
+			setHeaderRef, onClick, onKeyDown,
 		} = args;
 		const isExpanded = getIsExpanded(id);
 		const isDisabled = getIsDisabled(id);
@@ -59,7 +59,7 @@ RenderFunction.args = {
 					headerLevel={ headerLevel }
 					isExpanded={ isExpanded }
 					isDisabled={ isDisabled }
-					setSectionRef={ setSectionRef }
+					setHeaderRef={ setHeaderRef }
 					onClick={ onClick }
 					onKeyDown={ onKeyDown }
 				>
