@@ -16,17 +16,17 @@ export default function SupportPage() {
 				"Mostly Unstyled"?
 			</h3>
 			<p>
-				The components provided by React Aria Widgets strives to be as unstyled as possible,
+				The components provided by React ARIA Widgets strives to be as unstyled as possible,
 				but there are cases where styling is included by default. For example, the accordion widget
 				uses <code>display: none !important;</code> by default to handle the expand/collapse states.
-				However, whenever possible, React Aria Widgets will try to provide access to the underlying
+				However, whenever possible, React ARIA Widgets will try to provide access to the underlying
 				state so that developers can use the implementation that suits them best.
 			</p>
 			<h3 id="faq-hidden-vs-display-none">
 				<code>hidden</code> versus <code>display: none;</code>
 			</h3>
 			<p>
-				At the time of writing, many of the example implementations of widgets such as tabs shown in WAI-Aria
+				At the time of writing, many of the example implementations of widgets such as tabs shown in WAI-ARIA
 				Authoring Practices 1.2 use the <code>hidden</code> HTML attribute to handle expand/collapse states.
 				However, in the <a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
 				living WHATWG HTML standard</a>, they say:
@@ -50,11 +50,11 @@ export default function SupportPage() {
 				code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
 			</p>
 			<p>
-				React Aria Widgets will use <code>display: none;</code> by default, but whenever possible it
+				React ARIA Widgets will use <code>display: none;</code> by default, but whenever possible it
 				will also give developers access to the underlying state should they decide to use <code>hidden
 				</code>, custom <code>display: none;</code> styling, or something else entirely.
 			</p>
-			<h3>Styles from React Aria Widgets Are Not Appearing</h3>
+			<h3>Styles from React ARIA Widgets Are Not Appearing</h3>
 			<p>
 				Remember to import the stylesheet!
 			</p>

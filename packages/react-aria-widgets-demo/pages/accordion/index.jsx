@@ -105,7 +105,7 @@ export default function AccordionPage() {
 			<p>
 				The <code>&lt;Accordion&gt;</code> component uses the <code>withAccordionManager()</code> higher-order
 				component (HOC), which handles all of the stateful logic for an accordion. This HOC can be
-				used independently of the other accordion components in React Aria Widgets, allowing developers to
+				used independently of the other accordion components in React ARIA Widgets, allowing developers to
 				create their own accordion implementations.
 			</p>
 			<p>
@@ -120,7 +120,7 @@ export default function AccordionPage() {
 				implementations.
 			</p>
 			<p>
-				React Aria Widgets also provides
+				React ARIA Widgets also provides
 				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
 				that can be used independently of the HOC or other components. Unlike the non-base
 				versions, they are unopinionated components that exist to simplify which HTML and
@@ -181,7 +181,7 @@ export default function AccordionPage() {
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
 				be styled simply by passing in props. For custom implementations,
-				React Aria Widgets ultimately places no restrictions on the underlying HTML
+				React ARIA Widgets ultimately places no restrictions on the underlying HTML
 				(though we recommend taking care to adhere to the ARIA Authoring Practices!),
 				meaning developers have complete control over how their accordions are styled.
 			</p>
