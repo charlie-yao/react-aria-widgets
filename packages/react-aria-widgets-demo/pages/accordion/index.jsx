@@ -469,7 +469,7 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							<code>children</code> can either be a render function or a set of React nodes
+							Either be a render function or a set of React nodes
 							that represent an accordion header/panel pair. Children of this component
 							receive all of the fields and methods from <code>&lt;Accordion&gt;</code>, including
 							those that actually originate from <code>withAccordionManager()</code>.
@@ -481,11 +481,9 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							An identifier for the accordion section. Must be unique to the whole document as
-							it's used as the HTML <code>id</code> on the header button and
-							an <code>aria-labelledby</code> pointing to it. Also
-							used to generate an HTML <code>id</code> for the section's content and
-							an <code>aria-controls</code> pointing to it.
+							A unique identifier for the accordion section. Must be unique to the whole document as
+							it's used to generate HTML IDs for the header button and panel element, as well as
+							the <code>aria-controls</code> and <code>aria-labelledby</code> attributes.
 						</td>
 					</tr>
 				</tbody>
