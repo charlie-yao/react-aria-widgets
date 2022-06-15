@@ -25,11 +25,11 @@ function AccordionSection(props) {
 		getIsDisabled,
 		toggleSection,
 		setHeaderRef,
-		focusSection,
-		focusPrevSection,
-		focusNextSection,
-		focusFirstSection,
-		focusLastSection,
+		focusHeader,
+		focusPrevHeader,
+		focusNextHeader,
+		focusFirstHeader,
+		focusLastHeader,
 	} = props;
 
 	if(typeof children === 'function') {
@@ -45,11 +45,11 @@ function AccordionSection(props) {
 			getIsDisabled,
 			toggleSection,
 			setHeaderRef,
-			focusSection,
-			focusPrevSection,
-			focusNextSection,
-			focusFirstSection,
-			focusLastSection,
+			focusHeader,
+			focusPrevHeader,
+			focusNextHeader,
+			focusFirstHeader,
+			focusLastHeader,
 		});
 	}
 	else {
@@ -66,11 +66,11 @@ function AccordionSection(props) {
 				getIsDisabled,
 				toggleSection,
 				setHeaderRef,
-				focusSection,
-				focusPrevSection,
-				focusNextSection,
-				focusFirstSection,
-				focusLastSection,
+				focusHeader,
+				focusPrevHeader,
+				focusNextHeader,
+				focusFirstHeader,
+				focusLastHeader,
 			});
 		});
 	}
@@ -92,11 +92,11 @@ AccordionSection.propTypes = {
 	getIsDisabled: PropTypes.func.isRequired,
 	toggleSection: PropTypes.func.isRequired,
 	setHeaderRef: PropTypes.func.isRequired,
-	focusSection: PropTypes.func.isRequired,
-	focusPrevSection: PropTypes.func.isRequired,
-	focusNextSection: PropTypes.func.isRequired,
-	focusFirstSection: PropTypes.func.isRequired,
-	focusLastSection: PropTypes.func.isRequired,
+	focusHeader: PropTypes.func.isRequired,
+	focusPrevHeader: PropTypes.func.isRequired,
+	focusNextHeader: PropTypes.func.isRequired,
+	focusFirstHeader: PropTypes.func.isRequired,
+	focusLastHeader: PropTypes.func.isRequired,
 };
 
 export default withNoOp(AccordionSection);

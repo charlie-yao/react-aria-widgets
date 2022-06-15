@@ -21,11 +21,11 @@ class Accordion extends React.Component {
 		getIsDisabled: PropTypes.func.isRequired,
 		toggleSection: PropTypes.func.isRequired,
 		setHeaderRef: PropTypes.func.isRequired,
-		focusSection: PropTypes.func.isRequired,
-		focusPrevSection: PropTypes.func.isRequired,
-		focusNextSection: PropTypes.func.isRequired,
-		focusFirstSection: PropTypes.func.isRequired,
-		focusLastSection: PropTypes.func.isRequired,
+		focusHeader: PropTypes.func.isRequired,
+		focusPrevHeader: PropTypes.func.isRequired,
+		focusNextHeader: PropTypes.func.isRequired,
+		focusFirstHeader: PropTypes.func.isRequired,
+		focusLastHeader: PropTypes.func.isRequired,
 	};
 
 	static defaultProps = {
@@ -39,25 +39,25 @@ class Accordion extends React.Component {
 	};
 
 	onKeyDown = (event) => {
-		const { focusPrevSection, focusNextSection, focusFirstSection, focusLastSection } = this.props;
+		const { focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader } = this.props;
 		const { key } = event;
 		const index = Number.parseInt(event.target.dataset.index, 10);
 
 		if(key === 'ArrowUp') {
 			event.preventDefault();
-			focusPrevSection(index);
+			focusPrevHeader(index);
 		}
 		else if(key === 'ArrowDown') {
 			event.preventDefault();
-			focusNextSection(index);
+			focusNextHeader(index);
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			focusFirstSection();
+			focusFirstHeader();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			focusLastSection();
+			focusLastHeader();
 		}
 	};
 
@@ -65,8 +65,8 @@ class Accordion extends React.Component {
 	render() {
 		const {
 			children, headerLevel, allowMultiple, allowToggle,
-			getIsExpanded, getIsDisabled, toggleSection, setHeaderRef, focusSection,
-			focusPrevSection, focusNextSection, focusFirstSection, focusLastSection,
+			getIsExpanded, getIsDisabled, toggleSection, setHeaderRef, focusHeader,
+			focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader,
 		} = this.props;
 
 		const mappedChildren = React.Children.map(children, (child, i) => {
@@ -86,11 +86,11 @@ class Accordion extends React.Component {
 				getIsDisabled,
 				toggleSection,
 				setHeaderRef,
-				focusSection,
-				focusPrevSection,
-				focusNextSection,
-				focusFirstSection,
-				focusLastSection,
+				focusHeader,
+				focusPrevHeader,
+				focusNextHeader,
+				focusFirstHeader,
+				focusLastHeader,
 			});
 		});
 

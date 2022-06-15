@@ -37,11 +37,11 @@ export default function withAccordionManager(Component) {
 					getIsDisabled={ this.getIsDisabled }
 					toggleSection={ this.toggleSection }
 					setHeaderRef={ this.setHeaderRef }
-					focusSection={ this.focusSection }
-					focusPrevSection={ this.focusPrevSection }
-					focusNextSection={ this.focusNextSection }
-					focusFirstSection={ this.focusFirstSection }
-					focusLastSection={ this.focusLastSection }
+					focusHeader={ this.focusHeader }
+					focusPrevHeader={ this.focusPrevHeader }
+					focusNextHeader={ this.focusNextHeader }
+					focusFirstHeader={ this.focusFirstHeader }
+					focusLastHeader={ this.focusLastHeader }
 					{ ...rest }
 				/>
 			);
@@ -101,24 +101,24 @@ export default function withAccordionManager(Component) {
 			this.sectionRefs.push(ref);
 		};
 
-		focusSection = (index) => {
+		focusHeader = (index) => {
 			this.sectionRefs[index].focus();
 		};
 
-		focusPrevSection = (index) => {
-			this.focusSection(index === 0 ? this.sectionRefs.length - 1 : index - 1);
+		focusPrevHeader = (index) => {
+			this.focusHeader(index === 0 ? this.sectionRefs.length - 1 : index - 1);
 		};
 
-		focusNextSection = (index) => {
-			this.focusSection(index === this.sectionRefs.length - 1 ? 0 : index + 1);
+		focusNextHeader = (index) => {
+			this.focusHeader(index === this.sectionRefs.length - 1 ? 0 : index + 1);
 		};
 
-		focusFirstSection = () => {
-			this.focusSection(0);
+		focusFirstHeader = () => {
+			this.focusHeader(0);
 		};
 
-		focusLastSection = () => {
-			this.focusSection(this.sectionRefs.length - 1);
+		focusLastHeader = () => {
+			this.focusHeader(this.sectionRefs.length - 1);
 		};
 	};
 }

@@ -9,10 +9,10 @@ export default function renderFunction(props) {
 		getIsDisabled,
 		setHeaderRef,
 		toggleSection,
-		focusPrevSection,
-		focusNextSection,
-		focusFirstSection,
-		focusLastSection,
+		focusPrevHeader,
+		focusNextHeader,
+		focusFirstHeader,
+		focusLastHeader,
 	} = props;
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
@@ -29,19 +29,19 @@ export default function renderFunction(props) {
 
 		if(key === 'ArrowUp') {
 			event.preventDefault();
-			focusPrevSection(index);
+			focusPrevHeader(index);
 		}
 		else if(key === 'ArrowDown') {
 			event.preventDefault();
-			focusNextSection(index);
+			focusNextHeader(index);
 		}
 		else if(key === 'Home') {
 			event.preventDefault();
-			focusFirstSection();
+			focusFirstHeader();
 		}
 		else if(key === 'End') {
 			event.preventDefault();
-			focusLastSection();
+			focusLastHeader();
 		}
 	};
 

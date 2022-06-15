@@ -18,11 +18,11 @@ function CustomAccordionPanel(props) {
 		getIsDisabled,
 		toggleSection,
 		setHeaderRef,
-		focusSection,
-		focusPrevSection,
-		focusNextSection,
-		focusFirstSection,
-		focusLastSection,
+		focusHeader,
+		focusPrevHeader,
+		focusNextHeader,
+		focusFirstHeader,
+		focusLastHeader,
 		...rest
 	} = props;
 	const panelId = `${id}-panel`;

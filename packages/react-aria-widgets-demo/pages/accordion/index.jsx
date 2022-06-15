@@ -325,25 +325,25 @@ export default function AccordionPage() {
 				</tbody>
 			</table>
 			<h5>Methods</h5>
-			<h6><code>focusFirstSection(): void</code></h6>
+			<h6><code>focusFirstHeader(): void</code></h6>
 			<p>
 				Sets the focus to the first accordion header button.
 			</p>
-			<h6><code>focusLastSection(): void</code></h6>
+			<h6><code>focusLastHeader(): void</code></h6>
 			<p>
 				Sets the focus to the last accordion header button.
 			</p>
-			<h6><code>focusNextSection(index: number): void</code></h6>
+			<h6><code>focusNextHeader(index: number): void</code></h6>
 			<p>
 				Sets the focus to the next (relative to <code>index</code>) accordion
 				header button.
 			</p>
-			<h6><code>focusPrevSection(index: number): void</code></h6>
+			<h6><code>focusPrevHeader(index: number): void</code></h6>
 			<p>
 				Sets the focus to the previous (relative to <code>index</code>) accordion
 				header button.
 			</p>
-			<h6><code>focusSection(index: number): void</code></h6>
+			<h6><code>focusHeader(index: number): void</code></h6>
 			<p>
 				Sets the focus to an arbitrary accordion header button.
 			</p>
