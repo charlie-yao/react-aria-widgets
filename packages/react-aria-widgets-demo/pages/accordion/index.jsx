@@ -629,6 +629,11 @@ export default function AccordionPage() {
 				be a more suitable option.
 			</p>
 			<h5>Props</h5>
+			{
+				/* TODO this is somewhat confusing: any props not listed are spread, but we
+				can also pass in tagName?
+				*/
+			}
 			<p>
 				<code>&lt;AccordionPanel&gt;</code> expects, and automatically gets passed, certain props
 				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionHeader&gt;</code> such
@@ -636,8 +641,8 @@ export default function AccordionPage() {
 				automatically spread onto the underlying <code>&lt;BaseAccordionPanel&gt;</code>.
 			</p>
 			<p>
-				Note that the underlying HTML element that contains the actual content of the
-				accordion section defaults to <code>&lt;section&gt;</code>. This can be changed by
+				Note that the underlying HTML element that contains the content of the
+				panel defaults to <code>&lt;section&gt;</code>. This can be changed by
 				passing in a <code>tagName</code> prop. See <a href="#base-accordion-panel">
 				<code>&lt;BaseAccordionPanel&gt;</code></a> for more information.
 			</p>
@@ -679,9 +684,9 @@ export default function AccordionPage() {
 			<h4 id="base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></h4>
 			<p>
 				<code>&lt;BaseAccordionHeader&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
-				designed to help implement accordions according to the WAI-ARIA Authoring Practices 1.2. It is
-				the underlying component for <code>&lt;AccordionHeader&gt;</code> and can also be used for
-				other accordion implementations.
+				designed to help implement accordions according to the ARIA Authoring Practices Guide. It is
+				the underlying component for <code>&lt;AccordionHeader&gt;</code>, and can also be used for
+				custom accordion implementations.
 			</p>
 			<p>
 				If a React ref is given, it will be forwarded to the underlying <code>&lt;button&gt;</code>.
@@ -748,13 +753,13 @@ export default function AccordionPage() {
 						<td>{ '\u2713' }</td>
 						<td>
 							<p>
-								A unique identifier pointing to the accordion section's content. Maps to
+								A unique identifier pointing to the corresponding accordion panel. Maps to
 								the <code>aria-controls</code> attribute.
 							</p>
 							<p>
-								This means that the accordion section content should have
-								an <code>id</code> attribute with the same value (e.g. giving a
-								corresponding <code>&lt;BaseAccordionPanel&gt;</code> an <code>id</code> prop).
+								This means that the accordion panel should also have
+								an HTML <code>id</code> attribute with the same value (e.g. giving
+								a <code>&lt;BaseAccordionPanel&gt;</code> an <code>id</code> prop).
 							</p>
 						</td>
 					</tr>
@@ -764,8 +769,10 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A number from 1 to 6 (inclusive) representing an HTML section heading element
-							(e.g. <code>&lt;h2&gt;</code>).
+							<p>
+								A number from 1 to 6 (inclusive) representing an HTML section heading element
+								(e.g. <code>&lt;h2&gt;</code>).
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -775,7 +782,7 @@ export default function AccordionPage() {
 						<td></td>
 						<td>
 							<p>
-								An object that is spread over the underlying heading element in order to directly
+								An object that is spread over the underlying heading element in order to
 								supply props and HTML attributes to it. For example, one can provide custom styling
 								with:
 							</p>
@@ -791,12 +798,14 @@ export default function AccordionPage() {
 						<td>{ '\u2713' }</td>
 						<td>
 							<p>
-								A unique identifier for the underlying <code>&lt;button&gt;</code>.
+								A unique identifier for the underlying button. Maps
+								to the HTML <code>id</code> attribute.
 							</p>
 							<p>
-								Note that it's also recommended to give the accordion section's content
-								an <code>aria-labelledby</code> attribute that points to this button (e.g. giving a
-								corresponding <code>&lt;BaseAccordionPanel&gt;</code> a <code>labelId</code> prop
+								{/* TODO: mention that this is actually mandatory if panel has region role */ }
+								Note that it's recommended to give the corresponding accordion panel
+								an <code>aria-labelledby</code> attribute that points to this button (e.g. giving
+								a <code>&lt;BaseAccordionPanel&gt;</code> a <code>labelId</code> prop
 								with the same value).
 							</p>
 						</td>
@@ -809,8 +818,9 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								Used to set the <code>aria-disabled</code> attribute. Communicates to
-								assitive technologies situations where, e.g., there's an accordion that disallows
-								toggling expand/collapse states and the current accordion section is already expanded.
+								assitive technologies situations where, e.g., the accordion disallows
+								toggling expand/collapse states and the current accordion section is already
+								expanded.
 							</p>
 							<p>
 								Note that unlike the HTML <code>disabled</code> attribute, even if an HTML
@@ -825,9 +835,10 @@ export default function AccordionPage() {
 						<td><code>false</code></td>
 						<td></td>
 						<td>
-							Used to set the <code>aria-expanded</code> attribute. Note that this attribute does not
-							actually control whether or not the content is expanded or collapsed as it does
-							not affect the visibility of the relevant accordion panel.
+							<p>
+								Used to set the <code>aria-expanded</code> attribute. Note that this attribute
+								does not actually affect the visibility of the corresponding accordion panel.
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -836,8 +847,10 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A click event handler for the underlying <code>&lt;button&gt;</code>. Should be used
-							to handle expanding/collapsing the accordion section's content.
+							<p>
+								A click event handler for the underlying <code>&lt;button&gt;</code>. Should be used
+								to handle expanding/collapsing the accordion panel.
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -846,10 +859,12 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td></td>
 						<td>
-							Primarily used to implement focus management. Is considered optional by the
-							WAI-ARIA Authoring Practices 1.2, and the mandatory interactions
-							(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
-							should already be handled by the browser and by supplying an <code>onClick</code> prop.
+							<p>
+								Primarily used to implement focus management. Is considered optional by the
+								ARIA Authoring Practices Guide, and the mandatory interactions
+								(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
+								should already be handled by the browser and by supplying an <code>onClick</code> prop.
+							</p>
 						</td>
 					</tr>
 				</tbody>
@@ -857,9 +872,9 @@ export default function AccordionPage() {
 			<h4 id="base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></h4>
 			<p>
 				<code>&lt;BaseAccordionPanel&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
-				designed to help implement accordions according to the WAI-ARIA Authoring Practices 1.2. It is the
+				designed to help implement accordions according to the ARIA Authoring Practices Guide. It is the
 				underlying component for <code>&lt;AccordionPanel&gt;</code>, and can be used for
-				other accordion implementations.
+				custom accordion implementations.
 			</p>
 			<h5>Props</h5>
 			<p>
@@ -883,8 +898,10 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A string, React component, etc., that represents the actual
-							content for an accordion section.
+							<p>
+								A string, React component, etc., that represents the actual
+								content for an accordion section.
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -893,10 +910,15 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A unique identifier for the underlying HTML element. Note that the corresponding
-							accordion header should also have an <code>aria-controls</code> attribute
-							with the same value. This can be accomplished by passing in
-							a <code>controlsId</code> prop to a <code>&lt;BaseAccordionHeader&gt;</code>.
+							<p>
+								A unique identifier for the underlying HTML element. Maps
+								to the HTML <code>id</code> attribute.
+							</p>
+							<p>
+								Note that the corresponding accordion header button should also have
+								an <code>aria-controls</code> attribute with the same value (e.g. giving
+								a <code>&lt;BaseAccordionHeader&gt;</code> a <code>controlsId</code> prop).
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -906,7 +928,7 @@ export default function AccordionPage() {
 						<td>{ '\u2713 (see description)' }</td>
 						<td>
 							<p>
-								A unique identifier for the accordion header that controls this element's
+								A unique identifier for the accordion header button that controls this element's
 								visibility. Maps to the <code>aria-labelledby</code> attribute.
 							</p>
 							<p>
@@ -914,6 +936,11 @@ export default function AccordionPage() {
 								does NOT have the <code>region</code> role. Because
 								this component defaults to using the <code>&lt;section&gt;</code> element
 								(which has the <code>region</code> role), this prop is required by default.
+							</p>
+							<p>
+								If required, this means that the accordion header button should also
+								an HTML <code>id</code> attribute with the same value (e.g. giving
+								a <code>&lt;BaseAccordionHeader&gt;</code> an <code>id</code> prop).
 							</p>
 							<p>
 								See the <a href="https://w3c.github.io/aria/#region">
@@ -934,8 +961,8 @@ export default function AccordionPage() {
 							</p>
 							<p>
 								However, the underlying HTML element does NOT need to have the
-								role <code>region</code>. In fact, according to the WAI-ARIA
-								Authoring Practices 1.2:
+								role <code>region</code>. In fact, according to the ARIA
+								Authoring Practices Guide:
 							</p>
 							<blockquote cite="https://w3c.github.io/aria-practices/#accordion">
 								Avoid using the <code>region</code> role in circumstances that create landmark
