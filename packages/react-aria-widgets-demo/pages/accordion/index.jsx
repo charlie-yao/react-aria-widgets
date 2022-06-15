@@ -110,21 +110,20 @@ export default function AccordionPage() {
 			</p>
 			<p>
 				<code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> provide
-				some conveniences though, such as event handlers, uniform header
-				levels, and indices for each header/content combination.
+				some conveniences though, such as event handlers and indices for each header/panel combination.
 				Additionally, <code>&lt;AccordionSection&gt;</code> accepts either React nodes or a
 				render function as its children, and automatically passes down all of the fields and methods
 				it receives from <code>&lt;Accordion&gt;</code> (and, by extension, <code>withAccordionManager()</code>)
 				to them. In other words, for developers who wish to use those components, but
 				find <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
-				be insufficiently flexible, they can create their own accordion header/content section
+				be insufficiently flexible, they can create their own accordion header or panel
 				implementations.
 			</p>
 			<p>
 				React Aria Widgets also provides
 				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
-				that can be used independently of the HOC or any of the other components. Unlike the non-base
-				versions, these are unopinionated components that exist solely to simplify which HTML and
+				that can be used independently of the HOC or other components. Unlike the non-base
+				versions, they are unopinionated components that exist to simplify which HTML and
 				ARIA attributes are needed to conform to the ARIA Authoring Practices.
 			</p>
 			<p>
@@ -132,29 +131,43 @@ export default function AccordionPage() {
 			</p>
 			<ul>
 				<li>
-					When using <code>withAccordionManager()</code>, any button that controls a
-					particular accordion section must use the <code>setSectionRef()</code> callback
-					ref. Otherwise, focus management will not work properly.
+					<p>
+						When using <code>withAccordionManager()</code>, any header button that controls a
+						particular accordion section must use the <code>setSectionRef()</code> callback
+						ref. Otherwise, focus management will not work.
+					</p>
+					<p>
+						Note that <code>&lt;AccordionHeader&gt;</code> automatically sets this ref.
+					</p>
 				</li>
 				<li>
-					If one wishes to use the keyboard and mouse event handlers provided
-					by <code>&lt;Accordion&gt;</code>, the button that controls a particular accordion
-					section must have an <code>id</code> attribute and a <code>data-index</code> attribute that
-					corresponds to its <code>&lt;AccordionSection&gt;</code>.
+					<p>
+						If you wish to use the event handlers provided
+						by <code>&lt;Accordion&gt;</code>, the header button must have
+						the HTML attributes <code>id</code> and <code>data-index</code> with values
+						corresponding to the props provided by its parent <code>&lt;AccordionSection&gt;</code>.
+					</p>
+					<p>
+						Note that <code>&lt;AccordionHeader&gt;</code> automatically sets these HTML attributes.
+					</p>
 				</li>
 				<li>
-					Be careful when using the spread operator and <code>headerProps</code> or <code>buttonProps</code> in
-					<code>&lt;AccordionPanel&gt;</code> as one can easily overwrite which props should actually
-					be passed down.
+					<p>
+						Be careful when using the spread operator and <code>headerProps</code> or <code>buttonProps</code> with
+						the <code>&lt;AccordionHeader&gt;</code> or <code>&lt;BaseAccordionHeader&gt;</code> components
+						as one can accidentally overwrite which props should actually be passed down.
+					</p>
 				</li>
 				<li>
-					If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
-					already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
-					This means that if a developer writes a wrapper over <code>&lt;BaseAccordionPanel&gt;</code> that's
-					used in conjunction with <code>&lt;AccordionSection&gt;</code> (and, by
-					extension, <code>&lt;Accordion&gt;</code> and <code>withAccordionManager()</code>), they must
-					take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
-					passes down.
+					<p>
+						If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
+						already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
+						This means that if a developer writes a wrapper over <code>&lt;BaseAccordionPanel&gt;</code> that's
+						used in conjunction with <code>&lt;AccordionSection&gt;</code> (and, by
+						extension, <code>&lt;Accordion&gt;</code> and <code>withAccordionManager()</code>), they must
+						take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
+						passes down.
+					</p>
 				</li>
 			</ul>
 			{/*
@@ -167,11 +180,10 @@ export default function AccordionPage() {
 			<h4>Styling</h4>
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
-				be styled simply by passing in props. For anyone who wishes to use any
-				of the various customization options, React Aria Widgets ultimately places no
-				restrictions on the underlying HTML (though we recommend taking care to adhere to the
-				ARIA Authoring Practices!), meaning developers have complete control over how
-				their accordions are styled.
+				be styled simply by passing in props. For custom implementations,
+				React Aria Widgets ultimately places no restrictions on the underlying HTML
+				(though we recommend taking care to adhere to the ARIA Authoring Practices!),
+				meaning developers have complete control over how their accordions are styled.
 			</p>
 			<p>
 				This also means developers are not tied to using <code>display: none;</code> to
@@ -507,13 +519,12 @@ export default function AccordionPage() {
 			</table>
 			<h4><code>&lt;AccordionHeader&gt;</code></h4>
 			<p>
-				An <code>&lt;AccordionHeader&gt;</code> is an thin, opinionated wrapper
-				over <code>&lt;BaseAccordionHeader&gt;</code> (which is itself just a
-				wrapper over basic HTML elements) that is designed to be used
+				<code>&lt;AccordionHeader&gt;</code> is a thin, opinionated wrapper
+				over <code>&lt;BaseAccordionHeader&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
 				Because <code>&lt;AccordionHeader&gt;</code> isn't meant to be used in a standalone manner,
-				if you wish to write your own accordion implementation or you require
-				finer controls, <code>&lt;BaseAccordionHeader&gt;</code> may be a more suitable option.
+				if you wish to write your own header implementation, <code>&lt;BaseAccordionHeader&gt;</code> may
+				be a more suitable option.
 			</p>
 			<h5>Props</h5>
 			<p>
@@ -578,19 +589,27 @@ export default function AccordionPage() {
 					</tr>
 				</tbody>
 			</table>
+			{/*
+
+			TODO remove this in favor of adding to the description above about how it handles customization
+			caveats?
+
 			<h5>Fields</h5>
 			<p>
-				It's worth noting that while <code>&lt;AccordionHeader&gt;</code> doesn't pass in
-				any fields its children, it will automatically add pass in <code>buttonProps</code> to
-				the underlying <code>&lt;BaseAccordionPanel&gt;</code> with a <code>'data-index'</code> property
-				using the value generated by <code>&lt;Accordion&gt;</code>. This is because the default keyboard
-				event handler, <code>onKeyDown()</code>, assumes the existence of this data attribute on
-				the underlying <code>&lt;button&gt;</code> in order to determine the position of the accordion section.
+				While <code>&lt;AccordionHeader&gt;</code> doesn't pass in any fields its children, it will
+				automatically pass in a <code>buttonProps</code> object with a <code>'data-index'</code> property
+				using the value generated from <code>&lt;Accordion&gt;</code> to the
+				underlying <code>&lt;BaseAccordionPanel&gt;</code>. This is
+				because <code>&lt;AccordionHeader&gt;</code> uses the default keyboard event
+				handler <code>onKeyDown()</code> (also from <code>&lt;Accordion&gt;</code>) assumes
+				the existence of this attribute on the underlying <code>&lt;button&gt;</code> in order
+				to determine the position of the accordion section.
 			</p>
 			<p>
 				If <code>buttonProps</code> is passed to <code>&lt;AccordionHeader&gt;</code>, it will
-				be merged with the automatically-generated version via <code>Object.assign()</code>.
-			</p>
+				be merged with the automatically-generated version with <code>Object.assign()</code>.
+			</p$a
+			*/}>
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<p>
 				An <code>&lt;AccordionPanel&gt;</code> is a thin, opinionated wrapper
