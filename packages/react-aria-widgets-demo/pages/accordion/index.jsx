@@ -972,14 +972,6 @@ export default function AccordionPage() {
 					</tr>
 				</tbody>
 			</table>
-			<h2>Links</h2>
-			<ul>
-				<li>
-					<a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
-						ARIA Authoring Practices Guide - Accordion
-					</a>
-				</li>
-			</ul>
 		</article>
 	);
 }
