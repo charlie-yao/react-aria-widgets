@@ -26,8 +26,8 @@ export default function SupportPage() {
 				<code>hidden</code> versus <code>display: none;</code>
 			</h3>
 			<p>
-				At the time of writing, many of the example implementations of widgets such as tabs shown in WAI-ARIA
-				Authoring Practices 1.2 use the <code>hidden</code> HTML attribute to handle expand/collapse states.
+				At the time of writing, many of the example implementations of widgets such as tabs shown in ARIA
+				Authoring Practices Guide (APG) use the <code>hidden</code> HTML attribute to handle expand/collapse states.
 				However, in the <a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
 				living WHATWG HTML standard</a>, they say:
 			</p>
@@ -44,9 +44,9 @@ export default function SupportPage() {
 			</blockquote>
 			<p>
 				In this <a href="https://github.com/whatwg/html/issues/4904">GitHub thread</a>, it's argued that
-				the WAI-ARIA examples are using tabs as a presentational choice rather than to convey semantics,
+				the APG examples are using tabs as a presentational choice rather than to convey semantics,
 				and that <code>display: none;</code> should be used rather than <code>hidden</code>. Though
-				the WAI-ARIA examples that are currently live still do not reflect those changes, their source
+				the APG examples that are currently live still do not reflect those changes, their source
 				code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
 			</p>
 			<p>
@@ -63,7 +63,7 @@ export default function SupportPage() {
 			</pre>
 			<h3>Type Notation in the API</h3>
 			<p>
-				<a href="https://flow.org/">Flow</a> is used notate types in the API documentation, though
+				<a href="https://flow.org/">Flow</a> is used notate types in the API, though
 				the project itself doesn't use Flow internally.
 			</p>
 		</article>

@@ -50,7 +50,8 @@ export default function AccordionPage() {
 		<article>
 			<h1>Accordion</h1>
 			<p>
-				To quote the ARIA Authoring Practices Guide (APG):
+				To quote the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA
+				Authoring Practices Guide (APG)</a>:
 			</p>
 			<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
 				An accordion is a vertically stacked set of interactive headings that each contain
@@ -124,7 +125,7 @@ export default function AccordionPage() {
 				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
 				that can be used independently of the HOC or other components. Unlike the non-base
 				versions, they are unopinionated components that exist to simplify which HTML and
-				ARIA attributes are needed to conform to the ARIA Authoring Practices.
+				ARIA attributes are needed to conform to the APG.
 			</p>
 			<p>
 				There are a few caveats to making custom implementations, though:
@@ -182,7 +183,7 @@ export default function AccordionPage() {
 				<code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
 				be styled simply by passing in props. For custom implementations,
 				React ARIA Widgets ultimately places no restrictions on the underlying HTML
-				(though we recommend taking care to adhere to the ARIA Authoring Practices!),
+				(though we recommend taking care to adhere to the APG!),
 				meaning developers have complete control over how their accordions are styled.
 			</p>
 			<p>
@@ -448,8 +449,7 @@ export default function AccordionPage() {
 			<p>
 				A premade event handler that can be attached to accordion header buttons to handle
 				focus management. Implements the keyboard interactions described in
-				the <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">WAI-ARIA
-				Authoring Practices 1.2</a> and is used by <code>&lt;AccordionHeader&gt;</code>.
+				the APG and is used by <code>&lt;AccordionHeader&gt;</code>.
 			</p>
 			<p>
 				If you wish to use this event handler with a custom accordion header, note that
@@ -684,7 +684,7 @@ export default function AccordionPage() {
 			<h4 id="base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></h4>
 			<p>
 				<code>&lt;BaseAccordionHeader&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
-				designed to help implement accordions according to the ARIA Authoring Practices Guide. It is
+				designed to help implement accordions according to the APG. It is
 				the underlying component for <code>&lt;AccordionHeader&gt;</code>, and can also be used for
 				custom accordion implementations.
 			</p>
@@ -861,7 +861,7 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								Primarily used to implement focus management. Is considered optional by the
-								ARIA Authoring Practices Guide, and the mandatory interactions
+								APG, and the mandatory interactions
 								(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
 								should already be handled by the browser and by supplying an <code>onClick</code> prop.
 							</p>
@@ -872,7 +872,7 @@ export default function AccordionPage() {
 			<h4 id="base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></h4>
 			<p>
 				<code>&lt;BaseAccordionPanel&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
-				designed to help implement accordions according to the ARIA Authoring Practices Guide. It is the
+				designed to help implement accordions according to the APG. It is the
 				underlying component for <code>&lt;AccordionPanel&gt;</code>, and can be used for
 				custom accordion implementations.
 			</p>
@@ -961,10 +961,9 @@ export default function AccordionPage() {
 							</p>
 							<p>
 								However, the underlying HTML element does NOT need to have the
-								role <code>region</code>. In fact, according to the ARIA
-								Authoring Practices Guide:
+								role <code>region</code>. In fact, according to the APG:
 							</p>
-							<blockquote cite="https://w3c.github.io/aria-practices/#accordion">
+							<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
 								Avoid using the <code>region</code> role in circumstances that create landmark
 								region proliferation, e.g. in an accordion that contains more than approximately
 								6 panels that can be expanded at the same time.
