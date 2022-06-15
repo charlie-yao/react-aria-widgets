@@ -417,7 +417,7 @@ export default function AccordionPage() {
 					<tr>
 						<td><code>index</code></td>
 						<td><code>number</code></td>
-						<td>An integer representing thet position of an accordion header/panel pair.</td>
+						<td>An integer representing the position of an accordion header/panel pair.</td>
 					</tr>
 				</tbody>
 			</table>
