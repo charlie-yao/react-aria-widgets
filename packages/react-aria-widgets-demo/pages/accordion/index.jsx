@@ -587,27 +587,6 @@ export default function AccordionPage() {
 					</tr>
 				</tbody>
 			</table>
-			{/*
-
-			TODO remove this in favor of adding to the description above about how it handles customization
-			caveats?
-
-			<h5>Fields</h5>
-			<p>
-				While <code>&lt;AccordionHeader&gt;</code> doesn't pass in any fields its children, it will
-				automatically pass in a <code>buttonProps</code> object with a <code>'data-index'</code> property
-				using the value generated from <code>&lt;Accordion&gt;</code> to the
-				underlying <code>&lt;BaseAccordionPanel&gt;</code>. This is
-				because <code>&lt;AccordionHeader&gt;</code> uses the default keyboard event
-				handler <code>onKeyDown()</code> (also from <code>&lt;Accordion&gt;</code>) assumes
-				the existence of this attribute on the underlying <code>&lt;button&gt;</code> in order
-				to determine the position of the accordion section.
-			</p>
-			<p>
-				If <code>buttonProps</code> is passed to <code>&lt;AccordionHeader&gt;</code>, it will
-				be merged with the automatically-generated version with <code>Object.assign()</code>.
-			</p>
-			*/}
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<p>
 				An <code>&lt;AccordionPanel&gt;</code> is a thin, opinionated wrapper
