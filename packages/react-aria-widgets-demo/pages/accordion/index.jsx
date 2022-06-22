@@ -509,7 +509,7 @@ export default function AccordionPage() {
 					<tr>
 						<td><code>id</code></td>
 						<td><code>string</code></td>
-						<td>A unique identifier for the header and content.</td>
+						<td>A unique identifier for the header/panel pair.</td>
 					</tr>
 				</tbody>
 			</table>
