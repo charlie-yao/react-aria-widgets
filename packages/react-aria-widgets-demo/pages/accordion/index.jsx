@@ -104,8 +104,8 @@ export default function AccordionPage() {
 			</pre>
 			<h3>Customization</h3>
 			<p>
-				<code>&lt;Accordion&gt;</code> uses the <code>withAccordionManager()</code> higher-order
-				component (HOC), which handles all of the stateful logic for an accordion. This HOC can be
+				<code>&lt;Accordion&gt;</code> uses the higher-order component (HOC) <code>withAccordionManager()</code>,
+				which handles all of the stateful logic for an accordion. This HOC can be
 				used independently of the other accordion components in React ARIA Widgets, allowing developers to
 				create their own accordion implementations.
 			</p>
