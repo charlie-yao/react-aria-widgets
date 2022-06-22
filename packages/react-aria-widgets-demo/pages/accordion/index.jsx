@@ -137,9 +137,6 @@ export default function AccordionPage() {
 						particular accordion panel must use the <code>setHeaderRef()</code> callback
 						ref. Otherwise, focus management will not work.
 					</p>
-					<p>
-						Note that <code>&lt;AccordionHeader&gt;</code> automatically sets this ref.
-					</p>
 				</li>
 				<li>
 					<p>
@@ -148,15 +145,12 @@ export default function AccordionPage() {
 						the HTML attributes <code>id</code> and <code>data-index</code> with values
 						corresponding to the props provided by its parent <code>&lt;AccordionSection&gt;</code>.
 					</p>
-					<p>
-						Note that <code>&lt;AccordionHeader&gt;</code> automatically sets these HTML attributes.
-					</p>
 				</li>
 				<li>
 					<p>
-						Be careful when using the spread operator and <code>headerProps</code> or <code>buttonProps</code> with
-						the <code>&lt;AccordionHeader&gt;</code> or <code>&lt;BaseAccordionHeader&gt;</code> components
-						as one can accidentally overwrite which props should actually be passed down.
+						Be careful when using the spread operator
+						and <code>headerProps</code> or <code>buttonProps</code> with <code>&lt;AccordionHeader&gt;</code> or <code>&lt;BaseAccordionHeader&gt;</code> as
+						one can accidentally overwrite which props should actually be passed down.
 					</p>
 				</li>
 				<li>
