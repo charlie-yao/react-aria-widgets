@@ -241,7 +241,7 @@ export default function AccordionPage() {
 			</p>
 			<p>
 				The fourth accordion section shows how to use a render function. The render function
-				has access to the same props as the other examples, and it bypasses some of the above
+				has access to the same props as the other examples, and this example bypasses some of the above
 				caveats by implementing its own event handlers and directly passing styles to the
 				HTML elements. <code>setAccordionRef()</code> still needs to be set, however, in order to
 				use the methods provided by <code>withAccordionManager()</code>.
