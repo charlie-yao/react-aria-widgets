@@ -606,8 +606,8 @@ export default function AccordionPage() {
 			<p>
 				If <code>buttonProps</code> is passed to <code>&lt;AccordionHeader&gt;</code>, it will
 				be merged with the automatically-generated version with <code>Object.assign()</code>.
-			</p$a
-			*/}>
+			</p>
+			*/}
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<p>
 				An <code>&lt;AccordionPanel&gt;</code> is a thin, opinionated wrapper
