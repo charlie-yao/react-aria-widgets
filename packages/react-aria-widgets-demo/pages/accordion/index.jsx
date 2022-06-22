@@ -669,9 +669,7 @@ export default function AccordionPage() {
 						<td><code>''</code></td>
 						<td></td>
 						<td>
-							A string representing a CSS class. If the panel is collapsed, the
-							class <code>"react-aria-widgets-hidden"</code> will be automatically
-							concatenated.
+							A string representing one or more CSS classes.
 						</td>
 					</tr>
 				</tbody>
