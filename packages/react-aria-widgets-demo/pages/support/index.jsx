@@ -19,8 +19,8 @@ export default function SupportPage() {
 				The components provided by React ARIA Widgets strives to be as unstyled as possible,
 				but there are cases where styling is included by default. For example, the accordion widget
 				uses <code>display: none !important;</code> by default to handle the expand/collapse states.
-				However, whenever possible, React ARIA Widgets will try to provide access to the underlying
-				state so that developers can use the implementation that suits them best.
+				However, whenever possible, React ARIA Widgets will try to provide customization options
+				so that developers can use the implementation that suits them best.
 			</p>
 			<h3 id="faq-hidden-vs-display-none">
 				<code>hidden</code> versus <code>display: none;</code>
@@ -50,9 +50,9 @@ export default function SupportPage() {
 				code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
 			</p>
 			<p>
-				React ARIA Widgets will use <code>display: none;</code> by default, but whenever possible it
-				will also give developers access to the underlying state should they decide to use <code>hidden
-				</code>, custom <code>display: none;</code> styling, or something else entirely.
+				React ARIA Widgets will use <code>display: none important!;</code> by default, but whenever possible,
+				it will try to give developers customization options should they decide to
+				use the <code>hidden</code> attribute or custom styling.
 			</p>
 			<h3>Styles from React ARIA Widgets Are Not Appearing</h3>
 			<p>
