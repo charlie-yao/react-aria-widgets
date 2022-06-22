@@ -842,7 +842,7 @@ export default function AccordionPage() {
 						<td>{ '\u2713' }</td>
 						<td>
 							<p>
-								A click event handler for the underlying <code>&lt;button&gt;</code>. Should be used
+								A click event handler for the underlying button. Should be used
 								to handle expanding/collapsing the accordion panel.
 							</p>
 						</td>
@@ -854,10 +854,7 @@ export default function AccordionPage() {
 						<td></td>
 						<td>
 							<p>
-								Primarily used to implement focus management. Is considered optional by the
-								APG, and the mandatory interactions
-								(<kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Tab</kbd>, and <kbd>Shift + Tab</kbd>)
-								should already be handled by the browser and by supplying an <code>onClick</code> prop.
+								A keydown event handler for the underlying button. Primarily used to implement focus management.
 							</p>
 						</td>
 					</tr>
