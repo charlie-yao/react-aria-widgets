@@ -345,7 +345,7 @@ export default function AccordionPage() {
 			</p>
 			<h6><code>getIsDisabled(id: string): boolean</code></h6>
 			<p>
-				Returns a boolean indicating if an accordion headern cannot be
+				Returns a boolean indicating if an accordion header cannot be
 				interacted with. At the moment, an accordion header is only
 				considered disabled if its panel is expanded and <code>allowToggle</code> is <code>false</code>.
 			</p>
