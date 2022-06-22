@@ -181,9 +181,11 @@ export default function AccordionPage() {
 				meaning developers have complete control over how their accordions are styled.
 			</p>
 			<p>
-				This also means developers are not tied to using <code>display: none;</code> to
-				represent the collapsed state, which may or may not be desired. For more information
-				on this, see the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
+				By default, React ARIA Widgets uses <code>display: none !important</code> to represent the
+				collapsed state. Custom implementations allow developers to use their own CSS,
+				styles, or even options like the HTML attribute <code>hidden</code> (though that
+				may not be semantically appropriate). For more information, see
+				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
 			</p>
 			<CustomAccordion />
 			<pre>
