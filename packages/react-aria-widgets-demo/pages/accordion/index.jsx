@@ -615,7 +615,7 @@ export default function AccordionPage() {
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
 			</p>
 			<p>
-				This component uses a CSS class with <code>display: none;</code> to represent
+				This component uses a CSS class with <code>display: none !important;</code> to represent
 				the collapsed state, which may or may not be desired. For more information, see
 				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
 			</p>
