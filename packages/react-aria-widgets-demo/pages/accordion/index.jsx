@@ -445,7 +445,8 @@ export default function AccordionPage() {
 			<p>
 				A premade event handler that can be attached to accordion header buttons to handle
 				focus management. Implements the keyboard interactions described in
-				the APG and is used by <code>&lt;AccordionHeader&gt;</code>.
+				the APG (<kbd>Down Arrow</kbd>, <kbd>Up Arrow</kbd>, <kbd>Home</kbd>, and <kbd>End</kbd>),
+				and is used by <code>&lt;AccordionHeader&gt;</code>.
 			</p>
 			<p>
 				If you wish to use this event handler with a custom accordion header, note that
