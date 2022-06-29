@@ -34,7 +34,7 @@ const BaseAccordionHeader = React.forwardRef((props, ref) => {
 
 BaseAccordionHeader.propTypes = {
 	children: PropTypes.node.isRequired,
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	controlsId: PropTypes.string.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
 	onClick: PropTypes.func.isRequired,

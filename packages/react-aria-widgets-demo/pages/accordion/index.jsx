@@ -766,18 +766,19 @@ export default function AccordionPage() {
 						<td><code>id</code></td>
 						<td><code>string</code></td>
 						<td><code>undefined</code></td>
-						<td>{ '\u2713' }</td>
+						<td>(See description)</td>
 						<td>
 							<p>
 								A unique identifier for the underlying button. Maps
 								to the HTML <code>id</code> attribute.
 							</p>
 							<p>
-								{/* TODO: mention that this is actually mandatory if panel has region role */ }
-								Note that it's recommended to give the corresponding accordion panel
-								an <code>aria-labelledby</code> attribute that points to this button (e.g. giving
-								a <code>&lt;BaseAccordionPanel&gt;</code> a <code>labelId</code> prop
-								with the same value).
+								Though this prop is technically optional, if the HTML element representing
+								the corresponding accordion panel has the <code>region</code> role, then
+								the panel should be labeled by having an <code>aria-labelledby</code> attribute
+								pointing to the button. Because <code>&lt;BaseAccordionPanel&gt;</code> defaults
+								to the <code>&lt;section&gt;</code> element (which has the <code>region</code> role),
+								chances are, you should be providing an <code>id</code> prop.
 							</p>
 						</td>
 					</tr>
