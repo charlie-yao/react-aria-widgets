@@ -165,13 +165,10 @@ export default function AccordionPage() {
 					</p>
 				</li>
 			</ul>
-			{/*
-			TODO: keep this in mind when proofreading the document?
 			<p>
-				Developers should be aware that there may be additional note-worthy details
+				Developers should also be aware that there may be additional note-worthy details
 				mentioned in the API documentation below.
 			</p>
-			*/}
 			<h4>Styling</h4>
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
