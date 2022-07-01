@@ -773,7 +773,7 @@ export default function AccordionPage() {
 						<td><code>id</code></td>
 						<td><code>string</code></td>
 						<td><code>undefined</code></td>
-						<td>(See description)</td>
+						<td>(see description)</td>
 						<td>
 							<p>
 								A unique identifier for the underlying button. Maps
@@ -782,10 +782,21 @@ export default function AccordionPage() {
 							<p>
 								Though this prop is technically optional, if the HTML element representing
 								the corresponding accordion panel has the <code>region</code> role, then
-								the panel should be labeled by having an <code>aria-labelledby</code> attribute
-								pointing to the button. Because <code>&lt;BaseAccordionPanel&gt;</code> defaults
+								the panel must be labeled. This is ideally done by giving the panel
+								an <code>aria-labelledby</code> attribute that points to the button.
+							</p>
+							<p>
+								Accordion panels are NOT required to have the <code>region</code> role,
+								but because <code>&lt;BaseAccordionPanel&gt;</code> defaults
 								to the <code>&lt;section&gt;</code> element (which has the <code>region</code> role),
-								chances are, you should be providing an <code>id</code> prop.
+								chances are, you should be providing an <code>id</code> prop
+								to <code>&lt;BaseAccordionHeader&gt;</code> and a <code>labelId</code> prop
+								to <code>&lt;BaseAccordionPanel&gt;</code> with the same value.
+							</p>
+							<p>
+								See the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">APG</a> and
+								the <a href="https://w3c.github.io/aria/#region">
+								<code>region</code> specification</a> for more information.
 							</p>
 						</td>
 					</tr>
@@ -798,13 +809,7 @@ export default function AccordionPage() {
 							<p>
 								Used to set the <code>aria-disabled</code> attribute. Communicates to
 								assitive technologies situations where, e.g., the accordion disallows
-								toggling expand/collapse states and the current accordion panel is already
-								expanded.
-							</p>
-							<p>
-								Note that unlike the HTML <code>disabled</code> attribute, if an HTML
-								element is given <code>aria-disabled="true"</code>, browsers will often still let
-								interactions go through.
+								collapsing already-expanded panels.
 							</p>
 						</td>
 					</tr>
