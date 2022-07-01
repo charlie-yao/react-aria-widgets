@@ -124,8 +124,8 @@ export default function AccordionPage() {
 				React ARIA Widgets also provides
 				the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
 				that can be used independently of the HOC or other components. Unlike the non-base
-				versions, they are unopinionated components that exist to simplify which HTML and
-				ARIA attributes are needed to conform to the APG.
+				versions, they exist primarily to simplify which HTML and ARIA attributes are needed to conform to
+				the APG.
 			</p>
 			<p>
 				There are a few caveats to making custom implementations, though:
@@ -513,7 +513,7 @@ export default function AccordionPage() {
 			</table>
 			<h4><code>&lt;AccordionHeader&gt;</code></h4>
 			<p>
-				<code>&lt;AccordionHeader&gt;</code> is a thin, opinionated wrapper
+				<code>&lt;AccordionHeader&gt;</code> is a thin wrapper
 				over <code>&lt;BaseAccordionHeader&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
 			</p>
@@ -587,7 +587,7 @@ export default function AccordionPage() {
 			</table>
 			<h4><code>&lt;AccordionPanel&gt;</code></h4>
 			<p>
-				An <code>&lt;AccordionPanel&gt;</code> is a thin, opinionated wrapper
+				An <code>&lt;AccordionPanel&gt;</code> is a thin wrapper
 				over <code>&lt;BaseAccordionPanel&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
 			</p>
@@ -654,7 +654,7 @@ export default function AccordionPage() {
 			<h3>Base Components</h3>
 			<h4 id="base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></h4>
 			<p>
-				<code>&lt;BaseAccordionHeader&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
+				<code>&lt;BaseAccordionHeader&gt;</code> is a thin wrapper over basic HTML elements
 				designed to help implement accordions according to the APG. It is
 				the underlying component for <code>&lt;AccordionHeader&gt;</code>, and can also be used for
 				custom accordion implementations.
@@ -852,7 +852,7 @@ export default function AccordionPage() {
 			</table>
 			<h4 id="base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></h4>
 			<p>
-				<code>&lt;BaseAccordionPanel&gt;</code> is a thin, unopinionated wrapper over basic HTML elements
+				<code>&lt;BaseAccordionPanel&gt;</code> is a thin wrapper over basic HTML elements
 				designed to help implement accordions according to the APG. It is the
 				underlying component for <code>&lt;AccordionPanel&gt;</code>, and can be used for
 				custom accordion implementations.
