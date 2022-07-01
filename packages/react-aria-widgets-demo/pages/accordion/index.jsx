@@ -780,18 +780,19 @@ export default function AccordionPage() {
 								to the HTML <code>id</code> attribute.
 							</p>
 							<p>
-								Though this prop is technically optional, if the HTML element representing
-								the corresponding accordion panel has the <code>region</code> role, then
-								the panel must be labeled. This is ideally done by giving the panel
-								an <code>aria-labelledby</code> attribute that points to the button.
+								Note that if the HTML element representing the corresponding accordion panel has
+								the <code>region</code> role, then the panel must be labeled. This is
+								ideally done by giving the panel an <code>aria-labelledby</code> attribute
+								that points to the button.
 							</p>
 							<p>
 								Accordion panels are NOT required to have the <code>region</code> role,
-								but because <code>&lt;BaseAccordionPanel&gt;</code> defaults
-								to the <code>&lt;section&gt;</code> element (which has the <code>region</code> role),
-								chances are, you should be providing an <code>id</code> prop
+								but <code>&lt;BaseAccordionPanel&gt;</code> defaults to
+								the <code>&lt;section&gt;</code> element, which has the <code>region</code> role.
+								In other words, if you are using <code>&lt;BaseAccordionPanel&gt;</code>, by default,
+								you must provide an <code>id</code> prop
 								to <code>&lt;BaseAccordionHeader&gt;</code> and a <code>labelId</code> prop
-								to <code>&lt;BaseAccordionPanel&gt;</code> with the same value.
+								to <code>&lt;BaseAccordionPanel&gt;</code> using the same values.
 							</p>
 							<p>
 								See the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">APG</a> and
@@ -913,18 +914,22 @@ export default function AccordionPage() {
 								Maps to the <code>aria-labelledby</code> attribute.
 							</p>
 							<p>
-								Note that this prop is optional if the underlying HTML element
-								does NOT have the <code>region</code> role. Because
-								this component defaults to using the <code>&lt;section&gt;</code> element
-								(which has the <code>region</code> role), this prop is required by default.
+								Note that if the HTML element representing the accordion panel has
+								the <code>region</code> role, then the panel must be labeled. This is
+								ideally done by giving the panel an <code>aria-labelledby</code> attribute
+								that points to the corresponding accordion header button.
 							</p>
 							<p>
-								If required, this means that the accordion header button should also
-								an HTML <code>id</code> attribute with the same value (e.g. giving
-								a <code>&lt;BaseAccordionHeader&gt;</code> an <code>id</code> prop).
+								Accordion panels are NOT required to have the <code>region</code> role,
+								but <code>&lt;BaseAccordionPanel&gt;</code> defaults to
+								the <code>&lt;section&gt;</code> element, which has the <code>region</code> role.
+								In other words, by default, you must provide a <code>labelId</code> prop
+								to <code>&lt;BaseAccordionPanel&gt;</code> and the corresponding
+								accordion header panel an HTML <code>id</code> attribute using the same values.
 							</p>
 							<p>
-								See the <a href="https://w3c.github.io/aria/#region">
+								See the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">APG</a> and
+								the <a href="https://w3c.github.io/aria/#region">
 								<code>region</code> specification</a> for more information.
 							</p>
 						</td>
@@ -942,7 +947,7 @@ export default function AccordionPage() {
 							</p>
 							<p>
 								However, the underlying HTML element does NOT need to have the
-								role <code>region</code>. In fact, according to the APG:
+								role <code>region</code>. According to the APG:
 							</p>
 							<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
 								Avoid using the <code>region</code> role in circumstances that create landmark
