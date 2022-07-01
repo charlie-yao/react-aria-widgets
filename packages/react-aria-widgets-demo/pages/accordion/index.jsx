@@ -821,7 +821,7 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								Used to set the <code>aria-expanded</code> attribute. Note that this attribute
-								does not actually affect the visibility of the corresponding accordion panel.
+								does not affect the visibility of the corresponding accordion panel.
 							</p>
 						</td>
 					</tr>
