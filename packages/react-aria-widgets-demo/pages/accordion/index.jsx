@@ -128,7 +128,7 @@ export default function AccordionPage() {
 				the APG.
 			</p>
 			<p>
-				There are a few caveats to making custom implementations, though:
+				There are a few things to keep in mind when making custom implementations, though:
 			</p>
 			<ul>
 				<li>
@@ -148,8 +148,8 @@ export default function AccordionPage() {
 				</li>
 				<li>
 					<p>
-						Be careful when using the spread operator
-						and <code>headerProps</code> or <code>buttonProps</code> with <code>&lt;AccordionHeader&gt;</code> or <code>&lt;BaseAccordionHeader&gt;</code> as
+						Be careful when
+						using <code>headerProps</code> or <code>buttonProps</code> with <code>&lt;AccordionHeader&gt;</code> or <code>&lt;BaseAccordionHeader&gt;</code> as
 						one can accidentally overwrite which props should actually be passed down.
 					</p>
 				</li>
