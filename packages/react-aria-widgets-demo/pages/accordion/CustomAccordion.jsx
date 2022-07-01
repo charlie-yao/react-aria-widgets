@@ -16,10 +16,13 @@ export default function CustomAccordion(props) {
 	return (
 		<Accordion headerLevel={ 4 }>
 			<AccordionSection id="custom-accordion-section1">
-				<AccordionHeader headerProps={{ className: 'headerClass' }} buttonProps={{ className: 'buttonClass' }}>
+				<AccordionHeader
+					headerProps={{ className: 'defaultHeaderClass' }}
+					buttonProps={{ className: 'defaultButtonClass' }}
+				>
 					CustomAccordion - Section 1	
 				</AccordionHeader>
-				<AccordionPanel className="panelClass">
+				<AccordionPanel className="defaultPanelClass">
 					Hello world!
 				</AccordionPanel>
 			</AccordionSection>

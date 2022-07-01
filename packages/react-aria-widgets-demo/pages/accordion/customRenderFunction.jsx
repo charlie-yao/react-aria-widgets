@@ -50,10 +50,10 @@ export default function renderFunction(props) {
 
 	return (
 		<> 
-			<HeaderElement className="headerClass">
+			<HeaderElement className="defaultHeaderClass">
 				<button
 					type="button"
-					className="buttonClass"
+					className="defaultButtonClass"
 					id={ id }
 					aria-controls={ contentId }
 					aria-expanded={ isExpanded }
@@ -68,7 +68,7 @@ export default function renderFunction(props) {
 			<section
 				id={ contentId }
 				aria-labelledby={ id }
-				className="panelClass"
+				className="defaultPanelClass"
 				style={ style }
 			>
 				Hello world!

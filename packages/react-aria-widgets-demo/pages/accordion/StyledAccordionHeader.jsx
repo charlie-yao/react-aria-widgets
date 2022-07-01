@@ -4,13 +4,15 @@ import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
 
 function StyledAccordionHeader(props) {
 	const { headerProps, buttonProps, ...rest } = props;
+	const { className: suppliedHeaderClass } = headerProps;
+	const { className: suppliedButtonClass } = buttonProps;
 	
 	const _headerProps = Object.assign({}, headerProps, {
-		className: 'headerClass',
+		className: `defaultHeaderClass ${suppliedHeaderClass ? suppliedHeaderClass : ''}`,
 	});
 
 	const _buttonProps = Object.assign({}, headerProps, {
-		className: 'buttonClass',
+		className: `defaultButtonClass ${suppliedButtonClass ? suppliedButtonClass : ''}`,
 	});
 
 	return (

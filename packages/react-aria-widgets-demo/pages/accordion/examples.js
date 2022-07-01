@@ -120,10 +120,13 @@ export default function CustomAccordion(props) {
 	return (
 		<Accordion headerLevel={ 4 }>
 			<AccordionSection id="custom-accordion-section1">
-				<AccordionHeader headerProps={{ className: 'headerClass' }} buttonProps={{ className: 'buttonClass' }}>
+				<AccordionHeader
+					headerProps={{ className: 'defaultHeaderClass' }}
+					buttonProps={{ className: 'defaultButtonClass' }}
+				>
 					CustomAccordion - Section 1	
 				</AccordionHeader>
-				<AccordionPanel className="panelClass">
+				<AccordionPanel className="defaultPanelClass">
 					Hello world!
 				</AccordionPanel>
 			</AccordionSection>
@@ -159,13 +162,15 @@ import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
 
 function StyledAccordionHeader(props) {
 	const { headerProps, buttonProps, ...rest } = props;
+	const { className: suppliedHeaderClass } = headerProps;
+	const { className: suppliedButtonClass } = buttonProps;
 	
 	const _headerProps = Object.assign({}, headerProps, {
-		className: 'headerClass',
+		className: \`defaultHeaderClass \${suppliedHeaderClass ? suppliedHeaderClass : ''}\`,
 	});
 
 	const _buttonProps = Object.assign({}, headerProps, {
-		className: 'buttonClass',
+		className: \`defaultButtonClass \${suppliedButtonClass ? suppliedButtonClass : ''}\`,
 	});
 
 	return (
@@ -198,7 +203,7 @@ import { AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 export default function StyledAccordionPanel(props) {
 	return (
 		<AccordionPanel
-			className="panelClass"
+			className="defaultPanelClass"
 			{...props}
 		/>
 	);
@@ -225,17 +230,19 @@ function CustomAccordionHeader(props) {
 		headerProps,
 		buttonProps,
 	} = props;
+	const { className: suppliedHeaderClass } = headerProps;
+	const { className: suppliedButtonClass } = buttonProps; 
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
 	const panelId = \`\${id}-panel\`;
 	
 	const _headerProps = Object.assign({}, headerProps, {
-		className: 'headerClass',
+		className: \`defaultHeaderClass \${suppliedHeaderClass ? suppliedHeaderClass : ''}\`,
 	});
 
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,
-		className: 'buttonClass',
+		className: \`defaultButtonClass \${suppliedButtonClass ? suppliedButtonClass: ''}\`,
 	});
 
 	return (
@@ -309,7 +316,7 @@ function CustomAccordionPanel(props) {
 	} = props;
 	const panelId = \`\${id}-panel\`;
 	const isExpanded = getIsExpanded(id);
-	const _className = \`panelClass \${className} \${isExpanded ? '' : 'react-aria-widgets-hidden'}\`;
+	const _className = \`defaultPanelClass \${className} \${isExpanded ? '' : 'react-aria-widgets-hidden'}\`;
 
 	return (
 		<BaseAccordionPanel
@@ -391,10 +398,10 @@ export default function renderFunction(props) {
 
 	return (
 		<> 
-			<HeaderElement className="headerClass">
+			<HeaderElement className="defaultHeaderClass">
 				<button
 					type="button"
-					className="buttonClass"
+					className="defaultButtonClass"
 					id={ id }
 					aria-controls={ contentId }
 					aria-expanded={ isExpanded }
@@ -409,7 +416,7 @@ export default function renderFunction(props) {
 			<section
 				id={ contentId }
 				aria-labelledby={ id }
-				className="panelClass"
+				className="defaultPanelClass"
 				style={ style }
 			>
 				Hello world!

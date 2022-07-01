@@ -16,17 +16,19 @@ function CustomAccordionHeader(props) {
 		headerProps,
 		buttonProps,
 	} = props;
+	const { className: suppliedHeaderClass } = headerProps;
+	const { className: suppliedButtonClass } = buttonProps; 
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
 	const panelId = `${id}-panel`;
 	
 	const _headerProps = Object.assign({}, headerProps, {
-		className: 'headerClass',
+		className: `defaultHeaderClass ${suppliedHeaderClass ? suppliedHeaderClass : ''}`,
 	});
 
 	const _buttonProps = Object.assign({}, buttonProps, {
 		'data-index': index,
-		className: 'buttonClass',
+		className: `defaultButtonClass ${suppliedButtonClass ? suppliedButtonClass: ''}`,
 	});
 
 	return (

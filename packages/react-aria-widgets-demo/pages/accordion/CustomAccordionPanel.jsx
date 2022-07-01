@@ -27,7 +27,7 @@ function CustomAccordionPanel(props) {
 	} = props;
 	const panelId = `${id}-panel`;
 	const isExpanded = getIsExpanded(id);
-	const _className = `panelClass ${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}`;
+	const _className = `defaultPanelClass ${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}`;
 
 	return (
 		<BaseAccordionPanel
