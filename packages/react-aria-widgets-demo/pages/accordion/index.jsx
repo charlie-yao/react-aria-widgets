@@ -682,14 +682,18 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
-								supply props and HTML attributes to it. Note that because it is spread after other
-								props are applied to the <code>&lt;button&gt;</code>, fields
-								in <code>buttonProps</code> can overwrite those props.
+								supply extra props and HTML attributes to it. Developers should take care which fields
+								are used in <code>buttonProps</code> because it is spread after the other
+								props, and thus, can overwrite them. For example:
 							</p>
+							<pre>
+								<code>
+									{ '<BaseAccordionHeader isExpanded={ true } buttonProps={{ \'aria-expanded\': false }} />' }
+								</code>
+							</pre>
 							<p>
-								While this may provide greater flexibility, developers should take care to not
-								overwrite attributes such as <code>aria-expanded</code> as they may be
-								improperly set.
+								<code>isExpanded</code> already maps to the <code>aria-expanded</code> attribute,
+								but its intended value of <code>true</code> will get overwritten due to <code>buttonProps</code>.
 							</p>
 						</td>
 					</tr>
