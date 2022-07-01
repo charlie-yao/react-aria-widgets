@@ -880,8 +880,8 @@ export default function AccordionPage() {
 						<td>{ '\u2713' }</td>
 						<td>
 							<p>
-								A string, React component, etc., that represents the actual
-								content for a panel.
+								Represents the actual content for a panel. Can be anything renderable
+								by React.
 							</p>
 						</td>
 					</tr>
@@ -909,8 +909,8 @@ export default function AccordionPage() {
 						<td>{ '\u2713 (see description)' }</td>
 						<td>
 							<p>
-								A unique identifier for the accordion header button that controls this element's
-								visibility. Maps to the <code>aria-labelledby</code> attribute.
+								A unique identifier pointing to the corresponding accordion header button.
+								Maps to the <code>aria-labelledby</code> attribute.
 							</p>
 							<p>
 								Note that this prop is optional if the underlying HTML element
