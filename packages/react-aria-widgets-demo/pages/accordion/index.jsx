@@ -683,17 +683,20 @@ export default function AccordionPage() {
 							<p>
 								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
 								supply extra props and HTML attributes to it. Developers should take care which fields
-								are used in <code>buttonProps</code> because it is spread after the other
-								props, and thus, can overwrite them. For example:
+								are used in <code>buttonProps</code> because it is spread onto the HTML element
+								after the other props are applied (i.e. it can overwrite them). For example:
 							</p>
 							<pre>
 								<code>
-									{ '<BaseAccordionHeader isExpanded={ true } buttonProps={{ \'aria-expanded\': false }} />' }
+									{ '<BaseAccordionHeader buttonProps={{ \'aria-expanded\': false }} isExpanded={ true } />' }
 								</code>
 							</pre>
 							<p>
 								<code>isExpanded</code> already maps to the <code>aria-expanded</code> attribute,
 								but its intended value of <code>true</code> will get overwritten due to <code>buttonProps</code>.
+								The order of how the props are passed to <code>&lt;BaseAccordionHeader&gt;</code> doesn't
+								matter because it doesn't affect how <code>&lt;BaseAccordionHeader&gt;</code> passes
+								that information to the underlying HTML element.
 							</p>
 						</td>
 					</tr>
