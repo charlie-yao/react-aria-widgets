@@ -526,8 +526,11 @@ export default function AccordionPage() {
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> expects, and automatically gets passed, certain props
 				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> such
-				as <code>headerLevel</code> and <code>setHeaderRef()</code>. It can also receive
-				the following props:
+				as <code>isExpanded</code> and <code>setHeaderRef()</code>. Because this happens automatically,
+				developers should not try to manually set them.
+			</p>
+			<p>
+				<code>&lt;AccordionHeader&gt;</code> can receive the following props:
 			</p>
 			<table>
 				<thead>
@@ -548,7 +551,13 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
-								supply props and HTML attributes to it. For more information,
+								supply props and HTML attributes to it. Developers should be mindful of which fields
+								are used in <code>buttonProps</code> because it is spread after the other props are
+								applied (i.e. it can overwrite props that are supposed to be automatically supplied
+								from <code>&lt;AccordionSection&gt;</code>).
+							</p>
+							<p>
+								For more information,
 								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
 							</p>
 						</td>
@@ -561,12 +570,19 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								<code>children</code> can be anything renderable by React. However,
-								because <code>children</code> ultimately gets placed inside of
+								because <code>children</code> gets placed inside of
 								a <code>&lt;button&gt;</code>, only certain HTML elements are permitted.
+								Specifically, phrasing content that is not interactive.
 							</p>
 							<p>
-								See <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a> for
-								more information.
+								Though this may seem like a minor detail, it has some accessibility
+								implications such as potentially failing to
+								meet <a href="https://www.w3.org/TR/WCAG22/#parsing">
+								Success Criterion 4.4.1</a> of the WCAG 2.2 guidelines.
+							</p>
+							<p>
+								See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
+								MDN Web Docs</a> for more information.
 							</p>
 						</td>
 					</tr>
@@ -578,8 +594,7 @@ export default function AccordionPage() {
 						<td>
 							<p>
 								An object that is spread over the underlying HTML section heading element
-								in order to supply props and HTML attributes to it. For more information,
-								see <a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a>.
+								in order to supply props and HTML attributes to it.
 							</p>
 						</td>
 					</tr>
