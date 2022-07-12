@@ -617,22 +617,16 @@ export default function AccordionPage() {
 				be a more suitable option.
 			</p>
 			<h5>Props</h5>
-			{
-				/* TODO this is somewhat confusing: any props not listed are spread, but we
-				can also pass in tagName?
-				*/
-			}
 			<p>
 				<code>&lt;AccordionPanel&gt;</code> expects, and automatically gets passed, certain props
 				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionHeader&gt;</code> such
-				as <code>id</code>. The following props are also accepted, and any props not listed are
-				automatically spread onto the underlying <code>&lt;BaseAccordionPanel&gt;</code>.
+				as <code>id</code>. Because this happens automatically, developers should not try
+				to manually set them.
 			</p>
 			<p>
-				Note that the underlying HTML element that contains the content of the
-				panel defaults to <code>&lt;section&gt;</code>. This can be changed by
-				passing in a <code>tagName</code> prop. See <a href="#base-accordion-panel">
-				<code>&lt;BaseAccordionPanel&gt;</code></a> for more information.
+				<code>&lt;AccordionPanel&gt;</code> accepts the following props. Any props not listed here or
+				under <code>&lt;BaseAccordionPanel&gt;</code> are automatically spread onto the underlying
+				HTML element.
 			</p>
 			<table>
 				<thead>
@@ -651,8 +645,10 @@ export default function AccordionPage() {
 						<td><code>undefined</code></td>
 						<td>{ '\u2713' }</td>
 						<td>
-							A string, React component, etc. that represents the actual
-							content of the panel.
+							<p>
+								Represents the actual content of the panel. Can be anything
+								renderable by React.
+							</p>
 						</td>
 					</tr>
 					<tr>
@@ -661,7 +657,28 @@ export default function AccordionPage() {
 						<td><code>''</code></td>
 						<td></td>
 						<td>
-							A string representing one or more CSS classes.
+							<p>
+								A string representing one or more CSS classes.
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td><code>tagName</code></td>
+						<td><code>string</code></td>
+						<td><code>'section'</code></td>
+						<td></td>
+						<td>
+							<p>
+								A string representing what the underlying HTML element will be rendered as.
+								The <code>&lt;section&gt;</code> element is an element with
+								the <code>region</code> role, but there are times where this may be undesireable.
+								Accordion to the APG:
+							</p>
+							<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+								Avoid using the <code>region</code> role in circumstances that create landmark
+								region proliferation, e.g. in an accordion that contains more than approximately
+								6 panels that can be expanded at the same time.
+							</blockquote>
 						</td>
 					</tr>
 				</tbody>
