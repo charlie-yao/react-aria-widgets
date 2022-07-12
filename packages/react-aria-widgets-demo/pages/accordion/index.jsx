@@ -157,11 +157,6 @@ export default function AccordionPage() {
 					<p>
 						If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
 						already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
-						This means that if a developer writes a wrapper over <code>&lt;BaseAccordionPanel&gt;</code> that's
-						used in conjunction with <code>&lt;AccordionSection&gt;</code> (and, by
-						extension, <code>&lt;Accordion&gt;</code> and <code>withAccordionManager()</code>), they must
-						take care not to spread the props that <code>&lt;AccordionSection&gt;</code> automatically
-						passes down.
 					</p>
 				</li>
 			</ul>
@@ -214,7 +209,12 @@ export default function AccordionPage() {
 			<p>
 				The second accordion section shows how to add default styles
 				to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> by
-				using component composition. Note that we can't simply
+				using component composition. Here, we don't have to worry about using <code>setHeaderRef()</code> or
+				adding the <code>id</code> and <code>data-index</code> attributes because that's already being
+				handled by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
+			</p>
+			<p>
+				Note that we can't simply
 				spread <code>props</code> onto <code>&lt;AccordionHeader&gt;</code> in <code>&lt;StyledAccordionHeader&gt;</code>.
 				We have to make sure that the merged versions
 				of <code>headerProps</code> and <code>buttonProps</code> are ultimately what gets
@@ -222,20 +222,18 @@ export default function AccordionPage() {
 				may be trying to pass down in those objects.
 			</p>
 			<p>
-				Here, we don't have to worry about using <code>setHeaderRef()</code>, adding
-				the <code>id</code> and <code>data-index</code> attributes, or taking out props
-				from <code>&lt;AccordionSection&gt;</code> because they're already being handled
-				by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
-			</p>
-			<p>
 				The third accordion section shows how to customize sections by composing
 				over <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code>.
 				These components give developers greater control, but it means we have to manually
-				set <code>setHeaderRef()</code>, add the <code>id</code> and <code>data-index</code> attributes
-				(because we're using the event handlers provided by <code>&lt;Accordion&gt;</code>), and pull out
-				the props from <code>&lt;AccordionSection&gt;</code> that shouldn't be passed down
-				to <code>&lt;BaseAccordionPanel&gt;</code>, while also being mindful of how we're passing
+				set <code>setHeaderRef()</code> and add the <code>id</code> and <code>data-index</code> attributes
+				(because we're using the event handlers provided by <code>&lt;Accordion&gt;</code>)
+				while also being mindful of how we're passing
 				down <code>headerProps</code> and <code>buttonProps</code> to <code>&lt;BaseAccordionHeader&gt;</code>.
+			</p>
+			<p>
+				Additionally, because <code>&lt;AccordionSection&gt;</code> automatically passes down
+				numerous props to its children, we have to make sure <code>&lt;BaseAccordionPanel&gt;</code> won't
+				spread them onto the underlying HTML element.
 			</p>
 			<p>
 				The fourth accordion section shows how to use a render function. The render function
