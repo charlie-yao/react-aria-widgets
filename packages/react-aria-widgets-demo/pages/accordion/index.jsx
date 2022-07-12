@@ -320,25 +320,35 @@ export default function AccordionPage() {
 			<h5>Methods</h5>
 			<h6><code>focusFirstHeader(): void</code></h6>
 			<p>
-				Sets the focus to the first accordion header button.
+				Sets the focus to the first accordion header button. Note that each header button
+				in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
+				properly.
 			</p>
 			<h6><code>focusLastHeader(): void</code></h6>
 			<p>
-				Sets the focus to the last accordion header button.
+				Sets the focus to the last accordion header button. Note that each header button
+				in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
+				properly.
 			</p>
 			<h6><code>focusNextHeader(index: number): void</code></h6>
 			<p>
 				Sets the focus to the next (relative to <code>index</code>) accordion
-				header button.
+				header button. Note that each header button in the accordion MUST
+				use <code>setHeaderRef()</code> for focus management to work
+				properly.
 			</p>
 			<h6><code>focusPrevHeader(index: number): void</code></h6>
 			<p>
 				Sets the focus to the previous (relative to <code>index</code>) accordion
-				header button.
+				header button. Note that each header button in the accordion MUST
+				use <code>setHeaderRef()</code> for focus management to work
+				properly.
 			</p>
 			<h6><code>focusHeader(index: number): void</code></h6>
 			<p>
-				Sets the focus to an arbitrary accordion header button.
+				Sets the focus to an arbitrary accordion header button. Note that each header button
+				in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
+				properly.
 			</p>
 			<h6><code>getIsDisabled(id: string): boolean</code></h6>
 			<p>
@@ -351,7 +361,7 @@ export default function AccordionPage() {
 				Returns a boolean indicating if an accordion panel is
 				collapsed or expanded.
 			</p>
-			<h6><code>setAccordionSectionRef(ref: Object): void</code></h6>
+			<h6><code>setHeaderRef(ref: Object): void</code></h6>
 			<p>
 				A React callback ref that must be used by each accordion header button in order to properly
 				manage focus.
