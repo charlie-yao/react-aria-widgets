@@ -181,8 +181,9 @@ export default function AccordionPage() {
 				By default, React ARIA Widgets uses <code>display: none !important</code> to represent the
 				collapsed state. Custom implementations allow developers to use their own CSS,
 				styles, or even options like the HTML attribute <code>hidden</code> (though that
-				may not be semantically appropriate). For more information, see
-				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
+				may not be semantically appropriate - see
+				the <a href="/support#faq-hidden-vs-display-none">FAQ</a> for more
+				information).
 			</p>
 			<CustomAccordion />
 			<pre>
@@ -628,8 +629,7 @@ export default function AccordionPage() {
 			</p>
 			<p>
 				This component uses a CSS class with <code>display: none !important;</code> to represent
-				the collapsed state, which may or may not be desired. For more information, see
-				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
+				the collapsed state, which may or may not be desired.
 			</p>
 			<h5>Props</h5>
 			<p>
