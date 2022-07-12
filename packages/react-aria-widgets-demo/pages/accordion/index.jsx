@@ -516,19 +516,26 @@ export default function AccordionPage() {
 				<code>&lt;AccordionHeader&gt;</code> is a thin wrapper
 				over <code>&lt;BaseAccordionHeader&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
-			</p>
-			<p>
 				Because <code>&lt;AccordionHeader&gt;</code> isn't meant to be used in a standalone manner,
 				if you wish to write your own header implementation, <code>&lt;BaseAccordionHeader&gt;</code> may
 				be a more suitable option.
 			</p>
 			<h5>Props</h5>
 			<p>
-				<code>&lt;AccordionHeader&gt;</code> expects, and automatically gets passed, certain props
-				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> such
-				as <code>isExpanded</code> and <code>setHeaderRef()</code>. Because this happens automatically,
-				developers should not try to manually set them.
+				<code>&lt;AccordionHeader&gt;</code> automatically sets the following props onto the
+				underlying <code>&lt;BaseAccordionHeader&gt;</code> using data
+				from <code>&lt;AccordionSection&gt;</code> and so forth. Developers should not try
+				to manually set them.
 			</p>
+			<ul>
+				<li><code>controlsId</code></li>
+				<li><code>headerLevel</code></li>
+				<li><code>id</code></li>
+				<li><code>isDisabled</code></li>
+				<li><code>isExpanded</code></li>
+				<li><code>onClick</code></li>
+				<li><code>ojnKeyDown</code></li>
+			</ul>
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> can receive the following props:
 			</p>
@@ -605,24 +612,26 @@ export default function AccordionPage() {
 				An <code>&lt;AccordionPanel&gt;</code> is a thin wrapper
 				over <code>&lt;BaseAccordionPanel&gt;</code> that is designed to be used
 				with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
+				Because <code>&lt;AccordionPanel&gt;</code> isn't meant to be used in a standalone manner,
+				if you wish to write your own panel implementation, <code>&lt;BaseAccordionPanel&gt;</code> may
+				be a more suitable option.
 			</p>
 			<p>
 				This component uses a CSS class with <code>display: none !important;</code> to represent
 				the collapsed state, which may or may not be desired. For more information, see
 				the <a href="/support#faq-hidden-vs-display-none">FAQ</a>.
 			</p>
-			<p>
-				Because <code>&lt;AccordionPanel&gt;</code> isn't meant to be used in a standalone manner,
-				if you wish to write your own panel implementation, <code>&lt;BaseAccordionPanel&gt;</code> may
-				be a more suitable option.
-			</p>
 			<h5>Props</h5>
 			<p>
-				<code>&lt;AccordionPanel&gt;</code> expects, and automatically gets passed, certain props
-				from <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionHeader&gt;</code> such
-				as <code>id</code>. Because this happens automatically, developers should not try
-				to manually set them.
+				<code>&lt;AccordionPanel&gt;</code> automatically sets the following props on the
+				underlying <code>&lt;BaseAccordionPanel&gt;</code> using data
+				from <code>&lt;AccordionSection&gt;</code> and so forth. Developers should not try to
+				manually set them.
 			</p>
+			<ul>
+				<li><code>id</code></li>
+				<li><code>labelId</code></li>
+			</ul>
 			<p>
 				<code>&lt;AccordionPanel&gt;</code> accepts the following props. Any props not listed here or
 				under <code>&lt;BaseAccordionPanel&gt;</code> are automatically spread onto the underlying
