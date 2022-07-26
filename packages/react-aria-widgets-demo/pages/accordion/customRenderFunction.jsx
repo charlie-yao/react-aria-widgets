@@ -71,7 +71,16 @@ export default function renderFunction(props) {
 				className="defaultPanelClass"
 				style={ style }
 			>
-				Hello world!
+				Aenean eu metus sollicitudin, sollicitudin metus vitae, tempor magna.
+				Quisque faucibus massa efficitur lorem consectetur, quis sodales nunc pretium.
+				Nunc rutrum risus id nisl facilisis, eu gravida ex vestibulum. Curabitur varius auctor
+				magna a maximus. Aenean tortor nulla, posuere vitae sollicitudin a, semper vitae nulla.
+				Praesent ullamcorper magna vitae dui faucibus, lacinia cursus augue sagittis. Phasellus
+				elementum tempor iaculis. Vivamus vehicula ex eu nunc volutpat, in ultrices magna finibus.
+				Fusce egestas velit in lobortis vestibulum. Vestibulum sodales venenatis turpis, eu convallis
+				nisi suscipit sit amet. Aenean placerat ullamcorper nulla quis varius. In in consectetur
+				augue, ac consequat sem. Quisque at ultrices arcu, et aliquam purus. Donec varius justo non
+				suscipit fermentum. Etiam a nisl at ipsum imperdiet faucibus.				
 			</section>
 		</>
 	);
