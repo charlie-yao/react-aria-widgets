@@ -11,8 +11,9 @@ export default function HomePage() {
 			</p>
 			<p>
 				Please note that this library should <strong>NOT</strong> be used in a production environment! 
-				It was developed primarily for educational purposes, and I cannot guarantee longterm
-				support in the form of additional features, bug fixes, maintenance, etc.!
+				It was developed primarily for educational purposes, and longterm
+				support in the form of additional features, bug fixes, maintenance, or etc. cannot
+				be guaranteed!
 			</p>
 			<h2>Features</h2>
 			<ul>

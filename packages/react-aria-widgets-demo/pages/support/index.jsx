@@ -4,8 +4,9 @@ export default function SupportPage() {
 			<h1>Support</h1>
 			<p>
 				Please note that this library should <strong>NOT</strong> be used in a production environment! 
-				It was developed primarily for educational purposes, and I cannot guarantee longterm
-				support in the form of additional features, bug fixes, maintenance, etc.!
+				It was developed primarily for educational purposes, and longterm
+				support in the form of additional features, bug fixes, maintenance, or etc.
+				cannot be guaranteed!
 			</p>
 			<p>
 				Please feel free to make an issue on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>,
