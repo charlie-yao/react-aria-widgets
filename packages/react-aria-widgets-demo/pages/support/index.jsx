@@ -10,7 +10,7 @@ export default function SupportPage() {
 			</p>
 			<p>
 				Please feel free to make an issue on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>,
-				but as before, I cannot guarantee any timeframes for resolutions.
+				but as before, resolutions cannot be guaranteed.
 			</p>
 			<h2>Frequently Asked Questions (FAQ)</h2>
 			<h3 id="faq-mostly-unstyled">
