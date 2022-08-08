@@ -229,8 +229,6 @@ export default function AccordionPage() {
 				(because we're using the event handlers provided by <code>&lt;Accordion&gt;</code>)
 				while also being mindful of how we're passing
 				down <code>headerProps</code> and <code>buttonProps</code> to <code>&lt;BaseAccordionHeader&gt;</code>.
-			</p>
-			<p>
 				Additionally, because <code>&lt;AccordionSection&gt;</code> automatically passes down
 				numerous props to its children, we have to make sure <code>&lt;BaseAccordionPanel&gt;</code> won't
 				spread them onto the underlying HTML element.
