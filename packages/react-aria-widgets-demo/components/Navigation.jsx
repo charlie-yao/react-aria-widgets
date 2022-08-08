@@ -15,9 +15,14 @@ export default function Navigation() {
 					</Link>
 				</li>
 				<li>
-					<Link href="/accordion">
-						<a>Accordion</a>
-					</Link>
+					Patterns
+					<ul>
+						<li>
+							<Link href="/accordion">
+								<a>Accordion</a>
+							</Link>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<Link href="/support">
