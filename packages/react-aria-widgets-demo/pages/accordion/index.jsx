@@ -541,7 +541,7 @@ export default function AccordionPage() {
 				<li><code>isDisabled</code></li>
 				<li><code>isExpanded</code></li>
 				<li><code>onClick</code></li>
-				<li><code>ojnKeyDown</code></li>
+				<li><code>onKeyDown</code></li>
 			</ul>
 			<p>
 				<code>&lt;AccordionHeader&gt;</code> can receive the following props:
