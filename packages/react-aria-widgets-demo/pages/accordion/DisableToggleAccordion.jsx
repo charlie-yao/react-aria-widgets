@@ -2,7 +2,7 @@ import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@c
 
 export default function DisableToggleAccordion() {
 	return (
-		<Accordion headerLevel={ 5 } allowMultiple={ false } allowToggle={ false }>
+		<Accordion headerLevel={ 6 } allowMultiple={ false } allowToggle={ false }>
 			<AccordionSection id="disable-toggle-section1">
 				<AccordionHeader>
 					DisableToggleAccordion - Section 1

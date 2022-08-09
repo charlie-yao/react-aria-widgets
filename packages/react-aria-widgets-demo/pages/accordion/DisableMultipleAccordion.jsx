@@ -2,7 +2,7 @@ import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@c
 
 export default function DisableMultipleAccordion() {
 	return (
-		<Accordion headerLevel={ 5 } allowMultiple={ false }>
+		<Accordion headerLevel={ 6 } allowMultiple={ false }>
 			<AccordionSection id="disable-multiple-section1">
 				<AccordionHeader>
 					DisableMultipleAccordion - Section 1

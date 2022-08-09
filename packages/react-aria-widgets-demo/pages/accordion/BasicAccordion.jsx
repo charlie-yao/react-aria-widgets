@@ -2,7 +2,7 @@ import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@c
 
 export default function BasicAccordion() {
 	return (
-		<Accordion headerLevel={ 4 }>
+		<Accordion headerLevel={ 5 }>
 			<AccordionSection id="basic-section1">
 				<AccordionHeader>
 					BasicAccordion - Section 1

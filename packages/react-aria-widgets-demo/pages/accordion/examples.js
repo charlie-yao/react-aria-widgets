@@ -3,7 +3,7 @@ export const basicAccordionExample =
 
 export default function BasicAccordion() {
 	return (
-		<Accordion headerLevel={ 4 }>
+		<Accordion headerLevel={ 5 }>
 			<AccordionSection id="basic-section1">
 				<AccordionHeader>
 					BasicAccordion - Section 1
@@ -54,7 +54,7 @@ export const disableMultipleExample =
 
 export default function DisableMultipleAccordion() {
 	return (
-		<Accordion headerLevel={ 5 } allowMultiple={ false }>
+		<Accordion headerLevel={ 6 } allowMultiple={ false }>
 			<AccordionSection id="disable-multiple-section1">
 				<AccordionHeader>
 					DisableMultipleAccordion - Section 1
@@ -105,7 +105,7 @@ export const disableToggleExample =
 
 export default function DisableToggleAccordion() {
 	return (
-		<Accordion headerLevel={ 5 } allowMultiple={ false } allowToggle={ false }>
+		<Accordion headerLevel={ 6 } allowMultiple={ false } allowToggle={ false }>
 			<AccordionSection id="disable-toggle-section1">
 				<AccordionHeader>
 					DisableToggleAccordion - Section 1
