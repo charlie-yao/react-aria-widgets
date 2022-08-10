@@ -48,7 +48,7 @@ const CustomAccordion = dynamic(
 export default function AccordionPage() {
 	return (
 		<>
-			<article>
+			<article className="content">
 				<h1 id="accordion">Accordion</h1>
 				<p>
 					To quote the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA

@@ -1,6 +1,6 @@
 export default function GettingStartedPage() {
 	return (
-		<article>
+		<article className="content">
 			<h1>Getting Started</h1>
 			<p>Coming soon!</p>
 			<h2>Installation</h2>
