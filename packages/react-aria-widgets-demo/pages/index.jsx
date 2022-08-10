@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function HomePage() {
 	return (
-		<article>
+		<article className="content">
 			<h1>React ARIA Widgets</h1>
 			<p>
 				React ARIA Widgets is a collection of React components designed

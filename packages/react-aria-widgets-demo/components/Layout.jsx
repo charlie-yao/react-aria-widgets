@@ -13,7 +13,7 @@ function Layout(props) {
 			<Header />
 			<div className="columns is-desktop">
 				<Navigation />
-				<main>
+				<main className="column container">
 					{ children }
 				</main>
 			</div>
