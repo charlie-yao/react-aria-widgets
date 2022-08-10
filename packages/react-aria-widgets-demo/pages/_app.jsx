@@ -6,6 +6,9 @@ import '@charlie-yao/react-aria-widgets/styles.css';
 //Components
 import Layout from '../components/Layout';
 
+//Styles
+import '../styles/styles.scss';
+
 function App(props) {
 	const { Component, pageProps } = props;
 
