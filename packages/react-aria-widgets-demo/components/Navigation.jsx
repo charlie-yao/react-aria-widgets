@@ -1,8 +1,11 @@
 import Link from 'next/link';
 
+//Components and Styles
+import styles from './Navigation.module.scss';
+
 export default function Navigation() {
 	return (
-		<nav>
+		<nav className={ `${styles.Navigation} column is-one-fifth` }>
 			<ul>
 				<li>
 					<Link href="/">

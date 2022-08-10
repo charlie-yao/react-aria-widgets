@@ -1,0 +1,7 @@
+@import '~bulma/sass/utilities/mixins';
+
+.Navigation {
+	@include touch {
+		display: none;
+	}
+}
