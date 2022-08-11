@@ -5,7 +5,7 @@ import styles from './Navigation.module.scss';
 
 export default function Navigation() {
 	return (
-		<nav className={ `${styles.Navigation} column is-one-fifth menu` }>
+		<nav className={ `${styles.Navigation} menu` }>
 			<ul className="menu-list">
 				<li>
 					<Link href="/">

@@ -11,12 +11,10 @@ function Layout(props) {
 	return (
 		<>
 			<Header />
-			<div className="columns is-desktop">
-				<Navigation />
-				<main className="column container">
-					{ children }
-				</main>
-			</div>
+			<Navigation />
+			<main className="container">
+				{ children }
+			</main>
 			<Footer />
 		</>
 	);
