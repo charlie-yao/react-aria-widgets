@@ -3,9 +3,13 @@ import Link from 'next/link';
 //Components and Styles
 import styles from './Navigation.module.scss';
 
-export default function Navigation() {
+export default function Navigation(props) {
+	const { isNavExpanded } = props;
+
+	console.log(isNavExpanded);
+
 	return (
-		<nav className={ `${styles.Navigation} menu` }>
+		<nav className={ `${styles.Navigation} ${isNavExpanded ? styles.expanded : ''} menu` }>
 			<ul className="menu-list">
 				<li>
 					<Link href="/">

@@ -2,6 +2,8 @@
 
 .Navigation {
 	@include touch {
-		display: none;
+		&:not(.expanded) {
+			display: none;
+		}
 	}
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
@@ -7,11 +8,12 @@ import Footer from './Footer';
 
 function Layout(props) {
 	const { children } = props;
+	const [ isNavExpanded, toggleNavExpanded ] = useState(false);
 
 	return (
 		<>
-			<Header />
-			<Navigation />
+			<Header isNavExpanded={ isNavExpanded } toggleNavExpanded={ toggleNavExpanded } />
+			<Navigation isNavExpanded={ isNavExpanded } />
 			<main className="container">
 				{ children }
 			</main>

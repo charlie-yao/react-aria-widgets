@@ -1,12 +1,25 @@
 import Link from 'next/link';
 
-export default function Header() {
+export default function Header(props) {
+	const { isNavExpanded, toggleNavExpanded } = props;
+
 	return (
 		<header className="navbar">
 			<div className="navbar-brand">
 				<Link href="/">
 					<a className="navbar-item">React ARIA Widgets</a>
 				</Link>
+				<a
+					role="button"
+					className="navbar-burger"
+					aria-label="Navigation"
+					aria-expanded="false"
+					onClick={ () => toggleNavExpanded(!isNavExpanded) }
+				>
+					<span aria-hidden="true" />
+					<span aria-hidden="true" />
+					<span aria-hidden="true" />
+				</a>
 			</div>
 			<div className="navbar-menu">
 				<div className="navbar-end">
