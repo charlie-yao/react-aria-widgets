@@ -15,13 +15,13 @@ function App(props) {
 
 	return (
 		<>
-		<Head>
-			<title>React ARIA Widgets</title>
-			<meta name="viewport" content="width=device-width, initial-scale=1" />
-		</Head>
-		<Layout>
-			<Component { ...pageProps } />
-		</Layout>
+			<Head>
+				<title>React ARIA Widgets</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+			</Head>
+			<Layout>
+				<Component { ...pageProps } />
+			</Layout>
 		</>
 	);
 }
