@@ -3,6 +3,8 @@
 .SubNav {
 	position: sticky;
 	top: var(--header-height);
+	overflow: auto;
+	height: calc(100vh - var(--header-height));
 
 	@include until-widescreen {
 		display: none;
