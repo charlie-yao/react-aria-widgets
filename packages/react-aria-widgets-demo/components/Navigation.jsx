@@ -10,7 +10,7 @@ export default function Navigation(props) {
 
 	return (
 		<nav className={ `${styles.Navigation} ${isNavExpanded ? styles.expanded : ''} menu` }>
-			<ul className="menu-list">
+			<ul className="menu-list" style={{ position: 'sticky', top: '3.25rem' }}>
 				<li>
 					<Link href="/">
 						<a>Home</a>
