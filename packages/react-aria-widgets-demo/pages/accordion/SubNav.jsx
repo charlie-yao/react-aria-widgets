@@ -4,6 +4,9 @@ import styles from './SubNav.module.scss';
 export default function SubNav() {
 	return (
 		<nav className={ `${styles.SubNav} menu is-size-7` }>
+			<p className="menu-label">
+				Contents
+			</p>
 			<ul className="menu-list">
 				<li>
 					<a href="#accordion">Accordion</a>
