@@ -1,5 +1,9 @@
 @import '~bulma/bulma';
 
+:root {
+	--header-height: 3.25rem;
+}
+
 .menu-list {
 	//Mimics ".menu-list a" styling without needing an anchor
 	.submenu-label {

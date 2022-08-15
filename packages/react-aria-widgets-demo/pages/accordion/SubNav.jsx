@@ -3,8 +3,8 @@ import styles from './SubNav.module.scss';
 
 export default function SubNav() {
 	return (
-		<nav className={ styles.SubNav }>
-			<ul>
+		<nav className={ `${styles.SubNav} menu` }>
+			<ul className="menu-list">
 				<li>
 					<a href="#accordion">Accordion</a>
 				</li>

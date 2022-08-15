@@ -9,6 +9,6 @@
 
 	ul {
 		position: sticky;
-		top: 3.25rem;
+		top: var(--header-height);
 	}
 }
