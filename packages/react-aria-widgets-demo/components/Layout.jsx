@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 //Components
 import Header from './Header';
+import MainContainer from './MainContainer';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
@@ -11,12 +12,12 @@ function Layout(props) {
 	return (
 		<>
 			<Header isNavExpanded={ isNavExpanded } setNavExpanded={ setNavExpanded } />
-			<div style={{ display: 'flex' }}>
+			<MainContainer>
 				<Navigation isNavExpanded={ isNavExpanded } />
 				<main style={{ display: 'flex', overflow: 'auto' }}>
 					{ children }
 				</main>
-			</div>
+			</MainContainer>
 			<Footer />
 		</>
 	);
