@@ -5,7 +5,23 @@ import styles from './Header.module.scss';
 
 export default function Header(props) {
 	const { isNavExpanded, setNavExpanded } = props;
+	
+	return (
+		<header className={ `${styles.Header} has-background-white` }>
+			<div className={ styles.HeaderBrand }>
+				<span className={ styles.HeaderItem }>
+					React ARIA Widgets
+				</span>
+			</div>
+			<div className={ styles.HeaderNav }>
+				<span className={ styles.HeaderItem }>
+					GitHub
+				</span>
+			</div>
+		</header>
+	);
 
+	/*
 	return (
 		<header className={ `${styles.Header} navbar` }>
 			<div className="navbar-brand">
@@ -33,4 +49,5 @@ export default function Header(props) {
 			</div>
 		</header>
 	);
+	*/
 }
