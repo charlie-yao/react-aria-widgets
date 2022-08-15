@@ -1,0 +1,7 @@
+@import '~bulma/sass/utilities/mixins';
+
+.SubNav {
+	@include until-widescreen {
+		display: none;
+	}
+}

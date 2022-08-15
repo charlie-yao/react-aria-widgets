@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import MainContainer from './MainContainer';
 import Navigation from './Navigation';
+import Main from './Main';
 import Footer from './Footer';
 
 function Layout(props) {
@@ -14,9 +15,9 @@ function Layout(props) {
 			<Header isNavExpanded={ isNavExpanded } setNavExpanded={ setNavExpanded } />
 			<MainContainer>
 				<Navigation isNavExpanded={ isNavExpanded } />
-				<main style={{ display: 'flex', overflow: 'auto' }}>
+				<Main>
 					{ children }
-				</main>
+				</Main>
 			</MainContainer>
 			<Footer />
 		</>
