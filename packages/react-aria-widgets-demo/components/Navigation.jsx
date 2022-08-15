@@ -6,11 +6,9 @@ import styles from './Navigation.module.scss';
 export default function Navigation(props) {
 	const { isNavExpanded } = props;
 
-	console.log(isNavExpanded);
-
 	return (
 		<nav className={ `${styles.Navigation} ${isNavExpanded ? styles.expanded : ''} menu` }>
-			<ul className="menu-list" style={{ position: 'sticky', top: '3.25rem' }}>
+			<ul className="menu-list">
 				<li>
 					<Link href="/">
 						<a>Home</a>
