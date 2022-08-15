@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import '@charlie-yao/react-aria-widgets/styles.css';
@@ -12,6 +13,7 @@ import '../styles/styles.scss';
 
 function App(props) {
 	const { Component, pageProps } = props;
+	const [ isNavExpanded, setNavExpanded ] = useState(false);
 
 	return (
 		<>
@@ -19,7 +21,7 @@ function App(props) {
 				<title>React ARIA Widgets</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<Layout>
+			<Layout isNavExpanded={ isNavExpanded } setNavExpanded={ setNavExpanded }>
 				<Component { ...pageProps } />
 			</Layout>
 		</>

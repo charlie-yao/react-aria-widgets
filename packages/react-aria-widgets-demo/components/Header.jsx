@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function Header(props) {
-	const { isNavExpanded, toggleNavExpanded } = props;
+	const { isNavExpanded, setNavExpanded } = props;
 
 	return (
 		<header className="navbar" style={{ position: 'sticky', top: 0 }}>
@@ -14,7 +14,7 @@ export default function Header(props) {
 					className="navbar-burger"
 					aria-label="Navigation"
 					aria-expanded="false"
-					onClick={ () => toggleNavExpanded(!isNavExpanded) }
+					onClick={ () => setNavExpanded(!isNavExpanded) }
 				>
 					<span aria-hidden="true" />
 					<span aria-hidden="true" />

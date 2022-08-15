@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
@@ -7,12 +6,11 @@ import Navigation from './Navigation';
 import Footer from './Footer';
 
 function Layout(props) {
-	const { children } = props;
-	const [ isNavExpanded, toggleNavExpanded ] = useState(false);
+	const { children, isNavExpanded, setNavExpanded } = props;
 
 	return (
 		<>
-			<Header isNavExpanded={ isNavExpanded } toggleNavExpanded={ toggleNavExpanded } />
+			<Header isNavExpanded={ isNavExpanded } setNavExpanded={ setNavExpanded } />
 			<div style={{ display: 'flex' }}>
 				<Navigation isNavExpanded={ isNavExpanded } />
 				<main style={{ display: 'flex', overflow: 'auto' }}>
