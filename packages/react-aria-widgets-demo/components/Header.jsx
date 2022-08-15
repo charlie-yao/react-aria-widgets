@@ -4,7 +4,7 @@ export default function Header(props) {
 	const { isNavExpanded, toggleNavExpanded } = props;
 
 	return (
-		<header className="navbar">
+		<header className="navbar" style={{ position: 'sticky', top: 0 }}>
 			<div className="navbar-brand">
 				<Link href="/">
 					<a className="navbar-item">React ARIA Widgets</a>

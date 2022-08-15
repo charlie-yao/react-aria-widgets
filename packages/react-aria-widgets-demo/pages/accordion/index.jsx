@@ -48,7 +48,7 @@ const CustomAccordion = dynamic(
 export default function AccordionPage() {
 	return (
 		<>
-			<article className="content">
+			<article className="content container is-fluid" style={{ overflow: 'auto' }}>
 				<h1 id="accordion">Accordion</h1>
 				<p>
 					To quote the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA
@@ -262,7 +262,8 @@ export default function AccordionPage() {
 								manages focus for keyboard users.
 							</p>
 							<h5>Props</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -295,8 +296,10 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 							<h5>Fields</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -327,6 +330,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 							<h5>Methods</h5>
 							<h6><code>focusFirstHeader(): void</code></h6>
 							<p>
@@ -395,7 +399,8 @@ export default function AccordionPage() {
 								and methods they receive from <code>withAccordionManager()</code> to their children.
 							</p>
 							<h5>Props</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -428,8 +433,10 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 							<h5>Fields</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -453,6 +460,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 							<h5>Methods</h5>
 							<h6><code>onClick(event: SyntheticEvent&lt;&gt;): void</code></h6>
 							<p>
@@ -488,7 +496,8 @@ export default function AccordionPage() {
 								to its children.
 							</p>
 							<h5>Props</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -524,8 +533,10 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 							<h5>Fields</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -541,6 +552,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 						</section>
 						<section>
 							<h4 id="accordion-header">
@@ -573,7 +585,8 @@ export default function AccordionPage() {
 							<p>
 								<code>&lt;AccordionHeader&gt;</code> can receive the following props:
 							</p>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -641,6 +654,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 						</section>
 						<section>
 							<h4 id="accordion-panel">
@@ -674,7 +688,8 @@ export default function AccordionPage() {
 								under <code>&lt;BaseAccordionPanel&gt;</code> are automatically spread onto the underlying
 								HTML element.
 							</p>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -729,6 +744,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 						</section>
 					</section>
 					<section>
@@ -747,7 +763,8 @@ export default function AccordionPage() {
 								If a React ref is given, it will be forwarded to the underlying <code>&lt;button&gt;</code>.
 							</p>
 							<h5>Props</h5>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -935,6 +952,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 						</section>
 						<section>
 							<h4 id="base-accordion-panel">
@@ -951,7 +969,8 @@ export default function AccordionPage() {
 								This component accepts the following props, and any props not explicitly listed here
 								will be spread onto the underlying HTML element.
 							</p>
-							<table>
+							<div className="table-container">
+							<table className="table">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -1046,6 +1065,7 @@ export default function AccordionPage() {
 									</tr>
 								</tbody>
 							</table>
+							</div>
 						</section>
 					</section>
 				</section>

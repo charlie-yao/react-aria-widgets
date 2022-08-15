@@ -13,10 +13,12 @@ function Layout(props) {
 	return (
 		<>
 			<Header isNavExpanded={ isNavExpanded } toggleNavExpanded={ toggleNavExpanded } />
-			<Navigation isNavExpanded={ isNavExpanded } />
-			<main className="container">
-				{ children }
-			</main>
+			<div style={{ display: 'flex' }}>
+				<Navigation isNavExpanded={ isNavExpanded } />
+				<main style={{ display: 'flex', overflow: 'auto' }}>
+					{ children }
+				</main>
+			</div>
 			<Footer />
 		</>
 	);

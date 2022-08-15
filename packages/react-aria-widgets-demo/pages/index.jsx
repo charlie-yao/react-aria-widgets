@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function HomePage() {
 	return (
-		<article className="content">
+		<article className="container is-fluid content">
 			<h1>React ARIA Widgets</h1>
 			<p>
 				React ARIA Widgets is a collection of React components designed

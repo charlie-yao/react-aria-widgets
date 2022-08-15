@@ -1,6 +1,6 @@
 export default function SupportPage() {
 	return (
-		<article className="content">
+		<article className="container is-fluid content">
 			<h1>Support</h1>
 			<p>
 				Please note that this library should <strong>NOT</strong> be used in a production environment! 
