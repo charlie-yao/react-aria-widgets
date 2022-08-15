@@ -1,4 +1,10 @@
 .Header {
-	position: sticky;
-	top: 0;
+	//This feels like a cheap way of overriding
+	//Bulma's default styles but it feels better that
+	//!important and it's much easier than ordering
+	//the CSS bundles
+	&:global(.navbar) {
+		position: sticky;
+		top: 0;
+	}
 }
