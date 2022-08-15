@@ -8,7 +8,7 @@ import Main from './Main';
 import Footer from './Footer';
 
 function Layout(props) {
-	const { children, isNavExpanded, setNavExpanded } = props;
+	const { children, isNavExpanded, setNavExpanded, SubNav } = props;
 
 	return (
 		<>
@@ -18,6 +18,12 @@ function Layout(props) {
 				<Main>
 					{ children }
 				</Main>
+				{
+					SubNav &&
+					<aside>
+						<SubNav />
+					</aside>
+				}
 			</MainContainer>
 			<Footer />
 		</>

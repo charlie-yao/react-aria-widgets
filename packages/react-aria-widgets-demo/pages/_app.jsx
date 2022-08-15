@@ -16,7 +16,6 @@ function App(props) {
 	const { Component, pageProps } = props;
 	const [ isNavExpanded, setNavExpanded ] = useState(false);
 	const router = useRouter();
-	const _Layout = Component.Layout ? Component.Layout : Layout;
 
 	useEffect(() => {
 		router.events.on('routeChangeComplete', () => {
@@ -30,9 +29,13 @@ function App(props) {
 				<title>React ARIA Widgets</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
-			<_Layout isNavExpanded={ isNavExpanded } setNavExpanded={ setNavExpanded }>
+			<Layout
+				isNavExpanded={ isNavExpanded }
+				setNavExpanded={ setNavExpanded }
+				SubNav={ Component.SubNav }
+			>
 				<Component { ...pageProps } />
-			</_Layout>
+			</Layout>
 		</>
 	);
 }

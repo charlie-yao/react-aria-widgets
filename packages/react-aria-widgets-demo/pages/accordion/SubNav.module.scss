@@ -1,6 +1,9 @@
 @import '~bulma/sass/utilities/mixins';
 
 .SubNav {
+	position: sticky;
+	top: 3.25rem;
+
 	@include until-widescreen {
 		display: none;
 	}
