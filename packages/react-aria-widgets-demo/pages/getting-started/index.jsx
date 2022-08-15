@@ -1,5 +1,11 @@
+import Head from 'next/head';
+
 export default function GettingStartedPage() {
 	return (
+		<>
+		<Head>
+			<title>Getting Started - React ARIA Widgets</title>
+		</Head>
 		<article className="container is-fluid content">
 			<h1>Getting Started</h1>
 			<p>Coming soon!</p>
@@ -12,5 +18,6 @@ export default function GettingStartedPage() {
 			</h2>
 			<p>Coming soon!</p>
 		</article>
+		</>
 	);
 }
