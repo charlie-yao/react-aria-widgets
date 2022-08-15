@@ -1,5 +1,8 @@
 import dynamic from 'next/dynamic';
 
+//Components and Styles
+import styles from './SubNav.module.scss';
+
 //Misc.
 import {
 	basicAccordionExample,
@@ -1070,7 +1073,7 @@ export default function AccordionPage() {
 					</section>
 				</section>
 			</article>
-			<nav>
+			<nav className={ styles.SubNav }>
 				<ul>
 					<li>
 						<a href="#accordion">Accordion</a>
