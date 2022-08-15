@@ -1,10 +1,13 @@
 import Link from 'next/link';
 
+//Components and Styles
+import styles from './Header.module.scss';
+
 export default function Header(props) {
 	const { isNavExpanded, setNavExpanded } = props;
 
 	return (
-		<header className="navbar" style={{ position: 'sticky', top: 0 }}>
+		<header className={ `${styles.Header} navbar` }>
 			<div className="navbar-brand">
 				<Link href="/">
 					<a className="navbar-item">React ARIA Widgets</a>
