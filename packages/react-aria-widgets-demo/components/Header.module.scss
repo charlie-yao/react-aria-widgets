@@ -1,3 +1,5 @@
+@import '~bulma/sass/utilities/derived-variables';
+
 .Header {
 	height: var(--header-height);
 	position: sticky;
@@ -5,22 +7,15 @@
 	display: flex;
 	z-index: 5;
 	align-items: center;
-	
-	/*
-	//This feels like a cheap way of overriding
-	//Bulma's default styles but it feels better that
-	//!important and it's much easier than ordering
-	//the CSS bundles
-	&:global(.navbar) {
-		position: sticky;
-		top: 0;
-	}
-	*/
-	
-	:global {
-		.fa-github {
-			color: black;
 
+	a {
+		color: $text;
+	}
+	
+	i {
+		font-size: 1.25rem;
+		
+		&:global(.fa-github) {
 			&:hover {
 				opacity: 0.5;
 			}
