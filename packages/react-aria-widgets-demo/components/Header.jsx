@@ -18,7 +18,7 @@ export default function Header(props) {
 					className={ styles.HeaderItem }
 					href="https://github.com/charlie-yao/react-aria-widgets"
 				>
-					GitHub
+					<i className="fa-brands fa-github" />
 				</a>
 			</div>
 		</header>

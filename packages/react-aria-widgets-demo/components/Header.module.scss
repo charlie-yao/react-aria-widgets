@@ -16,6 +16,16 @@
 		top: 0;
 	}
 	*/
+	
+	:global {
+		.fa-github {
+			color: black;
+
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+	}
 }
 
 .HeaderBrand {
@@ -29,5 +39,5 @@
 }
 
 .HeaderItem {
-	padding: 0 1rem;
+	margin: 0 1rem;
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import '@charlie-yao/react-aria-widgets/styles.css';
 
 //Components
@@ -36,6 +37,7 @@ function App(props) {
 			>
 				<Component { ...pageProps } />
 			</Layout>
+			<Script src="https://kit.fontawesome.com/60e1a84dd0.js" crossorigin="anonymous" />
 		</>
 	);
 }
