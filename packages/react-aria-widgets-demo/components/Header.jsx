@@ -10,7 +10,7 @@ export default function Header(props) {
 		<header className={ `${styles.Header} has-background-white` }>
 			<div className={ styles.HeaderBrand }>
 				<Link href="/">
-					<a className={ styles.HeaderItem }>
+					<a>
 						React ARIA Widgets
 					</a>
 				</Link>
@@ -22,7 +22,9 @@ export default function Header(props) {
 						GitHub
 					</span>
 				</a>
-				<button className={ styles.Hamburger } type="button">
+			</div>
+			<div className={ styles.HeaderHamburger }>
+				<button type="button">
 					<i aria-hidden="true" className="fa-solid fa-bars" />
 					<span className="is-sr-only">
 						Navigation

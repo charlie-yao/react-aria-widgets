@@ -1,5 +1,6 @@
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/derived-variables';
+@import '~bulma/sass/utilities/mixins';
 
 .Header {
 	height: var(--header-height);
@@ -39,10 +40,25 @@
 			margin-right: 1rem;
 		}
 	}
+
+	@include touch {
+		display: none;
+	}
 }
 
-.Hamburger {
-	border: 0;
-	padding: 0;
-	background-color: $white;
+.HeaderHamburger {
+	margin-right: 1rem;
+	justify-content: flex-end;
+	display: flex;
+	flex: 1 0 auto;
+
+	button {
+		border: 0;
+		padding: 0;
+		background-color: $white;
+	}
+
+	@include desktop {
+		display: none;
+	}
 }
