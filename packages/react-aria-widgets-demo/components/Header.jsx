@@ -24,10 +24,10 @@ export default function Header(props) {
 				</a>
 			</div>
 			<div className={ styles.HeaderHamburger }>
-				<button type="button">
-					<i aria-hidden="true" className="fa-solid fa-bars" />
+				<button type="button" onClick={ () => setNavExpanded(!isNavExpanded) }>
+					<i aria-hidden="true" className={ `fa-solid ${isNavExpanded ? 'fa-xmark' : 'fa-bars'} `} />
 					<span className="is-sr-only">
-						Navigation
+						{ `${isNavExpanded ? 'Close' : 'Expand' } Navigation` }
 					</span>
 				</button>
 			</div>
