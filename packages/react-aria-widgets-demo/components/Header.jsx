@@ -14,9 +14,12 @@ export default function Header(props) {
 				</span>
 			</div>
 			<div className={ styles.HeaderNav }>
-				<span className={ styles.HeaderItem }>
+				<a
+					className={ styles.HeaderItem }
+					href="https://github.com/charlie-yao/react-aria-widgets"
+				>
 					GitHub
-				</span>
+				</a>
 			</div>
 		</header>
 	);
