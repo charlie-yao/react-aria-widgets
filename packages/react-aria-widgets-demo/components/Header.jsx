@@ -20,7 +20,10 @@ export default function Header(props) {
 					className={ styles.HeaderItem }
 					href="https://github.com/charlie-yao/react-aria-widgets"
 				>
-					<i className="fa-brands fa-github" />
+					<i aria-hidden="true" className="fa-brands fa-github" />
+					<span className="is-sr-only">
+						GitHub
+					</span>
 				</a>
 			</div>
 		</header>
