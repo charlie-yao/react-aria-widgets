@@ -9,9 +9,11 @@ export default function Header(props) {
 	return (
 		<header className={ `${styles.Header} has-background-white` }>
 			<div className={ styles.HeaderBrand }>
-				<span className={ styles.HeaderItem }>
-					React ARIA Widgets
-				</span>
+				<Link href="/">
+					<a className={ styles.HeaderItem }>
+						React ARIA Widgets
+					</a>
+				</Link>
 			</div>
 			<div className={ styles.HeaderNav }>
 				<a
