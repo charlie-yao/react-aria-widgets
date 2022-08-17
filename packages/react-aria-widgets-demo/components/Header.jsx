@@ -16,16 +16,13 @@ export default function Header(props) {
 				</Link>
 			</div>
 			<div className={ styles.HeaderNav }>
-				<a
-					className={ styles.HeaderItem }
-					href="https://github.com/charlie-yao/react-aria-widgets"
-				>
+				<a href="https://github.com/charlie-yao/react-aria-widgets">
 					<i aria-hidden="true" className="fa-brands fa-github" />
 					<span className="is-sr-only">
 						GitHub
 					</span>
 				</a>
-				<button className={ styles.HeaderItem } type="button">
+				<button className={ styles.Hamburger } type="button">
 					<i aria-hidden="true" className="fa-solid fa-bars" />
 					<span className="is-sr-only">
 						Navigation
