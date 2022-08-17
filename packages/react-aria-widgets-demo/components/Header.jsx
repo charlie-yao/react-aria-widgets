@@ -25,6 +25,12 @@ export default function Header(props) {
 						GitHub
 					</span>
 				</a>
+				<button className={ styles.HeaderItem } type="button">
+					<i aria-hidden="true" className="fa-solid fa-bars" />
+					<span className="is-sr-only">
+						Navigation
+					</span>
+				</button>
 			</div>
 		</header>
 	);
