@@ -270,7 +270,7 @@ function AccordionPage() {
 							</p>
 							<h5>Props</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -306,7 +306,7 @@ function AccordionPage() {
 							</div>
 							<h5>Fields</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -407,7 +407,7 @@ function AccordionPage() {
 							</p>
 							<h5>Props</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -443,7 +443,7 @@ function AccordionPage() {
 							</div>
 							<h5>Fields</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -504,7 +504,7 @@ function AccordionPage() {
 							</p>
 							<h5>Props</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -543,7 +543,7 @@ function AccordionPage() {
 							</div>
 							<h5>Fields</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -593,7 +593,7 @@ function AccordionPage() {
 								<code>&lt;AccordionHeader&gt;</code> can receive the following props:
 							</p>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -696,7 +696,7 @@ function AccordionPage() {
 								HTML element.
 							</p>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -771,7 +771,7 @@ function AccordionPage() {
 							</p>
 							<h5>Props</h5>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
@@ -977,7 +977,7 @@ function AccordionPage() {
 								will be spread onto the underlying HTML element.
 							</p>
 							<div className="table-container">
-							<table className="table">
+							<table className="table is-hoverable">
 								<thead>
 									<tr>
 										<th scope="col">Name</th>
