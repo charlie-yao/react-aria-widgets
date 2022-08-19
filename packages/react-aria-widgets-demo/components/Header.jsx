@@ -7,7 +7,7 @@ export default function Header(props) {
 	const { isNavExpanded, setNavExpanded } = props;
 	
 	return (
-		<header className={ `${styles.Header} has-background-white` }>
+		<header className={ styles.Header }>
 			<div className={ styles.HeaderBrand }>
 				<Link href="/">
 					<a>
