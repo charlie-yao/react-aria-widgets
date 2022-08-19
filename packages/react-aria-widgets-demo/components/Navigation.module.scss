@@ -16,3 +16,11 @@
 	}
 	*/
 }
+
+.NavigationWrapper {
+	position: sticky;
+	top: var(--header-height);
+	overflow: auto;
+	height: calc(100vh - var(--header-height));
+	margin-left: 1rem;
+}
