@@ -11,7 +11,7 @@ export default function GettingStartedPage() {
 			<p>Coming soon!</p>
 			<h2>Installation</h2>
 			<p>Coming soon!</p>
-			<h2>Simple Usage</h2>
+			<h2>Usage</h2>
 			<p>Coming soon!</p>
 			<h2 id="getting-started-base-components">
 				Base Components

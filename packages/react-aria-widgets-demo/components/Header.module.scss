@@ -5,8 +5,8 @@
 .Header {
 	height: var(--header-height);
 	margin-bottom: var(--header-margin);
-	background-color: $white-ter;
-	margin-bottom: 1px solid $grey-lighter;
+	background-color: $white;
+	border-bottom: 1px solid $grey-lighter;
 	position: sticky;
 	top: 0;
 	display: flex;
