@@ -4,13 +4,3 @@
 	--header-height: 3.25rem;
 	--header-margin: 1rem;
 }
-
-.menu-list {
-	//Mimics ".menu-list a" styling without needing an anchor
-	.submenu-label {
-		border-radius: $menu-item-radius;
-		color: $menu-item-color;
-		display: block;
-		padding: $menu-list-link-padding;
-	}
-}
