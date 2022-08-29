@@ -9,14 +9,14 @@ export default function SupportPage() {
 			<article className="container is-fluid content">
 				<h1>Support</h1>
 				<p>
+					If you encounter any issues, please feel free to make an issue
+					on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>.
+				</p>
+				<p className="notification is-info is-light">
 					Please note that this library should <strong>NOT</strong> be used in a production environment! 
 					It was developed primarily for educational purposes, and longterm
 					support in the form of additional features, bug fixes, maintenance, or etc.
 					cannot be guaranteed!
-				</p>
-				<p>
-					Please feel free to make an issue on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>,
-					but as before, resolutions cannot be guaranteed.
 				</p>
 				<h2>Frequently Asked Questions (FAQ)</h2>
 				<h3 id="faq-mostly-unstyled">
