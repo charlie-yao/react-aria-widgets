@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 //Components and Styles
 import SubNav from './SubNav';
+import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
 //Misc.
 import {
@@ -88,9 +89,9 @@ function AccordionPage() {
 							and each <code>&lt;AccordionSection&gt;</code> must have a unique <code>id</code> prop.
 						</p>
 						<BasicAccordion />
-						<pre>
-							<code>{ basicAccordionExample }</code>
-						</pre>
+						<SyntaxHighlighter language="jsx">
+							{ basicAccordionExample }
+						</SyntaxHighlighter>
 						<h4><code>allowMultiple</code> and <code>allowToggle</code></h4>
 						<p>
 							By default, multiple panels can be expanded and closed at the same time, but this behavior
