@@ -30,8 +30,9 @@ export default function SupportPage() {
 					so that developers can use the implementation that suits them best.
 				</p>
 				<p>
-					Note that the examples shown for each pattern may differ from your browser's default styling,
-					but that's due to the CSS used by this website rather than React ARIA Widgets itself.
+					Note that the examples shown for each pattern may contain styling that differs
+					from your browser's default styling, but that's due to the CSS used by this
+					website rather than React ARIA Widgets itself.
 				</p>
 				<h3 id="faq-hidden-vs-display-none">
 					<code>hidden</code> versus <code>display: none;</code>
