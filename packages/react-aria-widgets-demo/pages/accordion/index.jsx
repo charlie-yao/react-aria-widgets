@@ -106,14 +106,14 @@ function AccordionPage() {
 						</p>
 						<h5>Disabling <code>allowMultiple</code></h5>
 						<DisableMultipleAccordion />
-						<pre>
-							<code>{ disableMultipleExample }</code>
-						</pre>
+						<SyntaxHighlighter language="jsx">
+							{ disableMultipleExample }
+						</SyntaxHighlighter>
 						<h5>Disabling <code>allowToggle</code></h5>
 						<DisableToggleAccordion />
-						<pre>
-							<code>{ disableToggleExample }</code>
-						</pre>
+						<SyntaxHighlighter language="jsx">
+							{ disableToggleExample }
+						</SyntaxHighlighter>
 					</section>
 					<section>
 						<h3 id="customization">Customization</h3>
@@ -195,24 +195,24 @@ function AccordionPage() {
 							information).
 						</p>
 						<CustomAccordion />
-						<pre>
+						<SyntaxHighlighter language="jsx">
 							{ CustomAccordionExample }
-						</pre>
-						<pre>
+						</SyntaxHighlighter>
+						<SyntaxHighlighter language="jsx">
 							{ StyledAccordionHeaderExample }
-						</pre>
-						<pre>
+						</SyntaxHighlighter>
+						<SyntaxHighlighter language="jsx">
 							{ StyledAccordionPanelExample }
-						</pre>
-						<pre>
+						</SyntaxHighlighter>
+						<SyntaxHighlighter language="jsx">
 							{ CustomAccordionHeaderExample }
-						</pre>
-						<pre>
+						</SyntaxHighlighter>
+						<SyntaxHighlighter language="jsx">
 							{ CustomAccordionPanelExample }
-						</pre>
-						<pre>
+						</SyntaxHighlighter>
+						<SyntaxHighlighter language="jsx">
 							{ customRenderFunctionExample }
-						</pre>
+						</SyntaxHighlighter>
 						<p>
 							This example shows four different ways of creating custom accordions.
 						</p>
@@ -795,11 +795,9 @@ function AccordionPage() {
 												are used in <code>buttonProps</code> because it is spread onto the HTML element
 												after the other props are applied (i.e. it can overwrite them). For example:
 											</p>
-											<pre>
-												<code>
+											<SyntaxHighlighter language="jsx">
 													{ '<BaseAccordionHeader buttonProps={{ \'aria-expanded\': false }} isExpanded={ true } />' }
-												</code>
-											</pre>
+											</SyntaxHighlighter>
 											<p>
 												<code>isExpanded</code> already maps to the <code>aria-expanded</code> attribute,
 												but its intended value of <code>true</code> will get overwritten due to <code>buttonProps</code>.
@@ -873,9 +871,9 @@ function AccordionPage() {
 												supply props and HTML attributes to it. For example, one can provide custom styling
 												with:
 											</p>
-											<pre>
-												<code>{ '<BaseAccordionHeader headerProps={{ className: \'custom-h2-class\' }} />' }</code>
-											</pre>
+											<SyntaxHighlighter language="jsx">
+												{ '<BaseAccordionHeader headerProps={{ className: \'custom-h2-class\' }} />' }
+											</SyntaxHighlighter>
 										</td>
 									</tr>
 									<tr>
