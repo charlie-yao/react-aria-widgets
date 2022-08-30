@@ -152,8 +152,7 @@ export default function DisableToggleAccordion() {
 }`;
 
 export const CustomAccordionExample =
-`
-import {
+`import {
 	Accordion,
 	AccordionSection,
 	AccordionHeader,
@@ -219,12 +218,10 @@ export default function CustomAccordion(props) {
 			</AccordionSection>
 		</Accordion>
 	);
-}
-`;
+}`;
 
 export const StyledAccordionHeaderExample =
-`
-import React from 'react';
+`import React from 'react';
 import PropTypes from 'prop-types';
 import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
 
@@ -260,12 +257,10 @@ StyledAccordionHeader.defaultProps = {
 	buttonProps: {},
 };
 
-export default StyledAccordionHeader;
-`;
+export default StyledAccordionHeader;`;
 
 export const StyledAccordionPanelExample =
-`
-import React from 'react';
+`import React from 'react';
 import { AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
 export default function StyledAccordionPanel(props) {
@@ -275,12 +270,10 @@ export default function StyledAccordionPanel(props) {
 			{...props}
 		/>
 	);
-}
-`;
+}`;
 
 export const CustomAccordionHeaderExample =
-`
-import React from 'react';
+`import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseAccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
 
@@ -350,12 +343,10 @@ CustomAccordionHeader.defaultProps = {
 	buttonProps: {},
 };
 
-export default CustomAccordionHeader;
-`;
+export default CustomAccordionHeader;`;
 
 export const CustomAccordionPanelExample =
-`
-import React from 'react';
+`import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseAccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
@@ -409,12 +400,10 @@ CustomAccordionPanel.defaultProps = {
 	className: '',
 };
 
-export default CustomAccordionPanel;
-`;
+export default CustomAccordionPanel;`;
 
 export const customRenderFunctionExample =
-`
-import React from 'react';
+`import React from 'react';
 
 export default function renderFunction(props) {
 	const {
@@ -500,5 +489,4 @@ export default function renderFunction(props) {
 			</section>
 		</>
 	);
-}
-`;
+}`;
