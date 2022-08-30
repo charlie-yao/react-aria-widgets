@@ -1586,6 +1586,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-syntax-highlighter: ^15.5.0
+    react-tabs: ^4
     sass: ^1.54.4
   languageName: unknown
   linkType: soft
@@ -7258,6 +7259,13 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: d06418b7335897209e77bdd430d04f882189582e67bd1f75a04565f3f07f5b3f119a9d670c943b6697d0afb100f03b866b3b8a1f91d4d02d72c4ecf2bb64b5dd
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^1.1.0":
+  version: 1.2.1
+  resolution: "clsx@npm:1.2.1"
+  checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
   languageName: node
   linkType: hard
 
@@ -15270,7 +15278,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.6.0, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.5.0, prop-types@npm:^15.6.0, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -15754,6 +15762,18 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: c082b48f30f8ba8d0c55ed1d761910630860077c7ff5793c4c912adcb5760df06436ed0ad62be0de28113aac9ad2af55eccd995f8eee98df53382e4ced2072fb
+  languageName: node
+  linkType: hard
+
+"react-tabs@npm:^4":
+  version: 4.2.1
+  resolution: "react-tabs@npm:4.2.1"
+  dependencies:
+    clsx: ^1.1.0
+    prop-types: ^15.5.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0-0 || ^18.0.0
+  checksum: a031f358373c274432c4030873e1e41c4c744df04dbdc077f453568bf6161b8c3036934052ca9db6569d974edfceac48b2038d402eddc898f0c5752a8f8d8a93
   languageName: node
   linkType: hard
 
