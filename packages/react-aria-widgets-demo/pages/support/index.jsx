@@ -1,5 +1,8 @@
 import Head from 'next/head';
 
+//Components
+import SyntaxHighlighter from '../../components/SyntaxHighlighter';
+
 export default function SupportPage() {
 	return (
 		<>
@@ -70,9 +73,9 @@ export default function SupportPage() {
 				<p>
 					Remember to import the stylesheet!
 				</p>
-				<pre>
-					<code>import '@charlie-yao/react-aria-widgets/styles.css';</code>
-				</pre>
+				<SyntaxHighlighter language="javascript">
+					import '@charlie-yao/react-aria-widgets/styles.css';
+				</SyntaxHighlighter>
 				<h3>Type Notation in the API</h3>
 				<p>
 					<a href="https://flow.org/">Flow</a> is used notate types in the API, though

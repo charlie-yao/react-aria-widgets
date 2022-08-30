@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
-import '@charlie-yao/react-aria-widgets/styles.css';
 
 //Components
 import Layout from '../components/Layout';

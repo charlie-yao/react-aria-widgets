@@ -2857,6 +2857,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prop-types", "npm:15.8.1"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:17.0.2"],
+            ["react-syntax-highlighter", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:15.5.0"],
             ["sass", "npm:1.54.4"]
           ],
           "linkType": "SOFT",
@@ -20206,6 +20207,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prismjs", "npm:1.27.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:1.29.0", {
+          "packageLocation": "./.yarn/cache/prismjs-npm-1.29.0-6faa5b04b8-007a8869d4.zip/node_modules/prismjs/",
+          "packageDependencies": [
+            ["prismjs", "npm:1.29.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["process", [
@@ -21036,6 +21044,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["npm:15.5.0", {
+          "packageLocation": "./.yarn/cache/react-syntax-highlighter-npm-15.5.0-da5363373b-c082b48f30.zip/node_modules/react-syntax-highlighter/",
+          "packageDependencies": [
+            ["react-syntax-highlighter", "npm:15.5.0"]
+          ],
+          "linkType": "SOFT",
+        }],
         ["virtual:c7f8ea28b358f5a2147961c7bbc0d5cc6d3b215994b3037bc9eca8e65b3aa4bf8aaff13e732ab200c52b9b304828d10372058880419bff6f73cbece1b2b05239#npm:13.5.3", {
           "packageLocation": "./.yarn/__virtual__/react-syntax-highlighter-virtual-f8e8aed9ff/0/cache/react-syntax-highlighter-npm-13.5.3-fe40d3f7c4-fa03880a88.zip/node_modules/react-syntax-highlighter/",
           "packageDependencies": [
@@ -21045,6 +21060,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["highlight.js", "npm:10.7.3"],
             ["lowlight", "npm:1.20.0"],
             ["prismjs", "npm:1.27.0"],
+            ["react", "npm:17.0.2"],
+            ["refractor", "npm:3.6.0"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:15.5.0", {
+          "packageLocation": "./.yarn/__virtual__/react-syntax-highlighter-virtual-53b6f8ddf5/0/cache/react-syntax-highlighter-npm-15.5.0-da5363373b-c082b48f30.zip/node_modules/react-syntax-highlighter/",
+          "packageDependencies": [
+            ["react-syntax-highlighter", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:15.5.0"],
+            ["@babel/runtime", "npm:7.17.2"],
+            ["@types/react", null],
+            ["highlight.js", "npm:10.7.3"],
+            ["lowlight", "npm:1.20.0"],
+            ["prismjs", "npm:1.29.0"],
             ["react", "npm:17.0.2"],
             ["refractor", "npm:3.6.0"]
           ],
