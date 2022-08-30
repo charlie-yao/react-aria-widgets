@@ -1,0 +1,68 @@
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/derived-variables';
+@import '~bulma/sass/utilities/mixins';
+
+.Header {
+	height: var(--header-height);
+	margin-bottom: var(--header-margin);
+	background-color: $white;
+	border-bottom: 1px solid $grey-lighter;
+	position: sticky;
+	top: 0;
+	display: flex;
+	z-index: 5;
+	align-items: center;
+
+	a {
+		color: $text;
+	}
+	
+	i {
+		font-size: 1.25rem;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
+
+.HeaderBrand {
+	flex: 0 1 auto;
+	margin-left: 1rem;
+	font-weight: 500;
+}
+
+.HeaderNav {
+	flex: 1 0 auto;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 1rem;
+
+	> * {
+		&:not(:last-child) {
+			margin-right: 1rem;
+		}
+	}
+
+	@include touch {
+		display: none;
+	}
+}
+
+.HeaderHamburger {
+	margin-right: 1rem;
+	justify-content: flex-end;
+	display: flex;
+	flex: 1 0 auto;
+
+	button {
+		border: 0;
+		padding: 0;
+		background-color: $white;
+	}
+
+	@include desktop {
+		display: none;
+	}
+}

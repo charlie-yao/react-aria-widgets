@@ -2850,12 +2850,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@charlie-yao/react-aria-widgets-demo", "workspace:packages/react-aria-widgets-demo"],
             ["@charlie-yao/react-aria-widgets", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#workspace:packages/react-aria-widgets"],
+            ["bulma", "npm:0.9.4"],
             ["eslint", "npm:8.11.0"],
             ["eslint-config-next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:12.1.5"],
             ["next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:12.1.5"],
             ["prop-types", "npm:15.8.1"],
             ["react", "npm:17.0.2"],
-            ["react-dom", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:17.0.2"]
+            ["react-dom", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:17.0.2"],
+            ["sass", "npm:1.54.4"]
           ],
           "linkType": "SOFT",
         }]
@@ -10207,6 +10209,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/builtins-npm-1.0.3-f09d2d57f2-47ce94f7ee.zip/node_modules/builtins/",
           "packageDependencies": [
             ["builtins", "npm:1.0.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["bulma", [
+        ["npm:0.9.4", {
+          "packageLocation": "./.yarn/cache/bulma-npm-0.9.4-31b34939be-bc0ab8c203.zip/node_modules/bulma/",
+          "packageDependencies": [
+            ["bulma", "npm:0.9.4"]
           ],
           "linkType": "HARD",
         }]
@@ -17891,7 +17902,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.5"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:17.0.2"],
-            ["sass", null],
+            ["sass", "npm:1.54.4"],
             ["styled-jsx", "virtual:3088169878dfe1f1fe02a2279a0a8089d904d0a5b7bb9765cb2a1dce9a15c57acd5bd50411297d2c81273dac99789cd8686c0ca957435073c8b4d98bf9120095#npm:5.0.1"]
           ],
           "packagePeers": [
@@ -21837,6 +21848,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/sass-npm-1.49.9-0017d01f2e-e5653e3499.zip/node_modules/sass/",
           "packageDependencies": [
             ["sass", "npm:1.49.9"],
+            ["chokidar", "npm:3.5.3"],
+            ["immutable", "npm:4.0.0"],
+            ["source-map-js", "npm:1.0.2"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.54.4", {
+          "packageLocation": "./.yarn/cache/sass-npm-1.54.4-a1aa26a8a6-bb6aead097.zip/node_modules/sass/",
+          "packageDependencies": [
+            ["sass", "npm:1.54.4"],
             ["chokidar", "npm:3.5.3"],
             ["immutable", "npm:4.0.0"],
             ["source-map-js", "npm:1.0.2"]

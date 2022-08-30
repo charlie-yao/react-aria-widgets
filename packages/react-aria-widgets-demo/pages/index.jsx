@@ -2,14 +2,14 @@ import Link from 'next/link';
 
 export default function HomePage() {
 	return (
-		<article>
+		<article className="container is-fluid content">
 			<h1>React ARIA Widgets</h1>
 			<p>
 				React ARIA Widgets is a collection of React components designed
 				to help developers implement the patterns found in
 				the <a href="https://www.w3.org/WAI/ARIA/apg/">ARIA Authoring Practices Guide (APG)</a>.
 			</p>
-			<p>
+			<p className="notification is-light is-info">
 				Please note that this library should <strong>NOT</strong> be used in a production environment! 
 				It was developed primarily for educational purposes, and longterm
 				support in the form of additional features, bug fixes, maintenance, or etc. cannot
