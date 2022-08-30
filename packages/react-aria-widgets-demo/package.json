@@ -29,7 +29,6 @@
 	],
 	"dependencies": {
 		"@charlie-yao/react-aria-widgets": "workspace:*",
-		"highlight.js": "^11.6.0",
 		"next": "^12.1.5",
 		"prop-types": "^15.8.1",
 		"react": "^17.0.2",
