@@ -2858,6 +2858,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:189f1e6b3b875b5ee7a9e02119dfdc23b69e58295d86cd997d7f7507e3d0b4939a3951c14639e2241cdc6fa7b396b6d4dd54f470f8b217e7aeb4c846360ef31f#npm:17.0.2"],
             ["react-syntax-highlighter", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:15.5.0"],
+            ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1"],
             ["sass", "npm:1.54.4"]
           ],
           "linkType": "SOFT",
@@ -10759,6 +10760,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/clsx-npm-1.1.1-362bec0598-ff05265032.zip/node_modules/clsx/",
           "packageDependencies": [
             ["clsx", "npm:1.1.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.2.1", {
+          "packageLocation": "./.yarn/cache/clsx-npm-1.2.1-77792dc182-30befca801.zip/node_modules/clsx/",
+          "packageDependencies": [
+            ["clsx", "npm:1.2.1"]
           ],
           "linkType": "HARD",
         }]
@@ -21080,6 +21088,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prismjs", "npm:1.29.0"],
             ["react", "npm:17.0.2"],
             ["refractor", "npm:3.6.0"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-tabs", [
+        ["npm:4.2.1", {
+          "packageLocation": "./.yarn/cache/react-tabs-npm-4.2.1-0987d0f89a-a031f35837.zip/node_modules/react-tabs/",
+          "packageDependencies": [
+            ["react-tabs", "npm:4.2.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1", {
+          "packageLocation": "./.yarn/__virtual__/react-tabs-virtual-b4cdedfe1b/0/cache/react-tabs-npm-4.2.1-0987d0f89a-a031f35837.zip/node_modules/react-tabs/",
+          "packageDependencies": [
+            ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1"],
+            ["@types/react", null],
+            ["clsx", "npm:1.2.1"],
+            ["prop-types", "npm:15.8.1"],
+            ["react", "npm:17.0.2"]
           ],
           "packagePeers": [
             "@types/react",

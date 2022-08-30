@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //Components and Styles
 import SubNav from './SubNav';
@@ -195,24 +196,58 @@ function AccordionPage() {
 							information).
 						</p>
 						<CustomAccordion />
-						<SyntaxHighlighter language="jsx">
-							{ CustomAccordionExample }
-						</SyntaxHighlighter>
-						<SyntaxHighlighter language="jsx">
-							{ StyledAccordionHeaderExample }
-						</SyntaxHighlighter>
-						<SyntaxHighlighter language="jsx">
-							{ StyledAccordionPanelExample }
-						</SyntaxHighlighter>
-						<SyntaxHighlighter language="jsx">
-							{ CustomAccordionHeaderExample }
-						</SyntaxHighlighter>
-						<SyntaxHighlighter language="jsx">
-							{ CustomAccordionPanelExample }
-						</SyntaxHighlighter>
-						<SyntaxHighlighter language="jsx">
-							{ customRenderFunctionExample }
-						</SyntaxHighlighter>
+						<Tabs>
+							<TabList>
+								<Tab>
+									<code>CustomAccordion.jsx</code>
+								</Tab>
+								<Tab>
+									<code>StyledAccordionHeader.jsx</code>
+								</Tab>
+								<Tab>
+									<code>StyledAccordionPanel.jsx</code>
+								</Tab>
+								<Tab>
+									<code>CustomAccordionHeader.jsx</code>
+								</Tab>
+								<Tab>
+									<code>CustomAccordionPanel.jsx</code>
+								</Tab>
+								<Tab>
+									<code>customRenderFunction.js</code>
+								</Tab>
+							</TabList>
+							<TabPanel>
+								<SyntaxHighlighter language="jsx">
+									{ CustomAccordionExample }
+								</SyntaxHighlighter>
+							</TabPanel>
+							<TabPanel>
+								<SyntaxHighlighter language="jsx">
+									{ StyledAccordionHeaderExample }
+								</SyntaxHighlighter>
+							</TabPanel>
+							<TabPanel>
+								<SyntaxHighlighter language="jsx">
+									{ StyledAccordionPanelExample }
+								</SyntaxHighlighter>
+							</TabPanel>
+							<TabPanel>
+								<SyntaxHighlighter language="jsx">
+									{ CustomAccordionHeaderExample }
+								</SyntaxHighlighter>
+							</TabPanel>
+							<TabPanel>
+								<SyntaxHighlighter language="jsx">
+									{ CustomAccordionPanelExample }
+								</SyntaxHighlighter>
+							</TabPanel>
+							<TabPanel>
+								<SyntaxHighlighter language="jsx">
+									{ customRenderFunctionExample }
+								</SyntaxHighlighter>
+							</TabPanel>
+						</Tabs>
 						<p>
 							This example shows four different ways of creating custom accordions.
 						</p>
