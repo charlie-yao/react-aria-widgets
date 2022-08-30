@@ -831,7 +831,12 @@ function AccordionPage() {
 												after the other props are applied (i.e. it can overwrite them). For example:
 											</p>
 											<SyntaxHighlighter language="jsx">
-													{ '<BaseAccordionHeader buttonProps={{ \'aria-expanded\': false }} isExpanded={ true } />' }
+												{
+`<BaseAccordionHeader
+	buttonProps={{ \'aria-expanded\': false }}
+	isExpanded={ true }
+/>`
+												}
 											</SyntaxHighlighter>
 											<p>
 												<code>isExpanded</code> already maps to the <code>aria-expanded</code> attribute,
@@ -907,7 +912,11 @@ function AccordionPage() {
 												with:
 											</p>
 											<SyntaxHighlighter language="jsx">
-												{ '<BaseAccordionHeader headerProps={{ className: \'custom-h2-class\' }} />' }
+												{
+`<BaseAccordionHeader
+	headerProps={{ className: \'custom-h2-class\' }} 
+/>`
+												}
 											</SyntaxHighlighter>
 										</td>
 									</tr>
