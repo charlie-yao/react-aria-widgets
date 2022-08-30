@@ -2853,6 +2853,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["bulma", "npm:0.9.4"],
             ["eslint", "npm:8.11.0"],
             ["eslint-config-next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:12.1.5"],
+            ["highlight.js", "npm:11.6.0"],
             ["next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:12.1.5"],
             ["prop-types", "npm:15.8.1"],
             ["react", "npm:17.0.2"],
@@ -14903,6 +14904,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/highlight.js-npm-10.7.3-247e67d5c0-defeafcd54.zip/node_modules/highlight.js/",
           "packageDependencies": [
             ["highlight.js", "npm:10.7.3"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:11.6.0", {
+          "packageLocation": "./.yarn/cache/highlight.js-npm-11.6.0-ea3d017805-3908eb34a4.zip/node_modules/highlight.js/",
+          "packageDependencies": [
+            ["highlight.js", "npm:11.6.0"]
           ],
           "linkType": "HARD",
         }]
