@@ -9,7 +9,7 @@ export default function SupportPage() {
 			<Head>
 				<title>Support - React ARIA Widgets</title>
 			</Head>
-			<article className="container is-fluid content">
+			<article className="container is-max-desktop content">
 				<h1>Support</h1>
 				<p>
 					If you encounter any issues, please feel free to make an issue

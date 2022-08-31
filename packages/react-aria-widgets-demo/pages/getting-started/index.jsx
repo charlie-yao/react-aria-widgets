@@ -6,7 +6,7 @@ export default function GettingStartedPage() {
 		<Head>
 			<title>Getting Started - React ARIA Widgets</title>
 		</Head>
-		<article className="container is-fluid content">
+		<article className="container is-max-desktop content">
 			<h1>Getting Started</h1>
 			<p>Coming soon!</p>
 			<h2>Installation</h2>

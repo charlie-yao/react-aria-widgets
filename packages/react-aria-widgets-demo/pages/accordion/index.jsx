@@ -57,7 +57,7 @@ function AccordionPage() {
 			<Head>
 				<title>Accordion - React ARIA Widgets</title>
 			</Head>
-			<article className="content container is-fluid" style={{ overflow: 'auto' }}>
+			<article className="content container is-max-desktop">
 				<h1 id="accordion">Accordion</h1>
 				<p>
 					To quote the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA
