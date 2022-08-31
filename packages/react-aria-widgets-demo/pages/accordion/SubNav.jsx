@@ -30,7 +30,7 @@ export default function SubNav() {
 							<ul>
 								<li>
 									<a href="#with-accordion-manager">
-										<code>withAccordionManager()</code>
+										withAccordionManager()
 									</a>
 								</li>
 							</ul>
@@ -40,22 +40,22 @@ export default function SubNav() {
 							<ul>
 								<li>
 									<a href="#accordion-component">
-										<code>&lt;Accordion&gt;</code>
+										&lt;Accordion&gt;
 									</a>
 								</li>
 								<li>
 									<a href="#accordion-section">
-										<code>&lt;AccordionSection&gt;</code>
+										&lt;AccordionSection&gt;
 									</a>
 								</li>
 								<li>
 									<a href="#accordion-header">
-										<code>&lt;AccordionHeader&gt;</code>
+										&lt;AccordionHeader&gt;
 									</a>
 								</li>
 								<li>
 									<a href="#accordion-panel">
-										<code>&lt;AccordionPanel&gt;</code>
+										&lt;AccordionPanel&gt;
 									</a>
 								</li>
 							</ul>
@@ -65,12 +65,12 @@ export default function SubNav() {
 							<ul>
 								<li>
 									<a href="#base-accordion-header">
-										<code>&lt;BaseAccordionHeader&gt;</code>
+										&lt;BaseAccordionHeader&gt;
 									</a>
 								</li>
 								<li>
 									<a href="#base-accordion-panel">
-										<code>&lt;BaseAccordionPanel&gt;</code>
+										&lt;BaseAccordionPanel&gt;
 									</a>
 								</li>
 							</ul>
