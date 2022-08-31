@@ -91,7 +91,7 @@ function AccordionPage() {
 				<SyntaxHighlighter language="jsx">
 					{ basicAccordionExample }
 				</SyntaxHighlighter>
-				<h4><code>allowMultiple</code> and <code>allowToggle</code></h4>
+				<h4>allowMultiple and allowToggle</h4>
 				<p>
 					By default, multiple panels can be expanded and closed at the same time, but this behavior
 					can be toggled on/off with the <code>allowMultiple</code> prop.
@@ -103,12 +103,12 @@ function AccordionPage() {
 					the <code>allowToggle</code> will always be <code>true</code>. Otherwise, users could
 					run into a situation where there are many open panels that can't be closed.
 				</p>
-				<h5>Disabling <code>allowMultiple</code></h5>
+				<h5>Disabling allowMultiple</h5>
 				<DisableMultipleAccordion />
 				<SyntaxHighlighter language="jsx">
 					{ disableMultipleExample }
 				</SyntaxHighlighter>
-				<h5>Disabling <code>allowToggle</code></h5>
+				<h5>Disabling allowToggle</h5>
 				<DisableToggleAccordion />
 				<SyntaxHighlighter language="jsx">
 					{ disableToggleExample }
@@ -287,9 +287,7 @@ function AccordionPage() {
 				</p>
 				<h2 id="api">API</h2>
 				<h3 id="hocs-and-hooks">Higher-Order Components and Hooks</h3>
-				<h4 id="with-accordion-manager">
-					<code>withAccordionManager()</code>
-				</h4>
+				<h4 id="with-accordion-manager">withAccordionManager()</h4>
 				<p>
 					<code>withAccordionManager()</code> is a HOC that manages the underlying state for an accordion. It
 					controls which panels are expanded/collapsed, which headers can/cannot be interacted with, and
@@ -366,63 +364,61 @@ function AccordionPage() {
 					</table>
 				</div>
 				<h5>Methods</h5>
-				<h6><code>focusFirstHeader(): void</code></h6>
+				<h6>focusFirstHeader(): void</h6>
 				<p>
 					Sets the focus to the first accordion header button. Note that each header button
 					in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
 					properly.
 				</p>
-				<h6><code>focusLastHeader(): void</code></h6>
+				<h6>focusLastHeader(): void</h6>
 				<p>
 					Sets the focus to the last accordion header button. Note that each header button
 					in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
 					properly.
 				</p>
-				<h6><code>focusNextHeader(index: number): void</code></h6>
+				<h6>focusNextHeader(index: number): void</h6>
 				<p>
 					Sets the focus to the next (relative to <code>index</code>) accordion
 					header button. Note that each header button in the accordion MUST
 					use <code>setHeaderRef()</code> for focus management to work
 					properly.
 				</p>
-				<h6><code>focusPrevHeader(index: number): void</code></h6>
+				<h6>focusPrevHeader(index: number): void</h6>
 				<p>
 					Sets the focus to the previous (relative to <code>index</code>) accordion
 					header button. Note that each header button in the accordion MUST
 					use <code>setHeaderRef()</code> for focus management to work
 					properly.
 				</p>
-				<h6><code>focusHeader(index: number): void</code></h6>
+				<h6>focusHeader(index: number): void</h6>
 				<p>
 					Sets the focus to an arbitrary accordion header button. Note that each header button
 					in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
 					properly.
 				</p>
-				<h6><code>getIsDisabled(id: string): boolean</code></h6>
+				<h6>getIsDisabled(id: string): boolean</h6>
 				<p>
 					Returns a boolean indicating if an accordion header cannot be
 					interacted with. At the moment, an accordion header is only
 					considered disabled if its panel is expanded and <code>allowToggle</code> is <code>false</code>.
 				</p>
-				<h6><code>getIsExpanded(id: string): boolean</code></h6>
+				<h6>getIsExpanded(id: string): boolean</h6>
 				<p>
 					Returns a boolean indicating if an accordion panel is
 					collapsed or expanded.
 				</p>
-				<h6><code>setHeaderRef(ref: Object): void</code></h6>
+				<h6>setHeaderRef(ref: Object): void</h6>
 				<p>
 					A React callback ref that must be used by each accordion header button in order to properly
 					manage focus.
 				</p>
-				<h6><code>toggleSection(id: string): void</code></h6>
+				<h6>toggleSection(id: string): void</h6>
 				<p>
 					Expands/collapses a panel of the accordion.
 					Respects <code>allowMultiple</code> and <code>allowToggle</code>.
 				</p>
 				<h3 id="components">Components</h3>
-				<h4 id="accordion-component">
-					<code>&lt;Accordion&gt;</code>
-				</h4>
+				<h4 id="accordion-component">&lt;Accordion&gt;</h4>
 				<p>
 					<code>&lt;Accordion&gt;</code>s use the <code>withAccordionManager()</code> HOC and
 					wrap around one or more <code>&lt;AccordionSection&gt;</code>s. They also forward the fields
@@ -492,7 +488,7 @@ function AccordionPage() {
 					</table>
 				</div>
 				<h5>Methods</h5>
-				<h6><code>onClick(event: SyntheticEvent&lt;&gt;): void</code></h6>
+				<h6>onClick(event: SyntheticEvent&lt;&gt;): void</h6>
 				<p>
 					A premade event handler that can be attached to accordion header buttons
 					to handle expanding/collapsing a particular panel. Used by <code>&lt;AccordionHeader&gt;</code>.
@@ -502,7 +498,7 @@ function AccordionPage() {
 					the button must have an <code>id</code> attribute corresponding to the ID
 					of the accordion header/panel pair.
 				</p>
-				<h6><code>onKeyDown(event: SyntheticEvent&lt;&gt;): void</code></h6>
+				<h6>onKeyDown(event: SyntheticEvent&lt;&gt;): void</h6>
 				<p>
 					A premade event handler that can be attached to accordion header buttons to handle
 					focus management. Implements the keyboard interactions described in
@@ -514,9 +510,7 @@ function AccordionPage() {
 					the button must have a <code>data-index</code> attribute corresponding to the
 					position of the accordion header/panel pair.
 				</p>
-				<h4 id="accordion-section">
-					<code>&lt;AccordionSection&gt;</code>
-				</h4>
+				<h4 id="accordion-section">&lt;AccordionSection&gt;</h4>
 				<p>
 					Represents a section of an accordion (i.e. a header/panel pair). Wraps around either a set of
 					React nodes or a render function. Will automatically pass down the fields and methods it receives
@@ -581,9 +575,7 @@ function AccordionPage() {
 						</tbody>
 					</table>
 				</div>
-				<h4 id="accordion-header">
-					<code>&lt;AccordionHeader&gt;</code>
-				</h4>
+				<h4 id="accordion-header">&lt;AccordionHeader&gt;</h4>
 				<p>
 					<code>&lt;AccordionHeader&gt;</code> is a thin wrapper
 					over <code>&lt;BaseAccordionHeader&gt;</code> that is designed to be used
@@ -681,9 +673,7 @@ function AccordionPage() {
 						</tbody>
 					</table>
 				</div>
-				<h4 id="accordion-panel">
-					<code>&lt;AccordionPanel&gt;</code>
-				</h4>
+				<h4 id="accordion-panel">&lt;AccordionPanel&gt;</h4>
 				<p>
 					An <code>&lt;AccordionPanel&gt;</code> is a thin wrapper
 					over <code>&lt;BaseAccordionPanel&gt;</code> that is designed to be used
@@ -770,9 +760,7 @@ function AccordionPage() {
 					</table>
 				</div>
 				<h3 id="base-components">Base Components</h3>
-				<h4 id="base-accordion-header">
-					<code>&lt;BaseAccordionHeader&gt;</code>
-				</h4>
+				<h4 id="base-accordion-header">&lt;BaseAccordionHeader&gt;</h4>
 				<p>
 					<code>&lt;BaseAccordionHeader&gt;</code> is a thin wrapper over basic HTML elements
 					designed to help implement accordions according to the APG. It is
@@ -980,9 +968,7 @@ function AccordionPage() {
 						</tbody>
 					</table>
 				</div>
-				<h4 id="base-accordion-panel">
-					<code>&lt;BaseAccordionPanel&gt;</code>
-				</h4>
+				<h4 id="base-accordion-panel">&lt;BaseAccordionPanel&gt;</h4>
 				<p>
 					<code>&lt;BaseAccordionPanel&gt;</code> is a thin wrapper over basic HTML elements
 					designed to help implement accordions according to the APG. It is the
