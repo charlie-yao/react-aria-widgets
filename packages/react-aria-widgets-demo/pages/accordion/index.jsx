@@ -747,7 +747,7 @@ function AccordionPage() {
 										A string representing what the underlying HTML element will be rendered as.
 										The <code>&lt;section&gt;</code> element is an element with
 										the <code>region</code> role, but there are times where this may be undesireable.
-										Accordion to the APG:
+										According to the APG:
 									</p>
 									<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
 										Avoid using the <code>region</code> role in circumstances that create landmark
