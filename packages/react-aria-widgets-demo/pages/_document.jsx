@@ -11,8 +11,11 @@ export default function Document() {
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={ description } />
 				{ /*
-				<meta property="og:url" content="https://charlieyao.com/reactariawidgets" />
+				<meta property="og:url" content="https://charlieyao.com/react-aria-widgets" />
 				<meta property="og:image" content="" />
+				*/ }
+				{ /* Set the base URL for all relative URLs within the document
+				<base href="https://charlieyao.com/react-aria-widgets" />
 				*/ }
 			</Head>
 			<body>
