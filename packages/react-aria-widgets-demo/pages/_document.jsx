@@ -31,6 +31,16 @@ export default function Document() {
 				{ /* <meta property="og:image" content="" /> */ }
 				{ /* <meta property="og:image:alt" content="" /> */ }
 
+				{ /* Twitter Card */ }
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:title" content="React ARIA Widgets" />
+				<meta name="twitter:description" content={ description } />
+				{ /* <meta name="twitter:site" content="@site_account" /> */ }
+				{ /* <meta name="twitter:creator" content="@individual_account" */ }
+				{ /* <meta name="twitter:url" content="" /> */ }
+				{ /* <meta name="twitter:image" content="" /> */ }
+				{ /* <meta name="twitter:image:alt" content="" /> */ }
+
 				{ /* Links to information about the author(s) of the document */ }
 				{ /* <link rel="author" href="humans.txt" /> */ }
 
