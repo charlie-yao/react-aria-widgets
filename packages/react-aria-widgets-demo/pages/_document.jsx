@@ -28,14 +28,18 @@ export default function Document() {
 				{ /* <meta property="og:url" content="https://charlieyao.com/react-aria-widgets" /> */ }
 				{ /* <meta property="og:image" content="" /> */ }
 
-				{ /* Set the base URL for all relative URLs within the document */ }
-				{ /* <base href="https://charlieyao.com/react-aria-widgets" /> */ }
-
 				{ /* Links to information about the author(s) of the document */ }
 				{ /* <link rel="author" href="humans.txt" /> */ }
 
-				{ /* Refers to a copyright statement that applies to the link's context */ }
-				{ /* <link rel="license" href="copyright.html" /> */ }
+				{ /* Favicons */ }
+				<link rel="alternate icon" href="favicon.ico" sizes="any" />
+				<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+				<link rel="apple-touch-icon" href="favicon-180.png" />
+
+				<meta name="theme-color" content="#000000" />
+				<meta name="color-scheme" content="light" />
+
+				<link rel="manifest" href="/manifest.json" />
 			</Head>
 			<body>
 				<Main />
