@@ -23,10 +23,13 @@ export default function Document() {
 
 				{ /* FB Open Graph */ }
 				<meta property="og:title" content="React ARIA Widgets" />
+				<meta property="og:site_name" content="React ARIA Widgets" />
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={ description } />
+				<meta property="og:locale" content="en_US" />
 				{ /* <meta property="og:url" content="https://charlieyao.com/react-aria-widgets" /> */ }
 				{ /* <meta property="og:image" content="" /> */ }
+				{ /* <meta property="og:image:alt" content="" /> */ }
 
 				{ /* Links to information about the author(s) of the document */ }
 				{ /* <link rel="author" href="humans.txt" /> */ }
