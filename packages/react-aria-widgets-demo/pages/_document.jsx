@@ -28,9 +28,6 @@ export default function Document() {
 				{ /* <meta name="twitter:image" content="" /> */ }
 				{ /* <meta name="twitter:image:alt" content="" /> */ }
 
-				{ /* Links to information about the author(s) of the document */ }
-				{ /* <link rel="author" href="humans.txt" /> */ }
-
 				{ /* Favicons */ }
 				<link rel="alternate icon" href="favicon.ico" sizes="any" />
 				<link rel="icon" href="favicon.svg" type="image/svg+xml" />
