@@ -8,13 +8,6 @@ export default function Document() {
 			<Head>
 				<meta name="description" content={ description } />
 
-				{ /* Control the behavior of search engine crawling and indexing */ }
-				{ /* <meta name="robots" content="index,follow" /> */ }
-				{ /* <meta name="googlebot" content="index,follow"> */ }
-
-				{ /* Tells Google not to show the sitelinks search box */ }
-				{ /* <meta name="google" content="nositelinksearchbox" /> */ }
-
 				{ /* FB Open Graph */ }
 				<meta property="og:title" content="React ARIA Widgets" />
 				<meta property="og:site_name" content="React ARIA Widgets" />
