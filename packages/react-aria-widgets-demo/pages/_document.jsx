@@ -6,12 +6,6 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				{ /*
-					Allows control over where resources are loaded from. Place first as it
-					only affects resources declared after it.
-				*/ }
-				{ /* <meta http-equiv="Content-Security-Policy" content="default-src 'self'" /> */ }
-
 				<meta name="description" content={ description } />
 
 				{ /* Control the behavior of search engine crawling and indexing */ }
