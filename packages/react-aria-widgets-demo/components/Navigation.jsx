@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 //Components and Styles
 import styles from './Navigation.module.scss';
 
-export default function Navigation(props) {
+function Navigation(props) {
 	const { isNavExpanded } = props;
 	const router = useRouter();
 	const { pathname } = router;
@@ -23,12 +24,12 @@ export default function Navigation(props) {
 					</li>
 					<li>
 						<Link href="/getting-started">
-							<a className={ pathname === '/getting-started' ? 'is-active' : ''}>Getting Started</a>
+							<a className={ pathname === '/getting-started' ? 'is-active' : '' }>Getting Started</a>
 						</Link>
 					</li>
 					<li>
 						<Link href="/support">
-							<a className={ pathname === '/support' ? 'is-active' : ''}>Support</a>
+							<a className={ pathname === '/support' ? 'is-active' : '' }>Support</a>
 						</Link>
 					</li>
 				</ul>
@@ -38,7 +39,7 @@ export default function Navigation(props) {
 				<ul className="menu-list">
 					<li>
 						<Link href="/accordion">
-							<a className={ pathname === '/accordion' ? 'is-active' : ''}>Accordion</a>
+							<a className={ pathname === '/accordion' ? 'is-active' : '' }>Accordion</a>
 						</Link>
 					</li>
 				</ul>
@@ -56,3 +57,9 @@ export default function Navigation(props) {
 		</nav>
 	);
 }
+
+Navigation.propTypes = {
+	isNavExpanded: PropTypes.bool.isRequired,
+};
+
+export default Navigation;
