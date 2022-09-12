@@ -214,6 +214,7 @@ module.exports = {
 		'react/jsx-indent-props': [ 'error', 'tab' ],
 		'react/jsx-newline': [ 'error', {
 			prevent: true,
+			allowMultilines: true,
 		}],
 		'react/jsx-no-bind': [ 'error' ],
 		'react/jsx-no-useless-fragment': [ 'error' ],
