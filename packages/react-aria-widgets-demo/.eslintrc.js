@@ -126,7 +126,11 @@ module.exports = {
 		'object-property-newline': [ 'error', {
 			allowAllPropertiesOnSameLine: true,
 		}],
-		'operator-linebreak': [ 'error', 'before' ],
+		'operator-linebreak': [ 'error', 'before', {
+			overrides: {
+				'&&': 'ignore', //For conditionally including/excluding React components
+			},
+		}],
 		'padded-blocks': [ 'error', 'never' ],
 		'rest-spread-spacing': [ 'error', 'never' ],
 		'semi-spacing': [ 'error', {
@@ -206,9 +210,7 @@ module.exports = {
 		'react/jsx-handler-names': [ 'error', {
 			eventHandlerPrefix: 'on',
 		}],
-		'react/jsx-indent': [ 'error', 'tab', {
-			indentLogicalExpressions: true,
-		}],
+		'react/jsx-indent': [ 'error', 'tab' ],
 		'react/jsx-indent-props': [ 'error', 'tab' ],
 		'react/jsx-newline': [ 'error', {
 			prevent: true,

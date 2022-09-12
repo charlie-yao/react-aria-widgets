@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 
 function Header(props) {
 	const { isNavExpanded, setNavExpanded } = props;
+
 	const onClick = useCallback(() => {
 		setNavExpanded(!isNavExpanded);
 	}, [ setNavExpanded, isNavExpanded ]);
