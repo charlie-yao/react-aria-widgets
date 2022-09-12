@@ -12,7 +12,7 @@ import CustomAccordionHeader from './CustomAccordionHeader';
 import CustomAccordionPanel from './CustomAccordionPanel';
 import customRenderFunction from './customRenderFunction';
 
-export default function CustomAccordion(props) {
+export default function CustomAccordion() {
 	return (
 		<Accordion headerLevel={ 4 }>
 			<AccordionSection id="custom-accordion-section1">
@@ -20,7 +20,7 @@ export default function CustomAccordion(props) {
 					headerProps={{ className: 'defaultHeaderClass' }}
 					buttonProps={{ className: 'defaultButtonClass' }}
 				>
-					CustomAccordion - Section 1	
+					CustomAccordion - Section 1
 				</AccordionHeader>
 				<AccordionPanel className="defaultPanelClass">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tempor lorem eu blandit
