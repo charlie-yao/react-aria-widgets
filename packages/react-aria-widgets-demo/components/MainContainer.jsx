@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
+
 //Components and Styles
 import styles from './MainContainer.module.scss';
 
-export default function MainContainer(props) {
+function MainContainer(props) {
 	const { children } = props;
 
 	return (
@@ -10,3 +12,9 @@ export default function MainContainer(props) {
 		</div>
 	);
 }
+
+MainContainer.propTypes = {
+	children: PropTypes.node.isRequired,
+};
+
+export default MainContainer;
