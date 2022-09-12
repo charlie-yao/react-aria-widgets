@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-newline */
+
 import { Html, Head, Main, NextScript } from 'next/document';
 
 const description = 'A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).';
