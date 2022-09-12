@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types';
+
 //Components and Styles
 import styles from './Main.module.scss';
 
-export default function Main(props) {
+function Main(props) {
 	const { children } = props;
 
 	return (
@@ -10,3 +12,9 @@ export default function Main(props) {
 		</main>
 	);
 }
+
+Main.propTypes = {
+	children: PropTypes.node.isRequired,
+};
+
+export default Main;
