@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BaseAccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
@@ -9,6 +11,7 @@ function CustomAccordionPanel(props) {
 		getIsExpanded,
 		className,
 		//Pull out the props from <AccordionSection> that shouldn't get passed down
+		/* eslint-disable no-unused-vars, react/prop-types */
 		index,
 		headerLevel,
 		onClick,
@@ -23,6 +26,7 @@ function CustomAccordionPanel(props) {
 		focusNextHeader,
 		focusFirstHeader,
 		focusLastHeader,
+		/* eslint-enable no-unused-vars, react/prop-types */
 		...rest
 	} = props;
 	const panelId = `${id}-panel`;
