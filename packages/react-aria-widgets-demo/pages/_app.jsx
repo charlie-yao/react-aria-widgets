@@ -21,7 +21,7 @@ function App(props) {
 		router.events.on('routeChangeComplete', () => {
 			setNavExpanded(false);
 		});
-	}, []);
+	});
 
 	return (
 		<>
