@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import Link from 'next/link';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //Components and Styles
@@ -71,8 +72,8 @@ function AccordionPage() {
 					multiple sections of content on a single page.
 				</blockquote>
 				<p>
-					Like the APG, we will use the term "accordion header" to reference the label
-					that controls a section of content, and "accordion panel" to reference the
+					Like the APG, we will use the term &quot;accordion header&quot; to reference the label
+					that controls a section of content, and &quot;accordion panel&quot; to reference the
 					content that is associated with an accordion header.
 				</p>
 				<h2 id="usage-and-examples">Usage and Examples</h2>
@@ -96,12 +97,12 @@ function AccordionPage() {
 					By default, multiple panels can be expanded and closed at the same time, but this behavior
 					can be toggled on/off with the <code>allowMultiple</code> prop.
 					The <code>allowToggle</code> prop can also be used to toggle
-					whether or not a panel can be collapsed once it's expanded.
+					whether or not a panel can be collapsed once it&apos;s expanded.
 				</p>
 				<p>
 					Note that if <code>allowMultiple</code> is <code>true</code>, then
 					the <code>allowToggle</code> will always be <code>true</code>. Otherwise, users could
-					run into a situation where there are many open panels that can't be closed.
+					run into a situation where there are many open panels that can&apos;t be closed.
 				</p>
 				<h5>Disabling allowMultiple</h5>
 				<DisableMultipleAccordion />
@@ -166,8 +167,8 @@ function AccordionPage() {
 					</li>
 					<li>
 						<p>
-							If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn't have an
-							already-programmed use, it'll be spread onto the underlying element as an HTML attribute.
+							If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn&apos;t have an
+							already-programmed use, it&apos;ll be spread onto the underlying element as an HTML attribute.
 						</p>
 					</li>
 				</ul>
@@ -188,7 +189,7 @@ function AccordionPage() {
 					collapsed state. Custom implementations allow developers to use their own CSS,
 					styles, or even options like the HTML attribute <code>hidden</code> (though that
 					may not be semantically appropriate - see
-					the <a href="/support#faq-hidden-vs-display-none">FAQ</a> for more
+					the <Link href="/support#faq-hidden-vs-display-none"><a>FAQ</a></Link> for more
 					information).
 				</p>
 				<CustomAccordion />
@@ -254,12 +255,12 @@ function AccordionPage() {
 				<p>
 					The second accordion section shows how to add default styles
 					to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> by
-					using component composition. Here, we don't have to worry about using <code>setHeaderRef()</code> or
-					adding the <code>id</code> and <code>data-index</code> attributes because that's already being
+					using component composition. Here, we don&apos;t have to worry about using <code>setHeaderRef()</code> or
+					adding the <code>id</code> and <code>data-index</code> attributes because that&apos;s already being
 					handled by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
 				</p>
 				<p>
-					Note that we can't simply
+					Note that we can&apos;t simply
 					spread <code>props</code> onto <code>&lt;AccordionHeader&gt;</code> in <code>&lt;StyledAccordionHeader&gt;</code>.
 					We have to make sure that the merged versions
 					of <code>headerProps</code> and <code>buttonProps</code> are ultimately what gets
@@ -271,11 +272,11 @@ function AccordionPage() {
 					over <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code>.
 					These components give developers greater control, but it means we have to manually
 					set <code>setHeaderRef()</code> and add the <code>id</code> and <code>data-index</code> attributes
-					(because we're using the event handlers provided by <code>&lt;Accordion&gt;</code>)
-					while also being mindful of how we're passing
+					(because we&apos;re using the event handlers provided by <code>&lt;Accordion&gt;</code>)
+					while also being mindful of how we&apos;re passing
 					down <code>headerProps</code> and <code>buttonProps</code> to <code>&lt;BaseAccordionHeader&gt;</code>.
 					Additionally, because <code>&lt;AccordionSection&gt;</code> automatically passes down
-					numerous props to its children, we have to make sure <code>&lt;BaseAccordionPanel&gt;</code> won't
+					numerous props to its children, we have to make sure <code>&lt;BaseAccordionPanel&gt;</code> won&apos;t
 					spread them onto the underlying HTML element.
 				</p>
 				<p>
@@ -310,20 +311,20 @@ function AccordionPage() {
 								<td><code>allowMultiple</code></td>
 								<td><code>boolean</code></td>
 								<td><code>true</code></td>
-								<td></td>
+								<td />
 								<td>Controls whether or not multiple panels can be expanded at the same time.</td>
 							</tr>
 							<tr>
 								<td><code>allowToggle</code></td>
 								<td><code>boolean</code></td>
 								<td><code>true</code></td>
-								<td></td>
+								<td />
 								<td>
 									Controls whether or not a panel can be collapsed after it has been expanded. Note
 									that if <code>allowMultiple</code> is <code>true</code>, then panels will always
 									be collapsible even if <code>allowToggle</code> is <code>false</code>. This
 									is to prevent situations where there would otherwise be multiple expanded panels
-									that can't be collapsed.
+									that can&apos;t be collapsed.
 								</td>
 							</tr>
 						</tbody>
@@ -353,7 +354,7 @@ function AccordionPage() {
 								<td><code>boolean</code></td>
 								<td>
 									Lets child components know whether or not panels can be collapsed
-									once they've been expanded. Note that even if the HOC
+									once they&apos;ve been expanded. Note that even if the HOC
 									received <code>false</code> as its <code>allowToggle</code> prop,
 									if <code>allowMultiple</code> is <code>true</code>, child components will
 									see <code>allowToggle</code> as <code>true</code> to reflect how the accordion
@@ -451,7 +452,7 @@ function AccordionPage() {
 								<td><code>headerLevel</code></td>
 								<td><code>number</code></td>
 								<td><code>2</code></td>
-								<td></td>
+								<td />
 								<td>
 									An integer from 1 to 6 (inclusive) representing which HTML section heading element
 									(e.g. <code>&lt;h2&gt;</code>) to use for each accordion header.
@@ -549,7 +550,7 @@ function AccordionPage() {
 								<td>{ '\u2713' }</td>
 								<td>
 									A unique identifier for the accordion section. Must be unique to the whole document as
-									it's used to generate HTML IDs for the header button and panel element, as well as
+									it&apos;s used to generate HTML IDs for the header button and panel element, as well as
 									the <code>aria-controls</code> and <code>aria-labelledby</code> attributes.
 								</td>
 							</tr>
@@ -580,7 +581,7 @@ function AccordionPage() {
 					<code>&lt;AccordionHeader&gt;</code> is a thin wrapper
 					over <code>&lt;BaseAccordionHeader&gt;</code> that is designed to be used
 					with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
-					Because <code>&lt;AccordionHeader&gt;</code> isn't meant to be used in a standalone manner,
+					Because <code>&lt;AccordionHeader&gt;</code> isn&apos;t meant to be used in a standalone manner,
 					if you wish to write your own header implementation, <code>&lt;BaseAccordionHeader&gt;</code> may
 					be a more suitable option.
 				</p>
@@ -619,7 +620,7 @@ function AccordionPage() {
 								<td><code>buttonProps</code></td>
 								<td><code>{ '{ [key: string]: any }' }</code></td>
 								<td><code>{ '{}' }</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
@@ -662,7 +663,7 @@ function AccordionPage() {
 								<td><code>headerProps</code></td>
 								<td><code>{ '{ [key: string]: any }' }</code></td>
 								<td><code>{ '{}' }</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										An object that is spread over the underlying HTML section heading element
@@ -678,7 +679,7 @@ function AccordionPage() {
 					An <code>&lt;AccordionPanel&gt;</code> is a thin wrapper
 					over <code>&lt;BaseAccordionPanel&gt;</code> that is designed to be used
 					with <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code>.
-					Because <code>&lt;AccordionPanel&gt;</code> isn't meant to be used in a standalone manner,
+					Because <code>&lt;AccordionPanel&gt;</code> isn&apos;t meant to be used in a standalone manner,
 					if you wish to write your own panel implementation, <code>&lt;BaseAccordionPanel&gt;</code> may
 					be a more suitable option.
 				</p>
@@ -729,8 +730,8 @@ function AccordionPage() {
 							<tr>
 								<td><code>className</code></td>
 								<td><code>string</code></td>
-								<td><code>''</code></td>
-								<td></td>
+								<td><code>&apos;&apos;</code></td>
+								<td />
 								<td>
 									<p>
 										A string representing one or more CSS classes.
@@ -740,8 +741,8 @@ function AccordionPage() {
 							<tr>
 								<td><code>tagName</code></td>
 								<td><code>string</code></td>
-								<td><code>'section'</code></td>
-								<td></td>
+								<td><code>&apos;section&apos;</code></td>
+								<td />
 								<td>
 									<p>
 										A string representing what the underlying HTML element will be rendered as.
@@ -787,7 +788,7 @@ function AccordionPage() {
 								<td><code>buttonProps</code></td>
 								<td><code>{ '{ [key: string]: any }' }</code></td>
 								<td><code>{ '{}' }</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										An object that is spread over the underlying <code>&lt;button&gt;</code> in order to
@@ -798,7 +799,7 @@ function AccordionPage() {
 									<SyntaxHighlighter language="jsx">
 										{
 `<BaseAccordionHeader
-	buttonProps={{ \'aria-expanded\': false }}
+	buttonProps={{ 'aria-expanded': false }}
 	isExpanded={ true }
 />`
 										}
@@ -806,8 +807,8 @@ function AccordionPage() {
 									<p>
 										<code>isExpanded</code> already maps to the <code>aria-expanded</code> attribute,
 										but its intended value of <code>true</code> will get overwritten due to <code>buttonProps</code>.
-										The order of how the props are passed to <code>&lt;BaseAccordionHeader&gt;</code> doesn't
-										matter because it doesn't affect how <code>&lt;BaseAccordionHeader&gt;</code> passes
+										The order of how the props are passed to <code>&lt;BaseAccordionHeader&gt;</code> doesn&apos;t
+										matter because it doesn&apos;t affect how <code>&lt;BaseAccordionHeader&gt;</code> passes
 										that information to the underlying HTML element.
 									</p>
 								</td>
@@ -869,7 +870,7 @@ function AccordionPage() {
 								<td><code>headerProps</code></td>
 								<td><code>{ '{ [key: string]: any }' }</code></td>
 								<td><code>{ '{}' }</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										An object that is spread over the underlying heading element in order to
@@ -879,7 +880,7 @@ function AccordionPage() {
 									<SyntaxHighlighter language="jsx">
 										{
 `<BaseAccordionHeader
-	headerProps={{ className: \'custom-h2-class\' }} 
+	headerProps={{ className: 'custom-h2-class' }}
 />`
 										}
 									</SyntaxHighlighter>
@@ -921,7 +922,7 @@ function AccordionPage() {
 								<td><code>isDisabled</code></td>
 								<td><code>boolean</code></td>
 								<td><code>false</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										Used to set the <code>aria-disabled</code> attribute. Communicates to
@@ -934,7 +935,7 @@ function AccordionPage() {
 								<td><code>isExpanded</code></td>
 								<td><code>boolean</code></td>
 								<td><code>false</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										Used to set the <code>aria-expanded</code> attribute. Note that this attribute
@@ -944,7 +945,7 @@ function AccordionPage() {
 							</tr>
 							<tr>
 								<td><code>onClick</code></td>
-								<td><code>(SyntheticEvent&lt;T&gt;) => void</code></td>
+								<td><code>(SyntheticEvent&lt;T&gt;) =&gt; void</code></td>
 								<td><code>undefined</code></td>
 								<td>{ '\u2713' }</td>
 								<td>
@@ -956,9 +957,9 @@ function AccordionPage() {
 							</tr>
 							<tr>
 								<td><code>onKeyDown</code></td>
-								<td><code>(SyntheticEvent&lt;T&gt;) => void</code></td>
+								<td><code>(SyntheticEvent&lt;T&gt;) =&gt; void</code></td>
 								<td><code>undefined</code></td>
-								<td></td>
+								<td />
 								<td>
 									<p>
 										A keydown event handler for the underlying button. Primarily used to implement focus management.
@@ -1055,8 +1056,8 @@ function AccordionPage() {
 							<tr>
 								<td><code>tagName</code></td>
 								<td><code>string</code></td>
-								<td><code>'section'</code></td>
-								<td></td>
+								<td><code>&apos;section&apos;</code></td>
+								<td />
 								<td>
 									<p>
 										A string representing what the underlying HTML element will be rendered as.

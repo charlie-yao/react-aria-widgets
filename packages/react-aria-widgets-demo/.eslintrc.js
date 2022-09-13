@@ -217,9 +217,11 @@ module.exports = {
 		}],
 		'react/jsx-no-bind': [ 'error' ],
 		'react/jsx-no-useless-fragment': [ 'error' ],
-		'react/jsx-one-expression-per-line': [ 'error', {
-			allow: 'single-child',
-		}],
+		//This would be cool if it played better with inline elements
+		//See: https://github.com/jsx-eslint/eslint-plugin-react/issues/1848
+		//'react/jsx-one-expression-per-line': [ 'error', {
+		//	allow: 'single-child',
+		//}],
 		'react/jsx-pascal-case': [ 'error' ],
 		'react/jsx-props-no-multi-spaces': [ 'error' ],
 		'react/jsx-props-no-spreading': [ 'error' ],

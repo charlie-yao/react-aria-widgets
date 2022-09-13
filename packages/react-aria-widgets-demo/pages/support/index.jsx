@@ -16,14 +16,14 @@ export default function SupportPage() {
 					on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>.
 				</p>
 				<p className="notification is-info is-light">
-					Please note that this library should <strong>NOT</strong> be used in a production environment! 
+					Please note that this library should <strong>NOT</strong> be used in a production environment!
 					It was developed primarily for educational purposes, and longterm
 					support in the form of additional features, bug fixes, maintenance, or etc.
 					cannot be guaranteed!
 				</p>
 				<h2>Frequently Asked Questions (FAQ)</h2>
 				<h3 id="faq-mostly-unstyled">
-					"Mostly Unstyled"?
+					&quot;Mostly Unstyled&quot;?
 				</h3>
 				<p>
 					The components provided by React ARIA Widgets strives to be as unstyled as possible,
@@ -34,7 +34,7 @@ export default function SupportPage() {
 				</p>
 				<p>
 					Note that the examples shown for each pattern may contain styling that differs
-					from your browser's default styling, but that's due to the CSS used by this
+					from your browser&apos;s default styling, but that&apos;s due to the CSS used by this
 					website rather than React ARIA Widgets itself.
 				</p>
 				<h3 id="faq-hidden-vs-display-none">
@@ -58,7 +58,7 @@ export default function SupportPage() {
 					</p>
 				</blockquote>
 				<p>
-					In this <a href="https://github.com/whatwg/html/issues/4904">GitHub thread</a>, it's argued that
+					In this <a href="https://github.com/whatwg/html/issues/4904">GitHub thread</a>, it&apos;s argued that
 					the APG examples are using tabs as a presentational choice rather than to convey semantics,
 					and that <code>display: none;</code> should be used rather than <code>hidden</code>. Though
 					the APG examples that are currently live still do not reflect those changes, their source
@@ -74,12 +74,12 @@ export default function SupportPage() {
 					Remember to import the stylesheet!
 				</p>
 				<SyntaxHighlighter language="javascript">
-					import '@charlie-yao/react-aria-widgets/styles.css';
+					import &apos;@charlie-yao/react-aria-widgets/styles.css&apos;;
 				</SyntaxHighlighter>
 				<h3>Type Notation in the API</h3>
 				<p>
 					<a href="https://flow.org/">Flow</a> is used notate types in the API, though
-					the project itself doesn't use Flow internally.
+					the project itself doesn&apos;t use Flow internally.
 				</p>
 			</article>
 		</>
