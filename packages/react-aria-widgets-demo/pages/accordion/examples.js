@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+
 export const basicAccordionExample =
 `import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
 
