@@ -15,10 +15,10 @@
 		"url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
 	},
 	"scripts": {
-		"build": "webpack --config webpack.prod.js",
-		"build-dev": "webpack --config webpack.dev.js",
-		"start": "webpack serve --config webpack.dev.js",
-		"lint": "eslint --fix --ext .jsx,.js ./"
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint --dir ./ --fix"
 	},
 	"bugs": {
 		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
@@ -29,28 +29,17 @@
 	],
 	"dependencies": {
 		"@charlie-yao/react-aria-widgets": "workspace:*",
+		"next": "^12.1.5",
 		"prop-types": "^15.8.1",
 		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
+		"react-dom": "^17.0.2",
+		"react-syntax-highlighter": "^15.5.0",
+		"react-tabs": "^4"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.17.5",
-		"@babel/eslint-parser": "^7.17.0",
-		"@babel/preset-env": "^7.16.11",
-		"@babel/preset-react": "^7.16.7",
-		"babel-loader": "^8.2.3",
-		"css-loader": "^6.7.1",
-		"css-minimizer-webpack-plugin": "^3.4.1",
+		"bulma": "^0.9.4",
 		"eslint": "^8.3.0",
-		"eslint-plugin-react": "^7.27.1",
-		"html-webpack-plugin": "^5.5.0",
-		"mini-css-extract-plugin": "^2.6.0",
-		"sass": "^1.44.0",
-		"sass-loader": "^12.3.0",
-		"style-loader": "^3.3.1",
-		"webpack": "^5.64.4",
-		"webpack-cli": "^4.9.1",
-		"webpack-dev-server": "^4.6.0",
-		"webpack-merge": "^5.8.0"
+		"eslint-config-next": "12.1.5",
+		"sass": "^1.54.4"
 	}
 }
