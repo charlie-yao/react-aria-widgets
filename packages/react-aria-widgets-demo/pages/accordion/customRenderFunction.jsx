@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+
 import React from 'react';
 
 export default function renderFunction(props) {
@@ -21,7 +23,7 @@ export default function renderFunction(props) {
 	const style = {};
 
 	const onClick = () => {
-		toggleSection(id);	
+		toggleSection(id);
 	};
 
 	const onKeyDown = (event) => {
@@ -49,7 +51,7 @@ export default function renderFunction(props) {
 		style.display = 'none';
 
 	return (
-		<> 
+		<>
 			<HeaderElement className="defaultHeaderClass">
 				<button
 					type="button"
@@ -80,7 +82,7 @@ export default function renderFunction(props) {
 				Fusce egestas velit in lobortis vestibulum. Vestibulum sodales venenatis turpis, eu convallis
 				nisi suscipit sit amet. Aenean placerat ullamcorper nulla quis varius. In in consectetur
 				augue, ac consequat sem. Quisque at ultrices arcu, et aliquam purus. Donec varius justo non
-				suscipit fermentum. Etiam a nisl at ipsum imperdiet faucibus.				
+				suscipit fermentum. Etiam a nisl at ipsum imperdiet faucibus.
 			</section>
 		</>
 	);

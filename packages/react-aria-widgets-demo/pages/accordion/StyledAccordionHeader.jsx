@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
@@ -6,7 +8,7 @@ function StyledAccordionHeader(props) {
 	const { headerProps, buttonProps, ...rest } = props;
 	const { className: suppliedHeaderClass } = headerProps;
 	const { className: suppliedButtonClass } = buttonProps;
-	
+
 	const _headerProps = Object.assign({}, headerProps, {
 		className: `defaultHeaderClass ${suppliedHeaderClass ? suppliedHeaderClass : ''}`,
 	});
@@ -19,7 +21,7 @@ function StyledAccordionHeader(props) {
 		<AccordionHeader
 			headerProps={ _headerProps }
 			buttonProps={ _buttonProps }
-			{...rest}
+			{ ...rest }
 		/>
 	);
 }
