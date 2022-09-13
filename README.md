@@ -7,4 +7,5 @@ See: https://www.w3.org/TR/wai-aria-practices-1.1/
 ---
 
 Icons provided by Font Awesome Free 6.2.0 - https://fontawesome.com
+
 License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
