@@ -12,40 +12,66 @@ import withNoOp from 'src/hocs/withNoOp';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 function AccordionSection(props) {
-	const { children, ...rest } = props;
 	const {
-		id, index, headerLevel, onTriggerClick, onTriggerKeyDown,
-		getIsExpanded, getIsDisabled, setSectionRef,
-	} = rest;
+		children,
+		id,
+		index,
+		headerLevel,
+		onClick,
+		onKeyDown,
+		allowMultiple,
+		allowToggle,
+		getIsExpanded,
+		getIsDisabled,
+		toggleSection,
+		setHeaderRef,
+		focusHeader,
+		focusPrevHeader,
+		focusNextHeader,
+		focusFirstHeader,
+		focusLastHeader,
+	} = props;
 
-	if(typeof children === 'function')
-		return children(rest);
+	if(typeof children === 'function') {
+		return children({
+			id,
+			index,
+			headerLevel,
+			onClick,
+			onKeyDown,
+			allowMultiple,
+			allowToggle,
+			getIsExpanded,
+			getIsDisabled,
+			toggleSection,
+			setHeaderRef,
+			focusHeader,
+			focusPrevHeader,
+			focusNextHeader,
+			focusFirstHeader,
+			focusLastHeader,
+		});
+	}
 	else {
 		return React.Children.map(children, child => {
-			const { type } = child;
-			const isExpanded = getIsExpanded(id);
-			const isDisabled = getIsDisabled(id);
-
-			if(type === AccordionHeader) {
-				return React.cloneElement(child, {
-					id,
-					index,
-					headerLevel,
-					onTriggerClick,
-					onTriggerKeyDown,
-					isExpanded,
-					isDisabled,
-					setSectionRef,
-				});
-			}
-			else if(type === AccordionPanel) {
-				return React.cloneElement(child, {
-					id,
-					isExpanded,
-				});
-			}
-			else
-				throw new Error('Only <AccordionHeader> and <AccordionPanel> are valid children of <AccordionSection>.');
+			return React.cloneElement(child, {
+				id,
+				index,
+				headerLevel,
+				onClick,
+				onKeyDown,
+				allowMultiple,
+				allowToggle,
+				getIsExpanded,
+				getIsDisabled,
+				toggleSection,
+				setHeaderRef,
+				focusHeader,
+				focusPrevHeader,
+				focusNextHeader,
+				focusFirstHeader,
+				focusLastHeader,
+			});
 		});
 	}
 }
@@ -58,19 +84,19 @@ AccordionSection.propTypes = {
 	id: PropTypes.string.isRequired,
 	index: PropTypes.number.isRequired,
 	headerLevel: validateHeaderLevelProp.isRequired,
-	onTriggerClick: PropTypes.func.isRequired,
-	onTriggerKeyDown: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired,
+	onKeyDown: PropTypes.func.isRequired,
 	allowMultiple: PropTypes.bool.isRequired,
 	allowToggle: PropTypes.bool.isRequired,
 	getIsExpanded: PropTypes.func.isRequired,
 	getIsDisabled: PropTypes.func.isRequired,
 	toggleSection: PropTypes.func.isRequired,
-	setSectionRef: PropTypes.func.isRequired,
-	focusSection: PropTypes.func.isRequired,
-	focusPrevSection: PropTypes.func.isRequired,
-	focusNextSection: PropTypes.func.isRequired,
-	focusFirstSection: PropTypes.func.isRequired,
-	focusLastSection: PropTypes.func.isRequired,
+	setHeaderRef: PropTypes.func.isRequired,
+	focusHeader: PropTypes.func.isRequired,
+	focusPrevHeader: PropTypes.func.isRequired,
+	focusNextHeader: PropTypes.func.isRequired,
+	focusFirstHeader: PropTypes.func.isRequired,
+	focusLastHeader: PropTypes.func.isRequired,
 };
 
 export default withNoOp(AccordionSection);

@@ -1,0 +1,19 @@
+{
+	"short_name": "React ARIA Widgets",
+	"name": "React ARIA Widgets",
+	"icons": [
+		{
+			"src": "/favicon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/favicon-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"display": "browser"
+}

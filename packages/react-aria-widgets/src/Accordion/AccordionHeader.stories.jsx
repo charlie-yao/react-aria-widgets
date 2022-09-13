@@ -11,9 +11,9 @@ export default {
 		id: 'accordionId',
 		index: 1,
 		headerLevel: 2,
-		onTriggerClick: () => {},
-		onTriggerKeyDown: () => {},
-		setSectionRef: () => {},
+		onClick: () => {},
+		onKeyDown: () => {},
+		setHeaderRef: () => {},
 	},
 };
 

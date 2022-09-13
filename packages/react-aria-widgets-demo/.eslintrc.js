@@ -1,26 +1,9 @@
 module.exports = {
 	root: true,
-	parser: '@babel/eslint-parser',
-	ignorePatterns: [ '.git', '.yarn', 'dist' ],
-	env: {
-		browser: true,
-		es2021: true,
-		node: true,
-	},
-	extends: [ 'eslint:recommended', 'plugin:react/recommended' ],
-	parserOptions: {
-		ecmaFeatures: {
-			jsx: true,
-		},
-		ecmaVersion: 13,
-		sourceType: 'module',
-	},
-	plugins: [ 'react' ],
-	settings: {
-		react: {
-			version: 'detect',
-		},
-	},
+	extends: [
+		'eslint:recommended',
+		'next/core-web-vitals',
+	],
 	rules: {
 		indent: [ 'error', 'tab', {
 			SwitchCase: 1,
@@ -143,7 +126,11 @@ module.exports = {
 		'object-property-newline': [ 'error', {
 			allowAllPropertiesOnSameLine: true,
 		}],
-		'operator-linebreak': [ 'error', 'before' ],
+		'operator-linebreak': [ 'error', 'before', {
+			overrides: {
+				'&&': 'ignore', //For conditionally including/excluding React components
+			},
+		}],
 		'padded-blocks': [ 'error', 'never' ],
 		'rest-spread-spacing': [ 'error', 'never' ],
 		'semi-spacing': [ 'error', {
@@ -190,6 +177,7 @@ module.exports = {
 		'react/no-will-update-set-state': [ 'error' ],
 		'react/prefer-es6-class': [ 'error', 'always' ],
 		'react/prefer-stateless-function': [ 'error' ],
+		'react/prop-types': [ 'error' ],
 		'react/require-default-props': [ 'error', {
 			forbidDefaultForRequired: true,
 		}],
@@ -222,18 +210,18 @@ module.exports = {
 		'react/jsx-handler-names': [ 'error', {
 			eventHandlerPrefix: 'on',
 		}],
-		'react/jsx-indent': [ 'error', 'tab', {
-			indentLogicalExpressions: true,
-		}],
+		'react/jsx-indent': [ 'error', 'tab' ],
 		'react/jsx-indent-props': [ 'error', 'tab' ],
 		'react/jsx-newline': [ 'error', {
 			prevent: true,
 		}],
 		'react/jsx-no-bind': [ 'error' ],
 		'react/jsx-no-useless-fragment': [ 'error' ],
-		'react/jsx-one-expression-per-line': [ 'error', {
-			allow: 'single-child',
-		}],
+		//This would be cool if it played better with inline elements
+		//See: https://github.com/jsx-eslint/eslint-plugin-react/issues/1848
+		//'react/jsx-one-expression-per-line': [ 'error', {
+		//	allow: 'single-child',
+		//}],
 		'react/jsx-pascal-case': [ 'error' ],
 		'react/jsx-props-no-multi-spaces': [ 'error' ],
 		'react/jsx-props-no-spreading': [ 'error' ],

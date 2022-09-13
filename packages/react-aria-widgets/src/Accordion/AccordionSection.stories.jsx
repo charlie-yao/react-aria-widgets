@@ -46,7 +46,7 @@ RenderFunction.args = {
 	children: (args) => {
 		const {
 			id, index, headerLevel, getIsExpanded, getIsDisabled,
-			setSectionRef, onTriggerClick, onTriggerKeyDown,
+			setHeaderRef, onClick, onKeyDown,
 		} = args;
 		const isExpanded = getIsExpanded(id);
 		const isDisabled = getIsDisabled(id);
@@ -59,9 +59,9 @@ RenderFunction.args = {
 					headerLevel={ headerLevel }
 					isExpanded={ isExpanded }
 					isDisabled={ isDisabled }
-					setSectionRef={ setSectionRef }
-					onTriggerClick={ onTriggerClick }
-					onTriggerKeyDown={ onTriggerKeyDown }
+					setHeaderRef={ setHeaderRef }
+					onClick={ onClick }
+					onKeyDown={ onKeyDown }
 				>
 					Header
 				</AccordionHeader>

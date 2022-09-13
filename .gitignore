@@ -11,6 +11,8 @@
 
 # Vim
 *.swp
+*.swo
 
 dist
 node_modules
+.next/

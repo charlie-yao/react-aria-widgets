@@ -36,12 +36,12 @@ export default function withAccordionManager(Component) {
 					getIsExpanded={ this.getIsExpanded }
 					getIsDisabled={ this.getIsDisabled }
 					toggleSection={ this.toggleSection }
-					setSectionRef={ this.setSectionRef }
-					focusSection={ this.focusSection }
-					focusPrevSection={ this.focusPrevSection }
-					focusNextSection={ this.focusNextSection }
-					focusFirstSection={ this.focusFirstSection }
-					focusLastSection={ this.focusLastSection }
+					setHeaderRef={ this.setHeaderRef }
+					focusHeader={ this.focusHeader }
+					focusPrevHeader={ this.focusPrevHeader }
+					focusNextHeader={ this.focusNextHeader }
+					focusFirstHeader={ this.focusFirstHeader }
+					focusLastHeader={ this.focusLastHeader }
 					{ ...rest }
 				/>
 			);
@@ -66,25 +66,29 @@ export default function withAccordionManager(Component) {
 			return !this.getAllowToggle() && this.getIsExpanded(id);
 		};
 
-		toggleSection = (sectionId) => {
+		toggleSection = (id) => {
 			const { allowMultiple } = this.props;
 			const allowToggle = this.getAllowToggle();
+			const isExpanded = this.getIsExpanded(id);
+			const isDisabled = this.getIsDisabled(id);
 
 			this.setState(prevState => {
 				const { expandedSections } = prevState;
-				const alreadyExpanded = expandedSections.has(sectionId);
 
 				if(allowMultiple) {
-					if(alreadyExpanded)
-						expandedSections.delete(sectionId);
+					if(isExpanded)
+						expandedSections.delete(id);
 					else
-						expandedSections.add(sectionId);
+						expandedSections.add(id);
 				}
 				else {
 					expandedSections.clear();
-
-					if(!alreadyExpanded || (alreadyExpanded && !allowToggle))
-						expandedSections.add(sectionId);
+					
+					//Expand the section if it was originally collapsed,
+					//or if it shouldn't have been collapsed as a result
+					//of the indiscriminate call to clear() that we just made.
+					if(!isExpanded || isDisabled)
+						expandedSections.add(id);
 				}
 
 				return {
@@ -93,28 +97,28 @@ export default function withAccordionManager(Component) {
 			});
 		};
 
-		setSectionRef = (ref) => {
+		setHeaderRef = (ref) => {
 			this.sectionRefs.push(ref);
 		};
 
-		focusSection = (index) => {
+		focusHeader = (index) => {
 			this.sectionRefs[index].focus();
 		};
 
-		focusPrevSection = (index) => {
-			this.focusSection(index === 0 ? this.sectionRefs.length - 1 : index - 1);
+		focusPrevHeader = (index) => {
+			this.focusHeader(index === 0 ? this.sectionRefs.length - 1 : index - 1);
 		};
 
-		focusNextSection = (index) => {
-			this.focusSection(index === this.sectionRefs.length - 1 ? 0 : index + 1);
+		focusNextHeader = (index) => {
+			this.focusHeader(index === this.sectionRefs.length - 1 ? 0 : index + 1);
 		};
 
-		focusFirstSection = () => {
-			this.focusSection(0);
+		focusFirstHeader = () => {
+			this.focusHeader(0);
 		};
 
-		focusLastSection = () => {
-			this.focusSection(this.sectionRefs.length - 1);
+		focusLastHeader = () => {
+			this.focusHeader(this.sectionRefs.length - 1);
 		};
 	};
 }
