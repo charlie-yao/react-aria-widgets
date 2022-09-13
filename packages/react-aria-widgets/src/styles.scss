@@ -1,3 +1,53 @@
+:focus {
+	background-color: red;
+}
+
 .react-aria-widgets-hidden {
 	display: none !important;
+}
+
+[aria-disabled="true"] {
+	opacity: 50%;
+	cursor: not-allowed;
+}
+
+[role="menuitem"], button[aria-haspopup="menu"] {
+	&[aria-expanded="false"] + [role="menu"] {
+		display: none;
+	}	
+}
+
+[role="menubar"], [role="menu"] {
+	&[aria-orientation="horizontal"] {
+		display: flex;
+
+		> li {
+			flex: 1 1 auto;
+		}
+	}
+}
+
+[role="menuitemcheckbox"], [role="menuitemradio"] {
+	&[aria-checked="true"] {
+		background-color: blue;
+	}
+
+	&[aria-checked="mixed"] {
+		background-color: green;
+	}
+}
+
+//A technique for visually-hiding elements
+//but still keeping them readable to machines.
+//See:
+//https://webaim.org/techniques/css/invisiblecontent/
+.vhide {
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute
 }

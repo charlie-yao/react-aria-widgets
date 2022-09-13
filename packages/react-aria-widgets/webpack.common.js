@@ -28,6 +28,9 @@ module.exports = {
 			accordion: {
 				import: './src/Accordion/index.js',
 			},
+			menu: {
+				import: './src/Menu/index.js',
+			},
 		},
 		output: {
 			filename: '[name].bundle.js',

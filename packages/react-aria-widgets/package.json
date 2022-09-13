@@ -19,6 +19,7 @@
 	"exports": {
 		".": "dist/index.bundle.js",
 		"./accordion": "dist/accordion.bundle.js",
+		"./menu": "dist/menu.bundle.js",
 		"./styles.css": "dist/index.css"
 	},
 	"publishConfig": {

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 /**
  * Creates a custom React prop type.
  *
@@ -6,8 +8,8 @@
  *
  * This also circumvents an issue with eslint-plugin-react
  * as the rule react/require-default-props will complain
- * if it encounters a custom prop validator.
- * normally cannot mark them as required.
+ * if it encounters a custom prop validator as they
+ * normally cannot be marked as required.
  *
  * See:
  * https://github.com/yannickcr/eslint-plugin-react/issues/1020
@@ -47,3 +49,60 @@ function _validateHeaderLevelProp(props, propName) {
 const validateHeaderLevelProp = createCustomPropType(_validateHeaderLevelProp);
 validateHeaderLevelProp.isRequired = createCustomPropType(_validateHeaderLevelProp, true);
 export { validateHeaderLevelProp };
+
+export const MENUITEM_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'item' ]).isRequired,
+	node: PropTypes.node.isRequired,
+	onActivate: PropTypes.func,
+	isDisabled: PropTypes.bool,
+});
+
+export const PARENT_MENUITEM_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'menu' ]).isRequired,
+	node: PropTypes.node.isRequired,
+	children: MENUITEMS_PROPTYPE,
+	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+	label: PropTypes.string,
+	labelId: PropTypes.string,
+	isDisabled: PropTypes.bool,
+});
+
+export const MENUITEM_CHECKBOX_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'checkbox' ]).isRequired,
+	node: PropTypes.node.isRequired,
+	onActivate: PropTypes.func,
+	isDisabled: PropTypes.bool,
+	isChecked: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.oneOf([ 'true', 'false', 'mixed' ]),
+	]),
+});
+
+export const MENUITEM_RADIO_PROPTYPE = PropTypes.shape({
+	node: PropTypes.node.isRequired,
+	isDisabled: PropTypes.bool,
+	isChecked: PropTypes.bool,
+	value: PropTypes.any,
+});
+
+export const MENUITEM_RADIOGROUP_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'radiogroup' ]).isRequired,
+	children: PropTypes.arrayOf(MENUITEM_RADIO_PROPTYPE).isRequired,
+	onActivate: PropTypes.func,
+	label: PropTypes.string,
+	labelId: PropTypes.string,
+});
+
+export const MENUITEM_SEPARATOR_PROPTYPE = PropTypes.shape({
+	type: PropTypes.oneOf([ 'separator' ]).isRequired,
+	node: PropTypes.node,
+	orientation: PropTypes.oneOf([ 'vertical', 'horizontal' ]),
+});
+
+export const MENUITEMS_PROPTYPE = PropTypes.arrayOf(PropTypes.oneOfType([
+	MENUITEM_PROPTYPE,
+	PARENT_MENUITEM_PROPTYPE,
+	MENUITEM_CHECKBOX_PROPTYPE,
+	MENUITEM_RADIOGROUP_PROPTYPE,
+	MENUITEM_SEPARATOR_PROPTYPE,
+]));
