@@ -43,8 +43,13 @@ export default function SupportPage() {
 				<p>
 					At the time of writing, many of the example implementations of widgets such as tabs shown in ARIA
 					Authoring Practices Guide (APG) use the <code>hidden</code> HTML attribute to handle expand/collapse states.
-					However, in the <a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
-					living WHATWG HTML standard</a>, they say:
+					However, in the
+					{ ' ' }
+					<a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
+						living WHATWG HTML standard
+					</a>
+					{ /**/ }
+					, they say:
 				</p>
 				<blockquote cite="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
 					<p>

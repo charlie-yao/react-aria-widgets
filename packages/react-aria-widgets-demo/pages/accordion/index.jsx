@@ -52,6 +52,19 @@ const CustomAccordion = dynamic(
 	},
 );
 
+/* eslint-disable operator-linebreak */
+const BUTTON_PROPS_EXAMPLE =
+`<BaseAccordionHeader
+	buttonProps={{ 'aria-expanded': false }}
+	isExpanded={ true }
+/>`;
+
+const HEADER_PROPS_EXAMPLE =
+`<BaseAccordionHeader
+	headerProps={{ className: 'custom-h2-class' }}
+/>`;
+/* eslint-enable operator-linebreak */
+
 function AccordionPage() {
 	return (
 		<>
@@ -61,8 +74,13 @@ function AccordionPage() {
 			<article className="content container is-max-desktop">
 				<h1 id="accordion">Accordion</h1>
 				<p>
-					To quote the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">ARIA
-					Authoring Practices Guide (APG)</a>:
+					To quote the
+					{ ' ' }
+					<a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+						ARIA Authoring Practices Guide (APG)
+					</a>
+					{ /**/ }
+					:
 				</p>
 				<blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
 					An accordion is a vertically stacked set of interactive headings that each contain
@@ -650,12 +668,22 @@ function AccordionPage() {
 									<p>
 										Though this may seem like a minor detail, it has some accessibility
 										implications such as potentially failing to
-										meet <a href="https://www.w3.org/TR/WCAG22/#parsing">
-										Success Criterion 4.4.1</a> of the WCAG 2.2 guidelines.
+										meet
+										{ ' ' }
+										<a href="https://www.w3.org/TR/WCAG22/#parsing">
+											Success Criterion 4.4.1
+										</a>
+										{ ' ' }
+										of the WCAG 2.2 guidelines.
 									</p>
 									<p>
-										See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
-										MDN Web Docs</a> for more information.
+										See the
+										{ ' ' }
+										<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
+											MDN Web Docs
+										</a>
+										{ ' ' }
+										for more information.
 									</p>
 								</td>
 							</tr>
@@ -797,12 +825,7 @@ function AccordionPage() {
 										after the other props are applied (i.e. it can overwrite them). For example:
 									</p>
 									<SyntaxHighlighter language="jsx">
-										{
-`<BaseAccordionHeader
-	buttonProps={{ 'aria-expanded': false }}
-	isExpanded={ true }
-/>`
-										}
+										{ BUTTON_PROPS_EXAMPLE }
 									</SyntaxHighlighter>
 									<p>
 										<code>isExpanded</code> already maps to the <code>aria-expanded</code> attribute,
@@ -828,12 +851,22 @@ function AccordionPage() {
 									<p>
 										Though this may seem like a minor detail, it has some accessibility
 										implications such as potentially failing to
-										meet <a href="https://www.w3.org/TR/WCAG22/#parsing">
-										Success Criterion 4.4.1</a> of the WCAG 2.2 guidelines.
+										meet
+										{ ' ' }
+										<a href="https://www.w3.org/TR/WCAG22/#parsing">
+											Success Criterion 4.4.1
+										</a>
+										{ ' ' }
+										of the WCAG 2.2 guidelines.
 									</p>
 									<p>
-										See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
-										MDN Web Docs</a> for more information.
+										See the
+										{ ' ' }
+										<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button">
+											MDN Web Docs
+										</a>
+										{ ' ' }
+										for more information.
 									</p>
 								</td>
 							</tr>
@@ -878,11 +911,7 @@ function AccordionPage() {
 										with:
 									</p>
 									<SyntaxHighlighter language="jsx">
-										{
-`<BaseAccordionHeader
-	headerProps={{ className: 'custom-h2-class' }}
-/>`
-										}
+										{ HEADER_PROPS_EXAMPLE }
 									</SyntaxHighlighter>
 								</td>
 							</tr>
@@ -912,9 +941,19 @@ function AccordionPage() {
 										to <code>&lt;BaseAccordionPanel&gt;</code> using the same values.
 									</p>
 									<p>
-										See the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">APG</a> and
-										the <a href="https://w3c.github.io/aria/#region">
-										<code>region</code> specification</a> for more information.
+										See the
+										{ ' ' }
+										<a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">
+											APG
+										</a>
+										{ ' ' }
+										and the
+										{ ' ' }
+										<a href="https://w3c.github.io/aria/#region">
+											<code>region</code> specification
+										</a>
+										{ ' ' }
+										for more information.
 									</p>
 								</td>
 							</tr>
@@ -1047,9 +1086,19 @@ function AccordionPage() {
 										accordion header panel an HTML <code>id</code> attribute using the same values.
 									</p>
 									<p>
-										See the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">APG</a> and
-										the <a href="https://w3c.github.io/aria/#region">
-										<code>region</code> specification</a> for more information.
+										See the
+										{ ' ' }
+										<a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/#wai-aria-roles-states-and-properties">
+											APG
+										</a>
+										{ ' ' }
+										and the
+										{ ' ' }
+										<a href="https://w3c.github.io/aria/#region">
+											<code>region</code> specification
+										</a>
+										{ ' ' }
+										for more information.
 									</p>
 								</td>
 							</tr>

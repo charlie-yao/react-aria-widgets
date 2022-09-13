@@ -25,8 +25,13 @@ export default function HomePage() {
 					Modular design that abstracts stateful logic into higher-order components (HOCs) and React hooks.
 				</li>
 				<li>
-					Unopinionated <Link href="/getting-started/#getting-started-base-components"><a>base
-					components</a></Link> with PropTypes that dictate the necessary HTML/ARIA attributes
+					Unopinionated
+					{ ' ' }
+					<Link href="/getting-started/#getting-started-base-components">
+						<a>base components</a>
+					</Link>
+					{ ' ' }
+					with PropTypes that dictate the necessary HTML/ARIA attributes
 					for developers who need more fine-tuned control.
 				</li>
 				<li>
