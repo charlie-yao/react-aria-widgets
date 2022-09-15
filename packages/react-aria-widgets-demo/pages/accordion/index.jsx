@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //Components and Styles
-import SubNav from './SubNav';
+import SubNav from '../../components/accordion/SubNav';
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
 //Misc.
@@ -18,10 +18,10 @@ import {
 	CustomAccordionHeaderExample,
 	CustomAccordionPanelExample,
 	customRenderFunctionExample,
-} from './examples';
+} from '../../utils/accordionExamples';
 
 const BasicAccordion = dynamic(
-	() => import('./BasicAccordion'),
+	() => import('../../components/accordion/BasicAccordion'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -29,7 +29,7 @@ const BasicAccordion = dynamic(
 );
 
 const DisableMultipleAccordion = dynamic(
-	() => import('./DisableMultipleAccordion'),
+	() => import('../../components/accordion/DisableMultipleAccordion'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -37,7 +37,7 @@ const DisableMultipleAccordion = dynamic(
 );
 
 const DisableToggleAccordion = dynamic(
-	() => import('./DisableToggleAccordion'),
+	() => import('../../components/accordion/DisableToggleAccordion'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
@@ -45,7 +45,7 @@ const DisableToggleAccordion = dynamic(
 );
 
 const CustomAccordion = dynamic(
-	() => import('./CustomAccordion'),
+	() => import('../../components/accordion/CustomAccordion'),
 	{
 		ssr: false,
 		loading: () => <p>Loading, please wait...</p>,
