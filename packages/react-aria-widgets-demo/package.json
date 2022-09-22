@@ -17,7 +17,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start",
+		"start": "node server.js",
 		"lint": "next lint --dir ./ --fix"
 	},
 	"bugs": {
@@ -29,7 +29,7 @@
 	],
 	"dependencies": {
 		"@charlie-yao/react-aria-widgets": "workspace:*",
-		"next": "^12.1.5",
+		"next": "^12.3.1",
 		"prop-types": "^15.8.1",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
