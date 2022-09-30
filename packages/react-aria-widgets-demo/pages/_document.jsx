@@ -4,6 +4,13 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const description = 'A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).';
 
+const GOOGLE_ANALYTICS_TAG
+= `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+`;
+
 export default function Document() {
 	return (
 		<Html lang="en">
@@ -43,6 +50,7 @@ export default function Document() {
 			<body>
 				<Main />
 				<NextScript />
+				<script dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }} />
 			</body>
 		</Html>
 	);
