@@ -15,8 +15,8 @@ import '../styles/styles.scss';
 //Misc.
 import { GOOGLE_ANALYTICS_ID, pageView } from '../utils/googleAnalytics';
 
-const GOOGLE_ANALYTICS_TAG =
-`
+const GOOGLE_ANALYTICS_TAG
+= `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -55,6 +55,7 @@ function App(props) {
 				src={ `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}` }
 			/>
 			<Script
+				id="gtag-init"
 				strategy="afterInteractive"
 				dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }}
 			/>

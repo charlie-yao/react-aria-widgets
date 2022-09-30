@@ -4,8 +4,8 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const description = 'A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).';
 
-const GOOGLE_ANALYTICS_TAG =
-`
+const GOOGLE_ANALYTICS_TAG
+= `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
