@@ -12,16 +12,37 @@ import Layout from '../components/Layout';
 //Styles
 import '../styles/styles.scss';
 
+//Misc.
+import { GOOGLE_ANALYTICS_ID, pageView } from '../utils/googleAnalytics';
+
+const GOOGLE_ANALYTICS_TAG =
+`
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', '${GOOGLE_ANALYTICS_ID}');
+`;
+
 function App(props) {
 	const { Component, pageProps } = props;
 	const [ isNavExpanded, setNavExpanded ] = useState(false);
 	const router = useRouter();
 
 	useEffect(() => {
-		router.events.on('routeChangeComplete', () => {
+		function handleRouteChange(url) {
+			pageView(url);
 			setNavExpanded(false);
-		});
-	});
+		}
+
+		router.events.on('routeChangeComplete', handleRouteChange);
+		router.events.on('hashChangeComplete', handleRouteChange);
+
+		return () => {
+			router.events.off('routeChangeComplete', handleRouteChange);
+			router.events.off('routeChangeComplete', handleRouteChange);
+		};
+	}, [ router.events ]);
 
 	return (
 		<>
@@ -29,6 +50,14 @@ function App(props) {
 				<title>React ARIA Widgets</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
+			<Script
+				strategy="afterInteractive"
+				src={ `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}` }
+			/>
+			<Script
+				strategy="afterInteractive"
+				dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }}
+			/>
 			<Layout
 				isNavExpanded={ isNavExpanded }
 				setNavExpanded={ setNavExpanded }
