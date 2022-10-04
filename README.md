@@ -1,8 +1,15 @@
 # React ARIA Widgets
 
-Implementations of WAI-ARIA widgets and design patterns in React. This repository is for educational purposes and personal use only - I can't say I have any intentions of providing any form of support or long-term maintenance!
+React ARIA Widgets is a collection of React components designed to help developers implement the patterns found in the [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/).
 
-See: https://www.w3.org/TR/wai-aria-practices-1.1/
+Please note that this library should **NOT** be used in a production environment! At the time of writing, this project was developed primarily for educational purposes. Though you are free to make issues on this repository, longterm support in the form of additional features, bug fixes, maintenance, or etc. cannot be guaranteed!
+
+## Features
+
+* (Mostly) unstyled components that are easily composable and customizable
+* Modulear design that abstracts stateful logic into higher-order components (HOCs) and React hooks
+* Unopinionated "base" components that use PropTypes to dictate the necessary HTML/ARIA attributes for developers who wish to write their own implementations
+* Adheres to the APG complete with focus control and full keyboard support
 
 ---
 
