@@ -1,4 +1,4 @@
-import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
 export default function DisableMultipleAccordion() {
 	return (

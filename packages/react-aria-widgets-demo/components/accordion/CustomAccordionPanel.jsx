@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BaseAccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+import { BaseAccordionPanel } from 'react-aria-widgets/accordion';
 
 function CustomAccordionPanel(props) {
 	const {

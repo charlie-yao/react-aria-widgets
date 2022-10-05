@@ -3,7 +3,7 @@ import {
 	AccordionSection,
 	AccordionHeader,
 	AccordionPanel,
-} from '@charlie-yao/react-aria-widgets/accordion';
+} from 'react-aria-widgets/accordion';
 
 //Components
 import StyledAccordionHeader from './StyledAccordionHeader';

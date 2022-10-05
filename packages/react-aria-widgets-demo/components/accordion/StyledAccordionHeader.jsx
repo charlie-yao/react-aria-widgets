@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
+import { AccordionHeader } from 'react-aria-widgets/accordion';
 
 function StyledAccordionHeader(props) {
 	const { headerProps, buttonProps, ...rest } = props;

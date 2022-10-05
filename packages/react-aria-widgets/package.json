@@ -1,7 +1,7 @@
 {
-	"name": "@charlie-yao/react-aria-widgets",
+	"name": "react-aria-widgets",
 	"version": "0.0.0",
-	"description": "React implementations of the WAI-ARIA Authoring Practices 1.2 design patterns and widgets.",
+	"description": "A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).",
 	"keywords": [
 		"react",
 		"aria",

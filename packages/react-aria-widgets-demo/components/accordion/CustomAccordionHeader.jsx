@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BaseAccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
+import { BaseAccordionHeader } from 'react-aria-widgets/accordion';
 
 function CustomAccordionHeader(props) {
 	const {
