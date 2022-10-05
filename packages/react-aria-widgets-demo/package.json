@@ -6,10 +6,6 @@
 	"homepage": "https://github.com/charlie-yao/react-aria-widgets",
 	"license": "MIT",
 	"private": true,
-	"main": "dist/index.bundle.js",
-	"files": [
-		"dist/**/*"
-	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
