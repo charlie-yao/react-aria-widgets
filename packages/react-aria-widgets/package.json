@@ -1,6 +1,6 @@
 {
 	"name": "react-aria-widgets",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).",
 	"keywords": [
 		"react",
@@ -10,16 +10,16 @@
 		"accessibility"
 	],
 	"author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
-	"homepage": "https://github.com/charlie-yao/react-aria-widgets",
+	"homepage": "https://charlieyao.com/react-aria-widgets",
 	"license": "MIT",
 	"main": "dist/index.bundle.js",
 	"files": [
 		"dist/**/*"
 	],
 	"exports": {
-		".": "dist/index.bundle.js",
-		"./accordion": "dist/accordion.bundle.js",
-		"./styles.css": "dist/index.css"
+		".": "./dist/index.bundle.js",
+		"./accordion": "./dist/accordion.bundle.js",
+		"./styles.css": "./dist/index.css"
 	},
 	"publishConfig": {
 		"access": "public"
