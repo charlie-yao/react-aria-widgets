@@ -33,7 +33,8 @@
 		"build-dev": "webpack --config webpack.dev.js",
 		"lint": "eslint --fix --ext .jsx,.js ./",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"publish": "cp ../../README.md ./README.md && yarn npm publish"
 	},
 	"bugs": {
 		"url": "https://github.com/charlie-yao/react-aria-widgets/issues"
