@@ -75,7 +75,7 @@ The other flavor consists of what React ARIA WIdgets calls "base components". Un
 
 Documentation for each component, HOC, hook, etc. can be found on https://www.charlieyao.com/react-aria-widgets.
 
-**NOTE: If you're using [Next.js](https://nextjs.org), the components may need to be [lazy loaded](https://www.charlieyao.com/react-aria-widgets/support#next-js-lazy-load)!
+**NOTE: If you're using [Next.js](https://nextjs.org), the components may need to be [lazy loaded](https://www.charlieyao.com/react-aria-widgets/support#next-js-lazy-load)!**
 
 ---
 
