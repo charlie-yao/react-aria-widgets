@@ -3,6 +3,56 @@ import Head from 'next/head';
 //Components
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
+/* eslint-disable operator-linebreak */
+const NEXT_EXAMPLE_FAQ_PAGE =
+`//In a hypothetical pages/faq/index.js
+import dynamic from 'next/dynamic';
+
+const FAQAccordion = dynamic(
+	() => import('../../components/FAQAccordion'),
+	{
+		ssr: false,
+		loading: () => <p>Loading, please wait...</p>,
+	},
+);
+
+export default function FAQPage() {
+	return (
+		<>
+			<h1>Frequently Asked Questions</h1>
+			<FAQAccordion />
+		</>
+	);
+}`;
+
+const NEXT_EXAMPLE_FAQ_ACCORDION =
+`//In a hypothetical components/FAQAccordion.js
+import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default function FAQAccordion () {
+	return (
+		<Accordion headerlevel={ 2 }>
+			<AccordionSection id="faq-1">
+				<AccordionHeader>
+					How do I "foo"?
+				</AccordionHeader>
+				<AccordionPanel>
+					Great question!
+				</AccordionPanel>
+			</AccordionSection>
+			<AccordionSection id="faq-2">
+				<AccordionHeader>
+					How do I "bar"?
+				</AccordionHeader>
+				<AccordionPanel>
+					Hard to say!	
+				</AccordionPanel>
+			</AccordionSection>
+		</Accordion>
+	);
+}`;
+/* eslint-enable operator-linebreak */
+
 export default function SupportPage() {
 	return (
 		<>
@@ -86,6 +136,27 @@ export default function SupportPage() {
 					<a href="https://flow.org/">Flow</a> is used notate types in the API, though
 					the project itself doesn&apos;t use Flow internally.
 				</p>
+				<h3>Next.js and <code>ReferenceError: self is not defined</code></h3>
+				<p>
+					This error occurs when Next.js pre-renders a page (whether using static generation or
+					server-side rendering) seemingly because React ARIA Widgets is trying to execute
+					code that only exists on clients (i.e. browsers).
+				</p>
+				<p>
+					To get around this on a pre-rendered page, you can lazy load React ARIA Widgets with
+					{ ' ' }
+					<a href="https://nextjs.org/docs/advanced-features/dynamic-import">
+						<code>next/dynamic</code>
+					</a>
+					{ /**/ }
+					. For example:
+				</p>
+				<SyntaxHighlighter language="jsx">
+					{ NEXT_EXAMPLE_FAQ_PAGE }
+				</SyntaxHighlighter>
+				<SyntaxHighlighter language="jsx">
+					{ NEXT_EXAMPLE_FAQ_ACCORDION }
+				</SyntaxHighlighter>
 			</article>
 		</>
 	);
