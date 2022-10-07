@@ -53,6 +53,17 @@ const CustomAccordion = dynamic(
 );
 
 /* eslint-disable operator-linebreak */
+const IMPORT_EXAMPLE =
+` import {
+	withAccordionManager,
+	Accordion,
+	AccordionSection,
+	AccordionHeader,
+	AccordionPanel,
+	BaseAccordionHeader,
+	BaseAccordionPanel,
+} from 'react-aria-widgets/accordion';`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
 	buttonProps={{ 'aria-expanded': false }}
@@ -95,6 +106,13 @@ function AccordionPage() {
 					content that is associated with an accordion header.
 				</p>
 				<h2 id="usage-and-examples">Usage and Examples</h2>
+				<p>
+					Components for the accordion pattern can be found in
+					the <code>react-aria-widgets/accordion</code> submodule.
+				</p>
+				<SyntaxHighlighter language="javascript">
+					{ IMPORT_EXAMPLE }
+				</SyntaxHighlighter>
 				<h3 id="basic-usage">Basic Usage</h3>
 				<p>
 					A basic accordion consists of an <code>&lt;Accordion&gt;</code> wrapping around

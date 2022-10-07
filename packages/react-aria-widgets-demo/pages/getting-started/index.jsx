@@ -91,15 +91,15 @@ export default function GettingStartedPage() {
 				</SyntaxHighlighter>
 				<p id="base-components">
 					The other flavor consists of what React ARIA Widgets calls "base components". Unlike
-					the "ready-to-use" components which may come with higher-order components, hooks, or other
+					the "ready-to-use" components which may come with higher-order components (HOCs), hooks, or other
 					abstractions, these base components are simply thin wrappers over regular HTML elements and
 					use PropTypes to dictate which HTML and ARIA attributes are necessary to satisfy the APG.
 					For developers who wish to write their own implementations (or simply wish to have finer control), they
 					may prefer to use these base components.
 				</p>
 				<p>
-					Documentation on which components are available, how to import them, and how to use them, are
-					available under "Patterns" in the main navigation menu.
+					Documentation for each component, HOC, hook, etc. can be found
+					under "Patterns" in the main navigation menu.
 				</p>
 				<p className="notification is-light is-info">
 					Note: if you're using <a href="https://nextjs.org">Next.js</a>, the components
