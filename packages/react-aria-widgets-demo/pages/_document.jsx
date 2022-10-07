@@ -50,7 +50,10 @@ export default function Document() {
 			<body>
 				<Main />
 				<NextScript />
+				{ /* eslint-disable react/no-danger */ }
+				{ /* This is how they did it in the Next.js tutorial o.O */ }
 				<script dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }} />
+				{ /* eslint-enable react/no-danger */ }
 			</body>
 		</Html>
 	);
