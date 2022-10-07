@@ -17,13 +17,13 @@ See https://www.charlieyao.com/react-aria-widgets for examples and documentation
 
 With npm:
 
-```
+```bash
 npm install react-aria-widgets
 ```
 
 With Yarn:
 
-```
+```bash
 yarn add react-aria-widgets
 ```
 
@@ -33,13 +33,13 @@ React ARIA Widgets provides two "flavors" of components. One flavor consists of 
 
 If you wish to use the "ready-to-use" components, you must first import the stylesheet provided by React ARIA Widgets. Though the provided components are mostly unstyled, some default styling is still used. If you're using webpack, it's as easy as:
 
-```
+```jsx
 import 'react-aria-widgets/styles.css';
 ```
 
 From here, you can simply import and use whichever components that you need.
 
-```
+```jsx
 import {
 	Accordion,
 	AccordionSection,
@@ -75,7 +75,7 @@ The other flavor consists of what React ARIA WIdgets calls "base components". Un
 
 Documentation for each component, HOC, hook, etc. can be found on https://www.charlieyao.com/react-aria-widgets.
 
-**NOTE: If you're using [Next.js](https://nextjs.org), the components may need to be (lazy loaded)[https://www.charlieyao.com/react-aria-widgets/support#next-js-lazy-load]!
+**NOTE: If you're using [Next.js](https://nextjs.org), the components may need to be [lazy loaded](https://www.charlieyao.com/react-aria-widgets/support#next-js-lazy-load)!
 
 ---
 
