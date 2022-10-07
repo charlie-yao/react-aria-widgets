@@ -68,7 +68,6 @@ export default function withAccordionManager(Component) {
 
 		toggleSection = (id) => {
 			const { allowMultiple } = this.props;
-			const allowToggle = this.getAllowToggle();
 			const isExpanded = this.getIsExpanded(id);
 			const isDisabled = this.getIsDisabled(id);
 
@@ -83,7 +82,7 @@ export default function withAccordionManager(Component) {
 				}
 				else {
 					expandedSections.clear();
-					
+
 					//Expand the section if it was originally collapsed,
 					//or if it shouldn't have been collapsed as a result
 					//of the indiscriminate call to clear() that we just made.

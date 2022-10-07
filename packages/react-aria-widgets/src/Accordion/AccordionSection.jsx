@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
-
 //HOCs
 import withNoOp from 'src/hocs/withNoOp';
 
