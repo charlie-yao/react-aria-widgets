@@ -1,7 +1,7 @@
 /* eslint-disable operator-linebreak */
 
 export const basicAccordionExample =
-`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
 export default function BasicAccordion() {
 	return (
@@ -52,7 +52,7 @@ export default function BasicAccordion() {
 }`;
 
 export const disableMultipleExample =
-`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
 export default function DisableMultipleAccordion() {
 	return (
@@ -103,7 +103,7 @@ export default function DisableMultipleAccordion() {
 }`;
 
 export const disableToggleExample =
-`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+`import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
 export default function DisableToggleAccordion() {
 	return (
@@ -159,7 +159,7 @@ export const CustomAccordionExample =
 	AccordionSection,
 	AccordionHeader,
 	AccordionPanel,
-} from '@charlie-yao/react-aria-widgets/accordion';
+} from 'react-aria-widgets/accordion';
 
 //Components
 import StyledAccordionHeader from './StyledAccordionHeader';
@@ -225,7 +225,7 @@ export default function CustomAccordion(props) {
 export const StyledAccordionHeaderExample =
 `import React from 'react';
 import PropTypes from 'prop-types';
-import { AccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
+import { AccordionHeader } from 'react-aria-widgets/accordion';
 
 function StyledAccordionHeader(props) {
 	const { headerProps, buttonProps, ...rest } = props;
@@ -263,7 +263,7 @@ export default StyledAccordionHeader;`;
 
 export const StyledAccordionPanelExample =
 `import React from 'react';
-import { AccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+import { AccordionPanel } from 'react-aria-widgets/accordion';
 
 export default function StyledAccordionPanel(props) {
 	return (
@@ -277,7 +277,7 @@ export default function StyledAccordionPanel(props) {
 export const CustomAccordionHeaderExample =
 `import React from 'react';
 import PropTypes from 'prop-types';
-import { BaseAccordionHeader } from '@charlie-yao/react-aria-widgets/accordion';
+import { BaseAccordionHeader } from 'react-aria-widgets/accordion';
 
 function CustomAccordionHeader(props) {
 	const {
@@ -350,7 +350,7 @@ export default CustomAccordionHeader;`;
 export const CustomAccordionPanelExample =
 `import React from 'react';
 import PropTypes from 'prop-types';
-import { BaseAccordionPanel } from '@charlie-yao/react-aria-widgets/accordion';
+import { BaseAccordionPanel } from 'react-aria-widgets/accordion';
 
 function CustomAccordionPanel(props) {
 	const {

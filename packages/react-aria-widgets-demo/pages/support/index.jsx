@@ -79,7 +79,7 @@ export default function SupportPage() {
 					Remember to import the stylesheet!
 				</p>
 				<SyntaxHighlighter language="javascript">
-					import &apos;@charlie-yao/react-aria-widgets/styles.css&apos;;
+					import &apos;react-aria-widgets/styles.css&apos;;
 				</SyntaxHighlighter>
 				<h3>Type Notation in the API</h3>
 				<p>
