@@ -10,7 +10,7 @@ See https://www.charlieyao.com/react-aria-widgets for examples and documentation
 
 * [(Mostly) unstyled](https://www.charlieyao.com/react-aria-widgets/support#faq-mostly-unstyled) components that are easily composable and customizable
 * Modular design that abstracts stateful logic into higher-order components (HOCs) and React hooks
-* Unopinionated ["base" components](https://www.charlieyao.com/getting-started#base-components) that exist primarily to document the necessary HTML elements and ARIA attributes for developers who wish to write their own implementations
+* Unopinionated ["base" components](https://www.charlieyao.com/react-aria-widgets/getting-started#base-components) that exist primarily to document the necessary HTML elements and ARIA attributes for developers who wish to write their own implementations
 * Adheres to the APG complete with focus control and full keyboard support
 
 ## Installation
