@@ -23,9 +23,9 @@ export default function Document() {
 				<meta property="og:type" content="website" />
 				<meta property="og:description" content={ description } />
 				<meta property="og:locale" content="en_US" />
-				{ /* <meta property="og:url" content="https://charlieyao.com/react-aria-widgets" /> */ }
-				{ /* <meta property="og:image" content="" /> */ }
-				{ /* <meta property="og:image:alt" content="" /> */ }
+				<meta property="og:url" content="https://www.charlieyao.com/react-aria-widgets" />
+				<meta property="og:image" content="https://www.charlieyao.com/react-aria-widgets/favicon-512.png" />
+				<meta property="og:image:alt" content="Universal Access Icon" />
 
 				{ /* Twitter Card */ }
 				<meta name="twitter:card" content="summary" />
@@ -33,9 +33,9 @@ export default function Document() {
 				<meta name="twitter:description" content={ description } />
 				{ /* <meta name="twitter:site" content="@site_account" /> */ }
 				{ /* <meta name="twitter:creator" content="@individual_account" */ }
-				{ /* <meta name="twitter:url" content="" /> */ }
-				{ /* <meta name="twitter:image" content="" /> */ }
-				{ /* <meta name="twitter:image:alt" content="" /> */ }
+				<meta name="twitter:url" content="https://www.charlieyao.com/react-aria-widgets" />
+				<meta name="twitter:image" content="https://www.charlieyao.com/react-aria-widgets/favicon-512.png" />
+				<meta name="twitter:image:alt" content="Universal Access Icon" />
 
 				{ /* Favicons */ }
 				<link rel="alternate icon" href="/react-aria-widgets/favicon.ico" sizes="any" />
