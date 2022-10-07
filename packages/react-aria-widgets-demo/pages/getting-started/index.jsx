@@ -68,7 +68,8 @@ export default function GettingStartedPage() {
 				<p>
 					React ARIA Widgets provides two "flavors" of components. One flavor consists of "ready-to-use"
 					components with the intention being that developers can simply provide their own styling and then
-					drop them into their website without having to, say, write their own state management logic.
+					drop them into their website. If state management logic is needed to fully satisfy the APG,
+					React ARIA Widgets will provide it.
 				</p>
 				<p>
 					If you wish to use the "ready-to-use" components, you must first import the stylesheet provided
@@ -91,11 +92,11 @@ export default function GettingStartedPage() {
 				</SyntaxHighlighter>
 				<p id="base-components">
 					The other flavor consists of what React ARIA Widgets calls "base components". Unlike
-					the "ready-to-use" components which may come with higher-order components (HOCs), hooks, or other
-					abstractions, these base components are simply thin wrappers over regular HTML elements and
-					use PropTypes to dictate which HTML and ARIA attributes are necessary to satisfy the APG.
-					For developers who wish to write their own implementations (or simply wish to have finer control), they
-					may prefer to use these base components.
+					the "ready-to-use" components which may come with higher-order components (HOCs), hooks, or
+					event management logic, these base components are simply thin wrappers over basic HTML elements
+					and use PropTypes to dictate which HTML and ARIA attributes are necessary to satisfy the APG.
+					For developers who wish to have finer control (or even write their own implementations) and
+					are simply looking for "guide rails", these base components may be more preferable to them.
 				</p>
 				<p>
 					Documentation for each component, HOC, hook, etc. can be found
