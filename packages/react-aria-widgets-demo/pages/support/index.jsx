@@ -136,7 +136,7 @@ export default function SupportPage() {
 					<a href="https://flow.org/">Flow</a> is used notate types in the API, though
 					the project itself doesn&apos;t use Flow internally.
 				</p>
-				<h3>Next.js and <code>ReferenceError: self is not defined</code></h3>
+				<h3 id="next-js-lazy-load">Next.js and <code>ReferenceError: self is not defined</code></h3>
 				<p>
 					This error occurs when Next.js pre-renders a page (whether using static generation or
 					server-side rendering) seemingly because React ARIA Widgets is trying to execute

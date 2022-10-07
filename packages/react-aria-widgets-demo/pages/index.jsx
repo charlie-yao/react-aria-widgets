@@ -27,7 +27,7 @@ export default function HomePage() {
 				<li>
 					Unopinionated
 					{ ' ' }
-					<Link href="/getting-started/#getting-started-base-components">
+					<Link href="/getting-started#base-components">
 						<a>base components</a>
 					</Link>
 					{ ' ' }
