@@ -34,7 +34,7 @@
 	},
 	"devDependencies": {
 		"bulma": "^0.9.4",
-		"eslint": "^8.3.0",
+		"eslint": "^8.35.0",
 		"eslint-config-next": "12.1.5",
 		"sass": "^1.54.4"
 	}
