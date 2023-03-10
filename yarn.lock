@@ -2770,7 +2770,7 @@ __metadata:
     react-dom: ^17.0.2
     react-syntax-highlighter: ^15.5.0
     react-tabs: ^4
-    sass: ^1.54.4
+    sass: ^1.58.3
   languageName: unknown
   linkType: soft
 
@@ -14592,7 +14592,7 @@ __metadata:
     prop-types: ^15.8.1
     react: ^17.0.2
     react-dom: ^17.0.2
-    sass: ^1.44.0
+    sass: ^1.58.3
     sass-loader: ^13.2.0
     style-loader: ^3.3.1
     webpack: ^5.76.0
@@ -15453,29 +15453,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.44.0":
-  version: 1.49.9
-  resolution: "sass@npm:1.49.9"
+"sass@npm:^1.58.3":
+  version: 1.58.3
+  resolution: "sass@npm:1.58.3"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: e5653e3499274c5127dcb5c9e7c5f6930378fc61764d999a5d8965782e027181ed09714f94836dec74ef55e3a858107fe6c571954c0cab0ad0be5ab8e586829c
-  languageName: node
-  linkType: hard
-
-"sass@npm:^1.54.4":
-  version: 1.54.4
-  resolution: "sass@npm:1.54.4"
-  dependencies:
-    chokidar: ">=3.0.0 <4.0.0"
-    immutable: ^4.0.0
-    source-map-js: ">=0.6.2 <2.0.0"
-  bin:
-    sass: sass.js
-  checksum: bb6aead09764de450a02b9a66e4ee538f0ba6bc8f2fc3905c71b2c302b5f47e089b510b86cfa7ef2d4139c210c8abf99fe157e7a5bd356c057f10d29e6c4b44c
+  checksum: 35a2b98c037ef80fdc93c9b0be846e6ccc7d75596351a37ee79c397e66666d0a754c52c4696e746c0aff32327471e185343ca349e998a58340411adc9d0489a5
   languageName: node
   linkType: hard
 

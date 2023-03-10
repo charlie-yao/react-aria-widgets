@@ -6086,7 +6086,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:17.0.2"],\
             ["react-syntax-highlighter", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:15.5.0"],\
             ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1"],\
-            ["sass", "npm:1.54.4"]\
+            ["sass", "npm:1.58.3"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -18714,7 +18714,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.14"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:17.0.2"],\
-            ["sass", "npm:1.54.4"],\
+            ["sass", "npm:1.58.3"],\
             ["styled-jsx", "virtual:8d1ae475d09d41068d8fd23f9eb2c7623a4b89be0b07de96718b066b216cdac120fcceaa6b29f100523eaf370751859c1bbc5a99f50a32d8553f03f07ba82639#npm:5.0.7"],\
             ["use-sync-external-store", "virtual:8d1ae475d09d41068d8fd23f9eb2c7623a4b89be0b07de96718b066b216cdac120fcceaa6b29f100523eaf370751859c1bbc5a99f50a32d8553f03f07ba82639#npm:1.2.0"]\
           ],\
@@ -21253,7 +21253,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prop-types", "npm:15.8.1"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:17.0.2"],\
-            ["sass", "npm:1.49.9"],\
+            ["sass", "npm:1.58.3"],\
             ["sass-loader", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:13.2.0"],\
             ["style-loader", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:3.3.1"],\
             ["webpack", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:5.76.0"],\
@@ -21293,7 +21293,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prop-types", "npm:15.8.1"],\
             ["react", "npm:17.0.2"],\
             ["react-dom", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:17.0.2"],\
-            ["sass", "npm:1.49.9"],\
+            ["sass", "npm:1.58.3"],\
             ["sass-loader", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:13.2.0"],\
             ["style-loader", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:3.3.1"],\
             ["webpack", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:5.76.0"],\
@@ -22208,20 +22208,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["sass", [\
-        ["npm:1.49.9", {\
-          "packageLocation": "./.yarn/cache/sass-npm-1.49.9-0017d01f2e-e5653e3499.zip/node_modules/sass/",\
+        ["npm:1.58.3", {\
+          "packageLocation": "./.yarn/cache/sass-npm-1.58.3-8afd137ed0-35a2b98c03.zip/node_modules/sass/",\
           "packageDependencies": [\
-            ["sass", "npm:1.49.9"],\
-            ["chokidar", "npm:3.5.3"],\
-            ["immutable", "npm:4.0.0"],\
-            ["source-map-js", "npm:1.0.2"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:1.54.4", {\
-          "packageLocation": "./.yarn/cache/sass-npm-1.54.4-a1aa26a8a6-bb6aead097.zip/node_modules/sass/",\
-          "packageDependencies": [\
-            ["sass", "npm:1.54.4"],\
+            ["sass", "npm:1.58.3"],\
             ["chokidar", "npm:3.5.3"],\
             ["immutable", "npm:4.0.0"],\
             ["source-map-js", "npm:1.0.2"]\
@@ -22250,7 +22240,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["klona", "npm:2.0.5"],\
             ["neo-async", "npm:2.6.2"],\
             ["node-sass", null],\
-            ["sass", "npm:1.49.9"],\
+            ["sass", "npm:1.58.3"],\
             ["sass-embedded", null],\
             ["webpack", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:5.76.0"]\
           ],\
@@ -22281,7 +22271,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["klona", "npm:2.0.5"],\
             ["neo-async", "npm:2.6.2"],\
             ["node-sass", null],\
-            ["sass", "npm:1.49.9"],\
+            ["sass", "npm:1.58.3"],\
             ["sass-embedded", null],\
             ["webpack", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:5.76.0"]\
           ],\
