@@ -18,16 +18,16 @@ function Template(args) {
 
 export const Expanded = Template.bind({});
 Expanded.args = {
-	isExpanded: true,
+	getIsExpanded: () => true,
 };
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
-	isExpanded: false,
+	getIsExpanded: () => false,
 };
 
 export const WithClassName = Template.bind({});
 WithClassName.args = {
-	isExpanded: false,
+	getIsExpanded: () => false,
 	className: 'dummyClassName',
 };

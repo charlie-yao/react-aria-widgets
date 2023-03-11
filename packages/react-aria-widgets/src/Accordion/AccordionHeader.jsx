@@ -13,9 +13,17 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 function AccordionHeader(props) {
 	const {
-		children, id, index, headerLevel,
-		setHeaderRef, onClick, onKeyDown,
-		getIsExpanded, getIsDisabled, headerProps, buttonProps,
+		children,
+		id,
+		index,
+		headerLevel,
+		setHeaderRef,
+		onClick,
+		onKeyDown,
+		getIsExpanded,
+		getIsDisabled,
+		headerProps,
+		buttonProps,
 	} = props;
 	const isExpanded = getIsExpanded(id);
 	const isDisabled = getIsDisabled(id);
