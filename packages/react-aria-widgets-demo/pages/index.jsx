@@ -18,7 +18,7 @@ export default function HomePage() {
 			<h2>Features</h2>
 			<ul>
 				<li>
-					<Link href="/support/#faq-mostly-unstyled"><a>(Mostly) unstyled</a></Link> components
+					<Link href="/support/#faq-mostly-unstyled">(Mostly) unstyled</Link> components
 					that are easily composable and customizable.
 				</li>
 				<li>
@@ -28,7 +28,7 @@ export default function HomePage() {
 					Unopinionated
 					{ ' ' }
 					<Link href="/getting-started#base-components">
-						<a>base components</a>
+						base components
 					</Link>
 					{ ' ' }
 					with PropTypes that dictate the necessary HTML/ARIA attributes

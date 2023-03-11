@@ -18,18 +18,18 @@ function Navigation(props) {
 				</p>
 				<ul className="menu-list">
 					<li>
-						<Link href="/">
-							<a className={ pathname === '/' ? 'is-active' : '' }>Home</a>
+						<Link href="/" className={ pathname === '/' ? 'is-active' : '' }>
+							Home
 						</Link>
 					</li>
 					<li>
-						<Link href="/getting-started">
-							<a className={ pathname === '/getting-started' ? 'is-active' : '' }>Getting Started</a>
+						<Link href="/getting-started" className={ pathname === '/getting-started' ? 'is-active' : '' }>
+							Getting Started
 						</Link>
 					</li>
 					<li>
-						<Link href="/support">
-							<a className={ pathname === '/support' ? 'is-active' : '' }>Support</a>
+						<Link href="/support" className={ pathname === '/support' ? 'is-active' : '' }>
+							Support
 						</Link>
 					</li>
 				</ul>
@@ -38,8 +38,8 @@ function Navigation(props) {
 				</p>
 				<ul className="menu-list">
 					<li>
-						<Link href="/accordion">
-							<a className={ pathname === '/accordion' ? 'is-active' : '' }>Accordion</a>
+						<Link href="/accordion" className={ pathname === '/accordion' ? 'is-active' : '' }>
+							Accordion
 						</Link>
 					</li>
 				</ul>

@@ -225,7 +225,7 @@ function AccordionPage() {
 					collapsed state. Custom implementations allow developers to use their own CSS,
 					styles, or even options like the HTML attribute <code>hidden</code> (though that
 					may not be semantically appropriate - see
-					the <Link href="/support#faq-hidden-vs-display-none"><a>FAQ</a></Link> for more
+					the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link> for more
 					information).
 				</p>
 				<CustomAccordion />

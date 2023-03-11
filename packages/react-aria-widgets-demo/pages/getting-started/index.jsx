@@ -76,7 +76,7 @@ export default function GettingStartedPage() {
 					by React ARIA Widgets. Though the provided components are
 					{ ' ' }
 					<Link href="/support/#faq-mostly-unstyled">
-						<a>mostly unstyled</a>
+						mostly unstyled
 					</Link>
 					{ /**/ }
 					, some default styling is still used. If you&apos;re using webpack, it&apos;s as easy as:
@@ -104,7 +104,7 @@ export default function GettingStartedPage() {
 				</p>
 				<p className="notification is-light is-info">
 					Note: if you&apos;re using <a href="https://nextjs.org">Next.js</a>, the components
-					may need to be <Link href="/support#next-js-lazy-load"><a>lazy loaded</a></Link>!
+					may need to be <Link href="/support#next-js-lazy-load">lazy loaded</Link>!
 				</p>
 			</article>
 		</>
