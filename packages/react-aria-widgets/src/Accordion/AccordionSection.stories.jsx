@@ -45,27 +45,31 @@ export const RenderFunction = Template.bind({});
 RenderFunction.args = {
 	children: (args) => {
 		const {
-			id, index, headerLevel, getIsExpanded, getIsDisabled,
-			setHeaderRef, onClick, onKeyDown,
+			id,
+			index,
+			headerLevel,
+			getIsExpanded,
+			getIsDisabled,
+			setHeaderRef,
+			onClick,
+			onKeyDown,
 		} = args;
-		const isExpanded = getIsExpanded(id);
-		const isDisabled = getIsDisabled(id);
-
+		
 		return (
 			<Fragment>
 				<AccordionHeader
 					id={ id }
 					index={ index }
 					headerLevel={ headerLevel }
-					isExpanded={ isExpanded }
-					isDisabled={ isDisabled }
 					setHeaderRef={ setHeaderRef }
 					onClick={ onClick }
 					onKeyDown={ onKeyDown }
+					getIsExpanded={ getIsExpanded }
+					getIsDisabled={ getIsDisabled }
 				>
 					Header
 				</AccordionHeader>
-				<AccordionPanel id={ id } isExpanded={ isExpanded }>
+				<AccordionPanel id={ id } getIsExpanded={ getIsExpanded }>
 					Hello world!
 				</AccordionPanel>
 			</Fragment>

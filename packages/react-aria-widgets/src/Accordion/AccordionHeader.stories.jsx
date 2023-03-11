@@ -23,16 +23,18 @@ function Template(args) {
 
 export const Expanded = Template.bind({});
 Expanded.args = {
-	isExpanded: true,
+	getIsExpanded: () => true,
+	getIsDisabled: () => false,
 };
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
-	isExpanded: false,
+	getIsExpanded: () => false,
+	getIsDisabled: () => false,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-	isExpanded: true,
-	isDisabled: true,
+	getIsExpanded: () => true,
+	getIsDisabled: () => true,
 };
