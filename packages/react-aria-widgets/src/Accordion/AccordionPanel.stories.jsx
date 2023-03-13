@@ -4,30 +4,30 @@ import React from 'react';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
 export default {
-	title: 'Accordion/AccordionPanel',
-	component: AccordionPanel,
-	args: {
-		children: 'Hello world!',
-		id: 'accordionId',
-	},
+  title: 'Accordion/AccordionPanel',
+  component: AccordionPanel,
+  args: {
+    children: 'Hello world!',
+    id: 'accordionId',
+  },
 };
 
 function Template(args) {
-	return <AccordionPanel { ...args } />;
+  return <AccordionPanel { ...args } />;
 }
 
 export const Expanded = Template.bind({});
 Expanded.args = {
-	getIsExpanded: () => true,
+  getIsExpanded: () => true,
 };
 
 export const Collapsed = Template.bind({});
 Collapsed.args = {
-	getIsExpanded: () => false,
+  getIsExpanded: () => false,
 };
 
 export const WithClassName = Template.bind({});
 WithClassName.args = {
-	getIsExpanded: () => false,
-	className: 'dummyClassName',
+  getIsExpanded: () => false,
+  className: 'dummyClassName',
 };

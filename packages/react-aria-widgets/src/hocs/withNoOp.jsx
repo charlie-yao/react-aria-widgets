@@ -17,11 +17,11 @@ import React from 'react';
  * @return {Object}
  */
 export default function withNoOp(Component) {
-	const NoOp = React.forwardRef((props, ref) => (
-		<Component { ...props } ref={ ref } />
-	));
+  const NoOp = React.forwardRef((props, ref) => (
+    <Component { ...props } ref={ ref } />
+  ));
 
-	NoOp.displayName = 'NoOp';
+  NoOp.displayName = 'NoOp';
 
-	return NoOp;
+  return NoOp;
 }
