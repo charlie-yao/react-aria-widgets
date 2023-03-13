@@ -16,9 +16,7 @@ function Header(props) {
 		<header className={ styles.Header }>
 			<div className={ styles.HeaderBrand }>
 				<Link href="/">
-					<a>
-						React ARIA Widgets
-					</a>
+					React ARIA Widgets
 				</Link>
 			</div>
 			<div className={ styles.HeaderNav }>

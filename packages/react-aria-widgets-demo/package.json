@@ -24,18 +24,18 @@
 		"**/*.scss"
 	],
 	"dependencies": {
-		"next": "^12.3.1",
+		"next": "^13.2.4",
 		"prop-types": "^15.8.1",
-		"react": "latest",
+		"react": "^18.2",
 		"react-aria-widgets": "workspace:*",
-		"react-dom": "latest",
+		"react-dom": "^18.2",
 		"react-syntax-highlighter": "^15.5.0",
 		"react-tabs": "^4"
 	},
 	"devDependencies": {
 		"bulma": "^0.9.4",
-		"eslint": "^8.35.0",
-		"eslint-config-next": "12.1.5",
-		"sass": "^1.58.3"
+		"eslint": "^8.36.0",
+		"eslint-config-next": "^13.2.4",
+		"sass": "1.59.2"
 	}
 }
