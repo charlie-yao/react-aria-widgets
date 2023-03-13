@@ -41,33 +41,33 @@ From here, you can simply import and use whichever components that you need.
 
 ```jsx
 import {
-	Accordion,
-	AccordionSection,
-	AccordionHeader,
-	AccordionPanel,
+  Accordion,
+  AccordionSection,
+  AccordionHeader,
+  AccordionPanel,
 } from 'react-aria-widgets/accordion';
 
 export default function MyAccordion() {
-	return (
-		<Accordion headerLevel={ 2 }>
-			<AccordionSection id="section-1">
-				<AccordionHeader>
-					Hello world!
-				</AccordionHeader>
-				<AccordionPanel>
-					Goodbye!
-				</AccordionPanel>
-			</AccordionSection>
-			<AccordionSection id="section-2">
-				<AccordionHeader>
-					Hello world!
-				</AccordionHeader>
-				<AccordionPanel>
-					Goodbye!
-				</AccordionPanel>
-			</AccordionSection>
-		</Accordion>
-	);
+  return (
+    <Accordion headerLevel={ 2 }>
+      <AccordionSection id="section-1">
+        <AccordionHeader>
+          Hello world!
+        </AccordionHeader>
+        <AccordionPanel>
+          Goodbye!
+        </AccordionPanel>
+      </AccordionSection>
+      <AccordionSection id="section-2">
+        <AccordionHeader>
+          Hello world!
+        </AccordionHeader>
+        <AccordionPanel>
+          Goodbye!
+        </AccordionPanel>
+      </AccordionSection>
+    </Accordion>
+  );
 }
 ```
 
