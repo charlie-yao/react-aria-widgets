@@ -1,12 +1,12 @@
 @import '~bulma/sass/utilities/mixins';
 
 .SubNav {
-	position: sticky;
-	top: calc(var(--header-height) + var(--header-margin));
-	overflow: auto;
-	height: calc(100vh - var(--header-height) - var(--header-margin));
+  position: sticky;
+  top: calc(var(--header-height) + var(--header-margin));
+  overflow: auto;
+  height: calc(100vh - var(--header-height) - var(--header-margin));
 
-	@include until-widescreen {
-		display: none;
-	}
+  @include until-widescreen {
+    display: none;
+  }
 }
