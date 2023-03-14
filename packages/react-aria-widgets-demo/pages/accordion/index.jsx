@@ -54,25 +54,25 @@ const CustomAccordion = dynamic(
 
 /* eslint-disable operator-linebreak */
 const IMPORT_EXAMPLE =
-` import {
-	withAccordionManager,
-	Accordion,
-	AccordionSection,
-	AccordionHeader,
-	AccordionPanel,
-	BaseAccordionHeader,
-	BaseAccordionPanel,
+`import {
+  withAccordionManager,
+  Accordion,
+  AccordionSection,
+  AccordionHeader,
+  AccordionPanel,
+  BaseAccordionHeader,
+  BaseAccordionPanel,
 } from 'react-aria-widgets/accordion';`;
 
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
-	buttonProps={{ 'aria-expanded': false }}
-	isExpanded={ true }
+  buttonProps={{ 'aria-expanded': false }}
+  isExpanded={ true }
 />`;
 
 const HEADER_PROPS_EXAMPLE =
 `<BaseAccordionHeader
-	headerProps={{ className: 'custom-h2-class' }}
+  headerProps={{ className: 'custom-h2-class' }}
 />`;
 /* eslint-enable operator-linebreak */
 

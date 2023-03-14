@@ -9,20 +9,20 @@ const NEXT_EXAMPLE_FAQ_PAGE =
 import dynamic from 'next/dynamic';
 
 const FAQAccordion = dynamic(
-	() => import('../../components/FAQAccordion'),
-	{
-		ssr: false,
-		loading: () => <p>Loading, please wait...</p>,
-	},
+  () => import('../../components/FAQAccordion'),
+  {
+    ssr: false,
+    loading: () => <p>Loading, please wait...</p>,
+  },
 );
 
 export default function FAQPage() {
-	return (
-		<>
-			<h1>Frequently Asked Questions</h1>
-			<FAQAccordion />
-		</>
-	);
+  return (
+    <>
+      <h1>Frequently Asked Questions</h1>
+      <FAQAccordion />
+    </>
+  );
 }`;
 
 const NEXT_EXAMPLE_FAQ_ACCORDION =
@@ -30,26 +30,26 @@ const NEXT_EXAMPLE_FAQ_ACCORDION =
 import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
 export default function FAQAccordion () {
-	return (
-		<Accordion headerlevel={ 2 }>
-			<AccordionSection id="faq-1">
-				<AccordionHeader>
-					How do I "foo"?
-				</AccordionHeader>
-				<AccordionPanel>
-					Great question!
-				</AccordionPanel>
-			</AccordionSection>
-			<AccordionSection id="faq-2">
-				<AccordionHeader>
-					How do I "bar"?
-				</AccordionHeader>
-				<AccordionPanel>
-					Hard to say!	
-				</AccordionPanel>
-			</AccordionSection>
-		</Accordion>
-	);
+  return (
+    <Accordion headerlevel={ 2 }>
+      <AccordionSection id="faq-1">
+        <AccordionHeader>
+          How do I "foo"?
+        </AccordionHeader>
+        <AccordionPanel>
+          Great question!
+        </AccordionPanel>
+      </AccordionSection>
+      <AccordionSection id="faq-2">
+        <AccordionHeader>
+          How do I "bar"?
+        </AccordionHeader>
+        <AccordionPanel>
+          Hard to say!  
+        </AccordionPanel>
+      </AccordionSection>
+    </Accordion>
+  );
 }`;
 /* eslint-enable operator-linebreak */
 
