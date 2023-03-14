@@ -25,55 +25,55 @@ gtag('config', '${GOOGLE_ANALYTICS_ID}');
 `;
 
 function App(props) {
-	const { Component, pageProps } = props;
-	const [ isNavExpanded, setNavExpanded ] = useState(false);
-	const router = useRouter();
+  const { Component, pageProps } = props;
+  const [ isNavExpanded, setNavExpanded ] = useState(false);
+  const router = useRouter();
 
-	useEffect(() => {
-		function handleRouteChange(url) {
-			pageView(url);
-			setNavExpanded(false);
-		}
+  useEffect(() => {
+    function handleRouteChange(url) {
+      pageView(url);
+      setNavExpanded(false);
+    }
 
-		router.events.on('routeChangeComplete', handleRouteChange);
-		router.events.on('hashChangeComplete', handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('hashChangeComplete', handleRouteChange);
 
-		return () => {
-			router.events.off('routeChangeComplete', handleRouteChange);
-			router.events.off('routeChangeComplete', handleRouteChange);
-		};
-	}, [ router.events ]);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [ router.events ]);
 
-	return (
-		<>
-			<Head>
-				<title>React ARIA Widgets</title>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-			</Head>
-			<Script
-				strategy="afterInteractive"
-				src={ `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}` }
-			/>
-			<Script
-				id="gtag-init"
-				strategy="afterInteractive"
-				dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }}
-			/>
-			<Layout
-				isNavExpanded={ isNavExpanded }
-				setNavExpanded={ setNavExpanded }
-				SubNav={ Component.SubNav }
-			>
-				<Component { ...pageProps } />
-			</Layout>
-			<Script src="https://kit.fontawesome.com/60e1a84dd0.js" crossorigin="anonymous" />
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>React ARIA Widgets</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Script
+        strategy="afterInteractive"
+        src={ `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}` }
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }}
+      />
+      <Layout
+        isNavExpanded={ isNavExpanded }
+        setNavExpanded={ setNavExpanded }
+        SubNav={ Component.SubNav }
+      >
+        <Component { ...pageProps } />
+      </Layout>
+      <Script src="https://kit.fontawesome.com/60e1a84dd0.js" crossorigin="anonymous" />
+    </>
+  );
 }
 
 App.propTypes = {
-	Component: PropTypes.func.isRequired,
-	pageProps: PropTypes.object.isRequired,
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.object.isRequired,
 };
 
 export default App;
