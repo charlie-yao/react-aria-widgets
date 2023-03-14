@@ -10,54 +10,54 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 import { Default, RenderFunction } from 'src/Accordion/AccordionSection.stories';
 
 export default {
-	title: 'Accordion/Accordion',
-	component: Accordion,
-	subcomponents: {
-		AccordionSection,
-		AccordionHeader,
-		AccordionPanel,
-	},
-	args: {
-		headerLevel: 2,
-		items: [
-			{ ...Default.args, id: 'section1' },
-			{ ...Default.args, id: 'section2' },
-			{ ...RenderFunction.args, id: 'section3' },
-			{ ...RenderFunction.args, id: 'section4' },
-		],
-	},
+  title: 'Accordion/Accordion',
+  component: Accordion,
+  subcomponents: {
+    AccordionSection,
+    AccordionHeader,
+    AccordionPanel,
+  },
+  args: {
+    headerLevel: 2,
+    items: [
+      { ...Default.args, id: 'section1' },
+      { ...Default.args, id: 'section2' },
+      { ...RenderFunction.args, id: 'section3' },
+      { ...RenderFunction.args, id: 'section4' },
+    ],
+  },
 };
 
 function Template(args) {
-	const { items, ...rest } = args;
+  const { items, ...rest } = args;
 
-	return (
-		<Accordion { ...rest }>
-			{ items.map(item => <AccordionSection key={ item.id } { ...item } />) }
-		</Accordion>
-	);
+  return (
+    <Accordion { ...rest }>
+      { items.map(item => <AccordionSection key={ item.id } { ...item } />) }
+    </Accordion>
+  );
 }
 
 export const MultipleToggle = Template.bind({});
 MultipleToggle.args = {
-	allowMultiple: true,
-	allowToggle: true,
+  allowMultiple: true,
+  allowToggle: true,
 };
 
 export const NoMultipleToggle = Template.bind({});
 NoMultipleToggle.args = {
-	allowMultiple: false,
-	allowToggle: true,
+  allowMultiple: false,
+  allowToggle: true,
 };
 
 export const MultipleNoToggle = Template.bind({});
 MultipleNoToggle.args = {
-	allowMultiple: true,
-	allowToggle: false,
+  allowMultiple: true,
+  allowToggle: false,
 };
 
 export const NoMultipleNoToggle = Template.bind({});
 NoMultipleNoToggle.args = {
-	allowMultiple: false,
-	allowToggle: false,
+  allowMultiple: false,
+  allowToggle: false,
 };

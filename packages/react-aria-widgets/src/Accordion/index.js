@@ -10,11 +10,11 @@ import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 import withAccordionManager from 'src/Accordion/withAccordionManager';
 
 export {
-	Accordion,
-	AccordionSection,
-	AccordionHeader,
-	AccordionPanel,
-	BaseAccordionHeader,
-	BaseAccordionPanel,
-	withAccordionManager,
+  Accordion,
+  AccordionSection,
+  AccordionHeader,
+  AccordionPanel,
+  BaseAccordionHeader,
+  BaseAccordionPanel,
+  withAccordionManager,
 };

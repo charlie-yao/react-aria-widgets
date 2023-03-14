@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import styles from './Main.module.scss';
 
 function Main(props) {
-	const { children } = props;
+  const { children } = props;
 
-	return (
-		<main className={ styles.Main }>
-			{ children }
-		</main>
-	);
+  return (
+    <main className={ styles.Main }>
+      { children }
+    </main>
+  );
 }
 
 Main.propTypes = {
-	children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Main;

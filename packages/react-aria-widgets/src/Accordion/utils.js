@@ -5,5 +5,5 @@
  * @returns {string}
  */
 export function getPanelId(id) {
-	return `${id}-panel`;
+  return `${id}-panel`;
 }

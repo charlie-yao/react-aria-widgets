@@ -6,12 +6,12 @@ import DemoAccordion from 'src/DemoAccordion';
 import 'src/styles.css';
 
 function App() {
-	return (
-		<main className="test">
-			<h1>Accordion</h1>
-			<DemoAccordion />
-		</main>
-	);
+  return (
+    <main className="test">
+      <h1>Accordion</h1>
+      <DemoAccordion />
+    </main>
+  );
 }
 
 export default App;

@@ -18,14 +18,14 @@
  * @returns {Error}
  */
 export function createCustomPropType(customPropValidator, isRequired = false) {
-	return function customPropType(props, propName, componentName) {
-		const prop = props[propName];
+  return function customPropType(props, propName, componentName) {
+    const prop = props[propName];
 
-		if(isRequired && (prop === null || prop === undefined))
-			return new Error(`${propName} is a required prop.`);
-		else
-			return customPropValidator(props, propName, componentName);
-	};
+    if(isRequired && (prop === null || prop === undefined))
+      return new Error(`${propName} is a required prop.`);
+    else
+      return customPropValidator(props, propName, componentName);
+  };
 }
 
 /**
@@ -38,10 +38,10 @@ export function createCustomPropType(customPropValidator, isRequired = false) {
  * @returns {Error}
  */
 function _validateHeaderLevelProp(props, propName) {
-	const headerLevel = props[propName];
+  const headerLevel = props[propName];
 
-	if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
-		return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
+  if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
+    return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
 }
 
 const validateHeaderLevelProp = createCustomPropType(_validateHeaderLevelProp);
