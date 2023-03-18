@@ -3955,6 +3955,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["bulma", "npm:0.9.4"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:13.2.4"],\
+            ["eslint-plugin-jsx-a11y", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1"],\
             ["next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:13.2.4"],\
             ["prop-types", "npm:15.8.1"],\
             ["react", "npm:18.2.0"],\
@@ -11779,7 +11780,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-import-resolver-node", "npm:0.3.7"],\
             ["eslint-import-resolver-typescript", "virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:3.5.3"],\
             ["eslint-plugin-import", "virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:2.27.5"],\
-            ["eslint-plugin-jsx-a11y", "virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:6.7.1"],\
+            ["eslint-plugin-jsx-a11y", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1"],\
             ["eslint-plugin-react", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.32.2"],\
             ["eslint-plugin-react-hooks", "virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:4.6.0"],\
             ["next", "virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:13.2.4"],\
@@ -11927,10 +11928,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:6.7.1", {\
-          "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsx-a11y-virtual-8660dd5b8c/0/cache/eslint-plugin-jsx-a11y-npm-6.7.1-84f912ba17-f166dd5fe7.zip/node_modules/eslint-plugin-jsx-a11y/",\
+        ["virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1", {\
+          "packageLocation": "./.yarn/__virtual__/eslint-plugin-jsx-a11y-virtual-1f992465f1/0/cache/eslint-plugin-jsx-a11y-npm-6.7.1-84f912ba17-f166dd5fe7.zip/node_modules/eslint-plugin-jsx-a11y/",\
           "packageDependencies": [\
-            ["eslint-plugin-jsx-a11y", "virtual:9131971e55a196fc4e04276e387b1b3ff319320c79e927c538209d385379f16decc277a90ebc41faaf5efafc2004cea4bf3241d4eaf7837b3e37f6345a21bda3#npm:6.7.1"],\
+            ["eslint-plugin-jsx-a11y", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1"],\
             ["@babel/runtime", "npm:7.21.0"],\
             ["@types/eslint", null],\
             ["aria-query", "npm:5.1.3"],\
@@ -18620,6 +18621,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["css-loader", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:6.7.3"],\
             ["css-minimizer-webpack-plugin", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:4.2.2"],\
             ["eslint", "npm:8.36.0"],\
+            ["eslint-plugin-jsx-a11y", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1"],\
             ["eslint-plugin-react", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.32.2"],\
             ["eslint-plugin-storybook", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:0.6.11"],\
             ["mini-css-extract-plugin", "virtual:b51a878846852e6f0c770b21b64d9afa549eb55afc5e79de855727bee228e4d69dcda12db80f825120a9bbed1be934b9cddff071d47a7ffba30407cb41da4358#npm:2.7.3"],\
@@ -18661,6 +18663,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["css-loader", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.3"],\
             ["css-minimizer-webpack-plugin", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:4.2.2"],\
             ["eslint", "npm:8.36.0"],\
+            ["eslint-plugin-jsx-a11y", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1"],\
             ["eslint-plugin-react", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.32.2"],\
             ["eslint-plugin-storybook", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:0.6.11"],\
             ["mini-css-extract-plugin", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:2.7.3"],\

@@ -1602,6 +1602,7 @@ __metadata:
     bulma: ^0.9.4
     eslint: ^8.36.0
     eslint-config-next: ^13.2.4
+    eslint-plugin-jsx-a11y: ^6.7.1
     next: ^13.2.4
     prop-types: ^15.8.1
     react: ^18.2
@@ -7414,7 +7415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:^6.5.1":
+"eslint-plugin-jsx-a11y@npm:^6.5.1, eslint-plugin-jsx-a11y@npm:^6.7.1":
   version: 6.7.1
   resolution: "eslint-plugin-jsx-a11y@npm:6.7.1"
   dependencies:
@@ -12997,6 +12998,7 @@ __metadata:
     css-loader: ^6.7.3
     css-minimizer-webpack-plugin: ^4.2.2
     eslint: ^8.36.0
+    eslint-plugin-jsx-a11y: ^6.7.1
     eslint-plugin-react: ^7.32.2
     eslint-plugin-storybook: ^0.6.11
     mini-css-extract-plugin: ^2.7.3
