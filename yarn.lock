@@ -1602,6 +1602,7 @@ __metadata:
     bulma: ^0.9.4
     eslint: ^8.36.0
     eslint-config-next: ^13.2.4
+    eslint-plugin-jsx-a11y: ^6.7.1
     next: ^13.2.4
     prop-types: ^15.8.1
     react: ^18.2

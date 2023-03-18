@@ -3955,6 +3955,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["bulma", "npm:0.9.4"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:13.2.4"],\
+            ["eslint-plugin-jsx-a11y", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:6.7.1"],\
             ["next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:13.2.4"],\
             ["prop-types", "npm:15.8.1"],\
             ["react", "npm:18.2.0"],\
