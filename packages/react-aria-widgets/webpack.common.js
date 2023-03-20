@@ -16,7 +16,7 @@ module.exports = {
   MINI_CSS_EXTRACT_PLUGIN,
   commonConfig: {
     resolve: {
-      extensions: [ '.js', '.json', '.jsx' ],
+      extensions: [ '.js', '.json', '.jsx', '.ts', '.tsx' ],
       alias: {
         src: path.resolve(__dirname, 'src/'),
       },
@@ -44,6 +44,15 @@ module.exports = {
     module: {
       rules: [
         {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+        },
+        {
+          test: /\.js$/,
+          loader: 'source-map-loader',
+        },
+        /*
+        {
           test: /\.js$/u,
           use: {
             loader: 'babel-loader',
@@ -61,6 +70,7 @@ module.exports = {
             },
           },
         },
+        */
         {
           test: /\.css$/u,
           use: [ MiniCSSExtractPlugin.loader, 'css-loader' ],
