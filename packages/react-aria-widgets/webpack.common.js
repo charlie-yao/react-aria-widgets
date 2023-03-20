@@ -23,10 +23,10 @@ module.exports = {
     },
     entry: {
       index: {
-        import: './src/index.jsx',
+        import: './src/index.tsx',
       },
       accordion: {
-        import: './src/Accordion/index.js',
+        import: './src/Accordion/index.ts',
       },
     },
     output: {
