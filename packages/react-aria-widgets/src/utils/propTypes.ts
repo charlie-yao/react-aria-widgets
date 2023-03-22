@@ -18,15 +18,14 @@ interface CustomPropValidator {
  * if it encounters a custom prop validator.
  * normally cannot mark them as required.
  *
- * See:
- * https://github.com/yannickcr/eslint-plugin-react/issues/1020
- * https://github.com/facebook/react/issues/9125#issuecomment-285531461
+ * @see {@link https://github.com/yannickcr/eslint-plugin-react/issues/1020}
+ * @see {@link https://github.com/facebook/react/issues/9125#issuecomment-285531461}
  *
- * @param {function} customPropValidator
- * @param {boolean} [isRequired=false]
- * @returns {Error}
+ * @param {CustomPropValidator} customPropValidator - A function that returns an Error if the prop is invalid
+ * @param {boolean} [isRequired=false] - Determines whether or not an Error should be returned if the prop isn't supplied
+ * @returns {Error | void} - An Error if the prop is invalid, undefined otherwise
  */
-export function createCustomPropType(customPropValidator: CustomPropValidator, isRequired = false): CustomPropValidator {
+export function createCustomPropType(customPropValidator: CustomPropValidator, isRequired: boolean = false): CustomPropValidator {
   return function customPropType(props, propName, componentName) {
     const prop = props[propName];
 
@@ -41,11 +40,11 @@ export function createCustomPropType(customPropValidator: CustomPropValidator, i
  * Because HTML only allows <h1> to <h6>, complain if
  * an invalid headerLevel prop gets passed in.
  *
- * @param {Object} props
+ * @param {Props} props
  * @param {string} propName
- * @returns {Error}
+ * @returns {Error | void}
  */
-const _validateHeaderLevelProp: CustomPropValidator = (props, propName) => {
+function _validateHeaderLevelProp(props: Props, propName: string): Error | void {
   const headerLevel = props[propName];
 
   if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
