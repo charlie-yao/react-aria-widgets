@@ -13705,6 +13705,7 @@ __metadata:
   resolution: "root@workspace:."
   dependencies:
     core-js: ^3.21.1
+    typescript: ^5.0.2
   languageName: unknown
   linkType: soft
 

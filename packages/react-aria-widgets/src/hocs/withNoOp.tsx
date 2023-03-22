@@ -16,7 +16,7 @@ import React from 'react';
  * @param {string} displayName
  * @return {Object}
  */
-export default function withNoOp(Component) {
+export default function withNoOp(Component: React.Component) {
   const NoOp = React.forwardRef((props, ref) => (
     <Component { ...props } ref={ ref } />
   ));
