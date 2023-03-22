@@ -2,12 +2,9 @@ interface Props {
   [key: string]: any;
 }
 
-interface _CustomPropValidator {
+interface CustomPropValidator {
   (props: Props, propName: string, componentName?: string): Error | void;
-}
-
-interface CustomPropValidator extends _CustomPropValidator {
-  isRequired?: _CustomPropValidator;
+  isRequired?: CustomPropValidator;
 }
 
 /**
@@ -46,7 +43,6 @@ export function createCustomPropType(customPropValidator: CustomPropValidator, i
  *
  * @param {Object} props
  * @param {string} propName
- * @param {string} componentName
  * @returns {Error}
  */
 const _validateHeaderLevelProp: CustomPropValidator = (props, propName) => {
