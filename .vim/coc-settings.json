@@ -1,3 +1,7 @@
+//Some deviations were made from the default config in order to get coc.nvim's
+//tsserver to recognize Yarn PnP packages. See:
+//- https://github.com/neoclide/coc-tsserver/issues/244#issuecomment-1403908573
+//- https://github.com/neoclide/coc-tsserver/issues/260#issuecomment-783314962
 {
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
