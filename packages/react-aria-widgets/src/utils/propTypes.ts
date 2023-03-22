@@ -1,3 +1,15 @@
+interface Props {
+  [key: string]: any;
+}
+
+interface _CustomPropValidator {
+  (props: Props, propName: string, componentName?: string): Error | void;
+}
+
+interface CustomPropValidator extends _CustomPropValidator {
+  isRequired?: _CustomPropValidator;
+}
+
 /**
  * Creates a custom React prop type.
  *
@@ -17,7 +29,7 @@
  * @param {boolean} [isRequired=false]
  * @returns {Error}
  */
-export function createCustomPropType(customPropValidator, isRequired = false) {
+export function createCustomPropType(customPropValidator: CustomPropValidator, isRequired = false): CustomPropValidator {
   return function customPropType(props, propName, componentName) {
     const prop = props[propName];
 
@@ -37,7 +49,7 @@ export function createCustomPropType(customPropValidator, isRequired = false) {
  * @param {string} componentName
  * @returns {Error}
  */
-function _validateHeaderLevelProp(props, propName) {
+const _validateHeaderLevelProp: CustomPropValidator = (props, propName) => {
   const headerLevel = props[propName];
 
   if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
