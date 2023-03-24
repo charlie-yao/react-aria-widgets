@@ -9,14 +9,12 @@ import React from 'react';
  * React.cloneElement and those props are marked as required, the
  * children will complain that those props are missing.
  *
- * See:
- * https://github.com/facebook/react/issues/6653
+ * @see @link{https://github.com/facebook/react/issues/6653}
  *
- * @param {Object|function} Component
- * @param {string} displayName
- * @return {Object}
+ * @param {React.Component | React.FC} Component
+ * @return {React.Component}
  */
-export default function withNoOp(Component: React.Component) {
+export default function withNoOp(Component: React.Component | React.FC): React.Component {
   const NoOp = React.forwardRef((props, ref) => (
     <Component { ...props } ref={ ref } />
   ));

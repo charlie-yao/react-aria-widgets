@@ -23,10 +23,10 @@ interface CustomPropValidator {
  *
  * @param {CustomPropValidator} customPropValidator - A function that returns an Error if the prop is invalid
  * @param {boolean} [isRequired=false] - Determines whether or not an Error should be returned if the prop isn't supplied
- * @returns {Error | void} - An Error if the prop is invalid, undefined otherwise
+ * @returns {CustomPropValidator} - customPropValidator, but checks if the prop exists if isRequired is true
  */
 export function createCustomPropType(customPropValidator: CustomPropValidator, isRequired: boolean = false): CustomPropValidator {
-  return function customPropType(props, propName, componentName) {
+  return function(props, propName, componentName) {
     const prop = props[propName];
 
     if(isRequired && (prop === null || prop === undefined))
@@ -44,7 +44,7 @@ export function createCustomPropType(customPropValidator: CustomPropValidator, i
  * @param {string} propName
  * @returns {Error | void}
  */
-function _validateHeaderLevelProp(props: Props, propName: string): Error | void {
+const _validateHeaderLevelProp: CustomPropValidator = (props, propName) => {
   const headerLevel = props[propName];
 
   if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
