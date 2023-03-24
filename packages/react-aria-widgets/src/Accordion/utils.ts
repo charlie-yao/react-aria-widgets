@@ -4,6 +4,6 @@
  * @param {string} id
  * @returns {string}
  */
-export function getPanelId(id) {
+export function getPanelId(id: string): string {
   return `${id}-panel`;
 }
