@@ -11,10 +11,10 @@ import React from 'react';
  *
  * @see @link{https://github.com/facebook/react/issues/6653}
  *
- * @param {React.Component | React.FC} Component
- * @return {React.Component}
+ * @param {React.ComponentType} Component
+ * @return {React.ComponentType}
  */
-export default function withNoOp(Component: React.Component | React.FC): React.Component {
+export default function withNoOp(Component: React.ComponentType): React.ComponentType {
   const NoOp = React.forwardRef((props, ref) => (
     <Component { ...props } ref={ ref } />
   ));

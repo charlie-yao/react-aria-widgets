@@ -44,7 +44,7 @@ export function createCustomPropType(customPropValidator: CustomPropValidator, i
  * @param {string} propName
  * @returns {Error | void}
  */
-const _validateHeaderLevelProp: CustomPropValidator = (props, propName) => {
+function _validateHeaderLevelProp(props: Props, propName: string): Error | void {
   const headerLevel = props[propName];
 
   if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)

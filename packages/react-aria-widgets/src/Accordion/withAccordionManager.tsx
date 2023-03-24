@@ -3,8 +3,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function withAccordionManager(Component) {
-  return class AccordionManager extends React.Component {
+interface AccordionManagerProps {
+  allowMultiple?: boolean;
+  allowToggle?: boolean;
+};
+
+interface AccordionManagerState {
+  expandedSections: Set<string>;
+};
+
+interface AccordionManagerConsumerProps {
+  allowMultiple: boolean;
+  allowToggle: boolean;
+  getIsExpanded: (id: string) => boolean;
+  getIsDisabled: (id: string) => boolean;
+  toggleSection: (id: string) => void;
+  setHeaderRef: (ref: HTMLButtonElement | HTMLElement) => void;
+  focusHeader: (index: number) => void;
+  focusPrevHeader: (index: number) => void;
+  focusNextHeader: (index: number) => void;
+  focusFirstHeader: () => void;
+  focusLastHeader: () => void;
+};
+
+export default function withAccordionManager(Component: React.ComponentType<AccordionManagerConsumerProps>) {
+  return class AccordionManager extends React.Component<AccordionManagerProps, AccordionManagerState> {
+    sectionRefs: (HTMLButtonElement | HTMLElement)[];
+
     static propTypes = {
       allowMultiple: PropTypes.bool,
       allowToggle: PropTypes.bool,
@@ -15,7 +40,7 @@ export default function withAccordionManager(Component) {
       allowToggle: true,
     };
 
-    constructor(props) {
+    constructor(props: AccordionManagerProps) {
       super(props);
 
       this.state = {
@@ -28,11 +53,13 @@ export default function withAccordionManager(Component) {
     //---- Rendering ----
     render() {
       const { allowMultiple, allowToggle: atIgnored, ...rest } = this.props;
+      const _allowMultiple = allowMultiple!;
+      const _allowToggle = this.getAllowToggle()!;
 
       return (
         <Component
-          allowMultiple={ allowMultiple }
-          allowToggle={ this.getAllowToggle() }
+          allowMultiple={ _allowMultiple }
+          allowToggle={ _allowToggle }
           getIsExpanded={ this.getIsExpanded }
           getIsDisabled={ this.getIsDisabled }
           toggleSection={ this.toggleSection }
@@ -57,16 +84,16 @@ export default function withAccordionManager(Component) {
       return allowMultiple ? true : allowToggle;
     };
 
-    getIsExpanded = (id) => {
+    getIsExpanded = (id: string) => {
       const { expandedSections } = this.state;
       return expandedSections.has(id);
     };
 
-    getIsDisabled = (id) => {
+    getIsDisabled = (id: string) => {
       return !this.getAllowToggle() && this.getIsExpanded(id);
     };
 
-    toggleSection = (id) => {
+    toggleSection = (id: string) => {
       const { allowMultiple } = this.props;
       const isExpanded = this.getIsExpanded(id);
       const isDisabled = this.getIsDisabled(id);
@@ -96,19 +123,19 @@ export default function withAccordionManager(Component) {
       });
     };
 
-    setHeaderRef = (ref) => {
+    setHeaderRef = (ref: HTMLButtonElement | HTMLElement) => {
       this.sectionRefs.push(ref);
     };
 
-    focusHeader = (index) => {
+    focusHeader = (index: number) => {
       this.sectionRefs[index].focus();
     };
 
-    focusPrevHeader = (index) => {
+    focusPrevHeader = (index: number) => {
       this.focusHeader(index === 0 ? this.sectionRefs.length - 1 : index - 1);
     };
 
-    focusNextHeader = (index) => {
+    focusNextHeader = (index: number) => {
       this.focusHeader(index === this.sectionRefs.length - 1 ? 0 : index + 1);
     };
 
