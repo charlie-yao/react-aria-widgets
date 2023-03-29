@@ -12,7 +12,7 @@ interface AccordionManagerState {
   expandedSections: Set<string>;
 };
 
-interface AccordionManagerConsumerProps {
+export interface AccordionManagerConsumerProps {
   allowMultiple: boolean;
   allowToggle: boolean;
   getIsExpanded: (id: string) => boolean;
@@ -26,7 +26,7 @@ interface AccordionManagerConsumerProps {
   focusLastHeader: () => void;
 };
 
-export default function withAccordionManager(Component: React.ComponentType<AccordionManagerConsumerProps>) {
+export default function withAccordionManager<P extends AccordionManagerConsumerProps>(Component: React.ComponentType<P>) {
   return class AccordionManager extends React.Component<AccordionManagerProps, AccordionManagerState> {
     sectionRefs: (HTMLButtonElement | HTMLElement)[];
 
@@ -55,23 +55,22 @@ export default function withAccordionManager(Component: React.ComponentType<Acco
       const { allowMultiple, allowToggle: atIgnored, ...rest } = this.props;
       const _allowMultiple = allowMultiple!;
       const _allowToggle = this.getAllowToggle()!;
+      const props = {
+        allowMultiple: _allowMultiple,
+        allowToggle: _allowToggle,
+        getIsExpanded: this.getIsExpanded,
+        getIsDisabled: this.getIsDisabled,
+        toggleSection: this.toggleSection,
+        setHeaderRef: this.setHeaderRef,
+        focusHeader: this.focusHeader,
+        focusPrevHeader: this.focusPrevHeader,
+        focusNextHeader: this.focusNextHeader,
+        focusFirstHeader: this.focusFirstHeader,
+        focusLastHeader: this.focusLastHeader,
+        ...rest
+      } as P;
 
-      return (
-        <Component
-          allowMultiple={ _allowMultiple }
-          allowToggle={ _allowToggle }
-          getIsExpanded={ this.getIsExpanded }
-          getIsDisabled={ this.getIsDisabled }
-          toggleSection={ this.toggleSection }
-          setHeaderRef={ this.setHeaderRef }
-          focusHeader={ this.focusHeader }
-          focusPrevHeader={ this.focusPrevHeader }
-          focusNextHeader={ this.focusNextHeader }
-          focusFirstHeader={ this.focusFirstHeader }
-          focusLastHeader={ this.focusLastHeader }
-          { ...rest }
-        />
-      );
+      return <Component { ...props } />;
     }
 
     //---- Misc. ----

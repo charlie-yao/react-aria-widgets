@@ -10,9 +10,18 @@ import withAccordionManager from 'src/Accordion/withAccordionManager';
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-class Accordion extends React.Component {
+//TypeScript Interfaces and Types
+import { ValidatorWithRequired } from 'src/utils/propTypes';
+import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
+
+interface AccordionProps extends AccordionManagerConsumerProps {
+  children: React.ReactElement<typeof AccordionSection>;
+  headerLevel: ValidatorWithRequired<number> | number;
+};
+
+class Accordion extends React.Component<AccordionProps> {
   static propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.element.isRequired,
     headerLevel: validateHeaderLevelProp,
     //From <AccordionManager>
     allowMultiple: PropTypes.bool.isRequired,
@@ -33,15 +42,25 @@ class Accordion extends React.Component {
   };
 
   //---- Events ----
-  onClick = (event) => {
+  onClick = (event: React.MouseEvent<HTMLButtonElement | HTMLElement>) => {
     const { toggleSection } = this.props;
-    toggleSection(event.target.id);
+    const { target } = event;
+    
+    if(!(target instanceof HTMLButtonElement) && !(target instanceof HTMLElement))
+      return;
+
+    toggleSection(target.id);
   };
 
-  onKeyDown = (event) => {
+  onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => {
     const { focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader } = this.props;
-    const { key } = event;
-    const index = Number.parseInt(event.target.dataset.index, 10);
+    const { key, target } = event;
+    const isHTMLElement = target instanceof HTMLButtonElement || target instanceof HTMLElement;
+
+    if(!isHTMLElement || !target.dataset.index)
+      return;
+
+    const index = Number.parseInt(target.dataset.index, 10);
 
     if(key === 'ArrowUp') {
       event.preventDefault();
@@ -64,9 +83,19 @@ class Accordion extends React.Component {
   //---- Rendering ----
   render() {
     const {
-      children, headerLevel, allowMultiple, allowToggle,
-      getIsExpanded, getIsDisabled, toggleSection, setHeaderRef, focusHeader,
-      focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader,
+      children,
+      headerLevel,
+      allowMultiple,
+      allowToggle,
+      getIsExpanded,
+      getIsDisabled,
+      toggleSection,
+      setHeaderRef,
+      focusHeader,
+      focusPrevHeader,
+      focusNextHeader,
+      focusFirstHeader,
+      focusLastHeader,
     } = this.props;
 
     const mappedChildren = React.Children.map(children, (child, i) => {
