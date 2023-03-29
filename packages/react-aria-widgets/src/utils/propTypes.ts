@@ -2,8 +2,8 @@ interface Props {
   [key: string]: any;
 }
 
-interface CustomPropValidator {
-  (props: Props, propName: string, componentName?: string): Error | void;
+export interface CustomPropValidator {
+  (props: Props, propName: string, componentName?: string): Error | null;
   isRequired?: CustomPropValidator;
 }
 
@@ -42,13 +42,15 @@ export function createCustomPropType(customPropValidator: CustomPropValidator, i
  *
  * @param {Props} props
  * @param {string} propName
- * @returns {Error | void}
+ * @returns {Error | null}
  */
-function _validateHeaderLevelProp(props: Props, propName: string): Error | void {
+function _validateHeaderLevelProp(props: Props, propName: string): Error | null {
   const headerLevel = props[propName];
 
   if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
     return new Error(`${propName} must be an integer between 1 and 6 (inclusive).`);
+
+  return null;
 }
 
 const validateHeaderLevelProp = createCustomPropType(_validateHeaderLevelProp);
