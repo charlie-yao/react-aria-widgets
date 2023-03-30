@@ -11,12 +11,12 @@ import withAccordionManager from 'src/Accordion/withAccordionManager';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 //TypeScript Interfaces and Types
-import { ValidatorWithRequired } from 'src/utils/propTypes';
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
+import { AccordionSectionProps } from 'src/Accordion/AccordionSection';
 
 interface AccordionProps extends AccordionManagerConsumerProps {
-  children: React.ReactElement<typeof AccordionSection>;
-  headerLevel: ValidatorWithRequired<number> | number;
+  children: React.ReactElement<AccordionSectionProps>;
+  headerLevel: number;
 };
 
 class Accordion extends React.Component<AccordionProps> {
@@ -42,7 +42,7 @@ class Accordion extends React.Component<AccordionProps> {
   };
 
   //---- Events ----
-  onClick = (event: React.MouseEvent<HTMLButtonElement | HTMLElement>) => {
+  onClick = (event: React.MouseEvent) => {
     const { toggleSection } = this.props;
     const { target } = event;
     
@@ -52,7 +52,7 @@ class Accordion extends React.Component<AccordionProps> {
     toggleSection(target.id);
   };
 
-  onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => {
+  onKeyDown = (event: React.KeyboardEvent) => {
     const { focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader } = this.props;
     const { key, target } = event;
     const isHTMLElement = target instanceof HTMLButtonElement || target instanceof HTMLElement;
