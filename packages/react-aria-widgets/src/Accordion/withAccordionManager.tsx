@@ -4,17 +4,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 interface AccordionManagerProps {
-  allowMultiple?: boolean;
-  allowToggle?: boolean;
+  allowMultiple: boolean;
+  allowToggle: boolean;
 };
 
 interface AccordionManagerState {
   expandedSections: Set<string>;
 };
 
-export interface AccordionManagerConsumerProps {
-  allowMultiple: boolean;
-  allowToggle: boolean;
+export interface AccordionManagerConsumerProps extends AccordionManagerProps {
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;
@@ -53,11 +51,9 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
     //---- Rendering ----
     render() {
       const { allowMultiple, allowToggle: atIgnored, ...rest } = this.props;
-      const _allowMultiple = allowMultiple!;
-      const _allowToggle = this.getAllowToggle()!;
       const props = {
-        allowMultiple: _allowMultiple,
-        allowToggle: _allowToggle,
+        allowMultiple,
+        allowToggle: this.getAllowToggle(),
         getIsExpanded: this.getIsExpanded,
         getIsDisabled: this.getIsDisabled,
         toggleSection: this.toggleSection,
