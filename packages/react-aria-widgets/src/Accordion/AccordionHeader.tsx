@@ -11,7 +11,21 @@ import withNoOp from 'src/hocs/withNoOp';
 import { getPanelId } from 'src/Accordion/utils';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-function AccordionHeader(props) {
+interface AccordionHeaderProps {
+  children: React.ReactNode;
+  id: string;
+  index: number;
+  headerLevel: number;
+  setHeaderRef: (ref: HTMLButtonElement) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  getIsExpanded: (id: string) => boolean;
+  getIsDisabled: (id: string) => boolean;
+  headerProps?: object;
+  buttonProps?: object;
+}
+
+function AccordionHeader(props: AccordionHeaderProps) {
   const {
     children,
     id,

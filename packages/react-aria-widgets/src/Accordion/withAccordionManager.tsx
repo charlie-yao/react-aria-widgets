@@ -16,7 +16,7 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;
-  setHeaderRef: (ref: HTMLButtonElement | HTMLElement) => void;
+  setHeaderRef: (ref: HTMLElement) => void;
   focusHeader: (index: number) => void;
   focusPrevHeader: (index: number) => void;
   focusNextHeader: (index: number) => void;
@@ -26,7 +26,7 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
 
 export default function withAccordionManager<P extends AccordionManagerConsumerProps>(Component: React.ComponentType<P>) {
   return class AccordionManager extends React.Component<AccordionManagerProps, AccordionManagerState> {
-    sectionRefs: (HTMLButtonElement | HTMLElement)[];
+    sectionRefs: HTMLElement[];
 
     static propTypes = {
       allowMultiple: PropTypes.bool,
@@ -118,7 +118,7 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
       });
     };
 
-    setHeaderRef = (ref: HTMLButtonElement | HTMLElement) => {
+    setHeaderRef = (ref: HTMLElement) => {
       this.sectionRefs.push(ref);
     };
 

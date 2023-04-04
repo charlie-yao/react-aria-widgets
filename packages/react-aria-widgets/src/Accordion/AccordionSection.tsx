@@ -8,11 +8,15 @@ import withNoOp from 'src/hocs/withNoOp';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 //TypeScript Interfaces and Types
-import { AccordionChildProps } from 'src/Accordion/Accordion';
+import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 
-export interface AccordionSectionProps extends AccordionChildProps {
+export interface AccordionSectionProps extends AccordionManagerConsumerProps {
   children: React.ReactElement;
   id: string;
+  index: number;
+  onClick: (event: React.MouseEvent<HTMLElement>) => void;
+  onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => void;
+  headerLevel: number;
 }
 
 function AccordionSection(props: AccordionSectionProps) {

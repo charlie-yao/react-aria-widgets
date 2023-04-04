@@ -19,13 +19,6 @@ interface AccordionProps extends AccordionManagerConsumerProps {
   headerLevel: number;
 };
 
-export interface AccordionChildProps extends AccordionManagerConsumerProps {
-  index: number;
-  onClick: (event: React.MouseEvent<HTMLButtonElement | HTMLElement>) => void;
-  onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
-  headerLevel: number;
-}
-
 class Accordion extends React.Component<AccordionProps> {
   static propTypes = {
     children: PropTypes.element.isRequired,
@@ -53,7 +46,7 @@ class Accordion extends React.Component<AccordionProps> {
     const { toggleSection } = this.props;
     const { target } = event;
     
-    if(!(target instanceof HTMLButtonElement) && !(target instanceof HTMLElement))
+    if(!(target instanceof HTMLElement))
       return;
 
     toggleSection(target.id);
@@ -62,9 +55,8 @@ class Accordion extends React.Component<AccordionProps> {
   onKeyDown = (event: React.KeyboardEvent) => {
     const { focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader } = this.props;
     const { key, target } = event;
-    const isHTMLElement = target instanceof HTMLButtonElement || target instanceof HTMLElement;
 
-    if(!isHTMLElement || !target.dataset.index)
+    if(!(target instanceof HTMLElement) || !target.dataset.index)
       return;
 
     const index = Number.parseInt(target.dataset.index, 10);
