@@ -3,8 +3,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function BaseAccordionPanel(props) {
-  const { children, id, labelId, tagName: Component, ...rest } = props;
+interface BaseAccordionPanelProps {
+  children: React.ReactNode;
+  id: string;
+  labelId?: string;
+  tagName?: string;
+}
+
+function BaseAccordionPanel(props: BaseAccordionPanelProps) {
+  const { children, id, labelId, tagName, ...rest } = props;
+  const Component = tagName as keyof JSX.IntrinsicElements;
 
   return (
     <Component id={ id } aria-labelledby={ labelId } { ...rest }>
