@@ -12,7 +12,28 @@ import withNoOp from 'src/hocs/withNoOp';
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 
-function AccordionPanel(props) {
+interface AccordionPanelProps {
+  children: React.ReactNode;
+  id: string;
+  getIsExpanded: (id: string) => boolean;
+  className?: string;
+  index: number;
+  headerLevel: number;
+  onClick: any;
+  onKeyDown: any;
+  allowMultiple: any;
+  allowToggle: any;
+  getIsDisabled: any;
+  toggleSection: any;
+  setHeaderRef: any;
+  focusHeader: any;
+  focusPrevHeader: any;
+  focusNextHeader: any;
+  focusFirstHeader: any;
+  focusLastHeader: any;
+}
+
+function AccordionPanel(props: AccordionPanelProps) {
   const {
     children,
     id,

@@ -8,14 +8,20 @@ interface BaseAccordionPanelProps {
   id: string;
   labelId?: string;
   tagName?: string;
+  className?: string;
 }
 
 function BaseAccordionPanel(props: BaseAccordionPanelProps) {
-  const { children, id, labelId, tagName, ...rest } = props;
+  const { children, id, labelId, tagName, className, ...rest } = props;
   const Component = tagName as keyof JSX.IntrinsicElements;
 
   return (
-    <Component id={ id } aria-labelledby={ labelId } { ...rest }>
+    <Component
+      id={ id }
+      aria-labelledby={ labelId }
+      className={ className }
+      { ...rest }
+    >
       { children }
     </Component>
   );
@@ -26,11 +32,13 @@ BaseAccordionPanel.propTypes = {
   id: PropTypes.string.isRequired,
   labelId: PropTypes.string,
   tagName: PropTypes.string,
+  className: PropTypes.string,
 };
 
 BaseAccordionPanel.defaultProps = {
   labelId: undefined,
   tagName: 'section',
+  className: undefined,
 };
 
 export default BaseAccordionPanel;
