@@ -12,13 +12,14 @@ import React from 'react';
  * @see @link{https://github.com/facebook/react/issues/6653}
  *
  * @param {React.ComponentType} Component
- * @return {React.ComponentType}
+ * @return {React.ForwardRefExoticComponent}
  */
-export default function withNoOp(Component: React.ComponentType): React.ComponentType {
-  const NoOp = React.forwardRef((props, ref) => (
+
+export default function withNoOp<P>(Component: React.ComponentType<P>) {
+  const NoOp = React.forwardRef((props: P, ref) => (
     <Component { ...props } ref={ ref } />
   ));
-
+  
   NoOp.displayName = 'NoOp';
 
   return NoOp;

@@ -7,7 +7,15 @@ import withNoOp from 'src/hocs/withNoOp';
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-function AccordionSection(props) {
+//TypeScript Interfaces and Types
+import { AccordionChildProps } from 'src/Accordion/Accordion';
+
+export interface AccordionSectionProps extends AccordionChildProps {
+  children: React.ReactElement;
+  id: string;
+}
+
+function AccordionSection(props: AccordionSectionProps) {
   const {
     children,
     id,
@@ -28,8 +36,8 @@ function AccordionSection(props) {
     focusLastHeader,
   } = props;
 
-  if(typeof children === 'function') {
-    return children({
+  const body = React.Children.map(children, child => {
+    return React.cloneElement(child, {
       id,
       index,
       headerLevel,
@@ -47,41 +55,24 @@ function AccordionSection(props) {
       focusFirstHeader,
       focusLastHeader,
     });
-  }
-  else {
-    return React.Children.map(children, child => {
-      return React.cloneElement(child, {
-        id,
-        index,
-        headerLevel,
-        onClick,
-        onKeyDown,
-        allowMultiple,
-        allowToggle,
-        getIsExpanded,
-        getIsDisabled,
-        toggleSection,
-        setHeaderRef,
-        focusHeader,
-        focusPrevHeader,
-        focusNextHeader,
-        focusFirstHeader,
-        focusLastHeader,
-      });
-    });
-  }
+  });
+
+  return (
+    <>
+      { body }
+    </>
+  );
 }
 
 AccordionSection.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.func,
-  ]).isRequired,
+  children: PropTypes.element.isRequired,
   id: PropTypes.string.isRequired,
+  //From <Accordion>
   index: PropTypes.number.isRequired,
   headerLevel: validateHeaderLevelProp.isRequired,
   onClick: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,
+  //From <AccordionManager>
   allowMultiple: PropTypes.bool.isRequired,
   allowToggle: PropTypes.bool.isRequired,
   getIsExpanded: PropTypes.func.isRequired,

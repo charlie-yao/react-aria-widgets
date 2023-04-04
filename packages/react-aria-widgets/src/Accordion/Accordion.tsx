@@ -19,6 +19,13 @@ interface AccordionProps extends AccordionManagerConsumerProps {
   headerLevel: number;
 };
 
+export interface AccordionChildProps extends AccordionManagerConsumerProps {
+  index: number;
+  onClick: (event: React.MouseEvent<HTMLButtonElement | HTMLElement>) => void;
+  onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
+  headerLevel: number;
+}
+
 class Accordion extends React.Component<AccordionProps> {
   static propTypes = {
     children: PropTypes.element.isRequired,
@@ -123,7 +130,11 @@ class Accordion extends React.Component<AccordionProps> {
       });
     });
 
-    return mappedChildren;
+    return (
+      <>
+        { mappedChildren }
+      </>
+    );
   }
 }
 
