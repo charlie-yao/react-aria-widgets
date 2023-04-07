@@ -17,8 +17,8 @@ interface AccordionHeaderProps {
   index: number;
   headerLevel: number;
   setHeaderRef: (ref: HTMLButtonElement) => void;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onKeyDown: React.KeyboardEventHandler<HTMLButtonElement>;
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   headerProps?: object;

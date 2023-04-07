@@ -14,8 +14,8 @@ export interface AccordionSectionProps extends AccordionManagerConsumerProps {
   children: React.ReactElement;
   id: string;
   index: number;
-  onClick: (event: React.MouseEvent<HTMLElement>) => void;
-  onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => void;
+  onClick: React.MouseEventHandler<HTMLElement>;
+  onKeyDown: React.KeyboardEventHandler<HTMLElement>;
   headerLevel: number;
 }
 

@@ -42,24 +42,20 @@ class Accordion extends React.Component<AccordionProps> {
   };
 
   //---- Events ----
-  onClick = (event: React.MouseEvent) => {
+  onClick: React.MouseEventHandler<HTMLElement> = (event) => {
     const { toggleSection } = this.props;
-    const { target } = event;
-    
-    if(!(target instanceof HTMLElement))
-      return;
-
-    toggleSection(target.id);
+    const { currentTarget } = event;
+    toggleSection(currentTarget.id);
   };
 
-  onKeyDown = (event: React.KeyboardEvent) => {
+  onKeyDown: React.KeyboardEventHandler<HTMLElement> = (event) => {
     const { focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader } = this.props;
-    const { key, target } = event;
+    const { key, currentTarget } = event;
 
-    if(!(target instanceof HTMLElement) || !target.dataset.index)
+    if(!currentTarget.dataset.index)
       return;
 
-    const index = Number.parseInt(target.dataset.index, 10);
+    const index = Number.parseInt(currentTarget.dataset.index, 10);
 
     if(key === 'ArrowUp') {
       event.preventDefault();

@@ -12,7 +12,7 @@ interface AccordionManagerState {
   expandedSections: Set<string>;
 };
 
-export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps>{
+export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;

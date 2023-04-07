@@ -11,8 +11,8 @@ interface BaseAccordionHeaderProps {
   id?: string;
   controlsId: string;
   headerLevel: number;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
   isExpanded?: boolean;
   isDisabled?: boolean;
   headerProps?: object;
