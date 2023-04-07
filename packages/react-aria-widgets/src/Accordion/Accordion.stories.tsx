@@ -1,6 +1,6 @@
 import React from 'react';
 
-//Components and Styles
+//Components
 import Accordion from 'src/Accordion/Accordion';
 import AccordionSection from 'src/Accordion/AccordionSection';
 import AccordionHeader from 'src/Accordion/AccordionHeader';

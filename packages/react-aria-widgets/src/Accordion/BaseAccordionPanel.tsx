@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-interface BaseAccordionPanelProps {
+export interface BaseAccordionPanelProps {
   children: React.ReactNode;
   id: string;
   labelId?: string;

@@ -7,7 +7,7 @@ import withNoOp from 'src/hocs/withNoOp';
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-//TypeScript Interfaces and Types
+//Types
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 
 export interface AccordionSectionProps extends AccordionManagerConsumerProps {

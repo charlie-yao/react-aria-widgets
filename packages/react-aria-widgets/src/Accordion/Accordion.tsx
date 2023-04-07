@@ -10,7 +10,7 @@ import withAccordionManager from 'src/Accordion/withAccordionManager';
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-//TypeScript Interfaces and Types
+//Types
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 import { AccordionSectionProps } from 'src/Accordion/AccordionSection';
 

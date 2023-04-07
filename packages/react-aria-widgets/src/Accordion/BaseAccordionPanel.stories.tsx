@@ -1,7 +1,11 @@
 import React from 'react';
+import type { StorybookConfig } from '@storybook/react';
 
-//Components and Styles
+//Components
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+
+//Types
+import { BaseAccordionPanelProps } from 'src/Accordion/BaseAccordionPanel';
 
 export default {
   title: 'Accordion/BaseAccordionPanel',
@@ -13,7 +17,7 @@ export default {
   },
 };
 
-function Template(args) {
+function Template(args: BaseAccordionPanelProps) {
   return <BaseAccordionPanel { ...args } />;
 }
 
