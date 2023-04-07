@@ -38,7 +38,7 @@ function AccordionPanel(props: AccordionPanelProps) {
     children,
     id,
     getIsExpanded,
-    className,
+    className = '',
     //Pull out props received from <AccordionSection> that shouldn't get passed down
     /* eslint-disable no-unused-vars, react/prop-types */
     index,
@@ -77,10 +77,6 @@ AccordionPanel.propTypes = {
   id: PropTypes.string.isRequired,
   getIsExpanded: PropTypes.func.isRequired,
   className: PropTypes.string,
-};
-
-AccordionPanel.defaultProps = {
-  className: '',
 };
 
 export default withNoOp(AccordionPanel);

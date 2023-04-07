@@ -36,8 +36,8 @@ function AccordionHeader(props: AccordionHeaderProps) {
     onKeyDown,
     getIsExpanded,
     getIsDisabled,
-    headerProps,
-    buttonProps,
+    headerProps = {},
+    buttonProps = {},
   } = props;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
@@ -76,11 +76,6 @@ AccordionHeader.propTypes = {
   getIsDisabled: PropTypes.func.isRequired,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
-};
-
-AccordionHeader.defaultProps = {
-  headerProps: {},
-  buttonProps: {},
 };
 
 export default withNoOp(AccordionHeader);

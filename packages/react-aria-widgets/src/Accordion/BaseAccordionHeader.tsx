@@ -27,10 +27,10 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
     headerLevel,
     onClick,
     onKeyDown,
-    isExpanded,
-    isDisabled,
-    headerProps,
-    buttonProps,
+    isExpanded = false,
+    isDisabled = false,
+    headerProps = {},
+    buttonProps = {},
   } = props;
   const HeaderElement = `h${headerLevel}` as keyof JSX.IntrinsicElements;
 
@@ -64,15 +64,6 @@ BaseAccordionHeader.propTypes = {
   isDisabled: PropTypes.bool,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
-};
-
-BaseAccordionHeader.defaultProps = {
-  id: undefined,
-  onKeyDown: undefined,
-  isExpanded: false,
-  isDisabled: false,
-  headerProps: {},
-  buttonProps: {},
 };
 
 BaseAccordionHeader.displayName = 'BaseAccordionHeader';

@@ -12,7 +12,15 @@ interface BaseAccordionPanelProps {
 }
 
 function BaseAccordionPanel(props: BaseAccordionPanelProps) {
-  const { children, id, labelId, tagName, className, ...rest } = props;
+  const {
+    children,
+    id,
+    labelId,
+    tagName = 'section',
+    className,
+    ...rest
+  } = props;
+
   const Component = tagName as keyof JSX.IntrinsicElements;
 
   return (
@@ -33,12 +41,6 @@ BaseAccordionPanel.propTypes = {
   labelId: PropTypes.string,
   tagName: PropTypes.string,
   className: PropTypes.string,
-};
-
-BaseAccordionPanel.defaultProps = {
-  labelId: undefined,
-  tagName: 'section',
-  className: undefined,
 };
 
 export default BaseAccordionPanel;
