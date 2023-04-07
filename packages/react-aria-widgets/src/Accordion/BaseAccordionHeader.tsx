@@ -32,6 +32,7 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
     headerProps = {},
     buttonProps = {},
   } = props;
+
   const HeaderElement = `h${headerLevel}` as keyof JSX.IntrinsicElements;
 
   return (
