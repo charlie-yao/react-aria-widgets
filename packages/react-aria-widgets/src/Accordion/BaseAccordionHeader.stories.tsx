@@ -14,7 +14,7 @@ const meta = {
     headerLevel: 2,
     onClick: () => {},
   },
-} satisfies Meta<typeof BaseAccordionHeader>
+} satisfies Meta<typeof BaseAccordionHeader>;
 
 export const Expanded: Story = {
   args: {
