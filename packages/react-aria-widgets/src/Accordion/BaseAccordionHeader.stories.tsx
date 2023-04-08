@@ -1,10 +1,11 @@
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 //Components and Styles
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
-export default {
-  title: 'Accordion/BaseAccordionHeader',
+type Story = StoryObj<typeof BaseAccordionHeader>
+
+const meta = {
   component: BaseAccordionHeader,
   args: {
     children: 'Hello world!',
@@ -13,18 +14,18 @@ export default {
     headerLevel: 2,
     onClick: () => {},
   },
+} satisfies Meta<typeof BaseAccordionHeader>
+
+export const Expanded: Story = {
+  args: {
+    isExpanded: true,
+  },
 };
 
-function Template(args) {
-  return <BaseAccordionHeader { ...args } />;
-}
-
-export const Expanded = Template.bind({});
-Expanded.args = {
-  isExpanded: true,
+export const Disabled: Story = {
+  args: {
+    isDisabled: true,
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  isDisabled: true,
-};
+export default meta;
