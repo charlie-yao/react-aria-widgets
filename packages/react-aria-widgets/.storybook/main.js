@@ -1,11 +1,12 @@
 //Misc.
-const {
+import {
   SCSS_LOADER,
   MINI_CSS_EXTRACT_PLUGIN,
   commonConfig
-} = require('../webpack.common.js');
+} from '../webpack.common.js';
 
-module.exports = {
+
+const config = {
   "stories": ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   "addons": ["@storybook/addon-links", "@storybook/addon-essentials", "@storybook/addon-interactions", "@storybook/addon-mdx-gfm"],
   "framework": {
@@ -39,3 +40,5 @@ module.exports = {
     autodocs: true
   }
 };
+
+export default config;

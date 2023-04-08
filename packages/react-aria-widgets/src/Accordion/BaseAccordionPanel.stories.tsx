@@ -1,5 +1,4 @@
 import React from 'react';
-import type { StorybookConfig } from '@storybook/react';
 
 //Components
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
