@@ -1,33 +1,35 @@
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-//Components and Styles
+//Components
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
-export default {
-  title: 'Accordion/AccordionPanel',
+type Story = StoryObj<typeof AccordionPanel>
+
+const meta = {
   component: AccordionPanel,
   args: {
     children: 'Hello world!',
     id: 'accordionId',
   },
+} satisfies Meta<typeof AccordionPanel>;
+
+export const Expanded: Story = {
+  args: {
+    getIsExpanded: () => true,
+  },
 };
 
-function Template(args) {
-  return <AccordionPanel { ...args } />;
-}
-
-export const Expanded = Template.bind({});
-Expanded.args = {
-  getIsExpanded: () => true,
+export const Collapsed: Story = {
+  args: {
+    getIsExpanded: () => false,
+  },
 };
 
-export const Collapsed = Template.bind({});
-Collapsed.args = {
-  getIsExpanded: () => false,
+export const WithClassName: Story = {
+  args: {
+    getIsExpanded: () => false,
+    className: 'dummyClassName',
+  },
 };
 
-export const WithClassName = Template.bind({});
-WithClassName.args = {
-  getIsExpanded: () => false,
-  className: 'dummyClassName',
-};
+export default meta;
