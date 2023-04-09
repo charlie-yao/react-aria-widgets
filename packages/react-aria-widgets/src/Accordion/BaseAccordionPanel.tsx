@@ -3,11 +3,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export interface BaseAccordionPanelProps {
+const VALID_TAGS = ['section', 'div'] as const;
+
+type ValidTags = typeof VALID_TAGS[number];
+
+interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   id: string;
   labelId?: string;
-  tagName?: string;
+  tagName?: ValidTags;
   className?: string;
 }
 
@@ -21,7 +25,7 @@ function BaseAccordionPanel(props: BaseAccordionPanelProps) {
     ...rest
   } = props;
 
-  const Component = tagName as keyof JSX.IntrinsicElements;
+  const Component = tagName;
 
   return (
     <Component
@@ -39,7 +43,7 @@ BaseAccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   labelId: PropTypes.string,
-  tagName: PropTypes.string,
+  tagName: PropTypes.oneOf(VALID_TAGS),
   className: PropTypes.string,
 };
 
