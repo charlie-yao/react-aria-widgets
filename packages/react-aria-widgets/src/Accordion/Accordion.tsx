@@ -15,7 +15,7 @@ import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManage
 import { AccordionSectionProps } from 'src/Accordion/AccordionSection';
 
 interface AccordionProps extends AccordionManagerConsumerProps {
-  children: React.ReactElement<AccordionSectionProps>;
+  children: React.ReactElement<AccordionSectionProps> | React.ReactElement<AccordionSectionProps>[];
   headerLevel?: number;
 };
 

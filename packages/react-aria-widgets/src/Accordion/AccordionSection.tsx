@@ -11,7 +11,7 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 
 export interface AccordionSectionProps extends AccordionManagerConsumerProps {
-  children: React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
   id: string;
   index: number;
   onClick: React.MouseEventHandler<HTMLElement>;
