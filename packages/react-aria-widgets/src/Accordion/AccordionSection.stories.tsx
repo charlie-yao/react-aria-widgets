@@ -25,18 +25,16 @@ const meta = {
 
 export const Default: Story = {
   args: {
-    children: [
-      (
-        <AccordionHeader key={ 0 }>
+    children: (props) => (
+      <>
+        <AccordionHeader key={ 0 } { ...props }>
           Header
         </AccordionHeader>
-      ),
-      (
-        <AccordionPanel key={ 1 }>
+        <AccordionPanel key={ 1 } { ...props }>
           Hello world!
-        </AccordionPanel>
-      ),
-    ],
+          </AccordionPanel>
+      </>
+    ),
   },
 };
 

@@ -11,7 +11,7 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 
 export interface AccordionSectionProps extends AccordionManagerConsumerProps {
-  children: React.ReactElement | React.ReactElement[];
+  children: (props: Omit<AccordionSectionProps, 'children'>) => React.ReactElement;
   id: string;
   index: number;
   onClick: React.MouseEventHandler<HTMLElement>;
@@ -19,57 +19,12 @@ export interface AccordionSectionProps extends AccordionManagerConsumerProps {
   headerLevel: number;
 }
 
-function AccordionSection(props: AccordionSectionProps) {
-  const {
-    children,
-    id,
-    index,
-    headerLevel,
-    onClick,
-    onKeyDown,
-    allowMultiple,
-    allowToggle,
-    getIsExpanded,
-    getIsDisabled,
-    toggleSection,
-    setHeaderRef,
-    focusHeader,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-  } = props;
-
-  const body = React.Children.map(children, child => {
-    return React.cloneElement(child, {
-      id,
-      index,
-      headerLevel,
-      onClick,
-      onKeyDown,
-      allowMultiple,
-      allowToggle,
-      getIsExpanded,
-      getIsDisabled,
-      toggleSection,
-      setHeaderRef,
-      focusHeader,
-      focusPrevHeader,
-      focusNextHeader,
-      focusFirstHeader,
-      focusLastHeader,
-    });
-  });
-
-  return (
-    <>
-      { body }
-    </>
-  );
+function AccordionSection({ children, ...rest }: AccordionSectionProps) {
+  return children(rest);
 }
 
 AccordionSection.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   //From <Accordion>
   index: PropTypes.number.isRequired,
