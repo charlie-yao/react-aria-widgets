@@ -11,12 +11,12 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 
 interface AccordionProps extends AccordionManagerConsumerProps {
-  sections: AccordionSectionDescriptor[];
+  sections: Section[];
   headerLevel: number;
-  renderSection: RenderSection;
+  renderSection?: RenderSection;
 };
 
-interface AccordionSectionDescriptor {
+interface Section {
   id: string;
   renderHeader: (props: any) => React.ReactElement;
   renderPanel: (props: any) => React.ReactElement;
@@ -24,19 +24,37 @@ interface AccordionSectionDescriptor {
 
 interface RenderSection {
   (
-    section: AccordionSectionDescriptor,
+    section: Section,
     index: number,
     props: any
   ): React.ReactElement;
 };
 
+const defaultRenderSection: RenderSection = (section, index, props) => {
+  const { id, renderHeader, renderPanel } = section;
+  const childProps = {
+    id,
+    index,
+    ...props,
+  };
+
+  return (
+    <Fragment key={ id }>
+      { renderHeader(childProps) }
+      { renderPanel(childProps) }
+    </Fragment>
+  );
+};
+
 class Accordion extends React.Component<AccordionProps> {
   static propTypes = {
-    sections: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      renderHeader: PropTypes.func.isRequired,
-      renderPanel: PropTypes.func.isRequired,
-    })).isRequired,
+    sections: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.string.isRequired,
+        renderHeader: PropTypes.func.isRequired,
+        renderPanel: PropTypes.func.isRequired,
+      }).isRequired
+    ).isRequired,
     headerLevel: validateHeaderLevelProp,
     renderSection: PropTypes.func,
     //From <AccordionManager>
@@ -55,21 +73,7 @@ class Accordion extends React.Component<AccordionProps> {
 
   static defaultProps = {
     headerLevel: 2,
-    renderSection: ((section, index, props) => {
-      const { id, renderHeader, renderPanel } = section;
-      const childProps = {
-        id,
-        index,
-        ...props,
-      };
-
-      return (
-        <Fragment key={ id }>
-          { renderHeader(childProps) }
-          { renderPanel(childProps) }
-        </Fragment>
-      );
-    }) as RenderSection,
+    renderSection: defaultRenderSection,
   };
 
   //---- Rendering ----
