@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
-//HOCs
-import withNoOp from 'src/hocs/withNoOp';
-
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 
@@ -79,4 +76,4 @@ AccordionPanel.propTypes = {
   className: PropTypes.string,
 };
 
-export default withNoOp(AccordionPanel);
+export default AccordionPanel;

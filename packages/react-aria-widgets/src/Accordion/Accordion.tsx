@@ -1,8 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-
-//Components and Styles
-import AccordionSection from 'src/Accordion/AccordionSection';
 
 //HOCs
 import withAccordionManager from 'src/Accordion/withAccordionManager';
@@ -12,17 +9,36 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
 //Types
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
-import { AccordionSectionProps } from 'src/Accordion/AccordionSection';
 
 interface AccordionProps extends AccordionManagerConsumerProps {
-  children: React.ReactElement<AccordionSectionProps> | React.ReactElement<AccordionSectionProps>[];
-  headerLevel?: number;
+  sections: AccordionSectionDescriptor[];
+  headerLevel: number;
+  renderSection: RenderSection;
+};
+
+interface AccordionSectionDescriptor {
+  id: string;
+  renderHeader: (props: any) => React.ReactElement;
+  renderPanel: (props: any) => React.ReactElement;
+};
+
+interface RenderSection {
+  (
+    section: AccordionSectionDescriptor,
+    index: number,
+    props: any
+  ): React.ReactElement;
 };
 
 class Accordion extends React.Component<AccordionProps> {
   static propTypes = {
-    children: PropTypes.element.isRequired,
+    sections: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      renderHeader: PropTypes.func.isRequired,
+      renderPanel: PropTypes.func.isRequired,
+    })).isRequired,
     headerLevel: validateHeaderLevelProp,
+    renderSection: PropTypes.func,
     //From <AccordionManager>
     allowMultiple: PropTypes.bool.isRequired,
     allowToggle: PropTypes.bool.isRequired,
@@ -39,90 +55,30 @@ class Accordion extends React.Component<AccordionProps> {
 
   static defaultProps = {
     headerLevel: 2,
-  };
+    renderSection: ((section, index, props) => {
+      const { id, renderHeader, renderPanel } = section;
+      const childProps = {
+        id,
+        index,
+        ...props,
+      };
 
-  //---- Events ----
-  onClick: React.MouseEventHandler<HTMLElement> = (event) => {
-    const { toggleSection } = this.props;
-    const { currentTarget } = event;
-    toggleSection(currentTarget.id);
-  };
-
-  onKeyDown: React.KeyboardEventHandler<HTMLElement> = (event) => {
-    const { focusPrevHeader, focusNextHeader, focusFirstHeader, focusLastHeader } = this.props;
-    const { key, currentTarget } = event;
-
-    if(!currentTarget.dataset.index)
-      return;
-
-    const index = Number.parseInt(currentTarget.dataset.index, 10);
-
-    if(key === 'ArrowUp') {
-      event.preventDefault();
-      focusPrevHeader(index);
-    }
-    else if(key === 'ArrowDown') {
-      event.preventDefault();
-      focusNextHeader(index);
-    }
-    else if(key === 'Home') {
-      event.preventDefault();
-      focusFirstHeader();
-    }
-    else if(key === 'End') {
-      event.preventDefault();
-      focusLastHeader();
-    }
+      return (
+        <Fragment key={ id }>
+          { renderHeader(childProps) }
+          { renderPanel(childProps) }
+        </Fragment>
+      );
+    }) as RenderSection,
   };
 
   //---- Rendering ----
   render() {
-    const {
-      children,
-      headerLevel,
-      allowMultiple,
-      allowToggle,
-      getIsExpanded,
-      getIsDisabled,
-      toggleSection,
-      setHeaderRef,
-      focusHeader,
-      focusPrevHeader,
-      focusNextHeader,
-      focusFirstHeader,
-      focusLastHeader,
-    } = this.props;
+    const { sections, renderSection, ...rest } = this.props;
 
-    const mappedChildren = React.Children.map(children, (child, i) => {
-      const { type } = child;
-
-      if(type !== AccordionSection)
-        throw new Error('Only <AccordionSection>s are valid children of <Accordion>.');
-
-      return React.cloneElement(child, {
-        index: i,
-        onClick: this.onClick,
-        onKeyDown: this.onKeyDown,
-        headerLevel,
-        allowMultiple,
-        allowToggle,
-        getIsExpanded,
-        getIsDisabled,
-        toggleSection,
-        setHeaderRef,
-        focusHeader,
-        focusPrevHeader,
-        focusNextHeader,
-        focusFirstHeader,
-        focusLastHeader,
-      });
+    return sections.map((section, index) => {
+      return renderSection(section, index, rest);
     });
-
-    return (
-      <>
-        { mappedChildren }
-      </>
-    );
   }
 }
 
