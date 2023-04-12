@@ -12,7 +12,7 @@ import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManage
 
 interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
-  headerLevel: number;
+  headerLevel?: number;
   renderSection?: RenderSection;
 };
 
@@ -78,7 +78,11 @@ class Accordion extends React.Component<AccordionProps> {
 
   //---- Rendering ----
   render() {
-    const { sections, renderSection, ...rest } = this.props;
+    const {
+      sections,
+      renderSection = defaultRenderSection,
+      ...rest
+    } = this.props;
 
     return sections.map((section, index) => {
       return renderSection(section, index, rest);
