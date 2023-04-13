@@ -1,63 +1,61 @@
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
 import Accordion from 'src/Accordion/Accordion';
-import AccordionSection from 'src/Accordion/AccordionSection';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
-//Stories
-import { Default, RenderFunction } from 'src/Accordion/AccordionSection.stories';
+type Story = StoryObj<typeof Accordion>
 
-export default {
-  title: 'Accordion/Accordion',
+const meta = {
   component: Accordion,
-  subcomponents: {
-    AccordionSection,
-    AccordionHeader,
-    AccordionPanel,
-  },
   args: {
     headerLevel: 2,
-    items: [
-      { ...Default.args, id: 'section1' },
-      { ...Default.args, id: 'section2' },
-      { ...RenderFunction.args, id: 'section3' },
-      { ...RenderFunction.args, id: 'section4' },
+    sections: [
+      {
+        id: 'section1',
+        renderHeader: (props) => (
+          <AccordionHeader {...props}>
+            Section 1
+          </AccordionHeader>
+        ),
+        renderPanel: (props) => (
+          <AccordionPanel {...props}>
+            Hello world!
+          </AccordionPanel>
+        )
+      },
     ],
+  },
+} satisfies Meta<typeof Accordion>;
+
+export const YesMultipleYesToggle: Story = { 
+  args: {
+    allowMultiple: true,
+    allowToggle: true,
   },
 };
 
-function Template(args) {
-  const { items, ...rest } = args;
-
-  return (
-    <Accordion { ...rest }>
-      { items.map(item => <AccordionSection key={ item.id } { ...item } />) }
-    </Accordion>
-  );
-}
-
-export const MultipleToggle = Template.bind({});
-MultipleToggle.args = {
-  allowMultiple: true,
-  allowToggle: true,
+export const NoMultipleYesToggle: Story = {
+  args: {
+    allowMultiple: false,
+    allowToggle: true,
+  },
 };
 
-export const NoMultipleToggle = Template.bind({});
-NoMultipleToggle.args = {
-  allowMultiple: false,
-  allowToggle: true,
+export const YesMultipleNoToggle: Story = {
+  args: {
+    allowMultiple: true,
+    allowToggle: false,
+  },
 };
 
-export const MultipleNoToggle = Template.bind({});
-MultipleNoToggle.args = {
-  allowMultiple: true,
-  allowToggle: false,
+export const NoMultipleNoToggle: Story = {
+  args: {
+    allowMultiple: false,
+    allowToggle: false,
+  },
 };
 
-export const NoMultipleNoToggle = Template.bind({});
-NoMultipleNoToggle.args = {
-  allowMultiple: false,
-  allowToggle: false,
-};
+export default meta;

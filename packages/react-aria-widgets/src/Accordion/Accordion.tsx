@@ -18,8 +18,8 @@ interface AccordionProps extends AccordionManagerConsumerProps {
 
 interface Section {
   id: string;
-  renderHeader: (props: any) => React.ReactElement;
-  renderPanel: (props: any) => React.ReactElement;
+  renderHeader: (props: any) => React.ReactNode;
+  renderPanel: (props: any) => React.ReactNode;
 };
 
 interface RenderSection {
@@ -27,7 +27,7 @@ interface RenderSection {
     section: Section,
     index: number,
     props: any
-  ): React.ReactElement;
+  ): React.ReactNode;
 };
 
 const defaultRenderSection: RenderSection = (section, index, props) => {
@@ -52,10 +52,14 @@ function Accordion(props: AccordionProps) {
     renderSection = defaultRenderSection,
     ...rest
   } = props;
-
-  return sections.map((section, index) => {
-    return renderSection(section, index, rest);
-  });
+  
+  return (
+    <>
+      { sections.map((section, index) => {
+          return renderSection(section, index, rest);
+      }) }
+    </>
+  );
 }
 
 Accordion.propTypes = {

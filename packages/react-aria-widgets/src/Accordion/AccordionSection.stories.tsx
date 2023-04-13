@@ -32,7 +32,7 @@ export const Default: Story = {
         </AccordionHeader>
         <AccordionPanel key={ 1 } { ...props }>
           Hello world!
-          </AccordionPanel>
+        </AccordionPanel>
       </>
     ),
   },

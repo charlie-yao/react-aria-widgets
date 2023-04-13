@@ -12,8 +12,6 @@ const meta = {
     id: 'accordionId',
     index: 1,
     headerLevel: 2,
-    onClick: () => {},
-    onKeyDown: () => {},
     setHeaderRef: () => {},
   },
 } satisfies Meta<typeof AccordionHeader>;
