@@ -25,9 +25,11 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
 };
 
 export default function withAccordionManager<P extends AccordionManagerConsumerProps>(Component: React.ComponentType<P>) {
-  return class AccordionManager extends React.Component<AccordionManagerProps, AccordionManagerState> {
-    sectionRefs: HTMLElement[];
-
+  return class AccordionManager extends React.Component<
+    Omit<P, keyof AccordionManagerConsumerProps> & AccordionManagerProps,
+    AccordionManagerState
+  > {
+    //---- Static fields ----
     static propTypes = {
       allowMultiple: PropTypes.bool,
       allowToggle: PropTypes.bool,
@@ -38,15 +40,12 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
       allowToggle: true,
     };
 
-    constructor(props: AccordionManagerProps) {
-      super(props);
-
-      this.state = {
-        expandedSections: new Set(),
-      };
-
-      this.sectionRefs = [];
+    //---- Fields ----
+    state = {
+      expandedSections: new Set<string>(),
     }
+
+    sectionRefs: HTMLElement[] = [];
 
     //---- Rendering ----
     render() {
@@ -69,7 +68,7 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
       return <Component { ...props } />;
     }
 
-    //---- Misc. ----
+    //---- Methods ----
     getAllowToggle = () => {
       //Even though this component accepts allowMultiple and allowToggle
       //as independent props, the case of allowMultiple && !allowToggle

@@ -52,12 +52,14 @@ function Accordion(props: AccordionProps) {
     renderSection = defaultRenderSection,
     ...rest
   } = props;
+
+  const renderedSections = sections.map((section, index) => {
+    return renderSection(section, index, rest);
+  });
   
   return (
     <>
-      { sections.map((section, index) => {
-          return renderSection(section, index, rest);
-      }) }
+      { renderedSections }
     </>
   );
 }
