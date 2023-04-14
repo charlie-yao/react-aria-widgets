@@ -4,19 +4,13 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
+//Types
+import { validateHeaderLevelProp } from 'src/utils/propTypes';
+import { accordionSectionProp } from 'src/Accordion/propTypes';
+import { AccordionHeaderProps } from 'src/Accordion/types';
+
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
-import { validateHeaderLevelProp } from 'src/utils/propTypes';
-
-//Types
-import { sectionPropType, AccordionProps } from 'src/Accordion/Accordion';
-
-interface AccordionHeaderProps extends AccordionProps {
-  children: React.ReactNode;
-  headerProps?: object;
-  buttonProps?: object;
-  index: number;
-};
 
 function AccordionHeader(props: AccordionHeaderProps) {
   const {
@@ -99,7 +93,7 @@ AccordionHeader.propTypes = {
   //From <Accordion<
   index: PropTypes.number.isRequired,
   headerLevel: validateHeaderLevelProp.isRequired,
-  sections: PropTypes.arrayOf(sectionPropType.isRequired).isRequired,
+  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   //From <AccordionManager>
   getIsExpanded: PropTypes.func.isRequired,
   getIsDisabled: PropTypes.func.isRequired,

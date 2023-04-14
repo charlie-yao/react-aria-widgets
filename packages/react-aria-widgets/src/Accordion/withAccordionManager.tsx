@@ -3,39 +3,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export type HeaderRef = HTMLButtonElement | HTMLElement | null;
-
-export interface SetHeaderRef {
-  (ref: HeaderRef): void;
-};
-
-export interface AccordionManagerProps {
-  allowMultiple?: boolean;
-  allowToggle?: boolean;
-};
-
-export interface AccordionManagerState {
-  expandedSections: Set<string>;
-};
-
-export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
-  getIsExpanded: (id: string) => boolean;
-  getIsDisabled: (id: string) => boolean;
-  toggleSection: (id: string) => void;
-  setHeaderRef: SetHeaderRef;
-  focusHeader: (index: number) => void;
-  focusPrevHeader: (index: number) => void;
-  focusNextHeader: (index: number) => void;
-  focusFirstHeader: () => void;
-  focusLastHeader: () => void;
-};
+//Types
+import {
+  HeaderRef,
+  SetHeaderRef,
+  AccordionManagerConsumerProps,
+  AccordionManagerProps,
+  AccordionManagerState,
+} from 'src/Accordion/types';
 
 export default function withAccordionManager<P extends AccordionManagerConsumerProps>(Component: React.ComponentType<P>) {
   return class AccordionManager extends React.Component<
     Omit<P, keyof AccordionManagerConsumerProps> & AccordionManagerProps,
     AccordionManagerState
   > {
-    //---- Static fields ----
+    //---- Static Fields ----
     static propTypes = {
       allowMultiple: PropTypes.bool,
       allowToggle: PropTypes.bool,

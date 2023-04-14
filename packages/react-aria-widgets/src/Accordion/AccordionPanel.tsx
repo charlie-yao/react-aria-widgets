@@ -6,31 +6,12 @@ import PropTypes from 'prop-types';
 //Components and Styles
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
+//Types
+import { accordionSectionProp } from 'src/Accordion/propTypes';
+import { AccordionPanelProps } from 'src/Accordion/types';
+
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
-
-//Types
-import { sectionPropType, Section } from 'src/Accordion/Accordion';
-
-interface AccordionPanelProps {
-  children: React.ReactNode;
-  className?: string;
-  index: number;
-  sections: Section[];
-  getIsExpanded: (id: string) => boolean;
-  //Not needed below
-  headerLevel?: number;
-  allowMultiple?: any;
-  allowToggle?: any;
-  getIsDisabled?: any;
-  toggleSection?: any;
-  setHeaderRef?: any;
-  focusHeader?: any;
-  focusPrevHeader?: any;
-  focusNextHeader?: any;
-  focusFirstHeader?: any;
-  focusLastHeader?: any;
-}
 
 function AccordionPanel(props: AccordionPanelProps) {
   const {
@@ -76,7 +57,7 @@ AccordionPanel.propTypes = {
   className: PropTypes.string,
   //From <Accordion>
   index: PropTypes.number.isRequired,
-  sections: PropTypes.arrayOf(sectionPropType.isRequired).isRequired,
+  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   //From <AccordionManager>
   getIsExpanded: PropTypes.func.isRequired,
 };

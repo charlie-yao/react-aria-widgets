@@ -10,11 +10,7 @@ import React from 'react';
  * children will complain that those props are missing.
  *
  * @see @link{https://github.com/facebook/react/issues/6653}
- *
- * @param {React.ComponentType} Component
- * @return {React.ForwardRefExoticComponent}
  */
-
 export default function withNoOp<P>(Component: React.ComponentType<P>) {
   const NoOp = React.forwardRef((props: P, ref) => (
     <Component { ...props } ref={ ref } />

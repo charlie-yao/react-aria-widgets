@@ -13,7 +13,7 @@ const meta = {
     sections: [
       {
         id: 'section1',
-        renderHeaderContent: <div>Hello world!</div>,
+        renderHeaderContent: 'Section 1',
         renderPanelContent: () => 'Hello world!',
       },
     ],

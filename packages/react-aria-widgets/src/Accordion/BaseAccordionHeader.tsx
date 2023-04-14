@@ -3,21 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//Misc.
+//Types
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
-
-interface BaseAccordionHeaderProps {
-  children: React.ReactNode;
-  id?: string;
-  controlsId: string;
-  headerLevel: number;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
-  isExpanded?: boolean;
-  isDisabled?: boolean;
-  headerProps?: object;
-  buttonProps?: object;
-};
+import { BaseAccordionHeaderProps } from 'src/Accordion/types';
 
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>((props, ref) => {
   const {

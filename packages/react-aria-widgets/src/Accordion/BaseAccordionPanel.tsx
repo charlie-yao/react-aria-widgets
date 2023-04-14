@@ -3,17 +3,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const VALID_TAGS = ['section', 'div'] as const;
+//Types
+import { BaseAccordionPanelProps } from 'src/Accordion/types';
 
-type ValidTags = typeof VALID_TAGS[number];
-
-interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
-  id: string;
-  labelId?: string;
-  tagName?: ValidTags;
-  className?: string;
-}
+//Misc.
+import { VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 function BaseAccordionPanel(props: BaseAccordionPanelProps) {
   const {
@@ -43,7 +37,7 @@ BaseAccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   labelId: PropTypes.string,
-  tagName: PropTypes.oneOf(VALID_TAGS),
+  tagName: PropTypes.oneOf(VALID_PANEL_TAGS),
   className: PropTypes.string,
 };
 
