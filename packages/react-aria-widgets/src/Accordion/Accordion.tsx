@@ -22,8 +22,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
   headerLevel: number;
   renderSection?: RenderSection;
-  renderHeader: RenderHeader;
-  renderPanel: RenderPanel;
+  renderHeader?: RenderHeader;
+  renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
   headerElementType?: React.ElementType;
@@ -65,7 +65,7 @@ export const sectionPropType = PropTypes.exact({
 });
 
 export const defaultRenderSection: RenderSection = (index, props) => {
-  const { sections, renderHeader, renderPanel } = props;
+  const { sections, renderHeader = defaultRenderHeader, renderPanel = defaultRenderPanel } = props;
   const section = sections[index];
   const { id, renderHeader: renderIndividualHeader, renderPanel: renderIndividualPanel } = section;
   const _renderHeader = renderIndividualHeader ? renderIndividualHeader : renderHeader;
@@ -76,6 +76,30 @@ export const defaultRenderSection: RenderSection = (index, props) => {
       { _renderHeader(index, props) }
       { _renderPanel(index, props) }
     </Fragment>
+  );
+};
+
+export const defaultRenderHeader: RenderHeader = (index, props) => {
+  const { sections, headerElementType: HeaderElementType = AccordionHeader, headerProps = {} } = props;
+  const section = sections[index];
+  const { renderHeaderContent } = section;
+
+  return (
+    <HeaderElementType index={ index } {...props} {...headerProps}>
+      { typeof renderHeaderContent === 'function' ? renderHeaderContent(props) : renderHeaderContent }
+    </HeaderElementType>
+  );
+};
+
+export const defaultRenderPanel: RenderPanel = (index, props) => {
+  const { sections, panelElementType: PanelElementType = AccordionPanel, panelProps = {} } = props;
+  const section = sections[index];
+  const { renderPanelContent } = section;
+
+  return (
+    <PanelElementType index={ index } {...props} {...panelProps}>
+      { typeof renderPanelContent === 'function' ? renderPanelContent(props) : renderPanelContent }
+    </PanelElementType>
   );
 };
 
@@ -96,8 +120,8 @@ Accordion.propTypes = {
   sections: PropTypes.arrayOf(sectionPropType.isRequired).isRequired,
   headerLevel: validateHeaderLevelProp.isRequired,
   renderSection: PropTypes.func,
-  renderHeader: PropTypes.func.isRequired,
-  renderPanel: PropTypes.func.isRequired,
+  renderHeader: PropTypes.func,
+  renderPanel: PropTypes.func,
   headerProps: PropTypes.object,
   panelProps: PropTypes.object,
   headerComponent: PropTypes.elementType,

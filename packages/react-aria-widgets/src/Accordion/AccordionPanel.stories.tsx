@@ -9,7 +9,14 @@ const meta = {
   component: AccordionPanel,
   args: {
     children: 'Hello world!',
-    id: 'accordionId',
+    index: 0,
+    sections: [
+      {
+        id: 'dummySectionId',
+        renderHeaderContent: 'Section 1 Header',
+        renderPanelContent: 'Hello world!',
+      },
+    ],
   },
 } satisfies Meta<typeof AccordionPanel>;
 

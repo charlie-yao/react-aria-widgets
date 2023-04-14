@@ -9,10 +9,16 @@ const meta = {
   component: AccordionHeader,
   args: {
     children: 'Hello world!',
-    id: 'accordionId',
-    index: 1,
-    headerLevel: 2,
-    setHeaderRef: () => {},
+    index: 0,
+    headerLevel: 1,
+    sections: [
+      {
+        id: 'dummySectionId',
+        renderHeaderContent: 'Section 1 Header',
+        renderPanelContent: 'Hello world!',
+      },
+    ],
+
   },
 } satisfies Meta<typeof AccordionHeader>;
 

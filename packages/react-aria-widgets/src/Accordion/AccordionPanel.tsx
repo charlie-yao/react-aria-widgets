@@ -9,6 +9,7 @@ import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 
+//Types
 import { sectionPropType, Section } from 'src/Accordion/Accordion';
 
 interface AccordionPanelProps {
@@ -74,7 +75,7 @@ AccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   //From <Accordion>
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   sections: PropTypes.arrayOf(sectionPropType.isRequired).isRequired,
   //From <AccordionManager>
   getIsExpanded: PropTypes.func.isRequired,
