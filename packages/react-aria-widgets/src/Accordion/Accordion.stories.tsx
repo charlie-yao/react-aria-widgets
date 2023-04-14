@@ -13,25 +13,25 @@ const meta = {
   args: {
     headerLevel: 2,
     renderHeader: (index, props) => {
-      const { sections, headerProps = {} } = props;
+      const { sections, headerElementType: HeaderElementType = AccordionHeader, headerProps = {} } = props;
       const section = sections[index];
       const { renderHeaderContent } = section;
 
       return (
-        <AccordionHeader index={ index } {...props} {...headerProps}>
+        <HeaderElementType index={ index } {...props} {...headerProps}>
           { typeof renderHeaderContent === 'function' ? renderHeaderContent(props) : renderHeaderContent }
-        </AccordionHeader>
+        </HeaderElementType>
       );
     },
     renderPanel: (index, props) => {
-      const { sections, panelProps } = props;
+      const { sections, panelElementType: PanelElementType = AccordionPanel, panelProps = {} } = props;
       const section = sections[index];
       const { renderPanelContent } = section;
 
       return (
-        <AccordionPanel index={ index } {...props} {...panelProps}>
+        <PanelElementType index={ index } {...props} {...panelProps}>
           { typeof renderPanelContent === 'function' ? renderPanelContent(props) : renderPanelContent }
-        </AccordionPanel>
+        </PanelElementType>
       );
     },
     sections: [

@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 //HOCs
 import withAccordionManager from 'src/Accordion/withAccordionManager';
 
+//Components
+import AccordionHeader from 'src/Accordion/AccordionHeader';
+import AccordionPanel from 'src/Accordion/AccordionPanel';
+
 //Misc.
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
@@ -22,6 +26,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
+  headerElementType?: React.ElementType;
+  panelElementType?: React.ElementType;
 };
 
 export interface Section {
@@ -94,6 +100,8 @@ Accordion.propTypes = {
   renderPanel: PropTypes.func.isRequired,
   headerProps: PropTypes.object,
   panelProps: PropTypes.object,
+  headerComponent: PropTypes.elementType,
+  panelComponent: PropTypes.elementType,
   //From <AccordionManager>
   allowMultiple: PropTypes.bool.isRequired,
   allowToggle: PropTypes.bool.isRequired,
