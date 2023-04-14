@@ -26,6 +26,7 @@ function Accordion(props: AccordionProps) {
 }
 
 Accordion.propTypes = {
+  //section: accordionSectionProp,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   headerLevel: validateHeaderLevelProp.isRequired,
   renderSection: PropTypes.func,
@@ -33,8 +34,8 @@ Accordion.propTypes = {
   renderPanel: PropTypes.func,
   headerProps: PropTypes.object,
   panelProps: PropTypes.object,
-  headerComponent: PropTypes.elementType,
-  panelComponent: PropTypes.elementType,
+  headerElementType: PropTypes.elementType,
+  panelElementType: PropTypes.elementType,
   //From <AccordionManager>
   allowMultiple: PropTypes.bool.isRequired,
   allowToggle: PropTypes.bool.isRequired,

@@ -12,4 +12,8 @@ export const accordionSectionProp = PropTypes.exact({
     PropTypes.node,
     PropTypes.func,
   ]).isRequired,
+  headerProps: PropTypes.object,
+  panelProps: PropTypes.object,
+  headerElementType: PropTypes.elementType,
+  panelElementType: PropTypes.elementType,
 });

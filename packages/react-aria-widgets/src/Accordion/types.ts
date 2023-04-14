@@ -14,8 +14,8 @@ export interface SetHeaderRef {
 
 export interface Section {
   id: string;
-  renderHeader?: RenderHeader | null;
-  renderPanel?: RenderPanel | null;
+  renderHeader?: RenderHeader;
+  renderPanel?: RenderPanel;
   renderHeaderContent: React.ReactNode | RenderHeaderContent;
   renderPanelContent: React.ReactNode | RenderPanelContent;
   headerProps?: Props;
@@ -68,6 +68,7 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
 };
 
 export interface AccordionProps extends AccordionManagerConsumerProps {
+  //section?: Section;
   sections: Section[];
   headerLevel: number;
   renderSection?: RenderSection;
