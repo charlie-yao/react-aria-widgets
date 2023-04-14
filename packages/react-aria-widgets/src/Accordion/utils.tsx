@@ -34,9 +34,10 @@ export const defaultRenderSection: RenderSection = (index, props) => {
 };
 
 export const defaultRenderHeader: RenderHeader = (index, props) => {
-  const { sections, headerElementType: HeaderElementType = AccordionHeader, headerProps = {} } = props;
+  const { sections, headerElementType = AccordionHeader, headerProps = {} } = props;
   const section = sections[index];
-  const { renderHeaderContent } = section;
+  const { renderHeaderContent, headerElementType: individualHeaderElementType } = section;
+  const HeaderElementType = individualHeaderElementType ? individualHeaderElementType : headerElementType;
   const children = typeof renderHeaderContent === 'function' ? renderHeaderContent(props) : renderHeaderContent;
 
   return (
@@ -51,9 +52,10 @@ export const defaultRenderHeader: RenderHeader = (index, props) => {
 };
 
 export const defaultRenderPanel: RenderPanel = (index, props) => {
-  const { sections, panelElementType: PanelElementType = AccordionPanel, panelProps = {} } = props;
+  const { sections, panelElementType = AccordionPanel, panelProps = {} } = props;
   const section = sections[index];
-  const { renderPanelContent } = section;
+  const { renderPanelContent, panelElementType: individualPanelElementType } = section;
+  const PanelElementType = individualPanelElementType ? individualPanelElementType : panelElementType;
   const children = typeof renderPanelContent === 'function' ? renderPanelContent(props) : renderPanelContent;
 
   return (

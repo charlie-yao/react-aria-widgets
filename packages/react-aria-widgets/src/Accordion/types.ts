@@ -18,6 +18,10 @@ export interface Section {
   renderPanel?: RenderPanel | null;
   renderHeaderContent: React.ReactNode | ((props: any) => React.ReactNode);
   renderPanelContent: React.ReactNode | ((props: any) => React.ReactNode);
+  headerProps?: Props;
+  panelProps?: Props;
+  headerElementType?: React.ElementType;
+  panelElementType?: React.ElementType;
 };
 
 export interface RenderSection {
@@ -74,7 +78,7 @@ export interface AccordionHeaderProps extends AccordionProps {
   index: number;
 };
 
-export interface AccordionPanelProps {
+export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   index: number;
