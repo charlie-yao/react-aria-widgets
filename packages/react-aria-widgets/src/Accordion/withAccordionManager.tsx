@@ -3,12 +3,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-interface AccordionManagerProps {
+export type HeaderRef = HTMLButtonElement | HTMLElement | null;
+
+export interface SetHeaderRef {
+  (ref: HeaderRef): void;
+};
+
+export interface AccordionManagerProps {
   allowMultiple?: boolean;
   allowToggle?: boolean;
 };
 
-interface AccordionManagerState {
+export interface AccordionManagerState {
   expandedSections: Set<string>;
 };
 
@@ -16,7 +22,7 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;
-  setHeaderRef: (ref: HTMLElement) => void;
+  setHeaderRef: SetHeaderRef;
   focusHeader: (index: number) => void;
   focusPrevHeader: (index: number) => void;
   focusNextHeader: (index: number) => void;
@@ -45,7 +51,7 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
       expandedSections: new Set<string>(),
     }
 
-    sectionRefs: HTMLElement[] = [];
+    sectionRefs: HeaderRef[] = [];
 
     //---- Rendering ----
     render() {
@@ -117,12 +123,17 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
       });
     };
 
-    setHeaderRef = (ref: HTMLElement) => {
+    setHeaderRef: SetHeaderRef = (ref) => {
       this.sectionRefs.push(ref);
     };
 
     focusHeader = (index: number) => {
-      this.sectionRefs[index].focus();
+      const ref = this.sectionRefs[index];
+
+      if(!ref)
+        return;
+
+      ref.focus();
     };
 
     focusPrevHeader = (index: number) => {

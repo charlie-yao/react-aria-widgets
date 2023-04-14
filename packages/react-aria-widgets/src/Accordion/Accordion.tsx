@@ -10,51 +10,73 @@ import { validateHeaderLevelProp } from 'src/utils/propTypes';
 //Types
 import { AccordionManagerConsumerProps } from 'src/Accordion/withAccordionManager';
 
-interface AccordionProps extends AccordionManagerConsumerProps {
+export interface Props {
+  [key: string]: any;
+};
+
+export interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
-  headerLevel?: number;
+  headerLevel: number;
   renderSection?: RenderSection;
+  renderHeader: RenderHeader;
+  renderPanel: RenderPanel;
+  headerProps?: Props;
+  panelProps?: Props;
 };
 
-interface Section {
+export interface Section {
   id: string;
-  renderHeader: (props: any) => React.ReactNode;
-  renderPanel: (props: any) => React.ReactNode;
+  renderHeader?: RenderHeader | null;
+  renderPanel?: RenderPanel | null;
+  renderHeaderContent: React.ReactNode | ((props: any) => React.ReactNode);
+  renderPanelContent: React.ReactNode | ((props: any) => React.ReactNode);
 };
 
-interface RenderSection {
-  (
-    section: Section,
-    index: number,
-    props: any
-  ): React.ReactNode;
+export interface RenderSection {
+  (index: number, props: AccordionProps): React.ReactNode;
 };
 
-const defaultRenderSection: RenderSection = (section, index, props) => {
-  const { id, renderHeader, renderPanel } = section;
-  const childProps = {
-    id,
-    index,
-    ...props,
-  };
+export interface RenderHeader {
+  (index: number, props: AccordionProps): React.ReactNode;
+};
+
+export interface RenderPanel {
+  (index: number, props: AccordionProps): React.ReactNode;
+};
+
+export const sectionPropType = PropTypes.exact({
+  id: PropTypes.string.isRequired,
+  renderHeader: PropTypes.func,
+  renderPanel: PropTypes.func,
+  renderHeaderContent: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+  ]).isRequired,
+  renderPanelContent: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+  ]).isRequired,
+});
+
+export const defaultRenderSection: RenderSection = (index, props) => {
+  const { sections, renderHeader, renderPanel } = props;
+  const section = sections[index];
+  const { id, renderHeader: renderIndividualHeader, renderPanel: renderIndividualPanel } = section;
+  const _renderHeader = renderIndividualHeader ? renderIndividualHeader : renderHeader;
+  const _renderPanel = renderIndividualPanel ? renderIndividualPanel : renderPanel;
 
   return (
     <Fragment key={ id }>
-      { renderHeader(childProps) }
-      { renderPanel(childProps) }
+      { _renderHeader(index, props) }
+      { _renderPanel(index, props) }
     </Fragment>
   );
 };
 
 function Accordion(props: AccordionProps) {
-  const {
-    sections,
-    renderSection = defaultRenderSection,
-    ...rest
-  } = props;
-
+  const { sections, renderSection = defaultRenderSection } = props;
   const renderedSections = sections.map((section, index) => {
-    return renderSection(section, index, rest);
+    return renderSection(index, props);
   });
   
   return (
@@ -65,15 +87,13 @@ function Accordion(props: AccordionProps) {
 }
 
 Accordion.propTypes = {
-  sections: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      renderHeader: PropTypes.func.isRequired,
-      renderPanel: PropTypes.func.isRequired,
-    }).isRequired
-  ).isRequired,
-  headerLevel: validateHeaderLevelProp,
+  sections: PropTypes.arrayOf(sectionPropType.isRequired).isRequired,
+  headerLevel: validateHeaderLevelProp.isRequired,
   renderSection: PropTypes.func,
+  renderHeader: PropTypes.func.isRequired,
+  renderPanel: PropTypes.func.isRequired,
+  headerProps: PropTypes.object,
+  panelProps: PropTypes.object,
   //From <AccordionManager>
   allowMultiple: PropTypes.bool.isRequired,
   allowToggle: PropTypes.bool.isRequired,

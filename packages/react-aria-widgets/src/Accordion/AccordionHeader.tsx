@@ -8,21 +8,14 @@ import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 import { getPanelId } from 'src/Accordion/utils';
 import { validateHeaderLevelProp } from 'src/utils/propTypes';
 
-interface AccordionHeaderProps {
+//Types
+import { sectionPropType, AccordionProps } from 'src/Accordion/Accordion';
+
+interface AccordionHeaderProps extends AccordionProps {
   children: React.ReactNode;
   headerProps?: object;
   buttonProps?: object;
-  id: string;
   index: number;
-  headerLevel: number;
-  getIsExpanded: (id: string) => boolean;
-  getIsDisabled: (id: string) => boolean;
-  toggleSection: (id: string) => void;
-  setHeaderRef: (ref: HTMLButtonElement) => void;
-  focusPrevHeader: (index: number) => void;
-  focusNextHeader: (index: number) => void;
-  focusFirstHeader: () => void;
-  focusLastHeader: () => void;
 };
 
 function AccordionHeader(props: AccordionHeaderProps) {
@@ -30,9 +23,9 @@ function AccordionHeader(props: AccordionHeaderProps) {
     children,
     headerProps = {},
     buttonProps = {},
-    id,
     index,
     headerLevel,
+    sections,
     getIsExpanded,
     getIsDisabled,
     toggleSection,
@@ -42,6 +35,8 @@ function AccordionHeader(props: AccordionHeaderProps) {
     focusFirstHeader,
     focusLastHeader,
   } = props;
+  const section = sections[index];
+  const { id } = section;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
@@ -102,9 +97,9 @@ AccordionHeader.propTypes = {
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
   //From <Accordion<
-  id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   headerLevel: validateHeaderLevelProp.isRequired,
+  sections: PropTypes.arrayOf(sectionPropType.isRequired).isRequired,
   //From <AccordionManager>
   getIsExpanded: PropTypes.func.isRequired,
   getIsDisabled: PropTypes.func.isRequired,

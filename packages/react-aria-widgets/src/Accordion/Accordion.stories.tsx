@@ -12,19 +12,33 @@ const meta = {
   component: Accordion,
   args: {
     headerLevel: 2,
+    renderHeader: (index, props) => {
+      const { sections, headerProps = {} } = props;
+      const section = sections[index];
+      const { renderHeaderContent } = section;
+
+      return (
+        <AccordionHeader index={ index } {...props} {...headerProps}>
+          { typeof renderHeaderContent === 'function' ? renderHeaderContent(props) : renderHeaderContent }
+        </AccordionHeader>
+      );
+    },
+    renderPanel: (index, props) => {
+      const { sections, panelProps } = props;
+      const section = sections[index];
+      const { renderPanelContent } = section;
+
+      return (
+        <AccordionPanel index={ index } {...props} {...panelProps}>
+          { typeof renderPanelContent === 'function' ? renderPanelContent(props) : renderPanelContent }
+        </AccordionPanel>
+      );
+    },
     sections: [
       {
         id: 'section1',
-        renderHeader: (props) => (
-          <AccordionHeader {...props}>
-            Section 1
-          </AccordionHeader>
-        ),
-        renderPanel: (props) => (
-          <AccordionPanel {...props}>
-            Hello world!
-          </AccordionPanel>
-        )
+        renderHeaderContent: <div>Hello world!</div>,
+        renderPanelContent: () => 'Hello world!',
       },
     ],
   },
