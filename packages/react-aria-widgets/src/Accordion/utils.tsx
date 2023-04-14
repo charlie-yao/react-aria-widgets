@@ -33,36 +33,56 @@ export const defaultRenderSection: RenderSection = (index, props) => {
   );
 };
 
-export const defaultRenderHeader: RenderHeader = (index, props) => {
-  const { sections, headerElementType = AccordionHeader, headerProps = {} } = props;
-  const section = sections[index];
-  const { renderHeaderContent, headerElementType: individualHeaderElementType } = section;
-  const HeaderElementType = individualHeaderElementType ? individualHeaderElementType : headerElementType;
-  const children = typeof renderHeaderContent === 'function' ? renderHeaderContent(props) : renderHeaderContent;
+export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
+  const {
+    sections,
+    headerElementType = AccordionHeader,
+    headerProps = {}
+  } = accordionProps;
+
+  const {
+    renderHeaderContent,
+    headerElementType: indvHeaderElementType,
+    headerProps: indvHeaderProps = {}
+  } = sections[index];
+
+  const HeaderElementType = indvHeaderElementType ? indvHeaderElementType : headerElementType;
+  const children = typeof renderHeaderContent === 'function' ? renderHeaderContent(accordionProps) : renderHeaderContent;
+  const combinedHeaderProps = { ...headerProps, ...indvHeaderProps };
 
   return (
     <HeaderElementType
       index={ index }
-      {...props}
-      {...headerProps}
+      {...accordionProps}
+      {...combinedHeaderProps}
     >
       { children }
     </HeaderElementType>
   );
 };
 
-export const defaultRenderPanel: RenderPanel = (index, props) => {
-  const { sections, panelElementType = AccordionPanel, panelProps = {} } = props;
-  const section = sections[index];
-  const { renderPanelContent, panelElementType: individualPanelElementType } = section;
-  const PanelElementType = individualPanelElementType ? individualPanelElementType : panelElementType;
-  const children = typeof renderPanelContent === 'function' ? renderPanelContent(props) : renderPanelContent;
+export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
+  const {
+    sections,
+    panelElementType = AccordionPanel,
+    panelProps = {},
+  } = accordionProps;
+
+  const {
+    renderPanelContent,
+    panelElementType: indvPanelElementType,
+    panelProps: indvPanelProps = {},
+  } = sections[index];
+
+  const PanelElementType = indvPanelElementType ? indvPanelElementType : panelElementType;
+  const children = typeof renderPanelContent === 'function' ? renderPanelContent(accordionProps) : renderPanelContent;
+  const combinedPanelProps = { ...panelProps, ...indvPanelProps };
 
   return (
     <PanelElementType
       index={ index }
-      {...props}
-      {...panelProps}
+      {...accordionProps}
+      {...combinedPanelProps}
     >
       { children }
     </PanelElementType>
