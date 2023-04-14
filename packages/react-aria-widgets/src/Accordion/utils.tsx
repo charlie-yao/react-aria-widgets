@@ -19,11 +19,20 @@ export function getPanelId(id: string): string {
 }
 
 export const defaultRenderSection: RenderSection = (index, props) => {
-  const { sections, renderHeader = defaultRenderHeader, renderPanel = defaultRenderPanel } = props;
-  const section = sections[index];
-  const { id, renderHeader: renderIndividualHeader, renderPanel: renderIndividualPanel } = section;
-  const _renderHeader = renderIndividualHeader ? renderIndividualHeader : renderHeader;
-  const _renderPanel = renderIndividualPanel ? renderIndividualPanel : renderPanel;
+  const {
+    sections,
+    renderHeader = defaultRenderHeader,
+    renderPanel = defaultRenderPanel,
+  } = props;
+  
+  const {
+    id,
+    renderHeader: renderIndvHeader,
+    renderPanel: renderIndvPanel,
+  } = sections[index];
+  
+  const _renderHeader = renderIndvHeader ? renderIndvHeader : renderHeader;
+  const _renderPanel = renderIndvPanel ? renderIndvPanel : renderPanel;
 
   return (
     <Fragment key={ id }>
@@ -47,8 +56,13 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   } = sections[index];
 
   const HeaderElementType = indvHeaderElementType ? indvHeaderElementType : headerElementType;
-  const children = typeof renderHeaderContent === 'function' ? renderHeaderContent(accordionProps) : renderHeaderContent;
   const combinedHeaderProps = { ...headerProps, ...indvHeaderProps };
+  let children;
+
+  if(typeof renderHeaderContent === 'function')
+    children = renderHeaderContent(index, accordionProps, combinedHeaderProps);
+  else
+    children = renderHeaderContent;
 
   return (
     <HeaderElementType
@@ -75,8 +89,13 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   } = sections[index];
 
   const PanelElementType = indvPanelElementType ? indvPanelElementType : panelElementType;
-  const children = typeof renderPanelContent === 'function' ? renderPanelContent(accordionProps) : renderPanelContent;
   const combinedPanelProps = { ...panelProps, ...indvPanelProps };
+  let children;
+
+  if(typeof renderPanelContent === 'function')
+    children = renderPanelContent(index, accordionProps, combinedPanelProps);
+  else
+    children = renderPanelContent;
 
   return (
     <PanelElementType

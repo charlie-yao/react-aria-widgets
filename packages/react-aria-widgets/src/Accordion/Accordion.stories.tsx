@@ -8,6 +8,9 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 import CustomAccordionHeader from 'src/Accordion/CustomAccordionHeader';
 import CustomAccordionPanel from 'src/Accordion/CustomAccordionPanel';
 
+//Misc.
+import { defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
+
 type Story = StoryObj<typeof Accordion>
 
 const meta = {
@@ -59,38 +62,8 @@ const meta = {
       },
       {
         id: 'section3',
-        renderHeader: (index, props) => {
-          const { sections, headerElementType: HeaderElementType = AccordionHeader, headerProps = {} } = props;
-          const section = sections[index];
-          const { renderHeaderContent } = section;
-          const children = typeof renderHeaderContent === 'function' ? renderHeaderContent(props) : renderHeaderContent;
-
-          return (
-            <HeaderElementType
-              index={ index }
-              {...props}
-              {...headerProps}
-            >
-              { children }
-            </HeaderElementType>
-          );
-        },
-        renderPanel: (index, props) => {
-          const { sections, panelElementType: PanelElementType = AccordionPanel, panelProps = {} } = props;
-          const section = sections[index];
-          const { renderPanelContent } = section;
-          const children = typeof renderPanelContent === 'function' ? renderPanelContent(props) : renderPanelContent;
-
-          return (
-            <PanelElementType
-              index={ index }
-              {...props}
-              {...panelProps}
-            >
-              { children }
-            </PanelElementType>
-          );
-        },
+        renderHeader: defaultRenderHeader,
+        renderPanel: defaultRenderPanel,
         renderHeaderContent: 'Section 3',
         renderPanelContent: (
           <p>
@@ -102,7 +75,7 @@ const meta = {
             { ' ' }
             <code>renderPanel</code>
             { ' ' }
-            functions that simply reimplement the behavior of the defaults. The content
+            functions that override the default accordion-wide functions. The content
             is provided by the
             { ' ' }
             <code>renderHeaderContent</code>
@@ -117,27 +90,51 @@ const meta = {
       },
       {
         id: 'section4',
-        renderHeader: (index, props) => {
-          const { headerElementType: HeaderElementType = AccordionHeader, headerProps = {} } = props;
+        renderHeader: (index, accordionProps) => {
+          const {
+            sections,
+            headerElementType = AccordionHeader,
+            headerProps = {}
+          } = accordionProps;
+
+          const {
+            headerElementType: indvHeaderElementType,
+            headerProps: indvHeaderProps = {}
+          } = sections[index];
+
+          const HeaderElementType = indvHeaderElementType ? indvHeaderElementType : headerElementType;
+          const combinedHeaderProps = { ...headerProps, ...indvHeaderProps };
 
           return (
             <HeaderElementType
               index={ index }
-              {...props}
-              {...headerProps}
+              {...accordionProps}
+              {...combinedHeaderProps}
             >
-                Section 4
+                Section  4
             </HeaderElementType>
           );
         },
-        renderPanel: (index, props) => {
-          const { panelElementType: PanelElementType = AccordionPanel, panelProps = {} } = props;
+        renderPanel: (index, accordionProps) => {
+          const {
+            sections,
+            panelElementType = AccordionPanel,
+            panelProps = {},
+          } = accordionProps;
+
+          const {
+            panelElementType: indvPanelElementType,
+            panelProps: indvPanelProps = {},
+          } = sections[index];
+
+          const PanelElementType = indvPanelElementType ? indvPanelElementType : panelElementType;
+          const combinedPanelProps = { ...panelProps, ...indvPanelProps };
 
           return (
             <PanelElementType
               index={ index }
-              {...props}
-              {...panelProps}
+              {...accordionProps}
+              {...combinedPanelProps}
             >
               <p>
                 This header/panel uses per-section

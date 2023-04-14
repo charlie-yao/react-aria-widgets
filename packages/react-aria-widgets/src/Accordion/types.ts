@@ -16,8 +16,8 @@ export interface Section {
   id: string;
   renderHeader?: RenderHeader | null;
   renderPanel?: RenderPanel | null;
-  renderHeaderContent: React.ReactNode | ((props: any) => React.ReactNode);
-  renderPanelContent: React.ReactNode | ((props: any) => React.ReactNode);
+  renderHeaderContent: React.ReactNode | RenderHeaderContent;
+  renderPanelContent: React.ReactNode | RenderPanelContent;
   headerProps?: Props;
   panelProps?: Props;
   headerElementType?: React.ElementType;
@@ -34,6 +34,14 @@ export interface RenderHeader {
 
 export interface RenderPanel {
   (index: number, props: AccordionProps): React.ReactNode;
+};
+
+export interface RenderHeaderContent {
+  (index: number, props: AccordionProps, headerProps: Props): React.ReactNode;
+};
+
+export interface RenderPanelContent {
+  (index: number, props: AccordionProps, panelProps: Props): React.ReactNode;
 };
 
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
