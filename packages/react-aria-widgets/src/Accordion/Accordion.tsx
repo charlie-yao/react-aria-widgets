@@ -26,7 +26,6 @@ function Accordion(props: AccordionProps) {
 }
 
 Accordion.propTypes = {
-  //section: accordionSectionProp,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   headerLevel: validateHeaderLevelProp.isRequired,
   renderSection: PropTypes.func,

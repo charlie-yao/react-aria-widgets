@@ -14,14 +14,14 @@ export interface SetHeaderRef {
 
 export interface Section {
   id: string;
-  renderHeader?: RenderHeader;
-  renderPanel?: RenderPanel;
   renderHeaderContent: React.ReactNode | RenderHeaderContent;
   renderPanelContent: React.ReactNode | RenderPanelContent;
-  headerProps?: Props;
-  panelProps?: Props;
-  headerElementType?: React.ElementType;
-  panelElementType?: React.ElementType;
+  renderHeader?: RenderHeader | null;
+  renderPanel?: RenderPanel | null;
+  headerProps?: Props | null;
+  panelProps?: Props | null;
+  headerElementType?: React.ElementType | string | null;
+  panelElementType?: React.ElementType | string | null;
 };
 
 export interface RenderSection {
@@ -68,7 +68,6 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
 };
 
 export interface AccordionProps extends AccordionManagerConsumerProps {
-  //section?: Section;
   sections: Section[];
   headerLevel: number;
   renderSection?: RenderSection;
@@ -76,8 +75,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: React.ElementType;
-  panelElementType?: React.ElementType;
+  headerElementType?: React.ElementType | string;
+  panelElementType?: React.ElementType | string;
 };
 
 export interface AccordionHeaderProps extends AccordionProps {
