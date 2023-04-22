@@ -47,45 +47,87 @@ const meta = {
         id: 'section2',
         renderHeaderContent: () => 'Section 2',
         renderPanelContent: () => (
-          <p>
-            The header/panel content for this section was rendered by supplying render functions to
-            { ' ' }
-            renderHeaderContent
-            { ' ' }
-            and
-            { ' ' }
-            renderPanelContent
-            { '' }
-            . These functions receive ...
-          </p>
+          <>
+            <p>
+              The header/panel content for this section was rendered by supplying render functions to
+              { ' ' }
+              renderHeaderContent
+              { ' ' }
+              and
+              { ' ' }
+              renderPanelContent
+              { '' }
+              .
+            </p>
+            <p>
+              These render functions have access to ... (which props and arguments?)
+            </p>
+          </>
         ),
       },
       {
         id: 'section3',
-        renderHeader: defaultRenderHeader,
-        renderPanel: defaultRenderPanel,
+        headerElementType: CustomAccordionHeader,
+        panelElementType: CustomAccordionPanel,
+        headerProps: {
+          buttonProps: {
+            style: {
+              border: '2px solid black',
+            },
+          },
+        },
+        panelProps: {
+          style: {
+            border: '2px solid black',
+          },
+        },
         renderHeaderContent: 'Section 3',
         renderPanelContent: (
-          <p>
-            This header/panel uses per-section
-            { ' ' }
-            <code>renderHeader</code>
-            { ' ' }
-            and
-            { ' ' }
-            <code>renderPanel</code>
-            { ' ' }
-            functions that override the default accordion-wide functions. The content
-            is provided by the
-            { ' ' }
-            <code>renderHeaderContent</code>
-            { ' ' }
-            and
-            { ' ' }
-            <code>renderPanelContent</code>
-            { ' ' }
-            fields.
-          </p>
+          <>
+            <p>
+              <code>&lt;Accordion&gt;</code>
+              { ' ' }
+              accepts the props
+              { ' ' }
+              <code>headerElementType</code>
+              { ' ' }
+              and
+              { ' ' }
+              <code>panelElementType</code>
+              { '' }
+              , which determine which components will wrap the header/panel content for each section. If no value
+              is supplied,
+              { ' ' }
+              <code>AccordionHeader</code>
+              { ' ' }
+              and
+              { ' ' }
+              <code>AccordionPanel</code>
+              { ' ' }
+              will be used by default. The default render functions automatically injects props such as
+              the section's index, methods from
+              { ' ' }
+              <code>withAccordionManager()</code>
+              { '' }
+              , and so-on, into those components.
+            </p>
+            <p>
+              Additionally, developers can override the accordion-wide element types by supplying a
+              { ' ' }
+              <code>headerElementType</code>
+              { ' ' }
+              or a
+              { ' ' }
+              <code>panelElementType</code>
+              { ' ' }
+              on a per-section basis. This section is an example of overriding the accordion-wide
+              element types with section-specific element types.
+            </p>
+            <p>
+              Mention supplying headerElementType, panelElementType, headerProps, and panelProps to Accordion.
+              Mention section-specific headerElementType, panelElementType, headerProps, and panelProps.
+            </p>
+          </>
         ),
       },
       {
@@ -170,55 +212,6 @@ const meta = {
         },
         renderHeaderContent: 'Section 4 - Shouldn\'t be seen.',
         renderPanelContent: 'You shouldn\'t be seeing this.',
-      },
-      {
-        id: 'section5',
-        headerElementType: CustomAccordionHeader,
-        panelElementType: CustomAccordionPanel,
-        renderHeaderContent: 'Section 5',
-        renderPanelContent: (
-          <>
-            <p>
-              <code>&lt;Accordion&gt;</code>
-              { ' ' }
-              accepts the props
-              { ' ' }
-              <code>headerElementType</code>
-              { ' ' }
-              and
-              { ' ' }
-              <code>panelElementType</code>
-              { '' }
-              , which determine which components will wrap the header/panel content for each section. If no value
-              is supplied,
-              { ' ' }
-              <code>AccordionHeader</code>
-              { ' ' }
-              and
-              { ' ' }
-              <code>AccordionPanel</code>
-              { ' ' }
-              will be used by default. The default render functions automatically injects props such as
-              the section's index, methods from
-              { ' ' }
-              <code>withAccordionManager()</code>
-              { '' }
-              , and so-on, into those components.
-            </p>
-            <p>
-              Additionally, developers can override the accordion-wide element types by supplying a
-              { ' ' }
-              <code>headerElementType</code>
-              { ' ' }
-              or a
-              { ' ' }
-              <code>panelElementType</code>
-              { ' ' }
-              on a per-section basis. This section is an example of overriding the accordion-wide
-              element types with section-specific element types.
-            </p>
-          </>
-        ),
       },
     ],
   },

@@ -7,10 +7,15 @@ import AccordionPanel from 'src/Accordion/AccordionPanel';
 import { AccordionPanelProps } from 'src/Accordion/types';
 
 export default function CustomAccordionPanel(props: AccordionPanelProps) {
+  const { style = {}, ...rest } = props;
+  const _style = Object.assign({}, style, {
+    color: 'blue',
+  });
+
   return (
     <AccordionPanel
-      style={{ color: 'blue' }}
-      {...props}
+      style={ _style }
+      { ...rest }
     />
   );
 }
