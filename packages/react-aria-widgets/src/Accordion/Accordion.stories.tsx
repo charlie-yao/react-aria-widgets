@@ -34,35 +34,85 @@ const meta = {
             { ' ' }
             <code>renderPanelContent</code>
             { ' ' }
-            is text inside of a
+            is just a regular
             { ' ' }
             <code>&lt;p&gt;</code>
             { ' ' }
-            tag.
+            element.
           </p>
         ),
       },
       {
         id: 'section2',
         renderHeaderContent: () => 'Section 2',
-        renderPanelContent: () => (
-          <>
-            <p>
-              The header/panel content for this section was rendered by supplying render functions to
-              { ' ' }
-              renderHeaderContent
-              { ' ' }
-              and
-              { ' ' }
-              renderPanelContent
-              { '' }
-              .
-            </p>
-            <p>
-              These render functions have access to ... (which props and arguments?)
-            </p>
-          </>
-        ),
+        renderPanelContent: (index, accordionProps) => {
+          const { headerLevel } = accordionProps;
+
+          return (
+            <>
+              <p>
+                The header/panel content for this section was rendered by supplying render functions to
+                { ' ' }
+                <code>renderHeaderContent</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanelContent</code>
+                { '' }
+                .
+              </p>
+              <p>
+                Unless you use custom render functions for
+                { ' ' }
+                <code>renderSection</code>
+                { '' }
+                ,
+                { ' ' }
+                <code>renderHeader</code>
+                { '' }
+                ,
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanel</code>
+                { ' ' }
+                that remove this behavior,
+                { ' ' }
+                <code>renderHeaderContent</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanelContent</code>
+                { ' ' }
+                will receive the section's index and every prop passed to
+                { ' ' }
+                <code>&lt;Accordion&gt;</code>
+                { ' ' }
+                , including methods from
+                { ' ' }
+                <code>withAccordionManager</code>
+                { '' }
+                , as arguments. For example, this
+                { ' ' }
+                <code>renderPanelContent</code>
+                { ' ' }
+                knows that its index is
+                { ' ' }
+                <code>{ index }</code>
+                { ' ' }
+                and that its
+                { ' ' }
+                <code>headerLevel</code>
+                { ' ' }
+                is
+                { ' ' }
+                <code>{ headerLevel }</code>
+                { '' }
+                .
+              </p>
+            </>
+          );
+        },
       },
       {
         id: 'section3',
