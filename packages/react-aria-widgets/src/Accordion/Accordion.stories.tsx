@@ -144,37 +144,64 @@ const meta = {
               { ' ' }
               <code>panelElementType</code>
               { '' }
-              , which determine which components will wrap the header/panel content for each section. If no value
-              is supplied,
+              , which determine which components will wrap the header/panel content for each section.
+              It also accepts the props
               { ' ' }
-              <code>AccordionHeader</code>
+              <code>headerProps</code>
               { ' ' }
               and
               { ' ' }
-              <code>AccordionPanel</code>
+              <code>panelProps</code>
               { ' ' }
-              will be used by default. The default render functions automatically injects props such as
-              the section's index, methods from
-              { ' ' }
-              <code>withAccordionManager()</code>
-              { '' }
-              , and so-on, into those components.
+              , which are objects that get spread onto their respective element.
             </p>
             <p>
-              Additionally, developers can override the accordion-wide element types by supplying a
+              Developers can also give each section a
+              { ' ' }
+              <code>headerElementType</code>
+              { '' }
+              , a
+              { ' ' }
+              <code>panelElementType</code>
+              { '' }
+              , a
+              { ' ' }
+              <code>headerProps</code>
+              { '' }
+              , and/or a
+              { ' ' }
+              <code>panelProps</code>
+              { '' }
+              . Section-specific header/panel element types overwrite those on the accordion level, whereas
+              section-specific header/panel props are merged with those on the accordion level. If there are any
+              conflicts in the merged objects, the properties from the section-specific objects are prioritized.
+            </p>
+            <p>
+              This section uses a
               { ' ' }
               <code>headerElementType</code>
               { ' ' }
-              or a
+              and a
               { ' ' }
               <code>panelElementType</code>
               { ' ' }
-              on a per-section basis. This section is an example of overriding the accordion-wide
-              element types with section-specific element types.
-            </p>
-            <p>
-              Mention supplying headerElementType, panelElementType, headerProps, and panelProps to Accordion.
-              Mention section-specific headerElementType, panelElementType, headerProps, and panelProps.
+              that composes over
+              { ' ' }
+              <code>&lt;AccordionHeader&gt;</code>
+              { ' ' }
+              and
+              { ' ' }
+              <code>&lt;AccordionPanel&gt;</code>
+              { ' ' }
+              to automatically color the text blue. It also uses section-specific
+              { ' ' }
+              <code>headerProps</code>
+              { ' ' }
+              and
+              { ' ' }
+              <code>panelProps</code>
+              { ' ' }
+              to set styles with black borders.
             </p>
           </>
         ),
