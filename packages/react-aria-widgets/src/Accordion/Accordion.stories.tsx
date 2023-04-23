@@ -14,6 +14,8 @@ const meta = {
   component: Accordion,
   args: {
     headerLevel: 1,
+    headerElementType: AccordionHeader,
+    panelElementType: AccordionPanel,
     sections: [
       {
         id: 'section1',

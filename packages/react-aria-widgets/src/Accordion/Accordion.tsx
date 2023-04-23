@@ -33,8 +33,8 @@ Accordion.propTypes = {
   renderPanel: PropTypes.func,
   headerProps: PropTypes.object,
   panelProps: PropTypes.object,
-  headerElementType: PropTypes.elementType,
-  panelElementType: PropTypes.elementType,
+  headerElementType: PropTypes.elementType.isRequired,
+  panelElementType: PropTypes.elementType.isRequired,
   //From <AccordionManager>
   allowMultiple: PropTypes.bool.isRequired,
   allowToggle: PropTypes.bool.isRequired,

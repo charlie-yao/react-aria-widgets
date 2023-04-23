@@ -75,8 +75,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: React.ElementType | string;
-  panelElementType?: React.ElementType | string;
+  headerElementType: React.ElementType | string;
+  panelElementType: React.ElementType | string;
 };
 
 export interface AccordionHeaderProps extends AccordionProps {
