@@ -5,11 +5,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Accordion from 'src/Accordion/Accordion';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
-import CustomAccordionHeader from 'src/Accordion/CustomAccordionHeader';
-import CustomAccordionPanel from 'src/Accordion/CustomAccordionPanel';
-
-//Misc.
-import { defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
+import StyledAccordionHeader from 'src/Accordion/StyledAccordionHeader';
+import StyledAccordionPanel from 'src/Accordion/StyledAccordionPanel';
 
 type Story = StoryObj<typeof Accordion>
 
@@ -67,8 +64,8 @@ const meta = {
       },
       {
         id: 'section3',
-        headerElementType: CustomAccordionHeader,
-        panelElementType: CustomAccordionPanel,
+        headerElementType: StyledAccordionHeader,
+        panelElementType: StyledAccordionPanel,
         headerProps: {
           buttonProps: {
             style: {
