@@ -37,11 +37,11 @@ export interface RenderPanel {
 };
 
 export interface RenderHeaderContent {
-  (index: number, props: AccordionProps, headerProps: Props): React.ReactNode;
+  (index: number, props: AccordionProps): React.ReactNode;
 };
 
 export interface RenderPanelContent {
-  (index: number, props: AccordionProps, panelProps: Props): React.ReactNode;
+  (index: number, props: AccordionProps): React.ReactNode;
 };
 
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];

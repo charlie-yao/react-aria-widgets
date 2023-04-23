@@ -45,7 +45,7 @@ export const defaultRenderSection: RenderSection = (index, props) => {
 export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   const {
     sections,
-    headerElementType = AccordionHeader,
+    headerElementType,
     headerProps = {}
   } = accordionProps;
 
@@ -60,7 +60,7 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   let children;
 
   if(typeof renderHeaderContent === 'function')
-    children = renderHeaderContent(index, accordionProps, combinedHeaderProps);
+    children = renderHeaderContent(index, accordionProps);
   else
     children = renderHeaderContent;
 
@@ -78,7 +78,7 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
 export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   const {
     sections,
-    panelElementType = AccordionPanel,
+    panelElementType,
     panelProps = {},
   } = accordionProps;
 
@@ -93,7 +93,7 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   let children;
 
   if(typeof renderPanelContent === 'function')
-    children = renderPanelContent(index, accordionProps, combinedPanelProps);
+    children = renderPanelContent(index, accordionProps);
   else
     children = renderPanelContent;
 
