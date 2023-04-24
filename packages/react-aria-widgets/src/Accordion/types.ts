@@ -81,8 +81,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
 
 export interface AccordionHeaderProps extends AccordionProps {
   children: React.ReactNode;
-  headerProps?: object;
-  buttonProps?: object;
+  headerProps?: Props;
+  buttonProps?: Props;
   index: number;
 };
 
@@ -115,8 +115,8 @@ export interface BaseAccordionHeaderProps {
   onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
   isExpanded?: boolean;
   isDisabled?: boolean;
-  headerProps?: object;
-  buttonProps?: object;
+  headerProps?: Props;
+  buttonProps?: Props;
 };
 
 export interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
