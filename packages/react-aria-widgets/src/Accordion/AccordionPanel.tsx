@@ -23,6 +23,13 @@ function AccordionPanel(props: AccordionPanelProps) {
     //Pull out props received from <AccordionSection> that shouldn't get passed down
     /* eslint-disable no-unused-vars, react/prop-types */
     headerLevel,
+    renderSection,
+    renderHeader,
+    renderPanel,
+    headerProps,
+    panelProps,
+    headerElementType,
+    panelElementType,
     allowMultiple,
     allowToggle,
     getIsDisabled,

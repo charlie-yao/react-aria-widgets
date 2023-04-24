@@ -94,16 +94,23 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   getIsExpanded: (id: string) => boolean;
   //Not needed below
   headerLevel?: number;
-  allowMultiple?: any;
-  allowToggle?: any;
-  getIsDisabled?: any;
-  toggleSection?: any;
-  setHeaderRef?: any;
-  focusHeader?: any;
-  focusPrevHeader?: any;
-  focusNextHeader?: any;
-  focusFirstHeader?: any;
-  focusLastHeader?: any;
+  renderSection?: RenderSection;
+  renderHeader?: RenderHeader;
+  renderPanel?: RenderPanel;
+  headerProps?: Props;
+  panelProps?: Props;
+  headerElementType?: React.ElementType | string;
+  panelElementType?: React.ElementType | string;
+  allowMultiple?: boolean;
+  allowToggle?: boolean;
+  getIsDisabled?: (id: string) => boolean;
+  toggleSection?: (id: string) => void;
+  setHeaderRef?: SetHeaderRef;
+  focusHeader?: (index: number) => void;
+  focusPrevHeader?: (index: number) => void;
+  focusNextHeader?: (index: number) => void;
+  focusFirstHeader?: () => void;
+  focusLastHeader?: () => void;
 };
 
 export interface BaseAccordionHeaderProps {
