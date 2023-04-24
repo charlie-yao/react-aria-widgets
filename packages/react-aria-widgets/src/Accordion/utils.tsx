@@ -48,11 +48,11 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   const {
     renderHeaderContent,
     headerElementType: indvHeaderElementType,
-    headerProps: indvHeaderProps = {}
+    headerProps: indvHeaderProps,
   } = sections[index];
 
   const HeaderElementType = indvHeaderElementType ? indvHeaderElementType : headerElementType;
-  const combinedHeaderProps = { ...headerProps, ...indvHeaderProps };
+  const _headerProps = indvHeaderProps ? indvHeaderProps : headerProps;
   let children;
 
   if(typeof renderHeaderContent === 'function')
@@ -63,8 +63,8 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   return (
     <HeaderElementType
       index={ index }
-      {...accordionProps}
-      {...combinedHeaderProps}
+      { ...accordionProps }
+      { ..._headerProps }
     >
       { children }
     </HeaderElementType>
@@ -81,11 +81,11 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   const {
     renderPanelContent,
     panelElementType: indvPanelElementType,
-    panelProps: indvPanelProps = {},
+    panelProps: indvPanelProps,
   } = sections[index];
 
   const PanelElementType = indvPanelElementType ? indvPanelElementType : panelElementType;
-  const combinedPanelProps = { ...panelProps, ...indvPanelProps };
+  const _panelProps = indvPanelProps ? indvPanelProps : panelProps;
   let children;
 
   if(typeof renderPanelContent === 'function')
@@ -96,8 +96,8 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   return (
     <PanelElementType
       index={ index }
-      {...accordionProps}
-      {...combinedPanelProps}
+      { ...accordionProps }
+      { ..._panelProps }
     >
       { children }
     </PanelElementType>

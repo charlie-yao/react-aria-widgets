@@ -168,9 +168,7 @@ const meta = {
               { ' ' }
               <code>panelProps</code>
               { '' }
-              . Section-specific header/panel element types overiride those on the accordion level, whereas
-              section-specific header/panel props are merged with those on the accordion level. If there are any
-              conflicts in the merged header/panel props, the properties on the section level are prioritized.
+              . Section-specific properties override those on the accordion level.
             </p>
             <p>
               This section uses a
@@ -213,17 +211,17 @@ const meta = {
 
           const {
             headerElementType: indvHeaderElementType,
-            headerProps: indvHeaderProps = {}
+            headerProps: indvHeaderProps,
           } = sections[index];
 
           const HeaderElementType = indvHeaderElementType ? indvHeaderElementType : headerElementType;
-          const combinedHeaderProps = { ...headerProps, ...indvHeaderProps };
+          const _headerProps = indvHeaderProps ? indvHeaderProps : headerProps;
 
           return (
             <HeaderElementType
               index={ index }
-              {...accordionProps}
-              {...combinedHeaderProps}
+              { ...accordionProps }
+              { ..._headerProps }
             >
                 Section  4
             </HeaderElementType>
@@ -238,17 +236,17 @@ const meta = {
 
           const {
             panelElementType: indvPanelElementType,
-            panelProps: indvPanelProps = {},
+            panelProps: indvPanelProps,
           } = sections[index];
 
           const PanelElementType = indvPanelElementType ? indvPanelElementType : panelElementType;
-          const combinedPanelProps = { ...panelProps, ...indvPanelProps };
+          const _panelProps = indvPanelProps ? indvPanelProps : panelProps;
 
           return (
             <PanelElementType
               index={ index }
-              {...accordionProps}
-              {...combinedPanelProps}
+              { ...accordionProps }
+              { ..._panelProps }
             >
               <p>
                 If, for whatever reason, the customization options showcased in the third example
@@ -384,6 +382,30 @@ export const NonDefaultElementTypes: Story = {
   args: {
     headerElementType: GreenAccordionHeader,
     panelElementType: GreenAccordionPanel,
+  },
+};
+
+export const CustomHeaderPanelProps: Story = {
+  args: {
+    headerProps: {
+      buttonProps: {
+        style: {
+          fontWeight: 'bold',
+        },
+      },
+    },
+    panelProps: {
+      style: {
+        fontWeight: 'bold',
+      },
+    },
+  },
+};
+
+export const CustomElementsAndProps: Story = {
+  args: {
+    ...NonDefaultElementTypes.args,
+    ...CustomHeaderPanelProps.args,
   },
 };
 
