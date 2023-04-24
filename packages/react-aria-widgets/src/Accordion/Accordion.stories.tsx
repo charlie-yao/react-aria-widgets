@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
@@ -10,6 +10,8 @@ import BlueAccordionPanel from 'src/Accordion/BlueAccordionPanel';
 import GreenAccordionHeader from 'src/Accordion/GreenAccordionHeader';
 import GreenAccordionPanel from 'src/Accordion/GreenAccordionPanel';
 
+//Misc.
+import { defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 
 type Story = StoryObj<typeof Accordion>
 
@@ -402,13 +404,6 @@ export const CustomHeaderPanelProps: Story = {
   },
 };
 
-export const CustomElementsAndProps: Story = {
-  args: {
-    ...NonDefaultElementTypes.args,
-    ...CustomHeaderPanelProps.args,
-  },
-};
-
 export const CustomRenderHeaderPanel: Story = {
   args: {
     renderHeader: (index, accordionProps) => {
@@ -481,6 +476,44 @@ export const CustomRenderHeaderPanel: Story = {
         </PanelElementType>
       );
     },
+  },
+};
+
+export const CustomRenderSection: Story = {
+  args: {
+    renderSection: (index, props) => {
+      const {
+        sections,
+        renderHeader = defaultRenderHeader,
+        renderPanel = defaultRenderPanel,
+      } = props;
+      
+      const {
+        id,
+        renderHeader: renderIndvHeader,
+        renderPanel: renderIndvPanel,
+      } = sections[index];
+      
+      const _renderHeader = renderIndvHeader ? renderIndvHeader : renderHeader;
+      const _renderPanel = renderIndvPanel ? renderIndvPanel : renderPanel;
+
+      return (
+        <Fragment key={ id }>
+          { _renderHeader(index, props) }
+          { _renderPanel(index, props) }
+          <span>Random span added by <code>renderSection</code>!</span>
+        </Fragment>
+      );
+    },
+  },
+};
+
+export const CombinedCustomizationOptions: Story = {
+  args: {
+    ...NonDefaultElementTypes.args,
+    ...CustomHeaderPanelProps.args,
+    ...CustomRenderHeaderPanel.args,
+    ...CustomRenderSection.args,
   },
 };
 
