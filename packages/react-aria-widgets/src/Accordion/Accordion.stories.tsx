@@ -205,8 +205,8 @@ const meta = {
         renderHeader: (index, accordionProps) => {
           const {
             sections,
-            headerElementType = AccordionHeader,
-            headerProps = {}
+            headerElementType,
+            headerProps = {},
           } = accordionProps;
 
           const {
@@ -230,7 +230,7 @@ const meta = {
         renderPanel: (index, accordionProps) => {
           const {
             sections,
-            panelElementType = AccordionPanel,
+            panelElementType,
             panelProps = {},
           } = accordionProps;
 
@@ -406,6 +406,81 @@ export const CustomElementsAndProps: Story = {
   args: {
     ...NonDefaultElementTypes.args,
     ...CustomHeaderPanelProps.args,
+  },
+};
+
+export const CustomRenderHeaderPanel: Story = {
+  args: {
+    renderHeader: (index, accordionProps) => {
+      const {
+        sections,
+        headerElementType = AccordionHeader,
+        headerProps = {}
+      } = accordionProps;
+
+      const {
+        renderHeaderContent,
+        headerElementType: indvHeaderElementType,
+        headerProps: indvHeaderProps,
+      } = sections[index];
+
+      const HeaderElementType = indvHeaderElementType ? indvHeaderElementType : headerElementType;
+      const _headerProps = indvHeaderProps ? indvHeaderProps : headerProps;
+      let children;
+
+      if(typeof renderHeaderContent === 'function')
+        children = renderHeaderContent(index, accordionProps);
+      else
+        children = renderHeaderContent;
+
+      return (
+        <HeaderElementType
+          index={ index }
+          { ...accordionProps }
+          { ..._headerProps }
+        >
+          <>
+            { children }
+            <span>Random span added by <code>renderHeader</code>!</span>
+          </>
+        </HeaderElementType>
+      );
+    },
+    renderPanel: (index, accordionProps) => {
+      const {
+        sections,
+        panelElementType,
+        panelProps = {},
+      } = accordionProps;
+
+      const {
+        renderPanelContent,
+        panelElementType: indvPanelElementType,
+        panelProps: indvPanelProps,
+      } = sections[index];
+
+      const PanelElementType = indvPanelElementType ? indvPanelElementType : panelElementType;
+      const _panelProps = indvPanelProps ? indvPanelProps : panelProps;
+      let children;
+
+      if(typeof renderPanelContent === 'function')
+        children = renderPanelContent(index, accordionProps);
+      else
+        children = renderPanelContent;
+
+      return (
+        <PanelElementType
+          index={ index }
+          { ...accordionProps }
+          { ..._panelProps }
+        >
+          <>
+            { children }
+            <span>Random span added by <code>renderPanel</code>!</span>
+          </>
+        </PanelElementType>
+      );
+    },
   },
 };
 
