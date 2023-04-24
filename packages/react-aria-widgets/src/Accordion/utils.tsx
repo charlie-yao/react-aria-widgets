@@ -1,9 +1,5 @@
 import React, { Fragment } from 'react';
 
-//Components
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
-
 //Types
 import {
   RenderSection,

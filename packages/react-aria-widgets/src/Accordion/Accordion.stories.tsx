@@ -62,21 +62,7 @@ const meta = {
                 .
               </p>
               <p>
-                Unless you use custom render functions for
-                { ' ' }
-                <code>renderSection</code>
-                { '' }
-                ,
-                { ' ' }
-                <code>renderHeader</code>
-                { '' }
-                ,
-                { ' ' }
-                and
-                { ' ' }
-                <code>renderPanel</code>
-                { ' ' }
-                that remove this behavior,
+                By default,
                 { ' ' }
                 <code>renderHeaderContent</code>
                 { ' ' }
@@ -88,11 +74,11 @@ const meta = {
                 { ' ' }
                 <code>&lt;Accordion&gt;</code>
                 { ' ' }
-                , including methods from
+                , including methods from the
                 { ' ' }
                 <code>withAccordionManager</code>
-                { '' }
-                , as arguments. For example, this
+                { ' ' }
+                HOC, as arguments. For example, this
                 { ' ' }
                 <code>renderPanelContent</code>
                 { ' ' }
@@ -144,8 +130,15 @@ const meta = {
               { ' ' }
               <code>panelElementType</code>
               { '' }
-              , which determine which components will wrap the header/panel content for each section.
-              It also accepts the props
+              , which determine which components will wrap the header/panel content for each section. By default,
+              these components automatically receive as props the section's index and every prop passed to its parent
+              <code>&lt;Accordion&gt;</code>
+              { '' }
+              .
+              { ' ' }
+              <code>&lt;Accordion&gt;</code>
+              { ' ' }
+              also accepts the props
               { ' ' }
               <code>headerProps</code>
               { ' ' }
@@ -153,7 +146,7 @@ const meta = {
               { ' ' }
               <code>panelProps</code>
               { ' ' }
-              , which are objects that get spread onto their respective element.
+              , which are objects that get spread onto their respective element by default.
             </p>
             <p>
               Developers can also give each section a
@@ -168,13 +161,13 @@ const meta = {
               { ' ' }
               <code>headerProps</code>
               { '' }
-              , and/or a
+              , and a
               { ' ' }
               <code>panelProps</code>
               { '' }
-              . Section-specific header/panel element types overwrite those on the accordion level, whereas
+              . Section-specific header/panel element types overiride those on the accordion level, whereas
               section-specific header/panel props are merged with those on the accordion level. If there are any
-              conflicts in the merged objects, the properties from the section-specific objects are prioritized.
+              conflicts in the merged header/panel props, the properties on the section level are prioritized.
             </p>
             <p>
               This section uses a
@@ -255,7 +248,22 @@ const meta = {
               {...combinedPanelProps}
             >
               <p>
-                This header/panel uses per-section
+                If, for whatever reason, the customization options showcased in the third example
+                are insufficient, developers are given full control over how their headers and
+                panels are rendered. One option is to pass the
+                { ' ' }
+                <code>&lt;Accordion&gt;</code>
+                { ' ' }
+                custom render functions for the props
+                { ' ' }
+                <code>renderHeader</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanel</code>
+                { '' }
+                , which are applied to each section. Developers can also specify section-specific render
+                functions that use the same name. The section-specific versions of
                 { ' ' }
                 <code>renderHeader</code>
                 { ' ' }
@@ -263,25 +271,73 @@ const meta = {
                 { ' ' }
                 <code>renderPanel</code>
                 { ' ' }
-                functions that largely recreate the behavior of the defaults. The difference is that the
+                override those on the accordion level. As with before, by default, these render functions
+                automatically receive the section's index and the props passed to the parent
+                { ' ' }
+                <code>&lt;Accordion&gt;</code>
+                { ' ' }
+                as arguments.
+              </p>
+              <p>
+                There are pitfalls to using custom functions for
+                { ' ' }
+                <code>renderHeader</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanel</code>
+                { ' ' }
+                though. In the previous accordion section examples, we've been saying "such-and-such
+                elements/functions receive the section index and HOC methods by default". That's because the
+                default
+                { ' ' }
+                <code>renderHeader</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanel</code>
+                { ' ' }
+                functions provide those behaviors. The default render functions also make sure that the
+                elements you supply with
+                { ' ' }
+                <code>headerElementType</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>panelElementType</code>
+                { ' ' }
+                are used. If you override the default render functions, whether on the
+                accordion level or on a specific section, you may want to reimplement these behaviors
+                for the sake of consistency.
+              </p>
+              <p>
+                This accordion section is itself an example of a pitfall with using custom
+                { ' ' }
+                <code>renderHeader</code>
+                { ' ' }
+                and
+                { ' ' }
+                <code>renderPanel</code>
+                { ' ' }
+                functions. This section uses section-specific render functions, overriding those on the
+                accordion level. They largely recreate the behavior of the defaults but with one mistake: they
+                ignore the section's
                 { ' ' }
                 <code>renderHeaderContent</code>
                 { ' ' }
                 and
                 { ' ' }
                 <code>renderPanelContent</code>
-                { ' ' }
-                fields are ignored. Technically speaking, there is nothing that enforces the reuse of the content
-                fields, but there isn't much upside to ignoring them. There may be confusion as to where the "true"
-                content lies, and if you provide a render function to
-                { ' ' }
-                <code>renderHeaderContent</code>
-                { ' ' }
-                or
-                { ' '}
-                <code>renderHeaderContent</code>
                 { '' }
-                , it'll have access to the same information as their "parent" render functions.
+                . This section's 
+                { ' ' }
+                <code>renderPanel</code>
+                { ' ' }
+                COULD access the content via
+                { ' ' }
+                <code>sections[index].renderHeaderContent</code>
+                { '' }
+                , but instead, it renders the hard-coded content that you're currently reading.
               </p>
             </PanelElementType>
           );
