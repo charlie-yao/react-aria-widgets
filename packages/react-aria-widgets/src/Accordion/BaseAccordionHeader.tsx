@@ -4,8 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import { validateHeaderLevelProp } from 'src/utils/propTypes';
 import { BaseAccordionHeaderProps } from 'src/Accordion/types';
+
+//Misc
+import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>((props, ref) => {
   const {
@@ -46,7 +48,7 @@ BaseAccordionHeader.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string,
   controlsId: PropTypes.string.isRequired,
-  headerLevel: validateHeaderLevelProp.isRequired,
+  headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onClick: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func,
   isExpanded: PropTypes.bool,

@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Types
-import { Props } from 'src/types';
+import { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
 
 //Misc.
 import { VALID_PANEL_TAGS } from 'src/Accordion/utils';
@@ -69,7 +69,7 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
 
 export interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
-  headerLevel: number;
+  headerLevel: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;
   renderHeader?: RenderHeader;
   renderPanel?: RenderPanel;
@@ -93,7 +93,7 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   sections: Section[];
   getIsExpanded: (id: string) => boolean;
   //Not needed below
-  headerLevel?: number;
+  headerLevel?: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;
   renderHeader?: RenderHeader;
   renderPanel?: RenderPanel;
@@ -117,7 +117,7 @@ export interface BaseAccordionHeaderProps {
   children: React.ReactNode;
   id?: string;
   controlsId: string;
-  headerLevel: number;
+  headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
   isExpanded?: boolean;

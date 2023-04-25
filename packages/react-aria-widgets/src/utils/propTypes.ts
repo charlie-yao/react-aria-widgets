@@ -2,10 +2,10 @@
 import { createValidatorWithRequired } from 'src/utils';
 
 /**
- * Because HTML only allows <h1> to <h6>, complain if
- * an invalid headerLevel prop gets passed in.
+ * Because HTML only allows <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>,
+ * complain if an invalid header level prop gets passed in.
  */
-const validateHeaderLevelProp = createValidatorWithRequired<number>((
+export const validateHeaderLevelProp = createValidatorWithRequired<number>((
   props,
   propName,
   componentName,
@@ -21,5 +21,3 @@ const validateHeaderLevelProp = createValidatorWithRequired<number>((
 
   return null;
 });
-
-export { validateHeaderLevelProp };

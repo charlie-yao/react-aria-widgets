@@ -1,7 +1,7 @@
 import { Validator } from 'prop-types';
 
 //Types
-import { ValidatorWithRequired } from 'src/types';
+import { ValidatorWithRequired } from 'src/utils/types';
 
 /**
  * Lets us declare props with custom validators as mandatory in the usual
@@ -34,3 +34,5 @@ export function createValidatorWithRequired<T>(validator: Validator<T>) {
 
   return validatorWithRequired;
 }
+
+export const VALID_HTML_HEADER_LEVELS = [1, 2, 3, 4, 5, 6] as const;

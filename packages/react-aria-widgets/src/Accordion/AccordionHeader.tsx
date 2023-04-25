@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 //Types
-import { validateHeaderLevelProp } from 'src/utils/propTypes';
 import { accordionSectionProp } from 'src/Accordion/propTypes';
 import { AccordionHeaderProps } from 'src/Accordion/types';
 
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
+import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 function AccordionHeader(props: AccordionHeaderProps) {
   const {
@@ -92,7 +92,7 @@ AccordionHeader.propTypes = {
   buttonProps: PropTypes.object,
   //From <Accordion<
   index: PropTypes.number.isRequired,
-  headerLevel: validateHeaderLevelProp.isRequired,
+  headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   //From <AccordionManager>
   getIsExpanded: PropTypes.func.isRequired,

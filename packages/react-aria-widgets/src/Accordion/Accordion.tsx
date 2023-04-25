@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import withAccordionManager from 'src/Accordion/withAccordionManager';
 
 //Types
-import { validateHeaderLevelProp } from 'src/utils/propTypes';
 import { accordionSectionProp } from 'src/Accordion/propTypes';
 import { AccordionProps } from 'src/Accordion/types';
 
 //Misc.
 import { defaultRenderSection } from 'src/Accordion/utils';
+import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 function Accordion(props: AccordionProps) {
   const { sections, renderSection = defaultRenderSection } = props;
@@ -27,7 +27,7 @@ function Accordion(props: AccordionProps) {
 
 Accordion.propTypes = {
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
-  headerLevel: validateHeaderLevelProp.isRequired,
+  headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   renderSection: PropTypes.func,
   renderHeader: PropTypes.func,
   renderPanel: PropTypes.func,
