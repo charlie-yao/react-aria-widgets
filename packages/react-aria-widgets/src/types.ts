@@ -5,5 +5,5 @@ export interface Props {
 }
 
 export interface ValidatorWithRequired<T> extends Validator<T> {
-  isRequired?: Validator<T>;
+  isRequired: Validator<T>;
 }

@@ -16,13 +16,21 @@ import { ValidatorWithRequired } from 'src/types';
  * @see {@link https://github.com/yannickcr/eslint-plugin-react/issues/1020}
  * @see {@link https://github.com/facebook/react/issues/9125#issuecomment-285531461}
  */
-export function createValidatorWithRequired<T>(validator: Validator<T>, isRequired: boolean = false): ValidatorWithRequired<T> {
-  return function(props, propName, componentName, location, propFullName) {
+export function createValidatorWithRequired<T>(validator: Validator<T>) {
+  const isRequired: Validator<T> = (props, propName, componentName, location, propFullName) => {
     const prop = props[propName];
+    const displayedComponentName = componentName ?? '<<anonymous>>';
+    const displayedPropName = propFullName ?? propName;
 
-    if(isRequired && (prop === null || prop === undefined))
-      return new Error(`${propName} is a required prop.`);
+    if(prop === null || prop === undefined)
+      return new Error(`The ${location} \`${displayedPropName}\` is marked as required in \`${displayedComponentName}\`, but its value is \`${prop}\`.`);
     else
       return validator(props, propName, componentName, location, propFullName);
   };
+
+  const validatorWithRequired: ValidatorWithRequired<T> = Object.assign(validator, {
+    isRequired,
+  });
+
+  return validatorWithRequired;
 }

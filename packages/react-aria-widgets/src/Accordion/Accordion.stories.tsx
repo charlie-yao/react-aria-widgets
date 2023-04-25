@@ -517,4 +517,10 @@ export const CombinedCustomizationOptions: Story = {
   },
 };
 
+export const InvalidHeaderLevel: Story = {
+  args: {
+    headerLevel: 8,
+  },
+};
+
 export default meta;

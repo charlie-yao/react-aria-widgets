@@ -10,7 +10,7 @@ import {
 /**
  * Gets the ID of an accordion panel based on the accordion's ID.
  */
-export function getPanelId(id: string): string {
+export function getPanelId(id: string) {
   return `${id}-panel`;
 }
 

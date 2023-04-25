@@ -16,12 +16,12 @@ export interface Section {
   id: string;
   renderHeaderContent: React.ReactNode | RenderHeaderContent;
   renderPanelContent: React.ReactNode | RenderPanelContent;
-  renderHeader?: RenderHeader | null;
-  renderPanel?: RenderPanel | null;
-  headerProps?: Props | null;
-  panelProps?: Props | null;
-  headerElementType?: React.ElementType | string | null;
-  panelElementType?: React.ElementType | string | null;
+  renderHeader?: RenderHeader | null | undefined;
+  renderPanel?: RenderPanel | null | undefined;
+  headerProps?: Props | null | undefined;
+  panelProps?: Props | null | undefined;
+  headerElementType?: React.ElementType | string | null | undefined;
+  panelElementType?: React.ElementType | string | null | undefined;
 };
 
 export interface RenderSection {
