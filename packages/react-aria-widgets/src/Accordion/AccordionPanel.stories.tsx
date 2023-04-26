@@ -17,14 +17,11 @@ const meta = {
         renderPanelContent: 'Hello world!',
       },
     ],
+    getIsExpanded: () => true,
   },
 } satisfies Meta<typeof AccordionPanel>;
 
-export const Expanded: Story = {
-  args: {
-    getIsExpanded: () => true,
-  },
-};
+export const Expanded: Story = {};
 
 export const Collapsed: Story = {
   args: {
@@ -34,8 +31,22 @@ export const Collapsed: Story = {
 
 export const WithClassName: Story = {
   args: {
-    getIsExpanded: () => false,
     className: 'dummyClassName',
+  },
+};
+
+export const WithCustomStyle: Story = {
+  args: {
+    style: {
+      color: 'red',
+    },
+  },
+};
+
+export const WithSectionRole: Story = {
+  args: {
+    tagName: 'div',
+    role: 'section',
   },
 };
 

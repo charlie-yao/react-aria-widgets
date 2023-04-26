@@ -17,6 +17,7 @@ function AccordionPanel(props: AccordionPanelProps) {
   const {
     children,
     className = '',
+    tagName = 'section',
     index,
     sections,
     getIsExpanded,
@@ -49,10 +50,11 @@ function AccordionPanel(props: AccordionPanelProps) {
 
   return (
     <BaseAccordionPanel
+      { ...rest }
       id={ getPanelId(id) }
       labelId={ id }
       className={ `${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
-      { ...rest }
+      tagName={ tagName }
     >
       { children }
     </BaseAccordionPanel>
@@ -62,6 +64,7 @@ function AccordionPanel(props: AccordionPanelProps) {
 AccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  tagName: PropTypes.string,
   //From <Accordion>
   index: PropTypes.number.isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,

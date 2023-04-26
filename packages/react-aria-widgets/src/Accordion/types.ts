@@ -89,6 +89,7 @@ export interface AccordionHeaderProps extends AccordionProps {
 export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
+  tagName?: ValidPanelTags;
   index: number;
   sections: Section[];
   getIsExpanded: (id: string) => boolean;
