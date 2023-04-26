@@ -11,7 +11,7 @@ import { accordionSectionProp } from 'src/Accordion/propTypes';
 import { AccordionPanelProps } from 'src/Accordion/types';
 
 //Misc.
-import { getPanelId } from 'src/Accordion/utils';
+import { getPanelId, VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 function AccordionPanel(props: AccordionPanelProps) {
   const {
@@ -64,7 +64,7 @@ function AccordionPanel(props: AccordionPanelProps) {
 AccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  tagName: PropTypes.string,
+  tagName: PropTypes.oneOf(VALID_PANEL_TAGS),
   //From <Accordion>
   index: PropTypes.number.isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
