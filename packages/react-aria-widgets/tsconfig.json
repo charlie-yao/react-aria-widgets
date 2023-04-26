@@ -1,35 +1,35 @@
 {
   "compilerOptions": {
     /* Language and Environment */
-    "target": "ES6",                                     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "jsx": "react",                                      /* Specify what JSX code is generated. */
+    "target": "ES6",
+    "jsx": "react",
 
     /* Modules */
-    "moduleResolution": "node16",                        /* Specify how TypeScript looks up a file from a given module specifier. */
-    "baseUrl": "./",                                     /* Specify the base directory to resolve non-relative module names. */
-    "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "moduleResolution": "node16",
+    "baseUrl": "./",
+    "paths": {
       "*": ["*"]
     },
 
     /* JavaScript Support */
-    "allowJs": true,                                     /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
-    "checkJs": true,                                     /* Enable error reporting in type-checked JavaScript files. */
+    "allowJs": true,
+    "checkJs": true,
 
     /* Emit */
-    "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
-    "noEmitOnError": true,                               /* Disable emitting files if any type checking errors are reported. */
+    "sourceMap": true,
+    "noEmitOnError": true,
 
     /* Interop Constraints */
-    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
 
     /* Type Checking */
-    "strict": true,                                      /* Enable all strict type-checking options. */
-    "exactOptionalPropertyTypes": true,                  /* Interpret optional property types as written, rather than adding 'undefined'. */
-    "noImplicitReturns": true,                           /* Enable error reporting for codepaths that do not explicitly return in a function. */
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
 
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true
   },
   "include": ["./src/**/*"]
 }
