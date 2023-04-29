@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   ignorePatterns: [ '.git', '.yarn', 'dist' ],
   env: {
     browser: true,
@@ -9,6 +9,9 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/strict',
     'plugin:react/recommended',
     'plugin:storybook/recommended',
     'plugin:jsx-a11y/strict',
@@ -19,8 +22,13 @@ module.exports = {
     },
     ecmaVersion: 13,
     sourceType: 'module',
+    project: true,
+    tsconfigRootDir: __dirname,
   },
-  plugins: [ 'react' ],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+  ],
   settings: {
     react: {
       version: 'detect',
