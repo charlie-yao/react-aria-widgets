@@ -31,7 +31,7 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
     //---- Fields ----
     state = {
       expandedSections: new Set<string>(),
-    }
+    };
 
     sectionRefs: HeaderRef[] = [];
 
@@ -50,7 +50,7 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
         focusNextHeader: this.focusNextHeader,
         focusFirstHeader: this.focusFirstHeader,
         focusLastHeader: this.focusLastHeader,
-        ...rest
+        ...rest,
       } as P;
 
       return <Component { ...props } />;

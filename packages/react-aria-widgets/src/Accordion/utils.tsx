@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import {
   RenderSection,
   RenderHeader,
-  RenderPanel
+  RenderPanel,
 } from 'src/Accordion/types';
 
 /**
@@ -20,13 +20,13 @@ export const defaultRenderSection: RenderSection = (index, props) => {
     renderHeader = defaultRenderHeader,
     renderPanel = defaultRenderPanel,
   } = props;
-  
+
   const {
     id,
     renderHeader: renderIndvHeader,
     renderPanel: renderIndvPanel,
   } = sections[index];
-  
+
   const _renderHeader = renderIndvHeader ? renderIndvHeader : renderHeader;
   const _renderPanel = renderIndvPanel ? renderIndvPanel : renderPanel;
 
@@ -42,7 +42,7 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   const {
     sections,
     headerElementType,
-    headerProps = {}
+    headerProps = {},
   } = accordionProps;
 
   const {
@@ -104,4 +104,4 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   );
 };
 
-export const VALID_PANEL_TAGS = ['section', 'div'] as const;
+export const VALID_PANEL_TAGS = [ 'section', 'div' ] as const;

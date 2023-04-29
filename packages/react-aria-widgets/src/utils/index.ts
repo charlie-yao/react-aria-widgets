@@ -6,7 +6,7 @@ import { ValidatorWithRequired } from 'src/utils/types';
 /**
  * Lets us declare props with custom validators as mandatory in the usual
  * "PropTypes.isRequired" manner.
- * 
+ *
  * Though the validator function can just return an error if the prop isn't
  * supplied, by declaring it as ".isRequired" in a component's propTypes,
  * we circumvent an issue with eslint-plugin-react. Normally, the rule
@@ -35,4 +35,4 @@ export function createValidatorWithRequired<T>(validator: Validator<T>) {
   return validatorWithRequired;
 }
 
-export const VALID_HTML_HEADER_LEVELS = [1, 2, 3, 4, 5, 6] as const;
+export const VALID_HTML_HEADER_LEVELS = [ 1, 2, 3, 4, 5, 6 ] as const;

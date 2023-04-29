@@ -30,7 +30,7 @@ const meta = {
             This header/panel content was rendered by supplying values of type
             { ' ' }
             <code>React.ReactNode</code>
-            { '' }
+            
             , i.e. anything renderable inside of JSX. The value of
             { ' ' }
             <code>renderHeaderContent</code>
@@ -63,7 +63,7 @@ const meta = {
                 and
                 { ' ' }
                 <code>renderPanelContent</code>
-                { '' }
+
                 .
               </p>
               <p>
@@ -98,7 +98,7 @@ const meta = {
                 is
                 { ' ' }
                 <code>{ headerLevel }</code>
-                { '' }
+
                 .
               </p>
             </>
@@ -134,11 +134,11 @@ const meta = {
               and
               { ' ' }
               <code>panelElementType</code>
-              { '' }
+              
               , which determine which components will wrap the header/panel content for each section. By default,
               these components automatically receive as props the section's index and every prop passed to its parent
               <code>&lt;Accordion&gt;</code>
-              { '' }
+              
               .
               { ' ' }
               <code>&lt;Accordion&gt;</code>
@@ -157,19 +157,19 @@ const meta = {
               Developers can also give each section a
               { ' ' }
               <code>headerElementType</code>
-              { '' }
+              
               , a
               { ' ' }
               <code>panelElementType</code>
-              { '' }
+              
               , a
               { ' ' }
               <code>headerProps</code>
-              { '' }
+              
               , and a
               { ' ' }
               <code>panelProps</code>
-              { '' }
+
               . Section-specific properties override those on the accordion level.
             </p>
             <p>
@@ -225,7 +225,7 @@ const meta = {
               { ...accordionProps }
               { ..._headerProps }
             >
-                Section  4
+              Section  4
             </HeaderElementType>
           );
         },
@@ -264,7 +264,7 @@ const meta = {
                 and
                 { ' ' }
                 <code>renderPanel</code>
-                { '' }
+                
                 , which are applied to each section. Developers can also specify section-specific render
                 functions that use the same name. The section-specific versions of
                 { ' ' }
@@ -331,15 +331,15 @@ const meta = {
                 and
                 { ' ' }
                 <code>renderPanelContent</code>
-                { '' }
-                . This section's 
+                
+                . This section's
                 { ' ' }
                 <code>renderPanel</code>
                 { ' ' }
                 COULD access the content via
                 { ' ' }
                 <code>sections[index].renderHeaderContent</code>
-                { '' }
+
                 , but instead, it renders the hard-coded content that you're currently reading.
               </p>
             </PanelElementType>
@@ -352,7 +352,7 @@ const meta = {
   },
 } satisfies Meta<typeof Accordion>;
 
-export const YesMultipleYesToggle: Story = { 
+export const YesMultipleYesToggle: Story = {
   args: {
     allowMultiple: true,
     allowToggle: true,
@@ -410,7 +410,7 @@ export const CustomRenderHeaderPanel: Story = {
       const {
         sections,
         headerElementType = AccordionHeader,
-        headerProps = {}
+        headerProps = {},
       } = accordionProps;
 
       const {
@@ -436,7 +436,11 @@ export const CustomRenderHeaderPanel: Story = {
         >
           <>
             { children }
-            <span>Random span added by <code>renderHeader</code>!</span>
+            <span>
+              Random span added by
+              <code>renderHeader</code>
+              !
+            </span>
           </>
         </HeaderElementType>
       );
@@ -471,7 +475,11 @@ export const CustomRenderHeaderPanel: Story = {
         >
           <>
             { children }
-            <span>Random span added by <code>renderPanel</code>!</span>
+            <span>
+              Random span added by
+              <code>renderPanel</code>
+              !
+            </span>
           </>
         </PanelElementType>
       );
@@ -487,13 +495,13 @@ export const CustomRenderSection: Story = {
         renderHeader = defaultRenderHeader,
         renderPanel = defaultRenderPanel,
       } = props;
-      
+
       const {
         id,
         renderHeader: renderIndvHeader,
         renderPanel: renderIndvPanel,
       } = sections[index];
-      
+
       const _renderHeader = renderIndvHeader ? renderIndvHeader : renderHeader;
       const _renderPanel = renderIndvPanel ? renderIndvPanel : renderPanel;
 
@@ -501,7 +509,11 @@ export const CustomRenderSection: Story = {
         <Fragment key={ id }>
           { _renderHeader(index, props) }
           { _renderPanel(index, props) }
-          <span>Random span added by <code>renderSection</code>!</span>
+          <span>
+            Random span added by
+            <code>renderSection</code>
+            !
+          </span>
         </Fragment>
       );
     },

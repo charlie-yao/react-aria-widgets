@@ -17,7 +17,7 @@ function Accordion(props: AccordionProps) {
   const renderedSections = sections.map((section, index) => {
     return renderSection(index, props);
   });
-  
+
   return (
     <>
       { renderedSections }
