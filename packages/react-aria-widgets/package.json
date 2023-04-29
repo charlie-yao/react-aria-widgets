@@ -31,7 +31,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "build-dev": "webpack --config webpack.dev.js",
-    "lint": "eslint --fix --ext .jsx,.js ./",
+    "lint": "eslint --fix --ext .jsx,.js,.ts,.tsx ./",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "publish": "yarn npm publish"

@@ -1,7 +1,15 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  ignorePatterns: [ '.git', '.yarn', 'dist' ],
+  ignorePatterns: [
+    '.git',
+    '.yarn',
+    'dist',
+    'webpack.common.js',
+    'webpack.dev.js',
+    'webpack.prod.js',
+    '.eslintrc.js'
+  ],
   env: {
     browser: true,
     es2021: true,
