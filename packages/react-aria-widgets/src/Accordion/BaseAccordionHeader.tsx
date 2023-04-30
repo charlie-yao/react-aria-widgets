@@ -9,20 +9,18 @@ import { BaseAccordionHeaderProps } from 'src/Accordion/types';
 //Misc
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
-const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>((props, ref) => {
-  const {
-    children,
-    id,
-    controlsId,
-    headerLevel,
-    onClick,
-    onKeyDown,
-    isExpanded = false,
-    isDisabled = false,
-    headerProps = {},
-    buttonProps = {},
-  } = props;
-
+const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>(({
+  children,
+  id,
+  controlsId,
+  headerLevel,
+  onClick,
+  onKeyDown,
+  isExpanded,
+  isDisabled,
+  headerProps,
+  buttonProps,
+}, ref) => {
   const HeaderElement = `h${headerLevel}` as keyof JSX.IntrinsicElements;
 
   return (
@@ -55,6 +53,15 @@ BaseAccordionHeader.propTypes = {
   isDisabled: PropTypes.bool,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
+};
+
+BaseAccordionHeader.defaultProps = {
+  id: undefined,
+  onKeyDown: undefined,
+  isExpanded: false,
+  isDisabled: false,
+  headerProps: {},
+  buttonProps: {},
 };
 
 BaseAccordionHeader.displayName = 'BaseAccordionHeader';

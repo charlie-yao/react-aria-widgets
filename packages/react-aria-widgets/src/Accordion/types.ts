@@ -104,11 +104,11 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
 
 export interface BaseAccordionHeaderProps {
   children: React.ReactNode;
-  id?: string;
+  id?: string | undefined;
   controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
   isExpanded?: boolean;
   isDisabled?: boolean;
   headerProps?: Props;
