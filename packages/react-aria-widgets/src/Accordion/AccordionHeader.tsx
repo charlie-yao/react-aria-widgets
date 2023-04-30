@@ -12,23 +12,22 @@ import { AccordionHeaderProps } from 'src/Accordion/types';
 import { getPanelId } from 'src/Accordion/utils';
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
-function AccordionHeader(props: AccordionHeaderProps) {
-  const {
-    children,
-    headerProps = {},
-    buttonProps = {},
-    index,
-    headerLevel,
-    sections,
-    getIsExpanded,
-    getIsDisabled,
-    toggleSection,
-    setHeaderRef,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-  } = props;
+function AccordionHeader({
+  children,
+  headerProps = {},
+  buttonProps = {},
+  index,
+  headerLevel,
+  sections,
+  getIsExpanded,
+  getIsDisabled,
+  toggleSection,
+  setHeaderRef,
+  focusPrevHeader,
+  focusNextHeader,
+  focusFirstHeader,
+  focusLastHeader,
+}: AccordionHeaderProps) {
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
@@ -99,7 +98,6 @@ AccordionHeader.propTypes = {
   getIsDisabled: PropTypes.func.isRequired,
   toggleSection: PropTypes.func.isRequired,
   setHeaderRef: PropTypes.func.isRequired,
-  focusHeader: PropTypes.func.isRequired,
   focusPrevHeader: PropTypes.func.isRequired,
   focusNextHeader: PropTypes.func.isRequired,
   focusFirstHeader: PropTypes.func.isRequired,
