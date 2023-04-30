@@ -229,7 +229,6 @@ module.exports = {
         rendering: [ 'render', '/^render.+$/u' ],
       },
     }],
-    'react/state-in-constructor': [ 'error', 'always' ],
     'react/static-property-placement': [ 'error', 'static public field' ],
     'react/style-prop-object': [ 'error' ],
     'react/void-dom-elements-no-children': [ 'error' ],
