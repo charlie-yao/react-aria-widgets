@@ -224,7 +224,16 @@ module.exports = {
     }],
     'react/self-closing-comp': [ 'error' ],
     'react/sort-comp': [ 'error', {
-      order: [ 'static-variables', 'static-methods', 'lifecycle', '/^on.+$/u', 'rendering', 'everything-else' ],
+      order: [
+        'static-variables',
+        'static-methods',
+        'instance-variables',
+        'lifecycle',
+        '/^on.+$/u',
+        'rendering',
+        'instance-methods',
+        'everything-else'
+      ],
       groups: {
         rendering: [ 'render', '/^render.+$/u' ],
       },
