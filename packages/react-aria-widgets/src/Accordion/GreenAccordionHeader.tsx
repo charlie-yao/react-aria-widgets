@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 
 //Components
@@ -13,7 +15,7 @@ export default function GreenAccordionHeader(props: AccordionHeaderProps) {
     style: {
       ...buttonProps.style,
       color: 'green',
-    },
+    } as unknown,
   };
 
   return (
