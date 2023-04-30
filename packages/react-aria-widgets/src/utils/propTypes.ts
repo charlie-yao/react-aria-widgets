@@ -12,11 +12,11 @@ export const validateHeaderLevelProp = createValidatorWithRequired<number>((
   location,
   propFullName
 ) => {
-  const headerLevel = props[propName];
+  const headerLevel = props[propName] as unknown;
   const displayedComponentName = componentName ?? '<<anonymous>>';
   const displayedPropName = propFullName ?? propName;
 
-  if(!Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
+  if(typeof headerLevel !== 'number' || !Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
     return new Error(`Invalid ${location} \`${displayedPropName}\` supplied to \`${displayedComponentName}\`, \`${displayedPropName}\` must be an integer between 1 and 6 (inclusive).`);
 
   return null;
