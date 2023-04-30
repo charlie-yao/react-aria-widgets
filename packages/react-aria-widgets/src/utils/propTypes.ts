@@ -18,8 +18,6 @@ export const validateHeaderLevelProp = createValidatorWithRequired<number>((
   const displayedComponentName = componentName ?? '<<anonymous>>';
   const displayedPropName = propFullName ?? propName;
 
-  /* eslint-enable @typescript-eslint/no-unnecessary-condition */
-
   if(typeof headerLevel !== 'number' || !Number.isInteger(headerLevel) || headerLevel < 1 || headerLevel > 6)
     return new Error(`Invalid ${location} \`${displayedPropName}\` supplied to \`${displayedComponentName}\`, \`${displayedPropName}\` must be an integer between 1 and 6 (inclusive).`);
 

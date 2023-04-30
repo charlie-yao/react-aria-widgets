@@ -18,7 +18,10 @@ import { ValidatorWithRequired } from 'src/utils/types';
  */
 export function createValidatorWithRequired<T>(validator: Validator<T>) {
   const isRequired: Validator<T> = (props, propName, componentName, location, propFullName) => {
-    const prop = props[propName];
+    /* eslint-disable @typescript-eslint/no-unnecessary-condition */
+    /* eslint-disable @typescript-eslint/restrict-template-expressions */
+
+    const prop = props[propName] as unknown;
     const displayedComponentName = componentName ?? '<<anonymous>>';
     const displayedPropName = propFullName ?? propName;
 
