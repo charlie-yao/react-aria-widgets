@@ -222,6 +222,7 @@ module.exports = {
     'react/prefer-stateless-function': [ 'error' ],
     'react/require-default-props': [ 'error', {
       forbidDefaultForRequired: true,
+      functions: 'defaultArguments',
     }],
     'react/self-closing-comp': [ 'error' ],
     'react/sort-comp': [ 'error', {
