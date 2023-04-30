@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
@@ -37,11 +37,11 @@ function AccordionHeader({
     'data-index': index,
   });
 
-  const onClick: React.MouseEventHandler<HTMLElement> = (event) => {
+  const onClick: React.MouseEventHandler<HTMLElement> = useCallback((event) => {
     toggleSection(event.currentTarget.id);
-  };
+  }, [ toggleSection ]);
 
-  const onKeyDown: React.KeyboardEventHandler<HTMLElement> = (event) => {
+  const onKeyDown: React.KeyboardEventHandler<HTMLElement> = useCallback((event) => {
     const { key, currentTarget } = event;
 
     if(!currentTarget.dataset.index)
@@ -65,7 +65,12 @@ function AccordionHeader({
       event.preventDefault();
       focusLastHeader();
     }
-  };
+  }, [
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  ]);
 
   return (
     <BaseAccordionHeader
