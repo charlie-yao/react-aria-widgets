@@ -158,6 +158,7 @@ module.exports = {
       },
     }],
     'new-parens': [ 'error', 'always' ],
+    'no-empty-function': 'off',
     'no-multi-spaces': [ 'error' ],
     'no-multiple-empty-lines': [ 'error', {
       max: 1,
