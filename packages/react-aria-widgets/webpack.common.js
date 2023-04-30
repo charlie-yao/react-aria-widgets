@@ -23,7 +23,7 @@ module.exports = {
     },
     entry: {
       index: {
-        import: './src/index.tsx',
+        import: './src/index.ts',
       },
       accordion: {
         import: './src/Accordion/index.ts',
