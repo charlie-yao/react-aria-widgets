@@ -39,6 +39,8 @@ export const defaultRenderSection: RenderSection = (index, props) => {
 };
 
 export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
+  /* eslint-disable react/jsx-props-no-spreading */
+
   const {
     sections,
     headerElementType,
@@ -69,9 +71,13 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
       { children }
     </HeaderElementType>
   );
+
+  /* eslint-enable react/jsx-props-no-spreading */
 };
 
 export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
+  /* eslint-disable react/jsx-props-no-spreading */
+
   const {
     sections,
     panelElementType,
@@ -102,6 +108,8 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
       { children }
     </PanelElementType>
   );
+
+  /* eslint-enable react/jsx-props-no-spreading */
 };
 
 export const VALID_PANEL_TAGS = [ 'section', 'div' ] as const;
