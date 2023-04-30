@@ -246,7 +246,10 @@ module.exports = {
       },
     }],
     'react/jsx-equals-spacing': [ 'error' ],
-    'react/jsx-filename-extension': [ 'error' ],
+    'react/jsx-filename-extension': [ 'error', {
+      allow: 'as-needed',
+      extensions: ['.jsx', '.tsx'],
+    }],
     'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
     'react/jsx-handler-names': [ 'error', {
       eventHandlerPrefix: 'on',
