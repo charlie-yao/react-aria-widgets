@@ -13,37 +13,36 @@ import { AccordionPanelProps } from 'src/Accordion/types';
 //Misc.
 import { getPanelId, VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
-function AccordionPanel(props: AccordionPanelProps) {
-  const {
-    children,
-    className = '',
-    tagName = 'section',
-    index,
-    sections,
-    getIsExpanded,
-    //Pull out props received from <AccordionSection> that shouldn't get passed down
-    /* eslint-disable no-unused-vars, react/prop-types */
-    headerLevel,
-    renderSection,
-    renderHeader,
-    renderPanel,
-    headerProps,
-    panelProps,
-    headerElementType,
-    panelElementType,
-    allowMultiple,
-    allowToggle,
-    getIsDisabled,
-    toggleSection,
-    setHeaderRef,
-    focusHeader,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-    /* eslint-enable no-unused-vars, react/prop-types */
-    ...rest
-  } = props;
+function AccordionPanel({
+  children,
+  className = '',
+  tagName = 'section',
+  index,
+  sections,
+  getIsExpanded,
+  //Pull out props received from <AccordionSection> that shouldn't get passed down
+  /* eslint-disable @typescript-eslint/no-unused-vars, react/prop-types */
+  headerLevel,
+  renderSection,
+  renderHeader,
+  renderPanel,
+  headerProps,
+  panelProps,
+  headerElementType,
+  panelElementType,
+  allowMultiple,
+  allowToggle,
+  getIsDisabled,
+  toggleSection,
+  setHeaderRef,
+  focusHeader,
+  focusPrevHeader,
+  focusNextHeader,
+  focusFirstHeader,
+  focusLastHeader,
+  /* eslint-enable @typescript-eslint/no-unused-vars, react/prop-types */
+  ...rest
+}: AccordionPanelProps) {
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
