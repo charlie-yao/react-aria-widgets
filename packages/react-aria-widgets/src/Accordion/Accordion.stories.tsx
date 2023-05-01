@@ -30,7 +30,6 @@ const meta = {
             This header/panel content was rendered by supplying values of type
             { ' ' }
             <code>React.ReactNode</code>
-            
             , i.e. anything renderable inside of JSX. The value of
             { ' ' }
             <code>renderHeaderContent</code>
@@ -63,7 +62,7 @@ const meta = {
                 and
                 { ' ' }
                 <code>renderPanelContent</code>
-
+                { /**/ }
                 .
               </p>
               <p>
@@ -75,7 +74,7 @@ const meta = {
                 { ' ' }
                 <code>renderPanelContent</code>
                 { ' ' }
-                will receive the section's index and every prop passed to
+                will receive the section&apos;s index and every prop passed to
                 { ' ' }
                 <code>&lt;Accordion&gt;</code>
                 { ' ' }
@@ -98,7 +97,7 @@ const meta = {
                 is
                 { ' ' }
                 <code>{ headerLevel }</code>
-
+                { /**/ }
                 .
               </p>
             </>
@@ -134,11 +133,10 @@ const meta = {
               and
               { ' ' }
               <code>panelElementType</code>
-              
               , which determine which components will wrap the header/panel content for each section. By default,
-              these components automatically receive as props the section's index and every prop passed to its parent
+              these components automatically receive as props the section&apos;s index and every prop passed to its parent
+              { ' ' }
               <code>&lt;Accordion&gt;</code>
-              
               .
               { ' ' }
               <code>&lt;Accordion&gt;</code>
@@ -157,19 +155,17 @@ const meta = {
               Developers can also give each section a
               { ' ' }
               <code>headerElementType</code>
-              
               , a
               { ' ' }
               <code>panelElementType</code>
-              
               , a
               { ' ' }
               <code>headerProps</code>
-              
+              { /**/ }
               , and a
               { ' ' }
               <code>panelProps</code>
-
+              { /**/ }
               . Section-specific properties override those on the accordion level.
             </p>
             <p>
@@ -264,7 +260,6 @@ const meta = {
                 and
                 { ' ' }
                 <code>renderPanel</code>
-                
                 , which are applied to each section. Developers can also specify section-specific render
                 functions that use the same name. The section-specific versions of
                 { ' ' }
@@ -275,7 +270,7 @@ const meta = {
                 <code>renderPanel</code>
                 { ' ' }
                 override those on the accordion level. As with before, by default, these render functions
-                automatically receive the section's index and the props passed to the parent
+                automatically receive the section&apos;s index and the props passed to the parent
                 { ' ' }
                 <code>&lt;Accordion&gt;</code>
                 { ' ' }
@@ -290,8 +285,8 @@ const meta = {
                 { ' ' }
                 <code>renderPanel</code>
                 { ' ' }
-                though. In the previous accordion section examples, we've been saying "such-and-such
-                elements/functions receive the section index and HOC methods by default". That's because the
+                though. In the previous accordion section examples, we&apos;ve been saying &quot;such-and-such
+                elements/functions receive the section index and HOC methods by default&quot;. That&apos;s because the
                 default
                 { ' ' }
                 <code>renderHeader</code>
@@ -324,23 +319,22 @@ const meta = {
                 { ' ' }
                 functions. This section uses section-specific render functions, overriding those on the
                 accordion level. They largely recreate the behavior of the defaults but with one mistake: they
-                ignore the section's
+                ignore the section&apos;s
                 { ' ' }
                 <code>renderHeaderContent</code>
                 { ' ' }
                 and
                 { ' ' }
                 <code>renderPanelContent</code>
-                
-                . This section's
+                . This section&apos;s
                 { ' ' }
                 <code>renderPanel</code>
                 { ' ' }
                 COULD access the content via
                 { ' ' }
                 <code>sections[index].renderHeaderContent</code>
-
-                , but instead, it renders the hard-coded content that you're currently reading.
+                { /**/ }
+                , but instead, it renders the hard-coded content that you&apos;re currently reading.
               </p>
             </PanelElementType>
           );
@@ -438,7 +432,9 @@ export const CustomRenderHeaderPanel: Story = {
             { children }
             <span>
               Random span added by
+              { ' ' }
               <code>renderHeader</code>
+              { /**/ }
               !
             </span>
           </>
@@ -477,7 +473,9 @@ export const CustomRenderHeaderPanel: Story = {
             { children }
             <span>
               Random span added by
+              { ' ' }
               <code>renderPanel</code>
+              { /**/ }
               !
             </span>
           </>
@@ -511,7 +509,9 @@ export const CustomRenderSection: Story = {
           { _renderPanel(index, props) }
           <span>
             Random span added by
+            { ' ' }
             <code>renderSection</code>
+            { /**/ }
             !
           </span>
         </Fragment>
