@@ -51,74 +51,6 @@ module.exports = {
     },
   ],
   rules: {
-    //---- TS Extension Rules ----
-    //Reminder: some vanilla ESLint rules may not be explicitly turned
-    //off here because they were turned off in the "extends" for TS
-    'default-param-last': 'off',
-    '@typescript-eslint/default-param-last': 'error',
-    'no-unused-expressions': 'off',
-    '@typescript-eslint/no-unused-expressions': ['error', {
-      enforceForJSX: true,
-    }],
-    '@typescript-eslint/no-unused-vars':[ 'error', {
-      varsIgnorePattern: '[iI]gnored',
-      argsIgnorePattern: '[iI]gnored',
-    }],
-    'no-return-await': 'off',
-    '@typescript-eslint/return-await': 'warn',
-    //---- TS Formatting Rules ----
-    'block-spacing': 'off',
-    '@typescript-eslint/block-spacing': 'error',
-    'brace-style': 'off',
-    '@typescript-eslint/brace-style': [ 'error', 'stroustrup' ],
-    'comma-dangle': 'off',
-    '@typescript-eslint/comma-dangle': [ 'error', {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'only-multiline',
-    }],
-    'comma-spacing': 'off',
-    '@typescript-eslint/comma-spacing': 'error',
-    'func-call-spacing': 'off',
-    '@typescript-eslint/func-call-spacing': [ 'error' ],
-    indent: [ 'error', 2, { //TS version of this rule is broken
-      SwitchCase: 1,
-    }],
-    'key-spacing': 'off',
-    '@typescript-eslint/key-spacing': [ 'error' ],
-    'keyword-spacing': 'off',
-    '@typescript-eslint/keyword-spacing': [ 'error', {
-      overrides: {
-        if: {
-          after: false,
-        },
-        for: {
-          after: false,
-        },
-        while: {
-          after: false,
-        },
-        switch: {
-          after: false,
-        },
-      },
-    }],
-    '@typescript-eslint/member-delimiter-style': 'error',
-    'object-curly-spacing': 'off',
-    '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
-    quotes: 'off',
-    '@typescript-eslint/quotes': [ 'error', 'single' ],
-    semi: 'off',
-    '@typescript-eslint/semi': [ 'error', 'always' ],
-    'space-before-blocks': 'off',
-    '@typescript-eslint/space-before-blocks': [ 'error', 'always' ],
-    'space-before-function-paren': 'off',
-    '@typescript-eslint/space-before-function-paren': [ 'error', 'never' ],
-    'space-infix-ops': 'off',
-    '@typescript-eslint/space-infix-ops': [ 'error' ],
-    '@typescript-eslint/type-annotation-spacing': 'error',
     //---- Vanilla ESLint ----
     'linebreak-style': [ 'error', 'unix' ],
     'array-callback-return': [ 'warn' ],
@@ -210,6 +142,74 @@ module.exports = {
       before: false,
     }],
     'template-curly-spacing': [ 'error', 'never' ],
+    //---- TS Extension Rules ----
+    //Reminder: some vanilla ESLint rules may not be explicitly turned
+    //off here because they were turned off in the "extends" for TS
+    'default-param-last': 'off',
+    '@typescript-eslint/default-param-last': 'error',
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-unused-expressions': ['error', {
+      enforceForJSX: true,
+    }],
+    '@typescript-eslint/no-unused-vars':[ 'error', {
+      varsIgnorePattern: '[iI]gnored',
+      argsIgnorePattern: '[iI]gnored',
+    }],
+    'no-return-await': 'off',
+    '@typescript-eslint/return-await': 'warn',
+    //---- TS Formatting Rules ----
+    'block-spacing': 'off',
+    '@typescript-eslint/block-spacing': 'error',
+    'brace-style': 'off',
+    '@typescript-eslint/brace-style': [ 'error', 'stroustrup' ],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': [ 'error', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'only-multiline',
+    }],
+    'comma-spacing': 'off',
+    '@typescript-eslint/comma-spacing': 'error',
+    'func-call-spacing': 'off',
+    '@typescript-eslint/func-call-spacing': [ 'error' ],
+    indent: [ 'error', 2, { //TS version of this rule is broken
+      SwitchCase: 1,
+    }],
+    'key-spacing': 'off',
+    '@typescript-eslint/key-spacing': [ 'error' ],
+    'keyword-spacing': 'off',
+    '@typescript-eslint/keyword-spacing': [ 'error', {
+      overrides: {
+        if: {
+          after: false,
+        },
+        for: {
+          after: false,
+        },
+        while: {
+          after: false,
+        },
+        switch: {
+          after: false,
+        },
+      },
+    }],
+    '@typescript-eslint/member-delimiter-style': 'error',
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
+    quotes: 'off',
+    '@typescript-eslint/quotes': [ 'error', 'single' ],
+    semi: 'off',
+    '@typescript-eslint/semi': [ 'error', 'always' ],
+    'space-before-blocks': 'off',
+    '@typescript-eslint/space-before-blocks': [ 'error', 'always' ],
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/space-before-function-paren': [ 'error', 'never' ],
+    'space-infix-ops': 'off',
+    '@typescript-eslint/space-infix-ops': [ 'error' ],
+    '@typescript-eslint/type-annotation-spacing': 'error',
     //---- React ----
     'react/button-has-type': [ 'error' ],
     'react/destructuring-assignment': [ 'error', 'always' ],
