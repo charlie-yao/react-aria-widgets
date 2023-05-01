@@ -6,7 +6,7 @@ import React from 'react';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 
 //Types
-import { AccordionHeaderProps } from 'src/Accordion/types';
+import type { AccordionHeaderProps } from 'src/Accordion/types';
 
 export default function BlueAccordionHeader(props: AccordionHeaderProps) {
   const { buttonProps = { style: {} }, ...rest } = props;

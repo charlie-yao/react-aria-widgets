@@ -6,7 +6,7 @@ import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import { AccordionHeaderProps } from 'src/Accordion/types';
+import type { AccordionHeaderProps } from 'src/Accordion/types';
 
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';

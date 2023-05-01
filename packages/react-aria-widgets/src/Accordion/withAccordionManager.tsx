@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import {
+import type {
   HeaderRef,
   SetHeaderRef,
   AccordionManagerConsumerProps,

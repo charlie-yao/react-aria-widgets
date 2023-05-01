@@ -1,10 +1,10 @@
-import React from 'react';
+import type React from 'react';
 
 //Types
-import { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
+import type { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
 
 //Misc.
-import { VALID_PANEL_TAGS } from 'src/Accordion/utils';
+import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
 

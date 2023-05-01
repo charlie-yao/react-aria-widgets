@@ -8,7 +8,7 @@ import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import { AccordionPanelProps } from 'src/Accordion/types';
+import type { AccordionPanelProps } from 'src/Accordion/types';
 
 //Misc.
 import { getPanelId, VALID_PANEL_TAGS } from 'src/Accordion/utils';

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 //Types
-import {
+import type {
   RenderSection,
   RenderHeader,
   RenderPanel,

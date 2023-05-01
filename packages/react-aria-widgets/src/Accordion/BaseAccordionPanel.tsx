@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import { BaseAccordionPanelProps } from 'src/Accordion/types';
+import type { BaseAccordionPanelProps } from 'src/Accordion/types';
 
 //Misc.
 import { VALID_PANEL_TAGS } from 'src/Accordion/utils';

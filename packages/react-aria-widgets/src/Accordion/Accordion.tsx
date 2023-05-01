@@ -6,7 +6,7 @@ import withAccordionManager from 'src/Accordion/withAccordionManager';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import { AccordionProps } from 'src/Accordion/types';
+import type { AccordionProps } from 'src/Accordion/types';
 
 //Misc.
 import { defaultRenderSection } from 'src/Accordion/utils';

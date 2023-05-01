@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import { BaseAccordionHeaderProps } from 'src/Accordion/types';
+import type { BaseAccordionHeaderProps } from 'src/Accordion/types';
 
 //Misc
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
