@@ -13,7 +13,7 @@ import GreenAccordionPanel from 'src/Accordion/GreenAccordionPanel';
 //Misc.
 import { defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 
-type Story = StoryObj<typeof Accordion>
+type Story = StoryObj<typeof Accordion>;
 
 const meta = {
   component: Accordion,

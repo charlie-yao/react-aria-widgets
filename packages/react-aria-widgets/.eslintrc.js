@@ -83,13 +83,44 @@ module.exports = {
     '@typescript-eslint/comma-spacing': 'error',
     'func-call-spacing': 'off',
     '@typescript-eslint/func-call-spacing': [ 'error' ],
-    //---- Vanilla ESLint ----
-    indent: [ 'error', 2, {
+    indent: [ 'error', 2, { //TS version of this rule is broken
       SwitchCase: 1,
     }],
+    'key-spacing': 'off',
+    '@typescript-eslint/key-spacing': [ 'error' ],
+    'keyword-spacing': 'off',
+    '@typescript-eslint/keyword-spacing': [ 'error', {
+      overrides: {
+        if: {
+          after: false,
+        },
+        for: {
+          after: false,
+        },
+        while: {
+          after: false,
+        },
+        switch: {
+          after: false,
+        },
+      },
+    }],
+    '@typescript-eslint/member-delimiter-style': 'error',
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
+    quotes: 'off',
+    '@typescript-eslint/quotes': [ 'error', 'single' ],
+    semi: 'off',
+    '@typescript-eslint/semi': [ 'error', 'always' ],
+    'space-before-blocks': 'off',
+    '@typescript-eslint/space-before-blocks': [ 'error', 'always' ],
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/space-before-function-paren': [ 'error', 'never' ],
+    'space-infix-ops': 'off',
+    '@typescript-eslint/space-infix-ops': [ 'error' ],
+    '@typescript-eslint/type-annotation-spacing': 'error',
+    //---- Vanilla ESLint ----
     'linebreak-style': [ 'error', 'unix' ],
-    quotes: [ 'error', 'single' ],
-    semi: [ 'error', 'always' ],
     'array-callback-return': [ 'warn' ],
     'no-await-in-loop': [ 'warn' ],
     'no-constructor-return': [ 'error' ],
@@ -146,23 +177,6 @@ module.exports = {
     'function-paren-newline': [ 'error', 'consistent' ],
     'implicit-arrow-linebreak': [ 'error' ],
     'jsx-quotes': [ 'error', 'prefer-double' ],
-    'key-spacing': [ 'error' ],
-    'keyword-spacing': [ 'error', {
-      overrides: {
-        if: {
-          after: false,
-        },
-        for: {
-          after: false,
-        },
-        while: {
-          after: false,
-        },
-        switch: {
-          after: false,
-        },
-      },
-    }],
     'new-parens': [ 'error', 'always' ],
     'no-multi-spaces': [ 'error' ],
     'no-multiple-empty-lines': [ 'error', {
@@ -175,7 +189,6 @@ module.exports = {
     'object-curly-newline': [ 'error', {
       consistent: true,
     }],
-    'object-curly-spacing': [ 'error', 'always' ],
     'object-property-newline': [ 'error', {
       allowAllPropertiesOnSameLine: true,
     }],
@@ -187,10 +200,7 @@ module.exports = {
       after: true,
     }],
     'semi-style': [ 'error', 'last' ],
-    'space-before-blocks': [ 'error', 'always' ],
-    'space-before-function-paren': [ 'error', 'never' ],
     'space-in-parens': [ 'error', 'never' ],
-    'space-infix-ops': [ 'error' ],
     'space-unary-ops': [ 'error', {
       words: true,
       nonwords: false,
