@@ -272,7 +272,9 @@ module.exports = {
       prevent: true,
     }],
     'react/jsx-no-bind': [ 'error' ],
-    'react/jsx-no-useless-fragment': [ 'error' ],
+    'react/jsx-no-useless-fragment': [ 'error', {
+      allowExpressions: true
+    }],
     'react/jsx-one-expression-per-line': [ 'error', {
       allow: 'single-child',
     }],
