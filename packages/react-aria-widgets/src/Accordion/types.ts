@@ -18,8 +18,8 @@ export interface Section {
   renderPanel?: RenderPanel | null | undefined;
   headerProps?: Props | null | undefined;
   panelProps?: Props | null | undefined;
-  headerElementType?: string | null | undefined;
-  panelElementType?: string | null | undefined;
+  headerElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  panelElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 }
 
 export type RenderSection = (index: number, props: AccordionProps) => React.ReactNode;
@@ -63,8 +63,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType: string;
-  panelElementType: string;
+  headerElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  panelElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 }
 
 export interface AccordionHeaderProps extends AccordionProps {
@@ -88,8 +88,8 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: string;
-  panelElementType?: string;
+  headerElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  panelElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
   allowMultiple?: boolean;
   allowToggle?: boolean;
   getIsDisabled?: (id: string) => boolean;
