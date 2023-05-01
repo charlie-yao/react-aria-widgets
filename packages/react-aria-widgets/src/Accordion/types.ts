@@ -18,8 +18,8 @@ export interface Section {
   renderPanel?: RenderPanel | null | undefined;
   headerProps?: Props | null | undefined;
   panelProps?: Props | null | undefined;
-  headerElementType?: React.ElementType | string | null | undefined;
-  panelElementType?: React.ElementType | string | null | undefined;
+  headerElementType?: string | null | undefined;
+  panelElementType?: string | null | undefined;
 }
 
 export type RenderSection = (index: number, props: AccordionProps) => React.ReactNode;
@@ -63,8 +63,8 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType: React.ElementType | string;
-  panelElementType: React.ElementType | string;
+  headerElementType: string;
+  panelElementType: string;
 }
 
 export interface AccordionHeaderProps extends AccordionProps {
@@ -88,8 +88,8 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: React.ElementType | string;
-  panelElementType?: React.ElementType | string;
+  headerElementType?: string;
+  panelElementType?: string;
   allowMultiple?: boolean;
   allowToggle?: boolean;
   getIsDisabled?: (id: string) => boolean;

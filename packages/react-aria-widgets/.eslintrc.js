@@ -145,6 +145,10 @@ module.exports = {
     //---- TS Rules ----
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-duplicate-type-constituents': 'error',
+    '@typescript-eslint/no-redundant-type-constituents': 'error',
+    '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/no-useless-empty-export': 'error',
     //---- TS Extension Rules ----
     //Reminder: some vanilla ESLint rules may not be explicitly turned
     //off here because they were turned off in the "extends" for TS
