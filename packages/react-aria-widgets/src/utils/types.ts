@@ -1,11 +1,9 @@
-import { Validator } from 'prop-types';
+import type { Validator } from 'prop-types';
 
 //Misc.
-import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+import type { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
-export interface Props {
-  [key: string]: any;
-}
+export type Props = Record<string, any>; //eslint-disable-line @typescript-eslint/no-explicit-any
 
 export interface ValidatorWithRequired<T> extends Validator<T> {
   isRequired: Validator<T>;

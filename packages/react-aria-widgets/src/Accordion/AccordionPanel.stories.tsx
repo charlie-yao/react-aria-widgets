@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 //Components
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
-type Story = StoryObj<typeof AccordionPanel>
+type Story = StoryObj<typeof AccordionPanel>;
 
 const meta = {
   component: AccordionPanel,

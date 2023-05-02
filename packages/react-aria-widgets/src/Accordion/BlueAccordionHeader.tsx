@@ -1,10 +1,12 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React from 'react';
 
 //Components
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 
 //Types
-import { AccordionHeaderProps } from 'src/Accordion/types';
+import type { AccordionHeaderProps } from 'src/Accordion/types';
 
 export default function BlueAccordionHeader(props: AccordionHeaderProps) {
   const { buttonProps = { style: {} }, ...rest } = props;
@@ -13,7 +15,7 @@ export default function BlueAccordionHeader(props: AccordionHeaderProps) {
     style: {
       ...buttonProps.style,
       color: 'blue',
-    },
+    } as unknown,
   };
 
   return (

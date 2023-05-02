@@ -1,12 +1,12 @@
-import { Validator } from 'prop-types';
+import type { Validator } from 'prop-types';
 
 //Types
-import { ValidatorWithRequired } from 'src/utils/types';
+import type { ValidatorWithRequired } from 'src/utils/types';
 
 /**
  * Lets us declare props with custom validators as mandatory in the usual
  * "PropTypes.isRequired" manner.
- * 
+ *
  * Though the validator function can just return an error if the prop isn't
  * supplied, by declaring it as ".isRequired" in a component's propTypes,
  * we circumvent an issue with eslint-plugin-react. Normally, the rule
@@ -18,7 +18,10 @@ import { ValidatorWithRequired } from 'src/utils/types';
  */
 export function createValidatorWithRequired<T>(validator: Validator<T>) {
   const isRequired: Validator<T> = (props, propName, componentName, location, propFullName) => {
-    const prop = props[propName];
+    /* eslint-disable @typescript-eslint/no-unnecessary-condition */
+    /* eslint-disable @typescript-eslint/restrict-template-expressions */
+
+    const prop = props[propName] as unknown;
     const displayedComponentName = componentName ?? '<<anonymous>>';
     const displayedPropName = propFullName ?? propName;
 
@@ -35,4 +38,4 @@ export function createValidatorWithRequired<T>(validator: Validator<T>) {
   return validatorWithRequired;
 }
 
-export const VALID_HTML_HEADER_LEVELS = [1, 2, 3, 4, 5, 6] as const;
+export const VALID_HTML_HEADER_LEVELS = [ 1, 2, 3, 4, 5, 6 ] as const;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
@@ -6,29 +6,28 @@ import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import { AccordionHeaderProps } from 'src/Accordion/types';
+import type { AccordionHeaderProps } from 'src/Accordion/types';
 
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
-function AccordionHeader(props: AccordionHeaderProps) {
-  const {
-    children,
-    headerProps = {},
-    buttonProps = {},
-    index,
-    headerLevel,
-    sections,
-    getIsExpanded,
-    getIsDisabled,
-    toggleSection,
-    setHeaderRef,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-  } = props;
+function AccordionHeader({
+  children,
+  headerProps = {},
+  buttonProps = {},
+  index,
+  headerLevel,
+  sections,
+  getIsExpanded,
+  getIsDisabled,
+  toggleSection,
+  setHeaderRef,
+  focusPrevHeader,
+  focusNextHeader,
+  focusFirstHeader,
+  focusLastHeader,
+}: AccordionHeaderProps) {
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
@@ -38,11 +37,11 @@ function AccordionHeader(props: AccordionHeaderProps) {
     'data-index': index,
   });
 
-  const onClick: React.MouseEventHandler<HTMLElement> = (event) => {
+  const onClick: React.MouseEventHandler<HTMLElement> = useCallback((event) => {
     toggleSection(event.currentTarget.id);
-  };
+  }, [ toggleSection ]);
 
-  const onKeyDown: React.KeyboardEventHandler<HTMLElement> = (event) => {
+  const onKeyDown: React.KeyboardEventHandler<HTMLElement> = useCallback((event) => {
     const { key, currentTarget } = event;
 
     if(!currentTarget.dataset.index)
@@ -66,7 +65,12 @@ function AccordionHeader(props: AccordionHeaderProps) {
       event.preventDefault();
       focusLastHeader();
     }
-  };
+  }, [
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  ]);
 
   return (
     <BaseAccordionHeader
@@ -99,7 +103,6 @@ AccordionHeader.propTypes = {
   getIsDisabled: PropTypes.func.isRequired,
   toggleSection: PropTypes.func.isRequired,
   setHeaderRef: PropTypes.func.isRequired,
-  focusHeader: PropTypes.func.isRequired,
   focusPrevHeader: PropTypes.func.isRequired,
   focusNextHeader: PropTypes.func.isRequired,
   focusFirstHeader: PropTypes.func.isRequired,

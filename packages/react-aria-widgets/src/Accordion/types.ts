@@ -1,16 +1,14 @@
-import React from 'react';
+import type React from 'react';
 
 //Types
-import { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
+import type { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
 
 //Misc.
-import { VALID_PANEL_TAGS } from 'src/Accordion/utils';
+import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
 
-export interface SetHeaderRef {
-  (ref: HeaderRef): void;
-};
+export type SetHeaderRef = (ref: HeaderRef) => void;
 
 export interface Section {
   id: string;
@@ -20,40 +18,30 @@ export interface Section {
   renderPanel?: RenderPanel | null | undefined;
   headerProps?: Props | null | undefined;
   panelProps?: Props | null | undefined;
-  headerElementType?: React.ElementType | string | null | undefined;
-  panelElementType?: React.ElementType | string | null | undefined;
-};
+  headerElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  panelElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+}
 
-export interface RenderSection {
-  (index: number, props: AccordionProps): React.ReactNode;
-};
+export type RenderSection = (index: number, props: AccordionProps) => React.ReactNode;
 
-export interface RenderHeader {
-  (index: number, props: AccordionProps): React.ReactNode;
-};
+export type RenderHeader = (index: number, props: AccordionProps) => React.ReactNode;
 
-export interface RenderPanel {
-  (index: number, props: AccordionProps): React.ReactNode;
-};
+export type RenderPanel = (index: number, props: AccordionProps) => React.ReactNode;
 
-export interface RenderHeaderContent {
-  (index: number, props: AccordionProps): React.ReactNode;
-};
+export type RenderHeaderContent = (index: number, props: AccordionProps) => React.ReactNode;
 
-export interface RenderPanelContent {
-  (index: number, props: AccordionProps): React.ReactNode;
-};
+export type RenderPanelContent = (index: number, props: AccordionProps) => React.ReactNode;
 
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
 
 export interface AccordionManagerProps {
   allowMultiple?: boolean;
   allowToggle?: boolean;
-};
+}
 
 export interface AccordionManagerState {
   expandedSections: Set<string>;
-};
+}
 
 export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
   getIsExpanded: (id: string) => boolean;
@@ -65,7 +53,7 @@ export interface AccordionManagerConsumerProps extends Required<AccordionManager
   focusNextHeader: (index: number) => void;
   focusFirstHeader: () => void;
   focusLastHeader: () => void;
-};
+}
 
 export interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
@@ -75,16 +63,16 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType: React.ElementType | string;
-  panelElementType: React.ElementType | string;
-};
+  headerElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  panelElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+}
 
 export interface AccordionHeaderProps extends AccordionProps {
   children: React.ReactNode;
   headerProps?: Props;
   buttonProps?: Props;
   index: number;
-};
+}
 
 export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
@@ -100,8 +88,8 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: React.ElementType | string;
-  panelElementType?: React.ElementType | string;
+  headerElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  panelElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
   allowMultiple?: boolean;
   allowToggle?: boolean;
   getIsDisabled?: (id: string) => boolean;
@@ -112,20 +100,20 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   focusNextHeader?: (index: number) => void;
   focusFirstHeader?: () => void;
   focusLastHeader?: () => void;
-};
+}
 
 export interface BaseAccordionHeaderProps {
   children: React.ReactNode;
-  id?: string;
+  id?: string | undefined;
   controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
   isExpanded?: boolean;
   isDisabled?: boolean;
   headerProps?: Props;
   buttonProps?: Props;
-};
+}
 
 export interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
@@ -133,4 +121,4 @@ export interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElemen
   labelId?: string;
   tagName?: ValidPanelTags;
   className?: string;
-};
+}
