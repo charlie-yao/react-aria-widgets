@@ -1,11 +1,5 @@
-//Components and Styles
-import * as AccordionModule from 'src/Accordion';
+//Components
+export * as AccordionModule from 'src/Accordion';
+
+//Styles
 import 'src/styles.scss';
-
-export default {
-  AccordionModule,
-};
-
-export {
-  AccordionModule,
-};
