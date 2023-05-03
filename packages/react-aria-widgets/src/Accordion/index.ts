@@ -1,26 +1,15 @@
 //Components and Styles
-import Accordion from 'src/Accordion/Accordion';
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
-import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
-import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+export { default as Accordion } from 'src/Accordion/Accordion';
+export { default as AccordionHeader } from 'src/Accordion/AccordionHeader';
+export { default as AccordionPanel } from 'src/Accordion/AccordionPanel';
+export { default as BaseAccordionHeader } from 'src/Accordion/BaseAccordionHeader';
+export { default as BaseAccordionPanel } from 'src/Accordion/BaseAccordionPanel';
 
 //HOCs
-import withAccordionManager from 'src/Accordion/withAccordionManager';
+export { default as withAccordionManager } from 'src/Accordion/withAccordionManager';
 
 //Types
-import * as AccordionPropTypes from 'src/Accordion/propTypes';
+export * from 'src/Accordion/propTypes';
 
 //Misc.
-import * as AccordionUtils from 'src/Accordion/utils';
-
-export {
-  Accordion,
-  AccordionHeader,
-  AccordionPanel,
-  BaseAccordionHeader,
-  BaseAccordionPanel,
-  withAccordionManager,
-  AccordionPropTypes,
-  AccordionUtils,
-};
+export * from 'src/Accordion/utils';
