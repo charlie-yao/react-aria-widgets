@@ -94,7 +94,7 @@ AccordionHeader.propTypes = {
   children: PropTypes.node.isRequired,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
-  //From <Accordion<
+  //From <Accordion>
   index: PropTypes.number.isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
