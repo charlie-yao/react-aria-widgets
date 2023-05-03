@@ -51,26 +51,6 @@ module.exports = {
           test: /\.js$/,
           loader: 'source-map-loader',
         },
-        /*
-        {
-          test: /\.js$/u,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [ '@babel/preset-env' ],
-            },
-          },
-        },
-        {
-          test: /\.jsx$/u,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [ '@babel/preset-env', '@babel/preset-react' ],
-            },
-          },
-        },
-        */
         {
           test: /\.css$/u,
           use: [ MiniCSSExtractPlugin.loader, 'css-loader' ],
