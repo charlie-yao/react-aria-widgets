@@ -28,6 +28,7 @@ const BasicAccordion = dynamic(
   },
 );
 
+/*
 const DisableMultipleAccordion = dynamic(
   () => import('../../components/accordion/DisableMultipleAccordion'),
   {
@@ -51,6 +52,7 @@ const CustomAccordion = dynamic(
     loading: () => <p>Loading, please wait...</p>,
   },
 );
+*/
 
 /* eslint-disable operator-linebreak */
 const IMPORT_EXAMPLE =
@@ -141,12 +143,12 @@ function AccordionPage() {
           run into a situation where there are many open panels that can&apos;t be closed.
         </p>
         <h5>Disabling allowMultiple</h5>
-        <DisableMultipleAccordion />
+    {/*<DisableMultipleAccordion /> */}
         <SyntaxHighlighter language="jsx">
           { disableMultipleExample }
         </SyntaxHighlighter>
         <h5>Disabling allowToggle</h5>
-        <DisableToggleAccordion />
+    {/* <DisableToggleAccordion /> */ }
         <SyntaxHighlighter language="jsx">
           { disableToggleExample }
         </SyntaxHighlighter>
@@ -228,7 +230,7 @@ function AccordionPage() {
           the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link> for more
           information).
         </p>
-        <CustomAccordion />
+    {/* <CustomAccordion /> */ }
         <Tabs>
           <TabList>
             <Tab>

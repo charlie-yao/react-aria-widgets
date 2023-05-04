@@ -16,17 +16,17 @@ module.exports = {
   MINI_CSS_EXTRACT_PLUGIN,
   commonConfig: {
     resolve: {
-      extensions: [ '.js', '.json', '.jsx' ],
+      extensions: [ '.js', '.json', '.jsx', '.ts', '.tsx' ],
       alias: {
         src: path.resolve(__dirname, 'src/'),
       },
     },
     entry: {
       index: {
-        import: './src/index.jsx',
+        import: './src/index.ts',
       },
       accordion: {
-        import: './src/Accordion/index.js',
+        import: './src/Accordion/index.ts',
       },
     },
     output: {
@@ -44,22 +44,12 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.js$/u,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [ '@babel/preset-env' ],
-            },
-          },
+          test: /\.tsx?$/,
+          use: 'ts-loader',
         },
         {
-          test: /\.jsx$/u,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [ '@babel/preset-env', '@babel/preset-react' ],
-            },
-          },
+          test: /\.js$/,
+          loader: 'source-map-loader',
         },
         {
           test: /\.css$/u,
