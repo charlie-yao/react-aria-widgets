@@ -37,11 +37,11 @@ function AccordionHeader({
     'data-index': index,
   });
 
-  const onClick: React.MouseEventHandler<HTMLElement> = useCallback((event) => {
+  const onClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
     toggleSection(event.currentTarget.id);
   }, [ toggleSection ]);
 
-  const onKeyDown: React.KeyboardEventHandler<HTMLElement> = useCallback((event) => {
+  const onKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
     const { key, currentTarget } = event;
 
     if(!currentTarget.dataset.index)
