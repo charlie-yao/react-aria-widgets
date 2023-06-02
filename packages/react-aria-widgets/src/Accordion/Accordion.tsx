@@ -116,9 +116,6 @@ Accordion.propTypes = {
   //From <AccordionManager>
   allowMultiple: PropTypes.bool.isRequired,
   allowToggle: PropTypes.bool.isRequired,
-  getIsExpanded: PropTypes.func.isRequired,
-  getIsDisabled: PropTypes.func.isRequired,
-  toggleSection: PropTypes.func.isRequired,
   setHeaderRef: PropTypes.func.isRequired,
   focusHeader: PropTypes.func.isRequired,
   focusPrevHeader: PropTypes.func.isRequired,

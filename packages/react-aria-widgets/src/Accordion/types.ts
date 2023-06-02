@@ -44,9 +44,6 @@ export interface AccordionManagerState {
 }
 
 export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
-  getIsExpanded: (id: string) => boolean;
-  getIsDisabled: (id: string) => boolean;
-  toggleSection: (id: string) => void;
   setHeaderRef: SetHeaderRef;
   focusHeader: (index: number) => void;
   focusPrevHeader: (index: number) => void;
