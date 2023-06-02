@@ -14,7 +14,7 @@ export function getPanelId(id: string) {
   return `${id}-panel`;
 }
 
-export const defaultRenderSection: RenderSection = (index, props) => {
+export const defaultRenderSection: RenderSection = (index, props, accordionMethods) => {
   const {
     sections,
     renderHeader = defaultRenderHeader,
@@ -32,13 +32,13 @@ export const defaultRenderSection: RenderSection = (index, props) => {
 
   return (
     <Fragment key={ id }>
-      { _renderHeader(index, props) }
-      { _renderPanel(index, props) }
+      { _renderHeader(index, props, accordionMethods) }
+      { _renderPanel(index, props, accordionMethods) }
     </Fragment>
   );
 };
 
-export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
+export const defaultRenderHeader: RenderHeader = (index, accordionProps, accordionMethods) => {
   /* eslint-disable react/jsx-props-no-spreading */
 
   const {
@@ -58,7 +58,7 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   let children;
 
   if(typeof renderHeaderContent === 'function')
-    children = renderHeaderContent(index, accordionProps);
+    children = renderHeaderContent(index, accordionProps, accordionMethods);
   else
     children = renderHeaderContent;
 
@@ -67,6 +67,7 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
       index={ index }
       { ...accordionProps }
       { ..._headerProps }
+      { ...accordionMethods }
     >
       { children }
     </HeaderElementType>
@@ -75,7 +76,7 @@ export const defaultRenderHeader: RenderHeader = (index, accordionProps) => {
   /* eslint-enable react/jsx-props-no-spreading */
 };
 
-export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
+export const defaultRenderPanel: RenderPanel = (index, accordionProps, accordionMethods) => {
   /* eslint-disable react/jsx-props-no-spreading */
 
   const {
@@ -95,7 +96,7 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
   let children;
 
   if(typeof renderPanelContent === 'function')
-    children = renderPanelContent(index, accordionProps);
+    children = renderPanelContent(index, accordionProps, accordionMethods);
   else
     children = renderPanelContent;
 
@@ -104,6 +105,7 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps) => {
       index={ index }
       { ...accordionProps }
       { ..._panelProps }
+      { ...accordionMethods }
     >
       { children }
     </PanelElementType>

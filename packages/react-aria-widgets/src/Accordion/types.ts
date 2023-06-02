@@ -22,15 +22,15 @@ export interface Section {
   panelElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 }
 
-export type RenderSection = (index: number, props: AccordionProps) => React.ReactNode;
+export type RenderSection = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
-export type RenderHeader = (index: number, props: AccordionProps) => React.ReactNode;
+export type RenderHeader = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
-export type RenderPanel = (index: number, props: AccordionProps) => React.ReactNode;
+export type RenderPanel = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
-export type RenderHeaderContent = (index: number, props: AccordionProps) => React.ReactNode;
+export type RenderHeaderContent = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
-export type RenderPanelContent = (index: number, props: AccordionProps) => React.ReactNode;
+export type RenderPanelContent = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
 
@@ -64,7 +64,14 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   panelElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 }
 
-export interface AccordionHeaderProps extends AccordionProps {
+export interface AccordionMethods {
+  getAllowToggle: () => boolean;
+  getIsExpanded: (id: string) => boolean;
+  getIsDisabled: (id: string) => boolean;
+  toggleSection: (id: string) => void;
+}
+
+export interface AccordionHeaderProps extends AccordionProps, AccordionMethods {
   children: React.ReactNode;
   headerProps?: Props;
   buttonProps?: Props;

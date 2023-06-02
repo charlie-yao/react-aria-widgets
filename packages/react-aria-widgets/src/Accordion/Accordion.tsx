@@ -93,7 +93,12 @@ function Accordion(props: AccordionProps) {
   }, [getIsExpanded, getIsDisabled]);
 
   const renderedSections = sections.map((section, index) => {
-    return renderSection(index, props);
+    return renderSection(index, props, {
+      getAllowToggle,
+      getIsExpanded,
+      getIsDisabled,
+      toggleSection,
+    });
   });
 
   return (
