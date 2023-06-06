@@ -92,7 +92,11 @@ function Accordion({
 
       return new Set(expandedSections);
     });
-  }, [ getIsExpanded, getIsDisabled ]);
+  }, [
+    allowMultiple,
+    getIsExpanded,
+    getIsDisabled,
+  ]);
 
   /**
    * Ref callback that pushes an accordion header button to headerRefs.
@@ -119,7 +123,7 @@ function Accordion({
    */
   const focusPrevHeader = useCallback((index: number) => {
     focusHeader(index === 0 ? headerRefs.current.length - 1 : index - 1);
-  }, []);
+  }, [ focusHeader ]);
 
   /**
    * Sets focus on the next accordion header button (relative to index).
@@ -127,21 +131,21 @@ function Accordion({
    */
   const focusNextHeader = useCallback((index: number) => {
     focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
-  }, []);
+  }, [ focusHeader ]);
 
   /**
    * Sets focus on the first accordion header button.
    */
   const focusFirstHeader = useCallback(() => {
     focusHeader(0);
-  }, []);
+  }, [ focusHeader ]);
 
   /**
    * Sets focus on the last accordion header button.
    */
   const focusLastHeader = useCallback(() => {
     focusHeader(headerRefs.current.length - 1);
-  }, []);
+  }, [ focusHeader ]);
 
   const accordionProps = useMemo(() => {
     return {
