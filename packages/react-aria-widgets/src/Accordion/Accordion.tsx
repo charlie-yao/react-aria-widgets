@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/no-unused-prop-types */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 //HOCs
@@ -9,7 +9,7 @@ import withAccordionManager from 'src/Accordion/withAccordionManager';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import type { AccordionProps } from 'src/Accordion/types';
+import type { AccordionProps, HeaderRef } from 'src/Accordion/types';
 
 //Misc.
 import { defaultRenderSection } from 'src/Accordion/utils';
@@ -24,6 +24,7 @@ function Accordion(props: AccordionProps) {
   } = props;
 
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
+  const headerRefs = useRef<HeaderRef[]>([]);
 
   /**
    * Returns a boolean that lets us know if this accordion lets us collapse
@@ -92,12 +93,62 @@ function Accordion(props: AccordionProps) {
     });
   }, [ getIsExpanded, getIsDisabled ]);
 
+  /**
+   * Ref callback that pushes an accordion header button to headerRefs.
+   */
+  const pushHeaderRef = useCallback((ref: HeaderRef) => {
+    headerRefs.current.push(ref);
+  }, []);
+  
+  /**
+   * Sets focus to an arbitrary accordion header button.
+   */
+  const focusHeader = useCallback((index: number) => {
+    const ref = headerRefs.current[index];
+
+    if(!ref)
+      return;
+
+    ref.focus();
+  }, []);
+  
+  /**
+   * Sets focus on the previous accordion header button (relative to index).
+   * Will "wrap" around the array if the boundary is reached.
+   */
+  const focusPrevHeader = useCallback((index: number) => {
+    focusHeader(index === 0 ? headerRefs.current.length - 1 : index - 1);
+  }, []);
+
+  /**
+   * Sets focus on the next accordion header button (relative to index).
+   * Will "wrap" around the array if the boundary is reached.
+   */
+  const focusNextHeader = useCallback((index: number) => {
+    focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
+  }, []);
+  
+  /**
+   * Sets focus on the first accordion header button.
+   */
+  const focusFirstHeader = useCallback(() => {
+    focusHeader(0);
+  }, []);
+  
+  /**
+   * Sets focus on the last accordion header button.
+   */
+  const focusLastHeader = useCallback(() => {
+    focusHeader(headerRefs.current.length - 1);
+  }, []);
+
   const renderedSections = sections.map((section, index) => {
     return renderSection(index, props, {
       getAllowToggle,
       getIsExpanded,
       getIsDisabled,
       toggleSection,
+      pushHeaderRef,
     });
   });
 

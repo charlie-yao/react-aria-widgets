@@ -65,6 +65,7 @@ export interface AccordionMethods {
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;
+  pushHeaderRef: (ref: HeaderRef) => void;
 }
 
 export interface AccordionHeaderProps extends AccordionProps, AccordionMethods {
