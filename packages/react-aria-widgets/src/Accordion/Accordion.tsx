@@ -26,8 +26,8 @@ function Accordion(props: AccordionProps) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
 
   /**
-   * Returns a boolean that lets us know if this accordion lets an accordion
-   * section be collapsed if it's already expanded by activating it again.
+   * Returns a boolean that lets us know if this accordion lets us collapse
+   * an already-expanded accordion section.
    *
    * Note that even though this component accepts <code>allowToggle</code> and
    * <code>allowMultiple</code> as independent booleans, it doesn't reflect
