@@ -200,7 +200,7 @@ const meta = {
       },
       {
         id: 'section4',
-        renderHeader: (index, accordionProps) => {
+        renderHeader: (index, accordionProps, accordionMethods) => {
           const {
             sections,
             headerElementType,
@@ -220,12 +220,13 @@ const meta = {
               index={ index }
               { ...accordionProps }
               { ..._headerProps }
+              { ...accordionMethods }
             >
               Section  4
             </HeaderElementType>
           );
         },
-        renderPanel: (index, accordionProps) => {
+        renderPanel: (index, accordionProps, accordionMethods) => {
           const {
             sections,
             panelElementType,
@@ -245,6 +246,7 @@ const meta = {
               index={ index }
               { ...accordionProps }
               { ..._panelProps }
+              { ...accordionMethods }
             >
               <p>
                 If, for whatever reason, the customization options showcased in the third example
