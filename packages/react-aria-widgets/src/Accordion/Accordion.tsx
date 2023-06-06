@@ -20,11 +20,11 @@ function Accordion(props: AccordionProps) {
     sections,
     allowMultiple,
     allowToggle,
-    renderSection = defaultRenderSection
+    renderSection = defaultRenderSection,
   } = props;
 
-  const [ expandedSections, setExpandedSections ] = useState(new Set<string>);
-  
+  const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
+
   /**
    * Returns a boolean that lets us know if this accordion lets an accordion
    * section be collapsed if it's already expanded by activating it again.
@@ -45,24 +45,24 @@ function Accordion(props: AccordionProps) {
    */
   const getAllowToggle = useCallback(() => {
     return allowMultiple ? true : allowToggle;
-  }, [allowMultiple, allowToggle]);
-  
+  }, [ allowMultiple, allowToggle ]);
+
   /**
    * Returns a boolean that lets us know if a particular accordion section is
    * expanded or collapsed.
    */
   const getIsExpanded = useCallback((id: string) => {
     return expandedSections.has(id);
-  }, [expandedSections]);
-  
+  }, [ expandedSections ]);
+
   /**
    * Returns a boolean that lets us know if an aleady-expanded accordion section
    * can't be collapsed due to <code>allowToggle</code>.
    */
   const getIsDisabled = useCallback((id: string) => {
     return !getAllowToggle() && getIsExpanded(id);
-  }, [getAllowToggle, getIsExpanded]);
-  
+  }, [ getAllowToggle, getIsExpanded ]);
+
   /**
    * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
    * and <code>allowToggle</code>.
@@ -90,7 +90,7 @@ function Accordion(props: AccordionProps) {
 
       return new Set(expandedSections);
     });
-  }, [getIsExpanded, getIsDisabled]);
+  }, [ getIsExpanded, getIsDisabled ]);
 
   const renderedSections = sections.map((section, index) => {
     return renderSection(index, props, {

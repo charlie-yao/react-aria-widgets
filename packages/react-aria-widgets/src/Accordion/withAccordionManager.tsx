@@ -9,14 +9,10 @@ import type {
   SetHeaderRef,
   AccordionManagerConsumerProps,
   AccordionManagerProps,
-  AccordionManagerState,
 } from 'src/Accordion/types';
 
 export default function withAccordionManager<P extends AccordionManagerConsumerProps>(Component: React.ComponentType<P>) {
-  return class AccordionManager extends React.Component<
-    Omit<P, keyof AccordionManagerConsumerProps> & AccordionManagerProps,
-    AccordionManagerState
-  > {
+  return class AccordionManager extends React.Component<Omit<P, keyof AccordionManagerConsumerProps> & AccordionManagerProps> {
     //---- Static Fields ----
     static propTypes = {
       allowMultiple: PropTypes.bool,
@@ -29,10 +25,6 @@ export default function withAccordionManager<P extends AccordionManagerConsumerP
     };
 
     //---- Fields ----
-    state = {
-      expandedSections: new Set<string>(),
-    };
-
     sectionRefs: HeaderRef[] = [];
 
     //---- Rendering ----

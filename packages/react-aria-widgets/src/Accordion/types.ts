@@ -39,10 +39,6 @@ export interface AccordionManagerProps {
   allowToggle?: boolean;
 }
 
-export interface AccordionManagerState {
-  expandedSections: Set<string>;
-}
-
 export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
   setHeaderRef: SetHeaderRef;
   focusHeader: (index: number) => void;
