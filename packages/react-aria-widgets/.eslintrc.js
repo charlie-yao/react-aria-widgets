@@ -23,6 +23,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:storybook/recommended',
     'plugin:jsx-a11y/strict',
+    'plugin:react-hooks/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {

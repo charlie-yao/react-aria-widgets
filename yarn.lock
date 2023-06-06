@@ -6738,7 +6738,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4.5.0":
+"eslint-plugin-react-hooks@npm:^4.5.0, eslint-plugin-react-hooks@npm:^4.6.0":
   version: 4.6.0
   resolution: "eslint-plugin-react-hooks@npm:4.6.0"
   peerDependencies:
@@ -11355,6 +11355,7 @@ __metadata:
     eslint: ^8.36.0
     eslint-plugin-jsx-a11y: ^6.7.1
     eslint-plugin-react: ^7.32.2
+    eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-storybook: ^0.6.11
     mini-css-extract-plugin: ^2.7.3
     prop-types: ^15.8.1
@@ -11371,7 +11372,7 @@ __metadata:
     webpack-cli: ^5.0.1
     webpack-merge: ^5.8.0
   peerDependencies:
-    react: ^17
+    react: ^18
   languageName: unknown
   linkType: soft
 
