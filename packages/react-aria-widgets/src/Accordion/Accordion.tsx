@@ -4,9 +4,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-//HOCs
-import withAccordionManager from 'src/Accordion/withAccordionManager';
-
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
 import type { AccordionProps, HeaderRef } from 'src/Accordion/types';
@@ -149,6 +146,11 @@ function Accordion(props: AccordionProps) {
       getIsDisabled,
       toggleSection,
       pushHeaderRef,
+      focusHeader,
+      focusPrevHeader,
+      focusNextHeader,
+      focusFirstHeader,
+      focusLastHeader,
     });
   });
 
@@ -160,6 +162,8 @@ function Accordion(props: AccordionProps) {
 }
 
 Accordion.propTypes = {
+  allowMultiple: PropTypes.bool,
+  allowToggle: PropTypes.bool,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   renderSection: PropTypes.func,
@@ -169,15 +173,11 @@ Accordion.propTypes = {
   panelProps: PropTypes.object,
   headerElementType: PropTypes.elementType.isRequired,
   panelElementType: PropTypes.elementType.isRequired,
-  //From <AccordionManager>
-  allowMultiple: PropTypes.bool.isRequired,
-  allowToggle: PropTypes.bool.isRequired,
-  setHeaderRef: PropTypes.func.isRequired,
-  focusHeader: PropTypes.func.isRequired,
-  focusPrevHeader: PropTypes.func.isRequired,
-  focusNextHeader: PropTypes.func.isRequired,
-  focusFirstHeader: PropTypes.func.isRequired,
-  focusLastHeader: PropTypes.func.isRequired,
 };
 
-export default withAccordionManager(Accordion);
+Accordion.defaultProps = {
+  allowMultiple: true,
+  allowToggle: true,
+};
+
+export default Accordion;

@@ -22,7 +22,7 @@ function AccordionHeader({
   getIsExpanded,
   getIsDisabled,
   toggleSection,
-  setHeaderRef,
+  pushHeaderRef,
   focusPrevHeader,
   focusNextHeader,
   focusFirstHeader,
@@ -83,7 +83,7 @@ function AccordionHeader({
       isDisabled={ isDisabled }
       headerProps={ headerProps }
       buttonProps={ _buttonProps }
-      ref={ setHeaderRef }
+      ref={ pushHeaderRef }
     >
       { children }
     </BaseAccordionHeader>
@@ -98,11 +98,11 @@ AccordionHeader.propTypes = {
   index: PropTypes.number.isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
-  //From <AccordionManager>
+  //From <Accordion> hooks
   getIsExpanded: PropTypes.func.isRequired,
   getIsDisabled: PropTypes.func.isRequired,
   toggleSection: PropTypes.func.isRequired,
-  setHeaderRef: PropTypes.func.isRequired,
+  pushHeaderRef: PropTypes.func.isRequired,
   focusPrevHeader: PropTypes.func.isRequired,
   focusNextHeader: PropTypes.func.isRequired,
   focusFirstHeader: PropTypes.func.isRequired,

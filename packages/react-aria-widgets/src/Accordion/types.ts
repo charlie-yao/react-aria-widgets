@@ -8,8 +8,6 @@ import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
 
-export type SetHeaderRef = (ref: HeaderRef) => void;
-
 export interface Section {
   id: string;
   renderHeaderContent: React.ReactNode | RenderHeaderContent;
@@ -34,21 +32,9 @@ export type RenderPanelContent = (index: number, props: AccordionProps, accordio
 
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
 
-export interface AccordionManagerProps {
+export interface AccordionProps {
   allowMultiple?: boolean;
   allowToggle?: boolean;
-}
-
-export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
-  setHeaderRef: SetHeaderRef;
-  focusHeader: (index: number) => void;
-  focusPrevHeader: (index: number) => void;
-  focusNextHeader: (index: number) => void;
-  focusFirstHeader: () => void;
-  focusLastHeader: () => void;
-}
-
-export interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
   headerLevel: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;
@@ -66,6 +52,11 @@ export interface AccordionMethods {
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;
   pushHeaderRef: (ref: HeaderRef) => void;
+  focusHeader: (index: number) => void;
+  focusPrevHeader: (index: number) => void;
+  focusNextHeader: (index: number) => void;
+  focusFirstHeader: () => void;
+  focusLastHeader: () => void;
 }
 
 export interface AccordionHeaderProps extends AccordionProps, AccordionMethods {
@@ -93,9 +84,10 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   panelElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
   allowMultiple?: boolean;
   allowToggle?: boolean;
+  getAllowToggle?: (id: string) => boolean;
   getIsDisabled?: (id: string) => boolean;
   toggleSection?: (id: string) => void;
-  setHeaderRef?: SetHeaderRef;
+  pushHeaderRef?: (ref: HeaderRef) => void;
   focusHeader?: (index: number) => void;
   focusPrevHeader?: (index: number) => void;
   focusNextHeader?: (index: number) => void;
