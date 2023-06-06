@@ -1,4 +1,4 @@
-/* eslint-disable react/require-default-props */
+/* eslint "react/require-default-props": [ "error", { forbidDefaultForRequired: true, functions: "defaultProps" } ] */
 /* eslint-disable react/no-unused-prop-types */
 
 import React, { useState, useCallback, useRef } from 'react';
@@ -96,7 +96,7 @@ function Accordion(props: AccordionProps) {
   const pushHeaderRef = useCallback((ref: HeaderRef) => {
     headerRefs.current.push(ref);
   }, []);
-  
+
   /**
    * Sets focus to an arbitrary accordion header button.
    */
@@ -108,7 +108,7 @@ function Accordion(props: AccordionProps) {
 
     ref.focus();
   }, []);
-  
+
   /**
    * Sets focus on the previous accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
@@ -124,14 +124,14 @@ function Accordion(props: AccordionProps) {
   const focusNextHeader = useCallback((index: number) => {
     focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
   }, []);
-  
+
   /**
    * Sets focus on the first accordion header button.
    */
   const focusFirstHeader = useCallback(() => {
     focusHeader(0);
   }, []);
-  
+
   /**
    * Sets focus on the last accordion header button.
    */
