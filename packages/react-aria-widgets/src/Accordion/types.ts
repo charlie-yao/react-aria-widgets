@@ -47,7 +47,6 @@ export interface AccordionProps {
 }
 
 export interface AccordionMethods {
-  getAllowToggle: () => boolean;
   getIsExpanded: (id: string) => boolean;
   getIsDisabled: (id: string) => boolean;
   toggleSection: (id: string) => void;
@@ -84,7 +83,6 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
   panelElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
   allowMultiple?: boolean;
   allowToggle?: boolean;
-  getAllowToggle?: (id: string) => boolean;
   getIsDisabled?: (id: string) => boolean;
   toggleSection?: (id: string) => void;
   pushHeaderRef?: (ref: HeaderRef) => void;

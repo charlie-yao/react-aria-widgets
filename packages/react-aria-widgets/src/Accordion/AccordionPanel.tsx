@@ -32,7 +32,6 @@ function AccordionPanel({
   panelElementType,
   allowMultiple,
   allowToggle,
-  getAllowToggle,
   getIsDisabled,
   toggleSection,
   pushHeaderRef,

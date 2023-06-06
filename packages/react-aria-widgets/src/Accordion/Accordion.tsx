@@ -1,7 +1,6 @@
-/* eslint "react/require-default-props": [ "error", { forbidDefaultForRequired: true, functions: "defaultProps" } ] */
 /* eslint-disable react/no-unused-prop-types */
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Types
@@ -9,17 +8,22 @@ import { accordionSectionProp } from 'src/Accordion/propTypes';
 import type { AccordionProps, HeaderRef } from 'src/Accordion/types';
 
 //Misc.
-import { defaultRenderSection } from 'src/Accordion/utils';
+import { defaultRenderSection, defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
-function Accordion(props: AccordionProps) {
-  const {
-    sections,
-    allowMultiple,
-    allowToggle,
-    renderSection = defaultRenderSection,
-  } = props;
-
+function Accordion({
+  allowMultiple = true,
+  allowToggle = true,
+  sections,
+  headerLevel,
+  renderSection = defaultRenderSection,
+  renderHeader = defaultRenderHeader,
+  renderPanel = defaultRenderPanel,
+  headerProps = {},
+  panelProps = {},
+  headerElementType,
+  panelElementType,
+}: AccordionProps) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
 
@@ -139,9 +143,36 @@ function Accordion(props: AccordionProps) {
     focusHeader(headerRefs.current.length - 1);
   }, []);
 
-  const renderedSections = sections.map((section, index) => {
-    return renderSection(index, props, {
-      getAllowToggle,
+  const accordionProps = useMemo(() => {
+    return {
+      allowMultiple,
+      allowToggle: getAllowToggle(),
+      sections,
+      headerLevel,
+      renderSection,
+      renderHeader,
+      renderPanel,
+      headerProps,
+      panelProps,
+      headerElementType,
+      panelElementType,
+    };
+  }, [
+    allowMultiple,
+    getAllowToggle,
+    sections,
+    headerLevel,
+    renderSection,
+    renderHeader,
+    renderPanel,
+    headerProps,
+    panelProps,
+    headerElementType,
+    panelElementType,
+  ]);
+
+  const accordionMethods = useMemo(() => {
+    return {
       getIsExpanded,
       getIsDisabled,
       toggleSection,
@@ -151,7 +182,21 @@ function Accordion(props: AccordionProps) {
       focusNextHeader,
       focusFirstHeader,
       focusLastHeader,
-    });
+    };
+  }, [
+    getIsExpanded,
+    getIsDisabled,
+    toggleSection,
+    pushHeaderRef,
+    focusHeader,
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  ]);
+
+  const renderedSections = sections.map((section, index) => {
+    return renderSection(index, accordionProps, accordionMethods);
   });
 
   return (
@@ -173,11 +218,6 @@ Accordion.propTypes = {
   panelProps: PropTypes.object,
   headerElementType: PropTypes.elementType.isRequired,
   panelElementType: PropTypes.elementType.isRequired,
-};
-
-Accordion.defaultProps = {
-  allowMultiple: true,
-  allowToggle: true,
 };
 
 export default Accordion;
