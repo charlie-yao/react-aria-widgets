@@ -78,11 +78,7 @@ const meta = {
                 { ' ' }
                 <code>&lt;Accordion&gt;</code>
                 { ' ' }
-                , including methods from the
-                { ' ' }
-                <code>withAccordionManager</code>
-                { ' ' }
-                HOC, as arguments. For example, this
+                , including the hooks that control the accordion as arguments. For example, this
                 { ' ' }
                 <code>renderPanelContent</code>
                 { ' ' }
