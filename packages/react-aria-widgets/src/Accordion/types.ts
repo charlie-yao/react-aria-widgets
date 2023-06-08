@@ -58,20 +58,25 @@ export interface AccordionMethods {
   focusLastHeader: () => void;
 }
 
-export interface AccordionHeaderProps extends AccordionProps, AccordionMethods {
+export interface AccordionHeaderProps extends
+  Pick<AccordionProps, 'sections' | 'headerLevel'>,
+  Omit<AccordionMethods, 'focusHeader'>
+{
   children: React.ReactNode;
   headerProps?: Props;
   buttonProps?: Props;
   index: number;
 }
 
-export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
+export interface AccordionPanelProps extends
+  React.HTMLAttributes<HTMLElement>,
+  Pick<AccordionProps, 'sections'>,
+  Pick<AccordionMethods, 'getIsExpanded'>
+{
   children: React.ReactNode;
   className?: string;
   tagName?: ValidPanelTags;
   index: number;
-  sections: Section[];
-  getIsExpanded: (id: string) => boolean;
   //Not needed below
   headerLevel?: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;

@@ -98,7 +98,7 @@ AccordionHeader.propTypes = {
   index: PropTypes.number.isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
-  //From <Accordion> hooks
+  //From <Accordion> methods
   getIsExpanded: PropTypes.func.isRequired,
   getIsDisabled: PropTypes.func.isRequired,
   toggleSection: PropTypes.func.isRequired,

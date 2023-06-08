@@ -67,7 +67,7 @@ AccordionPanel.propTypes = {
   //From <Accordion>
   index: PropTypes.number.isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
-  //From <Accordion> hooks
+  //From <Accordion> methods
   getIsExpanded: PropTypes.func.isRequired,
 };
 
