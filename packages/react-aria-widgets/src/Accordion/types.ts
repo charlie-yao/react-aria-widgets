@@ -95,8 +95,8 @@ export interface AccordionPanelProps extends
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  panelElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  headerElementType?: HeaderElementType;
+  panelElementType?: PanelElementType;
   allowMultiple?: boolean;
   allowToggle?: boolean;
   getIsDisabled?: (id: string) => boolean;
