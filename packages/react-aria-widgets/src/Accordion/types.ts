@@ -7,8 +7,36 @@ import type { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
 import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
+export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
 
-export type SetHeaderRef = (ref: HeaderRef) => void;
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents --
+ * These types would ideally be limited to React.ElementType, but we're also
+ * supporting PropTypes. We're using PropTypes.elementType on the PropTypes
+ * side, which allows all strings. If we limit it to just React.ElementType
+ * on the TypeScript side, there are times where the compiler will complain
+ * due to a mismatch between the type definitions from TS and PropTypes
+ * (PropTypes.elementType allows passing in strings outside the set defined
+ * by React.ElementType).
+ */
+export type HeaderElementType = React.ElementType | string;
+export type PanelElementType = React.ElementType | string;
+/* eslint-enable @typescript-eslint/no-redundant-type-constituents */
+
+export type RenderSection = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
+export type RenderHeader = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
+export type RenderPanel = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
+export type RenderHeaderContent = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
+export type RenderPanelContent = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
+
+export type GetIsExpanded = (id: string) => boolean;
+export type GetIsDisabled = (id: string) => boolean;
+export type ToggleSection = (id: string) => void;
+export type PushHeaderRef = (ref: HeaderRef) => void;
+export type FocusHeader = (index: number) => void;
+export type FocusPrevHeader = (index: number) => void;
+export type FocusNextHeader = (index: number) => void;
+export type FocusFirstHeader = () => void;
+export type FocusLastHeader = () => void;
 
 export interface Section {
   id: string;
@@ -18,44 +46,13 @@ export interface Section {
   renderPanel?: RenderPanel | null | undefined;
   headerProps?: Props | null | undefined;
   panelProps?: Props | null | undefined;
-  headerElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  panelElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  headerElementType?: HeaderElementType | null | undefined;
+  panelElementType?: PanelElementType | null | undefined;
 }
 
-export type RenderSection = (index: number, props: AccordionProps) => React.ReactNode;
-
-export type RenderHeader = (index: number, props: AccordionProps) => React.ReactNode;
-
-export type RenderPanel = (index: number, props: AccordionProps) => React.ReactNode;
-
-export type RenderHeaderContent = (index: number, props: AccordionProps) => React.ReactNode;
-
-export type RenderPanelContent = (index: number, props: AccordionProps) => React.ReactNode;
-
-export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
-
-export interface AccordionManagerProps {
+export interface AccordionProps {
   allowMultiple?: boolean;
   allowToggle?: boolean;
-}
-
-export interface AccordionManagerState {
-  expandedSections: Set<string>;
-}
-
-export interface AccordionManagerConsumerProps extends Required<AccordionManagerProps> {
-  getIsExpanded: (id: string) => boolean;
-  getIsDisabled: (id: string) => boolean;
-  toggleSection: (id: string) => void;
-  setHeaderRef: SetHeaderRef;
-  focusHeader: (index: number) => void;
-  focusPrevHeader: (index: number) => void;
-  focusNextHeader: (index: number) => void;
-  focusFirstHeader: () => void;
-  focusLastHeader: () => void;
-}
-
-export interface AccordionProps extends AccordionManagerConsumerProps {
   sections: Section[];
   headerLevel: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;
@@ -63,43 +60,58 @@ export interface AccordionProps extends AccordionManagerConsumerProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  panelElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  headerElementType: HeaderElementType;
+  panelElementType: PanelElementType;
 }
 
-export interface AccordionHeaderProps extends AccordionProps {
+export interface AccordionMethods {
+  getIsExpanded: GetIsExpanded;
+  getIsDisabled: GetIsDisabled;
+  toggleSection: ToggleSection;
+  pushHeaderRef: PushHeaderRef;
+  focusHeader: FocusHeader;
+  focusPrevHeader: FocusPrevHeader;
+  focusNextHeader: FocusNextHeader;
+  focusFirstHeader: FocusFirstHeader;
+  focusLastHeader: FocusLastHeader;
+}
+
+export interface AccordionHeaderProps extends
+  Pick<AccordionProps, 'sections' | 'headerLevel'>,
+  Omit<AccordionMethods, 'focusHeader'> {
   children: React.ReactNode;
   headerProps?: Props;
   buttonProps?: Props;
   index: number;
 }
 
-export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
+export interface AccordionPanelProps extends
+  React.HTMLAttributes<HTMLElement>,
+  Pick<AccordionProps, 'sections'>,
+  Pick<AccordionMethods, 'getIsExpanded'> {
   children: React.ReactNode;
   className?: string;
   tagName?: ValidPanelTags;
   index: number;
-  sections: Section[];
-  getIsExpanded: (id: string) => boolean;
   //Not needed below
+  allowMultiple?: boolean;
+  allowToggle?: boolean;
   headerLevel?: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;
   renderHeader?: RenderHeader;
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  panelElementType?: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  allowMultiple?: boolean;
-  allowToggle?: boolean;
-  getIsDisabled?: (id: string) => boolean;
-  toggleSection?: (id: string) => void;
-  setHeaderRef?: SetHeaderRef;
-  focusHeader?: (index: number) => void;
-  focusPrevHeader?: (index: number) => void;
-  focusNextHeader?: (index: number) => void;
-  focusFirstHeader?: () => void;
-  focusLastHeader?: () => void;
+  headerElementType?: HeaderElementType;
+  panelElementType?: PanelElementType;
+  getIsDisabled?: GetIsDisabled;
+  toggleSection?: ToggleSection;
+  pushHeaderRef?: PushHeaderRef;
+  focusHeader?: FocusHeader;
+  focusPrevHeader?: FocusPrevHeader;
+  focusNextHeader?: FocusNextHeader;
+  focusFirstHeader?: FocusFirstHeader;
+  focusLastHeader?: FocusLastHeader;
 }
 
 export interface BaseAccordionHeaderProps {

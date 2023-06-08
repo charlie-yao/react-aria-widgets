@@ -20,7 +20,7 @@ function AccordionPanel({
   index,
   sections,
   getIsExpanded,
-  //Pull out props received from <AccordionSection> that shouldn't get passed down
+  //Pull out props received from <Accordion> that shouldn't get passed down
   /* eslint-disable @typescript-eslint/no-unused-vars, react/prop-types */
   headerLevel,
   renderSection,
@@ -34,7 +34,7 @@ function AccordionPanel({
   allowToggle,
   getIsDisabled,
   toggleSection,
-  setHeaderRef,
+  pushHeaderRef,
   focusHeader,
   focusPrevHeader,
   focusNextHeader,
@@ -67,7 +67,7 @@ AccordionPanel.propTypes = {
   //From <Accordion>
   index: PropTypes.number.isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
-  //From <AccordionManager>
+  //From <Accordion> methods
   getIsExpanded: PropTypes.func.isRequired,
 };
 

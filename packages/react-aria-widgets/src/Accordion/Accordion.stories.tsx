@@ -78,11 +78,7 @@ const meta = {
                 { ' ' }
                 <code>&lt;Accordion&gt;</code>
                 { ' ' }
-                , including methods from the
-                { ' ' }
-                <code>withAccordionManager</code>
-                { ' ' }
-                HOC, as arguments. For example, this
+                , including the hooks that control the accordion as arguments. For example, this
                 { ' ' }
                 <code>renderPanelContent</code>
                 { ' ' }
@@ -200,7 +196,7 @@ const meta = {
       },
       {
         id: 'section4',
-        renderHeader: (index, accordionProps) => {
+        renderHeader: (index, accordionProps, accordionMethods) => {
           const {
             sections,
             headerElementType,
@@ -220,12 +216,13 @@ const meta = {
               index={ index }
               { ...accordionProps }
               { ..._headerProps }
+              { ...accordionMethods }
             >
               Section  4
             </HeaderElementType>
           );
         },
-        renderPanel: (index, accordionProps) => {
+        renderPanel: (index, accordionProps, accordionMethods) => {
           const {
             sections,
             panelElementType,
@@ -245,6 +242,7 @@ const meta = {
               index={ index }
               { ...accordionProps }
               { ..._panelProps }
+              { ...accordionMethods }
             >
               <p>
                 If, for whatever reason, the customization options showcased in the third example
@@ -400,7 +398,7 @@ export const CustomHeaderPanelProps: Story = {
 
 export const CustomRenderHeaderPanel: Story = {
   args: {
-    renderHeader: (index, accordionProps) => {
+    renderHeader: (index, accordionProps, accordionMethods) => {
       const {
         sections,
         headerElementType = AccordionHeader,
@@ -418,7 +416,7 @@ export const CustomRenderHeaderPanel: Story = {
       let children;
 
       if(typeof renderHeaderContent === 'function')
-        children = renderHeaderContent(index, accordionProps);
+        children = renderHeaderContent(index, accordionProps, accordionMethods);
       else
         children = renderHeaderContent;
 
@@ -427,6 +425,7 @@ export const CustomRenderHeaderPanel: Story = {
           index={ index }
           { ...accordionProps }
           { ..._headerProps }
+          { ...accordionMethods }
         >
           <>
             { children }
@@ -441,7 +440,7 @@ export const CustomRenderHeaderPanel: Story = {
         </HeaderElementType>
       );
     },
-    renderPanel: (index, accordionProps) => {
+    renderPanel: (index, accordionProps, accordionMethods) => {
       const {
         sections,
         panelElementType,
@@ -459,7 +458,7 @@ export const CustomRenderHeaderPanel: Story = {
       let children;
 
       if(typeof renderPanelContent === 'function')
-        children = renderPanelContent(index, accordionProps);
+        children = renderPanelContent(index, accordionProps, accordionMethods);
       else
         children = renderPanelContent;
 
@@ -468,6 +467,7 @@ export const CustomRenderHeaderPanel: Story = {
           index={ index }
           { ...accordionProps }
           { ..._panelProps }
+          { ...accordionMethods }
         >
           <>
             { children }
@@ -487,7 +487,7 @@ export const CustomRenderHeaderPanel: Story = {
 
 export const CustomRenderSection: Story = {
   args: {
-    renderSection: (index, props) => {
+    renderSection: (index, props, accordionMethods) => {
       const {
         sections,
         renderHeader = defaultRenderHeader,
@@ -505,8 +505,8 @@ export const CustomRenderSection: Story = {
 
       return (
         <Fragment key={ id }>
-          { _renderHeader(index, props) }
-          { _renderPanel(index, props) }
+          { _renderHeader(index, props, accordionMethods) }
+          { _renderPanel(index, props, accordionMethods) }
           <span>
             Random span added by
             { ' ' }
