@@ -8,6 +8,19 @@ import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
 
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents --
+ * These types would ideally be limited to React.ElementType, but we're also
+ * supporting PropTypes. We're using PropTypes.elementType on the PropTypes
+ * side, which allows all strings. If we limit it to just React.ElementType
+ * on the TypeScript side, there are times where the compiler will complain
+ * due to a mismatch between the type definitions from TS and PropTypes
+ * (PropTypes.elementType allows passing in strings outside the set defined
+ * by React.ElementType).
+ */
+export type HeaderElementType = React.ElementType | string;
+export type PanelElementType = React.ElementType | string;
+/* eslint-enable @typescript-eslint/no-redundant-type-constituents */
+
 export interface Section {
   id: string;
   renderHeaderContent: React.ReactNode | RenderHeaderContent;
@@ -16,8 +29,8 @@ export interface Section {
   renderPanel?: RenderPanel | null | undefined;
   headerProps?: Props | null | undefined;
   panelProps?: Props | null | undefined;
-  headerElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  panelElementType?: React.ElementType | string | null | undefined; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  headerElementType?: HeaderElementType | null | undefined;
+  panelElementType?: PanelElementType | null | undefined;
 }
 
 export type RenderSection = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
@@ -42,8 +55,8 @@ export interface AccordionProps {
   renderPanel?: RenderPanel;
   headerProps?: Props;
   panelProps?: Props;
-  headerElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
-  panelElementType: React.ElementType | string; //eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  headerElementType: HeaderElementType;
+  panelElementType: PanelElementType;
 }
 
 export interface AccordionMethods {
@@ -60,8 +73,7 @@ export interface AccordionMethods {
 
 export interface AccordionHeaderProps extends
   Pick<AccordionProps, 'sections' | 'headerLevel'>,
-  Omit<AccordionMethods, 'focusHeader'>
-{
+  Omit<AccordionMethods, 'focusHeader'> {
   children: React.ReactNode;
   headerProps?: Props;
   buttonProps?: Props;
@@ -71,8 +83,7 @@ export interface AccordionHeaderProps extends
 export interface AccordionPanelProps extends
   React.HTMLAttributes<HTMLElement>,
   Pick<AccordionProps, 'sections'>,
-  Pick<AccordionMethods, 'getIsExpanded'>
-{
+  Pick<AccordionMethods, 'getIsExpanded'> {
   children: React.ReactNode;
   className?: string;
   tagName?: ValidPanelTags;
