@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
-
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
