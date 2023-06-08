@@ -21,18 +21,6 @@ export type HeaderElementType = React.ElementType | string;
 export type PanelElementType = React.ElementType | string;
 /* eslint-enable @typescript-eslint/no-redundant-type-constituents */
 
-export interface Section {
-  id: string;
-  renderHeaderContent: React.ReactNode | RenderHeaderContent;
-  renderPanelContent: React.ReactNode | RenderPanelContent;
-  renderHeader?: RenderHeader | null | undefined;
-  renderPanel?: RenderPanel | null | undefined;
-  headerProps?: Props | null | undefined;
-  panelProps?: Props | null | undefined;
-  headerElementType?: HeaderElementType | null | undefined;
-  panelElementType?: PanelElementType | null | undefined;
-}
-
 export type RenderSection = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
 export type RenderHeader = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
@@ -44,6 +32,18 @@ export type RenderHeaderContent = (index: number, props: AccordionProps, accordi
 export type RenderPanelContent = (index: number, props: AccordionProps, accordionMethods: AccordionMethods) => React.ReactNode;
 
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
+
+export interface Section {
+  id: string;
+  renderHeaderContent: React.ReactNode | RenderHeaderContent;
+  renderPanelContent: React.ReactNode | RenderPanelContent;
+  renderHeader?: RenderHeader | null | undefined;
+  renderPanel?: RenderPanel | null | undefined;
+  headerProps?: Props | null | undefined;
+  panelProps?: Props | null | undefined;
+  headerElementType?: HeaderElementType | null | undefined;
+  panelElementType?: PanelElementType | null | undefined;
+}
 
 export interface AccordionProps {
   allowMultiple?: boolean;
