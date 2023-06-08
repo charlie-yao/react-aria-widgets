@@ -65,30 +65,37 @@ export interface AccordionProps {
 }
 
 export interface AccordionMethods {
-  getIsExpanded: (id: string) => boolean;
-  getIsDisabled: (id: string) => boolean;
-  toggleSection: (id: string) => void;
-  pushHeaderRef: (ref: HeaderRef) => void;
-  focusHeader: (index: number) => void;
-  focusPrevHeader: (index: number) => void;
-  focusNextHeader: (index: number) => void;
-  focusFirstHeader: () => void;
-  focusLastHeader: () => void;
+  getIsExpanded: GetIsExpanded;
+  getIsDisabled: GetIsDisabled;
+  toggleSection: ToggleSection;
+  pushHeaderRef: PushHeaderRef;
+  focusHeader: FocusHeader;
+  focusPrevHeader: FocusPrevHeader;
+  focusNextHeader: FocusNextHeader;
+  focusFirstHeader: FocusFirstHeader;
+  focusLastHeader: FocusLastHeader;
 }
 
-export interface AccordionHeaderProps extends Pick<AccordionProps, 'sections' | 'headerLevel'>, Omit<AccordionMethods, 'focusHeader'> {
+export interface AccordionHeaderProps extends
+  Pick<AccordionProps, 'sections' | 'headerLevel'>,
+  Omit<AccordionMethods, 'focusHeader'> {
   children: React.ReactNode;
   headerProps?: Props;
   buttonProps?: Props;
   index: number;
 }
 
-export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement>, Pick<AccordionProps, 'sections'>, Pick<AccordionMethods, 'getIsExpanded'> {
+export interface AccordionPanelProps extends
+  React.HTMLAttributes<HTMLElement>,
+  Pick<AccordionProps, 'sections'>,
+  Pick<AccordionMethods, 'getIsExpanded'> {
   children: React.ReactNode;
   className?: string;
   tagName?: ValidPanelTags;
   index: number;
   //Not needed below
+  allowMultiple?: boolean;
+  allowToggle?: boolean;
   headerLevel?: ValidHTMLHeaderLevels;
   renderSection?: RenderSection;
   renderHeader?: RenderHeader;
@@ -97,16 +104,14 @@ export interface AccordionPanelProps extends React.HTMLAttributes<HTMLElement>, 
   panelProps?: Props;
   headerElementType?: HeaderElementType;
   panelElementType?: PanelElementType;
-  allowMultiple?: boolean;
-  allowToggle?: boolean;
-  getIsDisabled?: (id: string) => boolean;
-  toggleSection?: (id: string) => void;
-  pushHeaderRef?: (ref: HeaderRef) => void;
-  focusHeader?: (index: number) => void;
-  focusPrevHeader?: (index: number) => void;
-  focusNextHeader?: (index: number) => void;
-  focusFirstHeader?: () => void;
-  focusLastHeader?: () => void;
+  getIsDisabled?: GetIsDisabled;
+  toggleSection?: ToggleSection;
+  pushHeaderRef?: PushHeaderRef;
+  focusHeader?: FocusHeader;
+  focusPrevHeader?: FocusPrevHeader;
+  focusNextHeader?: FocusNextHeader;
+  focusFirstHeader?: FocusFirstHeader;
+  focusLastHeader?: FocusLastHeader;
 }
 
 export interface BaseAccordionHeaderProps {

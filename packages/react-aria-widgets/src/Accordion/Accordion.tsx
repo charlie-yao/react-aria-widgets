@@ -5,7 +5,20 @@ import PropTypes from 'prop-types';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import type { AccordionProps, HeaderRef } from 'src/Accordion/types';
+
+import type {
+  AccordionProps,
+  HeaderRef,
+  GetIsExpanded,
+  GetIsDisabled,
+  ToggleSection,
+  PushHeaderRef,
+  FocusHeader,
+  FocusPrevHeader,
+  FocusNextHeader,
+  FocusFirstHeader,
+  FocusLastHeader,
+} from 'src/Accordion/types';
 
 //Misc.
 import { defaultRenderSection, defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
@@ -53,7 +66,7 @@ function Accordion({
    * Returns a boolean that lets us know if a particular accordion section is
    * expanded or collapsed.
    */
-  const getIsExpanded = useCallback((id: string) => {
+  const getIsExpanded: GetIsExpanded = useCallback((id) => {
     return expandedSections.has(id);
   }, [ expandedSections ]);
 
@@ -61,7 +74,7 @@ function Accordion({
    * Returns a boolean that lets us know if an aleady-expanded accordion section
    * can't be collapsed due to <code>allowToggle</code>.
    */
-  const getIsDisabled = useCallback((id: string) => {
+  const getIsDisabled: GetIsDisabled = useCallback((id) => {
     return !getAllowToggle() && getIsExpanded(id);
   }, [ getAllowToggle, getIsExpanded ]);
 
@@ -69,7 +82,7 @@ function Accordion({
    * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
    * and <code>allowToggle</code>.
    */
-  const toggleSection = useCallback((id: string) => {
+  const toggleSection: ToggleSection = useCallback((id) => {
     const isExpanded = getIsExpanded(id);
     const isDisabled = getIsDisabled(id);
 
@@ -101,14 +114,14 @@ function Accordion({
   /**
    * Ref callback that pushes an accordion header button to headerRefs.
    */
-  const pushHeaderRef = useCallback((ref: HeaderRef) => {
+  const pushHeaderRef: PushHeaderRef = useCallback((ref) => {
     headerRefs.current.push(ref);
   }, []);
 
   /**
    * Sets focus to an arbitrary accordion header button.
    */
-  const focusHeader = useCallback((index: number) => {
+  const focusHeader: FocusHeader = useCallback((index) => {
     const ref = headerRefs.current[index];
 
     if(!ref)
@@ -121,7 +134,7 @@ function Accordion({
    * Sets focus on the previous accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
    */
-  const focusPrevHeader = useCallback((index: number) => {
+  const focusPrevHeader: FocusPrevHeader = useCallback((index) => {
     focusHeader(index === 0 ? headerRefs.current.length - 1 : index - 1);
   }, [ focusHeader ]);
 
@@ -129,21 +142,21 @@ function Accordion({
    * Sets focus on the next accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
    */
-  const focusNextHeader = useCallback((index: number) => {
+  const focusNextHeader: FocusNextHeader = useCallback((index) => {
     focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
   }, [ focusHeader ]);
 
   /**
    * Sets focus on the first accordion header button.
    */
-  const focusFirstHeader = useCallback(() => {
+  const focusFirstHeader: FocusFirstHeader = useCallback(() => {
     focusHeader(0);
   }, [ focusHeader ]);
 
   /**
    * Sets focus on the last accordion header button.
    */
-  const focusLastHeader = useCallback(() => {
+  const focusLastHeader: FocusLastHeader = useCallback(() => {
     focusHeader(headerRefs.current.length - 1);
   }, [ focusHeader ]);
 
