@@ -21,7 +21,7 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
   headerProps,
   buttonProps,
 }, ref) => {
-  const HeaderElement = `h${headerLevel}` as keyof JSX.IntrinsicElements;
+  const HeaderElement: React.ElementType = `h${headerLevel}`;
 
   return (
     <HeaderElement { ...headerProps }>
