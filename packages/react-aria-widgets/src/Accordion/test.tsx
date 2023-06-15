@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 declare module "react" {
   function forwardRef<T, P = {}>(
@@ -41,7 +41,7 @@ type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
     id: string;
     labelId: string;
   },
-  'section' | 'div' | 'button' | 'a'
+  'section' | 'div' | 'button' | 'a' | 'form' | 'ul' | 'input'
 >;
 
 type PanelComponent = <C extends React.ElementType = 'section'>(
@@ -60,12 +60,8 @@ const Panel: PanelComponent = React.forwardRef(<C extends React.ElementType = 's
 */
 
 function Panel<C extends React.ElementType = 'section'>(
-  {
-    as,
-    children,
-    ...rest
-  }: PanelProps<C>,
-  ref: React.ForwardedRef<C>
+  { as, children, ...rest }: PanelProps<C>,
+  ref: React.ForwardedRef<HTMLElement>
 ) {
   const Component = as ? as : 'section';
   return <Component { ...rest } ref={ ref }>{children}</Component>;
@@ -73,8 +69,22 @@ function Panel<C extends React.ElementType = 'section'>(
 
 const ForwardedPanel = React.forwardRef(Panel);
 
+ForwardedPanel.propTypes = {
+};
+
+ForwardedPanel.defaultProps = {
+};
 
 function App() {
+  const testSectionRef = useRef<HTMLElement | null>(null);
+  const testDivRef = useRef<HTMLDivElement | null>(null);
+  const testButtonRef = useRef<HTMLButtonElement | null>(null);
+  const testGenericRef = useRef<HTMLElement | null>(null);
+  const testFormRef = useRef<HTMLFormElement | null>(null);
+  const testUListRef = useRef(null);
+  const testInputRef = useRef<HTMLInputElement | null>(null);
+  const testUntypedInputRef = useRef(null);
+
   return (
     <>
       <Panel as="section" id="test" labelId="testLabel">hello world!</Panel>
@@ -84,6 +94,21 @@ function App() {
       <Panel as="div" id="test" labelId="testLabel" href="#">dd</Panel>
       <Panel as="a" id="test" labelId="testLabel" href="#">dd</Panel>
       <Panel as="bdiv" id="test" labelId="testLabel" href="#">dd</Panel>
+      <ForwardedPanel ref={testSectionRef} as="section" id="test" labelId="testLabel">hello world!</ForwardedPanel>
+      <ForwardedPanel ref={testButtonRef} as="section" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
+      <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
+      <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="asdfsubmit">dd</ForwardedPanel>
+      <ForwardedPanel ref={testDivRef} as="div" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testFormRef} as="a" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testFormRef} as="form" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testGenericRef} as="bdiv" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testUListRef} as="bdiv" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testUListRef} as="ul" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testUListRef} as="ul" id="test" labelId="testLabel">dd</ForwardedPanel>
+      <ForwardedPanel ref={testButtonRef} as="ul" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testDivRef} as="ul" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
+      <ForwardedPanel ref={testInputRef} as="input" id="test" labelId="testLabel">dd</ForwardedPanel>
+      <ForwardedPanel ref={testUntypedInputRef} as="input" id="test" labelId="testLabel">dd</ForwardedPanel>
     </>
   );
 }
