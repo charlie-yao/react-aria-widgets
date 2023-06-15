@@ -1,5 +1,12 @@
 import React from 'react';
 
+declare module "react" {
+  function forwardRef<T, P = {}>(
+    render: (props: P, ref: ForwardedRef<T>) => React.ReactElement | null
+  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null
+  //): (props: React.PropsWithoutRef<P> & React.RefAttributes<T>) => React.ReactElement | null
+}
+
 type HTMLTagsAllowed<C extends React.ElementType, V> = C extends V ? C : never;
 
 type AsProp<C extends React.ElementType, V> = {
@@ -41,6 +48,7 @@ type PanelComponent = <C extends React.ElementType = 'section'>(
   props: PanelProps<C>
 ) => React.ReactElement | null;
 
+/*
 const Panel: PanelComponent = React.forwardRef(<C extends React.ElementType = 'section'>(
   { as, children,  ...rest }: PanelProps<C>,
   ref?: PolymorphicRef<C>
@@ -49,6 +57,22 @@ const Panel: PanelComponent = React.forwardRef(<C extends React.ElementType = 's
   
   return <Component {...rest} ref={ ref }>{ children }</Component>
 });
+*/
+
+function Panel<C extends React.ElementType = 'section'>(
+  {
+    as,
+    children,
+    ...rest
+  }: PanelProps<C>,
+  ref: React.ForwardedRef<C>
+) {
+  const Component = as ? as : 'section';
+  return <Component { ...rest } ref={ ref }>{children}</Component>;
+}
+
+const ForwardedPanel = React.forwardRef(Panel);
+
 
 function App() {
   return (
