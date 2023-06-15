@@ -44,9 +44,9 @@ type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   'section' | 'div' | 'button' | 'a' | 'form' | 'ul' | 'input'
 >;
 
-function Panel<C extends React.ElementType = 'section'>(
+function Panel<E, C extends React.ElementType = 'section'>(
   { as, children, ...rest }: PanelProps<C>,
-  ref: React.ForwardedRef<HTMLElement>
+  ref: React.ForwardedRef<E>
 ) {
   const Component = as ? as : 'section';
   return <Component { ...rest } ref={ ref }>{children}</Component>;
@@ -99,6 +99,7 @@ function App() {
       <ForwardedPanel ref={testDivRef} as="ul" id="test" labelId="testLabel" href="#">dd</ForwardedPanel>
       <ForwardedPanel ref={testInputRef} as="input" id="test" labelId="testLabel">dd</ForwardedPanel>
       <ForwardedPanel ref={testUntypedInputRef} as="input" id="test" labelId="testLabel">dd</ForwardedPanel>
+      <ForwardedPanel ref={null} as="input" id="test" labelId="testLabel">dd</ForwardedPanel>
     </>
   );
 }
