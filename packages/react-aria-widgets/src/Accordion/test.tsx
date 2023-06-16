@@ -7,31 +7,33 @@ declare module "react" {
   //): (props: React.PropsWithoutRef<P> & React.RefAttributes<T>) => React.ReactElement | null
 }
 
-type HTMLTagsAllowed<C extends React.ElementType, V> = C extends V ? C : never;
+type HTMLTagsAllowed<C extends React.ElementType, V extends React.ElementType> = C extends V ? C : never;
 
-type AsProp<C extends React.ElementType, V> = {
+type AsProp<C extends React.ElementType, V extends React.ElementType> = {
   as?: HTMLTagsAllowed<C, V>;
 };
 
-type PropsWithAs<C extends React.ElementType, P, V> = AsProp<C, V> & P;
+type PropsWithAs<C extends React.ElementType, P, V extends React.ElementType> = AsProp<C, V> & P;
 
-type PropsToOmit<C extends React.ElementType, P, V> = keyof PropsWithAs<C, P, V>;
+type PropsToOmit<C extends React.ElementType, P, V extends React.ElementType> = keyof PropsWithAs<C, P, V>;
 
 type PolymorphicComponentProps<
   C extends React.ElementType,
-  Props = Record<string, unknown>,
-  V extends React.ElementType = React.ElementType
+  Props extends Record<string, unknown>,
+  V extends React.ElementType
 > = React.PropsWithChildren<
   Props &
   AsProp<C, V> &
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props, V>>
 >
 
+type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
+
 type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
-  Props,
-  V extends React.ElementType = React.ElementType
-> = PolymorphicComponentProps<C, Props, V>;
+  Props extends Record<string, unknown>,
+  V extends React.ElementType
+> = PolymorphicComponentProps<C, Props, V> & { ref?: PolymorphicRef<C> }
 
 type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   C,
@@ -72,7 +74,7 @@ function App() {
     <>
       <Panel as="section" id="test" labelId="testLabel">hello world!</Panel>
       <Panel as="section" id="test" labelId="testLabel" type="button">dd</Panel>
-      <Panel ref={ testInputRef } as="button" id="test" labelId="testLabel" type="button">dd</Panel>
+      <Panel as="button" id="test" labelId="testLabel" type="button">dd</Panel>
       <Panel as="button" id="test" labelId="testLabel" type="asdfsubmit">dd</Panel>
       <Panel as="div" id="test" labelId="testLabel" href="#">dd</Panel>
       <Panel as="a" id="test" labelId="testLabel" href="#">dd</Panel>
