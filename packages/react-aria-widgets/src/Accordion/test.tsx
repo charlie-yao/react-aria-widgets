@@ -19,21 +19,21 @@ type PropsToOmit<C extends React.ElementType, P, V extends React.ElementType> = 
 
 type PolymorphicComponentProps<
   C extends React.ElementType,
-  Props extends Record<string, unknown>,
+  P,
   V extends React.ElementType
 > = React.PropsWithChildren<
-  Props &
+  P &
   AsProp<C, V> &
-  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props, V>>
+  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, P, V>>
 >
 
 type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
 
 type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
-  Props extends Record<string, unknown>,
+  P,
   V extends React.ElementType
-> = PolymorphicComponentProps<C, Props, V> & { ref?: PolymorphicRef<C> }
+> = PolymorphicComponentProps<C, P, V> & { ref?: PolymorphicRef<C> }
 
 type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   C,
@@ -52,7 +52,7 @@ function Panel<E, C extends React.ElementType = 'section'>(
   return <Component { ...rest } ref={ ref }>{children}</Component>;
 }
 
-const ForwardedPanel = React.forwardRef(Panel) as React.ForwardRefExoticComponent;
+const ForwardedPanel = React.forwardRef(Panel);// as React.ForwardRefExoticComponent;
 
 ForwardedPanel.propTypes = {
 };
