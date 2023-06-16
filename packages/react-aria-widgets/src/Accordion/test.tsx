@@ -27,13 +27,11 @@ type PolymorphicComponentProps<
   Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props, V>>
 >
 
-type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
-
 type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
   Props,
   V extends React.ElementType = React.ElementType
-> = PolymorphicComponentProps<C, Props, V> & { ref?: PolymorphicRef<C> }
+> = PolymorphicComponentProps<C, Props, V>;
 
 type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   C,
@@ -52,7 +50,7 @@ function Panel<E, C extends React.ElementType = 'section'>(
   return <Component { ...rest } ref={ ref }>{children}</Component>;
 }
 
-const ForwardedPanel = React.forwardRef(Panel);
+const ForwardedPanel = React.forwardRef(Panel) as React.ForwardRefExoticComponent;
 
 ForwardedPanel.propTypes = {
 };
@@ -74,7 +72,7 @@ function App() {
     <>
       <Panel as="section" id="test" labelId="testLabel">hello world!</Panel>
       <Panel as="section" id="test" labelId="testLabel" type="button">dd</Panel>
-      <Panel as="button" id="test" labelId="testLabel" type="button">dd</Panel>
+      <Panel ref={ testInputRef } as="button" id="test" labelId="testLabel" type="button">dd</Panel>
       <Panel as="button" id="test" labelId="testLabel" type="asdfsubmit">dd</Panel>
       <Panel as="div" id="test" labelId="testLabel" href="#">dd</Panel>
       <Panel as="a" id="test" labelId="testLabel" href="#">dd</Panel>
