@@ -4,7 +4,6 @@ declare module "react" {
   function forwardRef<T, P = {}>(
     render: (props: P, ref: ForwardedRef<T>) => React.ReactElement | null
   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null
-  //): (props: React.PropsWithoutRef<P> & React.RefAttributes<T>) => React.ReactElement | null
 }
 
 type HTMLTagsAllowed<C extends React.ElementType, V extends React.ElementType> = C extends V ? C : never;
