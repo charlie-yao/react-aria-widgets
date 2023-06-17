@@ -15,16 +15,13 @@ type AsProp<C extends React.ElementType, V extends React.ElementType> = {
 
 type PropsWithAs<C extends React.ElementType, P, V extends React.ElementType> = AsProp<C, V> & P;
 
-type PropsToOmit<C extends React.ElementType, P, V extends React.ElementType> = keyof PropsWithAs<C, P, V>;
-
-type PolymorphicComponentProps<
+type PolymorphicComponentPropsWithoutRef<
   C extends React.ElementType,
   P,
   V extends React.ElementType
 > = React.PropsWithChildren<
-  P &
-  AsProp<C, V> &
-  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, P, V>>
+  PropsWithAs<C, P, V> & 
+  Omit<React.ComponentPropsWithoutRef<C>, keyof PropsWithAs<C, P, V>>
 >
 
 type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
@@ -33,7 +30,18 @@ type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
   P,
   V extends React.ElementType
-> = PolymorphicComponentProps<C, P, V> & { ref?: PolymorphicRef<C> }
+> = PolymorphicComponentPropsWithoutRef<C, P, V> & { ref?: PolymorphicRef<C> }
+
+/*
+type PolymorphicComponentPropsWithRef<
+  C extends React.ElementType,
+  P,
+  V extends React.ElementType
+> = React.PropsWithChildren<
+  PropsWithAs<C, P, V> &
+  Omit<React.ComponentPropsWithRef<C>, keyof PropsWithAs<C, P, V>>
+>
+*/
 
 type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   C,
@@ -84,7 +92,8 @@ function App() {
 
       { /* The type checking should be stricter here */ }
       <ForwardedPanel ref={testButtonRef} as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
-
+ 
+      <ForwardedPanel as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="div" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="asdfsubmit">dd</ForwardedPanel>
