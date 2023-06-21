@@ -2,33 +2,40 @@ import React, { useRef } from 'react';
 
 declare module "react" {
   function forwardRef<T, P = {}>(
-    render: (props: P, ref: ForwardedRef<T>) => React.ReactNode
+    render: (props: P, ref: React.ForwardedRef<T>) => React.ReactNode
   ): (props: P & React.RefAttributes<T>) => React.ReactElement
 }
 
-type HTMLTagsAllowed<C extends React.ElementType, V extends React.ElementType> = C extends V ? C : never;
+type AllowedElements<
+  C extends React.ElementType,
+  V extends React.ElementType = React.ElementType
+> = C extends V ? C : never;
 
-type AsProp<C extends React.ElementType, V extends React.ElementType> = {
-  as?: HTMLTagsAllowed<C, V>;
+type AsProp<
+  C extends React.ElementType,
+  V extends React.ElementType = React.ElementType
+> = {
+  as?: AllowedElements<C, V>;
 };
 
-type PropsWithAs<C extends React.ElementType, P, V extends React.ElementType> = AsProp<C, V> & P;
+type PropsWithAs<
+  C extends React.ElementType,
+  P,
+  V extends React.ElementType = React.ElementType
+> = AsProp<C, V> & P;
+
+type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
 
 type PolymorphicComponentPropsWithoutRef<
   C extends React.ElementType,
   P,
-  V extends React.ElementType
-> = React.PropsWithChildren<
-  PropsWithAs<C, P, V> & 
-  Omit<React.ComponentPropsWithoutRef<C>, keyof PropsWithAs<C, P, V>>
->
-
-type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
+  V extends React.ElementType = React.ElementType
+> = PropsWithAs<C, P, V> &  Omit<React.ComponentPropsWithoutRef<C>, keyof PropsWithAs<C, P, V>>;
 
 type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
   P,
-  V extends React.ElementType
+  V extends React.ElementType = React.ElementType
 > = PolymorphicComponentPropsWithoutRef<C, P, V> & { ref?: PolymorphicRef<C> }
 
 type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
@@ -49,6 +56,12 @@ function Panel<E, C extends React.ElementType = 'section'>(
 }
 
 const ForwardedPanel = React.forwardRef(Panel);// as React.ForwardRefExoticComponent;
+const Blah = React.forwardRef<HTMLDivElement, React.PropsWithChildren<{ name: string }>>((
+  { name, children },
+  ref
+) => {
+  return <div ref={ ref } id={ name }>{ children }</div>
+});
 
 ForwardedPanel.propTypes = {
 };
@@ -64,7 +77,7 @@ function App() {
   const testFormRef = useRef<HTMLFormElement>(null);
   const testUListRef = useRef<HTMLUListElement>(null);
   const testInputRef = useRef<HTMLInputElement>(null);
-  const testUntypedInputRef = useRef();
+  const testUntypedInputRef = useRef(null);
 
   return (
     <>
@@ -80,6 +93,9 @@ function App() {
 
       { /* The type checking should be stricter here */ }
       <ForwardedPanel ref={testButtonRef} as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
+
+      <Blah ref={testButtonRef} name="lol">lol</Blah>
+      <Blah ref={testDivRef} name="rofl">rofl</Blah>
 
       <ForwardedPanel as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
