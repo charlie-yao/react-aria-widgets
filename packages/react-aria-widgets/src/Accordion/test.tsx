@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 
 declare module "react" {
   function forwardRef<T, P = {}>(
-    render: (props: P, ref: ForwardedRef<T>) => React.ReactElement | null
-  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null
+    render: (props: P, ref: ForwardedRef<T>) => React.ReactNode
+  ): (props: P & React.RefAttributes<T>) => React.ReactElement
 }
 
 type HTMLTagsAllowed<C extends React.ElementType, V extends React.ElementType> = C extends V ? C : never;
@@ -31,17 +31,6 @@ type PolymorphicComponentPropsWithRef<
   V extends React.ElementType
 > = PolymorphicComponentPropsWithoutRef<C, P, V> & { ref?: PolymorphicRef<C> }
 
-/*
-type PolymorphicComponentPropsWithRef<
-  C extends React.ElementType,
-  P,
-  V extends React.ElementType
-> = React.PropsWithChildren<
-  PropsWithAs<C, P, V> &
-  Omit<React.ComponentPropsWithRef<C>, keyof PropsWithAs<C, P, V>>
->
-*/
-
 type PanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<
   C,
   {
@@ -68,14 +57,14 @@ ForwardedPanel.defaultProps = {
 };
 
 function App() {
-  const testSectionRef = useRef<HTMLElement | null>(null);
-  const testDivRef = useRef<HTMLDivElement | null>(null);
-  const testButtonRef = useRef<HTMLButtonElement | null>(null);
-  const testGenericRef = useRef<HTMLElement | null>(null);
-  const testFormRef = useRef<HTMLFormElement | null>(null);
-  const testUListRef = useRef(null);
-  const testInputRef = useRef<HTMLInputElement | null>(null);
-  const testUntypedInputRef = useRef(null);
+  const testSectionRef = useRef<HTMLElement>(null);
+  const testDivRef = useRef<HTMLDivElement>(null);
+  const testButtonRef = useRef<HTMLButtonElement>(null);
+  const testGenericRef = useRef<HTMLElement>(null);
+  const testFormRef = useRef<HTMLFormElement>(null);
+  const testUListRef = useRef<HTMLUListElement>(null);
+  const testInputRef = useRef<HTMLInputElement>(null);
+  const testUntypedInputRef = useRef();
 
   return (
     <>
@@ -91,7 +80,7 @@ function App() {
 
       { /* The type checking should be stricter here */ }
       <ForwardedPanel ref={testButtonRef} as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
- 
+
       <ForwardedPanel as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="div" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
