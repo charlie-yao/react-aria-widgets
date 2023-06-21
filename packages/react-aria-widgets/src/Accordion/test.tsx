@@ -55,7 +55,13 @@ function Panel<E, C extends React.ElementType = 'section'>(
   return <Component { ...rest } ref={ ref }>{children}</Component>;
 }
 
-const ForwardedPanel = React.forwardRef(Panel);// as React.ForwardRefExoticComponent;
+type ForwardedPanelType = <C extends React.ElementType = 'section'>(
+  props: PanelProps<C>
+) => React.ReactElement | null;
+
+//const ForwardedPanel: ForwardedPanelType = React.forwardRef(Panel);
+const ForwardedPanel = React.forwardRef(Panel);
+
 const Blah = React.forwardRef<HTMLDivElement, React.PropsWithChildren<{ name: string }>>((
   { name, children },
   ref
@@ -63,10 +69,11 @@ const Blah = React.forwardRef<HTMLDivElement, React.PropsWithChildren<{ name: st
   return <div ref={ ref } id={ name }>{ children }</div>
 });
 
-ForwardedPanel.propTypes = {
+//(ForwardedPanel as React.ForwardRefExoticComponent<React.PropsWithoutRef<{ id: string, labelId: string }> & React.RefAttributes<HTMLElement>>).propTypes = {
+(ForwardedPanel as React.ComponentType).propTypes = {
 };
 
-ForwardedPanel.defaultProps = {
+(ForwardedPanel as React.ComponentType).defaultProps = {
 };
 
 function App() {
