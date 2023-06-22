@@ -91,7 +91,7 @@ export interface AccordionPanelProps extends
   Pick<AccordionMethods, 'getIsExpanded'> {
   children: React.ReactNode;
   className?: string;
-  tagName?: ValidPanelTags;
+  as?: ValidPanelTags;
   index: number;
   //Not needed below
   allowMultiple?: boolean;
