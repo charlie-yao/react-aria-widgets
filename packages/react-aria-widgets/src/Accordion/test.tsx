@@ -1,13 +1,6 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
-/*
-declare module "react" {
-  function forwardRef<T, P = {}>(
-    render: (props: P, ref: React.ForwardedRef<T>) => React.ReactNode
-  ): (props: P & React.RefAttributes<T>) => React.ReactElement
-}*/
-
 const VALID_PANEL_ELEMENTS = [
   'section',
   'div',
@@ -17,6 +10,8 @@ const VALID_PANEL_ELEMENTS = [
   'ul',
   'input',
 ] as const;
+
+const DEFAULT_PANEL_ELEMENT = VALID_PANEL_ELEMENTS[0];
 
 type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
 
@@ -56,7 +51,7 @@ interface PolymorphicForwardRefComponent<
   Props,
   V extends React.ElementType = React.ElementType
 > {
-  <C extends React.ElementType = 'section'>(
+  <C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>(
     props: PolymorphicComponentPropsWithRef<C, Props, V>
   ): React.ReactElement | null;
 
@@ -70,11 +65,11 @@ type PanelProps = {
   labelId: string;
 };
 
-function Panel<C extends React.ElementType = 'section'>(
+function Panel<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>(
   { as, children, ...rest }: PolymorphicComponentPropsWithRef<C, PanelProps, ValidPanelElements>,
   ref: PolymorphicRef<C>
 ) {
-  const Component = as ? as : 'section';
+  const Component = as ? as : DEFAULT_PANEL_ELEMENT;
   return <Component { ...rest } ref={ ref }>{children}</Component>;
 }
 
@@ -95,7 +90,7 @@ type WrappedForwardedPanelProps = {
 
 function WrappedForwardedPanel({ ...rest }: WrappedForwardedPanelProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  return <ForwardedPanel ref={buttonRef} {...rest} />;
+  return <ForwardedPanel {...rest} ref={buttonRef} />;
 }
 
 //Non-generic usage of React.forwardRef
