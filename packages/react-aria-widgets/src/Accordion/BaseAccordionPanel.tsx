@@ -8,7 +8,7 @@ import type { BaseAccordionPanelProps, ValidPanelTags } from 'src/Accordion/type
 import type {
   PolymorphicComponentPropsWithRef,
   PolymorphicRef,
-  PolymorphicForwardRefComponent
+  PolymorphicForwardRefComponent,
 } from 'src/utils/types';
 
 //Misc.

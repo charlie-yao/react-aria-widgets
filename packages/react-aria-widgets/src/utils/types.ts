@@ -21,7 +21,7 @@ export interface AsProp<
   V extends React.ElementType = React.ElementType
 > {
   as?: AllowedElements<C, V>;
-};
+}
 
 export type PropsWithAs<
   C extends React.ElementType,
@@ -35,7 +35,7 @@ export type PolymorphicComponentPropsWithoutRef<
   C extends React.ElementType,
   P,
   V extends React.ElementType = React.ElementType
-> = PropsWithAs<C, P, V> &  Omit<React.ComponentPropsWithoutRef<C>, keyof PropsWithAs<C, P, V>>;
+> = PropsWithAs<C, P, V> & Omit<React.ComponentPropsWithoutRef<C>, keyof PropsWithAs<C, P, V>>;
 
 export type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
@@ -46,7 +46,7 @@ export type PolymorphicComponentPropsWithRef<
 export interface PolymorphicForwardRefComponent<
   Props,
   V extends React.ElementType = React.ElementType,
-  D extends React.ElementType = React.ElementType,
+  D extends React.ElementType = React.ElementType
 > {
   <C extends React.ElementType = D>(
     props: PolymorphicComponentPropsWithRef<C, Props, V>
