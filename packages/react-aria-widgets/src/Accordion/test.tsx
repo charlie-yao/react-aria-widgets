@@ -80,7 +80,7 @@ ForwardedPanel.propTypes = {
 };
 
 ForwardedPanel.defaultProps = {
-  as: 'section',
+  as: DEFAULT_PANEL_ELEMENT,
 };
 
 //How reusable is the polymorphic component?
