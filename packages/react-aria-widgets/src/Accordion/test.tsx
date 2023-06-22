@@ -50,9 +50,9 @@ type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
   P,
   V extends React.ElementType = React.ElementType
-> = PolymorphicComponentPropsWithoutRef<C, P, V> & { ref?: PolymorphicRef<C> }
+> = PropsWithAs<C, P, V> & Omit<React.ComponentPropsWithRef<C>, keyof PropsWithAs<C, P, V>>;
 
-interface PolymorphicForwardedComponent<
+interface PolymorphicForwardRefComponent<
   Props,
   V extends React.ElementType = React.ElementType
 > {
@@ -68,35 +68,34 @@ interface PolymorphicForwardedComponent<
 type PanelProps = {
   id: string;
   labelId: string;
-  lol: string;
 };
 
-function Panel<E, C extends React.ElementType = 'section'>(
+function Panel<C extends React.ElementType = 'section'>(
   { as, children, ...rest }: PolymorphicComponentPropsWithRef<C, PanelProps, ValidPanelElements>,
-  ref: React.ForwardedRef<E>
+  ref: PolymorphicRef<C>
 ) {
   const Component = as ? as : 'section';
   return <Component { ...rest } ref={ ref }>{children}</Component>;
 }
 
-const ForwardedPanel: PolymorphicForwardedComponent<PanelProps, ValidPanelElements> = React.forwardRef(Panel);
+const ForwardedPanel: PolymorphicForwardRefComponent<PanelProps, ValidPanelElements> = React.forwardRef(Panel);
 
 ForwardedPanel.propTypes = {
   as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
-  lol: PropTypes.number.isRequired,
 };
 
 ForwardedPanel.defaultProps = {
-  as: 'error!',
+  as: 'section',
 };
 
 //How reusable is the polymorphic component?
 type WrappedForwardedPanelProps = {
-} & React.ComponentPropsWithRef<typeof ForwardedPanel>;
+  test: string;
+} & React.ComponentProps<typeof ForwardedPanel>;
 
 function WrappedForwardedPanel({ ...rest }: WrappedForwardedPanelProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  return <ForwardedPanel {...rest} />;
+  return <ForwardedPanel ref={buttonRef} {...rest} />;
 }
 
 //Non-generic usage of React.forwardRef
@@ -134,7 +133,8 @@ function App() {
 
       <Blah ref={testButtonRef} name="lol">lol</Blah>
       <Blah ref={testDivRef} name="rofl">rofl</Blah>
-
+      
+      <ForwardedPanel ref={testButtonRef} labelId="testLabel" id="test">helloworld</ForwardedPanel>
       <ForwardedPanel as="section" id="test" labelId="testLabel">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="button" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
       <ForwardedPanel ref={testButtonRef} as="div" id="test" labelId="testLabel" type="button">dd</ForwardedPanel>
