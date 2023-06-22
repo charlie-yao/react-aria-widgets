@@ -40,7 +40,8 @@ function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_E
 
 const ForwardedBaseAccordionPanel: PolymorphicForwardRefComponent<
   BaseAccordionPanelProps,
-  ValidPanelTags
+  ValidPanelTags,
+  typeof DEFAULT_PANEL_ELEMENT
 > = React.forwardRef(BaseAccordionPanel);
 
 ForwardedBaseAccordionPanel.propTypes = {
