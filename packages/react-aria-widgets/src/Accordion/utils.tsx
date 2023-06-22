@@ -115,3 +115,4 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps, accordion
 };
 
 export const VALID_PANEL_TAGS = [ 'section', 'div' ] as const;
+export const DEFAULT_PANEL_ELEMENT = VALID_PANEL_TAGS[0];

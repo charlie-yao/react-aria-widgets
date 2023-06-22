@@ -127,10 +127,7 @@ export interface BaseAccordionHeaderProps {
   buttonProps?: Props;
 }
 
-export interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
+export interface BaseAccordionPanelProps {
   id: string;
   labelId?: string;
-  tagName?: ValidPanelTags;
-  className?: string;
 }
