@@ -85,6 +85,7 @@ export interface AccordionHeaderProps extends
   index: number;
 }
 
+/*
 export type _AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> =
   Pick<AccordionProps, 'sections'> &
   Pick<AccordionMethods, 'getIsExpanded'> &
@@ -114,17 +115,16 @@ export type _AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL
 
 export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> =
   _AccordionPanelProps<C> & Omit<React.ComponentPropsWithoutRef<C>, keyof _AccordionPanelProps>;
+*/
 
-/*
-export type AccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+//export type AccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
 //export type AccordionPanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithoutRef<
-//export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+//export type AccordionPanelProps<C extends ValidPanelTags> = PolymorphicComponentPropsWithoutRef<
   C,
-  //Pick<AccordionProps, 'sections'> & Pick<AccordionMethods, 'getIsExpanded'> & {
+  Pick<AccordionProps, 'sections'> &
   Pick<AccordionMethods, 'getIsExpanded'> &
   {
-    sections: Section[];
-    //sections: object[];
     index: number;
     //Not needed below
     allowMultiple?: boolean;
@@ -148,7 +148,6 @@ export type AccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PAN
   },
   ValidPanelTags
 >
-*/
 
 /*
 export interface AccordionPanelProps extends

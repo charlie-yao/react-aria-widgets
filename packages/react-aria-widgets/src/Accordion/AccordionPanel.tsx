@@ -51,6 +51,7 @@ function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>
   //const _as: ValidPanelTags = as!;
   const _as: ValidPanelTags = as ? as : DEFAULT_PANEL_ELEMENT;
   //const _as = as ? as : DEFAULT_PANEL_ELEMENT;
+  //const _as: ValidPanelTags = as ? as : 'div';
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
@@ -71,11 +72,15 @@ function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>
 function Test() {
   return (
     <>
-      <AccordionPanel sections={ undefined } getIsExpanded={ undefined } />
-      <AccordionPanel as="section" sections={ undefined } getIsExpanded={ undefined } />
-      <AccordionPanel as="div" sections={ undefined } getIsExpanded={ undefined } />
-      <AccordionPanel as="button" sections={ undefined } getIsExpanded={ undefined } />
-
+      <AccordionPanel />
+      <AccordionPanel as="section" />
+      <AccordionPanel as="div" />
+      <AccordionPanel as="section" type="lol" />
+      <AccordionPanel as="button" />
+      <AccordionPanel as="button" type="lol" />
+      <AccordionPanel as="button" type="button" />
+      <AccordionPanel as="form" type="button" href="lol"/>
+      <AccordionPanel as="ul" type="rofl" />
       <AccordionPanel href="lol" />
     </>
   );
