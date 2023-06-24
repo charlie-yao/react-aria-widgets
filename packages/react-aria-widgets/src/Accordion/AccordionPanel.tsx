@@ -8,15 +8,17 @@ import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import type { AccordionPanelProps } from 'src/Accordion/types';
+import type { AccordionPanelProps, ValidPanelTags } from 'src/Accordion/types';
 
 //Misc.
-import { getPanelId, VALID_PANEL_TAGS } from 'src/Accordion/utils';
+import { getPanelId, VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
-function AccordionPanel({
+//function AccordionPanel<C extends ValidPanelTags>({
+function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>({
+//function AccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>({
   children,
   className = '',
-  as = 'section',
+  as,
   index,
   sections,
   getIsExpanded,
@@ -42,21 +44,40 @@ function AccordionPanel({
   focusLastHeader,
   /* eslint-enable @typescript-eslint/no-unused-vars, react/prop-types */
   ...rest
-}: AccordionPanelProps) {
+}: AccordionPanelProps<C>) {
+  //const _as = as;
+  //const _as = as!;
+  //const _as: ValidPanelTags = as;
+  //const _as: ValidPanelTags = as!;
+  const _as: ValidPanelTags = as ? as : DEFAULT_PANEL_ELEMENT;
+  //const _as = as ? as : DEFAULT_PANEL_ELEMENT;
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
 
   return (
-    <BaseAccordionPanel
+    <BaseAccordionPanel<typeof _as>
       { ...rest }
       id={ getPanelId(id) }
       labelId={ id }
       className={ `${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
-      as={ as }
+      as={ _as }
     >
       { children }
     </BaseAccordionPanel>
+  );
+}
+
+function Test() {
+  return (
+    <>
+      <AccordionPanel sections={ undefined } getIsExpanded={ undefined } />
+      <AccordionPanel as="section" sections={ undefined } getIsExpanded={ undefined } />
+      <AccordionPanel as="div" sections={ undefined } getIsExpanded={ undefined } />
+      <AccordionPanel as="button" sections={ undefined } getIsExpanded={ undefined } />
+
+      <AccordionPanel href="lol" />
+    </>
   );
 }
 

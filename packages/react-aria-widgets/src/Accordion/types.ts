@@ -1,10 +1,10 @@
 import type React from 'react';
 
 //Types
-import type { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
+import type { Props, ValidHTMLHeaderLevels, PolymorphicComponentPropsWithoutRef } from 'src/utils/types';
 
 //Misc.
-import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
+import type { VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
 export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
@@ -85,10 +85,77 @@ export interface AccordionHeaderProps extends
   index: number;
 }
 
+export type _AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> =
+  Pick<AccordionProps, 'sections'> &
+  Pick<AccordionMethods, 'getIsExpanded'> &
+  {
+    index: number;
+    as?: C;
+    //Not needed below
+    allowMultiple?: boolean;
+    allowToggle?: boolean;
+    headerLevel?: ValidHTMLHeaderLevels;
+    renderSection?: RenderSection;
+    renderHeader?: RenderHeader;
+    renderPanel?: RenderPanel;
+    headerProps?: Props;
+    panelProps?: Props;
+    headerElementType?: HeaderElementType;
+    panelElementType?: PanelElementType;
+    getIsDisabled?: GetIsDisabled;
+    toggleSection?: ToggleSection;
+    pushHeaderRef?: PushHeaderRef;
+    focusHeader?: FocusHeader;
+    focusPrevHeader?: FocusPrevHeader;
+    focusNextHeader?: FocusNextHeader;
+    focusFirstHeader?: FocusFirstHeader;
+    focusLastHeader?: FocusLastHeader;
+  };
+
+export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> =
+  _AccordionPanelProps<C> & Omit<React.ComponentPropsWithoutRef<C>, keyof _AccordionPanelProps>;
+
+/*
+export type AccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+//export type AccordionPanelProps<C extends React.ElementType> = PolymorphicComponentPropsWithoutRef<
+//export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+  C,
+  //Pick<AccordionProps, 'sections'> & Pick<AccordionMethods, 'getIsExpanded'> & {
+  Pick<AccordionMethods, 'getIsExpanded'> &
+  {
+    sections: Section[];
+    //sections: object[];
+    index: number;
+    //Not needed below
+    allowMultiple?: boolean;
+    allowToggle?: boolean;
+    headerLevel?: ValidHTMLHeaderLevels;
+    renderSection?: RenderSection;
+    renderHeader?: RenderHeader;
+    renderPanel?: RenderPanel;
+    headerProps?: Props;
+    panelProps?: Props;
+    headerElementType?: HeaderElementType;
+    panelElementType?: PanelElementType;
+    getIsDisabled?: GetIsDisabled;
+    toggleSection?: ToggleSection;
+    pushHeaderRef?: PushHeaderRef;
+    focusHeader?: FocusHeader;
+    focusPrevHeader?: FocusPrevHeader;
+    focusNextHeader?: FocusNextHeader;
+    focusFirstHeader?: FocusFirstHeader;
+    focusLastHeader?: FocusLastHeader;
+  },
+  ValidPanelTags
+>
+*/
+
+/*
 export interface AccordionPanelProps extends
   React.HTMLAttributes<HTMLElement>,
   Pick<AccordionProps, 'sections'>,
-  Pick<AccordionMethods, 'getIsExpanded'> {
+  Pick<AccordionMethods, 'getIsExpanded'>
+{
   children: React.ReactNode;
   className?: string;
   as?: ValidPanelTags;
@@ -113,6 +180,7 @@ export interface AccordionPanelProps extends
   focusFirstHeader?: FocusFirstHeader;
   focusLastHeader?: FocusLastHeader;
 }
+*/
 
 export interface BaseAccordionHeaderProps {
   children: React.ReactNode;
