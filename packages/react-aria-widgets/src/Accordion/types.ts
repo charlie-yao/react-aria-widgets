@@ -10,10 +10,10 @@ import type {
 } from 'src/utils/types';
 
 //Misc.
-import type { VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
-export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
+export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
 
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents --
  * These types would ideally be limited to React.ElementType, but we're also
@@ -91,7 +91,7 @@ export interface AccordionHeaderProps extends
   index: number;
 }
 
-export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
   C,
   Pick<AccordionProps, 'sections'> &
   Pick<AccordionMethods, 'getIsExpanded'> &
@@ -117,7 +117,7 @@ export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_
     focusFirstHeader?: FocusFirstHeader;
     focusLastHeader?: FocusLastHeader;
   },
-  ValidPanelTags
+  ValidPanelElements
 >;
 
 export interface BaseAccordionHeaderProps {
@@ -141,11 +141,11 @@ export interface InternalBaseAccordionPanelProps {
 export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
   C,
   InternalBaseAccordionPanelProps,
-  ValidPanelTags
+  ValidPanelElements
 >;
 
 export type TForwardedBaseAccordionPanel = PolymorphicForwardRefComponent<
   InternalBaseAccordionPanelProps,
-  ValidPanelTags,
+  ValidPanelElements,
   typeof DEFAULT_PANEL_ELEMENT
 >;

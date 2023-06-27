@@ -8,12 +8,12 @@ import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
-import type { AccordionPanelProps, ValidPanelTags } from 'src/Accordion/types';
+import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
 
 //Misc.
-import { getPanelId, VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import { getPanelId, VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
-function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>({
+function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT>({
   children,
   className = '',
   as, //eslint-disable-line react/require-default-props
@@ -43,7 +43,7 @@ function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>
   /* eslint-enable @typescript-eslint/no-unused-vars, react/prop-types */
   ...rest
 }: AccordionPanelProps<C>) {
-  const Component: ValidPanelTags = as ? as : DEFAULT_PANEL_ELEMENT;
+  const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
@@ -64,7 +64,7 @@ function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>
 AccordionPanel.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  as: PropTypes.oneOf(VALID_PANEL_TAGS),
+  as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
   //From <Accordion>
   index: PropTypes.number.isRequired,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,

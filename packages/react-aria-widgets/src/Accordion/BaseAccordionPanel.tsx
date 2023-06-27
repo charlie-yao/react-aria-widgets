@@ -8,7 +8,7 @@ import type { BaseAccordionPanelProps, TForwardedBaseAccordionPanel } from 'src/
 import type { PolymorphicRef } from 'src/utils/types';
 
 //Misc.
-import { VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>(
   {
@@ -38,7 +38,7 @@ const ForwardedBaseAccordionPanel: TForwardedBaseAccordionPanel = React.forwardR
 
 ForwardedBaseAccordionPanel.propTypes = {
   children: PropTypes.node,
-  as: PropTypes.oneOf(VALID_PANEL_TAGS),
+  as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
   id: PropTypes.string.isRequired,
   labelId: PropTypes.string,
 };
