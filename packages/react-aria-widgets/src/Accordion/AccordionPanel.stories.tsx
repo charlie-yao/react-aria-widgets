@@ -45,7 +45,7 @@ export const WithCustomStyle: Story = {
 
 export const WithSectionRole: Story = {
   args: {
-    tagName: 'div',
+    as: 'div',
     role: 'section',
   },
 };

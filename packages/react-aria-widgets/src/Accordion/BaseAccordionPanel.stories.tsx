@@ -18,14 +18,14 @@ export const Default: Story = {};
 
 export const WithSectionRole: Story = {
   args: {
-    tagName: 'div',
+    as: 'div',
     role: 'section',
   },
 };
 
 export const WithoutSectionRole: Story = {
   args: {
-    tagName: 'div',
+    as: 'div',
   },
 };
 

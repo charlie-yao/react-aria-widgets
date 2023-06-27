@@ -1,13 +1,19 @@
 import type React from 'react';
 
 //Types
-import type { Props, ValidHTMLHeaderLevels } from 'src/utils/types';
+import type {
+  Props,
+  ValidHTMLHeaderLevels,
+  PolymorphicComponentPropsWithoutRef,
+  PolymorphicComponentPropsWithRef,
+  PolymorphicForwardRefComponent,
+} from 'src/utils/types';
 
 //Misc.
-import type { VALID_PANEL_TAGS } from 'src/Accordion/utils';
+import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
-export type ValidPanelTags = typeof VALID_PANEL_TAGS[number];
+export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
 
 /* eslint-disable @typescript-eslint/no-redundant-type-constituents --
  * These types would ideally be limited to React.ElementType, but we're also
@@ -85,34 +91,34 @@ export interface AccordionHeaderProps extends
   index: number;
 }
 
-export interface AccordionPanelProps extends
-  React.HTMLAttributes<HTMLElement>,
-  Pick<AccordionProps, 'sections'>,
-  Pick<AccordionMethods, 'getIsExpanded'> {
-  children: React.ReactNode;
-  className?: string;
-  tagName?: ValidPanelTags;
-  index: number;
-  //Not needed below
-  allowMultiple?: boolean;
-  allowToggle?: boolean;
-  headerLevel?: ValidHTMLHeaderLevels;
-  renderSection?: RenderSection;
-  renderHeader?: RenderHeader;
-  renderPanel?: RenderPanel;
-  headerProps?: Props;
-  panelProps?: Props;
-  headerElementType?: HeaderElementType;
-  panelElementType?: PanelElementType;
-  getIsDisabled?: GetIsDisabled;
-  toggleSection?: ToggleSection;
-  pushHeaderRef?: PushHeaderRef;
-  focusHeader?: FocusHeader;
-  focusPrevHeader?: FocusPrevHeader;
-  focusNextHeader?: FocusNextHeader;
-  focusFirstHeader?: FocusFirstHeader;
-  focusLastHeader?: FocusLastHeader;
-}
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+  C,
+  Pick<AccordionProps, 'sections'> &
+  Pick<AccordionMethods, 'getIsExpanded'> &
+  {
+    index: number;
+    //Not needed below
+    allowMultiple?: boolean;
+    allowToggle?: boolean;
+    headerLevel?: ValidHTMLHeaderLevels;
+    renderSection?: RenderSection;
+    renderHeader?: RenderHeader;
+    renderPanel?: RenderPanel;
+    headerProps?: Props;
+    panelProps?: Props;
+    headerElementType?: HeaderElementType;
+    panelElementType?: PanelElementType;
+    getIsDisabled?: GetIsDisabled;
+    toggleSection?: ToggleSection;
+    pushHeaderRef?: PushHeaderRef;
+    focusHeader?: FocusHeader;
+    focusPrevHeader?: FocusPrevHeader;
+    focusNextHeader?: FocusNextHeader;
+    focusFirstHeader?: FocusFirstHeader;
+    focusLastHeader?: FocusLastHeader;
+  },
+  ValidPanelElements
+>;
 
 export interface BaseAccordionHeaderProps {
   children: React.ReactNode;
@@ -127,10 +133,19 @@ export interface BaseAccordionHeaderProps {
   buttonProps?: Props;
 }
 
-export interface BaseAccordionPanelProps extends React.HTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
+export interface InternalBaseAccordionPanelProps {
   id: string;
   labelId?: string;
-  tagName?: ValidPanelTags;
-  className?: string;
 }
+
+export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
+  C,
+  InternalBaseAccordionPanelProps,
+  ValidPanelElements
+>;
+
+export type TForwardedBaseAccordionPanel = PolymorphicForwardRefComponent<
+  InternalBaseAccordionPanelProps,
+  ValidPanelElements,
+  typeof DEFAULT_PANEL_ELEMENT
+>;
