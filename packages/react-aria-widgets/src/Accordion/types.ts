@@ -1,7 +1,13 @@
 import type React from 'react';
 
 //Types
-import type { Props, ValidHTMLHeaderLevels, PolymorphicComponentPropsWithoutRef } from 'src/utils/types';
+import type {
+  Props,
+  ValidHTMLHeaderLevels,
+  PolymorphicComponentPropsWithoutRef,
+  PolymorphicComponentPropsWithRef,
+  PolymorphicForwardRefComponent
+} from 'src/utils/types';
 
 //Misc.
 import type { VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
@@ -127,7 +133,19 @@ export interface BaseAccordionHeaderProps {
   buttonProps?: Props;
 }
 
-export interface BaseAccordionPanelProps {
+export interface InternalBaseAccordionPanelProps {
   id: string;
   labelId?: string;
 }
+
+export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
+  C,
+  InternalBaseAccordionPanelProps,
+  ValidPanelTags
+>;
+
+export type TForwardedBaseAccordionPanel = PolymorphicForwardRefComponent<
+  InternalBaseAccordionPanelProps,
+  ValidPanelTags,
+  typeof DEFAULT_PANEL_ELEMENT
+>;
