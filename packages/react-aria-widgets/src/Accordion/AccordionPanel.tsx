@@ -13,9 +13,7 @@ import type { AccordionPanelProps, ValidPanelTags } from 'src/Accordion/types';
 //Misc.
 import { getPanelId, VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
-//function AccordionPanel<C extends ValidPanelTags>({
 function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>({
-//function AccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>({
   children,
   className = '',
   as,
@@ -45,44 +43,21 @@ function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>
   /* eslint-enable @typescript-eslint/no-unused-vars, react/prop-types */
   ...rest
 }: AccordionPanelProps<C>) {
-  //const _as = as;
-  //const _as = as!;
-  //const _as: ValidPanelTags = as;
-  //const _as: ValidPanelTags = as!;
-  const _as: ValidPanelTags = as ? as : DEFAULT_PANEL_ELEMENT;
-  //const _as = as ? as : DEFAULT_PANEL_ELEMENT;
-  //const _as: ValidPanelTags = as ? as : 'div';
+  const Component: ValidPanelTags = as ? as : DEFAULT_PANEL_ELEMENT;
   const section = sections[index];
   const { id } = section;
   const isExpanded = getIsExpanded(id);
 
   return (
-    <BaseAccordionPanel<typeof _as>
+    <BaseAccordionPanel<typeof Component>
       { ...rest }
       id={ getPanelId(id) }
       labelId={ id }
       className={ `${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
-      as={ _as }
+      as={ Component }
     >
       { children }
     </BaseAccordionPanel>
-  );
-}
-
-function Test() {
-  return (
-    <>
-      <AccordionPanel />
-      <AccordionPanel as="section" />
-      <AccordionPanel as="div" />
-      <AccordionPanel as="section" type="lol" />
-      <AccordionPanel as="button" />
-      <AccordionPanel as="button" type="lol" />
-      <AccordionPanel as="button" type="button" />
-      <AccordionPanel as="form" type="button" href="lol"/>
-      <AccordionPanel as="ul" type="rofl" />
-      <AccordionPanel href="lol" />
-    </>
   );
 }
 

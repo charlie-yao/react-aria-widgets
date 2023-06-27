@@ -114,5 +114,5 @@ export const defaultRenderPanel: RenderPanel = (index, accordionProps, accordion
   /* eslint-enable react/jsx-props-no-spreading */
 };
 
-export const VALID_PANEL_TAGS = [ 'button', 'section', 'div', 'form' ] as const;
-export const DEFAULT_PANEL_ELEMENT = VALID_PANEL_TAGS[1];
+export const VALID_PANEL_TAGS = [ 'section', 'div' ] as const;
+export const DEFAULT_PANEL_ELEMENT = VALID_PANEL_TAGS[0];

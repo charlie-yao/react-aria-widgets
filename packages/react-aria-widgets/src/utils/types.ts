@@ -44,15 +44,15 @@ export type PolymorphicComponentPropsWithRef<
 > = PropsWithAs<C, P, V> & Omit<React.ComponentPropsWithRef<C>, keyof PropsWithAs<C, P, V>>;
 
 export interface PolymorphicForwardRefComponent<
-  Props,
+  P,
   V extends React.ElementType = React.ElementType,
   D extends React.ElementType = React.ElementType
 > {
   <C extends React.ElementType = D>(
-    props: PolymorphicComponentPropsWithRef<C, Props, V>
+    props: PolymorphicComponentPropsWithRef<C, P, V>
   ): React.ReactElement | null;
 
-  defaultProps?: Partial<PolymorphicComponentPropsWithRef<React.ElementType, Props, V>> | undefined;
-  propTypes?: React.WeakValidationMap<PolymorphicComponentPropsWithRef<React.ElementType, Props, V>> | undefined;
+  defaultProps?: Partial<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
+  propTypes?: React.WeakValidationMap<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
   displayName?: string | undefined;
 }
