@@ -34,7 +34,7 @@ function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_E
   );
 }
 
-const ForwardedBaseAccordionPanel: TForwardedBaseAccordionPanel = React.forwardRef(BaseAccordionPanel); 
+const ForwardedBaseAccordionPanel: TForwardedBaseAccordionPanel = React.forwardRef(BaseAccordionPanel);
 
 ForwardedBaseAccordionPanel.propTypes = {
   children: PropTypes.node,

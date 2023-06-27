@@ -6,7 +6,7 @@ import type {
   ValidHTMLHeaderLevels,
   PolymorphicComponentPropsWithoutRef,
   PolymorphicComponentPropsWithRef,
-  PolymorphicForwardRefComponent
+  PolymorphicForwardRefComponent,
 } from 'src/utils/types';
 
 //Misc.
