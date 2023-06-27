@@ -1,7 +1,7 @@
 import type React from 'react';
 
 //Types
-import type { Props, ValidHTMLHeaderLevels, PolymorphicComponentPropsWithRef, PolymorphicComponentPropsWithoutRef } from 'src/utils/types';
+import type { Props, ValidHTMLHeaderLevels, PolymorphicComponentPropsWithoutRef } from 'src/utils/types';
 
 //Misc.
 import type { VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
@@ -112,7 +112,7 @@ export type AccordionPanelProps<C extends ValidPanelTags = typeof DEFAULT_PANEL_
     focusLastHeader?: FocusLastHeader;
   },
   ValidPanelTags
->
+>;
 
 export interface BaseAccordionHeaderProps {
   children: React.ReactNode;

@@ -16,7 +16,7 @@ import { getPanelId, VALID_PANEL_TAGS, DEFAULT_PANEL_ELEMENT } from 'src/Accordi
 function AccordionPanel<C extends ValidPanelTags = typeof DEFAULT_PANEL_ELEMENT>({
   children,
   className = '',
-  as,
+  as, //eslint-disable-line react/require-default-props
   index,
   sections,
   getIsExpanded,
