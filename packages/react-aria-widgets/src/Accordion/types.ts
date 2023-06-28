@@ -82,14 +82,14 @@ export interface AccordionMethods {
   focusLastHeader: FocusLastHeader;
 }
 
-export interface AccordionHeaderProps extends
-  Pick<AccordionProps, 'sections' | 'headerLevel'>,
-  Omit<AccordionMethods, 'focusHeader'> {
-  children: React.ReactNode;
-  headerProps?: Props;
-  buttonProps?: Props;
-  index: number;
-}
+export type AccordionHeaderProps =
+  Pick<AccordionProps, 'sections' | 'headerLevel'> &
+  Omit<AccordionMethods, 'focusHeader'> &
+  React.PropsWithChildren<{
+    headerProps?: Props;
+    buttonProps?: Props;
+    index: number;
+  }>;
 
 export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
   C,
@@ -120,18 +120,19 @@ export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PA
   ValidPanelElements
 >;
 
-export interface BaseAccordionHeaderProps {
-  children: React.ReactNode;
-  id?: string | undefined;
+export interface InternalBaseAccordionHeaderProps {
   controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
-  isExpanded?: boolean;
-  isDisabled?: boolean;
+  isExpanded: boolean;
+  isDisabled: boolean;
   headerProps?: Props;
   buttonProps?: Props;
 }
+
+export type BaseAccordionHeaderProps =
+  InternalBaseAccordionHeaderProps &
+  Omit<React.ComponentPropsWithRef<'button'>, keyof InternalBaseAccordionHeaderProps>;
 
 export interface InternalBaseAccordionPanelProps {
   id: string;

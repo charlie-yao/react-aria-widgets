@@ -12,10 +12,10 @@ import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>(({
   children,
   id,
+  onKeyDown,
   controlsId,
   headerLevel,
   onClick,
-  onKeyDown,
   isExpanded,
   isDisabled,
   headerProps,
@@ -26,15 +26,15 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
   return (
     <HeaderElement { ...headerProps }>
       <button
+        { ...buttonProps }
         type="button"
         id={ id }
+        onKeyDown={ onKeyDown }
         aria-controls={ controlsId }
         onClick={ onClick }
-        onKeyDown={ onKeyDown }
         aria-expanded={ isExpanded }
         aria-disabled={ isDisabled }
         ref={ ref }
-        { ...buttonProps }
       >
         { children }
       </button>
@@ -45,12 +45,12 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
 BaseAccordionHeader.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string,
+  onKeyDown: PropTypes.func,
   controlsId: PropTypes.string.isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onClick: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func,
-  isExpanded: PropTypes.bool,
-  isDisabled: PropTypes.bool,
+  isExpanded: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
 };
@@ -58,8 +58,6 @@ BaseAccordionHeader.propTypes = {
 BaseAccordionHeader.defaultProps = {
   id: undefined,
   onKeyDown: undefined,
-  isExpanded: false,
-  isDisabled: false,
   headerProps: {},
   buttonProps: {},
 };
