@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Components and Styles
@@ -33,9 +33,12 @@ function AccordionHeader({
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
-  const _buttonProps = Object.assign({}, buttonProps, {
-    'data-index': index,
-  });
+  const _buttonProps = useMemo(() => {
+    return {
+      ...buttonProps,
+      'data-index': index,
+    };
+  }, [ buttonProps, index ]);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
     toggleSection(event.currentTarget.id);
