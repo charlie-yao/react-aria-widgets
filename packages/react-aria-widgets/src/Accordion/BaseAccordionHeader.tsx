@@ -48,18 +48,15 @@ BaseAccordionHeader.propTypes = {
   controlsId: PropTypes.string.isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onClick: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func,
-  isExpanded: PropTypes.bool,
-  isDisabled: PropTypes.bool,
+  onKeyDown: PropTypes.func.isRequired,
+  isExpanded: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
 };
 
 BaseAccordionHeader.defaultProps = {
   id: undefined,
-  onKeyDown: undefined,
-  isExpanded: false,
-  isDisabled: false,
   headerProps: {},
   buttonProps: {},
 };

@@ -124,9 +124,9 @@ export interface InternalBaseAccordionHeaderProps {
   controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
-  isExpanded?: boolean;
-  isDisabled?: boolean;
+  onKeyDown: React.KeyboardEventHandler<HTMLButtonElement>;
+  isExpanded: boolean;
+  isDisabled: boolean;
   headerProps?: Props;
   buttonProps?: Props;
 };
