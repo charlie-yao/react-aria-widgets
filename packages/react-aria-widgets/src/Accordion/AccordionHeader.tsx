@@ -37,11 +37,11 @@ function AccordionHeader({
     'data-index': index,
   });
 
-  const onClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
     toggleSection(event.currentTarget.id);
   }, [ toggleSection ]);
 
-  const onKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
+  const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
     const { key, currentTarget } = event;
 
     if(!currentTarget.dataset.index)
@@ -75,10 +75,10 @@ function AccordionHeader({
   return (
     <BaseAccordionHeader
       id={ id }
+      onKeyDown={ handleKeyDown }
       controlsId={ getPanelId(id) }
       headerLevel={ headerLevel }
-      onClick={ onClick }
-      onKeyDown={ onKeyDown }
+      onClick={ handleClick }
       isExpanded={ isExpanded }
       isDisabled={ isDisabled }
       headerProps={ headerProps }
