@@ -75,10 +75,10 @@ function AccordionHeader({
   return (
     <BaseAccordionHeader
       id={ id }
-      onKeyDown={ handleKeyDown }
       controlsId={ getPanelId(id) }
       headerLevel={ headerLevel }
       onClick={ handleClick }
+      onKeyDown={ handleKeyDown }
       isExpanded={ isExpanded }
       isDisabled={ isDisabled }
       headerProps={ headerProps }

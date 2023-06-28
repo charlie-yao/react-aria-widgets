@@ -120,19 +120,17 @@ export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PA
   ValidPanelElements
 >;
 
-export interface InternalBaseAccordionHeaderProps {
+export type BaseAccordionHeaderProps = React.PropsWithChildren<{
+  id?: string | undefined;
   controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
   isExpanded: boolean;
   isDisabled: boolean;
   headerProps?: Props;
   buttonProps?: Props;
-}
-
-export type BaseAccordionHeaderProps =
-  InternalBaseAccordionHeaderProps &
-  Omit<React.ComponentPropsWithRef<'button'>, keyof InternalBaseAccordionHeaderProps>;
+}>;
 
 export interface InternalBaseAccordionPanelProps {
   id: string;
