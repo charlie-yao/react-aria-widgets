@@ -82,12 +82,30 @@ export interface AccordionMethods {
   focusLastHeader: FocusLastHeader;
 }
 
+export type AccordionHeaderHeader = Omit<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  'children' | 'dangerouslySetInnerHTML'
+>;
+
+export type AccordionHeaderButton = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'children' |
+  'dangerouslySetInnerHTML' |
+  'type' |
+  'id' |
+  'aria-controls' |
+  'onClick' |
+  'onKeyDown' |
+  'aria-expanded' |
+  'aria-disabled'
+>;
+
 export type AccordionHeaderProps =
   Pick<AccordionProps, 'sections' | 'headerLevel'> &
   Omit<AccordionMethods, 'focusHeader'> &
   React.PropsWithChildren<{
-    headerProps?: Props;
-    buttonProps?: Props;
+    headerProps?: AccordionHeaderHeader;
+    buttonProps?: AccordionHeaderButton;
     index: number;
   }>;
 
@@ -128,8 +146,8 @@ export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
   isExpanded: boolean;
   isDisabled: boolean;
-  headerProps?: Props;
-  buttonProps?: Props;
+  headerProps?: AccordionHeaderHeader;
+  buttonProps?: AccordionHeaderButton;
 }>;
 
 export interface InternalBaseAccordionPanelProps {

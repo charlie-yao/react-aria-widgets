@@ -15,7 +15,7 @@ export default function GreenAccordionHeader(props: AccordionHeaderProps) {
     style: {
       ...buttonProps.style,
       color: 'green',
-    } as unknown,
+    },
   };
 
   return (
