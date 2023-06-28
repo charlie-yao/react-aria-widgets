@@ -6,7 +6,7 @@ import type {
   ValidHTMLHeaderLevels,
   PolymorphicComponentPropsWithoutRef,
   PolymorphicComponentPropsWithRef,
-  PolymorphicForwardRefComponent
+  PolymorphicForwardRefComponent,
 } from 'src/utils/types';
 
 //Misc.
@@ -124,16 +124,15 @@ export interface InternalBaseAccordionHeaderProps {
   controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  onKeyDown: React.KeyboardEventHandler<HTMLButtonElement>;
   isExpanded: boolean;
   isDisabled: boolean;
   headerProps?: Props;
   buttonProps?: Props;
-};
+}
 
 export type BaseAccordionHeaderProps =
   InternalBaseAccordionHeaderProps &
-  Omit<React.ComponentPropsWithRef<"button">, keyof InternalBaseAccordionHeaderProps>;
+  Omit<React.ComponentPropsWithRef<'button'>, keyof InternalBaseAccordionHeaderProps>;
 
 export interface InternalBaseAccordionPanelProps {
   id: string;
