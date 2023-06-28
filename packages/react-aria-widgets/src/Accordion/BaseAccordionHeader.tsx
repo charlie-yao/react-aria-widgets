@@ -26,6 +26,7 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
   return (
     <HeaderElement { ...headerProps }>
       <button
+        { ...buttonProps }
         type="button"
         id={ id }
         aria-controls={ controlsId }
@@ -34,7 +35,6 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
         aria-expanded={ isExpanded }
         aria-disabled={ isDisabled }
         ref={ ref }
-        { ...buttonProps }
       >
         { children }
       </button>
