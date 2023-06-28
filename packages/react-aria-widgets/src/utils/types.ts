@@ -4,6 +4,8 @@ import type { Validator } from 'prop-types';
 import type { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 export type Props = Record<string, any>; //eslint-disable-line @typescript-eslint/no-explicit-any
+export type DefaultProps<P> = Partial<P>;
+export type TPropTypes<P> = React.WeakValidationMap<P>;
 
 export interface ValidatorWithRequired<T> extends Validator<T> {
   isRequired: Validator<T>;
@@ -52,7 +54,7 @@ export interface PolymorphicForwardRefComponent<
     props: PolymorphicComponentPropsWithRef<C, P, V>
   ): React.ReactElement | null;
 
-  defaultProps?: Partial<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
-  propTypes?: React.WeakValidationMap<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
+  defaultProps?: DefaultProps<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
+  propTypes?: TPropTypes<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
   displayName?: string | undefined;
 }
