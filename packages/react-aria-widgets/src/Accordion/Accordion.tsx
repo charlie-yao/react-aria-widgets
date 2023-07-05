@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useMemo, createContext } from 'react';
+import React, { useState, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Types
@@ -24,6 +24,10 @@ import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 function _getIsExpanded(expandedSections: Set<string>, id: string) {
   return expandedSections.has(id);
+}
+
+function _getIsDisabled(allowToggle: boolean, isExpanded: boolean) {
+  return !allowToggle && isExpanded;
 }
 
 function Accordion({
@@ -77,7 +81,7 @@ function Accordion({
    * can't be collapsed due to <code>allowToggle</code>.
    */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
-    return !getAllowToggle() && getIsExpanded(id);
+    return _getIsDisabled(getAllowToggle(), getIsExpanded(id));
   }, [ getAllowToggle, getIsExpanded ]);
 
   /**
@@ -85,10 +89,9 @@ function Accordion({
    * and <code>allowToggle</code>.
    */
   const toggleSection: ToggleSection = useCallback((id) => {
-    const isDisabled = getIsDisabled(id);
-
     setExpandedSections((expandedSections) => {
       const isExpanded = _getIsExpanded(expandedSections, id);
+      const isDisabled = _getIsDisabled(getAllowToggle(), isExpanded);
 
       if(allowMultiple) {
         if(isExpanded)
@@ -110,7 +113,7 @@ function Accordion({
     });
   }, [
     allowMultiple,
-    getIsDisabled,
+    getAllowToggle,
   ]);
 
   /**
