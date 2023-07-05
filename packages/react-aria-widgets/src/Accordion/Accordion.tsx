@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useCallback, useRef, useMemo, createContext } from 'react';
 import PropTypes from 'prop-types';
 
 //Types
@@ -21,6 +21,10 @@ import type {
 //Misc.
 import { defaultRenderSection, defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+
+function _getIsExpanded(expandedSections: Set<string>, id: string) {
+  return expandedSections.has(id);
+}
 
 function Accordion({
   allowMultiple = true,
@@ -65,7 +69,7 @@ function Accordion({
    * expanded or collapsed.
    */
   const getIsExpanded: GetIsExpanded = useCallback((id) => {
-    return expandedSections.has(id);
+    return _getIsExpanded(expandedSections, id);
   }, [ expandedSections ]);
 
   /**
@@ -81,10 +85,11 @@ function Accordion({
    * and <code>allowToggle</code>.
    */
   const toggleSection: ToggleSection = useCallback((id) => {
-    const isExpanded = getIsExpanded(id);
     const isDisabled = getIsDisabled(id);
 
     setExpandedSections((expandedSections) => {
+      const isExpanded = _getIsExpanded(expandedSections, id);
+
       if(allowMultiple) {
         if(isExpanded)
           expandedSections.delete(id);
@@ -105,7 +110,6 @@ function Accordion({
     });
   }, [
     allowMultiple,
-    getIsExpanded,
     getIsDisabled,
   ]);
 
