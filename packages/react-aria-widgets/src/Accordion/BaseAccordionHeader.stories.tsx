@@ -11,7 +11,7 @@ const meta = {
     children: 'Hello world!',
     id: 'headerId',
     controlsId: 'panelId',
-    headerLevel: 2,
+    headerLevel: 1,
     onClick: (event) => event.preventDefault(),
   },
 } satisfies Meta<typeof BaseAccordionHeader>;

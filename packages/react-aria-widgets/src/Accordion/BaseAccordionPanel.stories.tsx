@@ -9,8 +9,8 @@ const meta = {
   component: BaseAccordionPanel,
   args: {
     children: 'Hello world!',
-    id: 'placeholder',
-    labelId: 'labelPlaceholder',
+    id: 'panelId',
+    labelId: 'labelId',
   },
 } satisfies Meta<typeof BaseAccordionPanel>;
 

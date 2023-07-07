@@ -12,15 +12,6 @@ const meta = {
   component: AccordionPanel,
   args: {
     children: 'Hello world!',
-    //    index: 0,
-    //    sections: [
-    //      {
-    //        id: 'dummySectionId',
-    //        renderHeaderContent: 'Section 1 Header',
-    //        renderPanelContent: 'Hello world!',
-    //      },
-    //    ],
-    //    getIsExpanded: () => true,
   },
   render: (args) => {
     return (
@@ -33,13 +24,7 @@ const meta = {
   },
 } satisfies Meta<typeof AccordionPanel>;
 
-export const Expanded: Story = {};
-
-export const Collapsed: Story = {
-  args: {
-    //    getIsExpanded: () => false,
-  },
-};
+export const Default: Story = {};
 
 export const WithClassName: Story = {
   args: {
@@ -59,6 +44,12 @@ export const WithSectionRole: Story = {
   args: {
     as: 'div',
     role: 'section',
+  },
+};
+
+export const WithoutSectionRole: Story = {
+  args: {
+    as: 'div',
   },
 };
 
