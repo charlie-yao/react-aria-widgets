@@ -31,7 +31,7 @@ function _getIsDisabled(allowToggle: boolean, isExpanded: boolean) {
 }
 
 function Accordion({
-  children,
+  children = null,
   allowMultiple = true,
   allowToggle = true,
   headerLevel,
@@ -136,7 +136,7 @@ function Accordion({
    */
   const focusPrevHeader: FocusPrevHeader = useCallback((event) => {
     const index = headerRefIndexMap.current.get(event.currentTarget);
-    
+
     if(index === undefined)
       return;
 
@@ -149,7 +149,7 @@ function Accordion({
    */
   const focusNextHeader: FocusNextHeader = useCallback((event) => {
     const index = headerRefIndexMap.current.get(event.currentTarget);
-    
+
     if(index === undefined)
       return;
 
@@ -199,7 +199,7 @@ function Accordion({
     focusFirstHeader,
     focusLastHeader,
   ]);
-  
+
   return (
     <AccordionContext.Provider value={ accordionContextValue }>
       { children }

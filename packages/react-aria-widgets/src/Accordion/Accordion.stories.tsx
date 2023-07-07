@@ -31,7 +31,7 @@ const meta = {
           <AccordionPanel>
             Hello world!
           </AccordionPanel>
-        </AccordionSection> 
+        </AccordionSection>
         <AccordionSection id="2">
           <AccordionHeader>
             Section 2
@@ -39,7 +39,7 @@ const meta = {
           <AccordionPanel>
             Hello world!
           </AccordionPanel>
-        </AccordionSection> 
+        </AccordionSection>
         <AccordionSection id="3">
           <AccordionHeader>
             Section 3
@@ -47,7 +47,7 @@ const meta = {
           <AccordionPanel>
             Hello world!
           </AccordionPanel>
-        </AccordionSection> 
+        </AccordionSection>
       </Accordion>
     );
   },

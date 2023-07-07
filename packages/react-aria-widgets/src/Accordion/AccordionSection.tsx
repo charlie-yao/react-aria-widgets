@@ -1,16 +1,19 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
 import AccordionSectionContext from 'src/Accordion/AccordionSectionContext';
 
 //Types
-import { AccordionSectionProps } from 'src/Accordion/types';
+import type { AccordionSectionProps } from 'src/Accordion/types';
 
-function AccordionSection({ children, id }: AccordionSectionProps) {
+function AccordionSection({
+  children = null,
+  id,
+}: AccordionSectionProps) {
   return (
     <AccordionSectionContext.Provider value={ id }>
-        { children }
+      { children }
     </AccordionSectionContext.Provider>
   );
 }

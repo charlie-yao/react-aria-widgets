@@ -15,7 +15,7 @@ import type { AccordionHeaderProps } from 'src/Accordion/types';
 import { getPanelId } from 'src/Accordion/utils';
 
 function AccordionHeader({
-  children,
+  children = null,
   headerProps = {},
   buttonProps = {},
 }: AccordionHeaderProps) {
