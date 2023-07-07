@@ -283,6 +283,7 @@ function Accordion({
 }
 
 Accordion.propTypes = {
+  children: PropTypes.node,
   allowMultiple: PropTypes.bool,
   allowToggle: PropTypes.bool,
   sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,

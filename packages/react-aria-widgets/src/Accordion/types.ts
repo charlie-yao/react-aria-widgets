@@ -84,6 +84,12 @@ export interface AccordionContextType {
   focusLastHeader: FocusLastHeader;
 }
 
+export type AccordionSectionProps = React.PropsWithChildren<{
+  id: string;
+}>
+
+export type AccordionSectionContextType = string;
+
 export interface AccordionMethods {
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
