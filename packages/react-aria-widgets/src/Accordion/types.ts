@@ -135,7 +135,7 @@ export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PA
   //Pick<AccordionProps, 'sections'> &
   //Pick<AccordionMethods, 'getIsExpanded'> &
   {
-    index: number;
+    //index: number;
     //Not needed below
     //allowMultiple?: boolean;
     //allowToggle?: boolean;
