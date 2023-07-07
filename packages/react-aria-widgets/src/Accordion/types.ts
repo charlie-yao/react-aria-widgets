@@ -24,12 +24,6 @@ export type FocusNextHeader = (event: React.KeyboardEvent<HTMLButtonElement | HT
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
 
-export type AccordionProps = React.PropsWithChildren<{
-  allowMultiple?: boolean;
-  allowToggle?: boolean;
-  headerLevel: ValidHTMLHeaderLevels;
-}>;
-
 export interface AccordionContextType {
   allowMultiple: boolean;
   allowToggle: boolean;
@@ -44,10 +38,6 @@ export interface AccordionContextType {
   focusFirstHeader: FocusFirstHeader;
   focusLastHeader: FocusLastHeader;
 }
-
-export type AccordionSectionProps = React.PropsWithChildren<{
-  id: string;
-}>
 
 export type AccordionSectionContextType = string;
 
@@ -80,6 +70,16 @@ export type AccordionHeaderButton = Omit<
   'aria-expanded' |
   'aria-disabled'
 >;
+
+export type AccordionProps = React.PropsWithChildren<{
+  allowMultiple?: boolean;
+  allowToggle?: boolean;
+  headerLevel: ValidHTMLHeaderLevels;
+}>;
+
+export type AccordionSectionProps = React.PropsWithChildren<{
+  id: string;
+}>
 
 export type AccordionHeaderProps = React.PropsWithChildren<{
   headerProps?: AccordionHeaderHeader;
