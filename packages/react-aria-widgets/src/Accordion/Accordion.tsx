@@ -1,6 +1,9 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
+//Contexts
+import AccordionContext from 'src/Accordion/AccordionContext';
+
 //Types
 import { accordionSectionProp } from 'src/Accordion/propTypes';
 
@@ -31,6 +34,7 @@ function _getIsDisabled(allowToggle: boolean, isExpanded: boolean) {
 }
 
 function Accordion({
+  children,
   allowMultiple = true,
   allowToggle = true,
   sections,
@@ -45,6 +49,7 @@ function Accordion({
 }: AccordionProps) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
+  const headerRefIndexMap = useRef<Map<HeaderRef, number>>(new Map());
 
   /**
    * Returns a boolean that lets us know if this accordion lets us collapse
@@ -121,6 +126,7 @@ function Accordion({
    */
   const pushHeaderRef: PushHeaderRef = useCallback((ref) => {
     headerRefs.current.push(ref);
+    headerRefIndexMap.current.set(ref, headerRefs.current.length - 1);
   }, []);
 
   /**
@@ -139,7 +145,12 @@ function Accordion({
    * Sets focus on the previous accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
    */
-  const focusPrevHeader: FocusPrevHeader = useCallback((index) => {
+  const focusPrevHeader: FocusPrevHeader = useCallback((event) => {
+    const index = headerRefIndexMap.current.get(event.currentTarget);
+    
+    if(index === undefined)
+      return;
+
     focusHeader(index === 0 ? headerRefs.current.length - 1 : index - 1);
   }, [ focusHeader ]);
 
@@ -147,7 +158,12 @@ function Accordion({
    * Sets focus on the next accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
    */
-  const focusNextHeader: FocusNextHeader = useCallback((index) => {
+  const focusNextHeader: FocusNextHeader = useCallback((event) => {
+    const index = headerRefIndexMap.current.get(event.currentTarget);
+    
+    if(index === undefined)
+      return;
+
     focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
   }, [ focusHeader ]);
 
@@ -165,6 +181,36 @@ function Accordion({
     focusHeader(headerRefs.current.length - 1);
   }, [ focusHeader ]);
 
+  const accordionContextValue = useMemo(() => {
+    return {
+      allowMultiple,
+      allowToggle: getAllowToggle(),
+      headerLevel,
+      getIsExpanded,
+      getIsDisabled,
+      toggleSection,
+      pushHeaderRef,
+      focusHeader,
+      focusPrevHeader,
+      focusNextHeader,
+      focusFirstHeader,
+      focusLastHeader,
+    };
+  }, [
+    allowMultiple,
+    getAllowToggle,
+    headerLevel,
+    getIsExpanded,
+    getIsDisabled,
+    toggleSection,
+    pushHeaderRef,
+    focusHeader,
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  ]);
+  
   const accordionProps = useMemo(() => {
     return {
       allowMultiple,
@@ -220,12 +266,20 @@ function Accordion({
   const renderedSections = sections.map((section, index) => {
     return renderSection(index, accordionProps, accordionMethods);
   });
-
+  
   return (
     <>
       { renderedSections }
     </>
   );
+
+  /*
+  return (
+    <AccordionContext.Provider value={ accordionContextValue }>
+      { children }
+    </AccordionContext.Provider>
+  );
+  */
 }
 
 Accordion.propTypes = {

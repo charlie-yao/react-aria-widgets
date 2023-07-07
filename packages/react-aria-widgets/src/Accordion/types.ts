@@ -39,8 +39,8 @@ export type GetIsDisabled = (id: string) => boolean;
 export type ToggleSection = (id: string) => void;
 export type PushHeaderRef = (ref: HeaderRef) => void;
 export type FocusHeader = (index: number) => void;
-export type FocusPrevHeader = (index: number) => void;
-export type FocusNextHeader = (index: number) => void;
+export type FocusPrevHeader = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
+export type FocusNextHeader = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
 
@@ -56,7 +56,7 @@ export interface Section {
   panelElementType?: PanelElementType | null | undefined;
 }
 
-export interface AccordionProps {
+export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowToggle?: boolean;
   sections: Section[];
@@ -68,6 +68,20 @@ export interface AccordionProps {
   panelProps?: Props;
   headerElementType: HeaderElementType;
   panelElementType: PanelElementType;
+}>;
+
+export interface AccordionContextType {
+  allowMultiple: boolean;
+  allowToggle: boolean;
+  headerLevel: ValidHTMLHeaderLevels;
+  getIsExpanded: GetIsExpanded;
+  getIsDisabled: GetIsDisabled;
+  toggleSection: ToggleSection;
+  pushHeaderRef: PushHeaderRef;
+  focusHeader: FocusHeader;
+  focusPrevHeader: FocusPrevHeader;
+  focusNextHeader: FocusNextHeader; focusFirstHeader: FocusFirstHeader;
+  focusLastHeader: FocusLastHeader;
 }
 
 export interface AccordionMethods {
