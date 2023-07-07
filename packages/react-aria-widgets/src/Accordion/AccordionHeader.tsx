@@ -1,12 +1,12 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 //Contexts
-import AccordionContext from 'src/Accordion/AccordionContext';
-import AccordionSectionContext from 'src/Accordion/AccordionSectionContext';
+import useAccordionContext from 'src/Accordion/useAccordionContext';
+import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext';
 
 //Types
 import type { AccordionHeaderProps } from 'src/Accordion/types';
@@ -19,14 +19,6 @@ function AccordionHeader({
   headerProps = {},
   buttonProps = {},
 }: AccordionHeaderProps) {
-  const accordionContext = useContext(AccordionContext);
-  const id = useContext(AccordionSectionContext);
-
-  if(!accordionContext)
-    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionContext');
-  if(!id)
-    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionSectionContext');
-
   const {
     headerLevel,
     getIsExpanded,
@@ -37,7 +29,8 @@ function AccordionHeader({
     focusNextHeader,
     focusFirstHeader,
     focusLastHeader,
-  } = accordionContext;
+  } = useAccordionContext();
+  const id = useAccordionSectionContext();
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 

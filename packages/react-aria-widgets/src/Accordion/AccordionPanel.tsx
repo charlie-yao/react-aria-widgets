@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
-//Contexts
-import AccordionContext from 'src/Accordion/AccordionContext';
-import AccordionSectionContext from 'src/Accordion/AccordionSectionContext';
+//Hooks
+import useAccordionContext from 'src/Accordion/useAccordionContext';
+import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext';
 
 //Types
 import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
@@ -22,15 +22,8 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
   as, //eslint-disable-line react/require-default-props
   ...rest
 }: AccordionPanelProps<C>) {
-  const accordionContext = useContext(AccordionContext);
-  const id = useContext(AccordionSectionContext);
-
-  if(!accordionContext)
-    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionContext');
-  if(!id)
-    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionSectionContext');
-
-  const { getIsExpanded } = accordionContext;
+  const { getIsExpanded } = useAccordionContext();
+  const id = useAccordionSectionContext();
   const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
   const isExpanded = getIsExpanded(id);
 
