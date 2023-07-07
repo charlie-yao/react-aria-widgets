@@ -59,15 +59,15 @@ export interface Section {
 export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowToggle?: boolean;
-  sections: Section[];
+  //sections: Section[];
   headerLevel: ValidHTMLHeaderLevels;
-  renderSection?: RenderSection;
-  renderHeader?: RenderHeader;
-  renderPanel?: RenderPanel;
-  headerProps?: Props;
-  panelProps?: Props;
-  headerElementType: HeaderElementType;
-  panelElementType: PanelElementType;
+  //renderSection?: RenderSection;
+  //renderHeader?: RenderHeader;
+  //renderPanel?: RenderPanel;
+  //headerProps?: Props;
+  //panelProps?: Props;
+  //headerElementType: HeaderElementType;
+  //panelElementType: PanelElementType;
 }>;
 
 export interface AccordionContextType {

@@ -37,15 +37,15 @@ function Accordion({
   children,
   allowMultiple = true,
   allowToggle = true,
-  sections,
+  //sections,
   headerLevel,
-  renderSection = defaultRenderSection,
-  renderHeader = defaultRenderHeader,
-  renderPanel = defaultRenderPanel,
-  headerProps = {},
-  panelProps = {},
-  headerElementType,
-  panelElementType,
+  //renderSection = defaultRenderSection,
+  //renderHeader = defaultRenderHeader,
+  //renderPanel = defaultRenderPanel,
+  //headerProps = {},
+  //panelProps = {},
+  //headerElementType,
+  //panelElementType,
 }: AccordionProps) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
@@ -211,6 +211,7 @@ function Accordion({
     focusLastHeader,
   ]);
   
+  /*
   const accordionProps = useMemo(() => {
     return {
       allowMultiple,
@@ -272,14 +273,13 @@ function Accordion({
       { renderedSections }
     </>
   );
+  */
 
-  /*
   return (
     <AccordionContext.Provider value={ accordionContextValue }>
       { children }
     </AccordionContext.Provider>
   );
-  */
 }
 
 Accordion.propTypes = {
