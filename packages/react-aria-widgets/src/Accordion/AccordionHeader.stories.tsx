@@ -32,7 +32,7 @@ export const WithHeaderProps: Story = {
       style: {
         backgroundColor: 'red',
       },
-    }
+    },
   },
 };
 
@@ -42,7 +42,7 @@ export const WithButtonProps: Story = {
       style: {
         color: 'red',
       },
-    }
+    },
   },
 };
 
