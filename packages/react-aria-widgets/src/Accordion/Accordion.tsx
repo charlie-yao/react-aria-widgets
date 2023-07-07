@@ -286,15 +286,15 @@ Accordion.propTypes = {
   children: PropTypes.node,
   allowMultiple: PropTypes.bool,
   allowToggle: PropTypes.bool,
-  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
+  //sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  renderSection: PropTypes.func,
-  renderHeader: PropTypes.func,
-  renderPanel: PropTypes.func,
-  headerProps: PropTypes.object,
-  panelProps: PropTypes.object,
-  headerElementType: PropTypes.elementType.isRequired,
-  panelElementType: PropTypes.elementType.isRequired,
+  //renderSection: PropTypes.func,
+  //renderHeader: PropTypes.func,
+  //renderPanel: PropTypes.func,
+  //headerProps: PropTypes.object,
+  //panelProps: PropTypes.object,
+  //headerElementType: PropTypes.elementType.isRequired,
+  //panelElementType: PropTypes.elementType.isRequired,
 };
 
 export default Accordion;

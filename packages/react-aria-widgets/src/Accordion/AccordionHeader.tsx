@@ -1,35 +1,58 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
+//Components
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
+//Contexts
+import AccordionContext from 'src/Accordion/AccordionContext';
+import AccordionSectionContext from 'src/Accordion/AccordionSectionContext';
+
 //Types
-import { accordionSectionProp } from 'src/Accordion/propTypes';
+//import { accordionSectionProp } from 'src/Accordion/propTypes';
 import type { AccordionHeaderProps } from 'src/Accordion/types';
 
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
-import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+//import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 function AccordionHeader({
   children,
   headerProps = {},
   buttonProps = {},
-  index,
-  headerLevel,
-  sections,
-  getIsExpanded,
-  getIsDisabled,
-  toggleSection,
-  pushHeaderRef,
-  focusPrevHeader,
-  focusNextHeader,
-  focusFirstHeader,
-  focusLastHeader,
+  //index,
+  //headerLevel,
+  //sections,
+  //getIsExpanded,
+  //getIsDisabled,
+  //toggleSection,
+  //pushHeaderRef,
+  //focusPrevHeader,
+  //focusNextHeader,
+  //focusFirstHeader,
+  //focusLastHeader,
 }: AccordionHeaderProps) {
-  const section = sections[index];
-  const { id } = section;
+  //const section = sections[index];
+  //const { id } = section;
+  const accordionMethods = useContext(AccordionContext);
+  const id = useContext(AccordionSectionContext);
+
+  if(!accordionMethods)
+    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionContext');
+  if(!id)
+    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionSectionContext');
+
+  const {
+    headerLevel,
+    getIsExpanded,
+    getIsDisabled,
+    toggleSection,
+    pushHeaderRef,
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  } = accordionMethods;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
@@ -82,22 +105,22 @@ function AccordionHeader({
 }
 
 AccordionHeader.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
   //From <Accordion>
-  index: PropTypes.number.isRequired,
-  headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
+  //index: PropTypes.number.isRequired,
+  //headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
+  //sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   //From <Accordion> methods
-  getIsExpanded: PropTypes.func.isRequired,
-  getIsDisabled: PropTypes.func.isRequired,
-  toggleSection: PropTypes.func.isRequired,
-  pushHeaderRef: PropTypes.func.isRequired,
-  focusPrevHeader: PropTypes.func.isRequired,
-  focusNextHeader: PropTypes.func.isRequired,
-  focusFirstHeader: PropTypes.func.isRequired,
-  focusLastHeader: PropTypes.func.isRequired,
+  //getIsExpanded: PropTypes.func.isRequired,
+  //getIsDisabled: PropTypes.func.isRequired,
+  //toggleSection: PropTypes.func.isRequired,
+  //pushHeaderRef: PropTypes.func.isRequired,
+  //focusPrevHeader: PropTypes.func.isRequired,
+  //focusNextHeader: PropTypes.func.isRequired,
+  //focusFirstHeader: PropTypes.func.isRequired,
+  //focusLastHeader: PropTypes.func.isRequired,
 };
 
 export default AccordionHeader;

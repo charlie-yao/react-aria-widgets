@@ -80,7 +80,8 @@ export interface AccordionContextType {
   pushHeaderRef: PushHeaderRef;
   focusHeader: FocusHeader;
   focusPrevHeader: FocusPrevHeader;
-  focusNextHeader: FocusNextHeader; focusFirstHeader: FocusFirstHeader;
+  focusNextHeader: FocusNextHeader;
+  focusFirstHeader: FocusFirstHeader;
   focusLastHeader: FocusLastHeader;
 }
 
@@ -121,12 +122,12 @@ export type AccordionHeaderButton = Omit<
 >;
 
 export type AccordionHeaderProps =
-  Pick<AccordionProps, 'sections' | 'headerLevel'> &
-  Omit<AccordionMethods, 'focusHeader'> &
+ // Pick<AccordionProps, 'sections' | 'headerLevel'> &
+  //Omit<AccordionMethods, 'focusHeader'> &
   React.PropsWithChildren<{
     headerProps?: AccordionHeaderHeader;
     buttonProps?: AccordionHeaderButton;
-    index: number;
+    //index: number;
   }>;
 
 export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
