@@ -12,6 +12,7 @@ import type {
 import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
+
 export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
 
 export type GetIsExpanded = (id: string) => boolean;
@@ -40,18 +41,6 @@ export interface AccordionContextType {
 }
 
 export type AccordionSectionContextType = string;
-
-export interface AccordionMethods {
-  getIsExpanded: GetIsExpanded;
-  getIsDisabled: GetIsDisabled;
-  toggleSection: ToggleSection;
-  pushHeaderRef: PushHeaderRef;
-  focusHeader: FocusHeader;
-  focusPrevHeader: FocusPrevHeader;
-  focusNextHeader: FocusNextHeader;
-  focusFirstHeader: FocusFirstHeader;
-  focusLastHeader: FocusLastHeader;
-}
 
 export type AccordionHeaderHeader = Omit<
   React.HTMLAttributes<HTMLHeadingElement>,
