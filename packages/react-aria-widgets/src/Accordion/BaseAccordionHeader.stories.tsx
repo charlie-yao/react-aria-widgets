@@ -13,6 +13,8 @@ const meta = {
     controlsId: 'panelId',
     headerLevel: 1,
     onClick: (event) => event.preventDefault(),
+    isExpanded: false,
+    isDisabled: false,
   },
 } satisfies Meta<typeof BaseAccordionHeader>;
 
