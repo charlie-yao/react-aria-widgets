@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
 import Accordion from 'src/Accordion/Accordion';
+import AccordionSection from 'src/Accordion/AccordionSection';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 import BlueAccordionHeader from 'src/Accordion/BlueAccordionHeader';
@@ -15,6 +16,44 @@ import { defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 
 type Story = StoryObj<typeof Accordion>;
 
+const meta = {
+  component: Accordion,
+  args: {
+    headerLevel: 1,
+  },
+  render: (args) => {
+    return (
+      <Accordion { ...args }>
+        <AccordionSection id="1">
+          <AccordionHeader>
+            Section 1
+          </AccordionHeader>
+          <AccordionPanel>
+            Hello world!
+          </AccordionPanel>
+        </AccordionSection> 
+        <AccordionSection id="2">
+          <AccordionHeader>
+            Section 2
+          </AccordionHeader>
+          <AccordionPanel>
+            Hello world!
+          </AccordionPanel>
+        </AccordionSection> 
+        <AccordionSection id="3">
+          <AccordionHeader>
+            Section 3
+          </AccordionHeader>
+          <AccordionPanel>
+            Hello world!
+          </AccordionPanel>
+        </AccordionSection> 
+      </Accordion>
+    );
+  },
+} satisfies Meta<typeof Accordion>;
+
+/*
 const meta = {
   component: Accordion,
   args: {
@@ -62,7 +101,7 @@ const meta = {
                 and
                 { ' ' }
                 <code>renderPanelContent</code>
-                { /**/ }
+                { }
                 .
               </p>
               <p>
@@ -93,7 +132,7 @@ const meta = {
                 is
                 { ' ' }
                 <code>{ headerLevel }</code>
-                { /**/ }
+                { }
                 .
               </p>
             </>
@@ -157,11 +196,11 @@ const meta = {
               , a
               { ' ' }
               <code>headerProps</code>
-              { /**/ }
+              { }
               , and a
               { ' ' }
               <code>panelProps</code>
-              { /**/ }
+              { }
               . Section-specific properties override those on the accordion level.
             </p>
             <p>
@@ -331,7 +370,7 @@ const meta = {
                 COULD access the content via
                 { ' ' }
                 <code>sections[index].renderHeaderContent</code>
-                { /**/ }
+                { }
                 , but instead, it renders the hard-coded content that you&apos;re currently reading.
               </p>
             </PanelElementType>
@@ -343,6 +382,7 @@ const meta = {
     ],
   },
 } satisfies Meta<typeof Accordion>;
+*/
 
 export const YesMultipleYesToggle: Story = {
   args: {
@@ -372,6 +412,7 @@ export const NoMultipleNoToggle: Story = {
   },
 };
 
+/*
 export const NonDefaultElementTypes: Story = {
   args: {
     headerElementType: GreenAccordionHeader,
@@ -433,7 +474,7 @@ export const CustomRenderHeaderPanel: Story = {
               Random span added by
               { ' ' }
               <code>renderHeader</code>
-              { /**/ }
+              { }
               !
             </span>
           </>
@@ -475,7 +516,7 @@ export const CustomRenderHeaderPanel: Story = {
               Random span added by
               { ' ' }
               <code>renderPanel</code>
-              { /**/ }
+              { }
               !
             </span>
           </>
@@ -511,7 +552,7 @@ export const CustomRenderSection: Story = {
             Random span added by
             { ' ' }
             <code>renderSection</code>
-            { /**/ }
+            { }
             !
           </span>
         </Fragment>
@@ -528,5 +569,6 @@ export const CombinedCustomizationOptions: Story = {
     ...CustomRenderSection.args,
   },
 };
+*/
 
 export default meta;
