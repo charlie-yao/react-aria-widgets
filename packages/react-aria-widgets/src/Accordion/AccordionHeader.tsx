@@ -34,10 +34,10 @@ function AccordionHeader({
 }: AccordionHeaderProps) {
   //const section = sections[index];
   //const { id } = section;
-  const accordionMethods = useContext(AccordionContext);
+  const accordionContext = useContext(AccordionContext);
   const id = useContext(AccordionSectionContext);
 
-  if(!accordionMethods)
+  if(!accordionContext)
     throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionContext');
   if(!id)
     throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionSectionContext');
@@ -52,7 +52,7 @@ function AccordionHeader({
     focusNextHeader,
     focusFirstHeader,
     focusLastHeader,
-  } = accordionMethods;
+  } = accordionContext;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 

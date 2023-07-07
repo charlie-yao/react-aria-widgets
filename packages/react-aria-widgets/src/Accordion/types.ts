@@ -132,29 +132,29 @@ export type AccordionHeaderProps =
 
 export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
   C,
-  Pick<AccordionProps, 'sections'> &
-  Pick<AccordionMethods, 'getIsExpanded'> &
+  //Pick<AccordionProps, 'sections'> &
+  //Pick<AccordionMethods, 'getIsExpanded'> &
   {
     index: number;
     //Not needed below
-    allowMultiple?: boolean;
-    allowToggle?: boolean;
-    headerLevel?: ValidHTMLHeaderLevels;
-    renderSection?: RenderSection;
-    renderHeader?: RenderHeader;
-    renderPanel?: RenderPanel;
-    headerProps?: Props;
-    panelProps?: Props;
-    headerElementType?: HeaderElementType;
-    panelElementType?: PanelElementType;
-    getIsDisabled?: GetIsDisabled;
-    toggleSection?: ToggleSection;
-    pushHeaderRef?: PushHeaderRef;
-    focusHeader?: FocusHeader;
-    focusPrevHeader?: FocusPrevHeader;
-    focusNextHeader?: FocusNextHeader;
-    focusFirstHeader?: FocusFirstHeader;
-    focusLastHeader?: FocusLastHeader;
+    //allowMultiple?: boolean;
+    //allowToggle?: boolean;
+    //headerLevel?: ValidHTMLHeaderLevels;
+    //renderSection?: RenderSection;
+    //renderHeader?: RenderHeader;
+    //renderPanel?: RenderPanel;
+    //headerProps?: Props;
+    //panelProps?: Props;
+    //headerElementType?: HeaderElementType;
+    //panelElementType?: PanelElementType;
+    //getIsDisabled?: GetIsDisabled;
+    //toggleSection?: ToggleSection;
+    //pushHeaderRef?: PushHeaderRef;
+    //focusHeader?: FocusHeader;
+    //focusPrevHeader?: FocusPrevHeader;
+    //focusNextHeader?: FocusNextHeader;
+    //focusFirstHeader?: FocusFirstHeader;
+    //focusLastHeader?: FocusLastHeader;
   },
   ValidPanelElements
 >;

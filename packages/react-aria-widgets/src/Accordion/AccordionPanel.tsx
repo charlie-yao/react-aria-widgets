@@ -1,13 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
+//Components
 import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
+//Contexts
+import AccordionContext from 'src/Accordion/AccordionContext';
+import AccordionSectionContext from 'src/Accordion/AccordionSectionContext';
+
 //Types
-import { accordionSectionProp } from 'src/Accordion/propTypes';
+//import { accordionSectionProp } from 'src/Accordion/propTypes';
 import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
 
 //Misc.
@@ -17,35 +21,44 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
   children,
   className = '',
   as, //eslint-disable-line react/require-default-props
-  index,
-  sections,
-  getIsExpanded,
+  //index,
+  //sections,
+  //getIsExpanded,
   //Pull out props received from <Accordion> that shouldn't get passed down
   /* eslint-disable @typescript-eslint/no-unused-vars, react/prop-types */
-  headerLevel,
-  renderSection,
-  renderHeader,
-  renderPanel,
-  headerProps,
-  panelProps,
-  headerElementType,
-  panelElementType,
-  allowMultiple,
-  allowToggle,
-  getIsDisabled,
-  toggleSection,
-  pushHeaderRef,
-  focusHeader,
-  focusPrevHeader,
-  focusNextHeader,
-  focusFirstHeader,
-  focusLastHeader,
+  //headerLevel,
+  //renderSection,
+  //renderHeader,
+  //renderPanel,
+  //headerProps,
+  //panelProps,
+  //headerElementType,
+  //panelElementType,
+  //allowMultiple,
+  //allowToggle,
+  //getIsDisabled,
+  //toggleSection,
+  //pushHeaderRef,
+  //focusHeader,
+  //focusPrevHeader,
+  //focusNextHeader,
+  //focusFirstHeader,
+  //focusLastHeader,
   /* eslint-enable @typescript-eslint/no-unused-vars, react/prop-types */
   ...rest
 }: AccordionPanelProps<C>) {
+  const accordionContext = useContext(AccordionContext);
+  const id = useContext(AccordionSectionContext);
+
+  if(!accordionContext)
+    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionContext');
+  if(!id)
+    throw new Error('React ARIA Widgets - AccordionHeader received a falsy value when consuming an AccordionSectionContext');
+
+  const { getIsExpanded } = accordionContext;
   const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
-  const section = sections[index];
-  const { id } = section;
+  //const section = sections[index];
+  //const { id } = section;
   const isExpanded = getIsExpanded(id);
 
   return (
@@ -66,10 +79,10 @@ AccordionPanel.propTypes = {
   className: PropTypes.string,
   as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
   //From <Accordion>
-  index: PropTypes.number.isRequired,
-  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
+  //index: PropTypes.number.isRequired,
+  //sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   //From <Accordion> methods
-  getIsExpanded: PropTypes.func.isRequired,
+  //getIsExpanded: PropTypes.func.isRequired,
 };
 
 export default AccordionPanel;
