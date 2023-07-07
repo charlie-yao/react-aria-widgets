@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import AccordionContext from 'src/Accordion/AccordionContext';
 
 //Types
-import { accordionSectionProp } from 'src/Accordion/propTypes';
-
 import type {
   AccordionProps,
   HeaderRef,
@@ -22,7 +20,6 @@ import type {
 } from 'src/Accordion/types';
 
 //Misc.
-import { defaultRenderSection, defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 function _getIsExpanded(expandedSections: Set<string>, id: string) {
@@ -37,15 +34,7 @@ function Accordion({
   children,
   allowMultiple = true,
   allowToggle = true,
-  //sections,
   headerLevel,
-  //renderSection = defaultRenderSection,
-  //renderHeader = defaultRenderHeader,
-  //renderPanel = defaultRenderPanel,
-  //headerProps = {},
-  //panelProps = {},
-  //headerElementType,
-  //panelElementType,
 }: AccordionProps) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
@@ -211,70 +200,6 @@ function Accordion({
     focusLastHeader,
   ]);
   
-  /*
-  const accordionProps = useMemo(() => {
-    return {
-      allowMultiple,
-      allowToggle: getAllowToggle(),
-      sections,
-      headerLevel,
-      renderSection,
-      renderHeader,
-      renderPanel,
-      headerProps,
-      panelProps,
-      headerElementType,
-      panelElementType,
-    };
-  }, [
-    allowMultiple,
-    getAllowToggle,
-    sections,
-    headerLevel,
-    renderSection,
-    renderHeader,
-    renderPanel,
-    headerProps,
-    panelProps,
-    headerElementType,
-    panelElementType,
-  ]);
-
-  const accordionMethods = useMemo(() => {
-    return {
-      getIsExpanded,
-      getIsDisabled,
-      toggleSection,
-      pushHeaderRef,
-      focusHeader,
-      focusPrevHeader,
-      focusNextHeader,
-      focusFirstHeader,
-      focusLastHeader,
-    };
-  }, [
-    getIsExpanded,
-    getIsDisabled,
-    toggleSection,
-    pushHeaderRef,
-    focusHeader,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-  ]);
-
-  const renderedSections = sections.map((section, index) => {
-    return renderSection(index, accordionProps, accordionMethods);
-  });
-  
-  return (
-    <>
-      { renderedSections }
-    </>
-  );
-  */
-
   return (
     <AccordionContext.Provider value={ accordionContextValue }>
       { children }
@@ -286,15 +211,7 @@ Accordion.propTypes = {
   children: PropTypes.node,
   allowMultiple: PropTypes.bool,
   allowToggle: PropTypes.bool,
-  //sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  //renderSection: PropTypes.func,
-  //renderHeader: PropTypes.func,
-  //renderPanel: PropTypes.func,
-  //headerProps: PropTypes.object,
-  //panelProps: PropTypes.object,
-  //headerElementType: PropTypes.elementType.isRequired,
-  //panelElementType: PropTypes.elementType.isRequired,
 };
 
 export default Accordion;
