@@ -296,7 +296,7 @@ module.exports = {
     'react/jsx-newline': [ 'error', {
       prevent: true,
     }],
-    'react/jsx-no-bind': [ 'error' ],
+    'react/jsx-no-bind': [ 'warn' ],
     'react/jsx-no-useless-fragment': [ 'error', {
       allowExpressions: true
     }],

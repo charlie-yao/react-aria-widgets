@@ -1,64 +1,53 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-//Components and Styles
+//Components
 import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
+//Contexts
+import useAccordionContext from 'src/Accordion/useAccordionContext';
+import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext';
+
 //Types
-import { accordionSectionProp } from 'src/Accordion/propTypes';
 import type { AccordionHeaderProps } from 'src/Accordion/types';
 
 //Misc.
 import { getPanelId } from 'src/Accordion/utils';
-import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
 function AccordionHeader({
-  children,
+  children = null,
   headerProps = {},
   buttonProps = {},
-  index,
-  headerLevel,
-  sections,
-  getIsExpanded,
-  getIsDisabled,
-  toggleSection,
-  pushHeaderRef,
-  focusPrevHeader,
-  focusNextHeader,
-  focusFirstHeader,
-  focusLastHeader,
 }: AccordionHeaderProps) {
-  const section = sections[index];
-  const { id } = section;
+  const {
+    headerLevel,
+    getIsExpanded,
+    getIsDisabled,
+    toggleSection,
+    pushHeaderRef,
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  } = useAccordionContext();
+  const id = useAccordionSectionContext();
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
-
-  const _buttonProps = useMemo(() => {
-    return {
-      ...buttonProps,
-      'data-index': index,
-    };
-  }, [ buttonProps, index ]);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
     toggleSection(event.currentTarget.id);
   }, [ toggleSection ]);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
-    const { key, currentTarget } = event;
-
-    if(!currentTarget.dataset.index)
-      return;
-
-    const index = Number.parseInt(currentTarget.dataset.index, 10);
+    const { key } = event;
 
     if(key === 'ArrowUp') {
       event.preventDefault();
-      focusPrevHeader(index);
+      focusPrevHeader(event);
     }
     else if(key === 'ArrowDown') {
       event.preventDefault();
-      focusNextHeader(index);
+      focusNextHeader(event);
     }
     else if(key === 'Home') {
       event.preventDefault();
@@ -85,7 +74,7 @@ function AccordionHeader({
       isExpanded={ isExpanded }
       isDisabled={ isDisabled }
       headerProps={ headerProps }
-      buttonProps={ _buttonProps }
+      buttonProps={ buttonProps }
       ref={ pushHeaderRef }
     >
       { children }
@@ -94,22 +83,9 @@ function AccordionHeader({
 }
 
 AccordionHeader.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
-  //From <Accordion>
-  index: PropTypes.number.isRequired,
-  headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
-  //From <Accordion> methods
-  getIsExpanded: PropTypes.func.isRequired,
-  getIsDisabled: PropTypes.func.isRequired,
-  toggleSection: PropTypes.func.isRequired,
-  pushHeaderRef: PropTypes.func.isRequired,
-  focusPrevHeader: PropTypes.func.isRequired,
-  focusNextHeader: PropTypes.func.isRequired,
-  focusFirstHeader: PropTypes.func.isRequired,
-  focusLastHeader: PropTypes.func.isRequired,
 };
 
 export default AccordionHeader;

@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
-//Types
-import { accordionSectionProp } from 'src/Accordion/propTypes';
+//Contexts
+import AccordionContext from 'src/Accordion/AccordionContext';
 
+//Types
 import type {
   AccordionProps,
   HeaderRef,
@@ -19,24 +20,25 @@ import type {
 } from 'src/Accordion/types';
 
 //Misc.
-import { defaultRenderSection, defaultRenderHeader, defaultRenderPanel } from 'src/Accordion/utils';
 import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 
+function _getIsExpanded(expandedSections: Set<string>, id: string) {
+  return expandedSections.has(id);
+}
+
+function _getIsDisabled(allowToggle: boolean, isExpanded: boolean) {
+  return !allowToggle && isExpanded;
+}
+
 function Accordion({
+  children = null,
   allowMultiple = true,
   allowToggle = true,
-  sections,
   headerLevel,
-  renderSection = defaultRenderSection,
-  renderHeader = defaultRenderHeader,
-  renderPanel = defaultRenderPanel,
-  headerProps = {},
-  panelProps = {},
-  headerElementType,
-  panelElementType,
 }: AccordionProps) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
+  const headerRefIndexMap = useRef<Map<HeaderRef, number>>(new Map());
 
   /**
    * Returns a boolean that lets us know if this accordion lets us collapse
@@ -65,7 +67,7 @@ function Accordion({
    * expanded or collapsed.
    */
   const getIsExpanded: GetIsExpanded = useCallback((id) => {
-    return expandedSections.has(id);
+    return _getIsExpanded(expandedSections, id);
   }, [ expandedSections ]);
 
   /**
@@ -73,7 +75,7 @@ function Accordion({
    * can't be collapsed due to <code>allowToggle</code>.
    */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
-    return !getAllowToggle() && getIsExpanded(id);
+    return _getIsDisabled(getAllowToggle(), getIsExpanded(id));
   }, [ getAllowToggle, getIsExpanded ]);
 
   /**
@@ -81,10 +83,10 @@ function Accordion({
    * and <code>allowToggle</code>.
    */
   const toggleSection: ToggleSection = useCallback((id) => {
-    const isExpanded = getIsExpanded(id);
-    const isDisabled = getIsDisabled(id);
-
     setExpandedSections((expandedSections) => {
+      const isExpanded = _getIsExpanded(expandedSections, id);
+      const isDisabled = _getIsDisabled(getAllowToggle(), isExpanded);
+
       if(allowMultiple) {
         if(isExpanded)
           expandedSections.delete(id);
@@ -105,8 +107,7 @@ function Accordion({
     });
   }, [
     allowMultiple,
-    getIsExpanded,
-    getIsDisabled,
+    getAllowToggle,
   ]);
 
   /**
@@ -114,6 +115,7 @@ function Accordion({
    */
   const pushHeaderRef: PushHeaderRef = useCallback((ref) => {
     headerRefs.current.push(ref);
+    headerRefIndexMap.current.set(ref, headerRefs.current.length - 1);
   }, []);
 
   /**
@@ -132,7 +134,12 @@ function Accordion({
    * Sets focus on the previous accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
    */
-  const focusPrevHeader: FocusPrevHeader = useCallback((index) => {
+  const focusPrevHeader: FocusPrevHeader = useCallback((event) => {
+    const index = headerRefIndexMap.current.get(event.currentTarget);
+
+    if(index === undefined)
+      return;
+
     focusHeader(index === 0 ? headerRefs.current.length - 1 : index - 1);
   }, [ focusHeader ]);
 
@@ -140,7 +147,12 @@ function Accordion({
    * Sets focus on the next accordion header button (relative to index).
    * Will "wrap" around the array if the boundary is reached.
    */
-  const focusNextHeader: FocusNextHeader = useCallback((index) => {
+  const focusNextHeader: FocusNextHeader = useCallback((event) => {
+    const index = headerRefIndexMap.current.get(event.currentTarget);
+
+    if(index === undefined)
+      return;
+
     focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
   }, [ focusHeader ]);
 
@@ -158,36 +170,11 @@ function Accordion({
     focusHeader(headerRefs.current.length - 1);
   }, [ focusHeader ]);
 
-  const accordionProps = useMemo(() => {
+  const accordionContextValue = useMemo(() => {
     return {
       allowMultiple,
       allowToggle: getAllowToggle(),
-      sections,
       headerLevel,
-      renderSection,
-      renderHeader,
-      renderPanel,
-      headerProps,
-      panelProps,
-      headerElementType,
-      panelElementType,
-    };
-  }, [
-    allowMultiple,
-    getAllowToggle,
-    sections,
-    headerLevel,
-    renderSection,
-    renderHeader,
-    renderPanel,
-    headerProps,
-    panelProps,
-    headerElementType,
-    panelElementType,
-  ]);
-
-  const accordionMethods = useMemo(() => {
-    return {
       getIsExpanded,
       getIsDisabled,
       toggleSection,
@@ -199,6 +186,9 @@ function Accordion({
       focusLastHeader,
     };
   }, [
+    allowMultiple,
+    getAllowToggle,
+    headerLevel,
     getIsExpanded,
     getIsDisabled,
     toggleSection,
@@ -210,29 +200,18 @@ function Accordion({
     focusLastHeader,
   ]);
 
-  const renderedSections = sections.map((section, index) => {
-    return renderSection(index, accordionProps, accordionMethods);
-  });
-
   return (
-    <>
-      { renderedSections }
-    </>
+    <AccordionContext.Provider value={ accordionContextValue }>
+      { children }
+    </AccordionContext.Provider>
   );
 }
 
 Accordion.propTypes = {
+  children: PropTypes.node,
   allowMultiple: PropTypes.bool,
   allowToggle: PropTypes.bool,
-  sections: PropTypes.arrayOf(accordionSectionProp.isRequired).isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  renderSection: PropTypes.func,
-  renderHeader: PropTypes.func,
-  renderPanel: PropTypes.func,
-  headerProps: PropTypes.object,
-  panelProps: PropTypes.object,
-  headerElementType: PropTypes.elementType.isRequired,
-  panelElementType: PropTypes.elementType.isRequired,
 };
 
 export default Accordion;
