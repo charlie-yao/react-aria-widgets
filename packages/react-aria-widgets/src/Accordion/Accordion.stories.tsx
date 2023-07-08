@@ -21,7 +21,7 @@ const meta = {
 
     return (
       <Accordion { ...args }>
-        <AccordionSection id="1">
+        <AccordionSection>
           <AccordionHeader>
             Basic Section
           </AccordionHeader>
@@ -29,7 +29,7 @@ const meta = {
             Hello world!
           </AccordionPanel>
         </AccordionSection>
-        <AccordionSection id="2">
+        <AccordionSection>
           <AccordionHeader>
             Section With Interactive Elements
           </AccordionHeader>
@@ -45,13 +45,13 @@ const meta = {
             </form>
           </AccordionPanel>
         </AccordionSection>
-        <AccordionSection id="3">
+        <AccordionSection>
           <AccordionHeader>
             Section With Nested Accordion
           </AccordionHeader>
           <AccordionPanel>
             <Accordion headerLevel={ 2 }>
-              <AccordionSection id="3-1">
+              <AccordionSection>
                 <AccordionHeader>
                   Basic Section
                 </AccordionHeader>
@@ -59,7 +59,7 @@ const meta = {
                   Hello world!
                 </AccordionPanel>
               </AccordionSection>
-              <AccordionSection id="3-2">
+              <AccordionSection>
                 <AccordionHeader>
                   Section With Interactive Elements
                 </AccordionHeader>
@@ -76,6 +76,22 @@ const meta = {
                 </AccordionPanel>
               </AccordionSection>
             </Accordion>
+          </AccordionPanel>
+        </AccordionSection>
+        <AccordionSection id="manually-entered-id">
+          <AccordionHeader>
+            Section With Manual ID
+          </AccordionHeader>
+          <AccordionPanel>
+            The IDs for accessibility attributes in this section are coming from the
+            { ' ' }
+            <code>id</code>
+            { ' ' }
+            prop, not React&apos;s
+            { ' ' }
+            <code>useId</code>
+            { ' ' }
+            hook.
           </AccordionPanel>
         </AccordionSection>
       </Accordion>
