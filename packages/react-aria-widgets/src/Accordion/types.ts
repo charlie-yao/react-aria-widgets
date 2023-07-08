@@ -67,7 +67,7 @@ export type AccordionProps = React.PropsWithChildren<{
 }>;
 
 export type AccordionSectionProps = React.PropsWithChildren<{
-  id: string;
+  id?: string;
 }>;
 
 export type AccordionHeaderProps = React.PropsWithChildren<{
