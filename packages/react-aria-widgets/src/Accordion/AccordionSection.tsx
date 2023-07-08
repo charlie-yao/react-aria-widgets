@@ -12,7 +12,7 @@ function AccordionSection({
   id: idProp = undefined,
 }: AccordionSectionProps) {
   const reactGeneratedId = useId();
-  const id = idProp ? idProp: reactGeneratedId;
+  const id = idProp ? idProp : reactGeneratedId;
 
   return (
     <AccordionSectionContext.Provider value={ id }>

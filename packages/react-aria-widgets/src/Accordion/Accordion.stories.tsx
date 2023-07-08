@@ -68,7 +68,7 @@ const meta = {
                     <label htmlFor="nestedNameInput">
                       Name:
                     </label>
-                    <input id="nestedNameInputId" type="text" />
+                    <input id="nestedNameInput" type="text" />
                     <button type="submit">
                       Submit
                     </button>
