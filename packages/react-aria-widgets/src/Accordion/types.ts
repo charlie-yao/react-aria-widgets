@@ -3,9 +3,9 @@ import type React from 'react';
 //Types
 import type {
   ValidHTMLHeaderLevels,
-  PolymorphicComponentPropsWithoutRef,
   PolymorphicComponentPropsWithRef,
   PolymorphicForwardRefComponent,
+  AsProp,
 } from 'src/utils/types';
 
 //Misc.
@@ -75,11 +75,9 @@ export type AccordionHeaderProps = React.PropsWithChildren<{
   buttonProps?: AccordionHeaderButton;
 }>;
 
-export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
-  C,
-  {},
-  ValidPanelElements
->;
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> =
+  AsProp<C, ValidPanelElements> &
+  React.ComponentPropsWithoutRef<C>;
 
 export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   id?: string | undefined;

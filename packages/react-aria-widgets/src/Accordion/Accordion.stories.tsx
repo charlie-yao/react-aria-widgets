@@ -15,6 +15,10 @@ const meta = {
     headerLevel: 1,
   },
   render: (args) => {
+    const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+      event.preventDefault();
+    };
+
     return (
       <Accordion { ...args }>
         <AccordionSection id="1">
@@ -30,7 +34,7 @@ const meta = {
             Section With Interactive Elements
           </AccordionHeader>
           <AccordionPanel>
-            <form onSubmit={ (e) => { e.preventDefault() } }>
+            <form onSubmit={ handleSubmit }>
               <label htmlFor="nameInput">
                 Name:
               </label>
@@ -60,7 +64,7 @@ const meta = {
                   Section With Interactive Elements
                 </AccordionHeader>
                 <AccordionPanel>
-                  <form onSubmit={ (e) => { e.preventDefault() } }>
+                  <form onSubmit={ handleSubmit }>
                     <label htmlFor="nestedNameInput">
                       Name:
                     </label>
