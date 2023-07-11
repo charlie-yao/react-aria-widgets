@@ -173,7 +173,7 @@ export default function useAccordion(allowMultiple: boolean, allowToggle: boolea
     };
   }, [
     allowMultiple,
-    getAllowToggle(),
+    getAllowToggle,
     getIsExpanded,
     getIsDisabled,
     toggleSection,

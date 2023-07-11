@@ -23,7 +23,7 @@ function Accordion({
   const accordionContextValue = useMemo(() => {
     return {
       headerLevel,
-      ...accordionProperties
+      ...accordionProperties,
     };
   }, [
     headerLevel,
