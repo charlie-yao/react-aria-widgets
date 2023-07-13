@@ -50,22 +50,17 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
   const toggleSection: ToggleSection = useCallback((id) => {
     setExpandedSections((expandedSections) => {
       const isExpanded = _getIsExpanded(expandedSections, id);
-      const isDisabled = _getIsDisabled(allowCollapseLast, isExpanded);
 
-      if(allowMultiple) {
-        if(isExpanded)
-          expandedSections.delete(id);
-        else
-          expandedSections.add(id);
-      }
+      if(expandedSections.size === 1 && isExpanded && !allowCollapseLast)
+        return expandedSections;
+
+      if(isExpanded)
+        expandedSections.delete(id);
       else {
-        expandedSections.clear();
+        if(!allowMultiple)
+          expandedSections.clear();
 
-        //Expand the section if it was originally collapsed,
-        //or if it shouldn't have been collapsed as a result
-        //of the indiscriminate call to clear() that we just made.
-        if(!isExpanded || isDisabled)
-          expandedSections.add(id);
+        expandedSections.add(id);
       }
 
       return new Set(expandedSections);
