@@ -18,8 +18,8 @@ function _getIsExpanded(expandedSections: Set<string>, id: string) {
   return expandedSections.has(id);
 }
 
-function _getIsDisabled(allowCollapseLast: boolean, isExpanded: boolean) {
-  return !allowCollapseLast && isExpanded;
+function _getIsDisabled(expandedSections: Set<string>, id: string, allowCollapseLast: boolean) {
+  return expandedSections.size === 1 && _getIsExpanded(expandedSections, id) && !allowCollapseLast;
 }
 
 export default function useAccordion(allowMultiple: boolean, allowCollapseLast: boolean) {
@@ -40,8 +40,8 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
    * can't be collapsed due to <code>allowCollapseLast</code>.
    */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
-    return _getIsDisabled(allowCollapseLast, getIsExpanded(id));
-  }, [ allowCollapseLast, getIsExpanded ]);
+    return _getIsDisabled(expandedSections, id, allowCollapseLast);
+  }, [ expandedSections, allowCollapseLast ]);
 
   /**
    * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
@@ -50,8 +50,9 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
   const toggleSection: ToggleSection = useCallback((id) => {
     setExpandedSections((expandedSections) => {
       const isExpanded = _getIsExpanded(expandedSections, id);
+      const isDisabled = _getIsDisabled(expandedSections, id, allowCollapseLast);
 
-      if(expandedSections.size === 1 && isExpanded && !allowCollapseLast)
+      if(isDisabled)
         return expandedSections;
 
       if(isExpanded)
