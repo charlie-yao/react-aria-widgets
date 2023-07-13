@@ -99,31 +99,31 @@ const meta = {
   },
 } satisfies Meta<typeof Accordion>;
 
-export const YesMultipleYesToggle: Story = {
+export const YesMultipleYesCollapseLast: Story = {
   args: {
     allowMultiple: true,
-    allowToggle: true,
+    allowCollapseLast: true,
   },
 };
 
-export const NoMultipleYesToggle: Story = {
+export const NoMultipleYesCollapseLast: Story = {
   args: {
     allowMultiple: false,
-    allowToggle: true,
+    allowCollapseLast: true,
   },
 };
 
-export const YesMultipleNoToggle: Story = {
+export const YesMultipleNoCollapseLast: Story = {
   args: {
     allowMultiple: true,
-    allowToggle: false,
+    allowCollapseLast: false,
   },
 };
 
-export const NoMultipleNoToggle: Story = {
+export const NoMultipleNoCollapseLast: Story = {
   args: {
     allowMultiple: false,
-    allowToggle: false,
+    allowCollapseLast: false,
   },
 };
 

@@ -18,36 +18,14 @@ function _getIsExpanded(expandedSections: Set<string>, id: string) {
   return expandedSections.has(id);
 }
 
-function _getIsDisabled(allowToggle: boolean, isExpanded: boolean) {
-  return !allowToggle && isExpanded;
+function _getIsDisabled(expandedSections: Set<string>, id: string, allowCollapseLast: boolean) {
+  return expandedSections.size === 1 && _getIsExpanded(expandedSections, id) && !allowCollapseLast;
 }
 
-export default function useAccordion(allowMultiple: boolean, allowToggle: boolean) {
+export default function useAccordion(allowMultiple: boolean, allowCollapseLast: boolean) {
   const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
   const headerRefIndexMap = useRef<Map<HeaderRef, number>>(new Map());
-
-  /**
-   * Returns a boolean that lets us know if this accordion lets us collapse
-   * an already-expanded accordion section.
-   *
-   * Note that even though this component accepts <code>allowToggle</code> and
-   * <code>allowMultiple</code> as independent booleans, it doesn't reflect
-   * the actual behavior of this accordion implementation.
-   *
-   * Technically speaking, this component can receive props such that
-   * <code>allowMultiple && !allowToggle</code>. But that situation would
-   * allow for opening multiple accordion sections that can't be closed. So,
-   * we force sections to be toggleable if <code>allowMultiple</code> is
-   * <code>true</code>.
-   *
-   * Additionally, child components should use <code>getAllowToggle</code> rather
-   * than directly accessing the <code>allowToggle</code> prop because the getter
-   * reflects the above behavior.
-   */
-  const getAllowToggle = useCallback(() => {
-    return allowMultiple ? true : allowToggle;
-  }, [ allowMultiple, allowToggle ]);
 
   /**
    * Returns a boolean that lets us know if a particular accordion section is
@@ -59,42 +37,38 @@ export default function useAccordion(allowMultiple: boolean, allowToggle: boolea
 
   /**
    * Returns a boolean that lets us know if an aleady-expanded accordion section
-   * can't be collapsed due to <code>allowToggle</code>.
+   * can't be collapsed due to <code>allowCollapseLast</code>.
    */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
-    return _getIsDisabled(getAllowToggle(), getIsExpanded(id));
-  }, [ getAllowToggle, getIsExpanded ]);
+    return _getIsDisabled(expandedSections, id, allowCollapseLast);
+  }, [ expandedSections, allowCollapseLast ]);
 
   /**
    * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
-   * and <code>allowToggle</code>.
+   * and <code>allowCollapseLast</code>.
    */
   const toggleSection: ToggleSection = useCallback((id) => {
     setExpandedSections((expandedSections) => {
       const isExpanded = _getIsExpanded(expandedSections, id);
-      const isDisabled = _getIsDisabled(getAllowToggle(), isExpanded);
+      const isDisabled = _getIsDisabled(expandedSections, id, allowCollapseLast);
 
-      if(allowMultiple) {
-        if(isExpanded)
-          expandedSections.delete(id);
-        else
-          expandedSections.add(id);
-      }
+      if(isDisabled)
+        return expandedSections;
+
+      if(isExpanded)
+        expandedSections.delete(id);
       else {
-        expandedSections.clear();
+        if(!allowMultiple)
+          expandedSections.clear();
 
-        //Expand the section if it was originally collapsed,
-        //or if it shouldn't have been collapsed as a result
-        //of the indiscriminate call to clear() that we just made.
-        if(!isExpanded || isDisabled)
-          expandedSections.add(id);
+        expandedSections.add(id);
       }
 
       return new Set(expandedSections);
     });
   }, [
     allowMultiple,
-    getAllowToggle,
+    allowCollapseLast,
   ]);
 
   /**
@@ -160,7 +134,7 @@ export default function useAccordion(allowMultiple: boolean, allowToggle: boolea
   return useMemo(() => {
     return {
       allowMultiple,
-      allowToggle: getAllowToggle(),
+      allowCollapseLast,
       getIsExpanded,
       getIsDisabled,
       toggleSection,
@@ -173,7 +147,7 @@ export default function useAccordion(allowMultiple: boolean, allowToggle: boolea
     };
   }, [
     allowMultiple,
-    getAllowToggle,
+    allowCollapseLast,
     getIsExpanded,
     getIsDisabled,
     toggleSection,
