@@ -27,7 +27,7 @@ export type FocusLastHeader = () => void;
 
 export interface AccordionContextType {
   allowMultiple: boolean;
-  allowToggle: boolean;
+  allowCollapseLast: boolean;
   headerLevel: ValidHTMLHeaderLevels;
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
@@ -62,7 +62,7 @@ export type AccordionHeaderButton = Omit<
 
 export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
-  allowToggle?: boolean;
+  allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
 }>;
 
