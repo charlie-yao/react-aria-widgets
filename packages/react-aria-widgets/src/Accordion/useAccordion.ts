@@ -1,7 +1,9 @@
-import { useState, useCallback, useRef, useMemo } from 'react';
+import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 
 //Types
 import type {
+  UseAccordion,
+  ExpandedSections,
   HeaderRef,
   GetIsExpanded,
   GetIsDisabled,
@@ -12,6 +14,7 @@ import type {
   FocusNextHeader,
   FocusFirstHeader,
   FocusLastHeader,
+  OnStateChange,
 } from 'src/Accordion/types';
 
 function _getIsExpanded(expandedSections: Set<string>, id: string) {
@@ -22,10 +25,16 @@ function _getIsDisabled(expandedSections: Set<string>, id: string, allowCollapse
   return expandedSections.size === 1 && _getIsExpanded(expandedSections, id) && !allowCollapseLast;
 }
 
-export default function useAccordion(allowMultiple: boolean, allowCollapseLast: boolean) {
-  const [ expandedSections, setExpandedSections ] = useState(new Set<string>());
+export default function useAccordion({
+  allowMultiple,
+  allowCollapseLast,
+  onStateChange,
+  onFocusChange,
+}: UseAccordion) {
+  const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
   const headerRefIndexMap = useRef<Map<HeaderRef, number>>(new Map());
+  const onStateChangeRef = useRef<OnStateChange | null | undefined>(null);
 
   /**
    * Returns a boolean that lets us know if a particular accordion section is
@@ -48,6 +57,8 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
    * and <code>allowCollapseLast</code>.
    */
   const toggleSection: ToggleSection = useCallback((id) => {
+    onStateChangeRef.current = onStateChange;
+
     setExpandedSections((expandedSections) => {
       const isExpanded = _getIsExpanded(expandedSections, id);
       const isDisabled = _getIsDisabled(expandedSections, id, allowCollapseLast);
@@ -69,6 +80,7 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
   }, [
     allowMultiple,
     allowCollapseLast,
+    onStateChange,
   ]);
 
   /**
@@ -89,7 +101,10 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
       return;
 
     ref.focus();
-  }, []);
+
+    if(typeof onFocusChange === 'function')
+      onFocusChange(ref, index);
+  }, [ onFocusChange ]);
 
   /**
    * Sets focus on the previous accordion header button (relative to index).
@@ -130,6 +145,14 @@ export default function useAccordion(allowMultiple: boolean, allowCollapseLast: 
   const focusLastHeader: FocusLastHeader = useCallback(() => {
     focusHeader(headerRefs.current.length - 1);
   }, [ focusHeader ]);
+
+  useEffect(() => {
+    if(typeof onStateChangeRef.current !== 'function')
+      return;
+
+    onStateChangeRef.current(expandedSections);
+    onStateChangeRef.current = null;
+  }, [ expandedSections ]);
 
   return useMemo(() => {
     return {
