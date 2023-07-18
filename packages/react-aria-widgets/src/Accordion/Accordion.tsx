@@ -18,8 +18,8 @@ function Accordion({
   allowMultiple = true,
   allowCollapseLast = true,
   headerLevel,
-  onStateChange,
-  onFocusChange,
+  onStateChange = undefined,
+  onFocusChange = undefined,
 }: AccordionProps) {
   const accordionProperties = useAccordion({
     allowMultiple,

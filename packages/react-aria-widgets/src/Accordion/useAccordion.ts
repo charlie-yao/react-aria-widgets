@@ -80,6 +80,7 @@ export default function useAccordion({
   }, [
     allowMultiple,
     allowCollapseLast,
+    onStateChange,
   ]);
 
   /**
@@ -103,7 +104,7 @@ export default function useAccordion({
 
     if(typeof onFocusChange === 'function')
       onFocusChange(ref, index);
-  }, []);
+  }, [ onFocusChange ]);
 
   /**
    * Sets focus on the previous accordion header button (relative to index).

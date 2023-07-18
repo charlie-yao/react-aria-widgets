@@ -130,6 +130,7 @@ export const NoMultipleNoCollapseLast: Story = {
 export const WithStateChangeCallback: Story = {
   args: {
     onStateChange: (expandedSections) => {
+      //eslint-disable-next-line no-console
       console.log(expandedSections);
     },
   },
@@ -138,6 +139,7 @@ export const WithStateChangeCallback: Story = {
 export const WithFocusChangeCallback: Story = {
   args: {
     onFocusChange: (ref, index) => {
+      //eslint-disable-next-line no-console
       console.log(ref, index);
     },
   },
