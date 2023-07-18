@@ -127,4 +127,20 @@ export const NoMultipleNoCollapseLast: Story = {
   },
 };
 
+export const WithStateChangeCallback: Story = {
+  args: {
+    onStateChange: (expandedSections) => {
+      console.log(expandedSections);
+    },
+  },
+};
+
+export const WithFocusChangeCallback: Story = {
+  args: {
+    onFocusChange: (ref, index) => {
+      console.log(ref, index);
+    },
+  },
+};
+
 export default meta;
