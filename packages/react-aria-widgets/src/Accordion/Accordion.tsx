@@ -18,8 +18,16 @@ function Accordion({
   allowMultiple = true,
   allowCollapseLast = true,
   headerLevel,
+  onStateChange,
+  onFocusChange,
 }: AccordionProps) {
-  const accordionProperties = useAccordion(allowMultiple, allowCollapseLast);
+  const accordionProperties = useAccordion({
+    allowMultiple,
+    allowCollapseLast,
+    onStateChange,
+    onFocusChange,
+  });
+
   const accordionContextValue = useMemo(() => {
     return {
       headerLevel,
@@ -42,6 +50,8 @@ Accordion.propTypes = {
   allowMultiple: PropTypes.bool,
   allowCollapseLast: PropTypes.bool,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
+  onStateChange: PropTypes.func,
+  onFocusChange: PropTypes.func,
 };
 
 export default Accordion;

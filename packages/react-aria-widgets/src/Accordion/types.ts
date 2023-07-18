@@ -11,6 +11,8 @@ import type {
 //Misc.
 import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
+export type ExpandedSections = Set<string>;
+
 export type HeaderRef = HTMLButtonElement | HTMLElement | null;
 
 export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
@@ -24,6 +26,15 @@ export type FocusPrevHeader = (event: React.KeyboardEvent<HTMLButtonElement | HT
 export type FocusNextHeader = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
+export type OnStateChange = (expandedSections: ExpandedSections) => void;
+export type OnFocusChange = (ref: HeaderRef, index: number) => void;
+
+export interface UseAccordion {
+  allowMultiple: boolean;
+  allowCollapseLast: boolean;
+  onStateChange?: OnStateChange | undefined;
+  onFocusChange?: OnFocusChange | undefined;
+}
 
 export interface AccordionContextType {
   allowMultiple: boolean;
@@ -64,6 +75,8 @@ export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
+  onStateChange?: OnStateChange;
+  onFocusChange?: OnFocusChange;
 }>;
 
 export type AccordionSectionProps = React.PropsWithChildren<{
