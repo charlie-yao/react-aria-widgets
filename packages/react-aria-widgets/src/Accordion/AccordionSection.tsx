@@ -2,7 +2,7 @@ import React, { useId } from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
-import AccordionSectionContext from 'src/Accordion/AccordionSectionContext';
+import { AccordionSectionProvider } from 'src/Accordion/AccordionSectionContext';
 
 //Types
 import type { AccordionSectionProps } from 'src/Accordion/types';
@@ -15,9 +15,9 @@ function AccordionSection({
   const id = idProp ? idProp : reactGeneratedId;
 
   return (
-    <AccordionSectionContext.Provider value={ id }>
+    <AccordionSectionProvider value={ id }>
       { children }
-    </AccordionSectionContext.Provider>
+    </AccordionSectionProvider>
   );
 }
 

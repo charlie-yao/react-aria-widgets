@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
-import AccordionContext from 'src/Accordion/AccordionContext';
+import { AccordionProvider } from 'src/Accordion/AccordionContext';
 
 //Hooks
 import useAccordion from 'src/Accordion/useAccordion';
@@ -39,9 +39,9 @@ function Accordion({
   ]);
 
   return (
-    <AccordionContext.Provider value={ accordionContextValue }>
+    <AccordionProvider value={ accordionContextValue }>
       { children }
-    </AccordionContext.Provider>
+    </AccordionProvider>
   );
 }
 
