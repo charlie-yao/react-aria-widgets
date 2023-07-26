@@ -148,7 +148,7 @@ export default function useAccordion({
   const focusLastHeader: FocusLastHeader = useCallback(() => {
     focusHeader(headerRefs.current.length - 1);
   }, [ focusHeader ]);
-  
+
   /**
    * Click event handler for accordion header buttons. Handles basic expand/collapse
    * behavior. Buttons could potentially be elements with role="button" instead of a
@@ -157,7 +157,7 @@ export default function useAccordion({
   const handleClick: HandleClick = useCallback((event) => {
     toggleSection(event.currentTarget.id);
   }, [ toggleSection ]);
-  
+
   /**
    * Keyboard event handler for accordion header buttons. Handles basic focus management
    * as described in the APG. Buttons could potentially be elements with role="button"
