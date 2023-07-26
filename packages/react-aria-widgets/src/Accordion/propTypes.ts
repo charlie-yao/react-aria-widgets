@@ -16,4 +16,6 @@ export const accordionContextValuePropType = PropTypes.exact({
   focusNextHeader: PropTypes.func.isRequired,
   focusFirstHeader: PropTypes.func.isRequired,
   focusLastHeader: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
 });

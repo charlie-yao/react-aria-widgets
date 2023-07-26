@@ -20,6 +20,8 @@ function Accordion({
   headerLevel,
   onStateChange = undefined,
   onFocusChange = undefined,
+  onClick = undefined,
+  onKeyDown = undefined,
 }: AccordionProps) {
   const accordionContextValue = useAccordion({
     allowMultiple,
@@ -27,6 +29,8 @@ function Accordion({
     headerLevel,
     onStateChange,
     onFocusChange,
+    onClick,
+    onKeyDown,
   });
 
   return (
@@ -43,6 +47,8 @@ Accordion.propTypes = {
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onStateChange: PropTypes.func,
   onFocusChange: PropTypes.func,
+  onClick: PropTypes.func,
+  onKeyDown: PropTypes.func,
 };
 
 export default Accordion;
