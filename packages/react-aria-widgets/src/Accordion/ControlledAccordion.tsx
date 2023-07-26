@@ -4,7 +4,7 @@ import React from 'react';
 import { AccordionProvider } from 'src/Accordion/AccordionContext';
 
 //Types
-import { ControlledAccordionProps } from 'src/Accordion/types';
+import type { ControlledAccordionProps } from 'src/Accordion/types';
 
 function ControlledAccordion({
   children,
