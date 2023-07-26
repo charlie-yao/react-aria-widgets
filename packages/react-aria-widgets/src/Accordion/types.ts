@@ -80,6 +80,10 @@ export type AccordionProps = React.PropsWithChildren<{
   onFocusChange?: OnFocusChange;
 }>;
 
+export type ControlledAccordionProps = React.PropsWithChildren<{
+  contextValue: AccordionContextType;
+}>;
+
 export type AccordionSectionProps = React.PropsWithChildren<{
   id?: string;
 }>;
