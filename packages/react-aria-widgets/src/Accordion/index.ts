@@ -18,6 +18,7 @@ export { default as useAccordionSectionContext } from 'src/Accordion/useAccordio
 
 //Types
 export type * from 'src/Accordion/types';
+export * from 'src/Accordion/propTypes';
 
 //Misc.
 export * from 'src/Accordion/utils';
