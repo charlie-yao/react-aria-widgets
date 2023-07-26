@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 //Components
@@ -23,46 +23,13 @@ function AccordionHeader({
     headerLevel,
     getIsExpanded,
     getIsDisabled,
-    toggleSection,
     pushHeaderRef,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
+    handleClick,
+    handleKeyDown,
   } = useAccordionContext();
   const id = useAccordionSectionContext();
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
-
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
-    toggleSection(event.currentTarget.id);
-  }, [ toggleSection ]);
-
-  const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
-    const { key } = event;
-
-    if(key === 'ArrowUp') {
-      event.preventDefault();
-      focusPrevHeader(event);
-    }
-    else if(key === 'ArrowDown') {
-      event.preventDefault();
-      focusNextHeader(event);
-    }
-    else if(key === 'Home') {
-      event.preventDefault();
-      focusFirstHeader();
-    }
-    else if(key === 'End') {
-      event.preventDefault();
-      focusLastHeader();
-    }
-  }, [
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-  ]);
 
   return (
     <BaseAccordionHeader

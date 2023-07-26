@@ -9,7 +9,7 @@ import type { ControlledAccordionProps } from 'src/Accordion/types';
 import { accordionContextValuePropType } from 'src/Accordion/propTypes';
 
 function ControlledAccordion({
-  children,
+  children = null,
   contextValue,
 }: ControlledAccordionProps) {
   return (
