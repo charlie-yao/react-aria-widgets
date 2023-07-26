@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-//Contexts
-import AccordionContext from 'src/Accordion/AccordionContext';
+//Components
+import ControlledAccordion from 'src/Accordion/ControlledAccordion';
 
 //Hooks
 import useAccordion from 'src/Accordion/useAccordion';
@@ -21,27 +21,18 @@ function Accordion({
   onStateChange = undefined,
   onFocusChange = undefined,
 }: AccordionProps) {
-  const accordionProperties = useAccordion({
+  const accordionContextValue = useAccordion({
     allowMultiple,
     allowCollapseLast,
+    headerLevel,
     onStateChange,
     onFocusChange,
   });
 
-  const accordionContextValue = useMemo(() => {
-    return {
-      headerLevel,
-      ...accordionProperties,
-    };
-  }, [
-    headerLevel,
-    accordionProperties,
-  ]);
-
   return (
-    <AccordionContext.Provider value={ accordionContextValue }>
+    <ControlledAccordion contextValue={ accordionContextValue }>
       { children }
-    </AccordionContext.Provider>
+    </ControlledAccordion>
   );
 }
 

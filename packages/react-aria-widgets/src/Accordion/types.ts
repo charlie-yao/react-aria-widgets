@@ -32,6 +32,7 @@ export type OnFocusChange = (ref: HeaderRef, index: number) => void;
 export interface UseAccordion {
   allowMultiple: boolean;
   allowCollapseLast: boolean;
+  headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
@@ -77,6 +78,10 @@ export type AccordionProps = React.PropsWithChildren<{
   headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange;
   onFocusChange?: OnFocusChange;
+}>;
+
+export type ControlledAccordionProps = React.PropsWithChildren<{
+  contextValue: AccordionContextType;
 }>;
 
 export type AccordionSectionProps = React.PropsWithChildren<{
