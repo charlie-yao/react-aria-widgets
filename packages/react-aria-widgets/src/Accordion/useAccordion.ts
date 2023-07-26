@@ -14,6 +14,8 @@ import type {
   FocusNextHeader,
   FocusFirstHeader,
   FocusLastHeader,
+  HandleClick,
+  HandleKeyDown,
   OnStateChange,
 } from 'src/Accordion/types';
 
@@ -146,6 +148,46 @@ export default function useAccordion({
   const focusLastHeader: FocusLastHeader = useCallback(() => {
     focusHeader(headerRefs.current.length - 1);
   }, [ focusHeader ]);
+  
+  /**
+   * Click event handler for accordion header buttons. Handles basic expand/collapse
+   * behavior. Buttons could potentially be elements with role="button" instead of a
+   * <button>.
+   */
+  const handleClick: HandleClick = useCallback((event) => {
+    toggleSection(event.currentTarget.id);
+  }, [ toggleSection ]);
+  
+  /**
+   * Keyboard event handler for accordion header buttons. Handles basic focus management
+   * as described in the APG. Buttons could potentially be elements with role="button"
+   * instead of a <button>.
+   */
+  const handleKeyDown: HandleKeyDown = useCallback((event) => {
+    const { key } = event;
+
+    if(key === 'ArrowUp') {
+      event.preventDefault();
+      focusPrevHeader(event);
+    }
+    else if(key === 'ArrowDown') {
+      event.preventDefault();
+      focusNextHeader(event);
+    }
+    else if(key === 'Home') {
+      event.preventDefault();
+      focusFirstHeader();
+    }
+    else if(key === 'End') {
+      event.preventDefault();
+      focusLastHeader();
+    }
+  }, [
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+  ]);
 
   useEffect(() => {
     if(typeof onStateChangeRef.current !== 'function')
@@ -169,6 +211,8 @@ export default function useAccordion({
       focusNextHeader,
       focusFirstHeader,
       focusLastHeader,
+      handleClick,
+      handleKeyDown,
     };
   }, [
     allowMultiple,
@@ -183,5 +227,7 @@ export default function useAccordion({
     focusNextHeader,
     focusFirstHeader,
     focusLastHeader,
+    handleClick,
+    handleKeyDown,
   ]);
 }

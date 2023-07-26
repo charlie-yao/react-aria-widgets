@@ -28,6 +28,8 @@ export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
 export type OnStateChange = (expandedSections: ExpandedSections) => void;
 export type OnFocusChange = (ref: HeaderRef, index: number) => void;
+export type HandleClick = React.MouseEventHandler<HTMLElement>;
+export type HandleKeyDown = React.KeyboardEventHandler<HTMLElement>;
 
 export interface UseAccordion {
   allowMultiple: boolean;
@@ -50,6 +52,8 @@ export interface AccordionContextType {
   focusNextHeader: FocusNextHeader;
   focusFirstHeader: FocusFirstHeader;
   focusLastHeader: FocusLastHeader;
+  handleClick: HandleClick;
+  handleKeyDown: HandleKeyDown;
 }
 
 export type AccordionSectionContextType = string;
