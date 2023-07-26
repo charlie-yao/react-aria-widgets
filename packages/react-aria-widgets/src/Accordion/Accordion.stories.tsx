@@ -157,8 +157,8 @@ export const WithClickCallback: Story = {
 export const WithKeyDownCallback: Story = {
   args: {
     onKeyDown: (event) => {
-     //eslint-disable-next-line no-console
-     console.log(event);
+      //eslint-disable-next-line no-console
+      console.log(event);
     },
   },
 };
