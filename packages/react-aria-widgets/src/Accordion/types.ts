@@ -32,6 +32,7 @@ export type OnFocusChange = (ref: HeaderRef, index: number) => void;
 export interface UseAccordion {
   allowMultiple: boolean;
   allowCollapseLast: boolean;
+  headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }

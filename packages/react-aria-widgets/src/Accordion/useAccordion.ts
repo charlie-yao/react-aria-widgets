@@ -28,6 +28,7 @@ function _getIsDisabled(expandedSections: Set<string>, id: string, allowCollapse
 export default function useAccordion({
   allowMultiple,
   allowCollapseLast,
+  headerLevel,
   onStateChange,
   onFocusChange,
 }: UseAccordion) {
@@ -158,6 +159,7 @@ export default function useAccordion({
     return {
       allowMultiple,
       allowCollapseLast,
+      headerLevel,
       getIsExpanded,
       getIsDisabled,
       toggleSection,
@@ -171,6 +173,7 @@ export default function useAccordion({
   }, [
     allowMultiple,
     allowCollapseLast,
+    headerLevel,
     getIsExpanded,
     getIsDisabled,
     toggleSection,

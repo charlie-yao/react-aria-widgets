@@ -21,22 +21,13 @@ function Accordion({
   onStateChange = undefined,
   onFocusChange = undefined,
 }: AccordionProps) {
-  const accordionProperties = useAccordion({
+  const accordionContextValue = useAccordion({
     allowMultiple,
     allowCollapseLast,
+    headerLevel,
     onStateChange,
     onFocusChange,
   });
-
-  const accordionContextValue = useMemo(() => {
-    return {
-      headerLevel,
-      ...accordionProperties,
-    };
-  }, [
-    headerLevel,
-    accordionProperties,
-  ]);
 
   return (
     <AccordionProvider value={ accordionContextValue }>
