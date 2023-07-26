@@ -26,10 +26,12 @@ export type FocusPrevHeader = (event: React.KeyboardEvent<HTMLButtonElement | HT
 export type FocusNextHeader = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
-export type OnStateChange = (expandedSections: ExpandedSections) => void;
-export type OnFocusChange = (ref: HeaderRef, index: number) => void;
 export type HandleClick = React.MouseEventHandler<HTMLElement>;
 export type HandleKeyDown = React.KeyboardEventHandler<HTMLElement>;
+export type OnStateChange = (expandedSections: ExpandedSections) => void;
+export type OnFocusChange = (ref: HeaderRef, index: number) => void;
+export type OnClick = (event: React.MouseEvent<HTMLElement>) => void;
+export type OnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => void;
 
 export interface UseAccordion {
   allowMultiple: boolean;
@@ -37,6 +39,8 @@ export interface UseAccordion {
   headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange | undefined;
   onFocusChange?: OnFocusChange | undefined;
+  onClick?: OnClick | undefined;
+  onKeyDown?: OnKeyDown | undefined;
 }
 
 export interface AccordionContextType {
@@ -82,6 +86,8 @@ export type AccordionProps = React.PropsWithChildren<{
   headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange;
   onFocusChange?: OnFocusChange;
+  onClick?: OnClick;
+  onKeyDown?: OnKeyDown;
 }>;
 
 export type ControlledAccordionProps = React.PropsWithChildren<{

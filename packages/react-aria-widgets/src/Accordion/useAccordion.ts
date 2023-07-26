@@ -33,6 +33,8 @@ export default function useAccordion({
   headerLevel,
   onStateChange,
   onFocusChange,
+  onClick,
+  onKeyDown,
 }: UseAccordion) {
   const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
@@ -156,7 +158,10 @@ export default function useAccordion({
    */
   const handleClick: HandleClick = useCallback((event) => {
     toggleSection(event.currentTarget.id);
-  }, [ toggleSection ]);
+
+    if(typeof onClick === 'function')
+      onClick(event);
+  }, [ toggleSection, onClick ]);
 
   /**
    * Keyboard event handler for accordion header buttons. Handles basic focus management
@@ -182,11 +187,15 @@ export default function useAccordion({
       event.preventDefault();
       focusLastHeader();
     }
+
+    if(typeof onKeyDown === 'function')
+      onKeyDown(event);
   }, [
     focusPrevHeader,
     focusNextHeader,
     focusFirstHeader,
     focusLastHeader,
+    onKeyDown,
   ]);
 
   useEffect(() => {

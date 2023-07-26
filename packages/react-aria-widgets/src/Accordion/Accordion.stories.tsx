@@ -145,4 +145,22 @@ export const WithFocusChangeCallback: Story = {
   },
 };
 
+export const WithClickCallback: Story = {
+  args: {
+    onClick: (event) => {
+      //eslint-disable-next-line no-console
+      console.log(event);
+    },
+  },
+};
+
+export const WithKeyDownCallback: Story = {
+  args: {
+    onKeyDown: (event) => {
+     //eslint-disable-next-line no-console
+     console.log(event);
+    },
+  },
+};
+
 export default meta;
