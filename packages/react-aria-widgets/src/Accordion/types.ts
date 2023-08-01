@@ -60,7 +60,11 @@ export interface AccordionContextType {
   handleKeyDown: HandleKeyDown;
 }
 
-export type AccordionSectionContextType = string;
+export interface AccordionSectionContextType {
+  id: string;
+  headerHTMLId: string;
+  panelHTMLId: string;
+}
 
 export type AccordionHeaderHeader = Omit<
   React.HTMLAttributes<HTMLHeadingElement>,
@@ -95,7 +99,7 @@ export type ControlledAccordionProps = React.PropsWithChildren<{
 }>;
 
 export type AccordionSectionProps = React.PropsWithChildren<{
-  id?: string;
+  id: string;
 }>;
 
 export type AccordionHeaderProps = React.PropsWithChildren<{

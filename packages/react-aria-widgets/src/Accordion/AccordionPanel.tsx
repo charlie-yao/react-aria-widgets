@@ -14,7 +14,7 @@ import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext
 import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
 
 //Misc.
-import { getPanelId, VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT>({
   children,
@@ -23,15 +23,15 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
   ...rest
 }: AccordionPanelProps<C>) {
   const { getIsExpanded } = useAccordionContext();
-  const id = useAccordionSectionContext();
+  const { id, headerHTMLId, panelHTMLId } = useAccordionSectionContext();
   const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
   const isExpanded = getIsExpanded(id);
 
   return (
     <BaseAccordionPanel<typeof Component>
       { ...rest }
-      id={ getPanelId(id) }
-      labelId={ id }
+      id={ panelHTMLId }
+      labelId={ headerHTMLId }
       className={ `${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
       as={ Component }
     >

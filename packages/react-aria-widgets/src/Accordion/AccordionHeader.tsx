@@ -11,9 +11,6 @@ import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext
 //Types
 import type { AccordionHeaderProps } from 'src/Accordion/types';
 
-//Misc.
-import { getPanelId } from 'src/Accordion/utils';
-
 function AccordionHeader({
   children = null,
   headerProps = {},
@@ -27,14 +24,14 @@ function AccordionHeader({
     handleClick,
     handleKeyDown,
   } = useAccordionContext();
-  const id = useAccordionSectionContext();
+  const { id, headerHTMLId, panelHTMLId } = useAccordionSectionContext();
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
   return (
     <BaseAccordionHeader
-      id={ id }
-      controlsId={ getPanelId(id) }
+      id={ headerHTMLId }
+      controlsId={ panelHTMLId }
       headerLevel={ headerLevel }
       onClick={ handleClick }
       onKeyDown={ handleKeyDown }

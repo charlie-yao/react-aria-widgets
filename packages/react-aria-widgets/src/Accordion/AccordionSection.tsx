@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React, { useId, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
@@ -9,13 +9,22 @@ import type { AccordionSectionProps } from 'src/Accordion/types';
 
 function AccordionSection({
   children = null,
-  id: idProp = undefined,
+  id,
 }: AccordionSectionProps) {
-  const reactGeneratedId = useId();
-  const id = idProp ? idProp : reactGeneratedId;
+  const reactId = useId();
+  const headerHTMLId = `${reactId}-react-aria-widgets-accordion-header-${id}`;
+  const panelHTMLId = `${reactId}-react-aria-widgets-accordion-panel-${id}`;
+
+  const contextValue = useMemo(() => {
+    return {
+      id,
+      headerHTMLId,
+      panelHTMLId,
+    };
+  }, [ id, reactId ]);
 
   return (
-    <AccordionSectionProvider value={ id }>
+    <AccordionSectionProvider value={ contextValue }>
       { children }
     </AccordionSectionProvider>
   );
@@ -23,7 +32,7 @@ function AccordionSection({
 
 AccordionSection.propTypes = {
   children: PropTypes.node,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
 };
 
 export default AccordionSection;
