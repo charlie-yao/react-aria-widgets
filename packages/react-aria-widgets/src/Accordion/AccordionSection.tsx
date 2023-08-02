@@ -21,7 +21,11 @@ function AccordionSection({
       headerHTMLId,
       panelHTMLId,
     };
-  }, [ id, reactId ]);
+  }, [
+    id,
+    headerHTMLId,
+    panelHTMLId,
+  ]);
 
   return (
     <AccordionSectionProvider value={ contextValue }>

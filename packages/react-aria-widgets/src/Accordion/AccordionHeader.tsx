@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
@@ -20,13 +20,51 @@ function AccordionHeader({
     headerLevel,
     getIsExpanded,
     getIsDisabled,
+    toggleSection,
     pushHeaderRef,
-    handleClick,
-    handleKeyDown,
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
   } = useAccordionContext();
   const { id, headerHTMLId, panelHTMLId } = useAccordionSectionContext();
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
+
+  const refCallback = useCallback((ref: HTMLButtonElement | null) => {
+    pushHeaderRef(ref, id);
+  }, [ id, pushHeaderRef ]);
+
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(() => {
+    toggleSection(id);
+  }, [ toggleSection, id ]);
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
+    const { key } = event;
+
+    if(key === 'ArrowUp') {
+      event.preventDefault();
+      focusPrevHeader(id);
+    }
+    else if(key === 'ArrowDown') {
+      event.preventDefault();
+      focusNextHeader(id);
+    }
+    else if(key === 'Home') {
+      event.preventDefault();
+      focusFirstHeader();
+    }
+    else if(key === 'End') {
+      event.preventDefault();
+      focusLastHeader();
+    }
+  }, [
+    focusPrevHeader,
+    focusNextHeader,
+    focusFirstHeader,
+    focusLastHeader,
+    id,
+  ]);
 
   return (
     <BaseAccordionHeader
@@ -39,7 +77,7 @@ function AccordionHeader({
       isDisabled={ isDisabled }
       headerProps={ headerProps }
       buttonProps={ buttonProps }
-      ref={ pushHeaderRef }
+      ref={ refCallback }
     >
       { children }
     </BaseAccordionHeader>

@@ -21,7 +21,7 @@ const meta = {
 
     return (
       <Accordion { ...args }>
-        <AccordionSection>
+        <AccordionSection id="section1">
           <AccordionHeader>
             Basic Section
           </AccordionHeader>
@@ -29,7 +29,7 @@ const meta = {
             Hello world!
           </AccordionPanel>
         </AccordionSection>
-        <AccordionSection>
+        <AccordionSection id="section2">
           <AccordionHeader>
             Section With Interactive Elements
           </AccordionHeader>
@@ -45,13 +45,13 @@ const meta = {
             </form>
           </AccordionPanel>
         </AccordionSection>
-        <AccordionSection>
+        <AccordionSection id="section3">
           <AccordionHeader>
             Section With Nested Accordion
           </AccordionHeader>
           <AccordionPanel>
             <Accordion headerLevel={ 2 }>
-              <AccordionSection>
+              <AccordionSection id="nested-section1">
                 <AccordionHeader>
                   Basic Section
                 </AccordionHeader>
@@ -59,7 +59,7 @@ const meta = {
                   Hello world!
                 </AccordionPanel>
               </AccordionSection>
-              <AccordionSection>
+              <AccordionSection id="nested-section2">
                 <AccordionHeader>
                   Section With Interactive Elements
                 </AccordionHeader>
@@ -76,22 +76,6 @@ const meta = {
                 </AccordionPanel>
               </AccordionSection>
             </Accordion>
-          </AccordionPanel>
-        </AccordionSection>
-        <AccordionSection id="manually-entered-id">
-          <AccordionHeader>
-            Section With Manual ID
-          </AccordionHeader>
-          <AccordionPanel>
-            The IDs for accessibility attributes in this section are coming from the
-            { ' ' }
-            <code>id</code>
-            { ' ' }
-            prop, not React&apos;s
-            { ' ' }
-            <code>useId</code>
-            { ' ' }
-            hook.
           </AccordionPanel>
         </AccordionSection>
       </Accordion>
@@ -138,27 +122,9 @@ export const WithStateChangeCallback: Story = {
 
 export const WithFocusChangeCallback: Story = {
   args: {
-    onFocusChange: (ref, index) => {
+    onFocusChange: ({ elem, index, id }) => {
       //eslint-disable-next-line no-console
-      console.log(ref, index);
-    },
-  },
-};
-
-export const WithClickCallback: Story = {
-  args: {
-    onClick: (event) => {
-      //eslint-disable-next-line no-console
-      console.log(event);
-    },
-  },
-};
-
-export const WithKeyDownCallback: Story = {
-  args: {
-    onKeyDown: (event) => {
-      //eslint-disable-next-line no-console
-      console.log(event);
+      console.log(elem, index, id);
     },
   },
 };

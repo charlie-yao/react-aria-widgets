@@ -9,13 +9,12 @@ import type {
   GetIsDisabled,
   ToggleSection,
   PushHeaderRef,
-  FocusHeader,
+  FocusHeaderIndex,
+  FocusHeaderId,
   FocusPrevHeader,
   FocusNextHeader,
   FocusFirstHeader,
   FocusLastHeader,
-  HandleClick,
-  HandleKeyDown,
   OnStateChange,
 } from 'src/Accordion/types';
 
@@ -33,12 +32,10 @@ export default function useAccordion({
   headerLevel,
   onStateChange,
   onFocusChange,
-  onClick,
-  onKeyDown,
 }: UseAccordion) {
   const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
-  const headerRefIndexMap = useRef<Map<HeaderRef, number>>(new Map());
+  const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onStateChangeRef = useRef<OnStateChange | null | undefined>(null);
 
   /**
@@ -89,120 +86,84 @@ export default function useAccordion({
   ]);
 
   /**
-   * Ref callback that pushes an accordion header button to headerRefs.
+   * Ref callback that tracks the accordion header buttons and their IDs.
    */
-  const pushHeaderRef: PushHeaderRef = useCallback((ref) => {
-    headerRefs.current.push(ref);
-    headerRefIndexMap.current.set(ref, headerRefs.current.length - 1);
+  const pushHeaderRef: PushHeaderRef = useCallback((elem, id) => {
+    headerRefs.current.push({ elem, id });
+    idToIndexMap.current.set(id, headerRefs.current.length - 1);
   }, []);
 
   /**
-   * Sets focus to an arbitrary accordion header button.
+   * Focuses an arbitrary accordion header button based on its index.
    */
-  const focusHeader: FocusHeader = useCallback((index) => {
-    const ref = headerRefs.current[index];
+  const focusHeaderIndex: FocusHeaderIndex = useCallback((index) => {
+    const { elem, id } = headerRefs.current[index];
 
-    if(!ref)
+    if(!elem)
       return;
 
-    ref.focus();
+    elem.focus();
 
     if(typeof onFocusChange === 'function')
-      onFocusChange(ref, index);
+      onFocusChange({ elem, index, id });
   }, [ onFocusChange ]);
 
   /**
-   * Sets focus on the previous accordion header button (relative to index).
-   * Will "wrap" around the array if the boundary is reached.
+   * Focuses an arbitrary accordion header button based on its ID.
    */
-  const focusPrevHeader: FocusPrevHeader = useCallback((event) => {
-    const index = headerRefIndexMap.current.get(event.currentTarget);
+  const focusHeaderId: FocusHeaderId = useCallback((id) => {
+    const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
       return;
 
-    focusHeader(index === 0 ? headerRefs.current.length - 1 : index - 1);
-  }, [ focusHeader ]);
+    focusHeaderIndex(index);
+  }, [ focusHeaderIndex ]);
 
   /**
-   * Sets focus on the next accordion header button (relative to index).
-   * Will "wrap" around the array if the boundary is reached.
+   * Focuses the accordion header button located behind <code>id</code>.
+   * Will "wrap" around the accordion if the boundary is reached.
    */
-  const focusNextHeader: FocusNextHeader = useCallback((event) => {
-    const index = headerRefIndexMap.current.get(event.currentTarget);
+  const focusPrevHeader: FocusPrevHeader = useCallback((id) => {
+    const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
       return;
 
-    focusHeader(index === headerRefs.current.length - 1 ? 0 : index + 1);
-  }, [ focusHeader ]);
+    focusHeaderIndex(index === 0 ? headerRefs.current.length - 1 : index - 1);
+  }, [ focusHeaderIndex ]);
+
+  /**
+   * Focuses the accordion header button located in front of <code>id<code>.
+   * Will "wrap" around the accordion if the boundary is reached.
+   */
+  const focusNextHeader: FocusNextHeader = useCallback((id) => {
+    const index = idToIndexMap.current.get(id);
+
+    if(index === undefined)
+      return;
+
+    focusHeaderIndex(index === headerRefs.current.length - 1 ? 0 : index + 1);
+  }, [ focusHeaderIndex ]);
 
   /**
    * Sets focus on the first accordion header button.
    */
   const focusFirstHeader: FocusFirstHeader = useCallback(() => {
-    focusHeader(0);
-  }, [ focusHeader ]);
+    focusHeaderIndex(0);
+  }, [ focusHeaderIndex ]);
 
   /**
    * Sets focus on the last accordion header button.
    */
   const focusLastHeader: FocusLastHeader = useCallback(() => {
-    focusHeader(headerRefs.current.length - 1);
-  }, [ focusHeader ]);
-
-  /**
-   * Click event handler for accordion header buttons. Handles basic expand/collapse
-   * behavior. Buttons could potentially be elements with role="button" instead of a
-   * <button>.
-   */
-  const handleClick: HandleClick = useCallback((event) => {
-    toggleSection(event.currentTarget.id);
-
-    if(typeof onClick === 'function')
-      onClick(event);
-  }, [ toggleSection, onClick ]);
-
-  /**
-   * Keyboard event handler for accordion header buttons. Handles basic focus management
-   * as described in the APG. Buttons could potentially be elements with role="button"
-   * instead of a <button>.
-   */
-  const handleKeyDown: HandleKeyDown = useCallback((event) => {
-    const { key } = event;
-
-    if(key === 'ArrowUp') {
-      event.preventDefault();
-      focusPrevHeader(event);
-    }
-    else if(key === 'ArrowDown') {
-      event.preventDefault();
-      focusNextHeader(event);
-    }
-    else if(key === 'Home') {
-      event.preventDefault();
-      focusFirstHeader();
-    }
-    else if(key === 'End') {
-      event.preventDefault();
-      focusLastHeader();
-    }
-
-    if(typeof onKeyDown === 'function')
-      onKeyDown(event);
-  }, [
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
-    onKeyDown,
-  ]);
+    focusHeaderIndex(headerRefs.current.length - 1);
+  }, [ focusHeaderIndex ]);
 
   useEffect(() => {
-    if(typeof onStateChangeRef.current !== 'function')
-      return;
+    if(typeof onStateChangeRef.current === 'function')
+      onStateChangeRef.current(expandedSections);
 
-    onStateChangeRef.current(expandedSections);
     onStateChangeRef.current = null;
   }, [ expandedSections ]);
 
@@ -215,13 +176,12 @@ export default function useAccordion({
       getIsDisabled,
       toggleSection,
       pushHeaderRef,
-      focusHeader,
+      focusHeaderIndex,
+      focusHeaderId,
       focusPrevHeader,
       focusNextHeader,
       focusFirstHeader,
       focusLastHeader,
-      handleClick,
-      handleKeyDown,
     };
   }, [
     allowMultiple,
@@ -231,12 +191,11 @@ export default function useAccordion({
     getIsDisabled,
     toggleSection,
     pushHeaderRef,
-    focusHeader,
+    focusHeaderIndex,
+    focusHeaderId,
     focusPrevHeader,
     focusNextHeader,
     focusFirstHeader,
     focusLastHeader,
-    handleClick,
-    handleKeyDown,
   ]);
 }

@@ -13,25 +13,27 @@ import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/
 
 export type ExpandedSections = Set<string>;
 
-export type HeaderRef = HTMLButtonElement | HTMLElement | null;
+export type HeaderElement = HTMLButtonElement | HTMLElement | null;
 
 export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
+
+export interface HeaderRef {
+  elem: HeaderElement;
+  id: string;
+}
 
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
 export type ToggleSection = (id: string) => void;
-export type PushHeaderRef = (ref: HeaderRef) => void;
-export type FocusHeader = (index: number) => void;
-export type FocusPrevHeader = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
-export type FocusNextHeader = (event: React.KeyboardEvent<HTMLButtonElement | HTMLElement>) => void;
+export type PushHeaderRef = (elem: HeaderElement, id: string) => void;
+export type FocusHeaderIndex = (index: number) => void;
+export type FocusHeaderId = (id: string) => void;
+export type FocusPrevHeader = (id: string) => void;
+export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
-export type HandleClick = React.MouseEventHandler<HTMLElement>;
-export type HandleKeyDown = React.KeyboardEventHandler<HTMLElement>;
 export type OnStateChange = (expandedSections: ExpandedSections) => void;
-export type OnFocusChange = (ref: HeaderRef, index: number) => void;
-export type OnClick = (event: React.MouseEvent<HTMLElement>) => void;
-export type OnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => void;
+export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
   allowMultiple: boolean;
@@ -39,8 +41,6 @@ export interface UseAccordion {
   headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange | undefined;
   onFocusChange?: OnFocusChange | undefined;
-  onClick?: OnClick | undefined;
-  onKeyDown?: OnKeyDown | undefined;
 }
 
 export interface AccordionContextType {
@@ -51,13 +51,12 @@ export interface AccordionContextType {
   getIsDisabled: GetIsDisabled;
   toggleSection: ToggleSection;
   pushHeaderRef: PushHeaderRef;
-  focusHeader: FocusHeader;
+  focusHeaderIndex: FocusHeaderIndex;
+  focusHeaderId: FocusHeaderId;
   focusPrevHeader: FocusPrevHeader;
   focusNextHeader: FocusNextHeader;
   focusFirstHeader: FocusFirstHeader;
   focusLastHeader: FocusLastHeader;
-  handleClick: HandleClick;
-  handleKeyDown: HandleKeyDown;
 }
 
 export interface AccordionSectionContextType {
@@ -90,8 +89,6 @@ export type AccordionProps = React.PropsWithChildren<{
   headerLevel: ValidHTMLHeaderLevels;
   onStateChange?: OnStateChange;
   onFocusChange?: OnFocusChange;
-  onClick?: OnClick;
-  onKeyDown?: OnKeyDown;
 }>;
 
 export type ControlledAccordionProps = React.PropsWithChildren<{
