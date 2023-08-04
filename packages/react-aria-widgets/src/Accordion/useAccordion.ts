@@ -17,7 +17,7 @@ import type {
   FocusNextHeader,
   FocusFirstHeader,
   FocusLastHeader,
-  OnStateChange,
+  OnToggleVisible,
 } from 'src/Accordion/types';
 
 function _getIsExpanded(id: string, expandedSections: Set<string>) {
@@ -36,14 +36,14 @@ export default function useAccordion({
   allowMultiple = true,
   allowCollapseLast = true,
   headerLevel,
-  onStateChange,
+  onToggleVisible,
   onFocusChange,
 }: UseAccordion) {
   const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
   const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
-  const onStateChangeRef = useRef<OnStateChange | null | undefined>(null);
+  const onToggleVisibleRef = useRef<OnToggleVisible | null | undefined>(null);
 
   /**
    * Returns a boolean that lets us know if a particular accordion section is
@@ -70,14 +70,14 @@ export default function useAccordion({
    * and <code>allowCollapseLast</code>.
    */
   const toggleVisible: ToggleVisible = useCallback((id) => {
-    onStateChangeRef.current = onStateChange;
-
     setExpandedSections((expandedSections) => {
       const isExpanded = _getIsExpanded(id, expandedSections);
       const isDisabled = _getIsDisabled(id, expandedSections, disabledSections, allowCollapseLast);
 
       if(isDisabled)
         return expandedSections;
+
+      onToggleVisibleRef.current = onToggleVisible;
 
       if(isExpanded)
         expandedSections.delete(id);
@@ -93,7 +93,7 @@ export default function useAccordion({
   }, [
     allowMultiple,
     allowCollapseLast,
-    onStateChange,
+    onToggleVisible,
     disabledSections,
   ]);
 
@@ -187,10 +187,10 @@ export default function useAccordion({
   }, [ focusHeaderIndex ]);
 
   useEffect(() => {
-    if(typeof onStateChangeRef.current === 'function')
-      onStateChangeRef.current(expandedSections);
+    if(typeof onToggleVisibleRef.current === 'function')
+      onToggleVisibleRef.current(expandedSections);
 
-    onStateChangeRef.current = null;
+    onToggleVisibleRef.current = null;
   }, [ expandedSections ]);
 
   return useMemo(() => {

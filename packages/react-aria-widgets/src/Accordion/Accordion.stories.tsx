@@ -115,9 +115,9 @@ export const NoMultipleNoCollapseLast: Story = {
   },
 };
 
-export const WithStateChangeCallback: Story = {
+export const WithToggleVisibleCallback: Story = {
   args: {
-    onStateChange: (expandedSections) => {
+    onToggleVisible: (expandedSections) => {
       //eslint-disable-next-line no-console
       console.log(expandedSections);
     },

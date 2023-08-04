@@ -34,14 +34,14 @@ export type FocusPrevHeader = (id: string) => void;
 export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
-export type OnStateChange = (expandedSections: ExpandedSections) => void;
+export type OnToggleVisible = (expandedSections: ExpandedSections) => void;
 export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  onStateChange?: OnStateChange | undefined;
+  onToggleVisible?: OnToggleVisible | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
 
@@ -90,7 +90,7 @@ export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  onStateChange?: OnStateChange;
+  onToggleVisible?: OnToggleVisible;
   onFocusChange?: OnFocusChange;
 }>;
 
