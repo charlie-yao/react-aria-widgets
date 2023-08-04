@@ -33,8 +33,8 @@ function _getIsDisabled(id: string, expandedSections: Set<string>, disabledSecti
 }
 
 export default function useAccordion({
-  allowMultiple,
-  allowCollapseLast,
+  allowMultiple = true,
+  allowCollapseLast = true,
   headerLevel,
   onStateChange,
   onFocusChange,
