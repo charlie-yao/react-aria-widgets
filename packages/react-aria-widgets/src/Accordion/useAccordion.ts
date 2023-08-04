@@ -20,12 +20,16 @@ import type {
   OnStateChange,
 } from 'src/Accordion/types';
 
-function _getIsExpanded(expandedSections: Set<string>, id: string) {
+function _getIsExpanded(id: string, expandedSections: Set<string>) {
   return expandedSections.has(id);
 }
 
-function _getIsDisabled(expandedSections: Set<string>, id: string, allowCollapseLast: boolean) {
-  return expandedSections.size === 1 && _getIsExpanded(expandedSections, id) && !allowCollapseLast;
+function _getIsDisabled(id: string, expandedSections: Set<string>, disabledSections: Set<string>, allowCollapseLast: boolean) {
+  const preventCollapseLast = expandedSections.size === 1
+    && _getIsExpanded(id, expandedSections)
+    && !allowCollapseLast;
+
+  return disabledSections.has(id) || preventCollapseLast;
 }
 
 export default function useAccordion({
@@ -46,7 +50,7 @@ export default function useAccordion({
    * expanded or collapsed.
    */
   const getIsExpanded: GetIsExpanded = useCallback((id) => {
-    return _getIsExpanded(expandedSections, id);
+    return _getIsExpanded(id, expandedSections);
   }, [ expandedSections ]);
 
   /**
@@ -54,8 +58,12 @@ export default function useAccordion({
    * can't be collapsed due to <code>allowCollapseLast</code>.
    */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
-    return _getIsDisabled(expandedSections, id, allowCollapseLast);
-  }, [ expandedSections, allowCollapseLast ]);
+    return _getIsDisabled(id, expandedSections, disabledSections, allowCollapseLast);
+  }, [
+    expandedSections,
+    disabledSections,
+    allowCollapseLast,
+  ]);
 
   /**
    * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
@@ -65,8 +73,8 @@ export default function useAccordion({
     onStateChangeRef.current = onStateChange;
 
     setExpandedSections((expandedSections) => {
-      const isExpanded = _getIsExpanded(expandedSections, id);
-      const isDisabled = _getIsDisabled(expandedSections, id, allowCollapseLast);
+      const isExpanded = _getIsExpanded(id, expandedSections);
+      const isDisabled = _getIsDisabled(id, expandedSections, disabledSections, allowCollapseLast);
 
       if(isDisabled)
         return expandedSections;
@@ -86,6 +94,7 @@ export default function useAccordion({
     allowMultiple,
     allowCollapseLast,
     onStateChange,
+    disabledSections,
   ]);
 
   /**

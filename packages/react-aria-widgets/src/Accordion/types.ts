@@ -12,7 +12,7 @@ import type {
 import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type ExpandedSections = Set<string>;
-export type DisabledSections = Set<String>;
+export type DisabledSections = Set<string>;
 
 export type HeaderElement = HTMLButtonElement | HTMLElement | null;
 
