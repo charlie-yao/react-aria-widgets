@@ -12,6 +12,7 @@ import type {
 import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type ExpandedSections = Set<string>;
+export type DisabledSections = Set<String>;
 
 export type HeaderElement = HTMLButtonElement | HTMLElement | null;
 
@@ -25,6 +26,7 @@ export interface HeaderRef {
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
 export type ToggleVisible = (id: string) => void;
+export type ToggleUsable = (id: string) => void;
 export type PushHeaderRef = (elem: HeaderElement, id: string) => void;
 export type FocusHeaderIndex = (index: number) => void;
 export type FocusHeaderId = (id: string) => void;

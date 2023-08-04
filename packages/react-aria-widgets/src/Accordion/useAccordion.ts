@@ -4,10 +4,12 @@ import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 import type {
   UseAccordion,
   ExpandedSections,
+  DisabledSections,
   HeaderRef,
   GetIsExpanded,
   GetIsDisabled,
   ToggleVisible,
+  ToggleUsable,
   PushHeaderRef,
   FocusHeaderIndex,
   FocusHeaderId,
@@ -34,6 +36,7 @@ export default function useAccordion({
   onFocusChange,
 }: UseAccordion) {
   const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
+  const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(new Set<string>());
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onStateChangeRef = useRef<OnStateChange | null | undefined>(null);
@@ -84,6 +87,20 @@ export default function useAccordion({
     allowCollapseLast,
     onStateChange,
   ]);
+
+  /**
+   * Allows/prevents an accordion header button from being expanded/collapsed.
+   */
+  const toggleUsable: ToggleUsable = useCallback((id) => {
+    setDisabledSections((disabledSections) => {
+      if(disabledSections.has(id))
+        disabledSections.delete(id);
+      else
+        disabledSections.add(id);
+
+      return new Set(disabledSections);
+    });
+  }, []);
 
   /**
    * Ref callback that tracks the accordion header buttons and their IDs.
