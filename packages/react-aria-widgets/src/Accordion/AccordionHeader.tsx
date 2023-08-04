@@ -20,7 +20,7 @@ function AccordionHeader({
     headerLevel,
     getIsExpanded,
     getIsDisabled,
-    toggleSection,
+    toggleVisible,
     pushHeaderRef,
     focusPrevHeader,
     focusNextHeader,
@@ -36,8 +36,8 @@ function AccordionHeader({
   }, [ id, pushHeaderRef ]);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(() => {
-    toggleSection(id);
-  }, [ toggleSection, id ]);
+    toggleVisible(id);
+  }, [ toggleVisible, id ]);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
     const { key } = event;

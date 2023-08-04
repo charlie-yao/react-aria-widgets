@@ -7,7 +7,7 @@ import type {
   HeaderRef,
   GetIsExpanded,
   GetIsDisabled,
-  ToggleSection,
+  ToggleVisible,
   PushHeaderRef,
   FocusHeaderIndex,
   FocusHeaderId,
@@ -58,7 +58,7 @@ export default function useAccordion({
    * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
    * and <code>allowCollapseLast</code>.
    */
-  const toggleSection: ToggleSection = useCallback((id) => {
+  const toggleVisible: ToggleVisible = useCallback((id) => {
     onStateChangeRef.current = onStateChange;
 
     setExpandedSections((expandedSections) => {
@@ -174,7 +174,7 @@ export default function useAccordion({
       headerLevel,
       getIsExpanded,
       getIsDisabled,
-      toggleSection,
+      toggleVisible,
       pushHeaderRef,
       focusHeaderIndex,
       focusHeaderId,
@@ -189,7 +189,7 @@ export default function useAccordion({
     headerLevel,
     getIsExpanded,
     getIsDisabled,
-    toggleSection,
+    toggleVisible,
     pushHeaderRef,
     focusHeaderIndex,
     focusHeaderId,

@@ -24,7 +24,7 @@ export interface HeaderRef {
 
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
-export type ToggleSection = (id: string) => void;
+export type ToggleVisible = (id: string) => void;
 export type PushHeaderRef = (elem: HeaderElement, id: string) => void;
 export type FocusHeaderIndex = (index: number) => void;
 export type FocusHeaderId = (id: string) => void;
@@ -49,7 +49,7 @@ export interface AccordionContextType {
   headerLevel: ValidHTMLHeaderLevels;
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
-  toggleSection: ToggleSection;
+  toggleVisible: ToggleVisible;
   pushHeaderRef: PushHeaderRef;
   focusHeaderIndex: FocusHeaderIndex;
   focusHeaderId: FocusHeaderId;
