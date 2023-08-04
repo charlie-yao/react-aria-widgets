@@ -52,6 +52,7 @@ export interface AccordionContextType {
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
   toggleVisible: ToggleVisible;
+  toggleUsable: ToggleUsable;
   pushHeaderRef: PushHeaderRef;
   focusHeaderIndex: FocusHeaderIndex;
   focusHeaderId: FocusHeaderId;
