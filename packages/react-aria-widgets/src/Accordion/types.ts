@@ -25,6 +25,42 @@ export interface HeaderRef {
 
 export type AccordionRenderFunction = (args: AccordionContextType & AccordionItemContextType) => React.ReactElement;
 
+export interface AccordionRenderData {
+  allowMultiple: boolean;
+  allowCollapseLast: boolean;
+  headerLevel: ValidHTMLHeaderLevels;
+  isExpanded: boolean;
+  isDisabled: boolean;
+}
+
+export type HeaderProps = {
+  className?: string | ((args: AccordionRenderData) => string);
+  style?: React.CSSProperties | ((args: AccordionRenderData) => React.CSSProperties);
+} & Omit<BaseHeaderProps, 'className' | 'style'>;
+
+export type BaseHeaderProps = Omit<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  'children' | 'dangerouslySetInnerHTML'
+>;
+
+export type ButtonProps = {
+  className?: string | ((args: AccordionRenderData) => string);
+  style?: React.CSSProperties | ((args: AccordionRenderData) => React.CSSProperties);
+} & Omit<BaseButtonProps, 'className' | 'style'>;
+
+export type BaseButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'children' |
+  'dangerouslySetInnerHTML' |
+  'type' |
+  'id' |
+  'aria-controls' |
+  'onClick' |
+  'onKeyDown' |
+  'aria-expanded' |
+  'aria-disabled'
+>;
+
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
 export type ToggleExpanded = (id: string) => void;
@@ -74,24 +110,6 @@ export interface AccordionItemContextType {
   panelHTMLId: string;
 }
 
-export type AccordionHeaderHeader = Omit<
-  React.HTMLAttributes<HTMLHeadingElement>,
-  'children' | 'dangerouslySetInnerHTML'
->;
-
-export type AccordionHeaderButton = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  'children' |
-  'dangerouslySetInnerHTML' |
-  'type' |
-  'id' |
-  'aria-controls' |
-  'onClick' |
-  'onKeyDown' |
-  'aria-expanded' |
-  'aria-disabled'
->;
-
 export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
@@ -113,8 +131,8 @@ export type AccordionItemProps = React.PropsWithChildren<{
 
 export interface AccordionHeaderProps {
   children?: React.ReactNode | AccordionRenderFunction;
-  headerProps?: AccordionHeaderHeader;
-  buttonProps?: AccordionHeaderButton;
+  headerProps?: HeaderProps;
+  buttonProps?: ButtonProps;
 }
 
 export interface InternalAccordionPanelProps {
@@ -135,8 +153,8 @@ export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
   isExpanded: boolean;
   isDisabled: boolean;
-  headerProps?: AccordionHeaderHeader;
-  buttonProps?: AccordionHeaderButton;
+  headerProps?: BaseHeaderProps;
+  buttonProps?: BaseButtonProps;
 }>;
 
 export interface InternalBaseAccordionPanelProps {
