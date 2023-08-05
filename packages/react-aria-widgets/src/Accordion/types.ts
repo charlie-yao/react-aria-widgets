@@ -11,8 +11,8 @@ import type {
 //Misc.
 import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
-export type ExpandedSections = Set<string>;
-export type DisabledSections = Set<string>;
+export type ExpandedItems = Set<string>;
+export type DisabledItems = Set<string>;
 
 export type HeaderElement = HTMLButtonElement | HTMLElement | null;
 
@@ -23,7 +23,7 @@ export interface HeaderRef {
   id: string;
 }
 
-export type AccordionRenderFunction = (args: AccordionContextType & AccordionSectionContextType) => React.ReactElement;
+export type AccordionRenderFunction = (args: AccordionContextType & AccordionItemContextType) => React.ReactElement;
 
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
@@ -36,8 +36,8 @@ export type FocusPrevHeader = (id: string) => void;
 export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
-export type OnToggleExpanded = (expandedSections: ExpandedSections) => void;
-export type OnToggleDisabled = (disabledSections: DisabledSections) => void;
+export type OnToggleExpanded = (expandedItems: ExpandedItems) => void;
+export type OnToggleDisabled = (disabledItems: DisabledItems) => void;
 export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
@@ -68,7 +68,7 @@ export interface AccordionContextType {
   focusLastHeader: FocusLastHeader;
 }
 
-export interface AccordionSectionContextType {
+export interface AccordionItemContextType {
   id: string;
   headerHTMLId: string;
   panelHTMLId: string;
@@ -107,7 +107,7 @@ export type ControlledAccordionProps = React.PropsWithChildren<{
   contextValue: AccordionContextType;
 }>;
 
-export type AccordionSectionProps = React.PropsWithChildren<{
+export type AccordionItemProps = React.PropsWithChildren<{
   id: string;
 }>;
 

@@ -8,7 +8,7 @@ import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
 
 //Hooks
 import useAccordionContext from 'src/Accordion/useAccordionContext';
-import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext';
+import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
 
 //Types
 import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
@@ -23,18 +23,18 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
   ...rest
 }: AccordionPanelProps<C>) {
   const accordionContext = useAccordionContext();
-  const accordionSectionContext = useAccordionSectionContext();
+  const accordionItemContext = useAccordionItemContext();
   const { getIsExpanded } = accordionContext;
-  const { id, headerHTMLId, panelHTMLId } = accordionSectionContext;
+  const { id, headerHTMLId, panelHTMLId } = accordionItemContext;
   const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
   const isExpanded = getIsExpanded(id);
 
   const combinedContext = useMemo(() => {
     return {
       ...accordionContext,
-      ...accordionSectionContext,
+      ...accordionItemContext,
     };
-  }, [ accordionContext, accordionSectionContext ]);
+  }, [ accordionContext, accordionItemContext ]);
 
   return (
     <BaseAccordionPanel<typeof Component>

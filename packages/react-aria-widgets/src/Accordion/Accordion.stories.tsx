@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 //Components
 import Accordion from 'src/Accordion/Accordion';
 import ControlledAccordion from 'src/Accordion/ControlledAccordion';
-import AccordionSection from 'src/Accordion/AccordionSection';
+import AccordionItem from 'src/Accordion/AccordionItem';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 import AccordionPanel from 'src/Accordion/AccordionPanel';
 
@@ -27,17 +27,17 @@ const meta = {
 
     return (
       <Accordion { ...args }>
-        <AccordionSection id="section1">
+        <AccordionItem id="item1">
           <AccordionHeader>
-            Basic Section
+            Basic Item
           </AccordionHeader>
           <AccordionPanel>
             Hello world!
           </AccordionPanel>
-        </AccordionSection>
-        <AccordionSection id="section2">
+        </AccordionItem>
+        <AccordionItem id="item2">
           <AccordionHeader>
-            Section With Interactive Elements
+            Item With Interactive Elements
           </AccordionHeader>
           <AccordionPanel>
             <form onSubmit={ handleSubmit }>
@@ -50,24 +50,24 @@ const meta = {
               </button>
             </form>
           </AccordionPanel>
-        </AccordionSection>
-        <AccordionSection id="section3">
+        </AccordionItem>
+        <AccordionItem id="item3">
           <AccordionHeader>
-            Section With Nested Accordion
+            Item With Nested Accordion
           </AccordionHeader>
           <AccordionPanel>
             <Accordion headerLevel={ 2 }>
-              <AccordionSection id="nested-section1">
+              <AccordionItem id="nested-item1">
                 <AccordionHeader>
-                  Basic Section
+                  Basic Item
                 </AccordionHeader>
                 <AccordionPanel>
                   Hello world!
                 </AccordionPanel>
-              </AccordionSection>
-              <AccordionSection id="nested-section2">
+              </AccordionItem>
+              <AccordionItem id="nested-item2">
                 <AccordionHeader>
-                  Section With Interactive Elements
+                  Item With Interactive Elements
                 </AccordionHeader>
                 <AccordionPanel>
                   <form onSubmit={ handleSubmit }>
@@ -80,10 +80,10 @@ const meta = {
                     </button>
                   </form>
                 </AccordionPanel>
-              </AccordionSection>
+              </AccordionItem>
             </Accordion>
           </AccordionPanel>
-        </AccordionSection>
+        </AccordionItem>
       </Accordion>
     );
   },
@@ -121,9 +121,9 @@ export const UseRenderFunctions: Story = {
   render: (args) => {
     return (
       <Accordion { ...args }>
-        <AccordionSection id="section1">
+        <AccordionItem id="item1">
           <AccordionHeader>
-            { ({ id }) => <div>Section ID: { id }</div> }
+            { ({ id }) => <div>Item ID: { id }</div> }
           </AccordionHeader>
           <AccordionPanel>
             { ({ allowMultiple, allowCollapseLast, id }) => (
@@ -134,7 +134,7 @@ export const UseRenderFunctions: Story = {
               </ul>
             ) }
           </AccordionPanel>
-        </AccordionSection>
+        </AccordionItem>
       </Accordion>
     );
   },
@@ -142,45 +142,45 @@ export const UseRenderFunctions: Story = {
 
 export const WithInitialExpanded: Story = {
   args: {
-    initialExpanded: [ 'section1', 'section3' ],
+    initialExpanded: [ 'item1', 'item3' ],
   },
 };
 
 export const WithInitialExpandedNoAllowMultiple: Story = {
   args: {
-    initialExpanded: [ 'section2', 'section3' ],
+    initialExpanded: [ 'item2', 'item3' ],
     allowMultiple: false,
   },
 };
 
 export const WithInitialDisabled: Story = {
   args: {
-    initialDisabled: [ 'section2', 'section3' ],
+    initialDisabled: [ 'item2', 'item3' ],
   },
 };
 
 export const WithToggleExpandedCallback: Story = {
   args: {
-    onToggleExpanded: (expandedSections) => {
+    onToggleExpanded: (expandedItems) => {
       //eslint-disable-next-line no-console
-      console.log(expandedSections);
+      console.log(expandedItems);
     },
   },
 };
 
 export const WithToggleDisabledCallback: Story = {
   args: {
-    onToggleDisabled: (disabledSections) => {
+    onToggleDisabled: (disabledItems) => {
       //eslint-disable-next-line no-console
-      console.log(disabledSections);
+      console.log(disabledItems);
     },
   },
   render: (args) => {
     return (
       <Accordion { ...args }>
-        <AccordionSection id="section1">
+        <AccordionItem id="item1">
           <AccordionHeader>
-            Section 1
+            Item 1
           </AccordionHeader>
           <AccordionPanel>
             { ({ toggleDisabled, getIsDisabled, id }) => {
@@ -195,7 +195,7 @@ export const WithToggleDisabledCallback: Story = {
               );
             } }
           </AccordionPanel>
-        </AccordionSection>
+        </AccordionItem>
       </Accordion>
     );
   },
@@ -231,37 +231,37 @@ export const Controlled: Story = {
     return (
       <>
         <form onSubmit={ handleSubmit }>
-          <button type="button" onClick={ handleToggleExpanded } value="section1">
-            Expand/Collapse section1
+          <button type="button" onClick={ handleToggleExpanded } value="item1">
+            Expand/Collapse item1
           </button>
-          <button type="button" onClick={ handleToggleExpanded } value="section2">
-            Expand/Collapse section2
+          <button type="button" onClick={ handleToggleExpanded } value="item2">
+            Expand/Collapse item2
           </button>
-          <button type="button" onClick={ handleToggleExpanded } value="section3">
-            Expand/Collapse section3
+          <button type="button" onClick={ handleToggleExpanded } value="item3">
+            Expand/Collapse item3
           </button>
-          <button type="button" onClick={ handleToggleDisabled } value="section1">
-            Enable/Disable section1
+          <button type="button" onClick={ handleToggleDisabled } value="item1">
+            Enable/Disable item1
           </button>
-          <button type="button" onClick={ handleToggleDisabled } value="section2">
-            Enable/Disable section2
+          <button type="button" onClick={ handleToggleDisabled } value="item2">
+            Enable/Disable item2
           </button>
-          <button type="button" onClick={ handleToggleDisabled } value="section3">
-            Enable/Disable section3
+          <button type="button" onClick={ handleToggleDisabled } value="item3">
+            Enable/Disable item3
           </button>
         </form>
         <ControlledAccordion contextValue={ contextValue }>
-          <AccordionSection id="section1">
+          <AccordionItem id="item1">
             <AccordionHeader>
-              Basic Section
+              Basic Item
             </AccordionHeader>
             <AccordionPanel>
               Hello world!
             </AccordionPanel>
-          </AccordionSection>
-          <AccordionSection id="section2">
+          </AccordionItem>
+          <AccordionItem id="item2">
             <AccordionHeader>
-              Section With Interactive Elements
+              Item With Interactive Elements
             </AccordionHeader>
             <AccordionPanel>
               <form onSubmit={ handleSubmit }>
@@ -274,24 +274,24 @@ export const Controlled: Story = {
                 </button>
               </form>
             </AccordionPanel>
-          </AccordionSection>
-          <AccordionSection id="section3">
+          </AccordionItem>
+          <AccordionItem id="item3">
             <AccordionHeader>
-              Section With Nested Accordion
+              Item With Nested Accordion
             </AccordionHeader>
             <AccordionPanel>
               <Accordion headerLevel={ 2 }>
-                <AccordionSection id="nested-section1">
+                <AccordionItem id="nested-item1">
                   <AccordionHeader>
-                    Basic Section
+                    Basic Item
                   </AccordionHeader>
                   <AccordionPanel>
                     Hello world!
                   </AccordionPanel>
-                </AccordionSection>
-                <AccordionSection id="nested-section2">
+                </AccordionItem>
+                <AccordionItem id="nested-item2">
                   <AccordionHeader>
-                    Section With Interactive Elements
+                    Item With Interactive Elements
                   </AccordionHeader>
                   <AccordionPanel>
                     <form onSubmit={ handleSubmit }>
@@ -304,10 +304,10 @@ export const Controlled: Story = {
                       </button>
                     </form>
                   </AccordionPanel>
-                </AccordionSection>
+                </AccordionItem>
               </Accordion>
             </AccordionPanel>
-          </AccordionSection>
+          </AccordionItem>
         </ControlledAccordion>
       </>
     );

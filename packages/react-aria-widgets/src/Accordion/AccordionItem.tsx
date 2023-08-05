@@ -2,15 +2,15 @@ import React, { useId, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
-import { AccordionSectionProvider } from 'src/Accordion/AccordionSectionContext';
+import { AccordionItemProvider } from 'src/Accordion/AccordionItemContext';
 
 //Types
-import type { AccordionSectionProps } from 'src/Accordion/types';
+import type { AccordionItemProps } from 'src/Accordion/types';
 
-function AccordionSection({
+function AccordionItem({
   children = null,
   id,
-}: AccordionSectionProps) {
+}: AccordionItemProps) {
   const reactId = useId();
   const headerHTMLId = `${reactId}-react-aria-widgets-accordion-header-${id}`;
   const panelHTMLId = `${reactId}-react-aria-widgets-accordion-panel-${id}`;
@@ -28,15 +28,15 @@ function AccordionSection({
   ]);
 
   return (
-    <AccordionSectionProvider value={ contextValue }>
+    <AccordionItemProvider value={ contextValue }>
       { children }
-    </AccordionSectionProvider>
+    </AccordionItemProvider>
   );
 }
 
-AccordionSection.propTypes = {
+AccordionItem.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string.isRequired,
 };
 
-export default AccordionSection;
+export default AccordionItem;
