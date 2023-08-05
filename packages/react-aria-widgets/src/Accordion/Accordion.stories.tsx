@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-bind */
+
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -121,16 +123,16 @@ export const UseRenderFunctions: Story = {
       <Accordion { ...args }>
         <AccordionSection id="section1">
           <AccordionHeader>
-              { ({ id }) => <div>Section ID: { id }</div> }
+            { ({ id }) => <div>Section ID: { id }</div> }
           </AccordionHeader>
           <AccordionPanel>
-              { ({ allowMultiple, allowCollapseLast, id }) => (
-                <ul>
-                  <li>allowMultple = { `${allowMultiple} ` }</li>
-                  <li>allowCollapseLast = { `${allowCollapseLast}` }</li>
-                  <li>id = { id }</li>
-                </ul>
-              ) }
+            { ({ allowMultiple, allowCollapseLast, id }) => (
+              <ul>
+                <li>allowMultple = { allowMultiple.toString() }</li>
+                <li>allowCollapseLast = { allowCollapseLast.toString() }</li>
+                <li>id = { id }</li>
+              </ul>
+            ) }
           </AccordionPanel>
         </AccordionSection>
       </Accordion>
@@ -164,11 +166,11 @@ export const WithToggleDisabledCallback: Story = {
           <AccordionPanel>
             { ({ toggleDisabled, getIsDisabled, id }) => {
               const isDisabled = getIsDisabled(id);
-              
+
               return (
                 <form>
-                  <button type="button" onClick={ () => { toggleDisabled(id) } }>
-                    { `${isDisabled ? 'Enable' : 'Disable'} ${id}` } 
+                  <button type="button" onClick={ () => { toggleDisabled(id); } }>
+                    { `${isDisabled ? 'Enable' : 'Disable'} ${id}` }
                   </button>
                 </form>
               );
@@ -191,20 +193,21 @@ export const WithFocusChangeCallback: Story = {
 
 export const Controlled: Story = {
   render: (args) => {
+    //eslint-disable-next-line react-hooks/rules-of-hooks
     const contextValue = useAccordion(args);
     const { toggleExpanded, toggleDisabled } = contextValue;
-    
+
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
       event.preventDefault();
     };
 
     const handleToggleExpanded: React.MouseEventHandler<HTMLButtonElement> = (event) => {
       toggleExpanded(event.currentTarget.value);
-    }
+    };
 
     const handleToggleDisabled: React.MouseEventHandler<HTMLButtonElement> = (event) => {
       toggleDisabled(event.currentTarget.value);
-    }
+    };
 
     return (
       <>

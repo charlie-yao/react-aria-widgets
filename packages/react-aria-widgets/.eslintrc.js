@@ -169,7 +169,7 @@ module.exports = {
     'block-spacing': 'off',
     '@typescript-eslint/block-spacing': 'error',
     'brace-style': 'off',
-    '@typescript-eslint/brace-style': [ 'error', 'stroustrup' ],
+    '@typescript-eslint/brace-style': [ 'error', 'stroustrup', { allowSingleLine: true } ],
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': [ 'error', {
       arrays: 'always-multiline',
@@ -299,9 +299,6 @@ module.exports = {
     'react/jsx-no-bind': [ 'warn' ],
     'react/jsx-no-useless-fragment': [ 'error', {
       allowExpressions: true
-    }],
-    'react/jsx-one-expression-per-line': [ 'error', {
-      allow: 'single-child',
     }],
     'react/jsx-pascal-case': [ 'error' ],
     'react/jsx-props-no-multi-spaces': [ 'error' ],
