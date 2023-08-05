@@ -3,8 +3,8 @@ import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 //Types
 import type {
   UseAccordion,
-  ExpandedSections,
-  DisabledSections,
+  ExpandedItems,
+  DisabledItems,
   HeaderRef,
   GetIsExpanded,
   GetIsDisabled,
@@ -21,16 +21,16 @@ import type {
   OnToggleDisabled,
 } from 'src/Accordion/types';
 
-function _getIsExpanded(id: string, expandedSections: Set<string>) {
-  return expandedSections.has(id);
+function _getIsExpanded(id: string, expandedItems: Set<string>) {
+  return expandedItems.has(id);
 }
 
-function _getIsDisabled(id: string, expandedSections: Set<string>, disabledSections: Set<string>, allowCollapseLast: boolean) {
-  const preventCollapseLast = expandedSections.size === 1
-    && _getIsExpanded(id, expandedSections)
+function _getIsDisabled(id: string, expandedItems: Set<string>, disabledItems: Set<string>, allowCollapseLast: boolean) {
+  const preventCollapseLast = expandedItems.size === 1
+    && _getIsExpanded(id, expandedItems)
     && !allowCollapseLast;
 
-  return disabledSections.has(id) || preventCollapseLast;
+  return disabledItems.has(id) || preventCollapseLast;
 }
 
 export default function useAccordion({
@@ -49,78 +49,78 @@ export default function useAccordion({
 
   const _initialDisabled = useMemo(() => new Set<string>(initialDisabled), [ initialDisabled ]);
 
-  const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(_initialExpanded);
-  const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(_initialDisabled);
+  const [ expandedItems, setExpandedItems ] = useState<ExpandedItems>(_initialExpanded);
+  const [ disabledItems, setDisabledItems ] = useState<DisabledItems>(_initialDisabled);
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
   const onToggleDisabledRef = useRef<OnToggleDisabled | null | undefined>(null);
 
   /**
-   * Returns a boolean that lets us know if a particular accordion section is
+   * Returns a boolean that lets us know if a particular accordion item is
    * expanded or collapsed.
    */
   const getIsExpanded: GetIsExpanded = useCallback((id) => {
-    return _getIsExpanded(id, expandedSections);
-  }, [ expandedSections ]);
+    return _getIsExpanded(id, expandedItems);
+  }, [ expandedItems ]);
 
   /**
-   * Returns a boolean that lets us know if an aleady-expanded accordion section
+   * Returns a boolean that lets us know if an aleady-expanded accordion item
    * can't be collapsed due to <code>allowCollapseLast</code>.
    */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
-    return _getIsDisabled(id, expandedSections, disabledSections, allowCollapseLast);
+    return _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
   }, [
-    expandedSections,
-    disabledSections,
+    expandedItems,
+    disabledItems,
     allowCollapseLast,
   ]);
 
   /**
-   * Expands or collapses an accordion section. Respects <code>allowMultiple</code>
+   * Expands or collapses an accordion item. Respects <code>allowMultiple</code>
    * and <code>allowCollapseLast</code>.
    */
   const toggleExpanded: ToggleExpanded = useCallback((id) => {
-    setExpandedSections((expandedSections) => {
-      const isExpanded = _getIsExpanded(id, expandedSections);
-      const isDisabled = _getIsDisabled(id, expandedSections, disabledSections, allowCollapseLast);
+    setExpandedItems((expandedItems) => {
+      const isExpanded = _getIsExpanded(id, expandedItems);
+      const isDisabled = _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
 
       if(isDisabled)
-        return expandedSections;
+        return expandedItems;
 
       onToggleExpandedRef.current = onToggleExpanded;
 
       if(isExpanded)
-        expandedSections.delete(id);
+        expandedItems.delete(id);
       else {
         if(!allowMultiple)
-          expandedSections.clear();
+          expandedItems.clear();
 
-        expandedSections.add(id);
+        expandedItems.add(id);
       }
 
-      return new Set(expandedSections);
+      return new Set(expandedItems);
     });
   }, [
     allowMultiple,
     allowCollapseLast,
     onToggleExpanded,
-    disabledSections,
+    disabledItems,
   ]);
 
   /**
    * Allows/prevents an accordion header button from being expanded/collapsed.
    */
   const toggleDisabled: ToggleDisabled = useCallback((id) => {
-    setDisabledSections((disabledSections) => {
+    setDisabledItems((disabledItems) => {
       onToggleDisabledRef.current = onToggleDisabled;
 
-      if(disabledSections.has(id))
-        disabledSections.delete(id);
+      if(disabledItems.has(id))
+        disabledItems.delete(id);
       else
-        disabledSections.add(id);
+        disabledItems.add(id);
 
-      return new Set(disabledSections);
+      return new Set(disabledItems);
     });
   }, [ onToggleDisabled ]);
 
@@ -201,17 +201,17 @@ export default function useAccordion({
 
   useEffect(() => {
     if(typeof onToggleExpandedRef.current === 'function')
-      onToggleExpandedRef.current(expandedSections);
+      onToggleExpandedRef.current(expandedItems);
 
     onToggleExpandedRef.current = null;
-  }, [ expandedSections ]);
+  }, [ expandedItems ]);
 
   useEffect(() => {
     if(typeof onToggleDisabledRef.current === 'function')
-      onToggleDisabledRef.current(disabledSections);
+      onToggleDisabledRef.current(disabledItems);
 
     onToggleDisabledRef.current = null;
-  }, [ disabledSections ]);
+  }, [ disabledItems ]);
 
   return useMemo(() => {
     return {
