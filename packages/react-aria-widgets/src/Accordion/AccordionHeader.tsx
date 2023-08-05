@@ -6,7 +6,7 @@ import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
 
 //Contexts
 import useAccordionContext from 'src/Accordion/useAccordionContext';
-import useAccordionSectionContext from 'src/Accordion/useAccordionSectionContext';
+import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
 
 //Types
 import type { AccordionHeaderProps } from 'src/Accordion/types';
@@ -17,7 +17,7 @@ function AccordionHeader({
   buttonProps = {},
 }: AccordionHeaderProps) {
   const accordionContext = useAccordionContext();
-  const accordionSectionContext = useAccordionSectionContext();
+  const accordionItemContext = useAccordionItemContext();
   const {
     headerLevel,
     getIsExpanded,
@@ -29,7 +29,7 @@ function AccordionHeader({
     focusFirstHeader,
     focusLastHeader,
   } = accordionContext;
-  const { id, headerHTMLId, panelHTMLId } = accordionSectionContext;
+  const { id, headerHTMLId, panelHTMLId } = accordionItemContext;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
@@ -71,9 +71,9 @@ function AccordionHeader({
   const combinedContext = useMemo(() => {
     return {
       ...accordionContext,
-      ...accordionSectionContext,
+      ...accordionItemContext,
     };
-  }, [ accordionContext, accordionSectionContext ]);
+  }, [ accordionContext, accordionItemContext ]);
 
   return (
     <BaseAccordionHeader
