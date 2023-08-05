@@ -19,6 +19,8 @@ function AccordionHeader({
   const accordionContext = useAccordionContext();
   const accordionItemContext = useAccordionItemContext();
   const {
+    allowMultiple,
+    allowCollapseLast,
     headerLevel,
     getIsExpanded,
     getIsDisabled,
@@ -75,6 +77,52 @@ function AccordionHeader({
     };
   }, [ accordionContext, accordionItemContext ]);
 
+  const _headerProps = useMemo(() => {
+    let className;
+    let style;
+
+    if(typeof headerProps.className === 'function')
+      className = headerProps.className({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
+    else if(typeof headerProps.className === 'string')
+      className = headerProps.className;
+    else
+      className = 'react-aria-widgets-accordion-header';
+
+    if(typeof headerProps.style === 'function')
+      style = headerProps.style({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
+    else
+      style = headerProps.style;
+
+    return {
+      ...headerProps,
+      className,
+      style,
+    }
+  }, [ headerProps ]);
+
+  const _buttonProps = useMemo(() => {
+    let className;
+    let style;
+
+    if(typeof buttonProps.className === 'function')
+      className = buttonProps.className({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
+    else if(typeof buttonProps.className === 'string')
+      className = buttonProps.className;
+    else
+      className = 'react-aria-widgets-accordion-button';
+
+    if(typeof buttonProps.style === 'function')
+      style = buttonProps.style({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
+    else
+      style = buttonProps.style;
+
+    return {
+      ...buttonProps,
+      className,
+      style,
+    };
+  }, [ buttonProps ]);
+
   return (
     <BaseAccordionHeader
       id={ headerHTMLId }
@@ -84,8 +132,8 @@ function AccordionHeader({
       onKeyDown={ handleKeyDown }
       isExpanded={ isExpanded }
       isDisabled={ isDisabled }
-      headerProps={ headerProps }
-      buttonProps={ buttonProps }
+      headerProps={ _headerProps }
+      buttonProps={ _buttonProps }
       ref={ refCallback }
     >
       { typeof children === 'function' ? children(combinedContext) : children }
