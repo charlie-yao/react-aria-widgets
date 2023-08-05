@@ -115,12 +115,68 @@ export const NoMultipleNoCollapseLast: Story = {
   },
 };
 
+export const UseRenderFunctions: Story = {
+  render: (args) => {
+    return (
+      <Accordion { ...args }>
+        <AccordionSection id="section1">
+          <AccordionHeader>
+              { ({ id }) => <div>Section ID: { id }</div> }
+          </AccordionHeader>
+          <AccordionPanel>
+              { ({ allowMultiple, allowCollapseLast, id }) => (
+                <ul>
+                  <li>allowMultple = { `${allowMultiple} ` }</li>
+                  <li>allowCollapseLast = { `${allowCollapseLast}` }</li>
+                  <li>id = { id }</li>
+                </ul>
+              ) }
+          </AccordionPanel>
+        </AccordionSection>
+      </Accordion>
+    );
+  },
+};
+
 export const WithToggleVisibleCallback: Story = {
   args: {
     onToggleVisible: (expandedSections) => {
       //eslint-disable-next-line no-console
       console.log(expandedSections);
     },
+  },
+};
+
+export const WithToggleUsableCallback: Story = {
+  args: {
+    onToggleUsable: (disabledSections) => {
+      //eslint-disable-next-line no-console
+      console.log(disabledSections);
+    },
+  },
+  render: (args) => {
+    return (
+      <Accordion { ...args }>
+        <AccordionSection id="section1">
+          <AccordionHeader>
+            Section 1
+          </AccordionHeader>
+          <AccordionPanel>
+            { ({ toggleUsable, getIsDisabled, id }) => {
+              const isDisabled = getIsDisabled(id);
+              
+              return (
+                <form>
+                  <button type="button" onClick={ () => { toggleUsable(id) } }>
+                    { `${isDisabled ? 'Enable' : 'Disable'} ${id}` } 
+                  </button>
+                </form>
+              );
+            } }
+          </AccordionPanel>
+        </AccordionSection>
+      </Accordion>
+    );
   },
 };
 

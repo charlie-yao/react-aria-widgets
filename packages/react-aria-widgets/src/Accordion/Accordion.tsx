@@ -19,6 +19,7 @@ function Accordion({
   allowCollapseLast = true,
   headerLevel,
   onToggleVisible = undefined,
+  onToggleUsable = undefined,
   onFocusChange = undefined,
 }: AccordionProps) {
   const accordionContextValue = useAccordion({
@@ -26,6 +27,7 @@ function Accordion({
     allowCollapseLast,
     headerLevel,
     onToggleVisible,
+    onToggleUsable,
     onFocusChange,
   });
 
@@ -42,6 +44,7 @@ Accordion.propTypes = {
   allowCollapseLast: PropTypes.bool,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onToggleVisible: PropTypes.func,
+  onToggleUsable: PropTypes.func,
   onFocusChange: PropTypes.func,
 };
 

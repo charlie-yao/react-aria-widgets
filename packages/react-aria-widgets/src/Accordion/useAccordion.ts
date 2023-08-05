@@ -18,6 +18,7 @@ import type {
   FocusFirstHeader,
   FocusLastHeader,
   OnToggleVisible,
+  OnToggleUsable,
 } from 'src/Accordion/types';
 
 function _getIsExpanded(id: string, expandedSections: Set<string>) {
@@ -37,6 +38,7 @@ export default function useAccordion({
   allowCollapseLast = true,
   headerLevel,
   onToggleVisible,
+  onToggleUsable,
   onFocusChange,
 }: UseAccordion) {
   const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
@@ -44,6 +46,7 @@ export default function useAccordion({
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleVisibleRef = useRef<OnToggleVisible | null | undefined>(null);
+  const onToggleUsableRef = useRef<OnToggleUsable | null | undefined>(null);
 
   /**
    * Returns a boolean that lets us know if a particular accordion section is
@@ -102,6 +105,8 @@ export default function useAccordion({
    */
   const toggleUsable: ToggleUsable = useCallback((id) => {
     setDisabledSections((disabledSections) => {
+      onToggleUsableRef.current = onToggleUsable;
+
       if(disabledSections.has(id))
         disabledSections.delete(id);
       else
@@ -109,7 +114,7 @@ export default function useAccordion({
 
       return new Set(disabledSections);
     });
-  }, []);
+  }, [ onToggleUsable ]);
 
   /**
    * Ref callback that tracks the accordion header buttons and their IDs.
@@ -192,6 +197,13 @@ export default function useAccordion({
 
     onToggleVisibleRef.current = null;
   }, [ expandedSections ]);
+
+  useEffect(() => {
+    if(typeof onToggleUsableRef.current === 'function')
+      onToggleUsableRef.current(disabledSections);
+
+    onToggleUsableRef.current = null;
+  }, [ disabledSections ]);
 
   return useMemo(() => {
     return {

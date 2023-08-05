@@ -3,9 +3,9 @@ import type React from 'react';
 //Types
 import type {
   ValidHTMLHeaderLevels,
+  PolymorphicComponentPropsWithoutRef,
   PolymorphicComponentPropsWithRef,
   PolymorphicForwardRefComponent,
-  AsProp,
 } from 'src/utils/types';
 
 //Misc.
@@ -23,6 +23,8 @@ export interface HeaderRef {
   id: string;
 }
 
+export type AccordionRenderFunction = (args: AccordionContextType & AccordionSectionContextType) => React.ReactElement;
+
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
 export type ToggleVisible = (id: string) => void;
@@ -35,6 +37,7 @@ export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
 export type OnToggleVisible = (expandedSections: ExpandedSections) => void;
+export type OnToggleUsable = (disabledSections: DisabledSections) => void;
 export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
@@ -42,6 +45,7 @@ export interface UseAccordion {
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
   onToggleVisible?: OnToggleVisible | undefined;
+  onToggleUsable?: OnToggleUsable | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
 
@@ -91,6 +95,7 @@ export type AccordionProps = React.PropsWithChildren<{
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
   onToggleVisible?: OnToggleVisible;
+  onToggleUsable?: OnToggleUsable;
   onFocusChange?: OnFocusChange;
 }>;
 
@@ -102,14 +107,21 @@ export type AccordionSectionProps = React.PropsWithChildren<{
   id: string;
 }>;
 
-export type AccordionHeaderProps = React.PropsWithChildren<{
+export interface AccordionHeaderProps {
+  children?: React.ReactNode | AccordionRenderFunction;
   headerProps?: AccordionHeaderHeader;
   buttonProps?: AccordionHeaderButton;
-}>;
+}
 
-export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> =
-  AsProp<C, ValidPanelElements> &
-  React.ComponentPropsWithoutRef<C>;
+export interface InternalAccordionPanelProps {
+  children?: React.ReactNode | AccordionRenderFunction;
+}
+
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+  C,
+  InternalAccordionPanelProps,
+  ValidPanelElements
+>;
 
 export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   id?: string | undefined;
