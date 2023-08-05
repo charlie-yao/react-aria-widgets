@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
 import Accordion from 'src/Accordion/Accordion';
-import AccordionSection from 'src/Accordion/AccordionSection';
+import AccordionItem from 'src/Accordion/AccordionItem';
 import AccordionHeader from 'src/Accordion/AccordionHeader';
 
 type Story = StoryObj<typeof AccordionHeader>;
@@ -16,9 +16,9 @@ const meta = {
   render: (args) => {
     return (
       <Accordion headerLevel={ 1 }>
-        <AccordionSection id="test">
+        <AccordionItem id="test">
           <AccordionHeader { ...args } />
-        </AccordionSection>
+        </AccordionItem>
       </Accordion>
     );
   },
