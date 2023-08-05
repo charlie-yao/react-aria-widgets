@@ -138,9 +138,9 @@ export const UseRenderFunctions: Story = {
   },
 };
 
-export const WithToggleVisibleCallback: Story = {
+export const WithToggleExpandedCallback: Story = {
   args: {
-    onToggleVisible: (expandedSections) => {
+    onToggleExpanded: (expandedSections) => {
       //eslint-disable-next-line no-console
       console.log(expandedSections);
     },
@@ -192,14 +192,14 @@ export const WithFocusChangeCallback: Story = {
 export const Controlled: Story = {
   render: (args) => {
     const contextValue = useAccordion(args);
-    const { toggleVisible, toggleUsable } = contextValue;
+    const { toggleExpanded, toggleUsable } = contextValue;
     
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
       event.preventDefault();
     };
 
-    const handleToggleVisible: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-      toggleVisible(event.currentTarget.value);
+    const handleToggleExpanded: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+      toggleExpanded(event.currentTarget.value);
     }
 
     const handleToggleUsable: React.MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -209,13 +209,13 @@ export const Controlled: Story = {
     return (
       <>
         <form onSubmit={ handleSubmit }>
-          <button type="button" onClick={ handleToggleVisible } value="section1">
+          <button type="button" onClick={ handleToggleExpanded } value="section1">
             Expand/Collapse section1
           </button>
-          <button type="button" onClick={ handleToggleVisible } value="section2">
+          <button type="button" onClick={ handleToggleExpanded } value="section2">
             Expand/Collapse section2
           </button>
-          <button type="button" onClick={ handleToggleVisible } value="section3">
+          <button type="button" onClick={ handleToggleExpanded } value="section3">
             Expand/Collapse section3
           </button>
           <button type="button" onClick={ handleToggleUsable } value="section1">

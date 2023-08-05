@@ -18,7 +18,7 @@ function Accordion({
   allowMultiple = true,
   allowCollapseLast = true,
   headerLevel,
-  onToggleVisible = undefined,
+  onToggleExpanded = undefined,
   onToggleUsable = undefined,
   onFocusChange = undefined,
 }: AccordionProps) {
@@ -26,7 +26,7 @@ function Accordion({
     allowMultiple,
     allowCollapseLast,
     headerLevel,
-    onToggleVisible,
+    onToggleExpanded,
     onToggleUsable,
     onFocusChange,
   });
@@ -43,7 +43,7 @@ Accordion.propTypes = {
   allowMultiple: PropTypes.bool,
   allowCollapseLast: PropTypes.bool,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  onToggleVisible: PropTypes.func,
+  onToggleExpanded: PropTypes.func,
   onToggleUsable: PropTypes.func,
   onFocusChange: PropTypes.func,
 };

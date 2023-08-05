@@ -9,7 +9,7 @@ export const accordionContextValuePropType = PropTypes.exact({
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   getIsExpanded: PropTypes.func.isRequired,
   getIsDisabled: PropTypes.func.isRequired,
-  toggleVisible: PropTypes.func.isRequired,
+  toggleExpanded: PropTypes.func.isRequired,
   toggleUsable: PropTypes.func.isRequired,
   pushHeaderRef: PropTypes.func.isRequired,
   focusHeaderIndex: PropTypes.func.isRequired,

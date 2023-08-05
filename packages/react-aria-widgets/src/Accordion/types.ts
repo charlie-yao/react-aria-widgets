@@ -27,7 +27,7 @@ export type AccordionRenderFunction = (args: AccordionContextType & AccordionSec
 
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
-export type ToggleVisible = (id: string) => void;
+export type ToggleExpanded = (id: string) => void;
 export type ToggleUsable = (id: string) => void;
 export type PushHeaderRef = (elem: HeaderElement, id: string) => void;
 export type FocusHeaderIndex = (index: number) => void;
@@ -36,7 +36,7 @@ export type FocusPrevHeader = (id: string) => void;
 export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
-export type OnToggleVisible = (expandedSections: ExpandedSections) => void;
+export type OnToggleExpanded = (expandedSections: ExpandedSections) => void;
 export type OnToggleUsable = (disabledSections: DisabledSections) => void;
 export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
@@ -44,7 +44,7 @@ export interface UseAccordion {
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  onToggleVisible?: OnToggleVisible | undefined;
+  onToggleExpanded?: OnToggleExpanded | undefined;
   onToggleUsable?: OnToggleUsable | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
@@ -55,7 +55,7 @@ export interface AccordionContextType {
   headerLevel: ValidHTMLHeaderLevels;
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
-  toggleVisible: ToggleVisible;
+  toggleExpanded: ToggleExpanded;
   toggleUsable: ToggleUsable;
   pushHeaderRef: PushHeaderRef;
   focusHeaderIndex: FocusHeaderIndex;
@@ -94,7 +94,7 @@ export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  onToggleVisible?: OnToggleVisible;
+  onToggleExpanded?: OnToggleExpanded;
   onToggleUsable?: OnToggleUsable;
   onFocusChange?: OnFocusChange;
 }>;
