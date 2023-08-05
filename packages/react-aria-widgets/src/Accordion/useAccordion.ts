@@ -45,7 +45,7 @@ export default function useAccordion({
 }: UseAccordion) {
   const _initialExpanded = useMemo(() => {
     return new Set<string>(allowMultiple ? initialExpanded : initialExpanded.slice(0, 1));
-  }, [ initialExpanded ]);
+  }, [ allowMultiple, initialExpanded ]);
 
   const _initialDisabled = useMemo(() => new Set<string>(initialDisabled), [ initialDisabled ]);
 
