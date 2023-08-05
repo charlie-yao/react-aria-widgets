@@ -9,7 +9,7 @@ import type {
   GetIsExpanded,
   GetIsDisabled,
   ToggleExpanded,
-  ToggleUsable,
+  ToggleDisabled,
   PushHeaderRef,
   FocusHeaderIndex,
   FocusHeaderId,
@@ -18,7 +18,7 @@ import type {
   FocusFirstHeader,
   FocusLastHeader,
   OnToggleExpanded,
-  OnToggleUsable,
+  OnToggleDisabled,
 } from 'src/Accordion/types';
 
 function _getIsExpanded(id: string, expandedSections: Set<string>) {
@@ -38,7 +38,7 @@ export default function useAccordion({
   allowCollapseLast = true,
   headerLevel,
   onToggleExpanded,
-  onToggleUsable,
+  onToggleDisabled,
   onFocusChange,
 }: UseAccordion) {
   const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
@@ -46,7 +46,7 @@ export default function useAccordion({
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
-  const onToggleUsableRef = useRef<OnToggleUsable | null | undefined>(null);
+  const onToggleDisabledRef = useRef<OnToggleDisabled | null | undefined>(null);
 
   /**
    * Returns a boolean that lets us know if a particular accordion section is
@@ -103,9 +103,9 @@ export default function useAccordion({
   /**
    * Allows/prevents an accordion header button from being expanded/collapsed.
    */
-  const toggleUsable: ToggleUsable = useCallback((id) => {
+  const toggleDisabled: ToggleDisabled = useCallback((id) => {
     setDisabledSections((disabledSections) => {
-      onToggleUsableRef.current = onToggleUsable;
+      onToggleDisabledRef.current = onToggleDisabled;
 
       if(disabledSections.has(id))
         disabledSections.delete(id);
@@ -114,7 +114,7 @@ export default function useAccordion({
 
       return new Set(disabledSections);
     });
-  }, [ onToggleUsable ]);
+  }, [ onToggleDisabled ]);
 
   /**
    * Ref callback that tracks the accordion header buttons and their IDs.
@@ -199,10 +199,10 @@ export default function useAccordion({
   }, [ expandedSections ]);
 
   useEffect(() => {
-    if(typeof onToggleUsableRef.current === 'function')
-      onToggleUsableRef.current(disabledSections);
+    if(typeof onToggleDisabledRef.current === 'function')
+      onToggleDisabledRef.current(disabledSections);
 
-    onToggleUsableRef.current = null;
+    onToggleDisabledRef.current = null;
   }, [ disabledSections ]);
 
   return useMemo(() => {
@@ -213,7 +213,7 @@ export default function useAccordion({
       getIsExpanded,
       getIsDisabled,
       toggleExpanded,
-      toggleUsable,
+      toggleDisabled,
       pushHeaderRef,
       focusHeaderIndex,
       focusHeaderId,
@@ -229,7 +229,7 @@ export default function useAccordion({
     getIsExpanded,
     getIsDisabled,
     toggleExpanded,
-    toggleUsable,
+    toggleDisabled,
     pushHeaderRef,
     focusHeaderIndex,
     focusHeaderId,

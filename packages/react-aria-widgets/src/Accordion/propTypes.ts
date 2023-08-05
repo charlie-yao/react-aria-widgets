@@ -10,7 +10,7 @@ export const accordionContextValuePropType = PropTypes.exact({
   getIsExpanded: PropTypes.func.isRequired,
   getIsDisabled: PropTypes.func.isRequired,
   toggleExpanded: PropTypes.func.isRequired,
-  toggleUsable: PropTypes.func.isRequired,
+  toggleDisabled: PropTypes.func.isRequired,
   pushHeaderRef: PropTypes.func.isRequired,
   focusHeaderIndex: PropTypes.func.isRequired,
   focusHeaderId: PropTypes.func.isRequired,

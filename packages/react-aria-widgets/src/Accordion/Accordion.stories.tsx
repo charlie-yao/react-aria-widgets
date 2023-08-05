@@ -147,9 +147,9 @@ export const WithToggleExpandedCallback: Story = {
   },
 };
 
-export const WithToggleUsableCallback: Story = {
+export const WithToggleDisabledCallback: Story = {
   args: {
-    onToggleUsable: (disabledSections) => {
+    onToggleDisabled: (disabledSections) => {
       //eslint-disable-next-line no-console
       console.log(disabledSections);
     },
@@ -162,12 +162,12 @@ export const WithToggleUsableCallback: Story = {
             Section 1
           </AccordionHeader>
           <AccordionPanel>
-            { ({ toggleUsable, getIsDisabled, id }) => {
+            { ({ toggleDisabled, getIsDisabled, id }) => {
               const isDisabled = getIsDisabled(id);
               
               return (
                 <form>
-                  <button type="button" onClick={ () => { toggleUsable(id) } }>
+                  <button type="button" onClick={ () => { toggleDisabled(id) } }>
                     { `${isDisabled ? 'Enable' : 'Disable'} ${id}` } 
                   </button>
                 </form>
@@ -192,7 +192,7 @@ export const WithFocusChangeCallback: Story = {
 export const Controlled: Story = {
   render: (args) => {
     const contextValue = useAccordion(args);
-    const { toggleExpanded, toggleUsable } = contextValue;
+    const { toggleExpanded, toggleDisabled } = contextValue;
     
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
       event.preventDefault();
@@ -202,8 +202,8 @@ export const Controlled: Story = {
       toggleExpanded(event.currentTarget.value);
     }
 
-    const handleToggleUsable: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-      toggleUsable(event.currentTarget.value);
+    const handleToggleDisabled: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+      toggleDisabled(event.currentTarget.value);
     }
 
     return (
@@ -218,13 +218,13 @@ export const Controlled: Story = {
           <button type="button" onClick={ handleToggleExpanded } value="section3">
             Expand/Collapse section3
           </button>
-          <button type="button" onClick={ handleToggleUsable } value="section1">
+          <button type="button" onClick={ handleToggleDisabled } value="section1">
             Enable/Disable section1
           </button>
-          <button type="button" onClick={ handleToggleUsable } value="section2">
+          <button type="button" onClick={ handleToggleDisabled } value="section2">
             Enable/Disable section2
           </button>
-          <button type="button" onClick={ handleToggleUsable } value="section3">
+          <button type="button" onClick={ handleToggleDisabled } value="section3">
             Enable/Disable section3
           </button>
         </form>

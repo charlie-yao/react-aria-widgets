@@ -28,7 +28,7 @@ export type AccordionRenderFunction = (args: AccordionContextType & AccordionSec
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
 export type ToggleExpanded = (id: string) => void;
-export type ToggleUsable = (id: string) => void;
+export type ToggleDisabled = (id: string) => void;
 export type PushHeaderRef = (elem: HeaderElement, id: string) => void;
 export type FocusHeaderIndex = (index: number) => void;
 export type FocusHeaderId = (id: string) => void;
@@ -37,7 +37,7 @@ export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
 export type OnToggleExpanded = (expandedSections: ExpandedSections) => void;
-export type OnToggleUsable = (disabledSections: DisabledSections) => void;
+export type OnToggleDisabled = (disabledSections: DisabledSections) => void;
 export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
@@ -45,7 +45,7 @@ export interface UseAccordion {
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
   onToggleExpanded?: OnToggleExpanded | undefined;
-  onToggleUsable?: OnToggleUsable | undefined;
+  onToggleDisabled?: OnToggleDisabled | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
 
@@ -56,7 +56,7 @@ export interface AccordionContextType {
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
   toggleExpanded: ToggleExpanded;
-  toggleUsable: ToggleUsable;
+  toggleDisabled: ToggleDisabled;
   pushHeaderRef: PushHeaderRef;
   focusHeaderIndex: FocusHeaderIndex;
   focusHeaderId: FocusHeaderId;
@@ -95,7 +95,7 @@ export type AccordionProps = React.PropsWithChildren<{
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
   onToggleExpanded?: OnToggleExpanded;
-  onToggleUsable?: OnToggleUsable;
+  onToggleDisabled?: OnToggleDisabled;
   onFocusChange?: OnFocusChange;
 }>;
 
