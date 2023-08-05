@@ -43,8 +43,16 @@ export default function useAccordion({
   onToggleDisabled,
   onFocusChange,
 }: UseAccordion) {
-  const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>(initialExpanded));
-  const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(new Set<string>(initialDisabled));
+  const _initialExpanded = useMemo(() => {
+    return new Set<string>(allowMultiple ? initialExpanded : initialExpanded.slice(0, 1));
+  }, [ initialExpanded ]);
+
+  const _initialDisabled = useMemo(() => {
+    return new Set<string>(initialDisabled);
+  }, [ initialDisabled ]);
+
+  const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(_initialExpanded);
+  const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(_initialDisabled);
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
@@ -212,8 +220,8 @@ export default function useAccordion({
       allowMultiple,
       allowCollapseLast,
       headerLevel,
-      initialExpanded,
-      initialDisabled,
+      initialExpanded: _initialExpanded,
+      initialDisabled: _initialDisabled,
       getIsExpanded,
       getIsDisabled,
       toggleExpanded,
@@ -230,8 +238,8 @@ export default function useAccordion({
     allowMultiple,
     allowCollapseLast,
     headerLevel,
-    initialExpanded,
-    initialDisabled,
+    _initialExpanded,
+    _initialDisabled,
     getIsExpanded,
     getIsDisabled,
     toggleExpanded,
