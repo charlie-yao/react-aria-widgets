@@ -18,14 +18,16 @@ function Accordion({
   allowMultiple = true,
   allowCollapseLast = true,
   headerLevel,
-  onStateChange = undefined,
+  onToggleExpanded = undefined,
+  onToggleDisabled = undefined,
   onFocusChange = undefined,
 }: AccordionProps) {
   const accordionContextValue = useAccordion({
     allowMultiple,
     allowCollapseLast,
     headerLevel,
-    onStateChange,
+    onToggleExpanded,
+    onToggleDisabled,
     onFocusChange,
   });
 
@@ -41,7 +43,8 @@ Accordion.propTypes = {
   allowMultiple: PropTypes.bool,
   allowCollapseLast: PropTypes.bool,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
-  onStateChange: PropTypes.func,
+  onToggleExpanded: PropTypes.func,
+  onToggleDisabled: PropTypes.func,
   onFocusChange: PropTypes.func,
 };
 

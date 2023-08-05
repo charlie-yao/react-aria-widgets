@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
@@ -16,18 +16,20 @@ function AccordionHeader({
   headerProps = {},
   buttonProps = {},
 }: AccordionHeaderProps) {
+  const accordionContext = useAccordionContext();
+  const accordionSectionContext = useAccordionSectionContext();
   const {
     headerLevel,
     getIsExpanded,
     getIsDisabled,
-    toggleSection,
+    toggleExpanded,
     pushHeaderRef,
     focusPrevHeader,
     focusNextHeader,
     focusFirstHeader,
     focusLastHeader,
-  } = useAccordionContext();
-  const { id, headerHTMLId, panelHTMLId } = useAccordionSectionContext();
+  } = accordionContext;
+  const { id, headerHTMLId, panelHTMLId } = accordionSectionContext;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
@@ -36,8 +38,8 @@ function AccordionHeader({
   }, [ id, pushHeaderRef ]);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(() => {
-    toggleSection(id);
-  }, [ toggleSection, id ]);
+    toggleExpanded(id);
+  }, [ toggleExpanded, id ]);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLButtonElement> = useCallback((event) => {
     const { key } = event;
@@ -66,6 +68,13 @@ function AccordionHeader({
     id,
   ]);
 
+  const combinedContext = useMemo(() => {
+    return {
+      ...accordionContext,
+      ...accordionSectionContext,
+    };
+  }, [ accordionContext, accordionSectionContext ]);
+
   return (
     <BaseAccordionHeader
       id={ headerHTMLId }
@@ -79,13 +88,16 @@ function AccordionHeader({
       buttonProps={ buttonProps }
       ref={ refCallback }
     >
-      { children }
+      { typeof children === 'function' ? children(combinedContext) : children }
     </BaseAccordionHeader>
   );
 }
 
 AccordionHeader.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+  ]),
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
 };

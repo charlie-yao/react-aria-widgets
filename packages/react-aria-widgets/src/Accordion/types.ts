@@ -3,15 +3,16 @@ import type React from 'react';
 //Types
 import type {
   ValidHTMLHeaderLevels,
+  PolymorphicComponentPropsWithoutRef,
   PolymorphicComponentPropsWithRef,
   PolymorphicForwardRefComponent,
-  AsProp,
 } from 'src/utils/types';
 
 //Misc.
 import type { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
 
 export type ExpandedSections = Set<string>;
+export type DisabledSections = Set<string>;
 
 export type HeaderElement = HTMLButtonElement | HTMLElement | null;
 
@@ -22,9 +23,12 @@ export interface HeaderRef {
   id: string;
 }
 
+export type AccordionRenderFunction = (args: AccordionContextType & AccordionSectionContextType) => React.ReactElement;
+
 export type GetIsExpanded = (id: string) => boolean;
 export type GetIsDisabled = (id: string) => boolean;
-export type ToggleSection = (id: string) => void;
+export type ToggleExpanded = (id: string) => void;
+export type ToggleDisabled = (id: string) => void;
 export type PushHeaderRef = (elem: HeaderElement, id: string) => void;
 export type FocusHeaderIndex = (index: number) => void;
 export type FocusHeaderId = (id: string) => void;
@@ -32,14 +36,16 @@ export type FocusPrevHeader = (id: string) => void;
 export type FocusNextHeader = (id: string) => void;
 export type FocusFirstHeader = () => void;
 export type FocusLastHeader = () => void;
-export type OnStateChange = (expandedSections: ExpandedSections) => void;
+export type OnToggleExpanded = (expandedSections: ExpandedSections) => void;
+export type OnToggleDisabled = (disabledSections: DisabledSections) => void;
 export type OnFocusChange = ({ elem, index, id }: { elem: HeaderElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
-  allowMultiple: boolean;
-  allowCollapseLast: boolean;
+  allowMultiple?: boolean;
+  allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  onStateChange?: OnStateChange | undefined;
+  onToggleExpanded?: OnToggleExpanded | undefined;
+  onToggleDisabled?: OnToggleDisabled | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
 
@@ -49,7 +55,8 @@ export interface AccordionContextType {
   headerLevel: ValidHTMLHeaderLevels;
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
-  toggleSection: ToggleSection;
+  toggleExpanded: ToggleExpanded;
+  toggleDisabled: ToggleDisabled;
   pushHeaderRef: PushHeaderRef;
   focusHeaderIndex: FocusHeaderIndex;
   focusHeaderId: FocusHeaderId;
@@ -87,7 +94,8 @@ export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  onStateChange?: OnStateChange;
+  onToggleExpanded?: OnToggleExpanded;
+  onToggleDisabled?: OnToggleDisabled;
   onFocusChange?: OnFocusChange;
 }>;
 
@@ -99,14 +107,21 @@ export type AccordionSectionProps = React.PropsWithChildren<{
   id: string;
 }>;
 
-export type AccordionHeaderProps = React.PropsWithChildren<{
+export interface AccordionHeaderProps {
+  children?: React.ReactNode | AccordionRenderFunction;
   headerProps?: AccordionHeaderHeader;
   buttonProps?: AccordionHeaderButton;
-}>;
+}
 
-export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> =
-  AsProp<C, ValidPanelElements> &
-  React.ComponentPropsWithoutRef<C>;
+export interface InternalAccordionPanelProps {
+  children?: React.ReactNode | AccordionRenderFunction;
+}
+
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+  C,
+  InternalAccordionPanelProps,
+  ValidPanelElements
+>;
 
 export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   id?: string | undefined;
