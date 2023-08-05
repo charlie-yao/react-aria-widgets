@@ -37,12 +37,20 @@ export default function useAccordion({
   allowMultiple = true,
   allowCollapseLast = true,
   headerLevel,
+  initialExpanded = [],
+  initialDisabled = [],
   onToggleExpanded,
   onToggleDisabled,
   onFocusChange,
 }: UseAccordion) {
-  const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(new Set<string>());
-  const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(new Set<string>());
+  const _initialExpanded = useMemo(() => {
+    return new Set<string>(allowMultiple ? initialExpanded : initialExpanded.slice(0, 1));
+  }, [ allowMultiple, initialExpanded ]);
+
+  const _initialDisabled = useMemo(() => new Set<string>(initialDisabled), [ initialDisabled ]);
+
+  const [ expandedSections, setExpandedSections ] = useState<ExpandedSections>(_initialExpanded);
+  const [ disabledSections, setDisabledSections ] = useState<DisabledSections>(_initialDisabled);
   const headerRefs = useRef<HeaderRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
