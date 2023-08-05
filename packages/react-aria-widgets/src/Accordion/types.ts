@@ -44,6 +44,8 @@ export interface UseAccordion {
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
+  initialExpanded?: string[];
+  initialDisabled?: string[];
   onToggleExpanded?: OnToggleExpanded | undefined;
   onToggleDisabled?: OnToggleDisabled | undefined;
   onFocusChange?: OnFocusChange | undefined;
@@ -53,6 +55,8 @@ export interface AccordionContextType {
   allowMultiple: boolean;
   allowCollapseLast: boolean;
   headerLevel: ValidHTMLHeaderLevels;
+  initialExpanded?: string[];
+  initialDisabled?: string[];
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
   toggleExpanded: ToggleExpanded;
@@ -94,6 +98,8 @@ export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
+  initialExpanded?: string[];
+  initialDisabled?: string[];
   onToggleExpanded?: OnToggleExpanded;
   onToggleDisabled?: OnToggleDisabled;
   onFocusChange?: OnFocusChange;

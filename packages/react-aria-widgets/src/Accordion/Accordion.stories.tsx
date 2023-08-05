@@ -140,6 +140,18 @@ export const UseRenderFunctions: Story = {
   },
 };
 
+export const WithInitialExpanded: Story = {
+  args: {
+    initialExpanded: [ 'section1', 'section3' ],
+  },
+};
+
+export const WithInitialDisabled: Story = {
+  args: {
+    initialDisabled: [ 'section2', 'section3' ],
+  },
+};
+
 export const WithToggleExpandedCallback: Story = {
   args: {
     onToggleExpanded: (expandedSections) => {
