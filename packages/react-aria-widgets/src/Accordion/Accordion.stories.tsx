@@ -146,6 +146,13 @@ export const WithInitialExpanded: Story = {
   },
 };
 
+export const WithInitialExpandedNoAllowMultiple: Story = {
+  args: {
+    initialExpanded: [ 'section2', 'section3' ],
+    allowMultiple: false,
+  },
+};
+
 export const WithInitialDisabled: Story = {
   args: {
     initialDisabled: [ 'section2', 'section3' ],
