@@ -55,8 +55,6 @@ export interface AccordionContextType {
   allowMultiple: boolean;
   allowCollapseLast: boolean;
   headerLevel: ValidHTMLHeaderLevels;
-  initialExpanded?: string[];
-  initialDisabled?: string[];
   getIsExpanded: GetIsExpanded;
   getIsDisabled: GetIsDisabled;
   toggleExpanded: ToggleExpanded;
