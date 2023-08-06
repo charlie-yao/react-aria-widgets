@@ -64,9 +64,10 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
       { ...rest }
       id={ panelHTMLId }
       labelId={ headerHTMLId }
-      className={ `${_className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
+      className={ _className }
       style={ _style }
       as={ Component }
+      data-expanded={ isExpanded }
     >
       { typeof children === 'function' ? children(combinedContext) : children }
     </BaseAccordionPanel>

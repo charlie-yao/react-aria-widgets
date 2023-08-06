@@ -342,12 +342,12 @@ export const Styled: Story = {
       <Accordion {...args} >
         <AccordionItem id="item1">
           <AccordionHeader
-            headerProps={{ className: ({ isExpanded }) => isExpanded ? 'expanded' : 'collapsed' }}
-            buttonProps={{ className: ({ isExpanded }) => isExpanded ? 'expanded' : 'collapsed' }}
+            headerProps={{ className: ({ isExpanded }) => `accordion-header-${isExpanded ? 'expanded' : 'collapsed'}` }}
+            buttonProps={{ className: ({ isExpanded }) => `accordion-button-${isExpanded ? 'expanded' : 'collapsed'}` }}
           >
             Using Custom Class Render Function      
           </AccordionHeader>
-          <AccordionPanel className={ ({ isExpanded }) => isExpanded ? 'expanded' : 'collapsed' }>
+          <AccordionPanel className={ ({ isExpanded }) => `accordion-panel-${isExpanded ? 'expanded' : 'collapsed'}` }>
             This accordion item uses render-like functions for its <code>className</code> props.
           </AccordionPanel>
         </AccordionItem>
@@ -372,8 +372,8 @@ export const Styled: Story = {
         </AccordionItem>
         <AccordionItem id="item4">
           <AccordionHeader
-            headerProps={{ style: ({ isExpanded }) => { return { backgroundColor: isExpanded ? 'initial' : 'red' }; } }}
-            buttonProps={{ style: ({ isExpanded }) => { return { color: isExpanded ? 'initial' : 'blue' }; } }}
+            headerProps={{ style: ({ isExpanded }) => { return isExpanded ? {} : { backgroundColor: 'red' }; } }}
+            buttonProps={{ style: ({ isExpanded }) => { return isExpanded ? {} : { color: 'blue' }; } }}
           >
             Using Custom Style Render Function 
           </AccordionHeader>
