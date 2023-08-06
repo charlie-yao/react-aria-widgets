@@ -18,16 +18,24 @@ import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils
 
 function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT>({
   children = null,
-  className = '',
+  className = undefined,
+  style = {},
   as, //eslint-disable-line react/require-default-props
   ...rest
 }: AccordionPanelProps<C>) {
   const accordionContext = useAccordionContext();
   const accordionItemContext = useAccordionItemContext();
-  const { getIsExpanded } = accordionContext;
+  const {
+    allowMultiple,
+    allowCollapseLast,
+    headerLevel,
+    getIsExpanded,
+    getIsDisabled,
+  } = accordionContext;
   const { id, headerHTMLId, panelHTMLId } = accordionItemContext;
   const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
   const isExpanded = getIsExpanded(id);
+  const isDisabled = getIsDisabled(id);
 
   const combinedContext = useMemo(() => {
     return {
@@ -36,12 +44,28 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
     };
   }, [ accordionContext, accordionItemContext ]);
 
+  let _className;
+  let _style;
+
+  if(typeof className === 'function')
+    _className = className({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
+  else if(typeof className === 'string')
+    _className = className;
+  else
+    _className = 'react-aria-widgets-accordion-panel';
+
+  if(typeof style === 'function')
+    _style = style({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
+  else
+    _style = style;
+
   return (
     <BaseAccordionPanel<typeof Component>
       { ...rest }
       id={ panelHTMLId }
       labelId={ headerHTMLId }
-      className={ `${className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
+      className={ `${_className} ${isExpanded ? '' : 'react-aria-widgets-hidden'}` }
+      style={ _style }
       as={ Component }
     >
       { typeof children === 'function' ? children(combinedContext) : children }
@@ -54,7 +78,14 @@ AccordionPanel.propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]),
+  style: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.func,
+  ]),
   as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
 };
 

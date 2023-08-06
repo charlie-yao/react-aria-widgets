@@ -97,8 +97,15 @@ function AccordionHeader({
       ...headerProps,
       className,
       style,
-    }
-  }, [ headerProps ]);
+    };
+  }, [
+    allowMultiple,
+    allowCollapseLast,
+    headerLevel,
+    isExpanded,
+    isDisabled,
+    headerProps,
+  ]);
 
   const _buttonProps = useMemo(() => {
     let className;
@@ -121,7 +128,14 @@ function AccordionHeader({
       className,
       style,
     };
-  }, [ buttonProps ]);
+  }, [
+    allowMultiple,
+    allowCollapseLast,
+    headerLevel,
+    isExpanded,
+    isDisabled,
+    buttonProps,
+  ]);
 
   return (
     <BaseAccordionHeader

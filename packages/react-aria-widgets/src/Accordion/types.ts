@@ -137,6 +137,8 @@ export interface AccordionHeaderProps {
 
 export interface InternalAccordionPanelProps {
   children?: React.ReactNode | AccordionRenderFunction;
+  className?: string | ((args: AccordionRenderData) => string);
+  style?: React.CSSProperties | ((args: AccordionRenderData) => React.CSSProperties);
 }
 
 export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
