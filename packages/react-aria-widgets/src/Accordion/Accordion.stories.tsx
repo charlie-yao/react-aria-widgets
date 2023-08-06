@@ -214,7 +214,7 @@ export const Controlled: Story = {
   render: (args) => {
     //eslint-disable-next-line react-hooks/rules-of-hooks
     const contextValue = useAccordion(args);
-    const { toggleExpanded, toggleDisabled } = contextValue;
+    const { toggleExpanded, toggleDisabled, focusHeaderId } = contextValue;
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
       event.preventDefault();
@@ -228,27 +228,50 @@ export const Controlled: Story = {
       toggleDisabled(event.currentTarget.value);
     };
 
+    const handleFocusItem: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+      console.log(event.currentTarget.value);
+      focusHeaderId(event.currentTarget.value);
+    };
+
     return (
       <>
         <form onSubmit={ handleSubmit }>
-          <button type="button" onClick={ handleToggleExpanded } value="item1">
-            Expand/Collapse item1
-          </button>
-          <button type="button" onClick={ handleToggleExpanded } value="item2">
-            Expand/Collapse item2
-          </button>
-          <button type="button" onClick={ handleToggleExpanded } value="item3">
-            Expand/Collapse item3
-          </button>
-          <button type="button" onClick={ handleToggleDisabled } value="item1">
-            Enable/Disable item1
-          </button>
-          <button type="button" onClick={ handleToggleDisabled } value="item2">
-            Enable/Disable item2
-          </button>
-          <button type="button" onClick={ handleToggleDisabled } value="item3">
-            Enable/Disable item3
-          </button>
+          <fieldset>
+            <legend>Expand/Collapse Items</legend>
+            <button type="button" onClick={ handleToggleExpanded } value="item1">
+              Expand/Collapse item1
+            </button>
+            <button type="button" onClick={ handleToggleExpanded } value="item2">
+              Expand/Collapse item2
+            </button>
+            <button type="button" onClick={ handleToggleExpanded } value="item3">
+              Expand/Collapse item3
+            </button>
+          </fieldset>
+          <fieldset>
+            <legend>Enable/Disable Items</legend>
+            <button type="button" onClick={ handleToggleDisabled } value="item1">
+              Enable/Disable item1
+            </button>
+            <button type="button" onClick={ handleToggleDisabled } value="item2">
+              Enable/Disable item2
+            </button>
+            <button type="button" onClick={ handleToggleDisabled } value="item3">
+              Enable/Disable item3
+            </button>
+          </fieldset>
+          <fieldset>
+            <legend>Focus Items</legend>
+            <button type="button" onClick={ handleFocusItem } value="item1">
+              Focus item1
+            </button>
+            <button type="button" onClick={ handleFocusItem } value="item2">
+              Focus item2
+            </button>
+            <button type="button" onClick={ handleFocusItem } value="item3">
+              Focus item3
+            </button>
+          </fieldset>
         </form>
         <ControlledAccordion contextValue={ contextValue }>
           <AccordionItem id="item1">
