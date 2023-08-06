@@ -336,4 +336,73 @@ export const Controlled: Story = {
   },
 };
 
+export const Styled: Story = {
+  render: (args) => {
+    return (
+      <Accordion {...args} >
+        <AccordionItem id="item1">
+          <AccordionHeader
+            headerProps={{ className: ({ isExpanded }) => isExpanded ? 'expanded' : 'collapsed' }}
+            buttonProps={{ className: ({ isExpanded }) => isExpanded ? 'expanded' : 'collapsed' }}
+          >
+            Using Custom Class Render Function      
+          </AccordionHeader>
+          <AccordionPanel className={ ({ isExpanded }) => isExpanded ? 'expanded' : 'collapsed' }>
+            This accordion item uses render-like functions for its <code>className</code> props.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id="item2">
+          <AccordionHeader
+            headerProps={{ className: 'custom-accordion-header' }}
+            buttonProps={{ className: 'custom-accordion-button' }}
+          >
+            Using Custom Class String
+          </AccordionHeader>
+          <AccordionPanel className="custom-accordion-panel">
+            This accordion item uses custom strings for its <code>className</code> props.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id="item3">
+          <AccordionHeader>
+            Using Default Class 
+          </AccordionHeader>
+          <AccordionPanel>
+            This accordion item uses the default CSS classes provided by React ARIA Widgets.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id="item4">
+          <AccordionHeader
+            headerProps={{ style: ({ isExpanded }) => { return { backgroundColor: isExpanded ? 'initial' : 'red' }; } }}
+            buttonProps={{ style: ({ isExpanded }) => { return { color: isExpanded ? 'initial' : 'blue' }; } }}
+          >
+            Using Custom Style Render Function 
+          </AccordionHeader>
+          <AccordionPanel style={ ({ isExpanded }) => { return isExpanded ? {} : { display: 'none' }; } }>
+            This accordion item uses render-link functions for its <code>style</code> props.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id="item5">
+          <AccordionHeader
+            headerProps={{ style: { backgroundColor: 'red' } }}
+            buttonProps={{ style: { color: 'blue' } }}
+          >
+            Using Custom Style Object
+          </AccordionHeader>
+          <AccordionPanel style={{ color: 'green' }}>
+            This accordion item uses a custom object for its <code>style</code> props.
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem id="item6">
+          <AccordionHeader>
+            Using Default Style Object
+          </AccordionHeader>
+          <AccordionPanel>
+            This accordion item does not supply a <code>style</code> prop.
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+    );
+  },
+};
+
 export default meta;
