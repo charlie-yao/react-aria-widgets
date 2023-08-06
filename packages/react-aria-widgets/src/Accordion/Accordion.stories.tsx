@@ -229,7 +229,6 @@ export const Controlled: Story = {
     };
 
     const handleFocusItem: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-      console.log(event.currentTarget.value);
       focusHeaderId(event.currentTarget.value);
     };
 
