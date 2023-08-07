@@ -1,5 +1,24 @@
 {
   "compilerOptions": {
+    /* Type Checking */
+    "strict": false,
+
+    /* Modules */
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+
+    /* Emit */
+    "noEmit": true,
+
+    /* JavaScript Support */
+    "allowJs": true,
+
+    /* Interop Contraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
     /* Language and Environment */
     "lib": [
       "dom",
@@ -8,27 +27,8 @@
     ],
     "jsx": "preserve",
     
-    /* Modules */
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-
-    /* JavaScript Support */
-    "allowJs": true,
-    
-    /* Emit */
-    "noEmit": true,
-    
     /* Projects */
     "incremental": true,
-
-    /* Interop Contraints */
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-
-    /* Type Checking */
-    "strict": false,
 
     /* Completeness */
     "skipLibCheck": true
