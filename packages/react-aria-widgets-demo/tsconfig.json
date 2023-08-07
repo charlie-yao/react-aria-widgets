@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     /* Type Checking */
-    "strict": false,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
 
     /* Modules */
     "module": "esnext",
