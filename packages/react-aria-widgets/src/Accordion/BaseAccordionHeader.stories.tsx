@@ -10,23 +10,23 @@ const meta = {
   args: {
     children: 'Hello world!',
     id: 'headerId',
-    controlsId: 'panelId',
     headerLevel: 1,
     onClick: (event) => event.preventDefault(),
-    isExpanded: false,
-    isDisabled: false,
+    'aria-controls': 'panelId',
+    'aria-expanded': false,
+    'aria-disabled': false,
   },
 } satisfies Meta<typeof BaseAccordionHeader>;
 
 export const Expanded: Story = {
   args: {
-    isExpanded: true,
+    'aria-expanded': true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    isDisabled: true,
+    'aria-disabled': true,
   },
 };
 

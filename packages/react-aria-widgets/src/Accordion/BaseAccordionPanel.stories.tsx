@@ -10,7 +10,7 @@ const meta = {
   args: {
     children: 'Hello world!',
     id: 'panelId',
-    labelId: 'labelId',
+    'aria-labelledby': 'labelId',
   },
 } satisfies Meta<typeof BaseAccordionPanel>;
 
