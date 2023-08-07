@@ -68,6 +68,7 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
       style={ _style }
       as={ Component }
       data-expanded={ isExpanded }
+      data-disabled={ isDisabled }
     >
       { typeof children === 'function' ? children(combinedContext) : children }
     </BaseAccordionPanel>
