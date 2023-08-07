@@ -8,13 +8,13 @@ import Main from './Main';
 import Footer from './Footer';
 
 function Layout(props) {
-  const { children, isNavExpanded, setNavExpanded, SubNav } = props;
+  const { children, SubNav } = props;
 
   return (
     <>
-      <Header isNavExpanded={ isNavExpanded } setNavExpanded={ setNavExpanded } />
+      <Header />
       <MainContainer>
-        <Navigation isNavExpanded={ isNavExpanded } />
+        <Navigation />
         <Main>
           { children }
         </Main>
@@ -32,8 +32,6 @@ function Layout(props) {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  isNavExpanded: PropTypes.bool.isRequired,
-  setNavExpanded: PropTypes.func.isRequired,
   SubNav: PropTypes.elementType,
 };
 

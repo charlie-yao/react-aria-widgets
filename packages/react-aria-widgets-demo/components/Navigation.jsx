@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-//Components and Styles
+//Styles
 import styles from './Navigation.module.scss';
 
-function Navigation(props) {
-  const { isNavExpanded } = props;
+//Hooks
+import useNavContext from '../hooks/useNavContext';
+
+function Navigation() {
+  const { isNavExpanded } = useNavContext();
   const router = useRouter();
   const { pathname } = router;
 
@@ -57,9 +60,5 @@ function Navigation(props) {
     </nav>
   );
 }
-
-Navigation.propTypes = {
-  isNavExpanded: PropTypes.bool.isRequired,
-};
 
 export default Navigation;

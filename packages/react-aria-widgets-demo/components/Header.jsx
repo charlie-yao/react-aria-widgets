@@ -2,11 +2,14 @@ import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-//Components and Styles
+//Styles
 import styles from './Header.module.scss';
 
-function Header(props) {
-  const { isNavExpanded, setNavExpanded } = props;
+//Hooks
+import useNavContext from '../hooks/useNavContext';
+
+function Header() {
+  const { isNavExpanded, setNavExpanded } = useNavContext();
 
   const onClick = useCallback(() => {
     setNavExpanded(!isNavExpanded);
@@ -38,10 +41,5 @@ function Header(props) {
     </header>
   );
 }
-
-Header.propTypes = {
-  isNavExpanded: PropTypes.bool.isRequired,
-  setNavExpanded: PropTypes.func.isRequired,
-};
 
 export default Header;

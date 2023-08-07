@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect, useMemo } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
@@ -12,8 +11,14 @@ import Layout from '../components/Layout';
 //Styles
 import '../styles/styles.scss';
 
+//Contexts
+import NavContext from '../context/NavContext';
+
 //Misc.
 import { GOOGLE_ANALYTICS_ID, pageView } from '../utils/googleAnalytics';
+
+//Types
+import type { AppProps } from 'next/app';
 
 const GOOGLE_ANALYTICS_TAG
 = `
@@ -24,13 +29,19 @@ gtag('js', new Date());
 gtag('config', '${GOOGLE_ANALYTICS_ID}');
 `;
 
-function App(props) {
-  const { Component, pageProps } = props;
+function App({ Component, pageProps }: AppProps) {
   const [ isNavExpanded, setNavExpanded ] = useState(false);
   const router = useRouter();
+  
+  const navContextValue = useMemo(() => {
+    return {
+      isNavExpanded,
+      setNavExpanded,
+    };
+  }, [ isNavExpanded, setNavExpanded ]);
 
   useEffect(() => {
-    function handleRouteChange(url) {
+    function handleRouteChange(url: string) {
       pageView(url);
       setNavExpanded(false);
     }
@@ -59,21 +70,14 @@ function App(props) {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: GOOGLE_ANALYTICS_TAG }}
       />
-      <Layout
-        isNavExpanded={ isNavExpanded }
-        setNavExpanded={ setNavExpanded }
-        SubNav={ Component.SubNav }
-      >
-        <Component { ...pageProps } />
-      </Layout>
-      <Script src="https://kit.fontawesome.com/60e1a84dd0.js" crossorigin="anonymous" />
+      <NavContext.Provider value={ navContextValue }>
+        <Layout SubNav={ Component.SubNav }>
+          <Component { ...pageProps } />
+        </Layout>
+      </NavContext.Provider>
+      <Script src="https://kit.fontawesome.com/60e1a84dd0.js" crossOrigin="anonymous" />
     </>
   );
 }
-
-App.propTypes = {
-  Component: PropTypes.func.isRequired,
-  pageProps: PropTypes.object.isRequired,
-};
 
 export default App;
