@@ -149,12 +149,12 @@ export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PA
 
 export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   id?: string | undefined;
-  controlsId: string;
   headerLevel: ValidHTMLHeaderLevels;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
-  isExpanded: boolean;
-  isDisabled: boolean;
+  'aria-controls': string;
+  'aria-expanded': boolean;
+  'aria-disabled': boolean;
   headerProps?: BaseHeaderProps;
   buttonProps?: BaseButtonProps;
 }>;
