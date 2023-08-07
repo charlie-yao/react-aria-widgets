@@ -12,12 +12,12 @@ import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>(({
   children,
   id,
-  controlsId,
   headerLevel,
   onClick,
   onKeyDown,
-  isExpanded,
-  isDisabled,
+  'aria-controls': ariaControls,
+  'aria-expanded': ariaExpanded,
+  'aria-disabled': ariaDisabled,
   headerProps,
   buttonProps,
 }, ref) => {
@@ -29,11 +29,11 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
         { ...buttonProps }
         type="button"
         id={ id }
-        aria-controls={ controlsId }
         onClick={ onClick }
         onKeyDown={ onKeyDown }
-        aria-expanded={ isExpanded }
-        aria-disabled={ isDisabled }
+        aria-controls={ ariaControls }
+        aria-expanded={ ariaExpanded }
+        aria-disabled={ ariaDisabled }
         ref={ ref }
       >
         { children }
@@ -45,12 +45,12 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
 BaseAccordionHeader.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string,
-  controlsId: PropTypes.string.isRequired,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onClick: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func,
-  isExpanded: PropTypes.bool.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
+  'aria-controls': PropTypes.string.isRequired,
+  'aria-expanded': PropTypes.bool.isRequired,
+  'aria-disabled': PropTypes.bool.isRequired,
   headerProps: PropTypes.object,
   buttonProps: PropTypes.object,
 };

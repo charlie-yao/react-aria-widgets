@@ -142,12 +142,12 @@ function AccordionHeader({
   return (
     <BaseAccordionHeader
       id={ headerHTMLId }
-      controlsId={ panelHTMLId }
       headerLevel={ headerLevel }
       onClick={ handleClick }
       onKeyDown={ handleKeyDown }
-      isExpanded={ isExpanded }
-      isDisabled={ isDisabled }
+      aria-controls={ panelHTMLId }
+      aria-expanded={ isExpanded }
+      aria-disabled={ isDisabled }
       headerProps={ _headerProps }
       buttonProps={ _buttonProps }
       ref={ refCallback }
