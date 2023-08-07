@@ -161,7 +161,7 @@ export type BaseAccordionHeaderProps = React.PropsWithChildren<{
 
 export interface InternalBaseAccordionPanelProps {
   id: string;
-  labelId?: string;
+  'aria-labelledby'?: string;
 }
 
 export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<

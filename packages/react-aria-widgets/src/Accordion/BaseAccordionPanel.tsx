@@ -15,7 +15,7 @@ function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_E
     children,
     as,
     id,
-    labelId,
+    'aria-labelledby': ariaLabelledBy,
     ...rest
   }: BaseAccordionPanelProps<C>,
   ref: PolymorphicRef<C>
@@ -26,7 +26,7 @@ function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_E
     <Component
       { ...rest }
       id={ id }
-      aria-labelledby={ labelId }
+      aria-labelledby={ ariaLabelledBy }
       ref={ ref }
     >
       { children }
@@ -40,7 +40,7 @@ ForwardedBaseAccordionPanel.propTypes = {
   children: PropTypes.node,
   as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
   id: PropTypes.string.isRequired,
-  labelId: PropTypes.string,
+  'aria-labelledby': PropTypes.string,
 };
 
 ForwardedBaseAccordionPanel.defaultProps = {

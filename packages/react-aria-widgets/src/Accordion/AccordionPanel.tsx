@@ -63,7 +63,7 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
     <BaseAccordionPanel<typeof Component>
       { ...rest }
       id={ panelHTMLId }
-      labelId={ headerHTMLId }
+      aria-labelledby={ headerHTMLId }
       className={ _className }
       style={ _style }
       as={ Component }
