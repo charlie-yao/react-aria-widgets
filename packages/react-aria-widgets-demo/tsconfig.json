@@ -31,6 +31,11 @@
       "dom.iterable",
       "esnext"
     ],
+
+    /* Compiler Diagnostics */
+    "explainFiles": false,
+    "extendedDiagnostics": false,
+    "traceResolution": false,
     
     /* Projects */
     "incremental": true,

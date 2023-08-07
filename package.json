@@ -8,5 +8,5 @@
     "core-js": "^3.21.1",
     "typescript": "^5.0.2"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.6.1"
 }

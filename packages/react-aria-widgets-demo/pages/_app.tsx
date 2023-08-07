@@ -42,7 +42,7 @@ gtag('config', '${GOOGLE_ANALYTICS_ID}');
 export default function App({ Component, pageProps }: AppPropsWithSubNav) {
   const [ isNavExpanded, setNavExpanded ] = useState(false);
   const router = useRouter();
-  
+
   const navContextValue = useMemo(() => {
     return {
       isNavExpanded,

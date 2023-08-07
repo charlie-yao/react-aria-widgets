@@ -10,4 +10,4 @@ export default function useNavContext() {
     throw new Error('useNavContext must be used within a <NavContext.Provider>.');
 
   return navContext;
-};
+}
