@@ -19,6 +19,16 @@ import { GOOGLE_ANALYTICS_ID, pageView } from '../utils/googleAnalytics';
 
 //Types
 import type { AppProps } from 'next/app';
+import type { NextPage } from 'next';
+import type { ReactElement } from 'react';
+
+export type NextPageWithSubNav<P = {}, IP = P> = NextPage<P, IP> & {
+  SubNav?: ReactElement;
+}
+
+export type AppPropsWithSubNav = AppProps & {
+  Component: NextPageWithSubNav;
+}
 
 const GOOGLE_ANALYTICS_TAG
 = `
@@ -29,7 +39,7 @@ gtag('js', new Date());
 gtag('config', '${GOOGLE_ANALYTICS_ID}');
 `;
 
-function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppPropsWithSubNav) {
   const [ isNavExpanded, setNavExpanded ] = useState(false);
   const router = useRouter();
   
@@ -79,5 +89,3 @@ function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
-
-export default App;

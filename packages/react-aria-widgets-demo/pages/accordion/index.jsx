@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-//Components and Styles
+//Components
 import SubNav from '../../components/accordion/SubNav';
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
