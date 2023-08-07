@@ -339,13 +339,13 @@ export const Controlled: Story = {
 export const Styled: Story = {
   render: (args) => {
     return (
-      <Accordion {...args} >
+      <Accordion { ...args }>
         <AccordionItem id="item1">
           <AccordionHeader
             headerProps={{ className: ({ isExpanded }) => `accordion-header ${isExpanded ? 'expanded' : 'collapsed'}` }}
             buttonProps={{ className: ({ isExpanded }) => `accordion-button ${isExpanded ? 'expanded' : 'collapsed'}` }}
           >
-            Using Custom Class Render Function      
+            Using Custom Class Render Function
           </AccordionHeader>
           <AccordionPanel className={ ({ isExpanded }) => `accordion-panel ${isExpanded ? 'expanded' : 'collapsed'}` }>
             This accordion item uses render-like functions for its <code>className</code> props.
@@ -364,7 +364,7 @@ export const Styled: Story = {
         </AccordionItem>
         <AccordionItem id="item3">
           <AccordionHeader>
-            Using Default Class 
+            Using Default Class
           </AccordionHeader>
           <AccordionPanel>
             This accordion item uses the default CSS classes provided by React ARIA Widgets.
@@ -375,7 +375,7 @@ export const Styled: Story = {
             headerProps={{ style: ({ isExpanded }) => { return isExpanded ? {} : { backgroundColor: 'red' }; } }}
             buttonProps={{ style: ({ isExpanded }) => { return isExpanded ? {} : { color: 'blue' }; } }}
           >
-            Using Custom Style Render Function 
+            Using Custom Style Render Function
           </AccordionHeader>
           <AccordionPanel style={ ({ isExpanded }) => { return isExpanded ? {} : { display: 'none' }; } }>
             This accordion item uses render-link functions for its <code>style</code> props.
