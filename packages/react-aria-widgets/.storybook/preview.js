@@ -1,4 +1,3 @@
-import 'src/styles.scss';
 import '../storybook.scss';
 
 export const parameters = {
