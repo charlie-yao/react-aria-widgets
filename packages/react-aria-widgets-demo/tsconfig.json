@@ -6,6 +6,7 @@
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "strict": true,
+    "strictNullChecks": true,
 
     /* Modules */
     "module": "esnext",
