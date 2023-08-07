@@ -34,7 +34,7 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   isNavExpanded: PropTypes.bool.isRequired,
   setNavExpanded: PropTypes.func.isRequired,
-  SubNav: PropTypes.node,
+  SubNav: PropTypes.elementType,
 };
 
 Layout.defaultProps = {
