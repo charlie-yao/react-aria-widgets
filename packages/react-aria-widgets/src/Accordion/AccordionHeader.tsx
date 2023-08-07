@@ -97,6 +97,8 @@ function AccordionHeader({
       ...headerProps,
       className,
       style,
+      'data-expanded': isExpanded,
+      'data-disabled': isDisabled,
     };
   }, [
     allowMultiple,
