@@ -342,12 +342,12 @@ export const Styled: Story = {
       <Accordion {...args} >
         <AccordionItem id="item1">
           <AccordionHeader
-            headerProps={{ className: ({ isExpanded }) => `accordion-header-${isExpanded ? 'expanded' : 'collapsed'}` }}
-            buttonProps={{ className: ({ isExpanded }) => `accordion-button-${isExpanded ? 'expanded' : 'collapsed'}` }}
+            headerProps={{ className: ({ isExpanded }) => `accordion-header ${isExpanded ? 'expanded' : 'collapsed'}` }}
+            buttonProps={{ className: ({ isExpanded }) => `accordion-button ${isExpanded ? 'expanded' : 'collapsed'}` }}
           >
             Using Custom Class Render Function      
           </AccordionHeader>
-          <AccordionPanel className={ ({ isExpanded }) => `accordion-panel-${isExpanded ? 'expanded' : 'collapsed'}` }>
+          <AccordionPanel className={ ({ isExpanded }) => `accordion-panel ${isExpanded ? 'expanded' : 'collapsed'}` }>
             This accordion item uses render-like functions for its <code>className</code> props.
           </AccordionPanel>
         </AccordionItem>
