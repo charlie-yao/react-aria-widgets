@@ -25,12 +25,12 @@
     "isolatedModules": true,
 
     /* Language and Environment */
+    "jsx": "preserve",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "jsx": "preserve",
     
     /* Projects */
     "incremental": true,
