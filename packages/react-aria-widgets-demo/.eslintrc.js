@@ -23,12 +23,7 @@ module.exports = {
   ],
   rules: {
     //---- Vanilla ESLint ----
-    indent: [ 'error', 2, {
-      SwitchCase: 1,
-    }],
     'linebreak-style': [ 'error', 'unix' ],
-    quotes: [ 'error', 'single' ],
-    semi: [ 'error', 'always' ],
     'array-callback-return': [ 'warn' ],
     'no-await-in-loop': [ 'warn' ],
     'no-constructor-return': [ 'error' ],
@@ -77,42 +72,14 @@ module.exports = {
     }],
     'array-element-newline': [ 'error', 'consistent' ],
     'arrow-spacing': [ 'error' ],
-    'block-spacing': [ 'error' ],
-    'brace-style': [ 'error', 'stroustrup' ],
-    'comma-dangle': [ 'error', {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'only-multiline',
-    }],
-    'comma-spacing': [ 'error' ],
     'comma-style': [ 'error' ],
     'computed-property-spacing': [ 'error' ],
     'dot-location': [ 'error' ],
     'eol-last': [ 'error', 'always' ],
-    'func-call-spacing': [ 'error' ],
     'function-call-argument-newline': [ 'error', 'consistent' ],
     'function-paren-newline': [ 'error', 'consistent' ],
     'implicit-arrow-linebreak': [ 'error' ],
     'jsx-quotes': [ 'error', 'prefer-double' ],
-    'key-spacing': [ 'error' ],
-    'keyword-spacing': [ 'error', {
-      overrides: {
-        if: {
-          after: false,
-        },
-        for: {
-          after: false,
-        },
-        while: {
-          after: false,
-        },
-        switch: {
-          after: false,
-        },
-      },
-    }],
     'new-parens': [ 'error', 'always' ],
     'no-multi-spaces': [ 'error' ],
     'no-multiple-empty-lines': [ 'error', {
@@ -125,7 +92,6 @@ module.exports = {
     'object-curly-newline': [ 'error', {
       consistent: true,
     }],
-    'object-curly-spacing': [ 'error', 'always' ],
     'object-property-newline': [ 'error', {
       allowAllPropertiesOnSameLine: true,
     }],
@@ -141,10 +107,7 @@ module.exports = {
       after: true,
     }],
     'semi-style': [ 'error', 'last' ],
-    'space-before-blocks': [ 'error', 'always' ],
-    'space-before-function-paren': [ 'error', 'never' ],
     'space-in-parens': [ 'error', 'never' ],
-    'space-infix-ops': [ 'error' ],
     'space-unary-ops': [ 'error', {
       words: true,
       nonwords: false,
@@ -183,6 +146,60 @@ module.exports = {
     }],
     'no-return-await': 'off',
     '@typescript-eslint/return-await': 'warn',
+
+    //---- TS Formatting Rules ----
+    'block-spacing': 'off',
+    '@typescript-eslint/block-spacing': 'error',
+    'brace-style': 'off',
+    '@typescript-eslint/brace-style': [ 'error', 'stroustrup', { allowSingleLine: true } ],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': [ 'error', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'only-multiline',
+    }],
+    'comma-spacing': 'off',
+    '@typescript-eslint/comma-spacing': 'error',
+    'func-call-spacing': 'off',
+    '@typescript-eslint/func-call-spacing': [ 'error' ],
+    indent: [ 'error', 2, { //TS version of this rule is broken
+      SwitchCase: 1,
+    }],
+    'key-spacing': 'off',
+    '@typescript-eslint/key-spacing': [ 'error' ],
+    'keyword-spacing': 'off',
+    '@typescript-eslint/keyword-spacing': [ 'error', {
+      overrides: {
+        if: {
+          after: false,
+        },
+        for: {
+          after: false,
+        },
+        while: {
+          after: false,
+        },
+        switch: {
+          after: false,
+        },
+      },
+    }],
+    '@typescript-eslint/member-delimiter-style': 'error',
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
+    quotes: 'off',
+    '@typescript-eslint/quotes': [ 'error', 'single' ],
+    semi: 'off',
+    '@typescript-eslint/semi': [ 'error', 'always' ],
+    'space-before-blocks': 'off',
+    '@typescript-eslint/space-before-blocks': [ 'error', 'always' ],
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/space-before-function-paren': [ 'error', 'never' ],
+    'space-infix-ops': 'off',
+    '@typescript-eslint/space-infix-ops': [ 'error' ],
+    '@typescript-eslint/type-annotation-spacing': 'error',
 
     //---- React ---
     'react/button-has-type': [ 'error' ],
