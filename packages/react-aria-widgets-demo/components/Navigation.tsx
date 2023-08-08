@@ -7,7 +7,7 @@ import styles from './Navigation.module.scss';
 //Hooks
 import useNavContext from '../hooks/useNavContext';
 
-function Navigation() {
+export default function Navigation() {
   const { isNavExpanded } = useNavContext();
   const router = useRouter();
   const { pathname } = router;
@@ -59,5 +59,3 @@ function Navigation() {
     </nav>
   );
 }
-
-export default Navigation;
