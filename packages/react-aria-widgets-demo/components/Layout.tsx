@@ -15,7 +15,7 @@ interface LayoutProps {
 
 export default function Layout({
   children = null,
-  SubNav = null
+  SubNav = null,
 }: LayoutProps) {
   return (
     <>
