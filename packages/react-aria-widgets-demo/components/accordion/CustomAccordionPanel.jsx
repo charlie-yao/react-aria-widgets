@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BaseAccordionPanel } from 'react-aria-widgets/accordion';
 
 function CustomAccordionPanel(props) {
@@ -44,13 +43,6 @@ function CustomAccordionPanel(props) {
     </BaseAccordionPanel>
   );
 }
-
-CustomAccordionPanel.propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  getIsExpanded: PropTypes.func.isRequired,
-  className: PropTypes.string,
-};
 
 CustomAccordionPanel.defaultProps = {
   className: '',

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BaseAccordionHeader } from 'react-aria-widgets/accordion';
 
 function CustomAccordionHeader(props) {
@@ -48,20 +47,6 @@ function CustomAccordionHeader(props) {
     </BaseAccordionHeader>
   );
 }
-
-CustomAccordionHeader.propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  headerLevel: PropTypes.number.isRequired,
-  setHeaderRef: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
-  getIsExpanded: PropTypes.func.isRequired,
-  getIsDisabled: PropTypes.func.isRequired,
-  headerProps: PropTypes.object,
-  buttonProps: PropTypes.object,
-};
 
 CustomAccordionHeader.defaultProps = {
   headerProps: {},

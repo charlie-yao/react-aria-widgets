@@ -1708,7 +1708,6 @@ __metadata:
   resolution: "@charlie-yao/react-aria-widgets-demo@workspace:packages/react-aria-widgets-demo"
   dependencies:
     "@types/node": 20.4.8
-    "@types/prop-types": ^15.7.5
     "@types/react": 18.2.18
     "@types/react-syntax-highlighter": ^15.5.7
     bulma: ^0.9.4
@@ -1716,7 +1715,6 @@ __metadata:
     eslint-config-next: ^13.2.4
     eslint-plugin-jsx-a11y: ^6.7.1
     next: ^13.2.4
-    prop-types: ^15.8.1
     react: ^18.2
     react-aria-widgets: "workspace:*"
     react-dom: ^18.2
