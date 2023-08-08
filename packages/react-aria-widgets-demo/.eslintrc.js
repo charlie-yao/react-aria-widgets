@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    //---- Vanilla ESLint ----
     indent: [ 'error', 2, {
       SwitchCase: 1,
     }],
@@ -169,6 +170,8 @@ module.exports = {
       before: false,
     }],
     'template-curly-spacing': [ 'error', 'never' ],
+
+    //---- React ---
     'react/button-has-type': [ 'error' ],
     'react/destructuring-assignment': [ 'error', 'always' ],
     'react/default-props-match-prop-types': [ 'error' ],
@@ -210,6 +213,8 @@ module.exports = {
     'react/static-property-placement': [ 'error', 'static public field' ],
     'react/style-prop-object': [ 'error' ],
     'react/void-dom-elements-no-children': [ 'error' ],
+
+    //--- React JSX ---
     'react/jsx-boolean-value': [ 'error', 'never' ],
     'react/jsx-child-element-spacing': [ 'warn' ],
     'react/jsx-closing-tag-location': [ 'error' ],
