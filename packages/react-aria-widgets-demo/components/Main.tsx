@@ -8,7 +8,7 @@ interface MainProps {
   children?: ReactNode;
 }
 
-function Main({ children }: MainProps) {
+function Main({ children = null }: MainProps) {
   return (
     <main className={ styles.Main }>
       { children }
