@@ -13,7 +13,7 @@ function Error({ statusCode }: ErrorProps) {
 
 //@ts-ignore
 Error.getInitialProps = ({ res, err }) => {
-  console.log(res, err);
+  console.log(res, err); //eslint-disable-line
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
 
   return {
