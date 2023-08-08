@@ -2,6 +2,12 @@
 
 import { Html, Head, Main, NextScript } from 'next/document';
 
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
+  }
+}
+
 const description = 'A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).';
 
 const GOOGLE_ANALYTICS_TAG
