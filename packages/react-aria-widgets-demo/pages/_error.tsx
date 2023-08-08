@@ -1,3 +1,5 @@
+import { NextPageContext } from 'next';
+
 export interface ErrorProps {
   statusCode: number;
 }
@@ -11,9 +13,7 @@ function Error({ statusCode }: ErrorProps) {
   );
 }
 
-//@ts-ignore
-Error.getInitialProps = ({ res, err }) => {
-  console.log(res, err); //eslint-disable-line
+Error.getInitialProps = ({ res, err }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
 
   return {
