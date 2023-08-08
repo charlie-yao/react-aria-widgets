@@ -10,10 +10,13 @@ import type { ReactNode, ComponentType } from 'react';
 
 interface LayoutProps {
   children?: ReactNode;
-  SubNav?: ComponentType;
+  SubNav?: ComponentType | null;
 }
 
-export default function Layout({ children, SubNav }: LayoutProps) {
+export default function Layout({
+  children = null,
+  SubNav = null,
+}: LayoutProps) {
   return (
     <>
       <Header />

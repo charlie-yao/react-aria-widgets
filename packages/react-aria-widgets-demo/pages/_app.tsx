@@ -22,7 +22,7 @@ import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import type { ComponentType } from 'react';
 
-export type NextPageWithSubNav<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithSubNav<P = object, IP = P> = NextPage<P, IP> & {
   SubNav?: ComponentType;
 };
 
