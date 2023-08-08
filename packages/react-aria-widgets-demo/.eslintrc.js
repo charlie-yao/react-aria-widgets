@@ -207,7 +207,7 @@ module.exports = {
     }],
     'react/jsx-equals-spacing': [ 'error' ],
     'react/jsx-filename-extension': [ 'error', {
-      extensions: ['.jsx', '.tsx']
+      extensions: [ '.jsx', '.tsx' ],
     }],
     'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
     'react/jsx-handler-names': [ 'error', {
