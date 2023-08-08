@@ -20,10 +20,10 @@ import { GOOGLE_ANALYTICS_ID, pageView } from '../utils/googleAnalytics';
 //Types
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
-import type { ReactElement } from 'react';
+import type { ComponentType } from 'react';
 
 export type NextPageWithSubNav<P = {}, IP = P> = NextPage<P, IP> & {
-  SubNav?: ReactElement;
+  SubNav?: ComponentType;
 }
 
 export type AppPropsWithSubNav = AppProps & {
