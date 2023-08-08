@@ -29,10 +29,6 @@ module.exports = {
     'linebreak-style': [ 'error', 'unix' ],
     quotes: [ 'error', 'single' ],
     semi: [ 'error', 'always' ],
-    'no-unused-vars': [ 'error', {
-      varsIgnorePattern: '[iI]gnored',
-      argsIgnorePattern: '[iI]gnored',
-    }],
     'array-callback-return': [ 'warn' ],
     'no-await-in-loop': [ 'warn' ],
     'no-constructor-return': [ 'error' ],
@@ -42,22 +38,18 @@ module.exports = {
     camelcase: [ 'error' ],
     curly: [ 'error', 'multi-or-nest' ],
     'default-case-last': [ 'error' ],
-    'default-param-last': [ 'error' ],
-    'dot-notation': [ 'error' ],
     eqeqeq: [ 'error', 'always' ],
     'func-name-matching': [ 'error' ],
     'func-names': [ 'error', 'as-needed' ],
     'guard-for-in': [ 'warn' ],
     'new-cap': [ 'error' ],
     'no-alert': [ 'warn' ],
-    'no-array-constructor': [ 'error' ],
     'no-caller': [ 'error' ],
     'no-console': [ 'error' ],
     'no-eval': [ 'error' ],
     'no-extend-native': [ 'error' ],
     'no-floating-decimal': [ 'error' ],
     'no-implicit-coercion': [ 'error' ],
-    'no-implied-eval': [ 'error' ],
     'no-mixed-operators': [ 'warn' ],
     'no-multi-assign': [ 'error' ],
     'no-negated-condition': [ 'warn' ],
@@ -65,15 +57,9 @@ module.exports = {
     'no-new-object': [ 'error' ],
     'no-new-wrappers': [ 'error' ],
     'no-return-assign': [ 'error' ],
-    'no-return-await': [ 'warn' ],
     'no-script-url': [ 'error' ],
-    'no-throw-literal': [ 'error' ],
-    'no-unused-expressions': [ 'error', {
-      enforceForJSX: true,
-    }],
     'no-useless-call': [ 'error' ],
     'no-useless-computed-key': [ 'error' ],
-    'no-useless-constructor': [ 'error' ],
     'no-useless-rename': [ 'error' ],
     'no-useless-return': [ 'error' ],
     'no-var': [ 'error' ],
@@ -84,7 +70,6 @@ module.exports = {
     'prefer-rest-params': [ 'error' ],
     'quote-props': [ 'error', 'as-needed' ],
     radix: [ 'error' ],
-    'require-await': [ 'error' ],
     'require-unicode-regexp': [ 'error' ],
     'array-bracket-newline': [ 'error', 'consistent' ],
     'array-bracket-spacing': [ 'error', 'always', {
@@ -169,6 +154,35 @@ module.exports = {
       before: false,
     }],
     'template-curly-spacing': [ 'error', 'never' ],
+    
+    //---- TS Rules ----
+    '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
+
+    //---- TS Extension Rules ----
+    //Reminder: some vanilla ESLint rules may not be explicitly turned
+    //off here because they were turned off in the "extends" for TS
+    'default-param-last': 'off',
+    '@typescript-eslint/default-param-last': 'error',
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': 'error',
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': 'error',
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': 'error',
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': 'error',
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-unused-expressions': ['error', {
+      enforceForJSX: true,
+    }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars':[ 'error', {
+      varsIgnorePattern: '[iI]gnored',
+      argsIgnorePattern: '[iI]gnored',
+    }],
+    'no-return-await': 'off',
+    '@typescript-eslint/return-await': 'warn',
 
     //---- React ---
     'react/button-has-type': [ 'error' ],
@@ -177,7 +191,6 @@ module.exports = {
     'react/function-component-definition': [ 'error', {
       namedComponents: 'function-declaration',
       unnamedComponents: 'function-expression', //Linter prevents using array syntax though it's allowed
-
     }],
     'react/no-access-state-in-setstate': [ 'error' ],
     'react/no-adjacent-inline-elements': [ 'warn' ],
