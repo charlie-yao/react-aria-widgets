@@ -1715,7 +1715,7 @@ __metadata:
   resolution: "@charlie-yao/react-aria-widgets-demo@workspace:packages/react-aria-widgets-demo"
   dependencies:
     "@types/node": 20.4.8
-    "@types/react": 18.2.18
+    "@types/react": ^18.2.19
     "@types/react-syntax-highlighter": ^15.5.7
     "@typescript-eslint/eslint-plugin": ^6.3.0
     "@typescript-eslint/parser": ^6.3.0
@@ -1724,9 +1724,9 @@ __metadata:
     eslint-config-next: ^13.4.13
     eslint-plugin-jsx-a11y: ^6.7.1
     next: ^13.4.13
-    react: ^18.2
+    react: ^18.2.0
     react-aria-widgets: "workspace:*"
-    react-dom: ^18.2
+    react-dom: ^18.2.0
     react-syntax-highlighter: ^15.5.0
     react-tabs: ^5
     sass: 1.59.2
@@ -3937,7 +3937,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.28":
+"@types/react@npm:*":
   version: 18.0.28
   resolution: "@types/react@npm:18.0.28"
   dependencies:
@@ -3945,17 +3945,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e752df961105e5127652460504785897ca6e77259e0da8f233f694f9e8f451cde7fa0709d4456ade0ff600c8ce909cfe29f9b08b9c247fa9b734e126ec53edd7
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.2.18":
-  version: 18.2.18
-  resolution: "@types/react@npm:18.2.18"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 2e0d75de2b618e76780019e52478b1bec2b015a9187aea30f84518c0c3ddc639055bdfea50864aece937bad0cb0544d0100b80d30f5461e72fbc1c3c0be8b140
   languageName: node
   linkType: hard
 
@@ -3967,6 +3956,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 4fbd2b2b6a26378bdfde121081a6406ec2d39e4ba87ea5f6897ab7bb2198713165e6fd703ad4ed7ba1d4f23ef54a4c9f108f3105c7ed8e136411ee6bdebc5669
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.19":
+  version: 18.2.19
+  resolution: "@types/react@npm:18.2.19"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 1ef657b90c7413451bbac2fd2fbce4f8a093941bc5041d344ab9833bc113c8eebf6318dae8aeeb1a0f922f15bc772507e6aaa0c7b51847b5f7302921c8dd6740
   languageName: node
   linkType: hard
 
@@ -11511,7 +11511,7 @@ __metadata:
     "@storybook/react-webpack5": ^7.0.2
     "@storybook/testing-library": ^0.1.0
     "@types/prop-types": ^15.7.5
-    "@types/react": ^18.0.28
+    "@types/react": ^18.2.19
     "@types/react-dom": ^18.0.11
     "@typescript-eslint/eslint-plugin": ^5.59.1
     "@typescript-eslint/parser": ^5.59.1
@@ -11524,8 +11524,8 @@ __metadata:
     eslint-plugin-storybook: ^0.6.11
     mini-css-extract-plugin: ^2.7.3
     prop-types: ^15.8.1
-    react: ^18.2
-    react-dom: ^18.2
+    react: ^18.2.0
+    react-dom: ^18.2.0
     sass: 1.59.2
     sass-loader: ^13.2.0
     source-map-loader: ^4.0.1
@@ -11580,7 +11580,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:*, react-dom@npm:^18.2":
+"react-dom@npm:*, react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -11670,7 +11670,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:*, react@npm:^18.2":
+"react@npm:*, react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
