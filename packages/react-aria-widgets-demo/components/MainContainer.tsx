@@ -2,13 +2,13 @@
 import styles from './MainContainer.module.scss';
 
 //Types
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface MainContainerProps {
   children?: ReactNode;
 }
 
-function MainContainer({ children }: MainContainerProps) {
+function MainContainer({ children = null }: MainContainerProps) {
   return (
     <div className={ styles.MainContainer }>
       { children }

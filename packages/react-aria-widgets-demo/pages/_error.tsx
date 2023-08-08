@@ -1,4 +1,4 @@
-import { NextPageContext } from 'next';
+import type { NextPageContext } from 'next';
 
 export interface ErrorProps {
   statusCode: number;
