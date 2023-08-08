@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 //Hooks
 import useNavContext from '../hooks/useNavContext';
 
-function Header() {
+export default function Header() {
   const { isNavExpanded, setNavExpanded } = useNavContext();
 
   const onClick = useCallback(() => {
@@ -40,5 +40,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;
