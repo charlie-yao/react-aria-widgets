@@ -292,9 +292,7 @@ module.exports = {
     }],
     'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
     'react/jsx-handler-names': [ 'error' ],
-    'react/jsx-indent': [ 'error', 2, {
-      indentLogicalExpressions: true,
-    }],
+    'react/jsx-indent': [ 'error', 2 ],
     'react/jsx-indent-props': [ 'error', 2 ],
     'react/jsx-newline': [ 'error', {
       prevent: true,
