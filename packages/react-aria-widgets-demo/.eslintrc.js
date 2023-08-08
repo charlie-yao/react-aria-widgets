@@ -5,6 +5,12 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
+  ignorePatterns: [
+    'next.config.js',
+    'server.js',
+    'tsconfig.json',
+    '.eslintrc.js',
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
