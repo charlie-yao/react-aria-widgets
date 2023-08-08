@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 //Components
 import Header from './Header';
 import MainContainer from './MainContainer';
@@ -7,9 +5,15 @@ import Navigation from './Navigation';
 import Main from './Main';
 import Footer from './Footer';
 
-function Layout(props) {
-  const { children, SubNav } = props;
+//Types
+import type { ReactNode, ComponentType } from 'react';
 
+interface LayoutProps {
+  children?: ReactNode;
+  SubNav?: ComponentType;
+}
+
+export default function Layout({ children, SubNav }: LayoutProps) {
   return (
     <>
       <Header />
@@ -29,14 +33,3 @@ function Layout(props) {
     </>
   );
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  SubNav: PropTypes.elementType,
-};
-
-Layout.defaultProps = {
-  SubNav: undefined,
-};
-
-export default Layout;
