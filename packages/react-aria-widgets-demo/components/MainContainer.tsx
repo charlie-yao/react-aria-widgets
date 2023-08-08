@@ -2,7 +2,7 @@
 import styles from './MainContainer.module.scss';
 
 //Types
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface MainContainerProps {
   children?: ReactNode;

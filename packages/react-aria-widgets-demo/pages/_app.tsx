@@ -24,11 +24,11 @@ import type { ComponentType } from 'react';
 
 export type NextPageWithSubNav<P = {}, IP = P> = NextPage<P, IP> & {
   SubNav?: ComponentType;
-}
+};
 
 export type AppPropsWithSubNav = AppProps & {
   Component: NextPageWithSubNav;
-}
+};
 
 const GOOGLE_ANALYTICS_TAG
 = `
