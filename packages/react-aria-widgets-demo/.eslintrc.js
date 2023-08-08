@@ -121,6 +121,8 @@ module.exports = {
     //---- TS Rules ----
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/no-useless-empty-export': 'error',
 
     //---- TS Extension Rules ----
     //Reminder: some vanilla ESLint rules may not be explicitly turned
@@ -227,18 +229,27 @@ module.exports = {
     'react/no-will-update-set-state': [ 'error' ],
     'react/prefer-es6-class': [ 'error', 'always' ],
     'react/prefer-stateless-function': [ 'error' ],
-    'react/prop-types': [ 'error' ],
     'react/require-default-props': [ 'error', {
       forbidDefaultForRequired: true,
+      functions: 'defaultArguments',
     }],
     'react/self-closing-comp': [ 'error' ],
     'react/sort-comp': [ 'error', {
-      order: [ 'static-variables', 'static-methods', 'lifecycle', '/^on.+$/u', 'rendering', 'everything-else' ],
+      order: [
+        'static-variables',
+        'static-methods',
+        'instance-variables',
+        'lifecycle',
+        '/^handle.+$/u',
+        '/^on.+$/u',
+        'rendering',
+        'instance-methods',
+        'everything-else'
+      ],
       groups: {
         rendering: [ 'render', '/^render.+$/u' ],
       },
     }],
-    'react/state-in-constructor': [ 'error', 'always' ],
     'react/static-property-placement': [ 'error', 'static public field' ],
     'react/style-prop-object': [ 'error' ],
     'react/void-dom-elements-no-children': [ 'error' ],
@@ -261,21 +272,18 @@ module.exports = {
       extensions: [ '.jsx', '.tsx' ],
     }],
     'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
-    'react/jsx-handler-names': [ 'error', {
-      eventHandlerPrefix: 'on',
+    'react/jsx-handler-names': [ 'error' ],
+    'react/jsx-indent': [ 'error', 2, {
+      indentLogicalExpressions: true,
     }],
-    'react/jsx-indent': [ 'error', 2 ],
     'react/jsx-indent-props': [ 'error', 2 ],
     'react/jsx-newline': [ 'error', {
       prevent: true,
     }],
     'react/jsx-no-bind': [ 'error' ],
-    'react/jsx-no-useless-fragment': [ 'error' ],
-    //This would be cool if it played better with inline elements
-    //See: https://github.com/jsx-eslint/eslint-plugin-react/issues/1848
-    //'react/jsx-one-expression-per-line': [ 'error', {
-    //	allow: 'single-child',
-    //}],
+    'react/jsx-no-useless-fragment': [ 'error', {
+      allowExpressions: true
+    }],
     'react/jsx-pascal-case': [ 'error' ],
     'react/jsx-props-no-multi-spaces': [ 'error' ],
     'react/jsx-props-no-spreading': [ 'error' ],
