@@ -1,9 +1,20 @@
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: __dirname,
+  },
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/strict',
     'plugin:jsx-a11y/strict',
     'next/core-web-vitals',
+  ],
+  plugins: [
+    '@typescript-eslint',
   ],
   rules: {
     indent: [ 'error', 2, {
