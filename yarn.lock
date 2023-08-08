@@ -1720,7 +1720,7 @@ __metadata:
     react-aria-widgets: "workspace:*"
     react-dom: ^18.2
     react-syntax-highlighter: ^15.5.0
-    react-tabs: ^4
+    react-tabs: ^5
     sass: 1.59.2
     typescript: 5.1.6
   languageName: unknown
@@ -11659,15 +11659,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-tabs@npm:^4":
-  version: 4.2.1
-  resolution: "react-tabs@npm:4.2.1"
+"react-tabs@npm:^5":
+  version: 5.2.0
+  resolution: "react-tabs@npm:5.2.0"
   dependencies:
     clsx: ^1.1.0
     prop-types: ^15.5.0
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0-0 || ^18.0.0
-  checksum: a031f358373c274432c4030873e1e41c4c744df04dbdc077f453568bf6161b8c3036934052ca9db6569d974edfceac48b2038d402eddc898f0c5752a8f8d8a93
+    react: ^18.0.0
+  checksum: b9ebf9b05138038fe73eb704c98d21d579dcd2cd97ab72b7966f54488cf00aaa4e2edfc6544f090a66ee59b9bf11dd8b330384396727f6d87a377e1790ebd021
   languageName: node
   linkType: hard
 

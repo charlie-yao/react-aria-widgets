@@ -4172,7 +4172,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-aria-widgets", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#workspace:packages/react-aria-widgets"],\
             ["react-dom", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:18.2.0"],\
             ["react-syntax-highlighter", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:15.5.0"],\
-            ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1"],\
+            ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:5.2.0"],\
             ["sass", "npm:1.59.2"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
           ],\
@@ -18074,17 +18074,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["react-tabs", [\
-        ["npm:4.2.1", {\
-          "packageLocation": "./.yarn/cache/react-tabs-npm-4.2.1-0987d0f89a-a031f35837.zip/node_modules/react-tabs/",\
+        ["npm:5.2.0", {\
+          "packageLocation": "./.yarn/cache/react-tabs-npm-5.2.0-c71f663e45-b9ebf9b051.zip/node_modules/react-tabs/",\
           "packageDependencies": [\
-            ["react-tabs", "npm:4.2.1"]\
+            ["react-tabs", "npm:5.2.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1", {\
-          "packageLocation": "./.yarn/__virtual__/react-tabs-virtual-b4cdedfe1b/0/cache/react-tabs-npm-4.2.1-0987d0f89a-a031f35837.zip/node_modules/react-tabs/",\
+        ["virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:5.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-tabs-virtual-19a931a92d/0/cache/react-tabs-npm-5.2.0-c71f663e45-b9ebf9b051.zip/node_modules/react-tabs/",\
           "packageDependencies": [\
-            ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:4.2.1"],\
+            ["react-tabs", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:5.2.0"],\
             ["@types/react", "npm:18.2.18"],\
             ["clsx", "npm:1.2.1"],\
             ["prop-types", "npm:15.8.1"],\
