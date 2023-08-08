@@ -1710,6 +1710,7 @@ __metadata:
     "@types/node": 20.4.8
     "@types/prop-types": ^15.7.5
     "@types/react": 18.2.18
+    "@types/react-syntax-highlighter": ^15.5.7
     bulma: ^0.9.4
     eslint: ^8.36.0
     eslint-config-next: ^13.2.4
@@ -3999,6 +4000,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 579691e4d5ec09688087568037c35edf8cfb1ab3e07f6c60029280733ee7b5c06d66df6fcc90786702c93ac8cb13bc7ff16c79ddfc75d082938fbaa36e1cdbf4
+  languageName: node
+  linkType: hard
+
+"@types/react-syntax-highlighter@npm:^15.5.7":
+  version: 15.5.7
+  resolution: "@types/react-syntax-highlighter@npm:15.5.7"
+  dependencies:
+    "@types/react": "*"
+  checksum: 1918d01baaa9bf485093fb04167d0dc87131be708bd68d32d3f614c0e7dba05de765fc62df139fa1972836b13e27983a2d89552eda5b5a38691a4ec300949648
   languageName: node
   linkType: hard
 

@@ -4162,6 +4162,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.4.8"],\
             ["@types/prop-types", "npm:15.7.5"],\
             ["@types/react", "npm:18.2.18"],\
+            ["@types/react-syntax-highlighter", "npm:15.5.7"],\
             ["bulma", "npm:0.9.4"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-next", "virtual:edfd7b7aad422d2e680d3e240108e489c6c6f30f594cf930c269ed12e7143e1233f2550f831e3a2ef1579ea236e20452741066e4d568af9bdf075a621e629150#npm:13.2.4"],\
@@ -8185,6 +8186,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-react-dom-npm-18.0.11-27f8db2995-579691e4d5.zip/node_modules/@types/react-dom/",\
           "packageDependencies": [\
             ["@types/react-dom", "npm:18.0.11"],\
+            ["@types/react", "npm:18.0.28"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/react-syntax-highlighter", [\
+        ["npm:15.5.7", {\
+          "packageLocation": "./.yarn/cache/@types-react-syntax-highlighter-npm-15.5.7-e846956091-1918d01baa.zip/node_modules/@types/react-syntax-highlighter/",\
+          "packageDependencies": [\
+            ["@types/react-syntax-highlighter", "npm:15.5.7"],\
             ["@types/react", "npm:18.0.28"]\
           ],\
           "linkType": "HARD"\
