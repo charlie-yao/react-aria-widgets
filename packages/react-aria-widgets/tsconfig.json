@@ -26,7 +26,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    //"verbatimModuleSyntax": true, //can't emit require calls, can I still support CJS through webpack?
 
     /* Type Checking */
     "strict": true,
@@ -36,6 +35,5 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["**/*.stories.*"]
+  "include": ["./src/**/*"]
 }
