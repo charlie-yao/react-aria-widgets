@@ -143,6 +143,7 @@ module.exports = {
       before: false,
     }],
     'template-curly-spacing': [ 'error', 'never' ],
+
     //---- TS Rules ----
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
@@ -150,6 +151,7 @@ module.exports = {
     '@typescript-eslint/no-redundant-type-constituents': 'error',
     '@typescript-eslint/no-require-imports': 'error',
     '@typescript-eslint/no-useless-empty-export': 'error',
+
     //---- TS Extension Rules ----
     //Reminder: some vanilla ESLint rules may not be explicitly turned
     //off here because they were turned off in the "extends" for TS
@@ -165,6 +167,7 @@ module.exports = {
     }],
     'no-return-await': 'off',
     '@typescript-eslint/return-await': 'warn',
+
     //---- TS Formatting Rules ----
     'block-spacing': 'off',
     '@typescript-eslint/block-spacing': 'error',
@@ -218,6 +221,7 @@ module.exports = {
     'space-infix-ops': 'off',
     '@typescript-eslint/space-infix-ops': [ 'error' ],
     '@typescript-eslint/type-annotation-spacing': 'error',
+
     //---- React ----
     'react/button-has-type': [ 'error' ],
     'react/destructuring-assignment': [ 'error', 'always' ],
@@ -225,7 +229,6 @@ module.exports = {
     'react/function-component-definition': [ 'error', {
       namedComponents: 'function-declaration',
       unnamedComponents: 'function-expression', //Linter prevents using array syntax though it's allowed
-
     }],
     'react/no-access-state-in-setstate': [ 'error' ],
     'react/no-adjacent-inline-elements': [ 'warn' ],
@@ -256,6 +259,7 @@ module.exports = {
         'static-methods',
         'instance-variables',
         'lifecycle',
+        '/^handle.+$/u',
         '/^on.+$/u',
         'rendering',
         'instance-methods',
@@ -268,6 +272,7 @@ module.exports = {
     'react/static-property-placement': [ 'error', 'static public field' ],
     'react/style-prop-object': [ 'error' ],
     'react/void-dom-elements-no-children': [ 'error' ],
+
     //---- React JSX ----
     'react/jsx-boolean-value': [ 'error', 'never' ],
     'react/jsx-child-element-spacing': [ 'warn' ],
@@ -286,12 +291,8 @@ module.exports = {
       extensions: ['.jsx', '.tsx'],
     }],
     'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
-    'react/jsx-handler-names': [ 'error', {
-      eventHandlerPrefix: 'on',
-    }],
-    'react/jsx-indent': [ 'error', 2, {
-      indentLogicalExpressions: true,
-    }],
+    'react/jsx-handler-names': [ 'error' ],
+    'react/jsx-indent': [ 'error', 2 ],
     'react/jsx-indent-props': [ 'error', 2 ],
     'react/jsx-newline': [ 'error', {
       prevent: true,

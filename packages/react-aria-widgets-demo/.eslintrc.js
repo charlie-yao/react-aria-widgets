@@ -1,21 +1,29 @@
 module.exports = {
   root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: true,
+    tsconfigRootDir: __dirname,
+  },
+  ignorePatterns: [
+    'next.config.js',
+    'server.js',
+    'tsconfig.json',
+    '.eslintrc.js',
+  ],
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/strict-type-checked',
+    'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:jsx-a11y/strict',
     'next/core-web-vitals',
   ],
+  plugins: [
+    '@typescript-eslint',
+  ],
   rules: {
-    indent: [ 'error', 2, {
-      SwitchCase: 1,
-    }],
+    //---- Vanilla ESLint ----
     'linebreak-style': [ 'error', 'unix' ],
-    quotes: [ 'error', 'single' ],
-    semi: [ 'error', 'always' ],
-    'no-unused-vars': [ 'error', {
-      varsIgnorePattern: '[iI]gnored',
-      argsIgnorePattern: '[iI]gnored',
-    }],
     'array-callback-return': [ 'warn' ],
     'no-await-in-loop': [ 'warn' ],
     'no-constructor-return': [ 'error' ],
@@ -25,22 +33,18 @@ module.exports = {
     camelcase: [ 'error' ],
     curly: [ 'error', 'multi-or-nest' ],
     'default-case-last': [ 'error' ],
-    'default-param-last': [ 'error' ],
-    'dot-notation': [ 'error' ],
     eqeqeq: [ 'error', 'always' ],
     'func-name-matching': [ 'error' ],
     'func-names': [ 'error', 'as-needed' ],
     'guard-for-in': [ 'warn' ],
     'new-cap': [ 'error' ],
     'no-alert': [ 'warn' ],
-    'no-array-constructor': [ 'error' ],
     'no-caller': [ 'error' ],
     'no-console': [ 'error' ],
     'no-eval': [ 'error' ],
     'no-extend-native': [ 'error' ],
     'no-floating-decimal': [ 'error' ],
     'no-implicit-coercion': [ 'error' ],
-    'no-implied-eval': [ 'error' ],
     'no-mixed-operators': [ 'warn' ],
     'no-multi-assign': [ 'error' ],
     'no-negated-condition': [ 'warn' ],
@@ -48,15 +52,9 @@ module.exports = {
     'no-new-object': [ 'error' ],
     'no-new-wrappers': [ 'error' ],
     'no-return-assign': [ 'error' ],
-    'no-return-await': [ 'warn' ],
     'no-script-url': [ 'error' ],
-    'no-throw-literal': [ 'error' ],
-    'no-unused-expressions': [ 'error', {
-      enforceForJSX: true,
-    }],
     'no-useless-call': [ 'error' ],
     'no-useless-computed-key': [ 'error' ],
-    'no-useless-constructor': [ 'error' ],
     'no-useless-rename': [ 'error' ],
     'no-useless-return': [ 'error' ],
     'no-var': [ 'error' ],
@@ -67,7 +65,6 @@ module.exports = {
     'prefer-rest-params': [ 'error' ],
     'quote-props': [ 'error', 'as-needed' ],
     radix: [ 'error' ],
-    'require-await': [ 'error' ],
     'require-unicode-regexp': [ 'error' ],
     'array-bracket-newline': [ 'error', 'consistent' ],
     'array-bracket-spacing': [ 'error', 'always', {
@@ -75,42 +72,14 @@ module.exports = {
     }],
     'array-element-newline': [ 'error', 'consistent' ],
     'arrow-spacing': [ 'error' ],
-    'block-spacing': [ 'error' ],
-    'brace-style': [ 'error', 'stroustrup' ],
-    'comma-dangle': [ 'error', {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      imports: 'always-multiline',
-      exports: 'always-multiline',
-      functions: 'only-multiline',
-    }],
-    'comma-spacing': [ 'error' ],
     'comma-style': [ 'error' ],
     'computed-property-spacing': [ 'error' ],
     'dot-location': [ 'error' ],
     'eol-last': [ 'error', 'always' ],
-    'func-call-spacing': [ 'error' ],
     'function-call-argument-newline': [ 'error', 'consistent' ],
     'function-paren-newline': [ 'error', 'consistent' ],
     'implicit-arrow-linebreak': [ 'error' ],
     'jsx-quotes': [ 'error', 'prefer-double' ],
-    'key-spacing': [ 'error' ],
-    'keyword-spacing': [ 'error', {
-      overrides: {
-        if: {
-          after: false,
-        },
-        for: {
-          after: false,
-        },
-        while: {
-          after: false,
-        },
-        switch: {
-          after: false,
-        },
-      },
-    }],
     'new-parens': [ 'error', 'always' ],
     'no-multi-spaces': [ 'error' ],
     'no-multiple-empty-lines': [ 'error', {
@@ -123,7 +92,6 @@ module.exports = {
     'object-curly-newline': [ 'error', {
       consistent: true,
     }],
-    'object-curly-spacing': [ 'error', 'always' ],
     'object-property-newline': [ 'error', {
       allowAllPropertiesOnSameLine: true,
     }],
@@ -139,10 +107,7 @@ module.exports = {
       after: true,
     }],
     'semi-style': [ 'error', 'last' ],
-    'space-before-blocks': [ 'error', 'always' ],
-    'space-before-function-paren': [ 'error', 'never' ],
     'space-in-parens': [ 'error', 'never' ],
-    'space-infix-ops': [ 'error' ],
     'space-unary-ops': [ 'error', {
       words: true,
       nonwords: false,
@@ -152,13 +117,99 @@ module.exports = {
       before: false,
     }],
     'template-curly-spacing': [ 'error', 'never' ],
+    
+    //---- TS Rules ----
+    '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/no-useless-empty-export': 'error',
+
+    //---- TS Extension Rules ----
+    //Reminder: some vanilla ESLint rules may not be explicitly turned
+    //off here because they were turned off in the "extends" for TS
+    'default-param-last': 'off',
+    '@typescript-eslint/default-param-last': 'error',
+    'no-dupe-class-members': 'off',
+    '@typescript-eslint/no-dupe-class-members': 'error',
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': 'error',
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': 'error',
+    'no-redeclare': 'off',
+    '@typescript-eslint/no-redeclare': 'error',
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-unused-expressions': ['error', {
+      enforceForJSX: true,
+    }],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars':[ 'error', {
+      varsIgnorePattern: '[iI]gnored',
+      argsIgnorePattern: '[iI]gnored',
+    }],
+    'no-return-await': 'off',
+    '@typescript-eslint/return-await': 'warn',
+
+    //---- TS Formatting Rules ----
+    'block-spacing': 'off',
+    '@typescript-eslint/block-spacing': 'error',
+    'brace-style': 'off',
+    '@typescript-eslint/brace-style': [ 'error', 'stroustrup', { allowSingleLine: true } ],
+    'comma-dangle': 'off',
+    '@typescript-eslint/comma-dangle': [ 'error', {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'only-multiline',
+    }],
+    'comma-spacing': 'off',
+    '@typescript-eslint/comma-spacing': 'error',
+    'func-call-spacing': 'off',
+    '@typescript-eslint/func-call-spacing': [ 'error' ],
+    indent: [ 'error', 2, { //TS version of this rule is broken
+      SwitchCase: 1,
+    }],
+    'key-spacing': 'off',
+    '@typescript-eslint/key-spacing': [ 'error' ],
+    'keyword-spacing': 'off',
+    '@typescript-eslint/keyword-spacing': [ 'error', {
+      overrides: {
+        if: {
+          after: false,
+        },
+        for: {
+          after: false,
+        },
+        while: {
+          after: false,
+        },
+        switch: {
+          after: false,
+        },
+      },
+    }],
+    '@typescript-eslint/member-delimiter-style': 'error',
+    'object-curly-spacing': 'off',
+    '@typescript-eslint/object-curly-spacing': [ 'error', 'always' ],
+    quotes: 'off',
+    '@typescript-eslint/quotes': [ 'error', 'single' ],
+    semi: 'off',
+    '@typescript-eslint/semi': [ 'error', 'always' ],
+    'space-before-blocks': 'off',
+    '@typescript-eslint/space-before-blocks': [ 'error', 'always' ],
+    'space-before-function-paren': 'off',
+    '@typescript-eslint/space-before-function-paren': [ 'error', 'never' ],
+    'space-infix-ops': 'off',
+    '@typescript-eslint/space-infix-ops': [ 'error' ],
+    '@typescript-eslint/type-annotation-spacing': 'error',
+
+    //---- React ---
     'react/button-has-type': [ 'error' ],
     'react/destructuring-assignment': [ 'error', 'always' ],
     'react/default-props-match-prop-types': [ 'error' ],
     'react/function-component-definition': [ 'error', {
       namedComponents: 'function-declaration',
       unnamedComponents: 'function-expression', //Linter prevents using array syntax though it's allowed
-
     }],
     'react/no-access-state-in-setstate': [ 'error' ],
     'react/no-adjacent-inline-elements': [ 'warn' ],
@@ -178,21 +229,32 @@ module.exports = {
     'react/no-will-update-set-state': [ 'error' ],
     'react/prefer-es6-class': [ 'error', 'always' ],
     'react/prefer-stateless-function': [ 'error' ],
-    'react/prop-types': [ 'error' ],
     'react/require-default-props': [ 'error', {
       forbidDefaultForRequired: true,
+      functions: 'defaultArguments',
     }],
     'react/self-closing-comp': [ 'error' ],
     'react/sort-comp': [ 'error', {
-      order: [ 'static-variables', 'static-methods', 'lifecycle', '/^on.+$/u', 'rendering', 'everything-else' ],
+      order: [
+        'static-variables',
+        'static-methods',
+        'instance-variables',
+        'lifecycle',
+        '/^handle.+$/u',
+        '/^on.+$/u',
+        'rendering',
+        'instance-methods',
+        'everything-else'
+      ],
       groups: {
         rendering: [ 'render', '/^render.+$/u' ],
       },
     }],
-    'react/state-in-constructor': [ 'error', 'always' ],
     'react/static-property-placement': [ 'error', 'static public field' ],
     'react/style-prop-object': [ 'error' ],
     'react/void-dom-elements-no-children': [ 'error' ],
+
+    //--- React JSX ---
     'react/jsx-boolean-value': [ 'error', 'never' ],
     'react/jsx-child-element-spacing': [ 'warn' ],
     'react/jsx-closing-tag-location': [ 'error' ],
@@ -206,23 +268,20 @@ module.exports = {
       },
     }],
     'react/jsx-equals-spacing': [ 'error' ],
-    'react/jsx-filename-extension': [ 'error' ],
-    'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
-    'react/jsx-handler-names': [ 'error', {
-      eventHandlerPrefix: 'on',
+    'react/jsx-filename-extension': [ 'error', {
+      extensions: [ '.jsx', '.tsx' ],
     }],
+    'react/jsx-first-prop-new-line': [ 'error', 'multiline-multiprop' ],
+    'react/jsx-handler-names': [ 'error' ],
     'react/jsx-indent': [ 'error', 2 ],
     'react/jsx-indent-props': [ 'error', 2 ],
     'react/jsx-newline': [ 'error', {
       prevent: true,
     }],
     'react/jsx-no-bind': [ 'error' ],
-    'react/jsx-no-useless-fragment': [ 'error' ],
-    //This would be cool if it played better with inline elements
-    //See: https://github.com/jsx-eslint/eslint-plugin-react/issues/1848
-    //'react/jsx-one-expression-per-line': [ 'error', {
-    //	allow: 'single-child',
-    //}],
+    'react/jsx-no-useless-fragment': [ 'error', {
+      allowExpressions: true
+    }],
     'react/jsx-pascal-case': [ 'error' ],
     'react/jsx-props-no-multi-spaces': [ 'error' ],
     'react/jsx-props-no-spreading': [ 'error' ],

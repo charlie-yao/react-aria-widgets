@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { AccordionHeader } from 'react-aria-widgets/accordion';
 
 function StyledAccordionHeader(props) {
@@ -25,11 +24,6 @@ function StyledAccordionHeader(props) {
     />
   );
 }
-
-StyledAccordionHeader.propTypes = {
-  headerProps: PropTypes.object,
-  buttonProps: PropTypes.object,
-};
 
 StyledAccordionHeader.defaultProps = {
   headerProps: {},
