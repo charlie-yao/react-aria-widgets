@@ -52,7 +52,7 @@ export interface PolymorphicForwardRefComponent<
 > {
   <C extends React.ElementType = D>(
     props: PolymorphicComponentPropsWithRef<C, P, V>
-  ): React.ReactElement | null;
+  ): React.ReactNode;
 
   defaultProps?: DefaultProps<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
   propTypes?: TPropTypes<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
