@@ -17,11 +17,9 @@
     "checkJs": true,
 
     /* Emit */
-    //"declaration": true,
-    //"declarationDir": "./dist/types",
-    //"declarationMap": true,
+    "declaration": true,
+    "declarationDir": "./dist/types",
     "noEmitOnError": true,
-    //"outDir": "./dist", //Needed with webpack?
     "sourceMap": true,
 
     /* Interop Constraints */
@@ -38,5 +36,6 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["**/*.stories.*"]
 }
