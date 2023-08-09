@@ -1,7 +1,10 @@
 import { createContext } from 'react';
 
-//Types
-import type { AccordionItemContextType } from 'src/Accordion/types';
+export interface AccordionItemContextType {
+  id: string;
+  headerHTMLId: string;
+  panelHTMLId: string;
+}
 
 const AccordionItemContext = createContext<AccordionItemContextType | null>(null);
 const AccordionItemProvider = AccordionItemContext.Provider;

@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 import { AccordionProvider } from 'src/Accordion/AccordionContext';
 
 //Types
-import type { ControlledAccordionProps } from 'src/Accordion/types';
+import type { AccordionContextType } from 'src/Accordion/AccordionContext';
 import { accordionContextValuePropType } from 'src/Accordion/propTypes';
+
+export type ControlledAccordionProps = React.PropsWithChildren<{
+  contextValue: AccordionContextType;
+}>;
 
 function ControlledAccordion({
   children = null,

@@ -5,7 +5,8 @@
     "jsx": "react",
 
     /* Modules */
-    "moduleResolution": "node16",
+    "module": "ES6",
+    "moduleResolution": "bundler",
     "baseUrl": "./",
     "paths": {
       "*": ["*"]
@@ -16,12 +17,18 @@
     "checkJs": true,
 
     /* Emit */
-    "sourceMap": true,
+    //"declaration": true,
+    //"declarationDir": "./dist/types",
+    //"declarationMap": true,
     "noEmitOnError": true,
+    //"outDir": "./dist", //Needed with webpack?
+    "sourceMap": true,
 
     /* Interop Constraints */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    //"verbatimModuleSyntax": true, //can't emit require calls, can I still support CJS through webpack?
 
     /* Type Checking */
     "strict": true,

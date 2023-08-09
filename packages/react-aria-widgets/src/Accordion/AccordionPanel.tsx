@@ -11,10 +11,26 @@ import useAccordionContext from 'src/Accordion/useAccordionContext';
 import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
 
 //Types
-import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
+import { PolymorphicComponentPropsWithoutRef } from 'src/utils/types';
+import type {
+  ValidPanelElements,
+  AccordionRenderFunction,
+  AccordionRenderClass,
+  AccordionRenderStyle,
+} from 'src/Accordion/types';
 
 //Misc.
 import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+  C,
+  {
+    children?: React.ReactNode | AccordionRenderFunction;
+    className?: string | AccordionRenderClass;
+    style?: React.CSSProperties | AccordionRenderStyle;
+  },
+  ValidPanelElements
+>;
 
 function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT>({
   children = null,

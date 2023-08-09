@@ -4,11 +4,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import type { BaseAccordionPanelProps, TForwardedBaseAccordionPanel } from 'src/Accordion/types';
-import type { PolymorphicRef } from 'src/utils/types';
+import type {
+  PolymorphicRef,
+  PolymorphicComponentPropsWithRef,
+  PolymorphicForwardRefComponent,
+} from 'src/utils/types';
+import type { ValidPanelElements } from 'src/Accordion/types';
 
 //Misc.
 import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+
+export interface InternalBaseAccordionPanelProps {
+  id: string;
+  'aria-labelledby'?: string;
+}
+
+export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
+  C,
+  InternalBaseAccordionPanelProps,
+  ValidPanelElements
+>;
+
+export type ForwardedBaseAccordionPanelType = PolymorphicForwardRefComponent<
+  InternalBaseAccordionPanelProps,
+  ValidPanelElements,
+  typeof DEFAULT_PANEL_ELEMENT
+>;
 
 function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>(
   {
@@ -34,7 +55,7 @@ function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_E
   );
 }
 
-const ForwardedBaseAccordionPanel: TForwardedBaseAccordionPanel = React.forwardRef(BaseAccordionPanel);
+const ForwardedBaseAccordionPanel: ForwardedBaseAccordionPanelType = React.forwardRef(BaseAccordionPanel);
 
 ForwardedBaseAccordionPanel.propTypes = {
   children: PropTypes.node,
