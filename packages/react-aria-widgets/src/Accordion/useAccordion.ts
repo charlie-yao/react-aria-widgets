@@ -74,18 +74,10 @@ export default function useAccordion({
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
   const onToggleDisabledRef = useRef<OnToggleDisabled | null | undefined>(null);
 
-  /**
-   * Returns a boolean that lets us know if a particular accordion item is
-   * expanded or collapsed.
-   */
   const getIsExpanded: GetIsExpanded = useCallback((id) => {
     return _getIsExpanded(id, expandedItems);
   }, [ expandedItems ]);
 
-  /**
-   * Returns a boolean that lets us know if an aleady-expanded accordion item
-   * can't be collapsed due to <code>allowCollapseLast</code>.
-   */
   const getIsDisabled: GetIsDisabled = useCallback((id) => {
     return _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
   }, [
@@ -94,10 +86,6 @@ export default function useAccordion({
     allowCollapseLast,
   ]);
 
-  /**
-   * Expands or collapses an accordion item. Respects <code>allowMultiple</code>
-   * and <code>allowCollapseLast</code>.
-   */
   const toggleExpanded: ToggleExpanded = useCallback((id) => {
     setExpandedItems((expandedItems) => {
       const isExpanded = _getIsExpanded(id, expandedItems);
@@ -126,9 +114,6 @@ export default function useAccordion({
     disabledItems,
   ]);
 
-  /**
-   * Allows/prevents an accordion header button from being expanded/collapsed.
-   */
   const toggleDisabled: ToggleDisabled = useCallback((id) => {
     setDisabledItems((disabledItems) => {
       onToggleDisabledRef.current = onToggleDisabled;
@@ -142,17 +127,11 @@ export default function useAccordion({
     });
   }, [ onToggleDisabled ]);
 
-  /**
-   * Ref callback that tracks the accordion header buttons and their IDs.
-   */
   const pushHeaderRef: PushHeaderRef = useCallback((elem, id) => {
     headerRefs.current.push({ elem, id });
     idToIndexMap.current.set(id, headerRefs.current.length - 1);
   }, []);
 
-  /**
-   * Focuses an arbitrary accordion header button based on its index.
-   */
   const focusHeaderIndex: FocusHeaderIndex = useCallback((index) => {
     const { elem, id } = headerRefs.current[index];
 
@@ -165,9 +144,6 @@ export default function useAccordion({
       onFocusChange({ elem, index, id });
   }, [ onFocusChange ]);
 
-  /**
-   * Focuses an arbitrary accordion header button based on its ID.
-   */
   const focusHeaderId: FocusHeaderId = useCallback((id) => {
     const index = idToIndexMap.current.get(id);
 
@@ -177,10 +153,6 @@ export default function useAccordion({
     focusHeaderIndex(index);
   }, [ focusHeaderIndex ]);
 
-  /**
-   * Focuses the accordion header button located behind <code>id</code>.
-   * Will "wrap" around the accordion if the boundary is reached.
-   */
   const focusPrevHeader: FocusPrevHeader = useCallback((id) => {
     const index = idToIndexMap.current.get(id);
 
@@ -190,10 +162,6 @@ export default function useAccordion({
     focusHeaderIndex(index === 0 ? headerRefs.current.length - 1 : index - 1);
   }, [ focusHeaderIndex ]);
 
-  /**
-   * Focuses the accordion header button located in front of <code>id<code>.
-   * Will "wrap" around the accordion if the boundary is reached.
-   */
   const focusNextHeader: FocusNextHeader = useCallback((id) => {
     const index = idToIndexMap.current.get(id);
 
@@ -203,16 +171,10 @@ export default function useAccordion({
     focusHeaderIndex(index === headerRefs.current.length - 1 ? 0 : index + 1);
   }, [ focusHeaderIndex ]);
 
-  /**
-   * Sets focus on the first accordion header button.
-   */
   const focusFirstHeader: FocusFirstHeader = useCallback(() => {
     focusHeaderIndex(0);
   }, [ focusHeaderIndex ]);
 
-  /**
-   * Sets focus on the last accordion header button.
-   */
   const focusLastHeader: FocusLastHeader = useCallback(() => {
     focusHeaderIndex(headerRefs.current.length - 1);
   }, [ focusHeaderIndex ]);
