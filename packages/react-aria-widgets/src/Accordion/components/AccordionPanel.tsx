@@ -7,20 +7,20 @@ import PropTypes from 'prop-types';
 import BaseAccordionPanel from './BaseAccordionPanel';
 
 //Hooks
-import useAccordionContext from './useAccordionContext';
-import useAccordionItemContext from './useAccordionItemContext';
+import useAccordionContext from '../hooks/useAccordionContext';
+import useAccordionItemContext from '../hooks/useAccordionItemContext';
 
 //Types
-import type { PolymorphicComponentPropsWithoutRef } from '../utils/types';
+import type { PolymorphicComponentPropsWithoutRef } from '../../types';
 import type {
   ValidPanelElements,
   AccordionRenderFunction,
   AccordionRenderClass,
   AccordionRenderStyle,
-} from './types';
+} from '../types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from './utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from '../utils';
 
 export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
   C,

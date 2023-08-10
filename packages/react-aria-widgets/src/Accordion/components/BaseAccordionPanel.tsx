@@ -8,11 +8,11 @@ import type {
   PolymorphicRef,
   PolymorphicComponentPropsWithRef,
   PolymorphicForwardRefComponent,
-} from '../utils/types';
-import type { ValidPanelElements } from './types';
+} from '../../types';
+import type { ValidPanelElements } from '../types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from './utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from '../utils';
 
 export interface InternalBaseAccordionPanelProps {
   id: string;

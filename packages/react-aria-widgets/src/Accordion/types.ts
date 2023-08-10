@@ -1,9 +1,9 @@
 import type React from 'react';
 
 //Types
-import type { ValidHTMLHeaderLevels } from '../utils/types';
-import type { AccordionContextType } from './AccordionContext';
-import type { AccordionItemContextType } from './AccordionItemContext';
+import type { ValidHTMLHeaderLevels } from '../types';
+import type { AccordionContextType } from './contexts/AccordionContext';
+import type { AccordionItemContextType } from './contexts/AccordionItemContext';
 
 //Misc.
 import type { VALID_PANEL_ELEMENTS } from './utils';

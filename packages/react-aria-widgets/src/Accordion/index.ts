@@ -1,33 +1,33 @@
 //Components
-export { default as Accordion } from './Accordion';
-export type * from './Accordion';
-export { accordionContextValuePropType, default as ControlledAccordion } from './ControlledAccordion';
-export type * from './ControlledAccordion';
-export { default as AccordionItem } from './AccordionItem';
-export type * from './AccordionItem';
-export { default as AccordionHeader } from './AccordionHeader';
-export type * from './AccordionHeader';
-export { default as AccordionPanel } from './AccordionPanel';
-export type * from './AccordionPanel';
-export { default as BaseAccordionHeader } from './BaseAccordionHeader';
-export type * from './BaseAccordionHeader';
-export { default as BaseAccordionPanel } from './BaseAccordionPanel';
-export type * from './BaseAccordionPanel';
+export { default as Accordion } from './components/Accordion';
+export type * from './components/Accordion';
+export { accordionContextValuePropType, default as ControlledAccordion } from './components/ControlledAccordion';
+export type * from './components/ControlledAccordion';
+export { default as AccordionItem } from './components/AccordionItem';
+export type * from './components/AccordionItem';
+export { default as AccordionHeader } from './components/AccordionHeader';
+export type * from './components/AccordionHeader';
+export { default as AccordionPanel } from './components/AccordionPanel';
+export type * from './components/AccordionPanel';
+export { default as BaseAccordionHeader } from './components/BaseAccordionHeader';
+export type * from './components/BaseAccordionHeader';
+export { default as BaseAccordionPanel } from './components/BaseAccordionPanel';
+export type * from './components/BaseAccordionPanel';
 
 //Contexts
-export { default as AccordionContext, AccordionProvider } from './AccordionContext';
-export type * from './AccordionContext';
+export { default as AccordionContext, AccordionProvider } from './contexts/AccordionContext';
+export type * from './contexts/AccordionContext';
 
-export { default as AccordionItemContext, AccordionItemProvider } from './AccordionItemContext';
-export type * from './AccordionItemContext';
+export { default as AccordionItemContext, AccordionItemProvider } from './contexts/AccordionItemContext';
+export type * from './contexts/AccordionItemContext';
 
 //Hooks
-export { default as useAccordion } from './useAccordion';
-export type * from './useAccordion';
-export { default as useAccordionContext } from './useAccordionContext';
-export type * from './useAccordionContext';
-export { default as useAccordionItemContext } from './useAccordionItemContext';
-export type * from './useAccordionItemContext';
+export { default as useAccordion } from './hooks/useAccordion';
+export type * from './hooks/useAccordion';
+export { default as useAccordionContext } from './hooks/useAccordionContext';
+export type * from './hooks/useAccordionContext';
+export { default as useAccordionItemContext } from './hooks/useAccordionItemContext';
+export type * from './hooks/useAccordionItemContext';
 
 //Misc.
 export * from './utils';

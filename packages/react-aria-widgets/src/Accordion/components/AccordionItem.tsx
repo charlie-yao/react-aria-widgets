@@ -2,7 +2,7 @@ import React, { useId, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
-import { AccordionItemProvider } from './AccordionItemContext';
+import { AccordionItemProvider } from '../contexts/AccordionItemContext';
 
 export type AccordionItemProps = React.PropsWithChildren<{
   id: string;

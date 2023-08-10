@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Contexts
-import { AccordionProvider } from './AccordionContext';
+import { AccordionProvider } from '../contexts/AccordionContext';
 
 //Misc.
-import { VALID_HTML_HEADER_LEVELS } from '../utils';
+import { VALID_HTML_HEADER_LEVELS } from '../../utils';
 
 //Types
-import type { AccordionContextType } from './AccordionContext';
+import type { AccordionContextType } from '../contexts/AccordionContext';
 
 export type ControlledAccordionProps = React.PropsWithChildren<{
   contextValue: AccordionContextType;

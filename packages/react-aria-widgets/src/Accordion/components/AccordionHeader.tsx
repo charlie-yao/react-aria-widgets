@@ -5,15 +5,15 @@ import PropTypes from 'prop-types';
 import BaseAccordionHeader from './BaseAccordionHeader';
 
 //Contexts
-import useAccordionContext from './useAccordionContext';
-import useAccordionItemContext from './useAccordionItemContext';
+import useAccordionContext from '../hooks/useAccordionContext';
+import useAccordionItemContext from '../hooks/useAccordionItemContext';
 
 //Types
 import type {
   AccordionRenderFunction,
   AccordionRenderClass,
   AccordionRenderStyle,
-} from './types';
+} from '../types';
 import type { BaseHeaderProps, BaseButtonProps } from './BaseAccordionHeader';
 
 export type HeaderProps = {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
-import BaseAccordionPanel from './BaseAccordionPanel';
+import BaseAccordionPanel from '../components/BaseAccordionPanel';
 
 type Story = StoryObj<typeof BaseAccordionPanel>;
 

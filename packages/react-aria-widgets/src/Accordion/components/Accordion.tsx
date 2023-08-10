@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import ControlledAccordion from './ControlledAccordion';
 
 //Hooks
-import useAccordion from './useAccordion';
+import useAccordion from '../hooks/useAccordion';
 
 //Types
-import type { ValidHTMLHeaderLevels } from '../utils/types';
-import type { OnToggleExpanded, OnToggleDisabled, OnFocusChange } from './useAccordion';
+import type { ValidHTMLHeaderLevels } from '../../types';
+import type { OnToggleExpanded, OnToggleDisabled, OnFocusChange } from '../hooks/useAccordion';
 
 //Misc.
-import { VALID_HTML_HEADER_LEVELS } from '../utils';
+import { VALID_HTML_HEADER_LEVELS } from '../../utils';
 
 export type AccordionProps = React.PropsWithChildren<{
   allowMultiple?: boolean;

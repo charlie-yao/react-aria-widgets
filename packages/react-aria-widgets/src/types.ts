@@ -1,5 +1,5 @@
 //Misc.
-import type { VALID_HTML_HEADER_LEVELS } from './';
+import type { VALID_HTML_HEADER_LEVELS } from './utils';
 
 export type Props = Record<string, any>; //eslint-disable-line @typescript-eslint/no-explicit-any
 export type DefaultProps<P> = Partial<P>;

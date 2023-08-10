@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 //Contexts
-import AccordionItemContext from './AccordionItemContext';
+import AccordionItemContext from '../contexts/AccordionItemContext';
 
 export default function useAccordionItemContext() {
   const id = useContext(AccordionItemContext);

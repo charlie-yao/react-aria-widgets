@@ -6,4 +6,4 @@ export * from './utils';
 export type * from './utils';
 
 //Types
-export type * from './utils/types';
+export type * from './types';
