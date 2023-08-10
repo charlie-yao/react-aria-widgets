@@ -4,14 +4,14 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
-import Accordion from 'src/Accordion/Accordion';
-import ControlledAccordion from 'src/Accordion/ControlledAccordion';
-import AccordionItem from 'src/Accordion/AccordionItem';
-import AccordionHeader from 'src/Accordion/AccordionHeader';
-import AccordionPanel from 'src/Accordion/AccordionPanel';
+import Accordion from './Accordion';
+import ControlledAccordion from './ControlledAccordion';
+import AccordionItem from './AccordionItem';
+import AccordionHeader from './AccordionHeader';
+import AccordionPanel from './AccordionPanel';
 
 //Hooks
-import useAccordion from 'src/Accordion/useAccordion';
+import useAccordion from './useAccordion';
 
 type Story = StoryObj<typeof Accordion>;
 

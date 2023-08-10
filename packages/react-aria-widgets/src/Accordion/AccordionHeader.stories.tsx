@@ -2,9 +2,9 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 //Components
-import Accordion from 'src/Accordion/Accordion';
-import AccordionItem from 'src/Accordion/AccordionItem';
-import AccordionHeader from 'src/Accordion/AccordionHeader';
+import Accordion from './Accordion';
+import AccordionItem from './AccordionItem';
+import AccordionHeader from './AccordionHeader';
 
 type Story = StoryObj<typeof AccordionHeader>;
 

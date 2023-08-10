@@ -1,7 +1,7 @@
 //Components
 export { default as Accordion } from './Accordion';
 export type * from './Accordion';
-export { default as ControlledAccordion } from './ControlledAccordion';
+export { accordionContextValuePropType, default as ControlledAccordion } from './ControlledAccordion';
 export type * from './ControlledAccordion';
 export { default as AccordionItem } from './AccordionItem';
 export type * from './AccordionItem';
@@ -34,6 +34,4 @@ export * from './utils';
 export type * from './utils';
 
 //Types
-export * from './propTypes';
-export type * from './propTypes';
 export type * from './types';

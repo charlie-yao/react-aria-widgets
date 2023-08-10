@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 
 //Types
-import type { ValidHTMLHeaderLevels } from 'src/utils/types';
+import type { ValidHTMLHeaderLevels } from '../utils/types';
 
 export type ExpandedItems = Set<string>;
 export type DisabledItems = Set<string>;

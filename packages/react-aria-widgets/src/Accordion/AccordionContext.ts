@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 //Types
-import type { ValidHTMLHeaderLevels } from 'src/utils/types';
+import type { ValidHTMLHeaderLevels } from '../utils/types';
 import type {
   GetIsExpanded,
   GetIsDisabled,
@@ -14,7 +14,7 @@ import type {
   FocusNextHeader,
   FocusFirstHeader,
   FocusLastHeader,
-} from 'src/Accordion/useAccordion';
+} from './useAccordion';
 
 export interface AccordionContextType {
   allowMultiple: boolean;

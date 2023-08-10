@@ -1,7 +1,7 @@
 import type { Validator } from 'prop-types';
 
 //Misc.
-import type { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+import type { VALID_HTML_HEADER_LEVELS } from './';
 
 export type Props = Record<string, any>; //eslint-disable-line @typescript-eslint/no-explicit-any
 export type DefaultProps<P> = Partial<P>;

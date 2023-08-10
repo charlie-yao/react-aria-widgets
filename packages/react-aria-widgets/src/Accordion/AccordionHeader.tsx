@@ -2,19 +2,19 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
-import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
+import BaseAccordionHeader from './BaseAccordionHeader';
 
 //Contexts
-import useAccordionContext from 'src/Accordion/useAccordionContext';
-import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
+import useAccordionContext from './useAccordionContext';
+import useAccordionItemContext from './useAccordionItemContext';
 
 //Types
 import type {
   AccordionRenderFunction,
   AccordionRenderClass,
   AccordionRenderStyle,
-} from 'src/Accordion/types';
-import type { BaseHeaderProps, BaseButtonProps } from 'src/Accordion/BaseAccordionHeader';
+} from './types';
+import type { BaseHeaderProps, BaseButtonProps } from './BaseAccordionHeader';
 
 export type HeaderProps = {
   className?: string | AccordionRenderClass;

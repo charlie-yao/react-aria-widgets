@@ -4,10 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import type { ValidHTMLHeaderLevels } from 'src/utils/types';
+import type { ValidHTMLHeaderLevels } from '../utils/types';
 
 //Misc
-import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+import { VALID_HTML_HEADER_LEVELS } from '../utils';
 
 export type BaseHeaderProps = Omit<
   React.HTMLAttributes<HTMLHeadingElement>,

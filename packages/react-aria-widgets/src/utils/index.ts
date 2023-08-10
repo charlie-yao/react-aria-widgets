@@ -1,7 +1,7 @@
 import type { Validator } from 'prop-types';
 
 //Types
-import type { ValidatorWithRequired } from 'src/utils/types';
+import type { ValidatorWithRequired } from './types';
 
 /**
  * Lets us declare props with custom validators as mandatory in the usual

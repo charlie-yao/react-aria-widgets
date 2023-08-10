@@ -7,10 +7,6 @@
     /* Modules */
     "module": "ES6",
     "moduleResolution": "bundler",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["*"]
-    },
 
     /* JavaScript Support */
     "allowJs": true,

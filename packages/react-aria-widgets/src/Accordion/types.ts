@@ -1,12 +1,12 @@
 import type React from 'react';
 
 //Types
-import type { ValidHTMLHeaderLevels } from 'src/utils/types';
-import type { AccordionContextType } from 'src/Accordion/AccordionContext';
-import type { AccordionItemContextType } from 'src/Accordion/AccordionItemContext';
+import type { ValidHTMLHeaderLevels } from '../utils/types';
+import type { AccordionContextType } from './AccordionContext';
+import type { AccordionItemContextType } from './AccordionItemContext';
 
 //Misc.
-import type { VALID_PANEL_ELEMENTS } from 'src/Accordion/utils';
+import type { VALID_PANEL_ELEMENTS } from './utils';
 
 export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
 

@@ -4,23 +4,23 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
-import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+import BaseAccordionPanel from './BaseAccordionPanel';
 
 //Hooks
-import useAccordionContext from 'src/Accordion/useAccordionContext';
-import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
+import useAccordionContext from './useAccordionContext';
+import useAccordionItemContext from './useAccordionItemContext';
 
 //Types
-import { PolymorphicComponentPropsWithoutRef } from 'src/utils/types';
+import type { PolymorphicComponentPropsWithoutRef } from '../utils/types';
 import type {
   ValidPanelElements,
   AccordionRenderFunction,
   AccordionRenderClass,
   AccordionRenderStyle,
-} from 'src/Accordion/types';
+} from './types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from './utils';
 
 export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
   C,

@@ -17,9 +17,6 @@ module.exports = {
   commonConfig: {
     resolve: {
       extensions: [ '.js', '.json', '.jsx', '.ts', '.tsx' ],
-      alias: {
-        src: path.resolve(__dirname, 'src/'),
-      },
     },
     entry: {
       index: {

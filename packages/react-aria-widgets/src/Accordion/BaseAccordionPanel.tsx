@@ -8,11 +8,11 @@ import type {
   PolymorphicRef,
   PolymorphicComponentPropsWithRef,
   PolymorphicForwardRefComponent,
-} from 'src/utils/types';
-import type { ValidPanelElements } from 'src/Accordion/types';
+} from '../utils/types';
+import type { ValidPanelElements } from './types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from './utils';
 
 export interface InternalBaseAccordionPanelProps {
   id: string;

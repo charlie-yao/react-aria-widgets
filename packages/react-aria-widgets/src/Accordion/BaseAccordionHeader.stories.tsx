@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 //Components and Styles
-import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
+import BaseAccordionHeader from './BaseAccordionHeader';
 
 type Story = StoryObj<typeof BaseAccordionHeader>;
 
