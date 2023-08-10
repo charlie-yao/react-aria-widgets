@@ -1,7 +1,8 @@
 import type { Validator } from 'prop-types';
 
-//Types
-import type { ValidatorWithRequired } from './types';
+export interface ValidatorWithRequired<T> extends Validator<T> {
+  isRequired: Validator<T>;
+}
 
 /**
  * Lets us declare props with custom validators as mandatory in the usual
