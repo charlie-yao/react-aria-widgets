@@ -9,6 +9,9 @@
     /* Modules */
     "module": "esnext",
     "moduleResolution": "node",
+    "paths": {
+      "react-aria-widgets/accordion": [ "../react-aria-widgets/" ]
+    },
     "resolveJsonModule": true,
 
     /* Emit */

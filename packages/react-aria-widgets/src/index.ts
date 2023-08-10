@@ -1,2 +1,2 @@
 //Components
-export * as AccordionModule from 'src/Accordion';
+export * from './Accordion';

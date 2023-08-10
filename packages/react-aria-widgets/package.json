@@ -20,6 +20,7 @@
     ".": "./dist/index.bundle.js",
     "./accordion": "./dist/accordion.bundle.js"
   },
+  "types": "./dist/types/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
@@ -39,10 +40,6 @@
   "bugs": {
     "url": "https://github.com/charlie-yao/react-aria-widgets/issues"
   },
-  "sideEffects": [
-    "**/*.css",
-    "**/*.scss"
-  ],
   "dependencies": {
     "prop-types": "^15.8.1"
   },
