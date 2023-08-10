@@ -2,14 +2,35 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
-import BaseAccordionHeader from 'src/Accordion/BaseAccordionHeader';
+import BaseAccordionHeader from './BaseAccordionHeader';
 
 //Contexts
-import useAccordionContext from 'src/Accordion/useAccordionContext';
-import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
+import useAccordionContext from '../hooks/useAccordionContext';
+import useAccordionItemContext from '../hooks/useAccordionItemContext';
 
 //Types
-import type { AccordionHeaderProps } from 'src/Accordion/types';
+import type {
+  AccordionRenderFunction,
+  AccordionRenderClass,
+  AccordionRenderStyle,
+} from '../types';
+import type { BaseHeaderProps, BaseButtonProps } from './BaseAccordionHeader';
+
+export type HeaderProps = {
+  className?: string | AccordionRenderClass;
+  style?: React.CSSProperties | AccordionRenderStyle;
+} & Omit<BaseHeaderProps, 'className' | 'style'>;
+
+export type ButtonProps = {
+  className?: string | AccordionRenderClass;
+  style?: React.CSSProperties | AccordionRenderStyle;
+} & Omit<BaseButtonProps, 'className' | 'style'>;
+
+export interface AccordionHeaderProps {
+  children?: React.ReactNode | AccordionRenderFunction;
+  headerProps?: HeaderProps;
+  buttonProps?: ButtonProps;
+}
 
 function AccordionHeader({
   children = null,

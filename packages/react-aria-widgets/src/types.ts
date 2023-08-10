@@ -1,15 +1,9 @@
-import type { Validator } from 'prop-types';
-
 //Misc.
-import type { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+import type { VALID_HTML_HEADER_LEVELS } from './utils';
 
 export type Props = Record<string, any>; //eslint-disable-line @typescript-eslint/no-explicit-any
 export type DefaultProps<P> = Partial<P>;
 export type TPropTypes<P> = React.WeakValidationMap<P>;
-
-export interface ValidatorWithRequired<T> extends Validator<T> {
-  isRequired: Validator<T>;
-}
 
 export type ValidHTMLHeaderLevels = typeof VALID_HTML_HEADER_LEVELS[number];
 
@@ -52,7 +46,7 @@ export interface PolymorphicForwardRefComponent<
 > {
   <C extends React.ElementType = D>(
     props: PolymorphicComponentPropsWithRef<C, P, V>
-  ): React.ReactElement | null;
+  ): React.ReactNode;
 
   defaultProps?: DefaultProps<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;
   propTypes?: TPropTypes<PolymorphicComponentPropsWithRef<React.ElementType, P, V>> | undefined;

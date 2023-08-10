@@ -4,10 +4,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //Types
-import type { BaseAccordionHeaderProps } from 'src/Accordion/types';
+import type { ValidHTMLHeaderLevels } from '../../types';
 
 //Misc
-import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+import { VALID_HTML_HEADER_LEVELS } from '../../utils';
+
+export type BaseHeaderProps = Omit<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  'children' | 'dangerouslySetInnerHTML'
+>;
+
+export type BaseButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'children' |
+  'dangerouslySetInnerHTML' |
+  'type' |
+  'id' |
+  'aria-controls' |
+  'onClick' |
+  'onKeyDown' |
+  'aria-expanded' |
+  'aria-disabled'
+>;
+
+export type BaseAccordionHeaderProps = React.PropsWithChildren<{
+  id?: string | undefined;
+  headerLevel: ValidHTMLHeaderLevels;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLButtonElement> | undefined;
+  'aria-controls': string;
+  'aria-expanded': boolean;
+  'aria-disabled': boolean;
+  headerProps?: BaseHeaderProps;
+  buttonProps?: BaseButtonProps;
+}>;
 
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>(({
   children,

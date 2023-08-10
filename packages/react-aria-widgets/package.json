@@ -12,14 +12,34 @@
   "author": "Charlie Yao <charlie-yao@users.noreply.github.com>",
   "homepage": "https://charlieyao.com/react-aria-widgets",
   "license": "MIT",
-  "main": "dist/index.bundle.js",
+  "main": "./dist/cjs/index.bundle.cjs",
+  "module": "./dist/esm/index.bundle.mjs",
+  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist/**/*"
+    "./dist",
+    "README.md"
   ],
   "exports": {
-    ".": "./dist/index.bundle.js",
-    "./accordion": "./dist/accordion.bundle.js",
-    "./styles.css": "./dist/index.css"
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.bundle.mjs"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.bundle.cjs"
+      }
+    },
+    "./accordion": {
+      "import": {
+        "types": "./dist/types/Accordion/index.d.ts",
+        "default": "./dist/esm/accordion.bundle.mjs"
+      },
+      "require": {
+        "types": "./dist/types/Accordion/index.d.ts",
+        "default": "./dist/cjs/accordion.bundle.cjs"
+      }
+    }
   },
   "publishConfig": {
     "access": "public"
@@ -29,8 +49,9 @@
     "url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
   },
   "scripts": {
+    "build:test": "tsc -p tsconfig.build:test.json",
     "build": "webpack --config webpack.prod.js",
-    "build-dev": "webpack --config webpack.dev.js",
+    "build:dev": "webpack --config webpack.dev.js",
     "lint": "eslint --fix --ext .jsx,.js,.ts,.tsx ./",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -39,10 +60,6 @@
   "bugs": {
     "url": "https://github.com/charlie-yao/react-aria-widgets/issues"
   },
-  "sideEffects": [
-    "**/*.css",
-    "**/*.scss"
-  ],
   "dependencies": {
     "prop-types": "^15.8.1"
   },

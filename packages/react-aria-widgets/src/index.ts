@@ -1,2 +1,9 @@
-//Components
-export * as AccordionModule from 'src/Accordion';
+//APG Patterns
+export * from './Accordion';
+
+//Misc.
+export * from './utils';
+export type * from './utils';
+
+//Types
+export type * from './types';

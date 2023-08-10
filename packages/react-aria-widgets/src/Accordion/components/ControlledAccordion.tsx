@@ -1,7 +1,18 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
+//Contexts
+import { AccordionProvider } from '../contexts/AccordionContext';
+
 //Misc.
-import { VALID_HTML_HEADER_LEVELS } from 'src/utils';
+import { VALID_HTML_HEADER_LEVELS } from '../../utils';
+
+//Types
+import type { AccordionContextType } from '../contexts/AccordionContext';
+
+export type ControlledAccordionProps = React.PropsWithChildren<{
+  contextValue: AccordionContextType;
+}>;
 
 export const accordionContextValuePropType = PropTypes.exact({
   allowMultiple: PropTypes.bool.isRequired,
@@ -19,3 +30,21 @@ export const accordionContextValuePropType = PropTypes.exact({
   focusFirstHeader: PropTypes.func.isRequired,
   focusLastHeader: PropTypes.func.isRequired,
 });
+
+function ControlledAccordion({
+  children = null,
+  contextValue,
+}: ControlledAccordionProps) {
+  return (
+    <AccordionProvider value={ contextValue }>
+      { children }
+    </AccordionProvider>
+  );
+}
+
+ControlledAccordion.propTypes = {
+  children: PropTypes.node,
+  contextValue: accordionContextValuePropType.isRequired,
+};
+
+export default ControlledAccordion;

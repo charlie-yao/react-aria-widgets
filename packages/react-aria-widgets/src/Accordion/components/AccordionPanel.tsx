@@ -4,17 +4,33 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 //Components
-import BaseAccordionPanel from 'src/Accordion/BaseAccordionPanel';
+import BaseAccordionPanel from './BaseAccordionPanel';
 
 //Hooks
-import useAccordionContext from 'src/Accordion/useAccordionContext';
-import useAccordionItemContext from 'src/Accordion/useAccordionItemContext';
+import useAccordionContext from '../hooks/useAccordionContext';
+import useAccordionItemContext from '../hooks/useAccordionItemContext';
 
 //Types
-import type { AccordionPanelProps, ValidPanelElements } from 'src/Accordion/types';
+import type { PolymorphicComponentPropsWithoutRef } from '../../types';
+import type {
+  ValidPanelElements,
+  AccordionRenderFunction,
+  AccordionRenderClass,
+  AccordionRenderStyle,
+} from '../types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from 'src/Accordion/utils';
+import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from '../utils';
+
+export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+  C,
+  {
+    children?: React.ReactNode | AccordionRenderFunction;
+    className?: string | AccordionRenderClass;
+    style?: React.CSSProperties | AccordionRenderStyle;
+  },
+  ValidPanelElements
+>;
 
 function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT>({
   children = null,
@@ -60,7 +76,7 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
     _style = style;
 
   return (
-    <BaseAccordionPanel<typeof Component>
+    <BaseAccordionPanel
       { ...rest }
       id={ panelHTMLId }
       aria-labelledby={ headerHTMLId }
