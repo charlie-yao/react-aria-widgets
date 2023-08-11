@@ -25,11 +25,6 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="/getting-started" className={ pathname === '/getting-started' ? 'is-active' : '' }>
-              Getting Started
-            </Link>
-          </li>
-          <li>
             <Link href="/support" className={ pathname === '/support' ? 'is-active' : '' }>
               Support
             </Link>

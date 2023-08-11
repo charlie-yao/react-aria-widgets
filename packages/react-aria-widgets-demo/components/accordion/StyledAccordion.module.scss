@@ -1,0 +1,15 @@
+.StyledAccordion {
+  :global {
+    .react-aria-widgets-accordion-panel {
+      &[data-expanded=false] {
+        display: none;
+      }
+    }
+
+    .styled-accordion-panel {
+      &[data-expanded=false] {
+        display: none;
+      }
+    }
+  }
+}
