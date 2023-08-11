@@ -71,6 +71,11 @@ export default function SupportPage() {
           on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>.
         </p>
         <h2>Frequently Asked Questions (FAQ)</h2>
+        <h3 id="faq-requirements">Requirements</h3>
+        <p>
+          React ARIA Widgets transpiles to ES6 code and requires React v18. In the future, we plan on expanding
+          support back to React v16.8.
+        </p>
         <h3 id="faq-typescript-submodule-types">TypeScript can't find a sub-module or its type declarations</h3>
         <p>
           If you're writing a TypeScript application and you import something from one of React ARIA Widget's

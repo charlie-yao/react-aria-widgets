@@ -56,8 +56,8 @@ const CustomAccordion = dynamic(
 
 /* eslint-disable operator-linebreak */
 const IMPORT_EXAMPLE =
-`import { useAccordion, ControlledAccordion } from 'react-aria-widgets';
-import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';`;
+`import { Accordion } from 'react-aria-widgets';
+import { Accordion } from 'react-aria-widgets/accordion';`;
 
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
