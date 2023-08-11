@@ -56,15 +56,8 @@ const CustomAccordion = dynamic(
 
 /* eslint-disable operator-linebreak */
 const IMPORT_EXAMPLE =
-`import {
-  withAccordionManager,
-  Accordion,
-  AccordionSection,
-  AccordionHeader,
-  AccordionPanel,
-  BaseAccordionHeader,
-  BaseAccordionPanel,
-} from 'react-aria-widgets/accordion';`;
+`import { useAccordion, ControlledAccordion } from 'react-aria-widgets';
+import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';`;
 
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
@@ -87,7 +80,7 @@ function AccordionPage() {
       <article className="content container is-max-desktop">
         <h1 id="accordion">Accordion</h1>
         <p>
-          To quote the
+          From the
           { ' ' }
           <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
             ARIA Authoring Practices Guide (APG)
@@ -102,19 +95,20 @@ function AccordionPage() {
           content. Accordions are commonly used to reduce the need to scroll when presenting
           multiple sections of content on a single page.
         </blockquote>
-        <p>
-          Like the APG, we will use the term &quot;accordion header&quot; to reference the label
-          that controls a section of content, and &quot;accordion panel&quot; to reference the
-          content that is associated with an accordion header.
-        </p>
         <h2 id="usage-and-examples">Usage and Examples</h2>
         <p>
-          Components for the accordion pattern can be found in
-          the <code>react-aria-widgets/accordion</code> submodule.
+          Components and hooks for the accordion pattern can be imported directly from the package itself, or
+          from the <code>/accordion</code> sub-module.
         </p>
-        <SyntaxHighlighter language="javascript">
+        <SyntaxHighlighter language="typescript">
           { IMPORT_EXAMPLE }
         </SyntaxHighlighter>
+        <p>
+          Importing from the sub-module means introducing less code into your bundles, but if you're writing
+          a TypeScript application, you may need to change <code>moduleResolution</code> to <code>node16</code> in
+          your <code>tsconfig.json</code>. For more information, see
+          the <Link href="/support#faq-typescript-submodule-types">FAQ</Link>.
+        </p>
         <h3 id="basic-usage">Basic Usage</h3>
         <p>
           A basic accordion consists of an <code>&lt;Accordion&gt;</code> wrapping around

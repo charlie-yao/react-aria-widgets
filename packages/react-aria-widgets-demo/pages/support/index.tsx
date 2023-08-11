@@ -4,6 +4,11 @@ import Head from 'next/head';
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
 /* eslint-disable operator-linebreak */
+const IMPORT_EXAMPLE =
+`import { useAccordion } from 'react-aria-widgets/accordion';
+
+Cannot find module 'react-aria-widgets/accordion' or its corresponding type declarations. (tsserver 2307)`;
+
 const NEXT_EXAMPLE_FAQ_PAGE =
 `//In a hypothetical pages/faq/index.js
 import dynamic from 'next/dynamic';
@@ -66,6 +71,25 @@ export default function SupportPage() {
           on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>.
         </p>
         <h2>Frequently Asked Questions (FAQ)</h2>
+        <h3 id="faq-typescript-submodule-types">TypeScript can't find a sub-module or its type declarations</h3>
+        <p>
+          If you're writing a TypeScript application and you import something from one of React ARIA Widget's
+          sub-modules, you may run into the following error:
+        </p>
+        <SyntaxHighlighter language="typescript">
+          { IMPORT_EXAMPLE }
+        </SyntaxHighlighter>
+        <p>
+          To fix this, you can import directly from <code>react-aria-widgets</code>, though it likely increase your
+          bundle size. Another option would be to change <code>moduleResolution</code> to <code>node16</code> in
+          your <code>tsconfig.json</code>.
+        </p>
+        <p>
+          React ARIA Widgets exposes its sub-modules and their type declarations by listing them with
+          the <code>exports</code> field in its <code>package.json</code>, but this isn't supported
+          in older versions of Node.js. In the future, React ARIA Widgets plans on organizing itself with
+          scoped modules.
+        </p>
         <h3 id="faq-hidden-vs-display-none">
           <code>hidden</code> versus <code>display: none;</code>
         </h3>
