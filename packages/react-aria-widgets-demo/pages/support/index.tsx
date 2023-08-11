@@ -65,28 +65,7 @@ export default function SupportPage() {
           If you encounter any issues, please feel free to make an issue
           on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>.
         </p>
-        <p className="notification is-info is-light">
-          Please note that this library should <strong>NOT</strong> be used in a production environment!
-          It was developed primarily for educational purposes, and longterm
-          support in the form of additional features, bug fixes, maintenance, or etc.
-          cannot be guaranteed!
-        </p>
         <h2>Frequently Asked Questions (FAQ)</h2>
-        <h3 id="faq-mostly-unstyled">
-          &quot;Mostly Unstyled&quot;?
-        </h3>
-        <p>
-          The components provided by React ARIA Widgets strives to be as unstyled as possible,
-          but there are cases where styling is included by default. For example, the accordion widget
-          uses <code>display: none !important;</code> by default to handle the expand/collapse states.
-          However, whenever possible, React ARIA Widgets will try to provide customization options
-          so that developers can use the implementation that suits them best.
-        </p>
-        <p>
-          Note that the examples shown for each pattern may contain styling that differs
-          from your browser&apos;s default styling, but that&apos;s due to the CSS used by this
-          website rather than React ARIA Widgets itself.
-        </p>
         <h3 id="faq-hidden-vs-display-none">
           <code>hidden</code> versus <code>display: none;</code>
         </h3>
@@ -123,18 +102,6 @@ export default function SupportPage() {
           React ARIA Widgets will use <code>display: none important!;</code> by default, but whenever possible,
           it will try to give developers customization options should they decide to
           use the <code>hidden</code> attribute or custom styling.
-        </p>
-        <h3>Styles from React ARIA Widgets Are Not Appearing</h3>
-        <p>
-          Remember to import the stylesheet!
-        </p>
-        <SyntaxHighlighter language="javascript">
-          import &apos;react-aria-widgets/styles.css&apos;;
-        </SyntaxHighlighter>
-        <h3>Type Notation in the API</h3>
-        <p>
-          <a href="https://flow.org/">Flow</a> is used notate types in the API, though
-          the project itself doesn&apos;t use Flow internally.
         </p>
         <h3 id="next-js-lazy-load">Next.js and <code>ReferenceError: self is not defined</code></h3>
         <p>
