@@ -1,6 +1,6 @@
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
-export default function BasicAccordion() {
+export default function BasicAccordion(props: any) {
   return (
     <Accordion headerLevel={ 5 }>
       <AccordionItem id="lol">

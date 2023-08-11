@@ -21,7 +21,7 @@ import {
 } from '../../utils/accordionExamples';
 
 const BasicAccordion = dynamic(
-  () => import('../../components/accordion/BasicAccordion'),
+  () => import('../../components/accordion/BasicAccordion.tsx').then(module => module.default),
   {
     ssr: false,
     loading: () => <p>Loading, please wait...</p>,
