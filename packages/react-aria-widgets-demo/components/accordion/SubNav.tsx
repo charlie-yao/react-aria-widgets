@@ -9,13 +9,19 @@ export default function SubNav() {
       </p>
       <ul className="menu-list">
         <li>
-          <a href="#accordion">Accordion</a>
-        </li>
-        <li>
           <a href="#usage-and-examples">Usage and Examples</a>
           <ul>
             <li>
               <a href="#basic-usage">Basic Usage</a>
+            </li>
+            <li>
+              <a href="#disable-multiple-expanded">Disable Multiple Expanded Sections</a>
+            </li>
+            <li>
+              <a href="#disable-collapsing-all">Disable Collapsing All Sections</a>
+            </li>
+            <li>
+              <a href="#disable-both">Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></a>
             </li>
             <li>
               <a href="#customization">Customization</a>

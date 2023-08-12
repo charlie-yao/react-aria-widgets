@@ -245,7 +245,7 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { BASIC_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3>Disable Multiple Expanded Sections</h3>
+        <h3 id="disable-multiple-expanded">Disable Multiple Expanded Sections</h3>
         <p>
           By default, multiple sections can be expanded and collapsed at the same time, but this behavior
           can be turned off with the <code>allowMultiple</code> prop.
@@ -254,7 +254,7 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { DISABLE_MULTIPLE_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3>Disable Collapsing All Sections</h3>
+        <h3 id="disable-collapsing-all">Disable Collapsing All Sections</h3>
         <p>
           By default, all of the accordion sections can be simultaneously collapsed. If
           the <code>allowCollapseLast</code> prop is <code>false</code>, the final expanded section cannot
@@ -264,7 +264,7 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { DISABLE_COLLAPSE_LAST_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3>Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></h3>
+        <h3 id="disable-both">Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></h3>
         <BasicAccordion
           headerLevel={ 4 }
           allowMultiple={ false }
