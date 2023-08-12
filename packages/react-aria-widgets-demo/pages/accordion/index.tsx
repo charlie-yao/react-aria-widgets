@@ -7,6 +7,7 @@ import SubNav from '../../components/accordion/SubNav';
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 import BasicAccordion from '../../components/accordion/BasicAccordion';
 import RenderPropAccordion from '../../components/accordion/RenderPropAccordion';
+import DisableItemAccordion from '../../components/accordion/DisableItemAccordion';
 
 //Misc.
 import {
@@ -177,7 +178,7 @@ export default function RenderPropAccordion() {
     <Accordion headerLevel={ 4 }>
       <AccordionItem id="item1">
         <AccordionHeader>
-          { ({ getIsExpanded }) => \`Accordion Item 1: Expanded = \${getIsExpanded('item1')}\` }
+          { ({ id, getIsExpanded }) => \`Accordion Item 1: Expanded = $\{getIsExpanded(id)}\` }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, headerLevel, allowMultiple, allowCollapseLast, getIsExpanded }) => (
@@ -193,7 +194,7 @@ export default function RenderPropAccordion() {
       </AccordionItem>
       <AccordionItem id="item2">
         <AccordionHeader>
-          { ({ getIsExpanded }) => \`Accordion Item 2: Expanded = \${getIsExpanded('item2')}\` }
+          { ({ id, getIsExpanded }) => \`Accordion Item 2: Expanded = $\{getIsExpanded(id)}\` }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
@@ -211,6 +212,39 @@ export default function RenderPropAccordion() {
   );
 }`;
 
+const DISABLE_ITEM_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+function DisableItemAccordion() {
+  return (
+    <Accordion headerLevel={ 4 }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          { ({ id, getIsDisabled }) => \`Accordion Item 1: Disabled = $\{getIsDisabled(id).toString()}\` }
+        </AccordionHeader>
+        <AccordionPanel>
+          { ({ id, toggleDisabled, getIsDisabled }) => (
+            <button type="button" onClick={ () => toggleDisabled(id) }>
+              { getIsDisabled(id) ? 'Enable' : 'Disable' } { id }
+            </button>
+          ) }
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          { ({ id, getIsDisabled }) => \`Accordion Item 2: Disabled = $\{getIsDisabled(id).toString()}\` }
+        </AccordionHeader>
+        <AccordionPanel>
+          { ({ id, toggleDisabled, getIsDisabled }) => (
+            <button type="button" onClick={ () => toggleDisabled(id) }>
+              { getIsDisabled(id) ? 'Enable' : 'Disable' } { id }
+            </button>
+          ) }
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
 
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
@@ -223,6 +257,8 @@ const HEADER_PROPS_EXAMPLE =
   headerProps={{ className: 'custom-h2-class' }}
 />`;
 /* eslint-enable operator-linebreak */
+
+const MDN_DISABLED_LINK = 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled';
 
 function AccordionPage() {
   return (
@@ -299,7 +335,7 @@ function AccordionPage() {
         </SyntaxHighlighter>
         <h3 id="disable-collapsing-all">Disable Collapsing All Sections</h3>
         <p>
-          By default, all of the accordion sections can be simultaneously collapsed. If
+          By default, all of the accordion items can be simultaneously collapsed. If
           the <code>allowCollapseLast</code> prop is <code>false</code>, the final expanded section cannot
           be collapsed.
         </p>
@@ -327,6 +363,17 @@ function AccordionPage() {
         <RenderPropAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
           { RENDER_PROP_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
+        <h3 id="disabling-items">Disabling Accordion Items</h3>
+        <p>
+          Accordion items can be manually disabled with the method <code>toggleDisabled</code>, preventing
+          them from being expanded/collapsed. Note that <code>&lt;AccordionHeader&gt;</code> will
+          set the <code>aria-disabled</code> attribute, but not the <code>disabled</code> attribute, which has
+          various implications. See the <a href={ MDN_DISABLED_LINK }>MDN Web Docs</a> for more information.
+        </p>
+        <DisableItemAccordion headerLevel={ 4 } />
+        <SyntaxHighlighter language="tsx">
+          { DISABLE_ITEM_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h3 id="customization">Customization</h3>
         <p>

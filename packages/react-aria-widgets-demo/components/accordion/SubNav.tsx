@@ -27,6 +27,9 @@ export default function SubNav() {
               <a href="#render-prop">Rendering With Render Props</a>
             </li>
             <li>
+              <a href="#disabling-items">Disabling Accordion Items</a>
+            </li>
+            <li>
               <a href="#customization">Customization</a>
             </li>
           </ul>

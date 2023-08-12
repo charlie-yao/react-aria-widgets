@@ -11,7 +11,7 @@ function RenderPropAccordion(props: AccordionProps) {
     <Accordion { ...props }>
       <AccordionItem id="item1">
         <AccordionHeader>
-          { ({ getIsExpanded }) => `Accordion Item 1: Expanded = ${getIsExpanded('item1')}` }
+          { ({ id, getIsExpanded }) => `Accordion Item 1: Expanded = ${getIsExpanded(id)}` }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, headerLevel, allowMultiple, allowCollapseLast, getIsExpanded }) => (
@@ -27,7 +27,7 @@ function RenderPropAccordion(props: AccordionProps) {
       </AccordionItem>
       <AccordionItem id="item2">
         <AccordionHeader>
-          { ({ getIsExpanded }) => `Accordion Item 2: Expanded = ${getIsExpanded('item2')}` }
+          { ({ id, getIsExpanded }) => `Accordion Item 2: Expanded = ${getIsExpanded(id)}` }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, headerLevel, allowMultiple, allowCollapseLast, getIsExpanded }) => (
