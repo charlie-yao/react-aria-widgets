@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -10,8 +9,6 @@ import BasicAccordion from '../../components/accordion/BasicAccordion.tsx';
 
 //Misc.
 import {
-  disableMultipleExample,
-  disableToggleExample,
   CustomAccordionExample,
   StyledAccordionHeaderExample,
   StyledAccordionPanelExample,
@@ -21,22 +18,6 @@ import {
 } from '../../utils/accordionExamples';
 
 /*
-const DisableMultipleAccordion = dynamic(
-  () => import('../../components/accordion/DisableMultipleAccordion'),
-  {
-    ssr: false,
-    loading: () => <p>Loading, please wait...</p>,
-  },
-);
-
-const DisableToggleAccordion = dynamic(
-  () => import('../../components/accordion/DisableToggleAccordion'),
-  {
-    ssr: false,
-    loading: () => <p>Loading, please wait...</p>,
-  },
-);
-
 const CustomAccordion = dynamic(
   () => import('../../components/accordion/CustomAccordion'),
   {
@@ -84,6 +65,109 @@ export default BasicAccordion() {
     </Accordion>
   );
 }`;
+
+const DISABLE_MULTIPLE_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default DisableMultipleAccordion() {
+  return (
+    <Accordion headerLevel={ 4 } allowMultiple={ false }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item3">
+        <AccordionHeader>
+          Accordion Item 3
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
+const DISABLE_COLLAPSE_LAST_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default DisableCollapseLastAccordion() {
+  return (
+    <Accordion headerLevel={ 4 } allowCollapseLast={ false }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item3">
+        <AccordionHeader>
+          Accordion Item 3
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
+const DISABLE_BOTH_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default DisableBothAccordion() {
+  return (
+    <Accordion headerLevel={ 4 } allowMultiple={ false } allowCollapseLast={ false }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item3">
+        <AccordionHeader>
+          Accordion Item 3
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
 
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
@@ -149,34 +233,45 @@ function AccordionPage() {
           an <code>&lt;AccordionPanel&gt;</code>.
         </p>
         <p>
+          Out of the box, React ARIA Widgets provides focus control as described in the APG. You can
+          use <kbd>ArrowDown</kbd>, <kbd>ArrowUp</kbd>, <kbd>Home</kbd>, and <kbd>End</kbd> to
+          switch focus between each section.
+        </p>
+        <p>
           A <code>headerLevel</code> prop must be supplied to the <code>&lt;Accordion&gt;</code>,
           and each <code>&lt;AccordionItem&gt;</code> must have a unique <code>id</code> prop.
         </p>
         <BasicAccordion headerLevel={ 4 } />
-        <SyntaxHighlighter language="jsx">
+        <SyntaxHighlighter language="tsx">
           { BASIC_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h4>allowMultiple and allowToggle</h4>
+        <h3>Disable Multiple Expanded Sections</h3>
         <p>
-          By default, multiple panels can be expanded and closed at the same time, but this behavior
-          can be toggled on/off with the <code>allowMultiple</code> prop.
-          The <code>allowToggle</code> prop can also be used to toggle
-          whether or not a panel can be collapsed once it&apos;s expanded.
+          By default, multiple sections can be expanded and collapsed at the same time, but this behavior
+          can be turned off with the <code>allowMultiple</code> prop.
         </p>
-        <p>
-          Note that if <code>allowMultiple</code> is <code>true</code>, then
-          the <code>allowToggle</code> will always be <code>true</code>. Otherwise, users could
-          run into a situation where there are many open panels that can&apos;t be closed.
-        </p>
-        <h5>Disabling allowMultiple</h5>
-        { /*<DisableMultipleAccordion /> */ }
-        <SyntaxHighlighter language="jsx">
-          { disableMultipleExample }
+        <BasicAccordion headerLevel={ 4 } allowMultiple={ false } />
+        <SyntaxHighlighter language="tsx">
+          { DISABLE_MULTIPLE_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h5>Disabling allowToggle</h5>
-        { /* <DisableToggleAccordion /> */ }
-        <SyntaxHighlighter language="jsx">
-          { disableToggleExample }
+        <h3>Disable Collapsing All Sections</h3>
+        <p>
+          By default, all of the accordion sections can be simultaneously collapsed. If
+          the <code>allowCollapseLast</code> prop is <code>false</code>, the final expanded section cannot
+          be collapsed.
+        </p>
+        <BasicAccordion headerLevel={ 4 } allowCollapseLast={ false } />
+        <SyntaxHighlighter language="tsx">
+          { DISABLE_COLLAPSE_LAST_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
+        <h3>Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></h3>
+        <BasicAccordion
+          headerLevel={ 4 }
+          allowMultiple={ false }
+          allowCollapseLast={ false }
+        />
+        <SyntaxHighlighter language="tsx">
+          { DISABLE_BOTH_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h3 id="customization">Customization</h3>
         <p>
