@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import type { ValidHTMLHeaderLevels } from '../../types';
 
 //Misc
-import { VALID_HTML_HEADER_LEVELS } from '../../utils';
+import { VALID_HTML_HEADER_LEVELS, VALID_HTML_HEADER_LEVELS_SET } from '../../utils';
 
 export type BaseHeaderProps = Omit<
   React.HTMLAttributes<HTMLHeadingElement>,
@@ -51,6 +51,9 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
   headerProps,
   buttonProps,
 }, ref) => {
+  if(!VALID_HTML_HEADER_LEVELS_SET.has(headerLevel))
+    throw new Error(`headerLevel prop must be an integer from 1 to 6 (inclusive), but received: ${headerLevel}`);
+
   const HeaderElement: React.ElementType = `h${headerLevel}`;
 
   return (

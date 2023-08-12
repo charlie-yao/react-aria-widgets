@@ -2,12 +2,89 @@ import Link from 'next/link';
 
 //Components
 import SyntaxHighlighter from '../components/SyntaxHighlighter';
-import DefaultAccordion from '../components/accordion/DefaultAccordion';
+import { UnstyledBasicAccordion } from '../components/accordion/BasicAccordion';
 import StyledAccordion from '../components/accordion/StyledAccordion';
 
-//Misc.
-import { DEFAULT_ACCORDION_EXAMPLE } from '../components/accordion/DefaultAccordion';
-import { STYLED_ACCORDION_EXAMPLE, STYLED_ACCORDION_CLASSES_EXAMPLE } from '../components/accordion/StyledAccordion';
+const UNSTYLED_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default BasicAccordion() {
+  return (
+    <Accordion headerLevel={ 3 }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item3">
+        <AccordionHeader>
+          Accordion Item 3
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
+const STYLED_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default function StyledAccordion() {
+  return (
+    <Accordion headerLevel={ 3 }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Styled Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          This accordion item is styled by CSS that targets the default classes provided by React ARIA
+          Widgets. Since React ARIA Widgets also exposes the accordion's state via HTML data attributes,
+          we can use selectors such as <code>[data-expanded]</code> or <code>[data-disabled]</code>.
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Styled Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel className="custom-accordion-panel">
+          This accordion item is styled by passing in a string <code>className</code> prop and CSS
+          targeting the state exposed by React ARIA Widgets.
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item3">
+        <AccordionHeader>
+          Styled Accordion Item 3
+        </AccordionHeader>
+        <AccordionPanel style={ ({ isExpanded }) => isExpanded ? {} : { display: 'none'} }>
+          This accordion item is styled by passing in a function <code>style</code> prop that behaves
+          similarly to the commonly-used render function pattern.
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
+export const STYLED_ACCORDION_CSS_EXAMPLE =
+`.react-aria-widgets-accordion-panel[data-expanded=false] {
+  display: none;
+}
+
+.custom-accordion-panel[data-expanded=false] {
+  display: none;
+}`;
 
 export default function HomePage() {
   return (
@@ -59,9 +136,9 @@ export default function HomePage() {
         But, since React ARIA Widgets already provides implementations for the APG patterns, simply passing
         in your own styles will likely be enough to begin creating your own components.
       </p>
-      <DefaultAccordion />
+      <UnstyledBasicAccordion headerLevel={ 3 }/>
       <SyntaxHighlighter language="tsx">
-        { DEFAULT_ACCORDION_EXAMPLE }
+        { UNSTYLED_ACCORDION_EXAMPLE }
       </SyntaxHighlighter>
       <p>
         If you open your browser's developer tools and you click on the buttons, you'll see that the accordion
@@ -73,12 +150,12 @@ export default function HomePage() {
         React ARIA Widgets aims to be as flexible as possible, and a few different styling options are
         displayed in the following example:
       </p>
-      <StyledAccordion />
+      <StyledAccordion headerLevel={ 3 } />
       <SyntaxHighlighter language="tsx">
         { STYLED_ACCORDION_EXAMPLE }
       </SyntaxHighlighter>
       <SyntaxHighlighter language="scss">
-        { STYLED_ACCORDION_CLASSES_EXAMPLE }
+        { STYLED_ACCORDION_CSS_EXAMPLE }
       </SyntaxHighlighter>
       <p>
         In addition to styling options React ARIA Widgets also provides a number of hooks and other primitives

@@ -40,3 +40,4 @@ export function createValidatorWithRequired<T>(validator: Validator<T>) {
 }
 
 export const VALID_HTML_HEADER_LEVELS = [ 1, 2, 3, 4, 5, 6 ] as const;
+export const VALID_HTML_HEADER_LEVELS_SET = new Set(VALID_HTML_HEADER_LEVELS);

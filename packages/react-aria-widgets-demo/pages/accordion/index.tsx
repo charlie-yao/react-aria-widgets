@@ -6,10 +6,10 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 //Components
 import SubNav from '../../components/accordion/SubNav';
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
+import BasicAccordion from '../../components/accordion/BasicAccordion.tsx';
 
 //Misc.
 import {
-  basicAccordionExample,
   disableMultipleExample,
   disableToggleExample,
   CustomAccordionExample,
@@ -19,14 +19,6 @@ import {
   CustomAccordionPanelExample,
   customRenderFunctionExample,
 } from '../../utils/accordionExamples';
-
-const BasicAccordion = dynamic(
-  () => import('../../components/accordion/BasicAccordion.tsx').then(module => module.default),
-  {
-    ssr: false,
-    loading: () => <p>Loading, please wait...</p>,
-  },
-);
 
 /*
 const DisableMultipleAccordion = dynamic(
@@ -59,9 +51,38 @@ const IMPORT_EXAMPLE =
 `import { Accordion } from 'react-aria-widgets';
 import { Accordion } from 'react-aria-widgets/accordion';`;
 
-const DEFAULT_PANEL_COLLAPSE_CSS_EXAMPLE =
-`.react-aria-widgets-accordion-panel[data-expanded=false] {
-  display: none;
+const BASIC_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default BasicAccordion() {
+  return (
+    <Accordion headerLevel={ 4 }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item3">
+        <AccordionHeader>
+          Accordion Item 3
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world!
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
 }`;
 
 const BUTTON_PROPS_EXAMPLE =
@@ -116,24 +137,24 @@ function AccordionPage() {
         </p>
         <p>
           Additionally, because React ARIA Widgets comes with no styling, accordions will not have the proper
-          expand/collapse behavior out of the box. For the sake of having working examples, they will have
-          some styles applied to demonstrate expand/collapse behavior. For more information, see
+          expand/collapse behavior out of the box. For the sake of demonstration, the following examples will
+          have styling applied to showcase expand/collapse behavior. For more information, see
           the styling section.
         </p>
         <h3 id="basic-usage">Basic Usage</h3>
         <p>
           A basic accordion consists of an <code>&lt;Accordion&gt;</code> wrapping around
-          one or more <code>&lt;AccordionSection&gt;</code>s, where
-          each <code>&lt;AccordionSection&gt;</code> has an <code>&lt;AccordionHeader&gt;</code> and
+          one or more <code>&lt;AccordionItem&gt;</code>s, where
+          each <code>&lt;AccordionItem&gt;</code> has an <code>&lt;AccordionHeader&gt;</code> and
           an <code>&lt;AccordionPanel&gt;</code>.
         </p>
         <p>
           A <code>headerLevel</code> prop must be supplied to the <code>&lt;Accordion&gt;</code>,
-          and each <code>&lt;AccordionSection&gt;</code> must have a unique <code>id</code> prop.
+          and each <code>&lt;AccordionItem&gt;</code> must have a unique <code>id</code> prop.
         </p>
-        <BasicAccordion />
+        <BasicAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="jsx">
-          { basicAccordionExample }
+          { BASIC_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h4>allowMultiple and allowToggle</h4>
         <p>

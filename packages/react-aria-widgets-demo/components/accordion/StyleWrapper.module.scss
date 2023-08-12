@@ -1,0 +1,11 @@
+.StyleWrapper {
+  :global {
+    .react-aria-widgets-accordion-panel[data-expanded=false] {
+      display: none;
+    }
+
+    .custom-accordion-panel[data-expanded=false] {
+      display: none;
+    }
+  }
+}
