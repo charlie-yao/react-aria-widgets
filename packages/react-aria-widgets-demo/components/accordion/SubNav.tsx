@@ -27,51 +27,23 @@ export default function SubNav() {
             <li>
               <a href="#hocs-and-hooks">Higher-Order Components and Hooks</a>
               <ul>
-                <li>
-                  <a href="#with-accordion-manager">
-                    withAccordionManager()
-                  </a>
-                </li>
+                <li><a href="#with-accordion-manager"><code>withAccordionManager</code></a></li>
               </ul>
             </li>
             <li>
               <a href="#components">Components</a>
               <ul>
-                <li>
-                  <a href="#accordion-component">
-                    &lt;Accordion&gt;
-                  </a>
-                </li>
-                <li>
-                  <a href="#accordion-section">
-                    &lt;AccordionSection&gt;
-                  </a>
-                </li>
-                <li>
-                  <a href="#accordion-header">
-                    &lt;AccordionHeader&gt;
-                  </a>
-                </li>
-                <li>
-                  <a href="#accordion-panel">
-                    &lt;AccordionPanel&gt;
-                  </a>
-                </li>
+                <li><a href="#accordion-component"><code>&gt;Accordion&gt;</code></a></li>
+                <li><a href="#accordion-section"><code>&lt;AccordionSection&gt;</code></a></li>
+                <li><a href="#accordion-header"><code>&lt;AccordionHeader&gt;</code></a></li>
+                <li><a href="#accordion-panel"><code>&lt;AccordionPanel&gt;</code></a></li>
               </ul>
             </li>
             <li>
               <a href="#base-components">Base Components</a>
               <ul>
-                <li>
-                  <a href="#base-accordion-header">
-                    &lt;BaseAccordionHeader&gt;
-                  </a>
-                </li>
-                <li>
-                  <a href="#base-accordion-panel">
-                    &lt;BaseAccordionPanel&gt;
-                  </a>
-                </li>
+                <li><a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a></li>
+                <li><a href="#base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></a></li>
               </ul>
             </li>
           </ul>
