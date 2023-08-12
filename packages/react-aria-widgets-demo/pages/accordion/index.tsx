@@ -59,6 +59,11 @@ const IMPORT_EXAMPLE =
 `import { Accordion } from 'react-aria-widgets';
 import { Accordion } from 'react-aria-widgets/accordion';`;
 
+const DEFAULT_PANEL_COLLAPSE_CSS_EXAMPLE =
+`.react-aria-widgets-accordion-panel[data-expanded=false] {
+  display: none;
+}`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -108,6 +113,12 @@ function AccordionPage() {
           a TypeScript application, you may need to change <code>moduleResolution</code> to <code>node16</code> in
           your <code>tsconfig.json</code>. For more information, see
           the <Link href="/support#faq-typescript-submodule-types">FAQ</Link>.
+        </p>
+        <p>
+          Additionally, because React ARIA Widgets comes with no styling, accordions will not have the proper
+          expand/collapse behavior out of the box. For the sake of having working examples, they will have
+          some styles applied to demonstrate expand/collapse behavior. For more information, see
+          the styling section.
         </p>
         <h3 id="basic-usage">Basic Usage</h3>
         <p>
