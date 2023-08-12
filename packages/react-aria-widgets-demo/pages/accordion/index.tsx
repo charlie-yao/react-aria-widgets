@@ -8,6 +8,7 @@ import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 import BasicAccordion from '../../components/accordion/BasicAccordion';
 import RenderPropAccordion from '../../components/accordion/RenderPropAccordion';
 import DisableItemAccordion from '../../components/accordion/DisableItemAccordion';
+import InitializeStateAccordion from '../../components/accordion/InitializeStateAccordion';
 
 //Misc.
 import {
@@ -246,6 +247,46 @@ function DisableItemAccordion() {
   );
 }`;
 
+const INITIALIZE_STATE_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+function InitializeStateAccordion() {
+  return (
+    <Accordion
+      headerLevel={ 4 }
+      initialExpanded={ [ 'item1', 'item2' ] }
+      initialDisabled={ [ 'item1', 'item2' ] }
+    >
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          Accordion Item 1
+        </AccordionHeader>
+        <AccordionPanel>
+          { ({ id, getIsExpanded, getIsDisabled }) => (
+            <ul>
+              <li>getIsExpanded(id) = { getIsExpanded(id).toString() }</li>
+              <li>getIsDisabled(id) = { getIsDisabled(id).toString() }</li>
+            </ul>
+          ) }
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          Accordion Item 2
+        </AccordionHeader>
+        <AccordionPanel>
+          { ({ id, getIsExpanded, getIsDisabled }) => (
+            <ul>
+              <li>getIsExpanded(id) = { getIsExpanded(id).toString() }</li>
+              <li>getIsDisabled(id) = { getIsDisabled(id).toString() }</li>
+            </ul>
+          ) }
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -374,6 +415,22 @@ function AccordionPage() {
         <DisableItemAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
           { DISABLE_ITEM_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
+        <h3 id="initialize-state">Initialize Expanded/Disabled State</h3>
+        <p>
+          By default, all accordion items are collapsed and enabled. You can initialize certain items
+          to be expanded or disabled by passing arrays of string IDs to
+          the <code>initialExpanded</code> and <code>initialDisabled</code> props.
+        </p>
+        <p>
+          If <code>allowMultiple</code> is disabled, React ARIA Widgets will only expand the first ID
+          in <code>initialExpanded</code>. However, it does so naively (essentially <code>initialExpanded[0]</code>).
+          Due to implementation limitations, it currently cannot validate that the supplied IDs actually pertain to
+          an accordion item and intelligently pick the first <strong>valid</strong> ID.
+        </p>
+        <InitializeStateAccordion headerLevel={ 4 } />
+        <SyntaxHighlighter language="tsx">
+          { INITIALIZE_STATE_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h3 id="customization">Customization</h3>
         <p>
