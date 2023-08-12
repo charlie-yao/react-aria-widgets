@@ -20,8 +20,8 @@ function InitializeStateAccordion(props: AccordionProps) {
         <AccordionPanel>
           { ({ id, getIsExpanded, getIsDisabled }) => (
             <ul>
-              <li>getIsExpanded(id) = { getIsExpanded(id).toString() }</li>
-              <li>getIsDisabled(id) = { getIsDisabled(id).toString() }</li>
+              <li><code>getIsExpanded(id)</code> = <code>{ getIsExpanded(id).toString() }</code></li>
+              <li><code>getIsDisabled(id)</code> = <code>{ getIsDisabled(id).toString() }</code></li>
             </ul>
           ) }
         </AccordionPanel>
@@ -33,8 +33,8 @@ function InitializeStateAccordion(props: AccordionProps) {
         <AccordionPanel>
           { ({ id, getIsExpanded, getIsDisabled }) => (
             <ul>
-              <li>getIsExpanded(id) = { getIsExpanded(id).toString() }</li>
-              <li>getIsDisabled(id) = { getIsDisabled(id).toString() }</li>
+              <li><code>getIsExpanded(id)</code> = <code>{ getIsExpanded(id).toString() }</code></li>
+              <li><code>getIsDisabled(id)</code> = <code>{ getIsDisabled(id).toString() }</code></li>
             </ul>
           ) }
         </AccordionPanel>
