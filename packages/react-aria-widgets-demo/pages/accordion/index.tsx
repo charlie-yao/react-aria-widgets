@@ -5,7 +5,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 //Components
 import SubNav from '../../components/accordion/SubNav';
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
-import BasicAccordion from '../../components/accordion/BasicAccordion.tsx';
+import BasicAccordion from '../../components/accordion/BasicAccordion';
+import RenderPropAccordion from '../../components/accordion/RenderPropAccordion';
 
 //Misc.
 import {
@@ -168,6 +169,48 @@ export default DisableBothAccordion() {
   );
 }`;
 
+const RENDER_PROP_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+export default function RenderPropAccordion() {
+  return (
+    <Accordion headerLevel={ 4 }>
+      <AccordionItem id="item1">
+        <AccordionHeader>
+          { ({ getIsExpanded }) => \`Accordion Item 1: Expanded = \${getIsExpanded('item1')}\` }
+        </AccordionHeader>
+        <AccordionPanel>
+          { ({ id, headerLevel, allowMultiple, allowCollapseLast, getIsExpanded }) => (
+            <ul>
+              <li>id = { id }</li>
+              <li>headerLevel = { headerLevel }</li>
+              <li>allowMultiple = { allowMultiple.toString() }</li>
+              <li>allowCollapseLast = { allowCollapseLast.toString() }</li>
+              <li>getIsExpanded('item2') = { getIsExpanded('item2').toString() }</li>
+            </ul>
+          ) }
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem id="item2">
+        <AccordionHeader>
+          { ({ getIsExpanded }) => \`Accordion Item 2: Expanded = \${getIsExpanded('item2')}\` }
+        </AccordionHeader>
+        <AccordionPanel>
+          { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
+            <ul>
+              <li>id = { id }</li>
+              <li>headerLevel = { headerLevel }</li>
+              <li>allowMultiple = { allowMultiple.toString() }</li>
+              <li>allowCollapseLast = { allowCollapseLast.toString() }</li>
+              <li>getIsExpanded('item1') = { getIsExpanded('item1').toString() }</li>
+            </ul>
+          ) }
+        </AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+}`;
+
 
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
@@ -272,6 +315,18 @@ function AccordionPage() {
         />
         <SyntaxHighlighter language="tsx">
           { DISABLE_BOTH_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
+        <h3 id="render-prop">Rendering with Render Props</h3>
+        <p>
+          In addition to normal React
+          nodes, <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> both
+          accept a render function as <code>children</code>. These render functions have access to all
+          of the state and methods that pertain to the accordion (specifically, what is returned
+          by <code>useAccordion</code> and <code>useAccordionItem</code>).
+        </p>
+        <RenderPropAccordion headerLevel={ 4 } />
+        <SyntaxHighlighter language="tsx">
+          { RENDER_PROP_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h3 id="customization">Customization</h3>
         <p>

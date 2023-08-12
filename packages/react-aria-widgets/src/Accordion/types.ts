@@ -18,6 +18,6 @@ export interface AccordionRenderStyleData {
   isDisabled: boolean;
 }
 
-export type AccordionRenderFunction = (args: AccordionContextType & AccordionItemContextType) => React.ReactElement;
+export type AccordionRenderFunction = (args: AccordionContextType & AccordionItemContextType) => React.ReactNode;
 export type AccordionRenderClass = (args: AccordionRenderStyleData) => string;
 export type AccordionRenderStyle = (args: AccordionRenderStyleData) => React.CSSProperties;

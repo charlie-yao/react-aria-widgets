@@ -24,6 +24,9 @@ export default function SubNav() {
               <a href="#disable-both">Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></a>
             </li>
             <li>
+              <a href="#render-prop">Rendering With Render Props</a>
+            </li>
+            <li>
               <a href="#customization">Customization</a>
             </li>
           </ul>
