@@ -229,24 +229,32 @@ function DisableItemAccordion() {
     <Accordion headerLevel={ 4 }>
       <AccordionItem id="item1">
         <AccordionHeader>
-          { ({ id, getIsDisabled }) => \`Accordion Item 1: Disabled = $\{getIsDisabled(id).toString()}\` }
+          { ({ id, getIsDisabled }) => (
+            <>
+              Accordion Item 1: Disabled = <code>{ getIsDisabled(id).toString() }</code>
+            </>
+          ) }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, toggleDisabled, getIsDisabled }) => (
             <button type="button" onClick={ () => toggleDisabled(id) }>
-              { getIsDisabled(id) ? 'Enable' : 'Disable' } { id }
+              { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
             </button>
           ) }
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
         <AccordionHeader>
-          { ({ id, getIsDisabled }) => \`Accordion Item 2: Disabled = $\{getIsDisabled(id).toString()}\` }
+          { ({ id, getIsDisabled }) => (
+            <>
+              Accordion Item 2: Disabled = <code>{ getIsDisabled(id).toString() }</code>
+            </>
+          ) }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, toggleDisabled, getIsDisabled }) => (
             <button type="button" onClick={ () => toggleDisabled(id) }>
-              { getIsDisabled(id) ? 'Enable' : 'Disable' } { id }
+              { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
             </button>
           ) }
         </AccordionPanel>
