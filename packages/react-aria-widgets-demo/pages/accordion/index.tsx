@@ -179,32 +179,40 @@ export default function RenderPropAccordion() {
     <Accordion headerLevel={ 4 }>
       <AccordionItem id="item1">
         <AccordionHeader>
-          { ({ id, getIsExpanded }) => \`Accordion Item 1: Expanded = $\{getIsExpanded(id)}\` }
+          { ({ id, getIsExpanded }) => (
+            <>
+              Accordion Item 1: Expanded = <code>{ getIsExpanded(id).toString() }</code>
+            </>
+          ) }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, headerLevel, allowMultiple, allowCollapseLast, getIsExpanded }) => (
             <ul>
-              <li>id = { id }</li>
-              <li>headerLevel = { headerLevel }</li>
-              <li>allowMultiple = { allowMultiple.toString() }</li>
-              <li>allowCollapseLast = { allowCollapseLast.toString() }</li>
-              <li>getIsExpanded('item2') = { getIsExpanded('item2').toString() }</li>
+              <li><code>id</code> = <code>{ id }</code></li>
+              <li><code>headerLevel</code> = <code>{ headerLevel }</code></li>
+              <li><code>allowMultiple</code> = <code>{ allowMultiple.toString() }</code></li>
+              <li><code>allowCollapseLast</code> = <code>{ allowCollapseLast.toString() }</code></li>
+              <li><code>getIsExpanded('item2')</code> = <code>{ getIsExpanded('item2').toString() }</code></li>
             </ul>
           ) }
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
         <AccordionHeader>
-          { ({ id, getIsExpanded }) => \`Accordion Item 2: Expanded = $\{getIsExpanded(id)}\` }
+          { ({ id, getIsExpanded }) => (
+            <>
+              Accordion Item 2: Expanded = <code>{ getIsExpanded(id).toString() }</code>
+            </>
+          ) }
         </AccordionHeader>
         <AccordionPanel>
-          { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
+          { ({ id, headerLevel, allowMultiple, allowCollapseLast, getIsExpanded }) => (
             <ul>
-              <li>id = { id }</li>
-              <li>headerLevel = { headerLevel }</li>
-              <li>allowMultiple = { allowMultiple.toString() }</li>
-              <li>allowCollapseLast = { allowCollapseLast.toString() }</li>
-              <li>getIsExpanded('item1') = { getIsExpanded('item1').toString() }</li>
+              <li><code>id</code> = <code>{ id }</code></li>
+              <li><code>headerLevel</code> = <code>{ headerLevel }</code></li>
+              <li><code>allowMultiple</code> = <code>{ allowMultiple.toString() }</code></li>
+              <li><code>allowCollapseLast</code> = <code>{ allowCollapseLast.toString() }</code></li>
+              <li><code>getIsExpanded('item1')</code> = <code>{ getIsExpanded('item1').toString() }</code></li>
             </ul>
           ) }
         </AccordionPanel>
@@ -383,8 +391,8 @@ function AccordionPage() {
         </h3>
         <p>
           By default, all of the accordion items can be simultaneously collapsed. If
-          the <code>allowCollapseLast</code> prop is <code>false</code>, the final expanded section cannot
-          be collapsed.
+          the <code>allowCollapseLast</code> prop is <code>false</code>, the final expanded section
+          cannot be collapsed.
         </p>
         <BasicAccordion headerLevel={ 4 } allowCollapseLast={ false } />
         <SyntaxHighlighter language="tsx">
