@@ -345,7 +345,9 @@ function AccordionPage() {
           have styling applied to showcase expand/collapse behavior. For more information, see
           the styling section.
         </p>
-        <h3 id="basic-usage">Basic Usage</h3>
+        <h3 id="basic-usage">
+          Basic Usage
+        </h3>
         <p>
           A basic accordion consists of an <code>&lt;Accordion&gt;</code> wrapping around
           one or more <code>&lt;AccordionItem&gt;</code>s, where
@@ -365,7 +367,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { BASIC_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="disable-multiple-expanded">Disable Multiple Expanded Sections</h3>
+        <h3 id="disable-multiple-expanded">
+          Disable Multiple Expanded Sections
+        </h3>
         <p>
           By default, multiple sections can be expanded and collapsed at the same time, but this behavior
           can be turned off with the <code>allowMultiple</code> prop.
@@ -374,7 +378,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { DISABLE_MULTIPLE_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="disable-collapsing-all">Disable Collapsing All Sections</h3>
+        <h3 id="disable-collapsing-all">
+          Disable Collapsing All Sections
+        </h3>
         <p>
           By default, all of the accordion items can be simultaneously collapsed. If
           the <code>allowCollapseLast</code> prop is <code>false</code>, the final expanded section cannot
@@ -384,7 +390,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { DISABLE_COLLAPSE_LAST_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="disable-both">Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></h3>
+        <h3 id="disable-both">
+          Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code>
+        </h3>
         <BasicAccordion
           headerLevel={ 4 }
           allowMultiple={ false }
@@ -393,7 +401,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { DISABLE_BOTH_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="render-prop">Rendering with Render Props</h3>
+        <h3 id="render-prop">
+          Rendering with Render Props
+        </h3>
         <p>
           In addition to normal React
           nodes, <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> both
@@ -405,7 +415,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { RENDER_PROP_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="disabling-items">Disabling Accordion Items</h3>
+        <h3 id="disabling-items">
+          Disabling Accordion Items
+        </h3>
         <p>
           Accordion items can be manually disabled with the method <code>toggleDisabled</code>, preventing
           them from being expanded/collapsed. Note that <code>&lt;AccordionHeader&gt;</code> will
@@ -416,7 +428,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { DISABLE_ITEM_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="initialize-state">Initialize Expanded/Disabled State</h3>
+        <h3 id="initialize-state">
+          Initialize Expanded/Disabled State
+        </h3>
         <p>
           By default, all accordion items are collapsed and enabled. You can initialize certain items
           to be expanded or disabled by passing arrays of string IDs to
