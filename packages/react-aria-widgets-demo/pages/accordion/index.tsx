@@ -239,16 +239,19 @@ function DisableItemAccordion() {
 const INITIALIZE_STATE_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
-function InitializeStateAccordion() {
+const ITEMS = [ 'item1', 'item2', 'item3' ];
+
+function InitializeStateAccordion(props: AccordionProps) {
   return (
     <Accordion
-      headerLevel={ 4 }
       initialExpanded={ [ 'item1', 'item2' ] }
-      initialDisabled={ [ 'item1', 'item2' ] }
+      initialDisabled={ [ 'item2' ] }
+      { ...props }
     >
-      <AccordionItem id="item1">
+    { ITEMS.map((id, index) => (
+      <AccordionItem key={ id } id={ id }>
         <AccordionHeader>
-          Accordion Item 1
+          Accordion Item { index + 1 }
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, getIsExpanded, getIsDisabled }) => (
@@ -259,19 +262,7 @@ function InitializeStateAccordion() {
           ) }
         </AccordionPanel>
       </AccordionItem>
-      <AccordionItem id="item2">
-        <AccordionHeader>
-          Accordion Item 2
-        </AccordionHeader>
-        <AccordionPanel>
-          { ({ id, getIsExpanded, getIsDisabled }) => (
-            <ul>
-              <li><code>getIsExpanded(id)</code> = <code>{ getIsExpanded(id).toString() }</code></li>
-              <li><code>getIsDisabled(id)</code> = <code>{ getIsDisabled(id).toString() }</code></li>
-            </ul>
-          ) }
-        </AccordionPanel>
-      </AccordionItem>
+    )) }
     </Accordion>
   );
 }`;
