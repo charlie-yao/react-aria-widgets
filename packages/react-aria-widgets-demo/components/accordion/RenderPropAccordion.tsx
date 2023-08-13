@@ -14,14 +14,14 @@ function RenderPropAccordion(props: AccordionProps) {
       { ITEMS.map((id, index) => (
         <AccordionItem key={ id } id={ id }>
           <AccordionHeader>
-            { ({ getIsExpanded }) => (
+            { ({ id, getIsExpanded }) => (
               <>
                 Accordion Item { index + 1 }: Expanded = <code>{ getIsExpanded(id).toString() }</code>
               </>
             ) }
           </AccordionHeader>
           <AccordionPanel>
-            { ({ headerLevel, allowMultiple, allowCollapseLast }) => (
+            { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
               <ul>
                 <li><code>id</code> = <code>{ id }</code></li>
                 <li><code>headerLevel</code> = <code>{ headerLevel }</code></li>

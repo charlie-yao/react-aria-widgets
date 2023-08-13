@@ -6,41 +6,29 @@ import withStyleWrapper from './withStyleWrapper';
 //Types
 import { AccordionProps } from 'react-aria-widgets/accordion';
 
+const ITEMS = [ 'item1', 'item2', 'item3' ];
+
 function DisableItemAccordion(props: AccordionProps) {
   return (
     <Accordion { ...props }>
-      <AccordionItem id="item1">
-        <AccordionHeader>
-          { ({ id, getIsDisabled }) => (
-            <>
-              Accordion Item 1: Disabled = <code>{ getIsDisabled(id).toString() }</code>
-            </>
-          ) }
-        </AccordionHeader>
-        <AccordionPanel>
-          { ({ id, toggleDisabled, getIsDisabled }) => (
-            <button type="button" onClick={ () => toggleDisabled(id) }>
-              { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
-            </button>
-          ) }
-        </AccordionPanel>
-      </AccordionItem>
-      <AccordionItem id="item2">
-        <AccordionHeader>
-          { ({ id, getIsDisabled }) => (
-            <>
-              Accordion Item 2: Disabled = <code>{ getIsDisabled(id).toString() }</code>
-            </>
-          ) }
-        </AccordionHeader>
-        <AccordionPanel>
-          { ({ id, toggleDisabled, getIsDisabled }) => (
-            <button type="button" onClick={ () => toggleDisabled(id) }>
-              { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
-            </button>
-          ) }
-        </AccordionPanel>
-      </AccordionItem>
+      { ITEMS.map((id, index) => (
+        <AccordionItem key={ id } id={ id }>
+          <AccordionHeader>
+            { ({ id, getIsDisabled }) => (
+              <>
+                Accordion Item { index + 1 }: Disabled = <code>{ getIsDisabled(id).toString() }</code>
+              </>
+            ) }
+          </AccordionHeader>
+          <AccordionPanel>
+            { ({ id, toggleDisabled, getIsDisabled }) => (
+              <button type="button" onClick={ () => toggleDisabled(id) }>
+                { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
+              </button>
+            ) }
+          </AccordionPanel>
+        </AccordionItem>
+      )) }
     </Accordion>
   );
 }

@@ -40,7 +40,7 @@ import { Accordion } from 'react-aria-widgets/accordion';`;
 const BASIC_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
-export default BasicAccordion() {
+function BasicAccordion() {
   return (
     <Accordion headerLevel={ 4 }>
       <AccordionItem id="item1">
@@ -74,7 +74,7 @@ export default BasicAccordion() {
 const DISABLE_MULTIPLE_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
-export default DisableMultipleAccordion() {
+function DisableMultipleAccordion() {
   return (
     <Accordion headerLevel={ 4 } allowMultiple={ false }>
       <AccordionItem id="item1">
@@ -108,7 +108,7 @@ export default DisableMultipleAccordion() {
 const DISABLE_COLLAPSE_LAST_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
-export default DisableCollapseLastAccordion() {
+function DisableCollapseLastAccordion() {
   return (
     <Accordion headerLevel={ 4 } allowCollapseLast={ false }>
       <AccordionItem id="item1">
@@ -142,7 +142,7 @@ export default DisableCollapseLastAccordion() {
 const DISABLE_BOTH_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
-export default DisableBothAccordion() {
+function DisableBothAccordion() {
   return (
     <Accordion headerLevel={ 4 } allowMultiple={ false } allowCollapseLast={ false }>
       <AccordionItem id="item1">
@@ -184,14 +184,14 @@ function RenderPropAccordion() {
       { ITEMS.map((id, index) => (
         <AccordionItem key={ id } id={ id }>
           <AccordionHeader>
-            { ({ getIsExpanded }) => (
+            { ({ id, getIsExpanded }) => (
               <>
                 Accordion Item { index + 1 }: Expanded = <code>{ getIsExpanded(id).toString() }</code>
               </>
             ) }
           </AccordionHeader>
           <AccordionPanel>
-            { ({ headerLevel, allowMultiple, allowCollapseLast }) => (
+            { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
               <ul>
                 <li><code>id</code> = <code>{ id }</code></li>
                 <li><code>headerLevel</code> = <code>{ headerLevel }</code></li>
@@ -209,41 +209,29 @@ function RenderPropAccordion() {
 const DISABLE_ITEM_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
+const ITEMS = [ 'item1', 'item2', 'item3' ];
+
 function DisableItemAccordion() {
   return (
     <Accordion headerLevel={ 4 }>
-      <AccordionItem id="item1">
-        <AccordionHeader>
-          { ({ id, getIsDisabled }) => (
-            <>
-              Accordion Item 1: Disabled = <code>{ getIsDisabled(id).toString() }</code>
-            </>
-          ) }
-        </AccordionHeader>
-        <AccordionPanel>
-          { ({ id, toggleDisabled, getIsDisabled }) => (
-            <button type="button" onClick={ () => toggleDisabled(id) }>
-              { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
-            </button>
-          ) }
-        </AccordionPanel>
-      </AccordionItem>
-      <AccordionItem id="item2">
-        <AccordionHeader>
-          { ({ id, getIsDisabled }) => (
-            <>
-              Accordion Item 2: Disabled = <code>{ getIsDisabled(id).toString() }</code>
-            </>
-          ) }
-        </AccordionHeader>
-        <AccordionPanel>
-          { ({ id, toggleDisabled, getIsDisabled }) => (
-            <button type="button" onClick={ () => toggleDisabled(id) }>
-              { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
-            </button>
-          ) }
-        </AccordionPanel>
-      </AccordionItem>
+      { ITEMS.map((id, index) => (
+        <AccordionItem key={ id } id={ id }>
+          <AccordionHeader>
+            { ({ id, getIsDisabled }) => (
+              <>
+                Accordion Item { index + 1 }: Disabled = <code>{ getIsDisabled(id).toString() }</code>
+              </>
+            ) }
+          </AccordionHeader>
+          <AccordionPanel>
+            { ({ id, toggleDisabled, getIsDisabled }) => (
+              <button type="button" onClick={ () => toggleDisabled(id) }>
+                { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
+              </button>
+            ) }
+          </AccordionPanel>
+        </AccordionItem>
+      )) }
     </Accordion>
   );
 }`;
