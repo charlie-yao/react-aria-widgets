@@ -10,6 +10,7 @@ import RenderPropAccordion from '../../components/accordion/RenderPropAccordion'
 import DisableItemAccordion from '../../components/accordion/DisableItemAccordion';
 import InitializeStateAccordion from '../../components/accordion/InitializeStateAccordion';
 import FocusAccordion from '../../components/accordion/FocusAccordion';
+import CallbackAccordion from '../../components/accordion/CallbackAccordion';
 
 //Misc.
 import {
@@ -364,6 +365,41 @@ function FocusForm({
   );
 }`;
 
+const CALLBACK_ACCORDION_EXAMPLE =
+`import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+const ITEMS = [ 'item1', 'item2', 'item3' ];
+
+function CallbackAccordion() {
+  return (
+    <Accordion
+      headerlevel={ 4 }
+      onToggleExpanded={ expandedItems => console.log(expandedItems) }
+      onToggleDisabled={ disabledItems => console.log(disabledItems) }
+      onFocusChange={ ({ elem, index, id }) => console.log(elem, index, id) }
+    >
+      { ITEMS.map((id, index) => (
+        <AccordionItem key={ id } id={ id }>
+          <AccordionHeader>
+            { ({ id, getIsDisabled }) => (
+              <>
+                Accordion Item { index + 1 }: Disabled = <code>{ getIsDisabled(id).toString() }</code>
+              </>
+            ) }
+          </AccordionHeader>
+          <AccordionPanel>
+            { ({ id, toggleDisabled, getIsDisabled }) => (
+              <button type="button" onClick={ () => toggleDisabled(id) }>
+                { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{id}</code>
+              </button>
+            ) }
+          </AccordionPanel>
+        </AccordionItem>
+      )) }
+    </Accordion>
+  );
+}`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -536,12 +572,24 @@ function AccordionPage() {
           { FOCUS_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h3 id="state-change-callbacks">Callbacks on State Changes</h3>
-        <p>You can pass callback functions that fire when state changes occur:</p>
+        <p>You can pass callback functions that fire after state changes:</p>
         <ul>
-          <li><code>onToggleExpanded</code></li>
-          <li><code>onToggleDisabled</code></li>
-          <li><code>onFocusItem</code></li>
+          <li><code>onToggleExpanded</code> - lets users know which items are expanded</li>
+          <li><code>onToggleDisabled</code> - lets users know which items are disabled</li>
+          <li><code>onFocusItem</code> - lets users know which item was focused</li>
         </ul>
+        <p>
+          Note that <code>onFocusItem</code> doesn't trigger for focus events in general, but rather, when
+          React ARIA Widgets' focus methods are called. In other words, tabbing to a button won't trigger
+          it, but pressing <kbd>ArrowDown</kbd> will.
+        </p>
+        <p>
+          Try opening your browser's developer tools and playing with the example below.
+        </p>
+        <CallbackAccordion headerLevel={ 4 } />
+        <SyntaxHighlighter language="tsx">
+          { CALLBACK_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
         <h3 id="customization">Customization</h3>
         <p>
           <code>&lt;Accordion&gt;</code> uses the higher-order component (HOC) <code>withAccordionManager()</code>,
