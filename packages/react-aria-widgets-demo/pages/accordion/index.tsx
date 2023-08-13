@@ -304,6 +304,66 @@ function InitializeStateAccordion() {
   );
 }`;
 
+const FOCUS_ACCORDION_EXAMPLE =
+`import { useState } from 'react';
+import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+const ITEMS = [ 'item1', 'item2', 'item3' ];
+
+function FocusAccordion() {
+  return (
+    <Accordion headerLevel={ 4 }>
+      { ITEMS.map((id, index) => (
+        <AccordionItem key={ id } id={ id }>
+          <AccordionHeader>
+            Accordion Item { index + 1 }: ID = { id }
+          </AccordionHeader>
+          <AccordionPanel>
+            { (args) => <FocusForm { ...args } /> }
+          </AccordionPanel>
+        </AccordionItem>
+      )) }
+    </Accordion>
+  );
+}
+
+function FocusForm({
+  id,
+  focusHeaderId,
+  focusPrevHeader,
+  focusNextHeader,
+  focusFirstHeader,
+  focusLastHeader,
+}) {
+  const [ itemId, setItemId ] = useState('');
+
+  return (
+    <>
+      <form onSubmit={ (e) => { e.preventDefault(); focusHeaderId(itemId); }}>
+        <label htmlFor="item1-focus-input">Item ID:</label> 
+        <input
+          id="item1-focus-input"
+          type="text"
+          onChange={ (e) => setItemId(e.target.value) }
+        />
+        <button type="submit">Focus Item</button>
+      </form>
+      <button type="button" onClick={ () => focusFirstHeader() }>
+        Focus First Item
+      </button>
+      <button type="button" onClick={ () => focusPrevHeader(id) }>
+        Focus Previous Item
+      </button>
+      <button type="button" onClick={ () => focusNextHeader(id) }>
+        Focus Next Item
+      </button>
+      <button type="button" onClick={ () => focusLastHeader() }>
+        Focus Last Item
+      </button>
+    </>
+  );
+}`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -472,6 +532,9 @@ function AccordionPage() {
           you can manually focus accordion items through the methods provided by React ARIA Widgets.
         </p>
         <FocusAccordion headerLevel={ 4 } />
+        <SyntaxHighlighter language="tsx">
+          { FOCUS_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
         <h3 id="state-change-callbacks">Callbacks on State Changes</h3>
         <p>You can pass callback functions that fire when state changes occur:</p>
         <ul>
