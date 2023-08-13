@@ -9,6 +9,7 @@ import BasicAccordion from '../../components/accordion/BasicAccordion';
 import RenderPropAccordion from '../../components/accordion/RenderPropAccordion';
 import DisableItemAccordion from '../../components/accordion/DisableItemAccordion';
 import InitializeStateAccordion from '../../components/accordion/InitializeStateAccordion';
+import FocusAccordion from '../../components/accordion/FocusAccordion';
 
 //Misc.
 import {
@@ -454,14 +455,30 @@ function AccordionPage() {
         </p>
         <p>
           If <code>allowMultiple</code> is disabled, React ARIA Widgets will only expand the first ID
-          in <code>initialExpanded</code>. However, it does so naively (essentially <code>initialExpanded[0]</code>).
-          Due to implementation limitations, it currently cannot validate that the supplied IDs actually pertain to
-          an accordion item and intelligently pick the first <strong>valid</strong> ID.
+          in <code>initialExpanded</code>. However, it does so naively (it essentially just
+          checks <code>initialExpanded[0]</code>). Due to implementation limitations, it currently
+          cannot validate that the supplied IDs actually pertain to an accordion item and intelligently
+          pick the first valid ID.
         </p>
         <InitializeStateAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
           { INITIALIZE_STATE_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
+        <h3 id="focusing-items">Focusing Items</h3>
+        <p>
+          <code>&lt;AccordionHeader&gt;</code> automatically attaches a keydown event that implements the
+          keyboard/focus behavior described in the APG. Try tabbing to one of the buttons and pressing
+          the <kbd>ArrowDown</kbd>, <kbd>ArrowUp</kbd>, <kbd>Home</kbd>, or <kbd>End</kbd> keys. Additionally,
+          you can manually focus accordion items through the methods provided by React ARIA Widgets.
+        </p>
+        <FocusAccordion headerLevel={ 4 } />
+        <h3 id="state-change-callbacks">Callbacks on State Changes</h3>
+        <p>You can pass callback functions that fire when state changes occur:</p>
+        <ul>
+          <li><code>onToggleExpanded</code></li>
+          <li><code>onToggleDisabled</code></li>
+          <li><code>onFocusItem</code></li>
+        </ul>
         <h3 id="customization">Customization</h3>
         <p>
           <code>&lt;Accordion&gt;</code> uses the higher-order component (HOC) <code>withAccordionManager()</code>,

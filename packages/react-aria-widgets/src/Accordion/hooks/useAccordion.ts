@@ -133,6 +133,9 @@ export default function useAccordion({
   }, []);
 
   const focusHeaderIndex: FocusHeaderIndex = useCallback((index) => {
+    if(index === undefined || index === null)
+      return;
+
     const { elem, id } = headerRefs.current[index];
 
     if(!elem)
@@ -145,6 +148,9 @@ export default function useAccordion({
   }, [ onFocusChange ]);
 
   const focusHeaderId: FocusHeaderId = useCallback((id) => {
+    if(id === undefined || id === null)
+      return;
+
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
@@ -154,6 +160,9 @@ export default function useAccordion({
   }, [ focusHeaderIndex ]);
 
   const focusPrevHeader: FocusPrevHeader = useCallback((id) => {
+    if(id === undefined || id === null)
+      return;
+
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
@@ -163,6 +172,9 @@ export default function useAccordion({
   }, [ focusHeaderIndex ]);
 
   const focusNextHeader: FocusNextHeader = useCallback((id) => {
+    if(id === undefined || id === null)
+      return;
+
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
