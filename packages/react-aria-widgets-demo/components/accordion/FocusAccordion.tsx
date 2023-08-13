@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading, react/jsx-no-bind */
+
 import { useState } from 'react';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 

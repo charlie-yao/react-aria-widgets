@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 //Styles
 import styles from './StyleWrapper.module.scss';
 
