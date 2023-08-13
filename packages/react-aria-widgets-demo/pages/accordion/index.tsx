@@ -552,6 +552,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { CALLBACK_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
+        <h3 id="controlling-state">Controlling State</h3>
+        <h3 id="styling">Styling</h3>
+        <h3 id="further-customization">Further Customization</h3>
         <h3 id="customization">Customization</h3>
         <p>
           <code>&lt;Accordion&gt;</code> uses the higher-order component (HOC) <code>withAccordionManager()</code>,
