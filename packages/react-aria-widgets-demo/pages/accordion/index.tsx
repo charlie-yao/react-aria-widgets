@@ -336,16 +336,16 @@ function FocusForm({
   focusFirstHeader,
   focusLastHeader,
 }) {
-  const [ itemId, setItemId ] = useState('');
+  const [ inputItemId, setInputItemId ] = useState('');
 
   return (
     <>
-      <form onSubmit={ (e) => { e.preventDefault(); focusHeaderId(itemId); }}>
-        <label htmlFor="item1-focus-input">Item ID:</label> 
+      <form onSubmit={ (e) => { e.preventDefault(); focusHeaderId(inputItemId); }}>
+        <label htmlFor={ \`$\{id}-focus-input\` }>Item ID:</label> 
         <input
-          id="item1-focus-input"
+          id={ \`$\{id}-focus-input\` }
           type="text"
-          onChange={ (e) => setItemId(e.target.value) }
+          onChange={ (e) => setInputItemId(e.target.value) }
         />
         <button type="submit">Focus Item</button>
       </form>
