@@ -4,7 +4,7 @@ import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react
 import withStyleWrapper from './withStyleWrapper';
 
 //Types
-import { AccordionProps } from 'react-aria-widgets/accordion';
+import type { AccordionProps } from 'react-aria-widgets/accordion';
 
 const ITEMS = [ 'item1', 'item2', 'item3' ];
 

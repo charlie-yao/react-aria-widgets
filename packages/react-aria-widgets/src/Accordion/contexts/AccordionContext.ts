@@ -7,13 +7,13 @@ import type {
   GetIsDisabled,
   ToggleExpanded,
   ToggleDisabled,
-  PushHeaderRef,
-  FocusHeaderIndex,
-  FocusHeaderId,
-  FocusPrevHeader,
-  FocusNextHeader,
-  FocusFirstHeader,
-  FocusLastHeader,
+  PushItemRef,
+  FocusItemIndex,
+  FocusItemId,
+  FocusPrevItem,
+  FocusNextItem,
+  FocusFirstItem,
+  FocusLastItem,
 } from '../hooks/useAccordion';
 
 export interface AccordionContextType {
@@ -24,13 +24,13 @@ export interface AccordionContextType {
   getIsDisabled: GetIsDisabled;
   toggleExpanded: ToggleExpanded;
   toggleDisabled: ToggleDisabled;
-  pushHeaderRef: PushHeaderRef;
-  focusHeaderIndex: FocusHeaderIndex;
-  focusHeaderId: FocusHeaderId;
-  focusPrevHeader: FocusPrevHeader;
-  focusNextHeader: FocusNextHeader;
-  focusFirstHeader: FocusFirstHeader;
-  focusLastHeader: FocusLastHeader;
+  pushItemRef: PushItemRef;
+  focusItemIndex: FocusItemIndex;
+  focusItemId: FocusItemId;
+  focusPrevItem: FocusPrevItem;
+  focusNextItem: FocusNextItem;
+  focusFirstItem: FocusFirstItem;
+  focusLastItem: FocusLastItem;
 }
 
 const AccordionContext = createContext<AccordionContextType | null>(null);

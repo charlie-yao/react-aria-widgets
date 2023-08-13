@@ -98,6 +98,7 @@ module.exports = {
     'operator-linebreak': [ 'error', 'before', {
       overrides: {
         '&&': 'ignore', //For conditionally including/excluding React components
+        '=': 'ignore',
       },
     }],
     'padded-blocks': [ 'error', 'never' ],
@@ -121,6 +122,9 @@ module.exports = {
     //---- TS Rules ----
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/no-confusing-void-expression': [ 'error', {
+      ignoreArrowShorthand: true,
+    }],
     '@typescript-eslint/no-require-imports': 'error',
     '@typescript-eslint/no-useless-empty-export': 'error',
 
@@ -278,13 +282,13 @@ module.exports = {
     'react/jsx-newline': [ 'error', {
       prevent: true,
     }],
-    'react/jsx-no-bind': [ 'error' ],
+    'react/jsx-no-bind': [ 'warn' ],
     'react/jsx-no-useless-fragment': [ 'error', {
       allowExpressions: true
     }],
     'react/jsx-pascal-case': [ 'error' ],
     'react/jsx-props-no-multi-spaces': [ 'error' ],
-    'react/jsx-props-no-spreading': [ 'error' ],
+    'react/jsx-props-no-spreading': [ 'warn' ],
     'react/jsx-tag-spacing': [ 'error', {
       beforeClosing: 'never',
     }],

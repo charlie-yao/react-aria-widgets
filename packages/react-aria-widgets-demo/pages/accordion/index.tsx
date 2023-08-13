@@ -292,17 +292,17 @@ function FocusAccordion() {
 
 function FocusForm({
   id,
-  focusHeaderId,
-  focusPrevHeader,
-  focusNextHeader,
-  focusFirstHeader,
-  focusLastHeader,
+  focusItemId,
+  focusPrevItem,
+  focusNextItem,
+  focusFirstItem,
+  focusLastItem,
 }) {
   const [ inputItemId, setInputItemId ] = useState('');
 
   return (
     <>
-      <form onSubmit={ (e) => { e.preventDefault(); focusHeaderId(inputItemId); }}>
+      <form onSubmit={ (e) => { e.preventDefault(); focusItemId(inputItemId); }}>
         <label htmlFor={ \`$\{id}-focus-input\` }>Item ID:</label> 
         <input
           id={ \`$\{id}-focus-input\` }
@@ -311,16 +311,16 @@ function FocusForm({
         />
         <button type="submit">Focus Item</button>
       </form>
-      <button type="button" onClick={ () => focusFirstHeader() }>
+      <button type="button" onClick={ () => focusFirstItem() }>
         Focus First Item
       </button>
-      <button type="button" onClick={ () => focusPrevHeader(id) }>
+      <button type="button" onClick={ () => focusPrevItem(id) }>
         Focus Previous Item
       </button>
-      <button type="button" onClick={ () => focusNextHeader(id) }>
+      <button type="button" onClick={ () => focusNextItem(id) }>
         Focus Next Item
       </button>
-      <button type="button" onClick={ () => focusLastHeader() }>
+      <button type="button" onClick={ () => focusLastItem() }>
         Focus Last Item
       </button>
     </>
@@ -806,26 +806,26 @@ function AccordionPage() {
           </table>
         </div>
         <h5>Methods</h5>
-        <h6>focusFirstHeader(): void</h6>
+        <h6>focusFirstItem(): void</h6>
         <p>
           Sets the focus to the first accordion header button. Note that each header button
           in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
           properly.
         </p>
-        <h6>focusLastHeader(): void</h6>
+        <h6>focusLastItem(): void</h6>
         <p>
           Sets the focus to the last accordion header button. Note that each header button
           in the accordion MUST use <code>setHeaderRef()</code> for focus management to work
           properly.
         </p>
-        <h6>focusNextHeader(index: number): void</h6>
+        <h6>focusNextItem(index: number): void</h6>
         <p>
           Sets the focus to the next (relative to <code>index</code>) accordion
           header button. Note that each header button in the accordion MUST
           use <code>setHeaderRef()</code> for focus management to work
           properly.
         </p>
-        <h6>focusPrevHeader(index: number): void</h6>
+        <h6>focusPrevItem(index: number): void</h6>
         <p>
           Sets the focus to the previous (relative to <code>index</code>) accordion
           header button. Note that each header button in the accordion MUST

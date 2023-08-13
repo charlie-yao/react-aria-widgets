@@ -214,7 +214,7 @@ export const Controlled: Story = {
   render: (args) => {
     //eslint-disable-next-line react-hooks/rules-of-hooks
     const contextValue = useAccordion(args);
-    const { toggleExpanded, toggleDisabled, focusHeaderId } = contextValue;
+    const { toggleExpanded, toggleDisabled, focusItemId } = contextValue;
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
       event.preventDefault();
@@ -229,7 +229,7 @@ export const Controlled: Story = {
     };
 
     const handleFocusItem: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-      focusHeaderId(event.currentTarget.value);
+      focusItemId(event.currentTarget.value);
     };
 
     return (

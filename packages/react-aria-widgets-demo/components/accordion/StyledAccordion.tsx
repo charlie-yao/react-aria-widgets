@@ -4,7 +4,7 @@ import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react
 import withStyleWrapper from './withStyleWrapper';
 
 //Types
-import { AccordionProps } from 'react-aria-widgets/accordion';
+import type { AccordionProps } from 'react-aria-widgets/accordion';
 
 function StyledAccordion(props: AccordionProps) {
   return (
@@ -32,7 +32,7 @@ function StyledAccordion(props: AccordionProps) {
         <AccordionHeader>
           Styled Accordion Item 3
         </AccordionHeader>
-        <AccordionPanel style={ ({ isExpanded }) => isExpanded ? {} : { display: 'none'} }>
+        <AccordionPanel style={ ({ isExpanded }) => isExpanded ? {} : { display: 'none' } }>
           This accordion item is styled by passing in a function <code>style</code> prop that behaves
           similarly to the commonly-used render function pattern.
         </AccordionPanel>

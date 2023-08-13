@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 //Components
 import SyntaxHighlighter from '../components/SyntaxHighlighter';
 import { UnstyledBasicAccordion } from '../components/accordion/BasicAccordion';
@@ -136,7 +134,7 @@ export default function HomePage() {
         But, since React ARIA Widgets already provides implementations for the APG patterns, simply passing
         in your own styles will likely be enough to begin creating your own components.
       </p>
-      <UnstyledBasicAccordion headerLevel={ 3 }/>
+      <UnstyledBasicAccordion headerLevel={ 3 } />
       <SyntaxHighlighter language="tsx">
         { UNSTYLED_ACCORDION_EXAMPLE }
       </SyntaxHighlighter>

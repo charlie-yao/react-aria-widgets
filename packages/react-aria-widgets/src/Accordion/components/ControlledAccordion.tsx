@@ -22,13 +22,13 @@ export const accordionContextValuePropType = PropTypes.exact({
   getIsDisabled: PropTypes.func.isRequired,
   toggleExpanded: PropTypes.func.isRequired,
   toggleDisabled: PropTypes.func.isRequired,
-  pushHeaderRef: PropTypes.func.isRequired,
-  focusHeaderIndex: PropTypes.func.isRequired,
-  focusHeaderId: PropTypes.func.isRequired,
-  focusPrevHeader: PropTypes.func.isRequired,
-  focusNextHeader: PropTypes.func.isRequired,
-  focusFirstHeader: PropTypes.func.isRequired,
-  focusLastHeader: PropTypes.func.isRequired,
+  pushItemRef: PropTypes.func.isRequired,
+  focusItemIndex: PropTypes.func.isRequired,
+  focusItemId: PropTypes.func.isRequired,
+  focusPrevItem: PropTypes.func.isRequired,
+  focusNextItem: PropTypes.func.isRequired,
+  focusFirstItem: PropTypes.func.isRequired,
+  focusLastItem: PropTypes.func.isRequired,
 });
 
 function ControlledAccordion({

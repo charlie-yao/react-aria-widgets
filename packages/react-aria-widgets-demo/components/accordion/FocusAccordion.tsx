@@ -7,20 +7,20 @@ import withStyleWrapper from './withStyleWrapper';
 //Types
 import type {
   AccordionProps,
-  FocusHeaderId,
-  FocusPrevHeader,
-  FocusNextHeader,
-  FocusFirstHeader,
-  FocusLastHeader,
+  FocusItemId,
+  FocusPrevItem,
+  FocusNextItem,
+  FocusFirstItem,
+  FocusLastItem,
 } from 'react-aria-widgets/accordion';
 
 interface FocusFormProps {
   id: string;
-  focusHeaderId: FocusHeaderId;
-  focusPrevHeader: FocusPrevHeader;
-  focusNextHeader: FocusNextHeader;
-  focusFirstHeader: FocusFirstHeader;
-  focusLastHeader: FocusLastHeader;
+  focusItemId: FocusItemId;
+  focusPrevItem: FocusPrevItem;
+  focusNextItem: FocusNextItem;
+  focusFirstItem: FocusFirstItem;
+  focusLastItem: FocusLastItem;
 }
 
 const ITEMS = [ 'item1', 'item2', 'item3' ];
@@ -44,18 +44,18 @@ function FocusAccordion(props: AccordionProps) {
 
 function FocusForm({
   id,
-  focusHeaderId,
-  focusPrevHeader,
-  focusNextHeader,
-  focusFirstHeader,
-  focusLastHeader,
+  focusItemId,
+  focusPrevItem,
+  focusNextItem,
+  focusFirstItem,
+  focusLastItem,
 }: FocusFormProps) {
   const [ inputItemId, setInputItemId ] = useState<string>('');
 
   return (
     <>
-      <form onSubmit={ (e) => { e.preventDefault(); focusHeaderId(inputItemId); }}>
-        <label htmlFor={ `${id}-focus-input` }>Item ID:</label> 
+      <form onSubmit={ (e) => { e.preventDefault(); focusItemId(inputItemId); } }>
+        <label htmlFor={ `${id}-focus-input` }>Item ID:</label>
         <input
           id={ `${id}-focus-input` }
           type="text"
@@ -63,16 +63,16 @@ function FocusForm({
         />
         <button type="submit">Focus Item</button>
       </form>
-      <button type="button" onClick={ () => focusFirstHeader() }>
+      <button type="button" onClick={ () => focusFirstItem() }>
         Focus First Item
       </button>
-      <button type="button" onClick={ () => focusPrevHeader(id) }>
+      <button type="button" onClick={ () => focusPrevItem(id) }>
         Focus Previous Item
       </button>
-      <button type="button" onClick={ () => focusNextHeader(id) }>
+      <button type="button" onClick={ () => focusNextItem(id) }>
         Focus Next Item
       </button>
-      <button type="button" onClick={ () => focusLastHeader() }>
+      <button type="button" onClick={ () => focusLastItem() }>
         Focus Last Item
       </button>
     </>
