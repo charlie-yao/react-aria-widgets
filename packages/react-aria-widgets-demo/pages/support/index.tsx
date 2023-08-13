@@ -74,9 +74,9 @@ export default function SupportPage() {
           React ARIA Widgets transpiles to ES6 code and requires React v18. In the future, we plan on expanding
           support back to React v16.8.
         </p>
-        <h3 id="faq-typescript-submodule-types">TypeScript can't find a sub-module or its type declarations</h3>
+        <h3 id="faq-typescript-submodule-types">TypeScript can&apos;t find a sub-module or its type declarations</h3>
         <p>
-          If you're writing a TypeScript application and you import something from one of React ARIA Widget's
+          If you&apos;re writing a TypeScript application and you import something from one of React ARIA Widget&apos;s
           sub-modules, you may run into the following error:
         </p>
         <SyntaxHighlighter language="typescript">
@@ -89,7 +89,7 @@ export default function SupportPage() {
         </p>
         <p>
           React ARIA Widgets exposes its sub-modules and their type declarations by listing them with
-          the <code>exports</code> field in its <code>package.json</code>, but this isn't supported
+          the <code>exports</code> field in its <code>package.json</code>, but this isn&apos;t supported
           in older versions of Node.js. In the future, React ARIA Widgets plans on organizing itself with
           scoped modules.
         </p>

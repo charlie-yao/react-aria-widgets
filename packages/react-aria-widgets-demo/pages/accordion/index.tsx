@@ -407,7 +407,7 @@ function AccordionPage() {
           { IMPORT_EXAMPLE }
         </SyntaxHighlighter>
         <p>
-          Importing from the sub-module means introducing less code into your bundles, but if you're writing
+          Importing from the sub-module means introducing less code into your bundles, but if you&apos;re writing
           a TypeScript application, you may need to change <code>moduleResolution</code> to <code>node16</code> in
           your <code>tsconfig.json</code>. For more information, see
           the <Link href="/support#faq-typescript-submodule-types">FAQ</Link>.
@@ -539,12 +539,12 @@ function AccordionPage() {
           <li><code>onFocusItem</code> - lets users know which item was focused</li>
         </ul>
         <p>
-          Note that <code>onFocusItem</code> doesn't trigger for focus events in general, but rather, when
-          React ARIA Widgets' focus methods are called. In other words, tabbing to a button won't trigger
+          Note that <code>onFocusItem</code> doesn&apos;t trigger for focus events in general, but rather, when
+          React ARIA Widgets&apos; focus methods are called. In other words, tabbing to a button won&apos;t trigger
           it, but pressing <kbd>ArrowDown</kbd> will.
         </p>
         <p>
-          Try opening your browser's developer tools and playing with the example below.
+          Try opening your browser&apos;s developer tools and playing with the example below.
         </p>
         <CallbackAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">

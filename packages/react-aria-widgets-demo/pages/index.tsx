@@ -94,7 +94,7 @@ export default function HomePage() {
         the <a href="https://www.w3.org/WAI/ARIA/apg/">ARIA Authoring Practices Guide (APG)</a>.
       </p>
       <p className="notification is-light is-info">
-        Please note that this library should <strong>NOT</strong> be used in a production environment! It's
+        Please note that this library should <strong>NOT</strong> be used in a production environment! It&apos;s
         still in a pre-alpha stage and the API is subject to major breaking changes.
       </p>
       <h2>Features</h2>
@@ -139,9 +139,9 @@ export default function HomePage() {
         { UNSTYLED_ACCORDION_EXAMPLE }
       </SyntaxHighlighter>
       <p>
-        If you open your browser's developer tools and you click on the buttons, you'll see that the accordion
+        If you open your browser&apos;s developer tools and you click on the buttons, you&apos;ll see that the accordion
         will set the HTML and ARIA attributes correctly. However, other than the default styles that come from your
-        browser and this website's CSS framework, the accordion is completely unstyled, including any styles that
+        browser and this website&apos;s CSS framework, the accordion is completely unstyled, including any styles that
         should handle collapsing an accordion item when toggled.
       </p>
       <p>
@@ -158,7 +158,7 @@ export default function HomePage() {
       <p>
         In addition to styling options React ARIA Widgets also provides a number of hooks and other primitives
         for each pattern that can be used to build finer-tuned implementations. For more information, see each
-        patterns' individual documentation page.
+        patterns&apos; individual documentation page.
       </p>
     </article>
   );

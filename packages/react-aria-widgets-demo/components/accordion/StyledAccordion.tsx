@@ -17,7 +17,7 @@ function StyledAccordion(props: AccordionProps) {
         </AccordionHeader>
         <AccordionPanel>
           This accordion item is styled by CSS that targets the default classes provided by React ARIA
-          Widgets. Since React ARIA Widgets also exposes the accordion's state via HTML data attributes,
+          Widgets. Since React ARIA Widgets also exposes the accordion&apos;s state via HTML data attributes,
           we can use selectors such as <code>[data-expanded]</code> or <code>[data-disabled]</code>.
         </AccordionPanel>
       </AccordionItem>
