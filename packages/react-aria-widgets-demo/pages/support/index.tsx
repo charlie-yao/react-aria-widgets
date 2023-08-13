@@ -3,7 +3,6 @@ import Head from 'next/head';
 //Components
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
-/* eslint-disable operator-linebreak */
 const IMPORT_EXAMPLE =
 `import { useAccordion } from 'react-aria-widgets/accordion';
 
@@ -56,7 +55,6 @@ export default function FAQAccordion () {
     </Accordion>
   );
 }`;
-/* eslint-enable operator-linebreak */
 
 export default function SupportPage() {
   return (

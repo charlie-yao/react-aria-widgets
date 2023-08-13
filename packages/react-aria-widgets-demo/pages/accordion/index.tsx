@@ -32,7 +32,6 @@ const CustomAccordion = dynamic(
 );
 */
 
-/* eslint-disable operator-linebreak */
 const IMPORT_EXAMPLE =
 `import { Accordion } from 'react-aria-widgets';
 import { Accordion } from 'react-aria-widgets/accordion';`;
@@ -372,7 +371,6 @@ const HEADER_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   headerProps={{ className: 'custom-h2-class' }}
 />`;
-/* eslint-enable operator-linebreak */
 
 const MDN_DISABLED_LINK = 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled';
 
