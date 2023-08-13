@@ -520,7 +520,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { INITIALIZE_STATE_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="focusing-items">Focusing Items</h3>
+        <h3 id="focusing-items">
+          Focusing Items
+        </h3>
         <p>
           <code>&lt;AccordionHeader&gt;</code> automatically attaches a keydown event that implements the
           keyboard/focus behavior described in the APG. Try tabbing to one of the buttons and pressing
@@ -531,7 +533,9 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { FOCUS_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="state-change-callbacks">Callbacks on State Changes</h3>
+        <h3 id="state-change-callbacks">
+          Callbacks on State Changes
+        </h3>
         <p>You can pass callback functions that fire after state changes:</p>
         <ul>
           <li><code>onToggleExpanded</code> - lets users know which items are expanded</li>
@@ -550,9 +554,15 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { CALLBACK_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h3 id="controlling-state">Controlling State</h3>
-        <h3 id="styling">Styling</h3>
-        <h3 id="further-customization">Further Customization</h3>
+        <h3 id="controlling-state">
+          Controlling State
+        </h3>
+        <h3 id="styling">
+          Styling
+        </h3>
+        <h3 id="further-customization">
+          Further Customization
+        </h3>
         <h3 id="customization">Customization</h3>
         <p>
           <code>&lt;Accordion&gt;</code> uses the higher-order component (HOC) <code>withAccordionManager()</code>,
