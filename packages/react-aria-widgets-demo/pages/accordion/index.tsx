@@ -11,6 +11,7 @@ import DisableItemAccordion from '../../components/accordion/DisableItemAccordio
 import InitializeStateAccordion from '../../components/accordion/InitializeStateAccordion';
 import FocusAccordion from '../../components/accordion/FocusAccordion';
 import CallbackAccordion from '../../components/accordion/CallbackAccordion';
+import RemoteControlAccordion from '../../components/accordion/RemoteControlAccordion';
 
 //Misc.
 import {
@@ -361,6 +362,97 @@ function CallbackAccordion() {
   );
 }`;
 
+const REMOTE_CONTROL_ACCORDION_EXAMPLE =
+`import { useAccordion, ControlledAccordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
+
+const ITEMS = [ 'item1', 'item2', 'item3' ];
+
+function RemoteControlAccordion(props) {
+  const contextValue = useAccordion(props);
+  const { toggleExpanded, toggleDisabled, focusItemId, getIsDisabled } = contextValue;
+  const toggleExpandButtons = [];
+  const toggleDisableButtons = [];
+  const focusButtons = [];
+  const accordionItems = [];
+
+  ITEMS.forEach((id, index) => {
+    toggleExpandButtons.push(
+      <div className="control">
+        <button
+          key={ id }
+          type="button"
+          value={ id }
+          onClick={ (e) => toggleExpanded(e.currentTarget.value) }
+          className="button is-primary"
+        >
+          Expand/Collapse { id }
+        </button>
+      </div>
+    );
+
+    toggleDisableButtons.push(
+      <div className="control">
+        <button
+          key={ id }
+          type="button"
+          value={ id }
+          onClick={ (e) => toggleDisabled(e.currentTarget.value) }
+          className="button is-primary"
+        >
+          Enable/Disable { id }
+        </button>
+      </div>
+    );
+
+    focusButtons.push(
+      <div className="control">
+        <button
+          key={ id }
+          type="button"
+          value={ id }
+          onClick={ (e) => focusItemId(e.currentTarget.value) }
+          className="button is-primary"
+        >
+          Focus { id }
+        </button>
+      </div>
+    );
+    
+    accordionItems.push(
+      <AccordionItem id={ id } key={ id }>
+        <AccordionHeader>
+          Accordion Item { index + 1 }: Disabled = <code>{ getIsDisabled(id).toString() }</code>
+        </AccordionHeader>
+        <AccordionPanel>
+          Hello world! 
+        </AccordionPanel>
+      </AccordionItem>
+    );
+  });
+
+  return (
+    <>
+      <form onSubmit={ e => e.preventDefault() } style={{ paddingBottom: '1rem' }}>
+        <fieldset className="field is-grouped">
+          <legend>Expand/Collapse Items</legend>
+          { toggleExpandButtons }
+        </fieldset>
+        <fieldset className="field is-grouped">
+        <legend>Enable/Disable Items</legend>
+          { toggleDisableButtons }
+        </fieldset>
+        <fieldset className="field is-grouped">
+          <legend>Focus Items</legend>
+          { focusButtons }
+        </fieldset>
+      </form>
+      <ControlledAccordion contextValue={ contextValue }>
+        { accordionItems }
+      </ControlledAccordion>
+    </>
+  );
+}`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -557,6 +649,24 @@ function AccordionPage() {
         <h3 id="controlling-state">
           Controlling State
         </h3>
+        <p>
+          As demonstrated previously, state can be manually controlled from "below" the accordion by using
+          render props. Alternatively, rather than using something like <code>&lt;AccordionHeader&gt;</code>,
+          React ARIA Widgets exports the 
+          hooks <code>useAccordionContext</code> and <code>useAccordionItemContext</code> that can be
+          used to write custom header or panel implementations.
+        </p>
+        <p>
+          State can be controlled from "above" the accordion by using <code>useAccordion</code>, a hook
+          that provides methods to manage the state, and <code>&lt;ControlledAccordion&gt;</code>, a thin
+          wrapper over the context provider that passes those methods down. In fact, 
+          <code>&lt;Accordion&gt;</code> is actually just a thin wrapper that tightly couples these two for
+          the sake of convenience.
+        </p>
+        <RemoteControlAccordion headerLevel={ 4 } />
+        <SyntaxHighlighter language="tsx">
+          { REMOTE_CONTROL_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
         <h3 id="styling">
           Styling
         </h3>
