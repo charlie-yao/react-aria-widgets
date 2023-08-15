@@ -453,6 +453,16 @@ function RemoteControlAccordion(props) {
   );
 }`;
 
+const ACCORDION_HTML_MARKUP_EXAMPLE =
+`<h1 className="react-aria-widgets-accordion-header" data-expanded="false" data-disabled="false">
+  <button className="react-aria-widgets-accordion-button" aria-expanded="false" aria-disabled="false">
+    Accordion Item Header
+  </button>
+</h1>
+<section className="react-aria-widgets-panel" data-expanded="false" data-disabled="false">
+  Hello world!
+</section>`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -508,7 +518,7 @@ function AccordionPage() {
           Additionally, because React ARIA Widgets comes with no styling, accordions will not have the proper
           expand/collapse behavior out of the box. For the sake of demonstration, the following examples will
           have styling applied to showcase expand/collapse behavior. For more information, see
-          the styling section.
+          the <a href="#styling">styling section</a>.
         </p>
         <h3 id="basic-usage">
           Basic Usage
@@ -653,14 +663,14 @@ function AccordionPage() {
           As demonstrated previously, state can be manually controlled from "below" the accordion by using
           render props. Alternatively, rather than using something like <code>&lt;AccordionHeader&gt;</code>,
           React ARIA Widgets exports the 
-          hooks <code>useAccordionContext</code> and <code>useAccordionItemContext</code> that can be
+          hooks <code>useAccordionContext</code> and <code>useAccordionItemContext</code> which can be
           used to write custom header or panel implementations.
         </p>
         <p>
           State can be controlled from "above" the accordion by using <code>useAccordion</code>, a hook
           that provides methods to manage the state, and <code>&lt;ControlledAccordion&gt;</code>, a thin
           wrapper over the context provider that passes those methods down. In fact, 
-          <code>&lt;Accordion&gt;</code> is actually just a thin wrapper that tightly couples these two for
+          <code>&lt;Accordion&gt;</code> is itself actually just a thin wrapper that tightly couples these two for
           the sake of convenience.
         </p>
         <RemoteControlAccordion headerLevel={ 4 } />
@@ -670,6 +680,103 @@ function AccordionPage() {
         <h3 id="styling">
           Styling
         </h3>
+        <p>
+          There are a few different ways to style <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
+        </p>
+        <ul>
+          <li>Write CSS that targets the default classes applied by React ARIA Widgets</li>
+          <li>Supply a function for <code>className</code> that receives state and returns a string</li>
+          <li>Supply a string for <code>className</code> </li>
+          <li>Supply a function for <code>style</code> that receives state and returns an object</li>
+          <li>Supply an object for <code>style</code></li>
+        </ul>
+        <p>
+          The easiest way may be to simply write CSS that targets the default classes provided by React ARIA
+          Widgets. The classes are:
+        </p>
+        <ul>
+          <li><code>react-aria-widgets-accordion-header</code></li>
+          <li><code>react-aria-widgets-accordion-button</code></li>
+          <li><code>react-aria-widgets-accordion-panel</code></li>
+        </ul>
+        <p>
+          You can also provide custom classes by passing strings to <code>className</code>. Note
+          that they will replace the default classes, rather than append to them. Similarly, you can
+          provide an object for <code>style</code>.
+        </p>
+        <p>
+          React ARIA Widgets also exposes the accordion's state through HTML attributes, allowing them to be
+          targeted with CSS selectors.
+        </p>
+        <div className="table-container">
+        <table className="table is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th scope="col">Component</th>
+              <th scope="col">Default CSS Class</th>
+              <th scope="col">State Selector</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <code>&lt;AccordionHeader&gt;</code>
+              </td>
+              <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <code>react-aria-widgets-accordion-header</code>
+              </td>
+              <td><code>[data-expanded=true | false]</code></td>
+              <td>Whether the panel is expanded or collapsed.</td>
+            </tr>
+            <tr>
+              <td><code>[data-disabled=true | false]</code></td>
+              <td>Whether the panel is enabled or disabled.</td>
+            </tr>
+            <tr>
+              <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <code>&lt;AccordionHeader&gt;</code></td>
+              <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <code>react-aria-widgets-accordion-button</code>
+              </td>
+              <td><code>[aria-expanded=true | false]</code></td>
+              <td>Whether the panel is expanded or collapsed.</td>
+            </tr>
+            <tr>
+              <td><code>[aria-disabled=true | false]</code></td>
+              <td>Whether the panel is enabled or disabled.</td>
+            </tr>
+            <tr>
+              <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <code>&lt;AccordionPanel&gt;</code>
+              </td>
+              <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <code>react-aria-widgets-accordion-panel</code>
+              </td>
+              <td><code>[data-expanded=true | false]</code></td>
+              <td>Whether the panel is expanded or collapsed.</td>
+            </tr>
+            <tr>
+              <td><code>[data-disabled=true | false]</code></td>
+              <td>Whether the panel is enabled or disabled.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p>
+          The default rendered markup looks something like this:
+        </p>
+        <SyntaxHighlighter language="tsx">
+          { ACCORDION_HTML_MARKUP_EXAMPLE }
+        </SyntaxHighlighter>
+        <p>
+          Finally, you can provide a function to <code>className</code> or <code>style</code> that allows
+          you to dynamically apply styles depending on the state of the accordion. And, as alluded to
+          in previous examples, you can dynamically style your content if it's rendered with a render prop.
+        </p>
+        <p>
+          (Elaborate more on hidden attribute)
+        </p>
         <h3 id="further-customization">
           Further Customization
         </h3>
