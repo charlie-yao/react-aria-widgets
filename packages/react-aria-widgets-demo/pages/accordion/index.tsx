@@ -855,9 +855,9 @@ function AccordionPage() {
         </h3>
         <p>You can pass callback functions that fire after state changes:</p>
         <ul>
-          <li><code>onToggleExpanded</code> - lets users know which items are expanded</li>
-          <li><code>onToggleDisabled</code> - lets users know which items are disabled</li>
-          <li><code>onFocusItem</code> - lets users know which item was focused</li>
+          <li><code>onToggleExpanded</code> - receives the items that are expanded</li>
+          <li><code>onToggleDisabled</code> - receives the items that are disabled</li>
+          <li><code>onFocusItem</code> - receives the item that was focused</li>
         </ul>
         <p>
           Note that <code>onFocusItem</code> doesn&apos;t trigger for focus events in general, but rather, when
