@@ -37,7 +37,7 @@ export default function SubNav() {
             <li>
               <a href="#components">Components</a>
               <ul>
-                <li><a href="#accordion-component"><code>&gt;Accordion&gt;</code></a></li>
+                <li><a href="#accordion-component"><code>&lt;Accordion&gt;</code></a></li>
                 <li><a href="#accordion-section"><code>&lt;AccordionSection&gt;</code></a></li>
                 <li><a href="#accordion-header"><code>&lt;AccordionHeader&gt;</code></a></li>
                 <li><a href="#accordion-panel"><code>&lt;AccordionPanel&gt;</code></a></li>

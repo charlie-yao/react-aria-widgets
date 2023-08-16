@@ -11,5 +11,18 @@
     .another-custom-panel.collapsed {
       display: none;
     }
+
+    .my-accordion-header {
+    }
+
+    .my-accordion-button {
+    }
+
+    .my-accordion-panel {
+
+      &.collapsed {
+        display: none;
+      }
+    }
   }
 }

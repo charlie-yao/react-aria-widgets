@@ -12,6 +12,7 @@ import FocusAccordion from '../../components/accordion/FocusAccordion';
 import CallbackAccordion from '../../components/accordion/CallbackAccordion';
 import RemoteControlAccordion from '../../components/accordion/RemoteControlAccordion';
 import StyledAccordion from '../../components/accordion/StyledAccordion';
+import MyAccordion from '../../components/accordion/MyAccordion';
 
 const IMPORT_EXAMPLE =
 `import { Accordion } from 'react-aria-widgets';
@@ -546,6 +547,134 @@ const STYLED_ACCORDION_CSS_EXAMPLE =
   display: none;
 }`;
 
+const CUSTOM_ACCORDION_EXAMPLE =
+`import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';
+
+function CustomAccordion({ children, ...rest }) {
+  const contextValue = useAccordion(rest);
+
+  return (
+    <ControlledAccordion contextValue={ contextValue }>
+      { children }
+    </ControlledAccordion>
+  );
+}`;
+
+const CUSTOM_ACCORDION_HEADER_EXAMPLE =
+`import { useAccordionContext } from 'react-aria-widgets/accordion';
+
+function CustomAccordionHeader({ children = null, id }) {
+  const {
+    headerLevel,
+    getIsExpanded,
+    getIsDisabled,
+    toggleExpanded,
+    pushItemRef,
+    focusPrevItem,
+    focusNextItem,
+    focusFirstItem,
+    focusLastItem,
+  } = useAccordionContext();
+  const HeaderElement = \`h$\{headerLevel}\`;
+  const isExpanded = getIsExpanded(id);
+  const isDisabled = getIsDisabled(id);
+
+  const refCallback = (ref) => {
+    pushItemRef(ref, id);
+  };
+
+  const onClick = () => {
+    toggleExpanded(id);
+  };
+
+  const onKeyDown = (event) => {
+    const { key } = event;
+
+    if(key === 'ArrowUp') {
+      event.preventDefault();
+      focusPrevItem(id);
+    }
+    else if(key === 'ArrowDown') {
+      event.preventDefault();
+      focusNextItem(id);
+    }
+    else if(key === 'Home') {
+      event.preventDefault();
+      focusFirstItem();
+    }
+    else if(key === 'End') {
+      event.preventDefault();
+      focusLastItem();
+    }
+  };
+
+  return (
+    <HeaderElement className="my-accordion-header">
+      <button
+        type="button"
+        className="my-accordion-button"
+        id={ id }
+        onClick={ onClick }
+        onKeyDown={ onKeyDown }
+        aria-controls={ \`$\{id}-panel\` }
+        aria-expanded={ isExpanded }
+        aria-disabled={ isDisabled }
+        ref={ refCallback }
+      >
+        { children }
+      </button>
+    </HeaderElement>
+  );
+}`;
+
+const CUSTOM_ACCORDION_PANEL_EXAMPLE =
+`import { useAccordionContext } from 'react-aria-widgets/accordion';
+
+function CustomAccordionPanel({ children = null, id }) {
+  const { getIsExpanded } = useAccordionContext();
+  const isExpanded = getIsExpanded(id);
+
+  return (
+    <section
+      id={ \`$\{id}-panel\` }
+      aria-labelledby={ id }
+      className={ \`my-accordion-panel $\{isExpanded ? 'expanded' : 'collapsed'}\` }
+    >
+      { children }
+    </section>
+  );
+}`;
+
+const MY_ACCORDION_EXAMPLE =
+`import CustomAccordion from "./CustomAccordion";
+import CustomAccordionHeader from "./CustomAccordionHeader";
+import CustomAccordionPanel from "./CustomAccordionPanel";
+
+function MyAccordion(props) {
+  return (
+    <CustomAccordion { ...props }>
+      <CustomAccordionHeader id="item1">
+        Joke #1
+      </CustomAccordionHeader> 
+      <CustomAccordionPanel id="item1">
+        <p>Why don&apos;t scientists trust atoms? Because they make up everything!</p>
+      </CustomAccordionPanel>
+      <CustomAccordionHeader id="item2">
+        Joke #2 
+      </CustomAccordionHeader> 
+      <CustomAccordionPanel id="item2">
+        Why did the bicycle fall over? Because it was two tired!
+      </CustomAccordionPanel>
+      <CustomAccordionHeader id="item3">
+        Joke #3
+      </CustomAccordionHeader> 
+      <CustomAccordionPanel id="item3">
+        What do you call fake spaghetti? An &quot;impasta&quot;!
+      </CustomAccordionPanel>
+    </CustomAccordion>
+  );
+}`;
+
 const BUTTON_PROPS_EXAMPLE =
 `<BaseAccordionHeader
   buttonProps={{ 'aria-expanded': false }}
@@ -880,11 +1009,47 @@ function AccordionPage() {
           React ARIA Widgets exposes all of the hooks, contexts, components, etc. that it uses, allowing you to
           create your own accordion implementations.
         </p>
-        <h4>Creating a custom <code>&lt;Accordion&gt;</code></h4>
+        <h4>Creating a Custom <code>&lt;Accordion&gt;</code></h4>
         <p>
           As mentioned in the <a href="#controlling-state">Controlling State</a> section, one can simply
-          combine <code>useAccordion</code> and <code>&lt;ControlledAccordion&gt;</code>.
+          combine <code>useAccordion</code> and <code>&lt;ControlledAccordion&gt;</code> to create a
+          new version of <code>&lt;Accordion&gt;</code>.
         </p>
+        <SyntaxHighlighter language="tsx">
+          { CUSTOM_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
+        <h4>Creating Custom Headers and Panels</h4>
+        <p>
+          You can use the hook <code>useAccordionContext</code> to read and modify the accordion state that
+          gets sent down from <code>&lt;ControlledAccordion&gt;</code>. We'll be using it to create our own
+          accordion headers and panels.
+        </p>
+        <p>
+          We won&apos;t be using them in this example, but for the sake of convenience, React ARIA Widgets also provides
+          the components <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> to
+          simplify building your own accordions. They&apos;re essentially just thin wrappers over HTML, but
+          they use TypeScript and PropTypes to help remind you what HTML attributes are needed to fulfill
+          the APG.
+        </p>
+        <SyntaxHighlighter language="tsx">
+          { CUSTOM_ACCORDION_HEADER_EXAMPLE }
+        </SyntaxHighlighter>
+        <SyntaxHighlighter language="tsx">
+          { CUSTOM_ACCORDION_PANEL_EXAMPLE }
+        </SyntaxHighlighter>
+        <h4>Putting It All Together</h4>
+        <p>
+          You'll notice that we didn't create another version of <code>&lt;AccordionItem&gt;</code>. Its main
+          job is to make sure that the header and panel both have the same ID, so we won't be making a custom
+          version of it for the sake of this example.
+        </p>
+        <p>
+          Here's the completed accordion:
+        </p>
+        <MyAccordion headerLevel={ 5 } />
+        <SyntaxHighlighter language="tsx">
+          { MY_ACCORDION_EXAMPLE }
+        </SyntaxHighlighter>
         <h2 id="api">API</h2>
         <h3 id="hocs-and-hooks">Higher-Order Components and Hooks</h3>
         <h4 id="with-accordion-manager">withAccordionManager()</h4>
