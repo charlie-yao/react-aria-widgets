@@ -61,14 +61,14 @@ function RemoteControlAccordion(props: UseAccordion) {
         </button>
       </div>
     );
-    
+
     accordionItems.push(
       <AccordionItem id={ id } key={ id }>
         <AccordionHeader>
           Accordion Item { index + 1 }: Disabled = <code>{ getIsDisabled(id).toString() }</code>
         </AccordionHeader>
         <AccordionPanel>
-          Hello world! 
+          Hello world!
         </AccordionPanel>
       </AccordionItem>
     );
@@ -82,7 +82,7 @@ function RemoteControlAccordion(props: UseAccordion) {
           { toggleExpandButtons }
         </fieldset>
         <fieldset className="field is-grouped">
-        <legend>Enable/Disable Items</legend>
+          <legend>Enable/Disable Items</legend>
           { toggleDisableButtons }
         </fieldset>
         <fieldset className="field is-grouped">

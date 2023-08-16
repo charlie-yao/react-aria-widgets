@@ -35,7 +35,7 @@ function StyledAccordion(props: AccordionProps) {
       </AccordionItem>
       <AccordionItem id="item3">
         <AccordionHeader
-          headerProps={{ style: { color : 'hsl(217, 71%, 45%)'} }}
+          headerProps={{ style: { color: 'hsl(217, 71%, 45%)' } }}
           buttonProps={{ style: { color: 'inherit' } }}
         >
           Accordion Item 3
@@ -53,7 +53,7 @@ function StyledAccordion(props: AccordionProps) {
         </AccordionHeader>
         <AccordionPanel className={ ({ isExpanded }) => `another-custom-panel ${isExpanded ? 'expanded' : 'collapsed'}` }>
           This accordion item is styled by passing in functions for <code>className</code>. These functions
-          have access to the accordion's state, allowing you to dynamically apply classes.
+          have access to the accordion&apos;s state, allowing you to dynamically apply classes.
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item5">
@@ -65,7 +65,7 @@ function StyledAccordion(props: AccordionProps) {
         </AccordionHeader>
         <AccordionPanel style={ ({ isExpanded }) => isExpanded ? {} : { display: 'none' } }>
           This accordion item is styled by passing in functions for <code>style</code>. As before, these
-          functions allow you to dynamically apply styles based on the accordion's state.
+          functions allow you to dynamically apply styles based on the accordion&apos;s state.
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item6">
@@ -86,7 +86,7 @@ function StyledAccordion(props: AccordionProps) {
               style={ getIsExpanded(id) ? { color: 'hsl(217, 71%, 45%)' } : {} }
             >
               The content for this accordion item is rendered with a render function. Since these render
-              functions have access to the accordion's state, you can dynamically style your content.
+              functions have access to the accordion&apos;s state, you can dynamically style your content.
             </p>
           ) }
         </AccordionPanel>

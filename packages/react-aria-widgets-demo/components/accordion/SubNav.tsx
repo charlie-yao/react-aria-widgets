@@ -23,7 +23,6 @@ export default function SubNav() {
             <li><a href="#controlling-state">Controlling State</a></li>
             <li><a href="#styling">Styling</a></li>
             <li><a href="#further-customization">Further Customization</a></li>
-            <li><a href="#customization">Customization</a></li>
           </ul>
         </li>
         <li>
