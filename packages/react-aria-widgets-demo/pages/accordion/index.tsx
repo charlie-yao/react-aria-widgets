@@ -18,6 +18,12 @@ const IMPORT_EXAMPLE =
 `import { Accordion } from 'react-aria-widgets';
 import { Accordion } from 'react-aria-widgets/accordion';`;
 
+const DEFAULT_STYLING_EXAMPLE =
+`/* .react-aria-widgets-accordion-panel is a CSS class provided by default */
+.react-aria-widgets-accordion-panel[data-expanded=false] {
+  display: none;
+}`;
+
 const BASIC_ACCORDION_EXAMPLE =
 `import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
 
@@ -29,7 +35,7 @@ function BasicAccordion() {
           Accordion Item 1
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
@@ -37,7 +43,7 @@ function BasicAccordion() {
           Accordion Item 2
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item3">
@@ -45,7 +51,7 @@ function BasicAccordion() {
           Accordion Item 3
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -747,10 +753,14 @@ function AccordionPage() {
           the <Link href="/support#faq-typescript-submodule-types">FAQ</Link>.
         </p>
         <p>
-          Additionally, because React ARIA Widgets comes with no styling, accordions will not have the proper
-          expand/collapse behavior out of the box. For the sake of demonstration, the following examples will
-          have styling applied to showcase expand/collapse behavior. For more information, see
-          the <a href="#styling">styling section</a>.
+          Additionally, because these components come with no styling, they will not have the proper
+          expand/collapse behavior out of the box. For the sake of demonstrating this behavior, the
+          examples on this page will be given the following styles:
+        </p>
+        <SyntaxHighlighter language="css">
+          { DEFAULT_STYLING_EXAMPLE }
+        </SyntaxHighlighter>
+        <p>For more information, see the <a href="#styling">styling section</a>.
         </p>
         <h3 id="basic-usage">
           Basic Usage

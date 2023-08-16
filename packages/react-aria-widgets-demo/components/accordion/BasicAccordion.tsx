@@ -16,7 +16,7 @@ function BasicAccordion(props: AccordionProps) {
           Accordion Item 1
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
@@ -24,7 +24,7 @@ function BasicAccordion(props: AccordionProps) {
           Accordion Item 2
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item3">
@@ -32,7 +32,7 @@ function BasicAccordion(props: AccordionProps) {
           Accordion Item 3
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
