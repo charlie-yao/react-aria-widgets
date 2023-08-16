@@ -8,6 +8,10 @@ import type { SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
 export default function SyntaxHighlighter(props: SyntaxHighlighterProps) {
   return (
-    <Prism style={ a11yDark } { ...props } />
+    <Prism
+      style={ a11yDark }
+      customStyle={{ marginBottom: '1rem', marginTop: '1rem' }}
+      { ...props }
+    />
   );
 }

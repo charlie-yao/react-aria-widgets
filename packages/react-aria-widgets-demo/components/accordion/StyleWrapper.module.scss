@@ -13,16 +13,15 @@
     }
 
     .my-accordion-header {
+      margin-bottom: 1rem;
     }
 
     .my-accordion-button {
+      width: 100%;
     }
 
-    .my-accordion-panel {
-
-      &.collapsed {
-        display: none;
-      }
+    .my-accordion-panel.collapsed {
+      display: none;
     }
   }
 }

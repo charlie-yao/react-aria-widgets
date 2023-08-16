@@ -62,7 +62,7 @@ export default function CustomAccordionHeader({
     <HeaderElement className="my-accordion-header">
       <button
         type="button"
-        className="my-accordion-button"
+        className="button is-primary my-accordion-button is-flex is-align-items-baseline has-text-right"
         id={ id }
         onClick={ onClick }
         onKeyDown={ onKeyDown }
@@ -72,6 +72,10 @@ export default function CustomAccordionHeader({
         ref={ refCallback }
       >
         { children }
+        <i
+          className={ `fa-solid fa-chevron-${isExpanded ? 'down' : 'right'} is-flex-grow-1` }
+          aria-hidden="true"
+        />
       </button>
     </HeaderElement>
   );

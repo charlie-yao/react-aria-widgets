@@ -615,7 +615,7 @@ function CustomAccordionHeader({ children = null, id }) {
     <HeaderElement className="my-accordion-header">
       <button
         type="button"
-        className="my-accordion-button"
+        className="button is-primary my-accordion-button is-flex is-align-items-baseline has-text-right"
         id={ id }
         onClick={ onClick }
         onKeyDown={ onKeyDown }
@@ -625,6 +625,10 @@ function CustomAccordionHeader({ children = null, id }) {
         ref={ refCallback }
       >
         { children }
+        <i
+          className={ \`fa-solid fa-chevron-$\{isExpanded ? 'down' : 'right'} is-flex-grow-1\` }
+          aria-hidden="true"
+        />
       </button>
     </HeaderElement>
   );
@@ -641,11 +645,24 @@ function CustomAccordionPanel({ children = null, id }) {
     <section
       id={ \`$\{id}-panel\` }
       aria-labelledby={ id }
-      className={ \`my-accordion-panel $\{isExpanded ? 'expanded' : 'collapsed'}\` }
+      className={ \`my-accordion-panel $\{isExpanded ? 'expanded' : 'collapsed'} content\` }
     >
       { children }
     </section>
   );
+}`;
+
+const CUSTOM_ACCORDION_STYLES_EXAMPLE =
+`.my-accordion-header {
+  margin-bottom: 1rem;
+}
+
+.my-accordion-button {
+  width: 100%;
+}
+
+.my-accordion-panel.collapsed {
+  display: none;
 }`;
 
 const MY_ACCORDION_EXAMPLE =
@@ -1039,6 +1056,9 @@ function AccordionPage() {
         </SyntaxHighlighter>
         <SyntaxHighlighter language="tsx">
           { CUSTOM_ACCORDION_PANEL_EXAMPLE }
+        </SyntaxHighlighter>
+        <SyntaxHighlighter language="css">
+          { CUSTOM_ACCORDION_STYLES_EXAMPLE }
         </SyntaxHighlighter>
         <h4>Putting It All Together</h4>
         <p>

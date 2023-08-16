@@ -19,7 +19,7 @@ export default function CustomAccordionPanel({
     <section
       id={ `${id}-panel` }
       aria-labelledby={ id }
-      className={ `my-accordion-panel ${isExpanded ? 'expanded' : 'collapsed'}` }
+      className={ `my-accordion-panel ${isExpanded ? 'expanded' : 'collapsed'} content` }
     >
       { children }
     </section>

@@ -21,7 +21,7 @@ function RemoteControlAccordion(props: UseAccordion) {
 
   ITEMS.forEach((id, index) => {
     toggleExpandButtons.push(
-      <div className="control">
+      <div className="control" key={ id }>
         <button
           key={ id }
           type="button"
@@ -35,7 +35,7 @@ function RemoteControlAccordion(props: UseAccordion) {
     );
 
     toggleDisableButtons.push(
-      <div className="control">
+      <div className="control" key={ id }>
         <button
           key={ id }
           type="button"
@@ -49,7 +49,7 @@ function RemoteControlAccordion(props: UseAccordion) {
     );
 
     focusButtons.push(
-      <div className="control">
+      <div className="control" key={ id }>
         <button
           key={ id }
           type="button"
