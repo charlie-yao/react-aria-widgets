@@ -8,54 +8,6 @@ const IMPORT_EXAMPLE =
 
 Cannot find module 'react-aria-widgets/accordion' or its corresponding type declarations. (tsserver 2307)`;
 
-const NEXT_EXAMPLE_FAQ_PAGE =
-`//In a hypothetical pages/faq/index.js
-import dynamic from 'next/dynamic';
-
-const FAQAccordion = dynamic(
-  () => import('../../components/FAQAccordion'),
-  {
-    ssr: false,
-    loading: () => <p>Loading, please wait...</p>,
-  },
-);
-
-export default function FAQPage() {
-  return (
-    <>
-      <h1>Frequently Asked Questions</h1>
-      <FAQAccordion />
-    </>
-  );
-}`;
-
-const NEXT_EXAMPLE_FAQ_ACCORDION =
-`//In a hypothetical components/FAQAccordion.js
-import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
-
-export default function FAQAccordion () {
-  return (
-    <Accordion headerlevel={ 2 }>
-      <AccordionSection id="faq-1">
-        <AccordionHeader>
-          How do I "foo"?
-        </AccordionHeader>
-        <AccordionPanel>
-          Great question!
-        </AccordionPanel>
-      </AccordionSection>
-      <AccordionSection id="faq-2">
-        <AccordionHeader>
-          How do I "bar"?
-        </AccordionHeader>
-        <AccordionPanel>
-          Hard to say!  
-        </AccordionPanel>
-      </AccordionSection>
-    </Accordion>
-  );
-}`;
-
 export default function SupportPage() {
   return (
     <>
@@ -125,27 +77,6 @@ export default function SupportPage() {
           the APG examples that are currently live still do not reflect those changes, their source
           code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
         </p>
-        <h3 id="next-js-lazy-load">Next.js and <code>ReferenceError: self is not defined</code></h3>
-        <p>
-          This error occurs when Next.js pre-renders a page (whether using static generation or
-          server-side rendering) seemingly because React ARIA Widgets is trying to execute
-          code that only exists on clients (i.e. browsers).
-        </p>
-        <p>
-          To get around this on a pre-rendered page, you can lazy load React ARIA Widgets with
-          { ' ' }
-          <a href="https://nextjs.org/docs/advanced-features/dynamic-import">
-            <code>next/dynamic</code>
-          </a>
-          { /**/ }
-          . For example:
-        </p>
-        <SyntaxHighlighter language="jsx">
-          { NEXT_EXAMPLE_FAQ_PAGE }
-        </SyntaxHighlighter>
-        <SyntaxHighlighter language="jsx">
-          { NEXT_EXAMPLE_FAQ_ACCORDION }
-        </SyntaxHighlighter>
       </article>
     </>
   );
