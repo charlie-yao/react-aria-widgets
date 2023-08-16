@@ -97,8 +97,8 @@ export default function SupportPage() {
           <code>hidden</code> versus <code>display: none;</code>
         </h3>
         <p>
-          At the time of writing, many of the example implementations of widgets such as tabs shown in ARIA
-          Authoring Practices Guide (APG) use the <code>hidden</code> HTML attribute to handle expand/collapse states.
+          At the time of writing, many of the example implementations shown in the ARIA
+          Authoring Practices Guide (APG) use the <code>hidden</code> attribute to handle expand/collapse states.
           However, in the
           { ' ' }
           <a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
@@ -124,11 +124,6 @@ export default function SupportPage() {
           and that <code>display: none;</code> should be used rather than <code>hidden</code>. Though
           the APG examples that are currently live still do not reflect those changes, their source
           code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
-        </p>
-        <p>
-          React ARIA Widgets will use <code>display: none important!;</code> by default, but whenever possible,
-          it will try to give developers customization options should they decide to
-          use the <code>hidden</code> attribute or custom styling.
         </p>
         <h3 id="next-js-lazy-load">Next.js and <code>ReferenceError: self is not defined</code></h3>
         <p>

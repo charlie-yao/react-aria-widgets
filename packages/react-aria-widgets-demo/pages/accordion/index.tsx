@@ -886,7 +886,12 @@ function AccordionPage() {
           { STYLED_ACCORDION_CSS_EXAMPLE }
         </SyntaxHighlighter>
         <p>
-          (Elaborate more on hidden attribute)
+          Unfortunately, at this time, if you wish you use the <code>hidden</code> attribute to collapse your panels,
+          React ARIA Widgets doesn't have a good first-class API for dynamically applying it. You can create
+          your own accordion panel implementation using the hooks provided, but it&apos;s admittedly awkward
+          to do that just for one HTML attribute. Still, it's arguable that, in most cases, 
+          using <code>display: none;</code> has better semantics that <code>hidden</code>. For more information,
+          see the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link>.
         </p>
         <h3 id="further-customization">
           Further Customization
