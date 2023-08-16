@@ -16,7 +16,7 @@ export default function SubNav() {
             <li><a href="#disable-collapsing-all">Disable Collapsing All Sections</a></li>
             <li><a href="#disable-both">Disabling <code>allowMultiple</code> and <code>allowCollapseLast</code></a></li>
             <li><a href="#render-prop">Rendering With Render Props</a></li>
-            <li><a href="#disabling-items">Disabling Accordion Items</a></li>
+            <li><a href="#disabling-items">Prevent Expanding/Collapsing Accordion Items</a></li>
             <li><a href="#initialize-state">Initialize Expanded/Disabled State</a></li>
             <li><a href="#focusing-items">Focusing Items</a></li>
             <li><a href="#state-change-callbacks">Callbacks on State Changes</a></li>

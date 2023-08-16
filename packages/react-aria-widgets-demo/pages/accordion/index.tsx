@@ -803,7 +803,7 @@ function AccordionPage() {
           { RENDER_PROP_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h3 id="disabling-items">
-          Disabling Accordion Items
+          Prevent Expanding/Collapsing Accordion Items
         </h3>
         <p>
           Accordion items can be manually disabled with the method <code>toggleDisabled</code>, preventing
