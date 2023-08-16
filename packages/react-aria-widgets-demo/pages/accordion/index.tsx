@@ -825,8 +825,8 @@ function AccordionPage() {
         </p>
         <p>
           If <code>allowMultiple</code> is disabled, React ARIA Widgets will only expand the first ID
-          in <code>initialExpanded</code>. However, it does so naively (it essentially just
-          checks <code>initialExpanded[0]</code>). Due to implementation limitations, it currently
+          in <code>initialExpanded</code>. However, it does so naively - it essentially just
+          checks <code>initialExpanded[0]</code>. Due to implementation limitations, it currently
           cannot validate that the supplied IDs actually pertain to an accordion item and intelligently
           pick the first valid ID.
         </p>
