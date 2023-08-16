@@ -7,5 +7,9 @@
     .custom-accordion-panel[data-expanded=false] {
       display: none;
     }
+
+    .another-custom-panel.collapsed {
+      display: none;
+    }
   }
 }
