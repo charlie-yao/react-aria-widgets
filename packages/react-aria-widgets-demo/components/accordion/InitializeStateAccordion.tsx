@@ -24,7 +24,7 @@ function InitializeStateAccordion(props: AccordionProps) {
           </AccordionHeader>
           <AccordionPanel>
             { ({ id, getIsExpanded, getIsDisabled }) => (
-              <ul>
+              <ul className="mb-4">
                 <li><code>getIsExpanded(id)</code> = <code>{ getIsExpanded(id).toString() }</code></li>
                 <li><code>getIsDisabled(id)</code> = <code>{ getIsDisabled(id).toString() }</code></li>
               </ul>

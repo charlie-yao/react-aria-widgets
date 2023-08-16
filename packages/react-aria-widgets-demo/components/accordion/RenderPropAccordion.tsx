@@ -24,7 +24,7 @@ function RenderPropAccordion(props: AccordionProps) {
           </AccordionHeader>
           <AccordionPanel>
             { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
-              <ul>
+              <ul className="mb-4">
                 <li><code>id</code> = <code>{ id }</code></li>
                 <li><code>headerLevel</code> = <code>{ headerLevel }</code></li>
                 <li><code>allowMultiple</code> = <code>{ allowMultiple.toString() }</code></li>

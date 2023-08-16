@@ -69,7 +69,7 @@ function DisableMultipleAccordion() {
           Accordion Item 1
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
@@ -77,7 +77,7 @@ function DisableMultipleAccordion() {
           Accordion Item 2
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item3">
@@ -85,7 +85,7 @@ function DisableMultipleAccordion() {
           Accordion Item 3
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -103,7 +103,7 @@ function DisableCollapseLastAccordion() {
           Accordion Item 1
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
@@ -111,7 +111,7 @@ function DisableCollapseLastAccordion() {
           Accordion Item 2
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item3">
@@ -119,7 +119,7 @@ function DisableCollapseLastAccordion() {
           Accordion Item 3
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -137,7 +137,7 @@ function DisableBothAccordion() {
           Accordion Item 1
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item2">
@@ -145,7 +145,7 @@ function DisableBothAccordion() {
           Accordion Item 2
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem id="item3">
@@ -153,7 +153,7 @@ function DisableBothAccordion() {
           Accordion Item 3
         </AccordionHeader>
         <AccordionPanel>
-          Hello world!
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
@@ -179,7 +179,7 @@ function RenderPropAccordion() {
           </AccordionHeader>
           <AccordionPanel>
             { ({ id, headerLevel, allowMultiple, allowCollapseLast }) => (
-              <ul>
+              <ul className="mb-4">
                 <li><code>id</code> = <code>{ id }</code></li>
                 <li><code>headerLevel</code> = <code>{ headerLevel }</code></li>
                 <li><code>allowMultiple</code> = <code>{ allowMultiple.toString() }</code></li>
@@ -212,8 +212,8 @@ function DisableItemAccordion() {
           </AccordionHeader>
           <AccordionPanel>
             { ({ id, toggleDisabled, getIsDisabled }) => (
-              <button type="button" onClick={ () => toggleDisabled(id) }>
-                { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
+              <button className="button is-primary mb-4" type="button" onClick={ () => toggleDisabled(id) }>
+                { getIsDisabled(id) ? 'Enable' : 'Disable' } Item
               </button>
             ) }
           </AccordionPanel>
@@ -242,7 +242,7 @@ function InitializeStateAccordion(props: AccordionProps) {
         </AccordionHeader>
         <AccordionPanel>
           { ({ id, getIsExpanded, getIsDisabled }) => (
-            <ul>
+            <ul className="mb-4">
               <li><code>getIsExpanded(id)</code> = <code>{ getIsExpanded(id).toString() }</code></li>
               <li><code>getIsDisabled(id)</code> = <code>{ getIsDisabled(id).toString() }</code></li>
             </ul>
