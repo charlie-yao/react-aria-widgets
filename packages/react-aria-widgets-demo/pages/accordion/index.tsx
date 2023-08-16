@@ -550,7 +550,10 @@ const STYLED_ACCORDION_CSS_EXAMPLE =
 const CUSTOM_ACCORDION_EXAMPLE =
 `import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';
 
-function CustomAccordion({ children, ...rest }) {
+function CustomAccordion({
+  children = null,
+  ...rest
+}) {
   const contextValue = useAccordion(rest);
 
   return (
@@ -646,9 +649,9 @@ function CustomAccordionPanel({ children = null, id }) {
 }`;
 
 const MY_ACCORDION_EXAMPLE =
-`import CustomAccordion from "./CustomAccordion";
-import CustomAccordionHeader from "./CustomAccordionHeader";
-import CustomAccordionPanel from "./CustomAccordionPanel";
+`import CustomAccordion from './CustomAccordion';
+import CustomAccordionHeader from './CustomAccordionHeader';
+import CustomAccordionPanel from './CustomAccordionPanel';
 
 function MyAccordion(props) {
   return (
@@ -1021,7 +1024,7 @@ function AccordionPage() {
         <h4>Creating Custom Headers and Panels</h4>
         <p>
           You can use the hook <code>useAccordionContext</code> to read and modify the accordion state that
-          gets sent down from <code>&lt;ControlledAccordion&gt;</code>. We'll be using it to create our own
+          gets sent down from <code>&lt;ControlledAccordion&gt;</code>. We&apos;ll be using it to create our own
           accordion headers and panels.
         </p>
         <p>
@@ -1039,12 +1042,12 @@ function AccordionPage() {
         </SyntaxHighlighter>
         <h4>Putting It All Together</h4>
         <p>
-          You'll notice that we didn't create another version of <code>&lt;AccordionItem&gt;</code>. Its main
-          job is to make sure that the header and panel both have the same ID, so we won't be making a custom
+          You&apos;ll notice that we didn&apos;t create another version of <code>&lt;AccordionItem&gt;</code>. Its main
+          job is to make sure that the header and panel both have the same ID, so we won&apos;t be making a custom
           version of it for the sake of this example.
         </p>
         <p>
-          Here's the completed accordion:
+          Here&apos;s the completed accordion:
         </p>
         <MyAccordion headerLevel={ 5 } />
         <SyntaxHighlighter language="tsx">

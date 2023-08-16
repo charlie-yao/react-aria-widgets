@@ -8,7 +8,10 @@ interface CustomAccordionProps extends UseAccordion {
   children?: ReactNode;
 }
 
-export default function CustomAccordion({ children, ...rest }: CustomAccordionProps) {
+export default function CustomAccordion({
+  children = null,
+  ...rest
+}: CustomAccordionProps) {
   const contextValue = useAccordion(rest);
 
   return (

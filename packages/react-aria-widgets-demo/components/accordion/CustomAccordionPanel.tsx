@@ -6,11 +6,11 @@ import type { ReactNode } from 'react';
 interface CustomAccordionPanelProps {
   children?: ReactNode;
   id: string;
-};
+}
 
 export default function CustomAccordionPanel({
   children = null,
-  id
+  id,
 }: CustomAccordionPanelProps) {
   const { getIsExpanded } = useAccordionContext();
   const isExpanded = getIsExpanded(id);

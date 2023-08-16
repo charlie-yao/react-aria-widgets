@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-no-bind */
+
 import { useAccordionContext } from 'react-aria-widgets/accordion';
 
 //Types
-import { ReactNode, ElementType, MouseEventHandler, KeyboardEventHandler } from 'react';
+import type { ReactNode, ElementType, MouseEventHandler, KeyboardEventHandler } from 'react';
 
 interface CustomAccordionHeaderProps {
   children?: ReactNode;
@@ -10,7 +12,7 @@ interface CustomAccordionHeaderProps {
 
 export default function CustomAccordionHeader({
   children = null,
-  id
+  id,
 }: CustomAccordionHeaderProps) {
   const {
     headerLevel,
