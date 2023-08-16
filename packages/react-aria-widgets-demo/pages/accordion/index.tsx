@@ -266,7 +266,7 @@ function FocusAccordion() {
       { ITEMS.map((id, index) => (
         <AccordionItem key={ id } id={ id }>
           <AccordionHeader>
-            Accordion Item { index + 1 }: ID = { id }
+            Accordion Item { index + 1 }: ID = <code>{ id }</code>
           </AccordionHeader>
           <AccordionPanel>
             { (args) => <FocusForm { ...args } /> }
@@ -288,29 +288,56 @@ function FocusForm({
   const [ inputItemId, setInputItemId ] = useState('');
 
   return (
-    <>
-      <form onSubmit={ (e) => { e.preventDefault(); focusItemId(inputItemId); }}>
-        <label htmlFor={ \`$\{id}-focus-input\` }>Item ID:</label> 
-        <input
-          id={ \`$\{id}-focus-input\` }
-          type="text"
-          onChange={ (e) => setInputItemId(e.target.value) }
-        />
-        <button type="submit">Focus Item</button>
-      </form>
-      <button type="button" onClick={ () => focusFirstItem() }>
-        Focus First Item
-      </button>
-      <button type="button" onClick={ () => focusPrevItem(id) }>
-        Focus Previous Item
-      </button>
-      <button type="button" onClick={ () => focusNextItem(id) }>
-        Focus Next Item
-      </button>
-      <button type="button" onClick={ () => focusLastItem() }>
-        Focus Last Item
-      </button>
-    </>
+    <form className="mb-4" onSubmit={ (e) => { e.preventDefault(); focusItemId(inputItemId); } }>
+      <div className="field is-horizontal">
+        <div className="field-label is-normal">
+          <label className="label" htmlFor={ \`$\{id}-focus-input\` }>
+            Item ID:
+          </label>
+        </div>
+        <div className="field-body">
+          <div className="field">
+            <div className="control">
+              <input
+                id={ \`$\{id}-focus-input\` }
+                type="text"
+                onChange={ (e) => setInputItemId(e.target.value) }
+                className="input"
+              />
+            </div>
+          </div>
+          <div className="field">
+            <div className="control">
+              <button className="button is-primary" type="submit">
+                Focus Item
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="field is-grouped is-grouped-centered">
+        <div className="control">
+          <button className="button" type="button" onClick={ () => focusFirstItem() }>
+            Focus First Item
+          </button>
+        </div>
+        <div className="control">
+          <button className="button" type="button" onClick={ () => focusPrevItem(id) }>
+            Focus Previous Item
+          </button>
+        </div>
+        <div className="control">
+          <button className="button" type="button" onClick={ () => focusNextItem(id) }>
+            Focus Next Item
+          </button>
+        </div>
+        <div className="control">
+          <button className="button" type="button" onClick={ () => focusLastItem() }>
+            Focus Last Item
+          </button>
+        </div>
+      </div>
+    </form>
   );
 }`;
 
