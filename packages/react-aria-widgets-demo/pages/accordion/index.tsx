@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //Components
 import SubNav from '../../components/accordion/SubNav';
@@ -13,26 +12,6 @@ import FocusAccordion from '../../components/accordion/FocusAccordion';
 import CallbackAccordion from '../../components/accordion/CallbackAccordion';
 import RemoteControlAccordion from '../../components/accordion/RemoteControlAccordion';
 import StyledAccordion from '../../components/accordion/StyledAccordion';
-
-//Misc.
-import {
-  CustomAccordionExample,
-  StyledAccordionHeaderExample,
-  StyledAccordionPanelExample,
-  CustomAccordionHeaderExample,
-  CustomAccordionPanelExample,
-  customRenderFunctionExample,
-} from '../../utils/accordionExamples';
-
-/*
-const CustomAccordion = dynamic(
-  () => import('../../components/accordion/CustomAccordion'),
-  {
-    ssr: false,
-    loading: () => <p>Loading, please wait...</p>,
-  },
-);
-*/
 
 const IMPORT_EXAMPLE =
 `import { Accordion } from 'react-aria-widgets';
@@ -889,184 +868,21 @@ function AccordionPage() {
           Unfortunately, at this time, if you wish you use the <code>hidden</code> attribute to collapse your panels,
           React ARIA Widgets doesn't have a good first-class API for dynamically applying it. You can create
           your own accordion panel implementation using the hooks provided, but it&apos;s admittedly awkward
-          to do that just for one HTML attribute. Still, it's arguable that, in most cases, 
+          to do that just for one HTML attribute. Still, it's arguable that in most cases, 
           using <code>display: none;</code> has better semantics that <code>hidden</code>. For more information,
           see the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link>.
         </p>
         <h3 id="further-customization">
           Further Customization
         </h3>
-        <h3 id="customization">Customization</h3>
         <p>
-          <code>&lt;Accordion&gt;</code> uses the higher-order component (HOC) <code>withAccordionManager()</code>,
-          which handles all of the stateful logic for an accordion. This HOC can be
-          used independently of the other accordion components in React ARIA Widgets, allowing developers to
-          create their own accordion implementations.
+          React ARIA Widgets exposes all of the hooks, contexts, components, etc. that it uses, allowing you to
+          create your own accordion implementations.
         </p>
+        <h4>Creating a custom <code>&lt;Accordion&gt;</code></h4>
         <p>
-          <code>&lt;Accordion&gt;</code> and <code>&lt;AccordionSection&gt;</code> provide
-          some conveniences though, such as event handlers and indices for each header/panel combination.
-          Additionally, <code>&lt;AccordionSection&gt;</code> accepts either React nodes or a
-          render function as its children, and automatically passes down all of the fields and methods
-          it receives from <code>&lt;Accordion&gt;</code> (and, by extension, <code>withAccordionManager()</code>)
-          to them. In other words, for developers who wish to use those components, but
-          find <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
-          be insufficiently flexible, they can create their own accordion header or panel
-          implementations.
-        </p>
-        <p>
-          React ARIA Widgets also provides
-          the <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code> components
-          that can be used independently of the HOC or other components. Unlike the non-base
-          versions, they exist primarily to simplify which HTML and ARIA attributes are needed to conform to
-          the APG.
-        </p>
-        <p>
-          There are a few things to keep in mind when making custom implementations, though:
-        </p>
-        <ul>
-          <li>
-            <p>
-              When using <code>withAccordionManager()</code>, any header button that controls a
-              particular accordion panel must use the <code>setHeaderRef()</code> callback
-              ref. Otherwise, focus management will not work.
-            </p>
-          </li>
-          <li>
-            <p>
-              If you wish to use the event handlers provided
-              by <code>&lt;Accordion&gt;</code>, the header button must have
-              the HTML attributes <code>id</code> and <code>data-index</code> with values
-              corresponding to the props provided by its parent <code>&lt;AccordionSection&gt;</code>.
-            </p>
-          </li>
-          <li>
-            <p>
-              Be careful when
-              using <code>headerProps</code> or <code>buttonProps</code> with <code>&lt;AccordionHeader&gt;</code> or <code>&lt;BaseAccordionHeader&gt;</code> as
-              one can accidentally overwrite which props should actually be passed down.
-            </p>
-          </li>
-          <li>
-            <p>
-              If <code>&lt;BaseAccordionPanel&gt;</code> is given a prop that doesn&apos;t have an
-              already-programmed use, it&apos;ll be spread onto the underlying element as an HTML attribute.
-            </p>
-          </li>
-        </ul>
-        <p>
-          Developers should also be aware that there may be additional note-worthy details
-          mentioned in the API documentation below.
-        </p>
-        <h4>Styling</h4>
-        <p>
-          <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> can
-          be styled simply by passing in props. For custom implementations,
-          React ARIA Widgets ultimately places no restrictions on the underlying HTML
-          (though we recommend taking care to adhere to the APG!),
-          meaning developers have complete control over how their accordions are styled.
-        </p>
-        <p>
-          By default, React ARIA Widgets uses <code>display: none !important</code> to represent the
-          collapsed state. Custom implementations allow developers to use their own CSS,
-          styles, or even options like the HTML attribute <code>hidden</code> (though that
-          may not be semantically appropriate - see
-          the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link> for more
-          information).
-        </p>
-        { /* <CustomAccordion /> */ }
-        <Tabs>
-          <TabList>
-            <Tab>
-              <code>CustomAccordion.jsx</code>
-            </Tab>
-            <Tab>
-              <code>StyledAccordionHeader.jsx</code>
-            </Tab>
-            <Tab>
-              <code>StyledAccordionPanel.jsx</code>
-            </Tab>
-            <Tab>
-              <code>CustomAccordionHeader.jsx</code>
-            </Tab>
-            <Tab>
-              <code>CustomAccordionPanel.jsx</code>
-            </Tab>
-            <Tab>
-              <code>customRenderFunction.js</code>
-            </Tab>
-          </TabList>
-          <TabPanel>
-            <SyntaxHighlighter language="jsx">
-              { CustomAccordionExample }
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel>
-            <SyntaxHighlighter language="jsx">
-              { StyledAccordionHeaderExample }
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel>
-            <SyntaxHighlighter language="jsx">
-              { StyledAccordionPanelExample }
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel>
-            <SyntaxHighlighter language="jsx">
-              { CustomAccordionHeaderExample }
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel>
-            <SyntaxHighlighter language="jsx">
-              { CustomAccordionPanelExample }
-            </SyntaxHighlighter>
-          </TabPanel>
-          <TabPanel>
-            <SyntaxHighlighter language="jsx">
-              { customRenderFunctionExample }
-            </SyntaxHighlighter>
-          </TabPanel>
-        </Tabs>
-        <p>
-          This example shows four different ways of creating custom accordions.
-        </p>
-        <p>
-          The first accordion section shows a simple way to add styling by passing in
-          props to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
-        </p>
-        <p>
-          The second accordion section shows how to add default styles
-          to <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> by
-          using component composition. Here, we don&apos;t have to worry about using <code>setHeaderRef()</code> or
-          adding the <code>id</code> and <code>data-index</code> attributes because that&apos;s already being
-          handled by <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
-        </p>
-        <p>
-          Note that we can&apos;t simply
-          spread <code>props</code> onto <code>&lt;AccordionHeader&gt;</code> in <code>&lt;StyledAccordionHeader&gt;</code>.
-          We have to make sure that the merged versions
-          of <code>headerProps</code> and <code>buttonProps</code> are ultimately what gets
-          passed down. Otherwise, we would lose either the styling or any of the props we
-          may be trying to pass down in those objects.
-        </p>
-        <p>
-          The third accordion section shows how to customize sections by composing
-          over <code>&lt;BaseAccordionHeader&gt;</code> and <code>&lt;BaseAccordionPanel&gt;</code>.
-          These components give developers greater control, but it means we have to manually
-          set <code>setHeaderRef()</code> and add the <code>id</code> and <code>data-index</code> attributes
-          (because we&apos;re using the event handlers provided by <code>&lt;Accordion&gt;</code>)
-          while also being mindful of how we&apos;re passing
-          down <code>headerProps</code> and <code>buttonProps</code> to <code>&lt;BaseAccordionHeader&gt;</code>.
-          Additionally, because <code>&lt;AccordionSection&gt;</code> automatically passes down
-          numerous props to its children, we have to make sure <code>&lt;BaseAccordionPanel&gt;</code> won&apos;t
-          spread them onto the underlying HTML element.
-        </p>
-        <p>
-          The fourth accordion section shows how to use a render function. The render function
-          has access to the same props as the other examples, and this example bypasses some of the above
-          caveats by implementing its own event handlers and directly passing styles to the
-          HTML elements. <code>setAccordionRef()</code> still needs to be set, however, in order to
-          use the methods provided by <code>withAccordionManager()</code>.
+          As mentioned in the <a href="#controlling-state">Controlling State</a> section, one can simply
+          combine <code>useAccordion</code> and <code>&lt;ControlledAccordion&gt;</code>.
         </p>
         <h2 id="api">API</h2>
         <h3 id="hocs-and-hooks">Higher-Order Components and Hooks</h3>
