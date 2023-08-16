@@ -411,7 +411,7 @@ function RemoteControlAccordion(props) {
           Accordion Item { index + 1 }: Disabled = <code>{ getIsDisabled(id).toString() }</code>
         </AccordionHeader>
         <AccordionPanel>
-          Hello world! 
+          <p className="mb-4">Hello world!</p>
         </AccordionPanel>
       </AccordionItem>
     );
@@ -421,15 +421,15 @@ function RemoteControlAccordion(props) {
     <>
       <form onSubmit={ e => e.preventDefault() } style={{ paddingBottom: '1rem' }}>
         <fieldset className="field is-grouped">
-          <legend>Expand/Collapse Items</legend>
+          <legend className="has-text-weight-semibold">Expand/Collapse Items</legend>
           { toggleExpandButtons }
         </fieldset>
         <fieldset className="field is-grouped">
-        <legend>Enable/Disable Items</legend>
-          { toggleDisableButtons }
-        </fieldset>
+          <legend className="has-text-weight-semibold">Enable/Disable Items</legend>
+            { toggleDisableButtons }
+          </fieldset>
         <fieldset className="field is-grouped">
-          <legend>Focus Items</legend>
+          <legend className="has-text-weight-semibold">Focus Items</legend>
           { focusButtons }
         </fieldset>
       </form>
