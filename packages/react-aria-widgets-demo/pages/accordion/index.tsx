@@ -972,7 +972,7 @@ function AccordionPage() {
           Styling
         </h3>
         <p>
-          There are a few different ways to style <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>.
+          There are a few different ways to style <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>:
         </p>
         <ul>
           <li>Write CSS that targets the default classes applied by React ARIA Widgets</li>
@@ -1004,6 +1004,7 @@ function AccordionPage() {
             <thead>
               <tr>
                 <th scope="col">Component</th>
+                <th scope="col">HTML Element</th>
                 <th scope="col">Default CSS Class</th>
                 <th scope="col">State Selector</th>
                 <th scope="col">Description</th>
@@ -1011,10 +1012,13 @@ function AccordionPage() {
             </thead>
             <tbody>
               <tr>
-                <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <td rowSpan={ 2 }>
                   <code>&lt;AccordionHeader&gt;</code>
                 </td>
-                <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <td rowSpan={ 2 }>
+                  <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>
+                </td>
+                <td rowSpan={ 2 }>
                   <code>react-aria-widgets-accordion-header</code>
                 </td>
                 <td><code>[data-expanded=true | false]</code></td>
@@ -1022,13 +1026,16 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>[data-disabled=true | false]</code></td>
-                <td>Whether the panel is enabled or disabled.</td>
+                <td>Whether toggling visibility is enabled or disabled.</td>
               </tr>
               <tr>
-                <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <td rowSpan={ 2 }>
                   <code>&lt;AccordionHeader&gt;</code>
                 </td>
-                <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <td rowSpan={ 2 }>
+                  <code>&lt;button&gt;</code>
+                </td>
+                <td rowSpan={ 2 }>
                   <code>react-aria-widgets-accordion-button</code>
                 </td>
                 <td><code>[aria-expanded=true | false]</code></td>
@@ -1036,13 +1043,16 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>[aria-disabled=true | false]</code></td>
-                <td>Whether the panel is enabled or disabled.</td>
+                <td>Whether toggling visibility is enabled or disabled.</td>
               </tr>
               <tr>
-                <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <td rowSpan={ 2 }>
                   <code>&lt;AccordionPanel&gt;</code>
                 </td>
-                <td rowSpan={ 2 } style={{ verticalAlign: 'middle' }}>
+                <td rowSpan={ 2 }>
+                  <code>&lt;section&gt;</code> by default
+                </td>
+                <td rowSpan={ 2 }>
                   <code>react-aria-widgets-accordion-panel</code>
                 </td>
                 <td><code>[data-expanded=true | false]</code></td>
@@ -1050,13 +1060,13 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>[data-disabled=true | false]</code></td>
-                <td>Whether the panel is enabled or disabled.</td>
+                <td>Whether toggling visibility is enabled or disabled.</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p>
-          The default rendered markup looks something like this:
+          The rendered markup looks something like this:
         </p>
         <SyntaxHighlighter language="tsx">
           { ACCORDION_HTML_MARKUP_EXAMPLE }
