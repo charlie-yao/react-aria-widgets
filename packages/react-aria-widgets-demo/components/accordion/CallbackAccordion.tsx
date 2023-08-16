@@ -29,8 +29,8 @@ function CallbackAccordion(props: AccordionProps) {
           </AccordionHeader>
           <AccordionPanel>
             { ({ id, toggleDisabled, getIsDisabled }) => (
-              <button type="button" onClick={ () => toggleDisabled(id) }>
-                { getIsDisabled(id) ? 'Enable' : 'Disable' } <code>{ id }</code>
+              <button className="button is-primary mb-4" type="button" onClick={ () => toggleDisabled(id) }>
+                { getIsDisabled(id) ? 'Enable' : 'Disable' } Item
               </button>
             ) }
           </AccordionPanel>
