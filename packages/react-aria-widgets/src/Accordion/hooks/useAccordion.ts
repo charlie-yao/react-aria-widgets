@@ -39,6 +39,8 @@ export interface UseAccordion {
   onFocusChange?: OnFocusChange | undefined;
 }
 
+export type AccordionMembers = ReturnType<typeof useAccordion>;
+
 function _getIsExpanded(id: string, expandedItems: Set<string>) {
   return expandedItems.has(id);
 }

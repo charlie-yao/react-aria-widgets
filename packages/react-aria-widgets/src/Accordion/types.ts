@@ -2,7 +2,7 @@ import type React from 'react';
 
 //Types
 import type { ValidHTMLHeaderLevels } from '../types';
-import type { AccordionContextType } from './contexts/AccordionContext';
+import type { AccordionMembers } from './hooks/useAccordion';
 import type { AccordionItemContextType } from './contexts/AccordionItemContext';
 
 //Misc.
@@ -18,6 +18,6 @@ export interface AccordionRenderStyleData {
   isDisabled: boolean;
 }
 
-export type AccordionRenderFunction = (args: AccordionContextType & AccordionItemContextType) => React.ReactNode;
+export type AccordionRenderFunction = (args: AccordionMembers & AccordionItemContextType) => React.ReactNode;
 export type AccordionRenderClass = (args: AccordionRenderStyleData) => string;
 export type AccordionRenderStyle = (args: AccordionRenderStyleData) => React.CSSProperties;

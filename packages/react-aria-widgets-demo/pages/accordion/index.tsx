@@ -763,6 +763,30 @@ const HEADER_PROPS_EXAMPLE =
 
 const MDN_DISABLED_LINK = 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled';
 
+const ON_FOCUS_CHANGE_TYPE =
+`(args: {
+  elem: HTMLButtonElement | HTMLElement | null,
+  index: number,
+  id: string,
+}) => void;`;
+
+const USE_ACCORDION_TYPE_EXAMPLE =
+`import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';
+import type { UseAccordion } from 'react-aria-widgets/accordion';
+import type { PropsWithChildren } from 'react';
+
+type CustomAccordionProps = PropsWithChildren<UseAccordion>;
+
+function CustomAccordion({ children, ...rest }: CustomAccordionProps) {
+  const contextValue = useAccordion(rest);
+
+  return (
+    <ControlledAccordion contextValue={ contextValue }>
+      { children }
+    </ControlledAccordion>
+  )
+}`;
+
 function AccordionPage() {
   return (
     <>
@@ -1143,6 +1167,233 @@ function AccordionPage() {
           { MY_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
         <h2 id="api">API</h2>
+        <h3 id="hooks">Hooks</h3>
+        <h4 id="use-accordion"><code>useAccordion</code></h4>
+        <p>
+          <code>useAccordion</code> is the hook that provides the state and functionality for the accordion.
+          It accepts a number of arguments that help determine the behavior of the accordion, and returns
+          methods that get or set the state.
+        </p>
+        <h5>Arguments</h5>
+        <p>
+          This hook accepts an object containing the following properties:
+        </p>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>allowMultiple</code></td> 
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td></td>
+                <td>Controls whether or not multiple panels can be expanded at the same time.</td>
+              </tr>
+              <tr>
+                <td><code>allowCollapseLast</code></td> 
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td></td>
+                <td>Controls whether or not the last expanded panel can be collapsed.</td>
+              </tr>
+              <tr>
+                <td><code>headerLevel</code></td> 
+                <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
+              </tr>
+              <tr>
+                <td><code>initialExpanded</code></td> 
+                <td><code>string[]</code></td>
+                <td><code>[]</code></td>
+                <td></td>
+                <td>
+                  Determines which accordion items (identified by their ID) should be expanded on the
+                  initial mount. If <code>allowMultiple</code> is off, the hook naively picks the first
+                  element in the array.
+                </td>
+              </tr>
+              <tr>
+                <td><code>initialDisabled</code></td> 
+                <td><code>string[]</code></td>
+                <td><code>[]</code></td>
+                <td></td>
+                <td>
+                  Determines which accordion items (identified by their ID) should be prevented from
+                  expanding or collapsing on the initial mount.
+                </td>
+              </tr>
+              <tr>
+                <td><code>onToggleExpanded</code></td> 
+                <td><code>(expandedItems: Set&lt;string&gt;) =&gt; void;</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  Callback to be fired after an item is expanded or collapsed. Receives the currently-expanded
+                  item IDs as an argument.
+                </td>
+              </tr>
+              <tr>
+                <td><code>onToggleDisabled</code></td> 
+                <td><code>(disabledItems: Set&lt;string&gt;) =&gt; void;</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  Callback to be fired after an item is enabled/disabled. Receives the currently-disabled
+                  item IDs as an argument.
+                </td>
+              </tr>
+              <tr>
+                <td><code>onFocusItem</code></td> 
+                <td><code>{ ON_FOCUS_CHANGE_TYPE }</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  Callback to be fired after an item receives focus. Note that this only runs when using
+                  one of the focus methods provided by this hook.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The type for this object is exported as <code>UseAccordion</code> and could be used to help implement
+          custom accordions. For example:
+        </p>
+        <SyntaxHighlighter language="tsx">
+          { USE_ACCORDION_TYPE_EXAMPLE }
+        </SyntaxHighlighter>
+        <h5>Return Value</h5>
+        <p>
+          This hook returns an object with the following properties:
+        </p>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td><code>allowMultiple</code></td>
+                  <td><code>boolean</code></td>
+                  <td>Informs downstream components whether or not multiple panels can be expanded at the same time.</td>
+              </tr>
+              <tr>
+                  <td><code>allowCollapselast</code></td>
+                  <td><code>boolean</code></td>
+                  <td>Informs downstream components whether or not the last expanded panel can be collapsed.</td>
+              </tr>
+              <tr>
+                  <td><code>headerLevel</code></td>
+                  <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
+                  <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
+              </tr>
+              <tr>
+                  <td><code>getIsExpanded</code></td>
+                  <td><code>(id: string) =&gt; boolean</code></td>
+                  <td>Returns whether an accordion item is currently expanded.</td>
+              </tr>
+              <tr>
+                  <td><code>getIsDisabled</code></td>
+                  <td><code>(id: string) =&gt; boolean</code></td>
+                  <td>Returns whether an accordion item is currently prevented from being expanded/collapsed.</td>
+              </tr>
+              <tr>
+                  <td><code>toggleExpanded</code></td>
+                  <td><code>(id: string) =&gt; void</code></td>
+                  <td>Expands/collapses an accordion item.</td>
+              </tr>
+              <tr>
+                  <td><code>toggleDisabled</code></td>
+                  <td><code>(id: string) =&gt; void</code></td>
+                  <td>Prevents/allows an accordion item from being expanded/collapsed.</td>
+              </tr>
+              <tr>
+                <td><code>pushItemRef</code></td>
+                <td><code>(elem: HTMLButtonElement | HTMLElement | null, id: string) =&gt; void;</code></td>
+                <td>
+                  Registers an accordion item. The hook must be aware of each
+                  header button in the accordion to manage focus.
+                </td>
+              </tr>
+              <tr>
+                <td><code>focusItemIndex</code></td>
+                <td><code>(index: number) =&gt; void</code></td>
+                <td>
+                  Focuses an accordion item based on its index.
+                </td>
+              </tr>
+              <tr>
+                <td><code>focusItemId</code></td>
+                <td><code>(id: string) =&gt; void</code></td>
+                <td>
+                  Focuses an accordion item based on its ID.
+                </td>
+              </tr>
+              <tr>
+                <td><code>focusPrevItem</code></td>
+                <td><code>(id: string) =&gt; void</code></td>
+                <td>
+                  Focuses the previous accordion item (relative to the supplied ID).
+                </td>
+              </tr>
+              <tr>
+                <td><code>focusNextItem</code></td>
+                <td><code>(id: string) =&gt; void</code></td>
+                <td>
+                  Focuses the next accordion item (relative to the supplied ID).
+                </td>
+              </tr>
+              <tr>
+                <td><code>focusFirstItem</code></td>
+                <td><code>() =&gt; void</code></td>
+                <td>
+                  Focuses the first accordion item.
+                </td>
+              </tr>
+              <tr>
+                <td><code>focusLastItem</code></td>
+                <td><code>() =&gt; void</code></td>
+                <td>
+                  Focuses the last accordion item.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The type for this object is exported as <code>AccordionMembers</code>.
+        </p>
+        <h4 id="use-accordion-context"><code>useAccordionContext</code></h4>
+        <p>
+          <code>&lt;Accordion&gt;</code> and <code>&lt;ControlledAccordion&gt;</code> pass down the values
+          and functions returned from <code>useAccordion</code> via the context API. Specifically, they
+          use the context <code>AccordionContext</code>, and this hook is used to read from that context.
+        </p>
+        <h5>Arguments</h5>
+        <p>This hook doesn't accept any arguments.</p>
+        <h5>Return Value</h5>
+        <p>
+          This hook has the same return value as <a href="#use-accordion"><code>useAccordion</code></a>&apos;s
+          return value.
+        </p>
+        <h4 id="use-accordion-item-context"><code>useAccordionItemContext</code></h4>
         <h3 id="hocs-and-hooks">Higher-Order Components and Hooks</h3>
         <h4 id="with-accordion-manager">withAccordionManager()</h4>
         <p>

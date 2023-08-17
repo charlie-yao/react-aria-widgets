@@ -8,10 +8,10 @@ import { AccordionProvider } from '../contexts/AccordionContext';
 import { VALID_HTML_HEADER_LEVELS } from '../../utils';
 
 //Types
-import type { AccordionContextType } from '../contexts/AccordionContext';
+import type { AccordionMembers } from '../hooks/useAccordion';
 
 export type ControlledAccordionProps = React.PropsWithChildren<{
-  contextValue: AccordionContextType;
+  contextValue: AccordionMembers;
 }>;
 
 export const accordionContextValuePropType = PropTypes.exact({
