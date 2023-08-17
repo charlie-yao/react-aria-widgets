@@ -1331,6 +1331,11 @@ function AccordionPage() {
         <h4 id="controlled-accordion">
           &lt;ControlledAccordion&gt;
         </h4>
+        <p>
+          Acts similarly to <code>&lt;Accordion&gt;</code> in that its role is to act as a context provider
+          for the accordion's fields and methods. However, unlike <code>&lt;Accordion&gt;</code>, it doesn't
+          use the <code>useAccordion</code> hook, allowing you a greater degree of flexibility.
+        </p>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1345,16 +1350,24 @@ function AccordionPage() {
             </thead>
             <tbody>
               <tr>
-                <td><code></code></td>
-                <td><code></code></td>
-                <td><code></code></td>
-                <td></td>
-                <td></td>
+                <td><code>contextValue</code></td>
+                <td><code>AccordionMembers</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>
+                  This should be the return value of <code>useAccordion</code>.
+                </td>
               </tr>
-
             </tbody>
           </table>
         </div>
+        <h5>Types</h5>
+        <p>
+          The type definitions for this component's props are exported as <code>ControlledAccordionProps</code>.
+        </p>
         <h4 id="accordion-header">
           &lt;AccordionHeader&gt;
         </h4>
