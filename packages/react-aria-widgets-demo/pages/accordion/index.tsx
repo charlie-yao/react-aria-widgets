@@ -1156,6 +1156,142 @@ function AccordionPage() {
         <h2 id="api">
           API
         </h2>
+        <h3 id="components">
+          Components
+        </h3>
+        <h4 id="accordion-component">
+          &lt;Accordion&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <h4 id="accordion-item">
+          &lt;AccordionItem&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <h4 id="controlled-accordion">
+          &lt;ControlledAccordion&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <h4 id="accordion-header">
+          &lt;AccordionHeader&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <h4 id="accordion-panel">
+          &lt;AccordionPanel&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <h4 id="base-accordion-header">
+          &lt;BaseAccordionHeader&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <h4 id="base-accordion-panel">
+          &lt;BaseAccordionPanel&gt;
+        </h4>
+        <h5>Props</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Default Value</th>
+                <th scope="col">Required</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
         <h3 id="hooks">
           Hooks
         </h3>

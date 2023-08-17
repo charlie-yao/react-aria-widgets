@@ -29,11 +29,23 @@ export default function SubNav() {
           <a href="#api">API</a>
           <ul>
             <li>
+              <a href="#components">Components</a>
+              <ul>
+                <li><a href="#accordion-component">&lt;Accordion&gt;</a></li>
+                <li><a href="#accordion-item">&lt;AccordionItem&gt;</a></li>
+                <li><a href="#controlled-accordion">&lt;ControlledAccordion&gt;</a></li>
+                <li><a href="#accordion-header">&lt;AccordionHeader&gt;</a></li>
+                <li><a href="#accordion-panel">&lt;AccordionPanel&gt;</a></li>
+                <li><a href="#base-accordion-header">&lt;BaseAccordionHeader&gt;</a></li>
+                <li><a href="#base-accordion-panel">&lt;BaseAccordionPanel&gt;</a></li>
+              </ul>
+            </li>
+            <li>
               <a href="#hooks">Hooks</a>
               <ul>
-                <a href="#use-accordion">useAccordion</a>
-                <a href="#use-accordion-context">useAccordionContext</a>
-                <a href="#use-accordion-item-context">useAccordionItemContext</a>
+                <li><a href="#use-accordion">useAccordion</a></li>
+                <li><a href="#use-accordion-context">useAccordionContext</a></li>
+                <li><a href="#use-accordion-item-context">useAccordionItemContext</a></li>
               </ul>
             </li>
             <li>
