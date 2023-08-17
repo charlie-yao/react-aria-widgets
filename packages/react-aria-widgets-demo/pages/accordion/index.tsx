@@ -1162,6 +1162,11 @@ function AccordionPage() {
         <h4 id="accordion-component">
           &lt;Accordion&gt;
         </h4>
+        <p>
+          Provides state and functionality to its constituent components. It passes this information down
+          via the context API (specifically <code>AccordionContext</code>), which can be read with the
+          hook <code>useAccordionContext</code>.
+        </p>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1175,12 +1180,110 @@ function AccordionPage() {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td><code>children</code></td>
+                <td><code>React.ReactNode</code></td>
+                <td><code>null</code></td>
+                <td></td>
+                <td>
+                  Technically allows for anything renderable by React, but you should provide components
+                  that represent the accordion's constituent headers and panels. You can
+                  use <code>&lt;AccordionItem&gt;</code> to represent a header/panel pair,
+                  and <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
+                  represent the headers and panels.
+                </td>
+              </tr>
+              <tr>
+                <td><code>allowMultiple</code></td>
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td></td>
+                <td>Determines whether or not multiple accordion items can be expanded at the same time.</td>
+              </tr>
+              <tr>
+                <td><code>allowCollapseLast</code></td>
+                <td><code>boolean</code></td>
+                <td><code>true</code></td>
+                <td></td>
+                <td>Determines whether or not the last expanded panel can be collapsed.</td>
+              </tr>
+              <tr>
+                <td><code>headerlevel</code></td>
+                <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
+              </tr>
+              <tr>
+                <td><code>initialExpanded</code></td> 
+                <td><code>string[]</code></td>
+                <td><code>[]</code></td>
+                <td></td>
+                <td>
+                  Determines which accordion items (identified by their ID) should be expanded on the
+                  initial mount. If <code>allowMultiple</code> is off, the hook naively picks the first
+                  element in the array.
+                </td>
+              </tr>
+              <tr>
+                <td><code>initialDisabled</code></td> 
+                <td><code>string[]</code></td>
+                <td><code>[]</code></td>
+                <td></td>
+                <td>
+                  Determines which accordion items (identified by their ID) should be prevented from
+                  expanding or collapsing on the initial mount.
+                </td>
+              </tr>
+              <tr>
+                <td><code>onToggleExpanded</code></td> 
+                <td><code>(expandedItems: Set&lt;string&gt;) =&gt; void;</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  Callback to be fired after an item is expanded or collapsed. Receives the currently-expanded
+                  item IDs as an argument.
+                </td>
+              </tr>
+              <tr>
+                <td><code>onToggleDisabled</code></td> 
+                <td><code>(disabledItems: Set&lt;string&gt;) =&gt; void;</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  Callback to be fired after an item is enabled/disabled. Receives the currently-disabled
+                  item IDs as an argument.
+                </td>
+              </tr>
+              <tr>
+                <td><code>onFocusItem</code></td> 
+                <td><code>{ ON_FOCUS_CHANGE_TYPE }</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  Callback to be fired after an item receives focus. Note that this only runs when using
+                  one of the focus methods provided by <code>useAccordion</code>.
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <h5>Types</h5>
+        <p>
+          The type definitions for this component's props are exported as <code>AccordionProps</code>.
+        </p>
         <h4 id="accordion-item">
           &lt;AccordionItem&gt;
         </h4>
+        <p>
+          Represents a header/panel pair. Helps ensure that they both have the same ID and generates
+          HTML IDs for attributes like <code>id</code> and <code>aria-labelledby</code>. Passes
+          information down through the context API (specifically <code>AccordionItemContext</code>),
+          which can be read with the hook <code>useAccordionItemContext</code>.
+        </p>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1194,9 +1297,37 @@ function AccordionPage() {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td><code>children</code></td>
+                <td><code>React.ReactNode</code></td>
+                <td><code>null</code></td>
+                <td></td>
+                <td>
+                  Technically allows for anything renderable by React, but you should pass in components
+                  that represent the accordion's header and panel
+                  (e.g. <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>).
+                </td>
+              </tr>
+              <tr>
+                <td><code>id</code></td>
+                <td><code>string</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>
+                  A string that uniquely identifies this header/panel pair. IDs do not have to be
+                  unique globally, but they do have to be unique amongst its siblings.
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <h5>Types</h5>
+        <p>
+          The type definitions for this component's props are exported as <code>AccordionItemProps</code>.
+        </p>
         <h4 id="controlled-accordion">
           &lt;ControlledAccordion&gt;
         </h4>
@@ -1213,6 +1344,14 @@ function AccordionPage() {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td><code></code></td>
+                <td><code></code></td>
+                <td><code></code></td>
+                <td></td>
+                <td></td>
+              </tr>
+
             </tbody>
           </table>
         </div>
