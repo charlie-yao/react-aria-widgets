@@ -1383,8 +1383,8 @@ function AccordionPage() {
         <h4 id="use-accordion-context"><code>useAccordionContext</code></h4>
         <p>
           <code>&lt;Accordion&gt;</code> and <code>&lt;ControlledAccordion&gt;</code> pass down the values
-          and functions returned from <code>useAccordion</code> via the context API. Specifically, they
-          use the context <code>AccordionContext</code>, and this hook is used to read from that context.
+          and functions returned from <code>useAccordion</code> via the context API, specifically
+          through <code>AccordionContext</code>. This hook is used to read from that context.
         </p>
         <h5>Arguments</h5>
         <p>This hook doesn't accept any arguments.</p>
@@ -1394,6 +1394,52 @@ function AccordionPage() {
           return value.
         </p>
         <h4 id="use-accordion-item-context"><code>useAccordionItemContext</code></h4>
+        <p>
+          <code>&lt;AccordionItem&gt;</code> passes down the IDs for its header and panel via
+          the context API, specifically through <code>AccordionItemContext</code>. This hook is
+          used to read from that context.
+        </p>
+        <h5>Arguments</h5>
+        <p>This hook doesn't accept any arguments.</p>
+        <h5>Return Value</h5>
+        <p>This hook returns an object with the following properties:</p>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>id</code></td>
+                <td><code>string</code></td>
+                <td>The accordion item's identifier. Only has to be unique amongst its sibling items.</td>
+              </tr>
+              <tr>
+                <td><code>headerHTMLId</code></td>
+                <td><code>string</code></td>
+                <td>
+                  A string ID used to identify the accordion header button via attributes
+                  like <code>id</code> and <code>aria-labelledby</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>panelHTMLId</code></td>
+                <td><code>string</code></td>
+                <td>
+                  A string ID used to identify the accordion panel via attributes
+                  like <code>id</code> and <code>aria-controls</code>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The type for this object is exported as <code>AccordionItemContextType</code>.
+        </p>
         <h3 id="hocs-and-hooks">Higher-Order Components and Hooks</h3>
         <h4 id="with-accordion-manager">withAccordionManager()</h4>
         <p>

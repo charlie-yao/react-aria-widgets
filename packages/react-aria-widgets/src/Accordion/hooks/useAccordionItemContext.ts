@@ -4,10 +4,10 @@ import { useContext } from 'react';
 import AccordionItemContext from '../contexts/AccordionItemContext';
 
 export default function useAccordionItemContext() {
-  const id = useContext(AccordionItemContext);
+  const ids = useContext(AccordionItemContext);
 
-  if(!id)
+  if(!ids)
     throw new Error('useAccordionItemContext received a falsy value when trying to consume an AccordionItemContext');
 
-  return id;
+  return ids;
 }
