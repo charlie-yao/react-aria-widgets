@@ -770,23 +770,6 @@ const ON_FOCUS_CHANGE_TYPE =
   id: string,
 }) => void;`;
 
-const USE_ACCORDION_TYPE_EXAMPLE =
-`import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';
-import type { UseAccordion } from 'react-aria-widgets/accordion';
-import type { PropsWithChildren } from 'react';
-
-type CustomAccordionProps = PropsWithChildren<UseAccordion>;
-
-function CustomAccordion({ children, ...rest }: CustomAccordionProps) {
-  const contextValue = useAccordion(rest);
-
-  return (
-    <ControlledAccordion contextValue={ contextValue }>
-      { children }
-    </ControlledAccordion>
-  )
-}`;
-
 function AccordionPage() {
   return (
     <>
@@ -794,7 +777,9 @@ function AccordionPage() {
         <title>Accordion - React ARIA Widgets</title>
       </Head>
       <article className="content container is-max-desktop">
-        <h1 id="accordion">Accordion</h1>
+        <h1 id="accordion">
+          Accordion
+        </h1>
         <p>
           From the
           { ' ' }
@@ -811,7 +796,9 @@ function AccordionPage() {
           content. Accordions are commonly used to reduce the need to scroll when presenting
           multiple sections of content on a single page.
         </blockquote>
-        <h2 id="usage-and-examples">Usage and Examples</h2>
+        <h2 id="usage-and-examples">
+          Usage and Examples
+        </h2>
         <p>
           Components and hooks for the accordion pattern can be imported directly from the package itself, or
           from the <code>/accordion</code> sub-module.
@@ -1166,9 +1153,15 @@ function AccordionPage() {
         <SyntaxHighlighter language="tsx">
           { MY_ACCORDION_EXAMPLE }
         </SyntaxHighlighter>
-        <h2 id="api">API</h2>
-        <h3 id="hooks">Hooks</h3>
-        <h4 id="use-accordion"><code>useAccordion</code></h4>
+        <h2 id="api">
+          API
+        </h2>
+        <h3 id="hooks">
+          Hooks
+        </h3>
+        <h4 id="use-accordion">
+          useAccordion
+        </h4>
         <p>
           <code>useAccordion</code> is the hook that provides the state and functionality for the accordion.
           It accepts a number of arguments that help determine the behavior of the accordion, and returns
@@ -1269,12 +1262,8 @@ function AccordionPage() {
           </table>
         </div>
         <p>
-          The type for this object is exported as <code>UseAccordion</code> and could be used to help implement
-          custom accordions. For example:
+          The type for this object is exported as <code>UseAccordion</code>.
         </p>
-        <SyntaxHighlighter language="tsx">
-          { USE_ACCORDION_TYPE_EXAMPLE }
-        </SyntaxHighlighter>
         <h5>Return Value</h5>
         <p>
           This hook returns an object with the following properties:
@@ -1380,7 +1369,9 @@ function AccordionPage() {
         <p>
           The type for this object is exported as <code>AccordionMembers</code>.
         </p>
-        <h4 id="use-accordion-context"><code>useAccordionContext</code></h4>
+        <h4 id="use-accordion-context">
+          useAccordionContext
+        </h4>
         <p>
           <code>&lt;Accordion&gt;</code> and <code>&lt;ControlledAccordion&gt;</code> pass down the values
           and functions returned from <code>useAccordion</code> via the context API, specifically
@@ -1393,7 +1384,9 @@ function AccordionPage() {
           This hook has the same return value as <a href="#use-accordion"><code>useAccordion</code></a>&apos;s
           return value.
         </p>
-        <h4 id="use-accordion-item-context"><code>useAccordionItemContext</code></h4>
+        <h4 id="use-accordion-item-context">
+          useAccordionItemContext
+        </h4>
         <p>
           <code>&lt;AccordionItem&gt;</code> passes down the IDs for its header and panel via
           the context API, specifically through <code>AccordionItemContext</code>. This hook is

@@ -31,9 +31,9 @@ export default function SubNav() {
             <li>
               <a href="#hooks">Hooks</a>
               <ul>
-                <a href="#use-accordion"><code>useAccordion</code></a>
-                <a href="#use-accordion-context"><code>useAccordionContext</code></a>
-                <a href="#use-accordion-item-context"><code>useAccordionItemContext</code></a>
+                <a href="#use-accordion">useAccordion</a>
+                <a href="#use-accordion-context">useAccordionContext</a>
+                <a href="#use-accordion-item-context">useAccordionItemContext</a>
               </ul>
             </li>
             <li>
