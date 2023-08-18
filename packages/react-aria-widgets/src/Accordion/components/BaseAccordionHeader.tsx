@@ -9,12 +9,12 @@ import type { ValidHTMLHeaderLevels } from '../../types';
 //Misc
 import { VALID_HTML_HEADER_LEVELS, VALID_HTML_HEADER_LEVELS_SET } from '../../utils';
 
-export type BaseHeaderProps = Omit<
+export type BaseAccordionHeaderElementProps = Omit<
   React.HTMLAttributes<HTMLHeadingElement>,
   'children' | 'dangerouslySetInnerHTML'
 >;
 
-export type BaseButtonProps = Omit<
+export type BaseAccordionButtonElementProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'children' |
   'dangerouslySetInnerHTML' |
@@ -35,8 +35,8 @@ export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   'aria-controls': string;
   'aria-expanded': boolean;
   'aria-disabled': boolean;
-  headerProps?: BaseHeaderProps;
-  buttonProps?: BaseButtonProps;
+  headerProps?: BaseAccordionHeaderElementProps;
+  buttonProps?: BaseAccordionButtonElementProps;
 }>;
 
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>(({

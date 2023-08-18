@@ -14,22 +14,22 @@ import type {
   AccordionRenderClass,
   AccordionRenderStyle,
 } from '../types';
-import type { BaseHeaderProps, BaseButtonProps } from './BaseAccordionHeader';
+import type { BaseAccordionHeaderElementProps, BaseAccordionButtonElementProps } from './BaseAccordionHeader';
 
-export type HeaderProps = {
+export type AccordionHeaderElementProps = {
   className?: string | AccordionRenderClass;
   style?: React.CSSProperties | AccordionRenderStyle;
-} & Omit<BaseHeaderProps, 'className' | 'style'>;
+} & Omit<BaseAccordionHeaderElementProps, 'className' | 'style'>;
 
-export type ButtonProps = {
+export type AccordionButtonElementProps = {
   className?: string | AccordionRenderClass;
   style?: React.CSSProperties | AccordionRenderStyle;
-} & Omit<BaseButtonProps, 'className' | 'style'>;
+} & Omit<BaseAccordionButtonElementProps, 'className' | 'style'>;
 
 export interface AccordionHeaderProps {
   children?: React.ReactNode | AccordionRenderFunction;
-  headerProps?: HeaderProps;
-  buttonProps?: ButtonProps;
+  headerProps?: AccordionHeaderElementProps;
+  buttonProps?: AccordionButtonElementProps;
 }
 
 function AccordionHeader({
