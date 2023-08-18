@@ -3,30 +3,19 @@ import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 //Types
 import type { ValidHTMLHeaderLevels } from '../../types';
 
-export type ExpandedItems = Set<string>;
-export type DisabledItems = Set<string>;
+type ExpandedItems = Set<string>;
+type DisabledItems = Set<string>;
 
-export type AccordionHeaderButtonElement = HTMLButtonElement | HTMLElement | null;
+type AccordionHeaderButtonElement = HTMLButtonElement | HTMLElement | null;
 
-export interface AccordionItemRef {
+interface AccordionItemRef {
   elem: AccordionHeaderButtonElement;
   id: string;
 }
 
-export type GetIsExpanded = (id: string) => boolean;
-export type GetIsDisabled = (id: string) => boolean;
-export type ToggleExpanded = (id: string) => void;
-export type ToggleDisabled = (id: string) => void;
-export type PushItemRef = (elem: AccordionHeaderButtonElement, id: string) => void;
-export type FocusItemIndex = (index: number) => void;
-export type FocusItemId = (id: string) => void;
-export type FocusPrevItem = (id: string) => void;
-export type FocusNextItem = (id: string) => void;
-export type FocusFirstItem = () => void;
-export type FocusLastItem = () => void;
-export type OnToggleExpanded = (expandedItems: ExpandedItems) => void;
-export type OnToggleDisabled = (disabledItems: DisabledItems) => void;
-export type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
+type OnToggleExpanded = (expandedItems: ExpandedItems) => void;
+type OnToggleDisabled = (disabledItems: DisabledItems) => void;
+type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
   allowMultiple?: boolean;
@@ -76,11 +65,11 @@ export default function useAccordion({
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
   const onToggleDisabledRef = useRef<OnToggleDisabled | null | undefined>(null);
 
-  const getIsExpanded: GetIsExpanded = useCallback((id) => {
+  const getIsExpanded = useCallback((id: string) => {
     return _getIsExpanded(id, expandedItems);
   }, [ expandedItems ]);
 
-  const getIsDisabled: GetIsDisabled = useCallback((id) => {
+  const getIsDisabled = useCallback((id: string) => {
     return _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
   }, [
     expandedItems,
@@ -88,7 +77,7 @@ export default function useAccordion({
     allowCollapseLast,
   ]);
 
-  const toggleExpanded: ToggleExpanded = useCallback((id) => {
+  const toggleExpanded = useCallback((id: string) => {
     setExpandedItems((expandedItems) => {
       const isExpanded = _getIsExpanded(id, expandedItems);
       const isDisabled = _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
@@ -116,7 +105,7 @@ export default function useAccordion({
     disabledItems,
   ]);
 
-  const toggleDisabled: ToggleDisabled = useCallback((id) => {
+  const toggleDisabled = useCallback((id: string) => {
     setDisabledItems((disabledItems) => {
       onToggleDisabledRef.current = onToggleDisabled;
 
@@ -129,12 +118,12 @@ export default function useAccordion({
     });
   }, [ onToggleDisabled ]);
 
-  const pushItemRef: PushItemRef = useCallback((elem, id) => {
+  const pushItemRef = useCallback((elem: AccordionHeaderButtonElement, id: string) => {
     itemRefs.current.push({ elem, id });
     idToIndexMap.current.set(id, itemRefs.current.length - 1);
   }, []);
 
-  const focusItemIndex: FocusItemIndex = useCallback((index) => {
+  const focusItemIndex = useCallback((index: number) => {
     /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition --
      * TypeScript applications will complain if you pass in undefined or null,
      * but this code may be running in a JavaScript application.
@@ -153,7 +142,7 @@ export default function useAccordion({
       onFocusChange({ elem, index, id });
   }, [ onFocusChange ]);
 
-  const focusItemId: FocusItemId = useCallback((id) => {
+  const focusItemId = useCallback((id: string) => {
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
@@ -162,7 +151,7 @@ export default function useAccordion({
     focusItemIndex(index);
   }, [ focusItemIndex ]);
 
-  const focusPrevItem: FocusPrevItem = useCallback((id) => {
+  const focusPrevItem = useCallback((id: string) => {
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
@@ -171,7 +160,7 @@ export default function useAccordion({
     focusItemIndex(index === 0 ? itemRefs.current.length - 1 : index - 1);
   }, [ focusItemIndex ]);
 
-  const focusNextItem: FocusNextItem = useCallback((id) => {
+  const focusNextItem = useCallback((id: string) => {
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
@@ -180,11 +169,11 @@ export default function useAccordion({
     focusItemIndex(index === itemRefs.current.length - 1 ? 0 : index + 1);
   }, [ focusItemIndex ]);
 
-  const focusFirstItem: FocusFirstItem = useCallback(() => {
+  const focusFirstItem = useCallback(() => {
     focusItemIndex(0);
   }, [ focusItemIndex ]);
 
-  const focusLastItem: FocusLastItem = useCallback(() => {
+  const focusLastItem = useCallback(() => {
     focusItemIndex(itemRefs.current.length - 1);
   }, [ focusItemIndex ]);
 

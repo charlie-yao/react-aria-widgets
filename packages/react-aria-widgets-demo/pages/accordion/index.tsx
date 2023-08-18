@@ -1570,8 +1570,8 @@ function AccordionPage() {
             <thead>
               <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Defintion</th>
-                <th scope="col">Expanded Defintion</th>
+                <th scope="col">Definition</th>
+                <th scope="col">Expanded Definition</th>
               </tr>
             </thead>
             <tbody>
@@ -1970,8 +1970,8 @@ function AccordionPage() {
             <thead>
               <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Defintion</th>
-                <th scope="col">Expanded Defintion</th>
+                <th scope="col">Definition</th>
+                <th scope="col">Expanded Definition</th>
               </tr>
             </thead>
             <tbody>
