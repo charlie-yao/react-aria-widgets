@@ -14,7 +14,7 @@ import type { ValidPanelElements } from '../types';
 //Misc.
 import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from '../utils';
 
-export interface InternalBaseAccordionPanelProps {
+interface InternalBaseAccordionPanelProps {
   id: string;
   'aria-labelledby'?: string;
 }
