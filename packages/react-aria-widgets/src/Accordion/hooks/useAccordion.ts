@@ -3,9 +3,6 @@ import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 //Types
 import type { ValidHTMLHeaderLevels } from '../../types';
 
-type ExpandedItems = Set<string>;
-type DisabledItems = Set<string>;
-
 type AccordionHeaderButtonElement = HTMLButtonElement | HTMLElement | null;
 
 interface AccordionItemRef {
@@ -13,8 +10,8 @@ interface AccordionItemRef {
   id: string;
 }
 
-type OnToggleExpanded = (expandedItems: ExpandedItems) => void;
-type OnToggleDisabled = (disabledItems: DisabledItems) => void;
+type OnToggleExpanded = (expandedItems: Set<string>) => void;
+type OnToggleDisabled = (disabledItems: Set<string>) => void;
 type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
 
 export interface UseAccordion {
@@ -58,8 +55,8 @@ export default function useAccordion({
 
   const _initialDisabled = useMemo(() => new Set<string>(initialDisabled), [ initialDisabled ]);
 
-  const [ expandedItems, setExpandedItems ] = useState<ExpandedItems>(_initialExpanded);
-  const [ disabledItems, setDisabledItems ] = useState<DisabledItems>(_initialDisabled);
+  const [ expandedItems, setExpandedItems ] = useState<Set<string>>(_initialExpanded);
+  const [ disabledItems, setDisabledItems ] = useState<Set<string>>(_initialDisabled);
   const itemRefs = useRef<AccordionItemRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
