@@ -49,6 +49,9 @@ export default function SubNav() {
               </ul>
             </li>
             <li>
+              <a href="#shared-types">Shared Types</a>
+            </li>
+            <li>
               <a href="#hocs-and-hooks">Higher-Order Components and Hooks</a>
               <ul>
                 <li><a href="#with-accordion-manager"><code>withAccordionManager</code></a></li>

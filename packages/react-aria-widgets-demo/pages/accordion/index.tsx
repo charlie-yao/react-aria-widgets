@@ -770,6 +770,98 @@ const ON_FOCUS_CHANGE_TYPE =
   id: string,
 }) => void;`;
 
+const ACCORDION_PROPS_TYPE =
+`{
+  children: React.ReactNode | AccordionRenderFunction;
+  buttonProps: ButtonProps;
+  headerProps: HeaderProps;
+}`
+
+const HEADER_PROPS_TYPE =
+`{
+  className?: string | AccordionRenderClass;
+  style?: React.CSSProperties | AccordionRenderStyle;
+} & Omit<BaseButtonProps, 'className' | 'style'>;`;
+
+const HEADER_PROPS_TYPE_EXPANDED =
+`{
+  className?: string | AccordionRenderClass;
+  style?: React.CSSProperties | AccordionRenderStyle;
+} & Omit<
+  React.HTMLAttributes<HTMLHeadingElement>,
+  'children' | 'dangerouslySetInnerHTML' | 'className' | 'style'
+>;`;
+
+const BUTTON_PROPS_TYPE =
+`{
+  className?: string | AccordionRenderClass;
+  style?: React.CSSProperties | AccordionRenderStyle;
+} & Omit<BaseHeaderProps, 'className' | 'style'>;`;
+
+const BUTTON_PROPS_TYPE_EXPANDED =
+`{
+  className?: string | AccordionRenderClass;
+  style?: React.CSSProperties | AccordionRenderStyle;
+} & Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'children' |
+  'dangerouslySetInnerHTML' |
+  'type' |
+  'id' |
+  'aria-controls' |
+  'onClick' |
+  'onKeyDown' |
+  'aria-expanded' |
+  'aria-disabled' |
+  'className' |
+  'style'
+>;`;
+
+const ACCORDION_RENDER_FUNCTION_TYPE = `(AccordionMembers & AccordionItemContextType) => React.ReactNode;`
+
+const ACCORDION_RENDER_FUNCTION_TYPE_EXPANDED =
+`(args: {
+  allowMultiple: boolean,
+  allowCollapseLast: boolean,
+  headerLevel: 1 | 2 | 3 | 4 | 5 | 6,
+  getIsExpanded: (id: string) => boolean,
+  getIsDisabled: (id: string) => boolean,
+  toggleExpanded: (id: string) => void,
+  toggleDisabled: (id: string) => void,
+  pushItemRef: (elem: HTMLButtonElement | HTMLElement | null, id: string) => void,
+  focusItemIndex: (index: number) => void,
+  focusItemId: (id: string) => void,
+  focusPrevItem: (id: string) => void,
+  focusNextItem: (id: string) => void,
+  focusFirstItem: () => void,
+  focusLastItem: () => void,
+  id: string,
+  headerHTMLId: string,
+  panelHTMLId: string,
+}) => React.ReactNode;`;
+
+const ACCORDION_RENDER_CLASS_TYPE = `(args: AccordionRenderStyleData) => string;`;
+
+const ACCORDION_RENDER_CLASS_TYPE_EXPANDED =
+`(args: {
+  allowMultiple: boolean,
+  allowCollapseLast: boolean,
+  headerLevel: 1 | 2 | 3 | 4 | 5 | 6,
+  isExpanded: boolean,
+  isDisabled: boolean,
+}) => string;`;
+
+const ACCORDION_RENDER_STYLE_TYPE = `(args: AccordionRenderStyleData) => React.CSSProperties;`;
+
+const ACCORDION_RENDER_STYLE_TYPE_EXPANDED =
+`(args: {
+  allowMultiple: boolean,
+  allowCollapseLast: boolean,
+  headerLevel: 1 | 2 | 3 | 4 | 5 | 6,
+  isExpanded: boolean,
+  isDisabled: boolean,
+}) => React.CSSProperties;`;
+
 function AccordionPage() {
   return (
     <>
@@ -1224,8 +1316,8 @@ function AccordionPage() {
                 <td></td>
                 <td>
                   Determines which accordion items (identified by their ID) should be expanded on the
-                  initial mount. If <code>allowMultiple</code> is off, the hook naively picks the first
-                  element in the array.
+                  initial mount. If <code>allowMultiple</code> is off, the first element in the array
+                  is picked naively.
                 </td>
               </tr>
               <tr>
@@ -1371,6 +1463,12 @@ function AccordionPage() {
         <h4 id="accordion-header">
           &lt;AccordionHeader&gt;
         </h4>
+        <p>
+          Represents the header of an accordion. Reads information provided by the
+          contexts <code>AccordionContext</code> and <code>AccordionItemContext</code>. Implements event
+          handlers to mange focus and expand/collapse its panel's visibility. Also sets the HTML/ARIA attributes
+          needed to fulfill the APG.
+        </p>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1384,6 +1482,149 @@ function AccordionPage() {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td><code>children</code></td>
+                <td><code>React.ReactNode | AccordionRenderFunction</code></td>
+                <td><code>null</code></td>
+                <td></td>
+                <td>
+                  The content to be rendered. This can either be a string, component, etc., or
+                  a render function. If you provide a render function, it will receive all of the fields and methods
+                  provided by <code>useAccordionContext</code> and <code>useAccordionItemContext</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>headerProps</code></td>
+                <td><code>HeaderProps</code></td>
+                <td><code>{ '{}' }</code></td>
+                <td></td>
+                <td>
+                  <p>
+                    An object that is spread onto the underlying HTML heading element, allowing you to pass props
+                    and attributes to it.
+                  </p>
+                  <p>
+                    You can supply a string or <code>CSSProperties</code> object for
+                    <code>className</code> or <code>style</code> respectively, or you can dynamically apply styles
+                    by providing a function that receives state information and returning a string
+                    or <code>CSSProperties</code> object.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td><code>buttonProps</code></td>
+                <td><code>ButtonProps</code></td>
+                <td><code>{ '{}' }</code></td>
+                <td></td>
+                <td>
+                  <p>
+                    An object that is spread onto the underlying HTML button element, allowing you to pass props
+                    and attributes to it.
+                  </p>
+                  <p>
+                    You can supply a string or <code>CSSProperties</code> object for
+                    <code>className</code> or <code>style</code> respectively, or you can dynamically apply styles
+                    by providing a function that receives state information and returning a string
+                    or <code>CSSProperties</code> object.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h5>Data Attributes</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">HTML Element</th>
+                <th scope="col">Attribute</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowSpan={ 2 }><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td>
+                <td><code>[data-expanded]</code></td>
+                <td><code>true | false</code></td>
+              </tr>
+              <tr>
+                <td><code>[data-disabled]</code></td>
+                <td><code>true | false</code></td>
+              </tr>
+              <tr>
+                <td rowSpan={ 2 }><code>&lt;button&gt;</code></td>
+                <td><code>[aria-expanded]</code></td>
+                <td><code>true | false</code></td>
+              </tr>
+              <tr>
+                <td><code>[aria-disabled]</code></td>
+                <td><code>true | false</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h5>Types</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Defintion</th>
+                <th scope="col">Expanded Defintion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>AccordionHeaderProps</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { ACCORDION_PROPS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>HeaderProps</code></td>
+                <td>
+                   <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { HEADER_PROPS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                   <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { HEADER_PROPS_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+              <tr>
+                <td><code>ButtonProps</code></td>
+                <td>
+                   <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { BUTTON_PROPS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                   <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { BUTTON_PROPS_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1721,6 +1962,79 @@ function AccordionPage() {
         <p>
           The type for this object is exported as <code>AccordionItemContextType</code>.
         </p>
+        <h3 id="shared-types">
+          Shared Types
+        </h3>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Defintion</th>
+                <th scope="col">Expanded Defintion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>AccordionRenderFunction</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                   { ACCORDION_RENDER_FUNCTION_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { ACCORDION_RENDER_FUNCTION_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+              <tr>
+                <td><code>AccordionRenderClass</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                   { ACCORDION_RENDER_CLASS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { ACCORDION_RENDER_CLASS_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+              <tr>
+                <td><code>AccordionRenderStyle</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                   { ACCORDION_RENDER_STYLE_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { ACCORDION_RENDER_STYLE_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <h3 id="hocs-and-hooks">Higher-Order Components and Hooks</h3>
         <h4 id="with-accordion-manager">withAccordionManager()</h4>
         <p>
