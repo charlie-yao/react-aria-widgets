@@ -51,28 +51,6 @@ export default function SubNav() {
             <li>
               <a href="#shared-types">Shared Types</a>
             </li>
-            <li>
-              <a href="#hocs-and-hooks">Higher-Order Components and Hooks</a>
-              <ul>
-                <li><a href="#with-accordion-manager"><code>withAccordionManager</code></a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#components">Components</a>
-              <ul>
-                <li><a href="#accordion-component"><code>&lt;Accordion&gt;</code></a></li>
-                <li><a href="#accordion-section"><code>&lt;AccordionSection&gt;</code></a></li>
-                <li><a href="#accordion-header"><code>&lt;AccordionHeader&gt;</code></a></li>
-                <li><a href="#accordion-panel"><code>&lt;AccordionPanel&gt;</code></a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#base-components">Base Components</a>
-              <ul>
-                <li><a href="#base-accordion-header"><code>&lt;BaseAccordionHeader&gt;</code></a></li>
-                <li><a href="#base-accordion-panel"><code>&lt;BaseAccordionPanel&gt;</code></a></li>
-              </ul>
-            </li>
           </ul>
         </li>
       </ul>
