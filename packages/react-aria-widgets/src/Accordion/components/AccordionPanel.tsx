@@ -32,7 +32,7 @@ export type AccordionPanelProps<C extends React.ElementType = typeof DEFAULT_ACC
 
 function AccordionPanel<C extends React.ElementType = typeof DEFAULT_ACCORDION_PANEL_ELEMENT>({
   children = null,
-  className = undefined,
+  className = 'react-aria-widgets-accordion-panel',
   style = {},
   as, //eslint-disable-line react/require-default-props
   ...rest
@@ -63,10 +63,8 @@ function AccordionPanel<C extends React.ElementType = typeof DEFAULT_ACCORDION_P
 
   if(typeof className === 'function')
     _className = className({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
-  else if(typeof className === 'string')
-    _className = className;
   else
-    _className = 'react-aria-widgets-accordion-panel';
+    _className = className;
 
   if(typeof style === 'function')
     _style = style({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });

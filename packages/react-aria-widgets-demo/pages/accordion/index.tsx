@@ -1488,9 +1488,14 @@ function AccordionPage() {
                 <td><code>null</code></td>
                 <td />
                 <td>
-                  The content to be rendered. This can either be a string, component, etc., or
-                  a render function. If you provide a render function, it will receive all of the fields and methods
-                  provided by <code>useAccordionContext</code> and <code>useAccordionItemContext</code>.
+                  <p>
+                    The content to be rendered. This can either be a string, component, etc., or
+                    a render function.
+                  </p>
+                  <p>
+                    If you provide a render function, it will receive all of the fields and methods
+                    provided by <code>useAccordion</code> and <code>useAccordionItemContext</code>.
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -1505,9 +1510,14 @@ function AccordionPage() {
                   </p>
                   <p>
                     You can supply a string or <code>CSSProperties</code> object
-                    for <code>className</code> or <code>style</code> respectively, or you can dynamically
-                    apply styles by providing a function that receives state information and returns a string
-                    or <code>CSSProperties</code> object.
+                    for <code>headerProps.className</code> or <code>headerProps.style</code> respectively, or
+                    you can dynamically apply styles by providing a function that receives state information
+                    and returns a string or <code>CSSProperties</code> object.
+                  </p>
+                  <p>
+                    If no <code>className</code> property is supplied, the default value will be
+                    <code>react-aria-widgets-accordion-header</code>. If no <code>style</code> property
+                    is supplied, the default value will be <code>undefined</code>.
                   </p>
                 </td>
               </tr>
@@ -1523,9 +1533,14 @@ function AccordionPage() {
                   </p>
                   <p>
                     You can supply a string or <code>CSSProperties</code> object
-                    for <code>className</code> or <code>style</code> respectively, or you can dynamically
-                    apply styles by providing a function that receives state information and returns a string
-                    or <code>CSSProperties</code> object.
+                    for <code>buttonProps.className</code> or <code>buttonProps.style</code> respectively, or
+                    you can dynamically apply styles by providing a function that receives state information
+                    and returns a string or <code>CSSProperties</code> object.
+                  </p>
+                  <p>
+                    If no <code>className</code> property is supplied, the default value will be
+                    <code>react-aria-widgets-accordion-header</code>. If no <code>style</code> property
+                    is supplied, the default value will be <code>undefined</code>.
                   </p>
                 </td>
               </tr>
@@ -1632,6 +1647,10 @@ function AccordionPage() {
           &lt;AccordionPanel&gt;
         </h4>
         <h5>Props</h5>
+        <p>
+          Please note that any other props passed to this component will be spread onto the element
+          indicated by the <code>as</code> prop.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1643,9 +1662,59 @@ function AccordionPage() {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody />
+            <tbody>
+              <tr>
+                <td><code>children</code></td>
+                <td><code>React.ReactNode | AccordionRenderFunction</code></td>
+                <td><code>null</code></td>
+                <td></td>
+                <td>
+                  <p>
+                    The content to be rendered. This can either be a string, component, etc., or a render
+                    function.
+                  </p>
+                  <p>
+                    If you provide a render function, it will receive all of the fields and methods
+                    provided by <code>useAccordion</code> and <code>useAccordionItemContext</code>.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td><code>className</code></td>
+                <td><code>string | AccordionRenderClass</code></td>
+                <td><code>react-aria-widgets-accordion-panel</code></td>
+                <td></td>
+                <td>
+                  A string or function that determines the CSS class. If you supply a function, it
+                  will receive state information that will allow you to dynamically apply styles.
+                </td>
+              </tr>
+              <tr>
+                <td><code>style</code></td>
+                <td><code>React.CSSProperties | AccordionRenderStyle</code></td>
+                <td><code>{ '{}' }</code></td>
+                <td></td>
+                <td>
+                  An object or function that determines the style attribute. If you supply a function, it
+                  will receive state information that will allow you to dynamically apply styles.
+                </td>
+              </tr>
+              <tr>
+                <td><code>as</code></td>
+                <td><code>React.ElementType</code></td>
+                <td><code>'section'</code></td>
+                <td></td>
+                <td>
+                  Determines the element that will ultimately be rendered.
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
+        <h5>Types</h5>
+        <p>
+          The type definition for this component's props are exported as <code>AccordionPanelPros</code>.
+        </p>
         <h4 id="base-accordion-header">
           &lt;BaseAccordionHeader&gt;
         </h4>
