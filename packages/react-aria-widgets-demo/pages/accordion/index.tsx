@@ -1506,7 +1506,7 @@ function AccordionPage() {
                   <p>
                     You can supply a string or <code>CSSProperties</code> object
                     for <code>className</code> or <code>style</code> respectively, or you can dynamically
-                    apply styles by providing a function that receives state information and returning a string
+                    apply styles by providing a function that receives state information and returns a string
                     or <code>CSSProperties</code> object.
                   </p>
                 </td>
@@ -1524,7 +1524,7 @@ function AccordionPage() {
                   <p>
                     You can supply a string or <code>CSSProperties</code> object
                     for <code>className</code> or <code>style</code> respectively, or you can dynamically
-                    apply styles by providing a function that receives state information and returning a string
+                    apply styles by providing a function that receives state information and returns a string
                     or <code>CSSProperties</code> object.
                   </p>
                 </td>
