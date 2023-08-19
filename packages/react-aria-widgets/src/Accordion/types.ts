@@ -5,11 +5,6 @@ import type { ValidHTMLHeaderLevels } from '../types';
 import type { AccordionMembers } from './hooks/useAccordion';
 import type { AccordionItemContextType } from './contexts/AccordionItemContext';
 
-//Misc.
-import type { VALID_PANEL_ELEMENTS } from './utils';
-
-export type ValidPanelElements = typeof VALID_PANEL_ELEMENTS[number];
-
 export interface AccordionRenderStyleData {
   allowMultiple: boolean;
   allowCollapseLast: boolean;

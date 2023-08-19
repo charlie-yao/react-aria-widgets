@@ -9,29 +9,26 @@ import type {
   PolymorphicComponentPropsWithRef,
   PolymorphicForwardRefComponent,
 } from '../../types';
-import type { ValidPanelElements } from '../types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from '../utils';
+import { DEFAULT_ACCORDION_PANEL_ELEMENT } from '../utils';
 
 interface InternalBaseAccordionPanelProps {
   id: string;
   'aria-labelledby'?: string;
 }
 
-export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
+export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_ACCORDION_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
   C,
-  InternalBaseAccordionPanelProps,
-  ValidPanelElements
+  InternalBaseAccordionPanelProps
 >;
 
 export type ForwardedBaseAccordionPanelType = PolymorphicForwardRefComponent<
   InternalBaseAccordionPanelProps,
-  ValidPanelElements,
-  typeof DEFAULT_PANEL_ELEMENT
+  typeof DEFAULT_ACCORDION_PANEL_ELEMENT
 >;
 
-function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_ELEMENT>(
+function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_ACCORDION_PANEL_ELEMENT>(
   {
     children,
     as,
@@ -41,7 +38,7 @@ function BaseAccordionPanel<C extends React.ElementType = typeof DEFAULT_PANEL_E
   }: BaseAccordionPanelProps<C>,
   ref: PolymorphicRef<C>
 ) {
-  const Component = as ? as : DEFAULT_PANEL_ELEMENT;
+  const Component = as ? as : DEFAULT_ACCORDION_PANEL_ELEMENT;
 
   return (
     <Component
@@ -59,13 +56,13 @@ const ForwardedBaseAccordionPanel: ForwardedBaseAccordionPanelType = React.forwa
 
 ForwardedBaseAccordionPanel.propTypes = {
   children: PropTypes.node,
-  as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
+  as: PropTypes.elementType as React.Validator<React.ElementType>,
   id: PropTypes.string.isRequired,
   'aria-labelledby': PropTypes.string,
 };
 
 ForwardedBaseAccordionPanel.defaultProps = {
-  as: DEFAULT_PANEL_ELEMENT,
+  as: DEFAULT_ACCORDION_PANEL_ELEMENT,
 };
 
 export default ForwardedBaseAccordionPanel;

@@ -13,26 +13,24 @@ import useAccordionItemContext from '../hooks/useAccordionItemContext';
 //Types
 import type { PolymorphicComponentPropsWithoutRef } from '../../types';
 import type {
-  ValidPanelElements,
   AccordionRenderFunction,
   AccordionRenderClass,
   AccordionRenderStyle,
 } from '../types';
 
 //Misc.
-import { VALID_PANEL_ELEMENTS, DEFAULT_PANEL_ELEMENT } from '../utils';
+import { DEFAULT_ACCORDION_PANEL_ELEMENT } from '../utils';
 
-export type AccordionPanelProps<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
+export type AccordionPanelProps<C extends React.ElementType = typeof DEFAULT_ACCORDION_PANEL_ELEMENT> = PolymorphicComponentPropsWithoutRef<
   C,
   {
     children?: React.ReactNode | AccordionRenderFunction;
     className?: string | AccordionRenderClass;
     style?: React.CSSProperties | AccordionRenderStyle;
-  },
-  ValidPanelElements
+  }
 >;
 
-function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEMENT>({
+function AccordionPanel<C extends React.ElementType = typeof DEFAULT_ACCORDION_PANEL_ELEMENT>({
   children = null,
   className = undefined,
   style = {},
@@ -49,7 +47,7 @@ function AccordionPanel<C extends ValidPanelElements = typeof DEFAULT_PANEL_ELEM
     getIsDisabled,
   } = accordionContext;
   const { id, headerHTMLId, panelHTMLId } = accordionItemContext;
-  const Component: ValidPanelElements = as ? as : DEFAULT_PANEL_ELEMENT;
+  const Component: React.ElementType = as ? as : DEFAULT_ACCORDION_PANEL_ELEMENT;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
@@ -104,7 +102,7 @@ AccordionPanel.propTypes = {
     PropTypes.object,
     PropTypes.func,
   ]),
-  as: PropTypes.oneOf(VALID_PANEL_ELEMENTS),
+  as: PropTypes.elementType as React.Validator<React.ElementType>,
 };
 
 export default AccordionPanel;
