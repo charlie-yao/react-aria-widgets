@@ -7,23 +7,18 @@ import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from 'react
 import withStyleWrapper from './withStyleWrapper';
 
 //Types
-import type {
-  AccordionProps,
-  FocusItemId,
-  FocusPrevItem,
-  FocusNextItem,
-  FocusFirstItem,
-  FocusLastItem,
-} from 'react-aria-widgets/accordion';
+import type { AccordionProps, AccordionMembers } from 'react-aria-widgets/accordion';
 
-interface FocusFormProps {
-  id: string;
-  focusItemId: FocusItemId;
-  focusPrevItem: FocusPrevItem;
-  focusNextItem: FocusNextItem;
-  focusFirstItem: FocusFirstItem;
-  focusLastItem: FocusLastItem;
-}
+type FocusFormProps = {
+  id: string
+} & Pick<
+  AccordionMembers,
+  'focusItemId' |
+  'focusPrevItem' |
+  'focusNextItem' |
+  'focusFirstItem' |
+  'focusLastItem'
+>;
 
 const ITEMS = [ 'item1', 'item2', 'item3' ];
 
