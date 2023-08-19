@@ -1493,8 +1493,8 @@ function AccordionPage() {
                     a render function.
                   </p>
                   <p>
-                    If you provide a render function, it will receive all of the fields and methods
-                    provided by <code>useAccordion</code> and <code>useAccordionItemContext</code>.
+                    If you provide a render function, it will receive all of the values provided
+                    by <code>useAccordion</code> and <code>useAccordionItemContext</code>.
                   </p>
                 </td>
               </tr>
@@ -1511,8 +1511,8 @@ function AccordionPage() {
                   <p>
                     You can supply a string or <code>CSSProperties</code> object
                     for <code>headerProps.className</code> or <code>headerProps.style</code> respectively, or
-                    you can dynamically apply styles by providing a function that receives state information
-                    and returns a string or <code>CSSProperties</code> object.
+                    you can dynamically apply styles by providing a function. This function will receive
+                    accordion state information and should return a string or <code>CSSProperties</code> object.
                   </p>
                   <p>
                     If no <code>className</code> property is supplied, the default value will be
@@ -1528,18 +1528,18 @@ function AccordionPage() {
                 <td />
                 <td>
                   <p>
-                    An object that is spread onto the underlying HTML button element, allowing you to pass props
-                    and attributes to it.
+                    An object that is spread onto the underlying HTML button element, allowing you to pass
+                    props and attributes to it.
                   </p>
                   <p>
                     You can supply a string or <code>CSSProperties</code> object
                     for <code>buttonProps.className</code> or <code>buttonProps.style</code> respectively, or
-                    you can dynamically apply styles by providing a function that receives state information
-                    and returns a string or <code>CSSProperties</code> object.
+                    you can dynamically apply styles by providing a function. This function will receive
+                    accordion state information and should return string or <code>CSSProperties</code> object.
                   </p>
                   <p>
                     If no <code>className</code> property is supplied, the default value will be
-                    <code>react-aria-widgets-accordion-header</code>. If no <code>style</code> property
+                    <code>react-aria-widgets-accordion-button</code>. If no <code>style</code> property
                     is supplied, the default value will be <code>undefined</code>.
                   </p>
                 </td>
@@ -1648,8 +1648,8 @@ function AccordionPage() {
         </h4>
         <h5>Props</h5>
         <p>
-          Please note that any other props passed to this component will be spread onto the element
-          indicated by the <code>as</code> prop.
+          Please note that if you pass any props other than those listed below, they will be spread onto
+          the underlying element (i.e. the element indicated by the <code>as</code> prop).
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1711,9 +1711,30 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
+        <h5>Data Attributes</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Attribute</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>[data-expanded]</code></td>
+                <td><code>true | false</code></td>
+              </tr>
+              <tr>
+                <td><code>[data-disabled]</code></td>
+                <td><code>true | false</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <h5>Types</h5>
         <p>
-          The type definition for this component's props are exported as <code>AccordionPanelPros</code>.
+          The type definition for this component's props are exported as <code>AccordionPanelProps</code>.
         </p>
         <h4 id="base-accordion-header">
           &lt;BaseAccordionHeader&gt;
