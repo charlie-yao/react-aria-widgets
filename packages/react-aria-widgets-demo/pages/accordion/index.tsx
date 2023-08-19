@@ -1300,7 +1300,7 @@ function AccordionPage() {
                 <td>Determines whether or not the last expanded panel can be collapsed.</td>
               </tr>
               <tr>
-                <td><code>headerlevel</code></td>
+                <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
                 <td><code>undefined</code></td>
                 <td>
@@ -1500,7 +1500,7 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>headerProps</code></td>
-                <td><code>HeaderProps</code></td>
+                <td><code>AccordionHeaderElementProps</code></td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1523,7 +1523,7 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>buttonProps</code></td>
-                <td><code>ButtonProps</code></td>
+                <td><code>AccordionButtonElementProps</code></td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1705,7 +1705,18 @@ function AccordionPage() {
                 <td><code>'section'</code></td>
                 <td></td>
                 <td>
-                  Determines the element that will ultimately be rendered.
+                  <p>
+                    Determines the element that will ultimately be rendered.
+                  </p>
+                  <p>
+                    Note that the default element <code>&lt;section&gt;</code> has the <code>region</code> role,
+                    and that there are times where this may be undesireable. The APG advises:
+                  </p>
+                  <blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+                    Avoid using the <code>region</code> role in circumstances that create landmark
+                    region proliferation, e.g. in an accordion that contains more than approximately
+                    6 panels that can be expanded at the same time.
+                  </blockquote>
                 </td>
               </tr>
             </tbody>
@@ -1739,6 +1750,12 @@ function AccordionPage() {
         <h4 id="base-accordion-header">
           &lt;BaseAccordionHeader&gt;
         </h4>
+        <p>
+          A stateless component that represents an accordion header. Exists mainly to provide guardrails to
+          help ensure adherence to the APG. Ensures that the heading element contains only a button and that the
+          content lives in the button. Reminds developers which HTML/ARIA attributes need to be set
+          by being typed with both TypeScript and PropTypes.
+        </p>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1751,9 +1768,139 @@ function AccordionPage() {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody />
+            <tbody>
+              <tr>
+                <td><code>children</code></td>
+                <td><code>React.ReactNode</code></td>
+                <td><code>null</code></td>
+                <td></td>
+                <td>A string, React component, etc., to be rendered.</td>
+              </tr>
+              <tr>
+                <td><code>id</code></td>
+                <td><code>string</code></td>
+                <td><code>undefined</code></td>
+                <td>(See description)</td>
+                <td>
+                  <p>
+                    The HTML ID for the button element.
+                  </p>
+                  <p>
+                    Note that if the HTML element representing the corresponding accordion panel
+                    has the <code>region</code> role, then the panel <strong>must</strong> be labeled.
+                    This is ideally done by giving the panel an <code>aria-labelledby</code> attribute
+                    that points to the button. 
+                  </p>
+                  <p>
+                    Accordion panels in general are not required to have the <code>region</code> role, but
+                    the panel components provided by React ARIA Widgets default to <code>&lt;section&gt;</code>,
+                    which does have that role.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td><code>headerLevel</code></td>
+                <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>).</td>
+              </tr>
+              <tr>
+                <td><code>onClick</code></td>
+                <td><code>React.MouseEventHandler&lt;HTMLButtonElement&gt;</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>A click event handler for the button. Should handle expanding/collapsing the panel.</td>
+              </tr>
+              <tr>
+                <td><code>onKeyDown</code></td>
+                <td><code>React.KeyboardEventHandler&lt;HTMLButtonElement&gt;</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>A keydown event handler for the button. Can be used to provide focus management.</td>
+              </tr>
+              <tr>
+                <td><code>aria-controls</code></td>
+                <td><code>string</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>
+                  A unique identifier that points to the accordion panel's HTML ID.
+                </td>
+              </tr>
+              <tr>
+                <td><code>aria-expanded</code></td>
+                <td><code>boolean</code></td>
+                <td></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>
+                  <p>
+                    Informs assistive technologies whether or not the panel is expanded.
+                  </p>
+                  <p>
+                    Note that this attribute does not affect the visibility of the panel.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td><code>aria-disabled</code></td>
+                <td><code>boolean</code></td>
+                <td></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
+                <td>
+                  <p>
+                    Informs assistive technologies whether or not the button can be interacted with. A common use-case
+                    would be if the associated panel is expanded, and the accordion does not allow it to be collapsed
+                    (e.g. <code>allowCollapseLast</code> is off and there's only 1 expanded panel).
+                  </p>
+                  <p>
+                    Note that unlike the <code>disabled</code> attribute, <code>aria-disabled</code> does not
+                    actually disable any behaviors such as preventing events from triggering.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td><code>headerProps</code></td>
+                <td><code>BaseAccordionHeaderElementProps</code></td>
+                <td><code>{ '{}' }</code></td>
+                <td></td>
+                <td>
+                  An object that is spread onto the underlying heading element, allowing you to pass props
+                  and attributes to it.
+                </td>
+              </tr>
+              <tr>
+                <td><code>buttonProps</code></td>
+                <td><code>BaseAccordionButtonElementProps</code></td>
+                <td><code>{ '{}' }</code></td>
+                <td></td>
+                <td>
+                  An object that is spread onto the underlying button element, allowing you to pass props
+                  and attributes to it.
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
+        <h5>Types</h5>
+        <p>
+          The type definition for this component's props is exported as <code>BaseAccordionHeaderProps</code>.
+        </p>
         <h4 id="base-accordion-panel">
           &lt;BaseAccordionPanel&gt;
         </h4>
