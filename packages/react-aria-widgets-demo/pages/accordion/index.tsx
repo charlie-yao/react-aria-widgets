@@ -1706,7 +1706,7 @@ function AccordionPage() {
                 <td></td>
                 <td>
                   <p>
-                    Determines the element that will ultimately be rendered.
+                    Determines the element that will be rendered.
                   </p>
                   <p>
                     Note that the default element <code>&lt;section&gt;</code> has the <code>region</code> role,
@@ -1904,6 +1904,15 @@ function AccordionPage() {
         <h4 id="base-accordion-panel">
           &lt;BaseAccordionPanel&gt;
         </h4>
+        <p>
+          A stateless component that represents an accordion panel. Exists mainly to provide guardrails to help
+          ensure adherence to the APG. Reminds developers which HTML/ARIA attributes need to be set by being
+          typed with both TypeScript and PropTypes.
+        </p>
+        <p>
+          Note that if you pass any props other than those listed below, they will be spread onto the
+          underlying element (i.e. the element indicated by the <code>as</code> prop).
+        </p>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1916,7 +1925,72 @@ function AccordionPage() {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody />
+            <tbody>
+              <tr>
+                <td><code>children</code></td>
+                <td><code>React.ReactNode</code></td>
+                <td><code>null</code></td>
+                <td></td>
+                <td>A string, React component, etc., to be rendered.</td>
+              </tr>
+              <tr>
+                <td><code>as</code></td>
+                <td><code>React.ElementType</code></td>
+                <td><code>'section'</code></td>
+                <td></td>
+                <td>
+                  <p>
+                    Determines the element that will be rendered. Note that the default
+                    element, <code>&lt;section&gt;</code>, has the <code>region</code> role, which has a
+                    couple implications.
+                  </p>
+                  <p>
+                    The first is that elements with the <code>region</code> role must be labelled,
+                    making <code>aria-labelledby</code> required by default.
+                  </p>
+                  <p>
+                    Second, there are times where the <code>region</code> role may be undesirable.
+                    The APG advises:
+                  </p>
+                  <blockquote cite="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">
+                    Avoid using the <code>region</code> role in circumstances that create landmark
+                    region proliferation, e.g. in an accordion that contains more than approximately
+                    6 panels that can be expanded at the same time.
+                  </blockquote>
+                </td>
+              </tr>
+              <tr>
+                <td><code>id</code></td>
+                <td><code>string</code></td>
+                <td><code>undefined</code></td>
+                <td></td>
+                <td>
+                  The HTML ID for the panel. Note that the corresponding accordion header button should
+                  also have an <code>aria-controls</code> attribute that points to this panel.
+                </td>
+              </tr>
+              <tr>
+                <td><code>aria-labelledby</code></td>
+                <td><code>string</code></td>
+                <td><code>undefined</code></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' } (see description)</span>
+                  <span className="is-sr-only">Yes by default, see description for details.</span>
+                </td>
+                <td>
+                  <p>
+                    A string that points to the accordion header button's HTML ID.
+                  </p>
+                  <p>
+                    If the HTML element representing the accordion panel has the <code>region</code> role,
+                    then it <strong>must</strong> be labeled. Accordion panels in general are not
+                    required to have this role, but the default element for this
+                    component, <code>&lt;section&gt;</code>, does have the <code>region</code> role.
+                    Therefore, this prop is required by default.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <h3 id="hooks">
