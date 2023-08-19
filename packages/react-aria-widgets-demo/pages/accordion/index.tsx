@@ -752,8 +752,7 @@ function MyAccordion(props) {
 
 const MDN_DISABLED_LINK = 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled';
 
-const BUTTON_SPEC_LINK = 'https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element'
-
+const BUTTON_SPEC_LINK = 'https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element';
 
 const ON_FOCUS_CHANGE_TYPE =
 `(args: {
@@ -1514,8 +1513,8 @@ function AccordionPage() {
                     accordion state information and should return a string or <code>CSSProperties</code> object.
                   </p>
                   <p>
-                    If no <code>className</code> property is supplied, the default value will be
-                    <code>react-aria-widgets-accordion-header</code>. If no <code>style</code> property
+                    If no <code>className</code> property is supplied, the default value will
+                    be <code>react-aria-widgets-accordion-header</code>. If no <code>style</code> property
                     is supplied, the default value will be <code>undefined</code>.
                   </p>
                 </td>
@@ -1537,8 +1536,8 @@ function AccordionPage() {
                     accordion state information and should return string or <code>CSSProperties</code> object.
                   </p>
                   <p>
-                    If no <code>className</code> property is supplied, the default value will be
-                    <code>react-aria-widgets-accordion-button</code>. If no <code>style</code> property
+                    If no <code>className</code> property is supplied, the default value will
+                    be <code>react-aria-widgets-accordion-button</code>. If no <code>style</code> property
                     is supplied, the default value will be <code>undefined</code>.
                   </p>
                 </td>
@@ -1666,7 +1665,7 @@ function AccordionPage() {
                 <td><code>children</code></td>
                 <td><code>React.ReactNode | AccordionRenderFunction</code></td>
                 <td><code>null</code></td>
-                <td></td>
+                <td />
                 <td>
                   <p>
                     The content to be rendered. This can either be a string, component, etc., or a render
@@ -1682,7 +1681,7 @@ function AccordionPage() {
                 <td><code>className</code></td>
                 <td><code>string | AccordionRenderClass</code></td>
                 <td><code>react-aria-widgets-accordion-panel</code></td>
-                <td></td>
+                <td />
                 <td>
                   A string or function that determines the CSS class. If you supply a function, it
                   will receive state information that will allow you to dynamically apply styles.
@@ -1692,7 +1691,7 @@ function AccordionPage() {
                 <td><code>style</code></td>
                 <td><code>React.CSSProperties | AccordionRenderStyle</code></td>
                 <td><code>{ '{}' }</code></td>
-                <td></td>
+                <td />
                 <td>
                   An object or function that determines the style attribute. If you supply a function, it
                   will receive state information that will allow you to dynamically apply styles.
@@ -1701,8 +1700,8 @@ function AccordionPage() {
               <tr>
                 <td><code>as</code></td>
                 <td><code>React.ElementType</code></td>
-                <td><code>'section'</code></td>
-                <td></td>
+                <td><code>&apos;section&apos;</code></td>
+                <td />
                 <td>
                   <p>
                     Determines the element that will be rendered.
@@ -1744,7 +1743,7 @@ function AccordionPage() {
         </div>
         <h5>Types</h5>
         <p>
-          The type definition for this component's props are exported as <code>AccordionPanelProps</code>.
+          The type definition for this component&apos;s props are exported as <code>AccordionPanelProps</code>.
         </p>
         <h4 id="base-accordion-header">
           &lt;BaseAccordionHeader&gt;
@@ -1772,7 +1771,7 @@ function AccordionPage() {
                 <td><code>children</code></td>
                 <td><code>React.ReactNode</code></td>
                 <td><code>null</code></td>
-                <td></td>
+                <td />
                 <td>
                   <p>
                     A string, React component, etc., to be rendered.
@@ -1799,7 +1798,7 @@ function AccordionPage() {
                     Note that if the HTML element representing the corresponding accordion panel
                     has the <code>region</code> role, then the panel <strong>must</strong> be labeled.
                     This is ideally done by giving the panel an <code>aria-labelledby</code> attribute
-                    that points to the button. 
+                    that points to the button.
                   </p>
                   <p>
                     Accordion panels in general are not required to have the <code>region</code> role, but
@@ -1832,7 +1831,7 @@ function AccordionPage() {
                 <td><code>onKeyDown</code></td>
                 <td><code>React.KeyboardEventHandler&lt;HTMLButtonElement&gt;</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>A keydown event handler for the button. Can be used to provide focus management.</td>
               </tr>
               <tr>
@@ -1844,13 +1843,13 @@ function AccordionPage() {
                   <span className="is-sr-only">Yes</span>
                 </td>
                 <td>
-                  A unique identifier that points to the accordion panel's HTML ID.
+                  A unique identifier that points to the accordion panel&apos;s HTML ID.
                 </td>
               </tr>
               <tr>
                 <td><code>aria-expanded</code></td>
                 <td><code>boolean</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1867,7 +1866,7 @@ function AccordionPage() {
               <tr>
                 <td><code>aria-disabled</code></td>
                 <td><code>boolean</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1876,7 +1875,7 @@ function AccordionPage() {
                   <p>
                     Informs assistive technologies if the button cannot be interacted with. A common use-case
                     would be if the associated panel is currently expanded, and the accordion does not allow it to
-                    be collapsed (e.g. <code>allowCollapseLast</code> is off and there's only 1 expanded panel).
+                    be collapsed (e.g. <code>allowCollapseLast</code> is off and there&apos;s only 1 expanded panel).
                   </p>
                   <p>
                     Note that unlike the <code>disabled</code> attribute, <code>aria-disabled</code> does not
@@ -1889,7 +1888,7 @@ function AccordionPage() {
                 <td><code>headerProps</code></td>
                 <td><code>BaseAccordionHeaderElementProps</code></td>
                 <td><code>{ '{}' }</code></td>
-                <td></td>
+                <td />
                 <td>
                   An object that is spread onto the underlying heading element, allowing you to pass props
                   and attributes to it.
@@ -1899,7 +1898,7 @@ function AccordionPage() {
                 <td><code>buttonProps</code></td>
                 <td><code>BaseAccordionButtonElementProps</code></td>
                 <td><code>{ '{}' }</code></td>
-                <td></td>
+                <td />
                 <td>
                   An object that is spread onto the underlying button element, allowing you to pass props
                   and attributes to it.
@@ -1910,7 +1909,7 @@ function AccordionPage() {
         </div>
         <h5>Types</h5>
         <p>
-          The type definition for this component's props is exported as <code>BaseAccordionHeaderProps</code>.
+          The type definition for this component&apos;s props is exported as <code>BaseAccordionHeaderProps</code>.
         </p>
         <h4 id="base-accordion-panel">
           &lt;BaseAccordionPanel&gt;
@@ -1941,14 +1940,14 @@ function AccordionPage() {
                 <td><code>children</code></td>
                 <td><code>React.ReactNode</code></td>
                 <td><code>null</code></td>
-                <td></td>
+                <td />
                 <td>A string, React component, etc., to be rendered.</td>
               </tr>
               <tr>
                 <td><code>as</code></td>
                 <td><code>React.ElementType</code></td>
-                <td><code>'section'</code></td>
-                <td></td>
+                <td><code>&apos;section&apos;</code></td>
+                <td />
                 <td>
                   <p>
                     Determines the element that will be rendered. Note that the default
@@ -1974,7 +1973,7 @@ function AccordionPage() {
                 <td><code>id</code></td>
                 <td><code>string</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   The HTML ID for the panel. Note that the corresponding accordion header button should
                   also have an <code>aria-controls</code> attribute that points to this panel.
@@ -1990,7 +1989,7 @@ function AccordionPage() {
                 </td>
                 <td>
                   <p>
-                    A string that points to the accordion header button's HTML ID.
+                    A string that points to the accordion header button&apos;s HTML ID.
                   </p>
                   <p>
                     If the HTML element representing the accordion panel has the <code>region</code> role,
