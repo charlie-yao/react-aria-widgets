@@ -10,7 +10,7 @@ import withStyleWrapper from './withStyleWrapper';
 import type { AccordionProps, AccordionMembers } from 'react-aria-widgets/accordion';
 
 type FocusFormProps = {
-  id: string
+  id: string;
 } & Pick<
   AccordionMembers,
   'focusItemId' |

@@ -775,7 +775,7 @@ const ACCORDION_PROPS_TYPE =
   children: React.ReactNode | AccordionRenderFunction;
   buttonProps: ButtonProps;
   headerProps: HeaderProps;
-}`
+}`;
 
 const HEADER_PROPS_TYPE =
 `{
@@ -817,7 +817,7 @@ const BUTTON_PROPS_TYPE_EXPANDED =
   'style'
 >;`;
 
-const ACCORDION_RENDER_FUNCTION_TYPE = `(AccordionMembers & AccordionItemContextType) => React.ReactNode;`
+const ACCORDION_RENDER_FUNCTION_TYPE = '(AccordionMembers & AccordionItemContextType) => React.ReactNode;';
 
 const ACCORDION_RENDER_FUNCTION_TYPE_EXPANDED =
 `(args: {
@@ -840,7 +840,7 @@ const ACCORDION_RENDER_FUNCTION_TYPE_EXPANDED =
   panelHTMLId: string,
 }) => React.ReactNode;`;
 
-const ACCORDION_RENDER_CLASS_TYPE = `(args: AccordionRenderStyleData) => string;`;
+const ACCORDION_RENDER_CLASS_TYPE = '(args: AccordionRenderStyleData) => string;';
 
 const ACCORDION_RENDER_CLASS_TYPE_EXPANDED =
 `(args: {
@@ -851,7 +851,7 @@ const ACCORDION_RENDER_CLASS_TYPE_EXPANDED =
   isDisabled: boolean,
 }) => string;`;
 
-const ACCORDION_RENDER_STYLE_TYPE = `(args: AccordionRenderStyleData) => React.CSSProperties;`;
+const ACCORDION_RENDER_STYLE_TYPE = '(args: AccordionRenderStyleData) => React.CSSProperties;';
 
 const ACCORDION_RENDER_STYLE_TYPE_EXPANDED =
 `(args: {
@@ -1276,10 +1276,10 @@ function AccordionPage() {
                 <td><code>children</code></td>
                 <td><code>React.ReactNode</code></td>
                 <td><code>null</code></td>
-                <td></td>
+                <td />
                 <td>
                   Technically allows for anything renderable by React, but you should provide components
-                  that represent the accordion's constituent headers and panels. You can
+                  that represent the accordion&apos;s constituent headers and panels. You can
                   use <code>&lt;AccordionItem&gt;</code> to represent a header/panel pair,
                   and <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
                   represent the headers and panels.
@@ -1289,14 +1289,14 @@ function AccordionPage() {
                 <td><code>allowMultiple</code></td>
                 <td><code>boolean</code></td>
                 <td><code>true</code></td>
-                <td></td>
+                <td />
                 <td>Determines whether or not multiple accordion items can be expanded at the same time.</td>
               </tr>
               <tr>
                 <td><code>allowCollapseLast</code></td>
                 <td><code>boolean</code></td>
                 <td><code>true</code></td>
-                <td></td>
+                <td />
                 <td>Determines whether or not the last expanded panel can be collapsed.</td>
               </tr>
               <tr>
@@ -1310,10 +1310,10 @@ function AccordionPage() {
                 <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
               </tr>
               <tr>
-                <td><code>initialExpanded</code></td> 
+                <td><code>initialExpanded</code></td>
                 <td><code>string[]</code></td>
                 <td><code>[]</code></td>
-                <td></td>
+                <td />
                 <td>
                   Determines which accordion items (identified by their ID) should be expanded on the
                   initial mount. If <code>allowMultiple</code> is off, the first element in the array
@@ -1321,40 +1321,40 @@ function AccordionPage() {
                 </td>
               </tr>
               <tr>
-                <td><code>initialDisabled</code></td> 
+                <td><code>initialDisabled</code></td>
                 <td><code>string[]</code></td>
                 <td><code>[]</code></td>
-                <td></td>
+                <td />
                 <td>
                   Determines which accordion items (identified by their ID) should be prevented from
                   expanding or collapsing on the initial mount.
                 </td>
               </tr>
               <tr>
-                <td><code>onToggleExpanded</code></td> 
+                <td><code>onToggleExpanded</code></td>
                 <td><code>(expandedItems: Set&lt;string&gt;) =&gt; void;</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   Callback to be fired after an item is expanded or collapsed. Receives the currently-expanded
                   item IDs as an argument.
                 </td>
               </tr>
               <tr>
-                <td><code>onToggleDisabled</code></td> 
+                <td><code>onToggleDisabled</code></td>
                 <td><code>(disabledItems: Set&lt;string&gt;) =&gt; void;</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   Callback to be fired after an item is enabled/disabled. Receives the currently-disabled
                   item IDs as an argument.
                 </td>
               </tr>
               <tr>
-                <td><code>onFocusItem</code></td> 
+                <td><code>onFocusItem</code></td>
                 <td><code>{ ON_FOCUS_CHANGE_TYPE }</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   Callback to be fired after an item receives focus. Note that this only runs when using
                   one of the focus methods provided by <code>useAccordion</code>.
@@ -1365,7 +1365,7 @@ function AccordionPage() {
         </div>
         <h5>Types</h5>
         <p>
-          The type definitions for this component's props are exported as <code>AccordionProps</code>.
+          The type definitions for this component&apos;s props are exported as <code>AccordionProps</code>.
         </p>
         <h4 id="accordion-item">
           &lt;AccordionItem&gt;
@@ -1393,10 +1393,10 @@ function AccordionPage() {
                 <td><code>children</code></td>
                 <td><code>React.ReactNode</code></td>
                 <td><code>null</code></td>
-                <td></td>
+                <td />
                 <td>
                   Technically allows for anything renderable by React, but you should pass in components
-                  that represent the accordion's header and panel
+                  that represent the accordion&apos;s header and panel
                   (e.g. <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code>).
                 </td>
               </tr>
@@ -1418,14 +1418,14 @@ function AccordionPage() {
         </div>
         <h5>Types</h5>
         <p>
-          The type definitions for this component's props are exported as <code>AccordionItemProps</code>.
+          The type definitions for this component&apos;s props are exported as <code>AccordionItemProps</code>.
         </p>
         <h4 id="controlled-accordion">
           &lt;ControlledAccordion&gt;
         </h4>
         <p>
           Acts similarly to <code>&lt;Accordion&gt;</code> in that its role is to act as a context provider
-          for the accordion's fields and methods. However, unlike <code>&lt;Accordion&gt;</code>, it doesn't
+          for the accordion&apos;s fields and methods. However, unlike <code>&lt;Accordion&gt;</code>, it doesn&apos;t
           use the <code>useAccordion</code> hook, allowing you a greater degree of flexibility.
         </p>
         <h5>Props</h5>
@@ -1458,7 +1458,7 @@ function AccordionPage() {
         </div>
         <h5>Types</h5>
         <p>
-          The type definitions for this component's props are exported as <code>ControlledAccordionProps</code>.
+          The type definitions for this component&apos;s props are exported as <code>ControlledAccordionProps</code>.
         </p>
         <h4 id="accordion-header">
           &lt;AccordionHeader&gt;
@@ -1466,7 +1466,7 @@ function AccordionPage() {
         <p>
           Represents the header of an accordion. Reads information provided by the
           contexts <code>AccordionContext</code> and <code>AccordionItemContext</code>. Implements event
-          handlers to mange focus and expand/collapse its panel's visibility. Also sets the HTML/ARIA attributes
+          handlers to mange focus and expand/collapse its panel&apos;s visibility. Also sets the HTML/ARIA attributes
           needed to fulfill the APG.
         </p>
         <h5>Props</h5>
@@ -1486,7 +1486,7 @@ function AccordionPage() {
                 <td><code>children</code></td>
                 <td><code>React.ReactNode | AccordionRenderFunction</code></td>
                 <td><code>null</code></td>
-                <td></td>
+                <td />
                 <td>
                   The content to be rendered. This can either be a string, component, etc., or
                   a render function. If you provide a render function, it will receive all of the fields and methods
@@ -1497,16 +1497,16 @@ function AccordionPage() {
                 <td><code>headerProps</code></td>
                 <td><code>HeaderProps</code></td>
                 <td><code>{ '{}' }</code></td>
-                <td></td>
+                <td />
                 <td>
                   <p>
                     An object that is spread onto the underlying HTML heading element, allowing you to pass props
                     and attributes to it.
                   </p>
                   <p>
-                    You can supply a string or <code>CSSProperties</code> object for
-                    <code>className</code> or <code>style</code> respectively, or you can dynamically apply styles
-                    by providing a function that receives state information and returning a string
+                    You can supply a string or <code>CSSProperties</code> object
+                    for <code>className</code> or <code>style</code> respectively, or you can dynamically
+                    apply styles by providing a function that receives state information and returning a string
                     or <code>CSSProperties</code> object.
                   </p>
                 </td>
@@ -1515,16 +1515,16 @@ function AccordionPage() {
                 <td><code>buttonProps</code></td>
                 <td><code>ButtonProps</code></td>
                 <td><code>{ '{}' }</code></td>
-                <td></td>
+                <td />
                 <td>
                   <p>
                     An object that is spread onto the underlying HTML button element, allowing you to pass props
                     and attributes to it.
                   </p>
                   <p>
-                    You can supply a string or <code>CSSProperties</code> object for
-                    <code>className</code> or <code>style</code> respectively, or you can dynamically apply styles
-                    by providing a function that receives state information and returning a string
+                    You can supply a string or <code>CSSProperties</code> object
+                    for <code>className</code> or <code>style</code> respectively, or you can dynamically
+                    apply styles by providing a function that receives state information and returning a string
                     or <code>CSSProperties</code> object.
                   </p>
                 </td>
@@ -1585,12 +1585,12 @@ function AccordionPage() {
                     { ACCORDION_PROPS_TYPE }
                   </SyntaxHighlighter>
                 </td>
-                <td></td>
+                <td />
               </tr>
               <tr>
                 <td><code>HeaderProps</code></td>
                 <td>
-                   <SyntaxHighlighter
+                  <SyntaxHighlighter
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
@@ -1598,7 +1598,7 @@ function AccordionPage() {
                   </SyntaxHighlighter>
                 </td>
                 <td>
-                   <SyntaxHighlighter
+                  <SyntaxHighlighter
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
@@ -1609,7 +1609,7 @@ function AccordionPage() {
               <tr>
                 <td><code>ButtonProps</code></td>
                 <td>
-                   <SyntaxHighlighter
+                  <SyntaxHighlighter
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
@@ -1617,7 +1617,7 @@ function AccordionPage() {
                   </SyntaxHighlighter>
                 </td>
                 <td>
-                   <SyntaxHighlighter
+                  <SyntaxHighlighter
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
@@ -1643,8 +1643,7 @@ function AccordionPage() {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody />
           </table>
         </div>
         <h4 id="base-accordion-header">
@@ -1662,8 +1661,7 @@ function AccordionPage() {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody />
           </table>
         </div>
         <h4 id="base-accordion-panel">
@@ -1681,8 +1679,7 @@ function AccordionPage() {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody />
           </table>
         </div>
         <h3 id="hooks">
@@ -1713,21 +1710,21 @@ function AccordionPage() {
             </thead>
             <tbody>
               <tr>
-                <td><code>allowMultiple</code></td> 
+                <td><code>allowMultiple</code></td>
                 <td><code>boolean</code></td>
                 <td><code>true</code></td>
-                <td></td>
+                <td />
                 <td>Controls whether or not multiple panels can be expanded at the same time.</td>
               </tr>
               <tr>
-                <td><code>allowCollapseLast</code></td> 
+                <td><code>allowCollapseLast</code></td>
                 <td><code>boolean</code></td>
                 <td><code>true</code></td>
-                <td></td>
+                <td />
                 <td>Controls whether or not the last expanded panel can be collapsed.</td>
               </tr>
               <tr>
-                <td><code>headerLevel</code></td> 
+                <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
                 <td><code>undefined</code></td>
                 <td>
@@ -1737,10 +1734,10 @@ function AccordionPage() {
                 <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
               </tr>
               <tr>
-                <td><code>initialExpanded</code></td> 
+                <td><code>initialExpanded</code></td>
                 <td><code>string[]</code></td>
                 <td><code>[]</code></td>
-                <td></td>
+                <td />
                 <td>
                   Determines which accordion items (identified by their ID) should be expanded on the
                   initial mount. If <code>allowMultiple</code> is off, the hook naively picks the first
@@ -1748,40 +1745,40 @@ function AccordionPage() {
                 </td>
               </tr>
               <tr>
-                <td><code>initialDisabled</code></td> 
+                <td><code>initialDisabled</code></td>
                 <td><code>string[]</code></td>
                 <td><code>[]</code></td>
-                <td></td>
+                <td />
                 <td>
                   Determines which accordion items (identified by their ID) should be prevented from
                   expanding or collapsing on the initial mount.
                 </td>
               </tr>
               <tr>
-                <td><code>onToggleExpanded</code></td> 
+                <td><code>onToggleExpanded</code></td>
                 <td><code>(expandedItems: Set&lt;string&gt;) =&gt; void;</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   Callback to be fired after an item is expanded or collapsed. Receives the currently-expanded
                   item IDs as an argument.
                 </td>
               </tr>
               <tr>
-                <td><code>onToggleDisabled</code></td> 
+                <td><code>onToggleDisabled</code></td>
                 <td><code>(disabledItems: Set&lt;string&gt;) =&gt; void;</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   Callback to be fired after an item is enabled/disabled. Receives the currently-disabled
                   item IDs as an argument.
                 </td>
               </tr>
               <tr>
-                <td><code>onFocusItem</code></td> 
+                <td><code>onFocusItem</code></td>
                 <td><code>{ ON_FOCUS_CHANGE_TYPE }</code></td>
                 <td><code>undefined</code></td>
-                <td></td>
+                <td />
                 <td>
                   Callback to be fired after an item receives focus. Note that this only runs when using
                   one of the focus methods provided by this hook.
@@ -1808,39 +1805,39 @@ function AccordionPage() {
             </thead>
             <tbody>
               <tr>
-                  <td><code>allowMultiple</code></td>
-                  <td><code>boolean</code></td>
-                  <td>Informs downstream components whether or not multiple panels can be expanded at the same time.</td>
+                <td><code>allowMultiple</code></td>
+                <td><code>boolean</code></td>
+                <td>Informs downstream components whether or not multiple panels can be expanded at the same time.</td>
               </tr>
               <tr>
-                  <td><code>allowCollapselast</code></td>
-                  <td><code>boolean</code></td>
-                  <td>Informs downstream components whether or not the last expanded panel can be collapsed.</td>
+                <td><code>allowCollapselast</code></td>
+                <td><code>boolean</code></td>
+                <td>Informs downstream components whether or not the last expanded panel can be collapsed.</td>
               </tr>
               <tr>
-                  <td><code>headerLevel</code></td>
-                  <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                  <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
+                <td><code>headerLevel</code></td>
+                <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
+                <td>Determines the HTML heading element (e.g. <code>&lt;h1&gt;</code>) of each accordion header.</td>
               </tr>
               <tr>
-                  <td><code>getIsExpanded</code></td>
-                  <td><code>(id: string) =&gt; boolean</code></td>
-                  <td>Returns whether an accordion item is currently expanded.</td>
+                <td><code>getIsExpanded</code></td>
+                <td><code>(id: string) =&gt; boolean</code></td>
+                <td>Returns whether an accordion item is currently expanded.</td>
               </tr>
               <tr>
-                  <td><code>getIsDisabled</code></td>
-                  <td><code>(id: string) =&gt; boolean</code></td>
-                  <td>Returns whether an accordion item is currently prevented from being expanded/collapsed.</td>
+                <td><code>getIsDisabled</code></td>
+                <td><code>(id: string) =&gt; boolean</code></td>
+                <td>Returns whether an accordion item is currently prevented from being expanded/collapsed.</td>
               </tr>
               <tr>
-                  <td><code>toggleExpanded</code></td>
-                  <td><code>(id: string) =&gt; void</code></td>
-                  <td>Expands/collapses an accordion item.</td>
+                <td><code>toggleExpanded</code></td>
+                <td><code>(id: string) =&gt; void</code></td>
+                <td>Expands/collapses an accordion item.</td>
               </tr>
               <tr>
-                  <td><code>toggleDisabled</code></td>
-                  <td><code>(id: string) =&gt; void</code></td>
-                  <td>Prevents/allows an accordion item from being expanded/collapsed.</td>
+                <td><code>toggleDisabled</code></td>
+                <td><code>(id: string) =&gt; void</code></td>
+                <td>Prevents/allows an accordion item from being expanded/collapsed.</td>
               </tr>
               <tr>
                 <td><code>pushItemRef</code></td>
@@ -1907,7 +1904,7 @@ function AccordionPage() {
           through <code>AccordionContext</code>. This hook is used to read from that context.
         </p>
         <h5>Arguments</h5>
-        <p>This hook doesn't accept any arguments.</p>
+        <p>This hook doesn&apos;t accept any arguments.</p>
         <h5>Return Value</h5>
         <p>
           This hook has the same return value as <a href="#use-accordion"><code>useAccordion</code></a>&apos;s
@@ -1922,7 +1919,7 @@ function AccordionPage() {
           used to read from that context.
         </p>
         <h5>Arguments</h5>
-        <p>This hook doesn't accept any arguments.</p>
+        <p>This hook doesn&apos;t accept any arguments.</p>
         <h5>Return Value</h5>
         <p>This hook returns an object with the following properties:</p>
         <div className="table-container">
@@ -1938,7 +1935,7 @@ function AccordionPage() {
               <tr>
                 <td><code>id</code></td>
                 <td><code>string</code></td>
-                <td>The accordion item's identifier. Only has to be unique amongst its sibling items.</td>
+                <td>The accordion item&apos;s identifier. Only has to be unique amongst its sibling items.</td>
               </tr>
               <tr>
                 <td><code>headerHTMLId</code></td>
@@ -1982,7 +1979,7 @@ function AccordionPage() {
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
-                   { ACCORDION_RENDER_FUNCTION_TYPE }
+                    { ACCORDION_RENDER_FUNCTION_TYPE }
                   </SyntaxHighlighter>
                 </td>
                 <td>
@@ -2001,7 +1998,7 @@ function AccordionPage() {
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
-                   { ACCORDION_RENDER_CLASS_TYPE }
+                    { ACCORDION_RENDER_CLASS_TYPE }
                   </SyntaxHighlighter>
                 </td>
                 <td>
@@ -2020,7 +2017,7 @@ function AccordionPage() {
                     language="typescript"
                     customStyle={{ margin: 0, padding: '0.5rem' }}
                   >
-                   { ACCORDION_RENDER_STYLE_TYPE }
+                    { ACCORDION_RENDER_STYLE_TYPE }
                   </SyntaxHighlighter>
                 </td>
                 <td>

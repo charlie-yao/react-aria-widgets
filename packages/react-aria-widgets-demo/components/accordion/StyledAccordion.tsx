@@ -31,7 +31,7 @@ function StyledAccordion(props: AccordionProps) {
           Accordion Item 2
         </AccordionHeader>
         <AccordionPanel className="custom-accordion-panel">
-          <p> 
+          <p>
             This accordion item is styled by passing in strings for <code>className</code> and
             CSS that targets the supplied classes and the state exposed by React ARIA Widgets.
           </p>
