@@ -1795,7 +1795,8 @@ function AccordionPage() {
                   <p>
                     Accordion panels in general are not required to have the <code>region</code> role, but
                     the panel components provided by React ARIA Widgets default to <code>&lt;section&gt;</code>,
-                    which does have that role.
+                    which does have that role. In other words, if you use them with this component,
+                    the <code>id</code> will be required by default.
                   </p>
                 </td>
               </tr>
@@ -1904,14 +1905,14 @@ function AccordionPage() {
         </h4>
         <p>
           A stateless component that represents an accordion panel. Exists mainly to provide guardrails to help
-          ensure adherence to the APG. Reminds developers which HTML/ARIA attributes need to be set by being
-          typed with both TypeScript and PropTypes.
-        </p>
-        <p>
-          Note that if you pass any props other than those listed below, they will be spread onto the
-          underlying element (i.e. the element indicated by the <code>as</code> prop).
+          ensure adherence to the APG, name by using TypeScript and PropTypes to remind developers which
+          HTML/ARIA attributes need to be set.
         </p>
         <h5>Props</h5>
+        <p>
+          Note that if you pass any props other than those listed below, they will be spread onto the
+          underlying element (i.e. indicated by the <code>as</code> prop).
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1929,7 +1930,7 @@ function AccordionPage() {
                 <td><code>React.ReactNode</code></td>
                 <td><code>null</code></td>
                 <td />
-                <td>A string, React component, etc., to be rendered.</td>
+                <td>The content to be rendered.</td>
               </tr>
               <tr>
                 <td><code>as</code></td>
@@ -1960,8 +1961,11 @@ function AccordionPage() {
               <tr>
                 <td><code>id</code></td>
                 <td><code>string</code></td>
-                <td><code>undefined</code></td>
-                <td />
+                <td></td>
+                <td>
+                  <span aria-hidden="true">{ '\u2713' }</span>
+                  <span className="is-sr-only">Yes</span>
+                </td>
                 <td>
                   The HTML ID for the panel. Note that the corresponding accordion header button should
                   also have an <code>aria-controls</code> attribute that points to this panel.

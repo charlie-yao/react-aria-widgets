@@ -15,7 +15,7 @@ import { DEFAULT_ACCORDION_PANEL_ELEMENT } from '../utils';
 
 interface InternalBaseAccordionPanelProps {
   id: string;
-  'aria-labelledby'?: string;
+  'aria-labelledby'?: string | undefined;
 }
 
 export type BaseAccordionPanelProps<C extends React.ElementType = typeof DEFAULT_ACCORDION_PANEL_ELEMENT> = PolymorphicComponentPropsWithRef<
@@ -62,7 +62,9 @@ ForwardedBaseAccordionPanel.propTypes = {
 };
 
 ForwardedBaseAccordionPanel.defaultProps = {
+  children: null,
   as: DEFAULT_ACCORDION_PANEL_ELEMENT,
+  'aria-labelledby': undefined,
 };
 
 export default ForwardedBaseAccordionPanel;
