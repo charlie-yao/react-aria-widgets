@@ -583,24 +583,12 @@ const STYLED_ACCORDION_CSS_EXAMPLE =
   display: none;
 }
 
-.react-aria-widgets-accordion-panel > p {
-  margin-bottom: 1rem;
-}
-
 .custom-accordion-panel[data-expanded=false] {
   display: none;
 }
 
-.custom-accordion-panel > p {
-  margin-bottom: 1rem;
-}
-
 .another-custom-panel.collapsed {
   display: none;
-}
-
-.another-custom-panel > p {
-  margin-bottom: 1rem;
 }`;
 
 const CUSTOM_ACCORDION_EXAMPLE =
@@ -1075,23 +1063,30 @@ function AccordionPage() {
           <li>Supply an object for <code>style</code></li>
         </ul>
         <p>
-          The easiest way may be to simply write CSS that targets the default classes provided by React ARIA
-          Widgets. The classes are:
+          And, as previously alluded to, you can dynamically style your content by using a render function
+          to render your content.
+        </p>
+        <p>
+          There are a few things to note when styling your content:
         </p>
         <ul>
-          <li><code>react-aria-widgets-accordion-header</code></li>
-          <li><code>react-aria-widgets-accordion-button</code></li>
-          <li><code>react-aria-widgets-accordion-panel</code></li>
+          <li>
+            If you supply a string or function for <code>className</code>, it will replace the default class
+            rather than append to it
+          </li>
+          <li>
+            React ARIA Widgets exposes the accordion's state onto the DOM using various HTML attributes,
+            allowing them to be targeted with CSS selectors
+          </li>
+          <li>
+            If you wish you use the <code>hidden</code> attribute to collapse your panels, unfortunately React ARIA
+            Widgets currently does not have a good API for doing so. You can create your own accordion
+            panel implementation using the hooks provided, but that&apos;s an admittedly awkward workaround.
+            It&apos;s arguable though that in most cases, using <code>display: none;</code> has better semantics
+            than <code>hidden</code>. For more information, see
+            the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link>.
+          </li>
         </ul>
-        <p>
-          You can also provide custom classes by passing strings to <code>className</code>. Note
-          that they will replace the default classes, rather than append to them. Similarly, you can
-          provide an object for <code>style</code>.
-        </p>
-        <p>
-          React ARIA Widgets also exposes the accordion&apos;s state through HTML attributes, allowing them to be
-          targeted with CSS selectors.
-        </p>
         <div className="table-container">
           <table className="table is-striped is-hoverable">
             <thead>
@@ -1100,7 +1095,7 @@ function AccordionPage() {
                 <th scope="col">HTML Element</th>
                 <th scope="col">Default CSS Class</th>
                 <th scope="col">State Selector</th>
-                <th scope="col">Description</th>
+                <th scope="col">Selector Description</th>
               </tr>
             </thead>
             <tbody>
@@ -1165,9 +1160,7 @@ function AccordionPage() {
           { ACCORDION_HTML_MARKUP_EXAMPLE }
         </SyntaxHighlighter>
         <p>
-          Finally, you can provide a function to <code>className</code> or <code>style</code> that allows
-          you to dynamically apply styles depending on the state of the accordion. And, as alluded to
-          in previous examples, you can dynamically style your content if it&apos;s rendered with a render prop.
+          In the following example, each of the accordion items are styled using one of the provided methods.
         </p>
         <StyledAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
@@ -1176,14 +1169,6 @@ function AccordionPage() {
         <SyntaxHighlighter language="css">
           { STYLED_ACCORDION_CSS_EXAMPLE }
         </SyntaxHighlighter>
-        <p>
-          Unfortunately, at this time, if you wish you use the <code>hidden</code> attribute to collapse your panels,
-          React ARIA Widgets doesn&apos;t have a good first-class API for dynamically applying it. You can create
-          your own accordion panel implementation using the hooks provided, but it&apos;s admittedly awkward
-          to do that just for one HTML attribute. Still, it&apos;s arguable that in most cases,
-          using <code>display: none;</code> has better semantics that <code>hidden</code>. For more information,
-          see the <Link href="/support#faq-hidden-vs-display-none">FAQ</Link>.
-        </p>
         <h3 id="further-customization">
           Further Customization
         </h3>
