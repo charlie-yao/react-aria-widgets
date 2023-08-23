@@ -2210,9 +2210,9 @@ function AccordionPage() {
           useAccordionContext
         </h4>
         <p>
-          <code>&lt;Accordion&gt;</code> and <code>&lt;ControlledAccordion&gt;</code> pass down the values
-          and functions returned from <code>useAccordion</code> via the context API, specifically
-          through <code>AccordionContext</code>. This hook is used to read from that context.
+          <code>&lt;Accordion&gt;</code> and <code>&lt;ControlledAccordion&gt;</code> pass down the fields
+          and methods from <code>useAccordion</code> via the context API. This hook is used to read from that
+          context provider.
         </p>
         <h5>Arguments</h5>
         <p>This hook doesn&apos;t accept any arguments.</p>
@@ -2226,13 +2226,15 @@ function AccordionPage() {
         </h4>
         <p>
           <code>&lt;AccordionItem&gt;</code> passes down the IDs for its header and panel via
-          the context API, specifically through <code>AccordionItemContext</code>. This hook is
-          used to read from that context.
+          the context API. This hook is used to read from that context provider.
         </p>
         <h5>Arguments</h5>
         <p>This hook doesn&apos;t accept any arguments.</p>
         <h5>Return Value</h5>
-        <p>This hook returns an object with the following properties:</p>
+        <p>
+          This hook returns an object of type <code>AccordionItemContextType</code> that contains
+          the following properties:
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -2267,9 +2269,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <p>
-          The type for this object is exported as <code>AccordionItemContextType</code>.
-        </p>
         <h3 id="shared-types">
           Shared Types
         </h3>
