@@ -1178,7 +1178,7 @@ function AccordionPage() {
         </p>
         <h4>Creating a Custom <code>&lt;Accordion&gt;</code></h4>
         <p>
-          As mentioned in the <a href="#controlling-state">Controlling State</a> section, one can simply
+          As mentioned in <a href="#controlling-state">Controlling State</a>, one can simply
           combine <code>useAccordion</code> and <code>&lt;ControlledAccordion&gt;</code> to create a
           new version of <code>&lt;Accordion&gt;</code>.
         </p>
@@ -1210,8 +1210,7 @@ function AccordionPage() {
         <h4>Putting It All Together</h4>
         <p>
           You&apos;ll notice that we didn&apos;t create another version of <code>&lt;AccordionItem&gt;</code>. Its main
-          job is to make sure that the header and panel both have the same ID, so we won&apos;t be making a custom
-          version of it for the sake of this example.
+          job is to make sure that the header and panel both have the same ID, and we won't need that in this example.
         </p>
         <p>
           Here&apos;s the completed accordion:
