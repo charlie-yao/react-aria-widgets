@@ -1632,10 +1632,15 @@ function AccordionPage() {
         <h4 id="accordion-panel">
           &lt;AccordionPanel&gt;
         </h4>
+        <p>
+          Represents the body of content for an accordion item. Receives the fields and methods from the accordion
+          contexts by using the <code>useAccordionContext</code> and <code>useAccordionItemContext</code> hooks.
+          Sets the HTML/ARIA attributes needed to fulfill the APG.
+        </p>
         <h5>Props</h5>
         <p>
-          Please note that if you pass any props other than those listed below, they will be spread onto
-          the underlying element (i.e. the element indicated by the <code>as</code> prop).
+          Note that if you pass any props other than those listed below, they will be spread onto
+          the underlying element (i.e. indicated by the <code>as</code> prop).
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1661,7 +1666,7 @@ function AccordionPage() {
                   </p>
                   <p>
                     If you provide a render function, it will receive all of the fields and methods
-                    provided by <code>useAccordion</code> and <code>useAccordionItemContext</code>.
+                    provided by <code>useAccordionContext</code> and <code>useAccordionItemContext</code>.
                   </p>
                 </td>
               </tr>
@@ -1672,7 +1677,7 @@ function AccordionPage() {
                 <td />
                 <td>
                   A string or function that determines the CSS class. If you supply a function, it
-                  will receive state information that will allow you to dynamically apply styles.
+                  will receive state information that will allow you to dynamically set the class.
                 </td>
               </tr>
               <tr>
@@ -1729,19 +1734,18 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <h5>Types</h5>
-        <p>
-          The type definition for this component&apos;s props are exported as <code>AccordionPanelProps</code>.
-        </p>
         <h4 id="base-accordion-header">
           &lt;BaseAccordionHeader&gt;
         </h4>
         <p>
           A stateless component that represents an accordion header. Exists mainly to provide guardrails to
-          help ensure adherence to the APG. Ensures that the heading element contains only a button and that the
-          content lives in the button. Reminds developers which HTML/ARIA attributes need to be set
-          by being typed with both TypeScript and PropTypes.
+          help ensure adherence to the APG, namely:
         </p>
+        <ul>
+          <li>The heading element contains only a button</li>
+          <li>The content lives in the button</li>
+          <li>Uses TypeScript and PropTypes to remind developers which HTML/ARIA attributes need to be set</li>
+        </ul>
         <h5>Props</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1768,7 +1772,7 @@ function AccordionPage() {
                     Note that because the content is placed inside of a <code>&lt;button&gt;</code>,
                     it must not contain any interactive content or an element with
                     the <code>tabindex</code> attribute specified. See
-                    the <a href={ BUTTON_SPEC_LINK }><code>&lt;button&gt; specification</code></a> for
+                    the <a href={ BUTTON_SPEC_LINK }><code>&lt;button&gt;</code> specification</a> for
                     more information.
                   </p>
                 </td>
@@ -1798,7 +1802,7 @@ function AccordionPage() {
               <tr>
                 <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                <td><code>undefined</code></td>
+                <td></td>
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1808,7 +1812,7 @@ function AccordionPage() {
               <tr>
                 <td><code>onClick</code></td>
                 <td><code>React.MouseEventHandler&lt;HTMLButtonElement&gt;</code></td>
-                <td><code>undefined</code></td>
+                <td></td>
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1825,7 +1829,7 @@ function AccordionPage() {
               <tr>
                 <td><code>aria-controls</code></td>
                 <td><code>string</code></td>
-                <td><code>undefined</code></td>
+                <td></td>
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1895,10 +1899,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <h5>Types</h5>
-        <p>
-          The type definition for this component&apos;s props is exported as <code>BaseAccordionHeaderProps</code>.
-        </p>
         <h4 id="base-accordion-panel">
           &lt;BaseAccordionPanel&gt;
         </h4>

@@ -76,7 +76,7 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
 });
 
 BaseAccordionHeader.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   id: PropTypes.string,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onClick: PropTypes.func.isRequired,
@@ -89,6 +89,7 @@ BaseAccordionHeader.propTypes = {
 };
 
 BaseAccordionHeader.defaultProps = {
+  children: null,
   id: undefined,
   onKeyDown: undefined,
   headerProps: {},
