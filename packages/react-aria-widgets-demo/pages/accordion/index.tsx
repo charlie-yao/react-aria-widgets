@@ -2188,7 +2188,27 @@ function AccordionPage() {
         </div>
         <h3 id="contexts">Contexts</h3>
         <h4 id="accordion-context">AccordionContext</h4>
+        <p>
+          This context provides the fields and methods from <code>useAccordion</code> to consumers
+          like <code>useAccordionContext</code>. Chances are, you'll be
+          using <code>&lt;Accordion&gt;</code> or <code>&lt;ControlledAccordion&gt;</code> instead of
+          importing this directly, but React ARIA Widgets exports it for those who wish to use it.
+        </p>
+        <p>
+          <code>AccordionContext.Provder</code> is also exported as <code>AccordionProvider</code> for
+          those who prefer it for aesthetic or other reasons.
+        </p>
         <h4 id="accordion-item-context">AccordionItemContext</h4>
+        <p>
+          This context provides the header and panel IDs from <code>&lt;AccordionItem&gt;</code> to consumers
+          like <code>useAccordionItemContext</code>. Chances are, you'll be
+          using <code>&lt;AccordionItem&gt;</code> instead, but React ARIA Widgets exports it for those who
+          wish to use it.
+        </p>
+        <p>
+          <code>AccordionItemContext.Provider</code> is also exported as <code>AccordionItemProvider</code> for
+          those who prefer it for aesthetic or other reasons.
+        </p>
         <h3 id="types">
           Types
         </h3>
