@@ -19,7 +19,11 @@ const IMPORT_EXAMPLE =
 import { Accordion } from 'react-aria-widgets/accordion';`;
 
 const DEFAULT_STYLING_EXAMPLE =
-`/* .react-aria-widgets-accordion-panel is a CSS class provided by default */
+`/*
+  * .react-aria-widgets-accordion-panel is a CSS class provided by default,
+  * and React ARIA Widgets exposes the accordion's state via HTML attributes
+  * so they can be targeted with CSS.
+  */
 .react-aria-widgets-accordion-panel[data-expanded=false] {
   display: none;
 }`;
@@ -897,7 +901,7 @@ function AccordionPage() {
         </p>
         <p>
           Additionally, because these components come with no styling, they will not have the proper
-          expand/collapse behavior out of the box. For the sake of demonstrating this behavior, the
+          expand/collapse behavior out of the box. For the sake of demonstrating the proper behavior, the
           examples on this page will be given the following styles:
         </p>
         <SyntaxHighlighter language="css">
