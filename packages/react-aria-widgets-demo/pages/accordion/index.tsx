@@ -1250,9 +1250,6 @@ function AccordionPage() {
           down to child components via the context API, which can be read with the hook <code>useAccordionContext</code>.
         </p>
         <h5>Props</h5>
-        <p>
-          The type definitions for this component&apos;s props are exported as <code>AccordionProps</code>.
-        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1363,9 +1360,6 @@ function AccordionPage() {
           hook <code>useAccordionItemContext</code>.
         </p>
         <h5>Props</h5>
-        <p>
-          The type definitions for this component&apos;s props are exported as <code>AccordionItemProps</code>.
-        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1411,12 +1405,10 @@ function AccordionPage() {
         <p>
           Acts similarly to <code>&lt;Accordion&gt;</code> in that its role is to act as a context provider
           for the accordion&apos;s fields and methods. However, unlike <code>&lt;Accordion&gt;</code>, it
-          doesn&apos;t use the <code>useAccordion</code> hook, allowing you a greater degree of flexibility.
+          doesn&apos;t use the <code>useAccordion</code> hook, giving you the freedom to choose where to
+          use it.
         </p>
         <h5>Props</h5>
-        <p>
-          The type definitions for this component&apos;s props are exported as <code>ControlledAccordionProps</code>.
-        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1449,10 +1441,10 @@ function AccordionPage() {
           &lt;AccordionHeader&gt;
         </h4>
         <p>
-          Represents the header of an accordion. Reads information provided by the
-          contexts <code>AccordionContext</code> and <code>AccordionItemContext</code>. Implements event
-          handlers to mange focus and expand/collapse its panel&apos;s visibility. Also sets the HTML/ARIA attributes
-          needed to fulfill the APG.
+          Represents the header of an accordion. Receives the fields and methods from the accordion contexts
+          by using the <code>useAccordionContext</code> and <code>useAccordionItemContext</code> hooks.
+          Implements event handlers to mange focus and expand/collapse its panel&apos;s visibility. Also sets
+          the HTML/ARIA attributes needed to fulfill the APG.
         </p>
         <h5>Props</h5>
         <div className="table-container">
@@ -1478,14 +1470,14 @@ function AccordionPage() {
                     a render function.
                   </p>
                   <p>
-                    If you provide a render function, it will receive all of the values provided
-                    by <code>useAccordion</code> and <code>useAccordionItemContext</code>.
+                    If you provide a render function, it will receive all of the fields and methods
+                    provided by <code>useAccordionContext</code> and <code>useAccordionItemContext</code>.
                   </p>
                   <p>
                     Note that because the content is placed inside of a <code>&lt;button&gt;</code>,
                     it must not contain any interactive content or an element with
                     the <code>tabindex</code> attribute specified. See
-                    the <a href={ BUTTON_SPEC_LINK }><code>&lt;button&gt; specification</code></a> for
+                    the <a href={ BUTTON_SPEC_LINK }><code>&lt;button&gt;</code> specification</a> for
                     more information.
                   </p>
                 </td>
@@ -1571,6 +1563,7 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
+        {/*
         <h5>Types</h5>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1635,6 +1628,7 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
+        */ }
         <h4 id="accordion-panel">
           &lt;AccordionPanel&gt;
         </h4>
