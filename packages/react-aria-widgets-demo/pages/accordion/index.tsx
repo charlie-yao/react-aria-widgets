@@ -1359,10 +1359,13 @@ function AccordionPage() {
         <p>
           Represents a header/panel pair. Helps ensure that they both have the same ID and generates
           HTML IDs for attributes like <code>id</code> and <code>aria-labelledby</code>. Passes
-          information down through the context API (specifically <code>AccordionItemContext</code>),
-          which can be read with the hook <code>useAccordionItemContext</code>.
+          information down to child components via the context API, which can be read with the
+          hook <code>useAccordionItemContext</code>.
         </p>
         <h5>Props</h5>
+        <p>
+          The type definitions for this component&apos;s props are exported as <code>AccordionItemProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1402,10 +1405,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <h5>Types</h5>
-        <p>
-          The type definitions for this component&apos;s props are exported as <code>AccordionItemProps</code>.
-        </p>
         <h4 id="controlled-accordion">
           &lt;ControlledAccordion&gt;
         </h4>
