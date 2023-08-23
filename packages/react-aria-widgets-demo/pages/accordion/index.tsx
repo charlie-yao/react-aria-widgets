@@ -1246,11 +1246,13 @@ function AccordionPage() {
           &lt;Accordion&gt;
         </h4>
         <p>
-          Provides state and functionality to its constituent components. It passes this information down
-          via the context API (specifically <code>AccordionContext</code>), which can be read with the
-          hook <code>useAccordionContext</code>.
+          Provides accordion state and functionality to its constituent components. It passes this data
+          down to child components via the context API, which can be read with the hook <code>useAccordionContext</code>.
         </p>
         <h5>Props</h5>
+        <p>
+          The type definitions for this component&apos;s props are exported as <code>AccordionProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1269,11 +1271,8 @@ function AccordionPage() {
                 <td><code>null</code></td>
                 <td />
                 <td>
-                  Technically allows for anything renderable by React, but you should provide components
-                  that represent the accordion&apos;s constituent headers and panels. You can
-                  use <code>&lt;AccordionItem&gt;</code> to represent a header/panel pair,
-                  and <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> to
-                  represent the headers and panels.
+                  React nodes that represent the accordion&apos;s constituent headers and panels. Does
+                  not have to be the components provided by React ARIA Widgets.
                 </td>
               </tr>
               <tr>
@@ -1293,7 +1292,7 @@ function AccordionPage() {
               <tr>
                 <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                <td><code>undefined</code></td>
+                <td></td>
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1354,10 +1353,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <h5>Types</h5>
-        <p>
-          The type definitions for this component&apos;s props are exported as <code>AccordionProps</code>.
-        </p>
         <h4 id="accordion-item">
           &lt;AccordionItem&gt;
         </h4>
