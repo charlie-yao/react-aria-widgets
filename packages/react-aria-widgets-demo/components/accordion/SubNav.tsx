@@ -49,7 +49,14 @@ export default function SubNav() {
               </ul>
             </li>
             <li>
-              <a href="#shared-types">Shared Types</a>
+              <a href="#contexts">Contexts</a>
+              <ul>
+                <li><a href="#accordion-context">AccordionContext</a></li>
+                <li><a href="#accordion-item-context">AccordionItemContext</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#types">Types</a>
             </li>
           </ul>
         </li>

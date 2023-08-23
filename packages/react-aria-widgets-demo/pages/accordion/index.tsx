@@ -1563,72 +1563,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        {/*
-        <h5>Types</h5>
-        <div className="table-container">
-          <table className="table is-hoverable">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Definition</th>
-                <th scope="col">Expanded Definition</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>AccordionHeaderProps</code></td>
-                <td>
-                  <SyntaxHighlighter
-                    language="typescript"
-                    customStyle={{ margin: 0, padding: '0.5rem' }}
-                  >
-                    { ACCORDION_PROPS_TYPE }
-                  </SyntaxHighlighter>
-                </td>
-                <td />
-              </tr>
-              <tr>
-                <td><code>HeaderProps</code></td>
-                <td>
-                  <SyntaxHighlighter
-                    language="typescript"
-                    customStyle={{ margin: 0, padding: '0.5rem' }}
-                  >
-                    { HEADER_PROPS_TYPE }
-                  </SyntaxHighlighter>
-                </td>
-                <td>
-                  <SyntaxHighlighter
-                    language="typescript"
-                    customStyle={{ margin: 0, padding: '0.5rem' }}
-                  >
-                    { HEADER_PROPS_TYPE_EXPANDED }
-                  </SyntaxHighlighter>
-                </td>
-              </tr>
-              <tr>
-                <td><code>ButtonProps</code></td>
-                <td>
-                  <SyntaxHighlighter
-                    language="typescript"
-                    customStyle={{ margin: 0, padding: '0.5rem' }}
-                  >
-                    { BUTTON_PROPS_TYPE }
-                  </SyntaxHighlighter>
-                </td>
-                <td>
-                  <SyntaxHighlighter
-                    language="typescript"
-                    customStyle={{ margin: 0, padding: '0.5rem' }}
-                  >
-                    { BUTTON_PROPS_TYPE_EXPANDED }
-                  </SyntaxHighlighter>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        */ }
         <h4 id="accordion-panel">
           &lt;AccordionPanel&gt;
         </h4>
@@ -2269,8 +2203,11 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <h3 id="shared-types">
-          Shared Types
+        <h3 id="contexts">Contexts</h3>
+        <h4 id="accordion-context">AccordionContext</h4>
+        <h4 id="accordion-item-context">AccordionItemContext</h4>
+        <h3 id="types">
+          Types
         </h3>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2341,6 +2278,73 @@ function AccordionPage() {
               </tr>
             </tbody>
           </table>
+        {/*
+        <h5>Types</h5>
+        <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Definition</th>
+                <th scope="col">Expanded Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>AccordionHeaderProps</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { ACCORDION_PROPS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td />
+              </tr>
+              <tr>
+                <td><code>HeaderProps</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { HEADER_PROPS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { HEADER_PROPS_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+              <tr>
+                <td><code>ButtonProps</code></td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { BUTTON_PROPS_TYPE }
+                  </SyntaxHighlighter>
+                </td>
+                <td>
+                  <SyntaxHighlighter
+                    language="typescript"
+                    customStyle={{ margin: 0, padding: '0.5rem' }}
+                  >
+                    { BUTTON_PROPS_TYPE_EXPANDED }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        */ }
+
         </div>
       </article>
     </>
