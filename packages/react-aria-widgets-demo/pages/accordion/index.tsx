@@ -919,13 +919,13 @@ function AccordionPage() {
           an <code>&lt;AccordionPanel&gt;</code>.
         </p>
         <p>
-          Out of the box, React ARIA Widgets provides focus control as described in the APG. You can
+          Out of the box, React ARIA Widgets provides the focus control as described in the APG. You can
           use <kbd>ArrowDown</kbd>, <kbd>ArrowUp</kbd>, <kbd>Home</kbd>, and <kbd>End</kbd> to
-          switch focus between each section.
+          switch focus between each item.
         </p>
         <p>
           A <code>headerLevel</code> prop must be supplied to the <code>&lt;Accordion&gt;</code>,
-          and each <code>&lt;AccordionItem&gt;</code> must have a unique <code>id</code> prop.
+          and each <code>&lt;AccordionItem&gt;</code> must have a unique (amongst its siblings) <code>id</code> prop.
         </p>
         <BasicAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
@@ -972,8 +972,7 @@ function AccordionPage() {
           In addition to normal React
           nodes, <code>&lt;AccordionHeader&gt;</code> and <code>&lt;AccordionPanel&gt;</code> both
           accept a render function as <code>children</code>. These render functions have access to all
-          of the state and methods that pertain to the accordion (specifically, what is returned
-          by <code>useAccordion</code> and <code>useAccordionItem</code>).
+          of the fields and methods that pertain to the accordion.
         </p>
         <RenderPropAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
