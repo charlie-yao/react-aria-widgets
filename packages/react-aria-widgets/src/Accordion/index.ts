@@ -14,13 +14,6 @@ export type * from './components/BaseAccordionHeader';
 export { default as BaseAccordionPanel } from './components/BaseAccordionPanel';
 export type * from './components/BaseAccordionPanel';
 
-//Contexts
-export { default as AccordionContext, AccordionProvider } from './contexts/AccordionContext';
-export type * from './contexts/AccordionContext';
-
-export { default as AccordionItemContext, AccordionItemProvider } from './contexts/AccordionItemContext';
-export type * from './contexts/AccordionItemContext';
-
 //Hooks
 export { default as useAccordion } from './hooks/useAccordion';
 export type * from './hooks/useAccordion';
