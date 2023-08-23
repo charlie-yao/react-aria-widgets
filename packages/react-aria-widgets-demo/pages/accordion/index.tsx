@@ -750,7 +750,7 @@ const ON_FOCUS_CHANGE_TYPE =
   id: string,
 }) => void;`;
 
-const ACCORDION_PROPS_TYPE =
+const ACCORDION_HEADER_PROPS_TYPE =
 `{
   children: React.ReactNode | AccordionRenderFunction;
   buttonProps: ButtonProps;
@@ -841,6 +841,9 @@ const ACCORDION_RENDER_STYLE_TYPE_EXPANDED =
   isExpanded: boolean,
   isDisabled: boolean,
 }) => React.CSSProperties;`;
+
+const ACCORDION_PROPS = `React.PropsWithChildren<UseAccordionOptions>`;
+const ACCORDION_ITEM_PROPS = `React.PropsWithChildren<{ id: string }>`;
 
 function AccordionPage() {
   return (
@@ -1925,7 +1928,7 @@ function AccordionPage() {
         </p>
         <h5>Arguments</h5>
         <p>
-          This hook accepts an object of type <code>UseAccordion</code> that contains the following properties:
+          This hook accepts an object of type <code>UseAccordionOptions</code> that contains the following properties:
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2017,9 +2020,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <p>
-          The type for this object is exported as <code>UseAccordion</code>.
-        </p>
         <h5>Return Value</h5>
         <p>
           This hook returns an object of type <code>AccordionMembers</code> and contains
@@ -2212,6 +2212,34 @@ function AccordionPage() {
         <h3 id="types">
           Types
         </h3>
+         <div className="table-container">
+          <table className="table is-hoverable">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>AccordionProps</code></td>
+                <td>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
+                    { ACCORDION_PROPS }
+                  </SyntaxHighlighter>
+                </td> 
+              </tr>
+              <tr>
+                <td><code>AccordionItemProps</code></td>
+                <td>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
+                    { ACCORDION_ITEM_PROPS }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>

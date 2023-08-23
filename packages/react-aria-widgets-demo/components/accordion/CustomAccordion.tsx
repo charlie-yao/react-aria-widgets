@@ -1,10 +1,10 @@
 import { useAccordion, ControlledAccordion } from 'react-aria-widgets/accordion';
 
 //Types
-import type { UseAccordion } from 'react-aria-widgets/accordion';
+import type { UseAccordionOptions } from 'react-aria-widgets/accordion';
 import type { ReactNode } from 'react';
 
-interface CustomAccordionProps extends UseAccordion {
+interface CustomAccordionProps extends UseAccordionOptions {
   children?: ReactNode;
 }
 

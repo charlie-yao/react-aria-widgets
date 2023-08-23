@@ -8,12 +8,12 @@ import ControlledAccordion from './ControlledAccordion';
 import useAccordion from '../hooks/useAccordion';
 
 //Types
-import type { UseAccordion } from '../hooks/useAccordion';
+import type { UseAccordionOptions } from '../hooks/useAccordion';
 
 //Misc.
 import { VALID_HTML_HEADER_LEVELS } from '../../utils';
 
-export type AccordionProps = React.PropsWithChildren<UseAccordion>;
+export type AccordionProps = React.PropsWithChildren<UseAccordionOptions>;
 
 function Accordion({
   children = null,

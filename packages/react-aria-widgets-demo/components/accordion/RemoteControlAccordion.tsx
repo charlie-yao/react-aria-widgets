@@ -6,12 +6,12 @@ import { useAccordion, ControlledAccordion, AccordionItem, AccordionHeader, Acco
 import withStyleWrapper from './withStyleWrapper';
 
 //Types
-import type { UseAccordion } from 'react-aria-widgets/accordion';
+import type { UseAccordionOptions } from 'react-aria-widgets/accordion';
 import type { ReactNode } from 'react';
 
 const ITEMS = [ 'item1', 'item2', 'item3' ];
 
-function RemoteControlAccordion(props: UseAccordion) {
+function RemoteControlAccordion(props: UseAccordionOptions) {
   const contextValue = useAccordion(props);
   const { toggleExpanded, toggleDisabled, focusItemId, getIsDisabled } = contextValue;
   const toggleExpandButtons: ReactNode[] = [];

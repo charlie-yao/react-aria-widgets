@@ -14,7 +14,7 @@ type OnToggleExpanded = (expandedItems: Set<string>) => void;
 type OnToggleDisabled = (disabledItems: Set<string>) => void;
 type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
 
-export interface UseAccordion {
+export interface UseAccordionOptions {
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
@@ -48,7 +48,7 @@ export default function useAccordion({
   onToggleExpanded,
   onToggleDisabled,
   onFocusChange,
-}: UseAccordion) {
+}: UseAccordionOptions) {
   const _initialExpanded = useMemo(() => {
     return new Set<string>(allowMultiple ? initialExpanded : initialExpanded.slice(0, 1));
   }, [ allowMultiple, initialExpanded ]);

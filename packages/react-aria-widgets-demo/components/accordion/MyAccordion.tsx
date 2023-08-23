@@ -9,9 +9,9 @@ import CustomAccordionHeader from './CustomAccordionHeader';
 import CustomAccordionPanel from './CustomAccordionPanel';
 
 //Types
-import type { UseAccordion } from 'react-aria-widgets/accordion';
+import type { UseAccordionOptions } from 'react-aria-widgets/accordion';
 
-function MyAccordion(props: UseAccordion) {
+function MyAccordion(props: UseAccordionOptions) {
   return (
     <CustomAccordion { ...props }>
       <CustomAccordionHeader id="item1">
