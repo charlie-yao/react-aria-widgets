@@ -2004,11 +2004,11 @@ function AccordionPage() {
         <p>
           <code>useAccordion</code> is the hook that provides the state and functionality for the accordion.
           It accepts a number of arguments that help determine the behavior of the accordion, and returns
-          methods that get or set the state.
+          fields and methods that get or set the state.
         </p>
         <h5>Arguments</h5>
         <p>
-          This hook accepts an object containing the following properties:
+          This hook accepts an object of type <code>UseAccordion</code> that contains the following properties:
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2039,7 +2039,7 @@ function AccordionPage() {
               <tr>
                 <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                <td><code>undefined</code></td>
+                <td></td>
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -2105,7 +2105,8 @@ function AccordionPage() {
         </p>
         <h5>Return Value</h5>
         <p>
-          This hook returns an object with the following properties:
+          This hook returns an object of type <code>AccordionMembers</code> and contains
+          the following properties:
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2156,7 +2157,7 @@ function AccordionPage() {
                 <td><code>pushItemRef</code></td>
                 <td><code>(elem: HTMLButtonElement | HTMLElement | null, id: string) =&gt; void;</code></td>
                 <td>
-                  Registers an accordion item. The hook must be aware of each
+                  Registers an accordion item to the hook. The hook must be aware of each
                   header button in the accordion to manage focus.
                 </td>
               </tr>
@@ -2205,9 +2206,6 @@ function AccordionPage() {
             </tbody>
           </table>
         </div>
-        <p>
-          The type for this object is exported as <code>AccordionMembers</code>.
-        </p>
         <h4 id="use-accordion-context">
           useAccordionContext
         </h4>
