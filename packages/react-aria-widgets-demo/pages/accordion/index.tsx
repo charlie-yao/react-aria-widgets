@@ -395,9 +395,8 @@ function RemoteControlAccordion(props) {
 
   ITEMS.forEach((id, index) => {
     toggleExpandButtons.push(
-      <div className="control">
+      <div className="control" key={ id }>
         <button
-          key={ id }
           type="button"
           value={ id }
           onClick={ (e) => toggleExpanded(e.currentTarget.value) }
@@ -409,9 +408,8 @@ function RemoteControlAccordion(props) {
     );
 
     toggleDisableButtons.push(
-      <div className="control">
+      <div className="control" key={ id }>
         <button
-          key={ id }
           type="button"
           value={ id }
           onClick={ (e) => toggleDisabled(e.currentTarget.value) }
@@ -423,9 +421,8 @@ function RemoteControlAccordion(props) {
     );
 
     focusButtons.push(
-      <div className="control">
+      <div className="control" key={ id }>
         <button
-          key={ id }
           type="button"
           value={ id }
           onClick={ (e) => focusItemId(e.currentTarget.value) }
@@ -1048,18 +1045,17 @@ function AccordionPage() {
           Controlling State
         </h3>
         <p>
-          As demonstrated previously, state can be manually controlled from &quot;below&quot; the accordion by using
-          render props. Alternatively, rather than using something like <code>&lt;AccordionHeader&gt;</code>,
-          React ARIA Widgets exports the
-          hooks <code>useAccordionContext</code> and <code>useAccordionItemContext</code> which can be
-          used to write custom header or panel implementations.
+          As previously demonstrated, state can be manually controlled from &quot;below&quot; the accordion by using
+          render props. One could also create custom implementations
+          of <code>&lt;AccordionHeader</code> or <code>&lt;AccordionPanel&gt;</code> by using the
+          hooks <code>useAccordionContext</code> and <code>useAccordionItemContext</code>.
         </p>
         <p>
           State can be controlled from &quot;above&quot; the accordion by using <code>useAccordion</code>, a hook
           that provides methods to manage the state, and <code>&lt;ControlledAccordion&gt;</code>, a thin
-          wrapper over the context provider that passes those methods down. In
-          fact, <code>&lt;Accordion&gt;</code> is itself actually just a thin wrapper that tightly couples
-          these two for the sake of convenience.
+          wrapper over the context provider that passes those methods down. Unlike <code>&lt;Accordion&gt;</code>,
+          <code>&lt;ControlledAccordion&gt;</code> doesn't call <code>useAccordion</code> internally, allowing
+          you to choose where to use it.
         </p>
         <RemoteControlAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">

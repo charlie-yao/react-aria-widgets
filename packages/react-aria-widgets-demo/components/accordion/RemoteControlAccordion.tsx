@@ -23,7 +23,6 @@ function RemoteControlAccordion(props: UseAccordion) {
     toggleExpandButtons.push(
       <div className="control" key={ id }>
         <button
-          key={ id }
           type="button"
           value={ id }
           onClick={ (e) => toggleExpanded(e.currentTarget.value) }
@@ -37,7 +36,6 @@ function RemoteControlAccordion(props: UseAccordion) {
     toggleDisableButtons.push(
       <div className="control" key={ id }>
         <button
-          key={ id }
           type="button"
           value={ id }
           onClick={ (e) => toggleDisabled(e.currentTarget.value) }
@@ -51,7 +49,6 @@ function RemoteControlAccordion(props: UseAccordion) {
     focusButtons.push(
       <div className="control" key={ id }>
         <button
-          key={ id }
           type="button"
           value={ id }
           onClick={ (e) => focusItemId(e.currentTarget.value) }
