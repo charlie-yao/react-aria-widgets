@@ -42,8 +42,7 @@ export default function SupportPage() {
         <p>
           React ARIA Widgets exposes its sub-modules and their type declarations by listing them with
           the <code>exports</code> field in its <code>package.json</code>, but this isn&apos;t supported
-          in older versions of Node.js. In the future, React ARIA Widgets plans on organizing itself with
-          scoped modules.
+          in older versions of Node.js.
         </p>
         <h3 id="faq-hidden-vs-display-none">
           <code>hidden</code> versus <code>display: none;</code>
