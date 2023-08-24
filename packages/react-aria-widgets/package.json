@@ -1,6 +1,6 @@
 {
   "name": "react-aria-widgets",
-  "version": "0.2.0",
+  "version": "0.2.0-alpha",
   "description": "A collection of React components designed to help developers implement the patterns found in the ARIA Authoring Practices Guide (APG).",
   "keywords": [
     "react",
