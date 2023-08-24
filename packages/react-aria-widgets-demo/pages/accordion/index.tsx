@@ -923,7 +923,7 @@ function AccordionPage() {
           { IMPORT_EXAMPLE }
         </SyntaxHighlighter>
         <p>
-          Importing from the sub-module means introducing less code into your bundles, but if you&apos;re writing
+          Importing from the sub-module means potentially smaller bundle sizes, but if you&apos;re writing
           a TypeScript application, you may need to change <code>moduleResolution</code> to <code>node16</code> in
           your <code>tsconfig.json</code>. For more information, see
           the <Link href="/support#faq-typescript-submodule-types">FAQ</Link>.
@@ -1014,7 +1014,11 @@ function AccordionPage() {
           Accordion items can be manually disabled with the method <code>toggleDisabled</code>, preventing
           them from being expanded/collapsed. Note that <code>&lt;AccordionHeader&gt;</code> will
           set the <code>aria-disabled</code> attribute, but not the <code>disabled</code> attribute, which has
-          various implications. See the <a href={ MDN_DISABLED_LINK }>MDN Web Docs</a> for more information.
+          various implications. For example, though the panel will not expand or collapse, the button is still
+          focusable and will still trigger events.
+        </p>
+        <p>
+          See the <a href={ MDN_DISABLED_LINK }>MDN Web Docs</a> for more information.
         </p>
         <DisableItemAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
