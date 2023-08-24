@@ -751,14 +751,14 @@ const ON_FOCUS_CHANGE_TYPE =
   id: string;
 }) => void;`;
 
-const ACCORDION_PROPS = `type AccordionProps = React.PropsWithChildren<UseAccordionOptions>;`;
+const ACCORDION_PROPS = 'type AccordionProps = React.PropsWithChildren<UseAccordionOptions>;';
 
-const ACCORDION_ITEM_PROPS = `type AccordionItemProps = React.PropsWithChildren<{ id: string }>;`;
+const ACCORDION_ITEM_PROPS = 'type AccordionItemProps = React.PropsWithChildren<{ id: string }>;';
 
 const CUSTOM_ACCORDION_PROPS =
 `type CustomAccordionProps = React.PropsWithChildren<{
   contextValue: AccordionMembers;
-}>;`
+}>;`;
 
 const ACCORDION_HEADER_PROPS =
 `interface AccordionHeaderProps {
@@ -861,7 +861,7 @@ const USE_ACCORDION_OPTIONS =
   }) => void;
 }`;
 
-const ACCORDION_MEMBERS = `type AccordionMembers = ReturnType<typeof useAccordion>;`;
+const ACCORDION_MEMBERS = 'type AccordionMembers = ReturnType<typeof useAccordion>;';
 
 const ACCORDION_ITEM_CONTEXT_TYPE =
 `interface AccordionItemContextType {
@@ -871,11 +871,11 @@ const ACCORDION_ITEM_CONTEXT_TYPE =
 }`;
 
 const ACCORDION_RENDER_FUNCTION =
-`type AccordionRenderFunction = (args: AccordionMembers & AccordionItemContextType) => React.ReactNode;`;
+'type AccordionRenderFunction = (args: AccordionMembers & AccordionItemContextType) => React.ReactNode;';
 
-const ACCORDION_RENDER_CLASS = `type AccordionRenderClass = (args: AccordionRenderStyleData) => string;`;
+const ACCORDION_RENDER_CLASS = 'type AccordionRenderClass = (args: AccordionRenderStyleData) => string;';
 
-const ACCORDION_RENDER_STYLE = `type AccordionRenderStyle = (args: AccordionRenderStyleData) => React.CSSProperties;`;
+const ACCORDION_RENDER_STYLE = 'type AccordionRenderStyle = (args: AccordionRenderStyleData) => React.CSSProperties;';
 
 const ACCORDION_RENDER_STYLE_DATA =
 `interface AccordionRenderStyleData {
@@ -1085,9 +1085,9 @@ function AccordionPage() {
         <p>
           State can be controlled from &quot;above&quot; the accordion by using <code>useAccordion</code>, a hook
           that provides methods to manage the state, and <code>&lt;ControlledAccordion&gt;</code>, a thin
-          wrapper over the context provider that passes those methods down. Unlike <code>&lt;Accordion&gt;</code>,
-          <code>&lt;ControlledAccordion&gt;</code> doesn't call <code>useAccordion</code> internally, allowing
-          you to choose where to use it.
+          wrapper over the context provider that passes those methods down.
+          Unlike <code>&lt;Accordion&gt;</code>, <code>&lt;ControlledAccordion&gt;</code> doesn&apos;t
+          call <code>useAccordion</code> internally, allowing you to choose where to use it.
         </p>
         <RemoteControlAccordion headerLevel={ 4 } />
         <SyntaxHighlighter language="tsx">
@@ -1119,7 +1119,7 @@ function AccordionPage() {
             rather than append to it
           </li>
           <li>
-            React ARIA Widgets exposes the accordion's state onto the DOM using various HTML attributes,
+            React ARIA Widgets exposes the accordion&apos;s state onto the DOM using various HTML attributes,
             allowing them to be targeted with CSS selectors
           </li>
           <li>
@@ -1254,7 +1254,7 @@ function AccordionPage() {
         <h4>Putting It All Together</h4>
         <p>
           You&apos;ll notice that we didn&apos;t create another version of <code>&lt;AccordionItem&gt;</code>. Its main
-          job is to make sure that the header and panel both have the same ID, and we won't need that in this example.
+          job is to make sure that the header and panel both have the same ID, and we won&apos;t need that in this example.
         </p>
         <p>
           Here&apos;s the completed accordion:
@@ -1278,7 +1278,7 @@ function AccordionPage() {
         </p>
         <h5>Props</h5>
         <p>
-          The type definition for this component's props are exported as <code>AccordionProps</code>.
+          The type definition for this component&apos;s props are exported as <code>AccordionProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1319,7 +1319,7 @@ function AccordionPage() {
               <tr>
                 <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1391,7 +1391,7 @@ function AccordionPage() {
         </p>
         <h5>Props</h5>
         <p>
-          The type definition for this component's props are exported as <code>AccordionItemProps</code>.
+          The type definition for this component&apos;s props are exported as <code>AccordionItemProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1443,7 +1443,7 @@ function AccordionPage() {
         </p>
         <h5>Props</h5>
         <p>
-          The type definition for this component's props are exported as <code>ControlledAccordionProps</code>.
+          The type definition for this component&apos;s props are exported as <code>ControlledAccordionProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1462,13 +1462,13 @@ function AccordionPage() {
                 <td>
                   <a href="#accordion-members"><code className="is-underlined">AccordionMembers</code></a>
                 </td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
                 </td>
                 <td>
-                  The object returned by <code>useAccordion</code> (i.e. the accordion's
+                  The object returned by <code>useAccordion</code> (i.e. the accordion&apos;s
                   fields and methods).
                 </td>
               </tr>
@@ -1486,7 +1486,7 @@ function AccordionPage() {
         </p>
         <h5>Props</h5>
         <p>
-          The type definition for this component's props are exported as <code>AccordionHeaderProps</code>.
+          The type definition for this component&apos;s props are exported as <code>AccordionHeaderProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1624,7 +1624,7 @@ function AccordionPage() {
           the underlying element (i.e. indicated by the <code>as</code> prop).
         </p>
         <p>
-          The type definitions for this component's props are exported as <code>AccordionPanelProps</code>.
+          The type definitions for this component&apos;s props are exported as <code>AccordionPanelProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1738,7 +1738,7 @@ function AccordionPage() {
         </ul>
         <h5>Props</h5>
         <p>
-          The type definition for this component's props are exported as <code>BaseAccordionHeaderProps</code>.
+          The type definition for this component&apos;s props are exported as <code>BaseAccordionHeaderProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1796,7 +1796,7 @@ function AccordionPage() {
               <tr>
                 <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1806,7 +1806,7 @@ function AccordionPage() {
               <tr>
                 <td><code>onClick</code></td>
                 <td><code>React.MouseEventHandler&lt;HTMLButtonElement&gt;</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1823,7 +1823,7 @@ function AccordionPage() {
               <tr>
                 <td><code>aria-controls</code></td>
                 <td><code>string</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -1911,7 +1911,7 @@ function AccordionPage() {
           underlying element (i.e. indicated by the <code>as</code> prop).
         </p>
         <p>
-          The type definition for this component's props are exported as <code>BaseAccordionPanelProps</code>.
+          The type definition for this component&apos;s props are exported as <code>BaseAccordionPanelProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -1961,7 +1961,7 @@ function AccordionPage() {
               <tr>
                 <td><code>id</code></td>
                 <td><code>string</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -2039,7 +2039,7 @@ function AccordionPage() {
               <tr>
                 <td><code>headerLevel</code></td>
                 <td><code>1 | 2 | 3 | 4 | 5 | 6</code></td>
-                <td></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
@@ -2268,7 +2268,7 @@ function AccordionPage() {
         <h4 id="accordion-context">AccordionContext</h4>
         <p>
           This context provides the fields and methods from <code>useAccordion</code> to consumers
-          like <code>useAccordionContext</code>. Chances are, you'll be
+          like <code>useAccordionContext</code>. Chances are, you&apos;ll be
           using <code>&lt;Accordion&gt;</code> or <code>&lt;ControlledAccordion&gt;</code> instead of
           importing this directly, but React ARIA Widgets exports it for those who wish to use it.
         </p>
@@ -2279,7 +2279,7 @@ function AccordionPage() {
         <h4 id="accordion-item-context">AccordionItemContext</h4>
         <p>
           This context provides the header and panel IDs from <code>&lt;AccordionItem&gt;</code> to consumers
-          like <code>useAccordionItemContext</code>. Chances are, you'll be
+          like <code>useAccordionItemContext</code>. Chances are, you&apos;ll be
           using <code>&lt;AccordionItem&gt;</code> instead, but React ARIA Widgets exports it for those who
           wish to use it.
         </p>
@@ -2290,7 +2290,7 @@ function AccordionPage() {
         <h3 id="types">
           Types
         </h3>
-         <div className="table-container">
+        <div className="table-container">
           <table className="table is-hoverable">
             <thead>
               <tr>
@@ -2305,7 +2305,7 @@ function AccordionPage() {
                   <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_PROPS }
                   </SyntaxHighlighter>
-                </td> 
+                </td>
               </tr>
               <tr id="accordion-item-props">
                 <td><code>AccordionItemProps</code></td>

@@ -3,14 +3,14 @@ import Head from 'next/head';
 //Components
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
-const VALID_HTML_HEADER_LEVELS = `type ValidHTMLHeaderLevels = 1 | 2 | 3 | 4 | 5 | 6;`;
+const VALID_HTML_HEADER_LEVELS = 'type ValidHTMLHeaderLevels = 1 | 2 | 3 | 4 | 5 | 6;';
 
 const AS_PROP =
 `interface AsProp<C extends React.ElementType> {
   as?: C;
 }`;
 
-const PROPS_WITH_AS = `type PropsWithAs<C extends React.ElementType, P> = AsProp<C> & P;`;
+const PROPS_WITH_AS = 'type PropsWithAs<C extends React.ElementType, P> = AsProp<C> & P;';
 
 const POLYMORPHIC_REF =
 `type PolymorphicRef<
@@ -37,7 +37,7 @@ const POLYMORPHIC_COMPONENT_PROPS_WITH_REF =
   Omit<
     React.ComponentPropsWithRef<C>,
     keyof PropsWithAs<C, P>
-  >;`
+  >;`;
 
 const POLYMORPHIC_FORWARD_REF_COMPONENT =
 `interface PolymorphicForwardRefComponent<
