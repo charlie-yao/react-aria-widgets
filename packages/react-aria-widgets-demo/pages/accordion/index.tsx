@@ -1629,7 +1629,7 @@ function AccordionPage() {
         <h5>Props</h5>
         <p>
           Note that if you pass any props other than those listed below, they will be spread onto
-          the underlying element (i.e. indicated by the <code>as</code> prop).
+          the underlying element (indicated by the <code>as</code> prop).
         </p>
         <p>
           The type definitions for this component&apos;s props are exported as <code>AccordionPanelProps</code>.
@@ -1920,7 +1920,7 @@ function AccordionPage() {
         <h5>Props</h5>
         <p>
           Note that if you pass any props other than those listed below, they will be spread onto the
-          underlying element (i.e. indicated by the <code>as</code> prop).
+          underlying element (indicated by the <code>as</code> prop).
         </p>
         <p>
           The type definition for this component&apos;s props are exported as <code>BaseAccordionPanelProps</code>.
