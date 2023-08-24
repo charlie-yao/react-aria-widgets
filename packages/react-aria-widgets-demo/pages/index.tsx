@@ -142,24 +142,12 @@ const STYLED_ACCORDION_CSS_EXAMPLE =
   display: none;
 }
 
-.react-aria-widgets-accordion-panel > p {
-  margin-bottom: 1rem;
-}
-
 .custom-accordion-panel[data-expanded=false] {
   display: none;
 }
 
-.custom-accordion-panel > p {
-  margin-bottom: 1rem;
-}
-
 .another-custom-panel.collapsed {
   display: none;
-}
-
-.another-custom-panel > p {
-  margin-bottom: 1rem;
 }`;
 
 export default function HomePage() {
