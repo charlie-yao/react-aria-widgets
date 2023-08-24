@@ -830,6 +830,17 @@ const BASE_ACCORDION_BUTTON_ELEMENT_PROPS =
   'aria-disabled'
 >;`;
 
+const BASE_ACCORDION_PANEL_PROPS =
+`type BaseAccordionPanelProps<
+  C extends React.ElementType = 'section'
+> = PolymorphicComponentPropsWithRef<
+  C,
+  {
+    id: string;
+    'aria-labelledby'?: string;
+  }
+>;`;
+
 const USE_ACCORDION_OPTIONS =
 `interface UseAccordionOptions {
   allowMultiple?: boolean;
@@ -2365,6 +2376,14 @@ function AccordionPage() {
                 <td>
                   <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { BASE_ACCORDION_BUTTON_ELEMENT_PROPS }
+                  </SyntaxHighlighter>
+                </td>
+              </tr>
+              <tr id="base-accordion-panel-props">
+                <td><code>BaseAccordionPanelProps</code></td>
+                <td>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
+                    { BASE_ACCORDION_PANEL_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
