@@ -1,17 +1,16 @@
 # React ARIA Widgets
 
-React ARIA Widgets is a collection of React components designed to help developers implement the patterns found in the [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/).
+React ARIA Widgets is a collection of React primitives designed to help developers implement the patterns found in the [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/).
 
-Please note that this library should **NOT** be used in a production environment! At the time of writing, this project was developed primarily for educational purposes. Though you are free to make issues on this repository, longterm support in the form of additional features, bug fixes, maintenance, or etc. cannot be guaranteed!
+Please note that this library should **NOT** be used in a production environment! It's still in a pre-alpha stage and the API is subject to major breaking changes.
 
-See https://www.charlieyao.com/react-aria-widgets for examples and documentation.
+See [React ARIA Widgets](https://www.charlieyao.com/react-aria-widgets) for examples and documentation.
 
 ## Features
 
-* [(Mostly) unstyled](https://www.charlieyao.com/react-aria-widgets/support#faq-mostly-unstyled) components that are easily composable and customizable
-* Modular design that abstracts stateful logic into higher-order components (HOCs) and React hooks
-* Unopinionated ["base" components](https://www.charlieyao.com/react-aria-widgets/getting-started#base-components) that exist primarily to document the necessary HTML elements and ARIA attributes for developers who wish to write their own implementations
-* Adheres to the APG complete with focus control and full keyboard support
+* Unstyled, accessible components that are easily composable and customizable
+* Modularized design that gives developers the freedom to choose which hooks, components, etc. they wish to import
+* Adheres to the APG complete with focus control and keyboard support
 
 ## Installation
 
@@ -29,53 +28,13 @@ yarn add react-aria-widgets
 
 ## Usage
 
-React ARIA Widgets provides two "flavors" of components. One flavor consists of "ready-to-use" components with the intention being that developers can simply provide their own styling and then drop them into their website. If state management logic is needed to fully satisfy the APG, React ARIA Widgets will provide it.
+React ARIA Widgets provides building blocks for developers to implement their own component libraries. Though it provides features such as accessibility and state management, that alone is insufficient for it to be used out of the box.
 
-If you wish to use the "ready-to-use" components, you must first import the stylesheet provided by React ARIA Widgets. Though the provided components are mostly unstyled, some default styling is still used. If you're using webpack, it's as easy as:
+For example, certain patterns rely on styling to handle some of the key features that define that pattern. One instance is the accordion pattern - without styles, expanding/collapsing the constituent sections wouldn't behave properly. However, React ARIA Widgets provides **no** default styles.
 
-```jsx
-import 'react-aria-widgets/styles.css';
-```
+Still, since React ARIA Widgets already provides state management and aims to maximize compatibility with the variety of CSS libraries, frameworks, etc., in the front-end ecosystem, building fully working implementations of each pattern can be as simple as passing in some `className` props using your framework of choice.
 
-From here, you can simply import and use whichever components that you need.
-
-```jsx
-import {
-  Accordion,
-  AccordionSection,
-  AccordionHeader,
-  AccordionPanel,
-} from 'react-aria-widgets/accordion';
-
-export default function MyAccordion() {
-  return (
-    <Accordion headerLevel={ 2 }>
-      <AccordionSection id="section-1">
-        <AccordionHeader>
-          Hello world!
-        </AccordionHeader>
-        <AccordionPanel>
-          Goodbye!
-        </AccordionPanel>
-      </AccordionSection>
-      <AccordionSection id="section-2">
-        <AccordionHeader>
-          Hello world!
-        </AccordionHeader>
-        <AccordionPanel>
-          Goodbye!
-        </AccordionPanel>
-      </AccordionSection>
-    </Accordion>
-  );
-}
-```
-
-The other flavor consists of what React ARIA WIdgets calls "base components". Unlike the "ready-to-use" components, which may come with higher-order components, hooks, event management logic, etc., these base components are simply thin wrappers over basic HTML elements and use PropTypes to dictate which HTML and ARIA attributes are necessarily to satisfy the APG. For developers who wish to have finer control (or even write their own implementations) and are simply looking for "guide rails", these base components may be more preferable to them.
-
-Documentation for each component, HOC, hook, etc. can be found on https://www.charlieyao.com/react-aria-widgets.
-
-**NOTE: If you're using [Next.js](https://nextjs.org), the components may need to be [lazy loaded](https://www.charlieyao.com/react-aria-widgets/support#next-js-lazy-load)!**
+For more information, see [React ARIA Widgets](https://www.charlieyao.com/react-aria-widgets).
 
 ---
 

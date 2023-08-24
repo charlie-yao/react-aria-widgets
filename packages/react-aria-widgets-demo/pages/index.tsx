@@ -169,10 +169,10 @@ export default function HomePage() {
           Unstyled, accessible components that are easily composable and customizable
         </li>
         <li>
-          Reusable hooks that can be used by developers who require finer-tuned control
+          Modularized design that gives developers the freedom to choose which hooks, components, etc. they wish to import
         </li>
         <li>
-          Adheres to the APG complete with focus control and full keyboard support.
+          Adheres to the APG complete with focus control and keyboard support.
         </li>
       </ul>
       <h2>Installation</h2>
@@ -193,12 +193,17 @@ export default function HomePage() {
       <p>
         React ARIA Widgets provides building blocks for developers to implement their own component libraries.
         Though it provides features such as accessibility and state management, that alone is insufficient
-        for it to be used out of the box. For example, React ARIA Widgets provides <strong>no</strong> default
-        styling in order to maximize compatibility with the variety of CSS options out there.
+        for it to be used out of the box.
       </p>
       <p>
-        But, since React ARIA Widgets already provides implementations for the APG patterns, simply passing
-        in your own styles will likely be enough to begin creating your own components.
+        For example, certain patterns rely on styling to handle some of the key features that define that
+        pattern. One instance is the accordion pattern - without styles, expanding/collapsing the constituent
+        sections wouldn&apos;t behave properly. However, React ARIA Widgets provides <strong>no</strong> default styles.
+      </p>
+      <p>
+        Still, React ARIA Widgets provides state management and aims to maximize compatibility with the variety
+        of CSS libraries, frameworks, etc., in the front-end ecosystem. Building fully working implementations of each
+        pattern can be as simple as passing in some <code>className</code> props using your framework of choice.
       </p>
       <UnstyledBasicAccordion headerLevel={ 3 } />
       <SyntaxHighlighter language="tsx">
@@ -222,8 +227,8 @@ export default function HomePage() {
         { STYLED_ACCORDION_CSS_EXAMPLE }
       </SyntaxHighlighter>
       <p>
-        In addition to styling options, React ARIA Widgets also provides a number of hooks and other primitives
-        for each pattern that can be used to build finer-tuned implementations. For more information, see each
+        In addition to styling options, React ARIA Widgets also provides hooks and other primitives
+        that can be used to build finer-tuned implementations. For more information, see each
         patterns&apos; individual documentation page.
       </p>
     </article>
