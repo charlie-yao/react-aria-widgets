@@ -35,8 +35,8 @@ export default function SupportPage() {
           { IMPORT_EXAMPLE }
         </SyntaxHighlighter>
         <p>
-          To fix this, you can import directly from <code>react-aria-widgets</code>, though it likely increase your
-          bundle size. Another option would be to change <code>moduleResolution</code> to <code>node16</code> in
+          To fix this, you can import directly from <code>react-aria-widgets</code>, though it may increase your
+          bundle sizes. Another option would be to change <code>moduleResolution</code> to <code>node16</code> in
           your <code>tsconfig.json</code>.
         </p>
         <p>
