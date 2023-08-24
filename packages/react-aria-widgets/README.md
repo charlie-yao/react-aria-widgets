@@ -32,7 +32,7 @@ React ARIA Widgets provides building blocks for developers to implement their ow
 
 For example, certain patterns rely on styling to handle some of the key features that define that pattern. One instance is the accordion pattern - without styles, expanding/collapsing the constituent sections wouldn't behave properly. However, React ARIA Widgets provides **no** default styles.
 
-Still, since React ARIA Widgets already provides state management and aims to maximize compatibility with the variety of CSS libraries, frameworks, etc., in the front-end ecosystem, building fully working implementations of each pattern can be as simple as passing in some `className` props using your framework of choice.
+Still, React ARIA Widgets provides state management and aims to maximize compatibility with the variety of CSS libraries, frameworks, etc., in the front-end ecosystem. Building fully working implementations of each pattern can be as simple as passing in some `className` props using your framework of choice.
 
 For more information, see [React ARIA Widgets](https://www.charlieyao.com/react-aria-widgets).
 
