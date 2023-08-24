@@ -12,7 +12,7 @@ interface AccordionItemRef {
 
 type OnToggleExpanded = (expandedItems: Set<string>) => void;
 type OnToggleDisabled = (disabledItems: Set<string>) => void;
-type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
+type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string; }) => void;
 
 export interface UseAccordionOptions {
   allowMultiple?: boolean;

@@ -20,9 +20,9 @@ export type BaseAccordionButtonElementProps = Omit<
   'dangerouslySetInnerHTML' |
   'type' |
   'id' |
-  'aria-controls' |
   'onClick' |
   'onKeyDown' |
+  'aria-controls' |
   'aria-expanded' |
   'aria-disabled'
 >;
