@@ -1423,7 +1423,7 @@ function AccordionPage() {
               <tr>
                 <td><code>id</code></td>
                 <td><code>string</code></td>
-                <td><code>undefined</code></td>
+                <td />
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
                   <span className="is-sr-only">Yes</span>
