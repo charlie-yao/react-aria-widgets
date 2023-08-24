@@ -1956,7 +1956,7 @@ function AccordionPage() {
                     couple implications.
                   </p>
                   <p>
-                    The first is that elements with the <code>region</code> role must be labelled,
+                    First, elements with the <code>region</code> role must be labeled,
                     making <code>aria-labelledby</code> required by default.
                   </p>
                   <p>
