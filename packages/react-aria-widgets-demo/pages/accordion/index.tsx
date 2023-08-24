@@ -1914,7 +1914,7 @@ function AccordionPage() {
         </h4>
         <p>
           A stateless component that represents an accordion panel. Exists mainly to provide guardrails to help
-          ensure adherence to the APG, name by using TypeScript and PropTypes to remind developers which
+          ensure adherence to the APG, namely by using TypeScript and PropTypes to remind developers which
           HTML/ARIA attributes need to be set.
         </p>
         <h5>Props</h5>
