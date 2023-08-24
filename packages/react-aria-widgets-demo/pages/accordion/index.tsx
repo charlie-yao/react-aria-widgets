@@ -1541,7 +1541,9 @@ function AccordionPage() {
                     You can supply a string or <code>CSSProperties</code> object
                     for <code>headerProps.className</code> or <code>headerProps.style</code> respectively, or
                     you can dynamically apply styles by providing a function. This function will receive
-                    accordion state information and should return a string or <code>CSSProperties</code> object.
+                    accordion state information
+                    (see <a href="#accordion-render-style-data"><code className="is-underlined">AccordionRenderStyleData</code></a>) and
+                    should return a string or <code>CSSProperties</code> object.
                   </p>
                   <p>
                     If no <code>className</code> property is supplied, the default value will
@@ -1566,7 +1568,9 @@ function AccordionPage() {
                     You can supply a string or <code>CSSProperties</code> object
                     for <code>buttonProps.className</code> or <code>buttonProps.style</code> respectively, or
                     you can dynamically apply styles by providing a function. This function will receive
-                    accordion state information and should return string or <code>CSSProperties</code> object.
+                    accordion state information
+                    (see <a href="#accordion-render-style-data"><code className="is-underlined">AccordionRenderStyleData</code></a>)
+                    and should return a string or <code>CSSProperties</code> object.
                   </p>
                   <p>
                     If no <code>className</code> property is supplied, the default value will
@@ -1665,7 +1669,9 @@ function AccordionPage() {
                 <td />
                 <td>
                   A string or function that determines the CSS class. If you supply a function, it
-                  will receive state information that will allow you to dynamically set the class.
+                  will receive state information
+                  (see <a href="#accordion-render-style-data"><code className="is-underlined">AccordionRenderStyleData</code></a>)
+                  that will allow you to dynamically set the class.
                 </td>
               </tr>
               <tr>
@@ -1677,7 +1683,9 @@ function AccordionPage() {
                 <td />
                 <td>
                   An object or function that determines the style attribute. If you supply a function, it
-                  will receive state information that will allow you to dynamically apply styles.
+                  will receive state information
+                  (see <a href="#accordion-render-style-data"><code className="is-underlined">AccordionRenderStyleData</code></a>)
+                  that will allow you to dynamically apply styles.
                 </td>
               </tr>
               <tr>
