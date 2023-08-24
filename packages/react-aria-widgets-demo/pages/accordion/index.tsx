@@ -232,9 +232,10 @@ const INITIALIZE_STATE_ACCORDION_EXAMPLE =
 
 const ITEMS = [ 'item1', 'item2', 'item3' ];
 
-function InitializeStateAccordion(props: AccordionProps) {
+function InitializeStateAccordion() {
   return (
     <Accordion
+      headerLevel={ 4 }
       initialExpanded={ [ 'item1', 'item2' ] }
       initialDisabled={ [ 'item2' ] }
       { ...props }
@@ -770,13 +771,19 @@ const ACCORDION_HEADER_ELEMENT_PROPS =
 `type AccordionHeaderElementProps = {
   className?: string | AccordionRenderClass;
   style?: React.CSSProperties | AccordionRenderStyle;
-} & Omit<BaseAccordionHeaderElementProps, 'className' | 'style'>;`;
+} & Omit<
+  BaseAccordionHeaderElementProps,
+  'className' | 'style'
+>;`;
 
 const ACCORDION_BUTTON_ELEMENT_PROPS =
 `type AccordionButtonElementProps = {
   className?: string | AccordionRenderClass;
   style?: React.CSSProperties | AccordionRenderStyle;
-} & Omit<BaseAccordionButtonElementProps, 'className' | 'style'>;`;
+} & Omit<
+  BaseAccordionButtonElementProps,
+  'className' | 'style'
+>;`;
 
 const ACCORDION_PANEL_PROPS =
 `type AccordionPanelProps<
@@ -1259,6 +1266,9 @@ function AccordionPage() {
           down to child components via the context API, which can be read with the hook <code>useAccordionContext</code>.
         </p>
         <h5>Props</h5>
+        <p>
+          The type definition for this component's props are exported as <code>AccordionProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1369,6 +1379,9 @@ function AccordionPage() {
           hook <code>useAccordionItemContext</code>.
         </p>
         <h5>Props</h5>
+        <p>
+          The type definition for this component's props are exported as <code>AccordionItemProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1418,6 +1431,9 @@ function AccordionPage() {
           use it.
         </p>
         <h5>Props</h5>
+        <p>
+          The type definition for this component's props are exported as <code>ControlledAccordionProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1432,7 +1448,9 @@ function AccordionPage() {
             <tbody>
               <tr>
                 <td><code>contextValue</code></td>
-                <td><code>AccordionMembers</code></td>
+                <td>
+                  <a href="#accordion-members"><code className="is-underlined">AccordionMembers</code></a>
+                </td>
                 <td></td>
                 <td>
                   <span aria-hidden="true">{ '\u2713' }</span>
@@ -1456,6 +1474,9 @@ function AccordionPage() {
           the HTML/ARIA attributes needed to fulfill the APG.
         </p>
         <h5>Props</h5>
+        <p>
+          The type definition for this component's props are exported as <code>AccordionHeaderProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1470,7 +1491,9 @@ function AccordionPage() {
             <tbody>
               <tr>
                 <td><code>children</code></td>
-                <td><code>React.ReactNode | AccordionRenderFunction</code></td>
+                <td>
+                  <code>React.ReactNode | <a href="#accordion-render-function" className="is-underlined">AccordionRenderFunction</a></code>
+                </td>
                 <td><code>null</code></td>
                 <td />
                 <td>
@@ -1493,7 +1516,9 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>headerProps</code></td>
-                <td><code>AccordionHeaderElementProps</code></td>
+                <td>
+                  <a href="#accordion-header-element-props"><code className="is-underlined">AccordionHeaderElementProps</code></a>
+                </td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1516,7 +1541,9 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>buttonProps</code></td>
-                <td><code>AccordionButtonElementProps</code></td>
+                <td>
+                  <a href="#accordion-button-element-props"><code className="is-underlined">AccordionButtonElementProps</code></a>
+                </td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1585,6 +1612,9 @@ function AccordionPage() {
           Note that if you pass any props other than those listed below, they will be spread onto
           the underlying element (i.e. indicated by the <code>as</code> prop).
         </p>
+        <p>
+          The type definitions for this component's props are exported as <code>AccordionPanelProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1599,7 +1629,9 @@ function AccordionPage() {
             <tbody>
               <tr>
                 <td><code>children</code></td>
-                <td><code>React.ReactNode | AccordionRenderFunction</code></td>
+                <td>
+                  <code>React.ReactNode | <a href="#accordion-render-function" className="is-underlined">AccordionRenderFunction</a></code>
+                </td>
                 <td><code>null</code></td>
                 <td />
                 <td>
@@ -1615,7 +1647,9 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>className</code></td>
-                <td><code>string | AccordionRenderClass</code></td>
+                <td>
+                  <code>string | <a href="#accordion-render-class" className="is-underlined">AccordionRenderClass</a></code>
+                </td>
                 <td><code>react-aria-widgets-accordion-panel</code></td>
                 <td />
                 <td>
@@ -1625,7 +1659,9 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>style</code></td>
-                <td><code>React.CSSProperties | AccordionRenderStyle</code></td>
+                <td>
+                  <code>React.CSSProperties | <a href="#accordion-render-style" className="is-underlined">AccordionRenderStyle</a></code>
+                </td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1690,6 +1726,9 @@ function AccordionPage() {
           <li>Uses TypeScript and PropTypes to remind developers which HTML/ARIA attributes need to be set</li>
         </ul>
         <h5>Props</h5>
+        <p>
+          The type definition for this component's props are exported as <code>BaseAccordionHeaderProps</code>.
+        </p>
         <div className="table-container">
           <table className="table is-hoverable">
             <thead>
@@ -1822,7 +1861,9 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>headerProps</code></td>
-                <td><code>BaseAccordionHeaderElementProps</code></td>
+                <td>
+                  <a href="#base-accordion-header-element-props"><code className="is-underlined">BaseAccordionHeaderElementProps</code></a>
+                </td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1832,7 +1873,9 @@ function AccordionPage() {
               </tr>
               <tr>
                 <td><code>buttonProps</code></td>
-                <td><code>BaseAccordionButtonElementProps</code></td>
+                <td>
+                  <a href="#base-accordion-button-element-props"><code className="is-underlined">BaseAccordionButtonElementProps</code></a>
+                </td>
                 <td><code>{ '{}' }</code></td>
                 <td />
                 <td>
@@ -1855,6 +1898,9 @@ function AccordionPage() {
         <p>
           Note that if you pass any props other than those listed below, they will be spread onto the
           underlying element (i.e. indicated by the <code>as</code> prop).
+        </p>
+        <p>
+          The type definition for this component's props are exported as <code>BaseAccordionPanelProps</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2045,8 +2091,7 @@ function AccordionPage() {
         </div>
         <h5>Return Value</h5>
         <p>
-          This hook returns an object of type <code>AccordionMembers</code> and contains
-          the following properties:
+          The type of the returned object is exported as <code>AccordionMembers</code>.
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2151,29 +2196,28 @@ function AccordionPage() {
         </h4>
         <p>
           <code>&lt;Accordion&gt;</code> and <code>&lt;ControlledAccordion&gt;</code> pass down the fields
-          and methods from <code>useAccordion</code> via the context API. This hook is used to read from that
+          and methods from <code>useAccordion</code> via the context API. This hook can be used to read from that
           context provider.
         </p>
         <h5>Arguments</h5>
         <p>This hook doesn&apos;t accept any arguments.</p>
         <h5>Return Value</h5>
         <p>
-          This hook has the same return value as <a href="#use-accordion"><code>useAccordion</code></a>&apos;s
-          return value.
+          This hook has the same return value as <code>useAccordion</code>&apos;s return value, an object of
+          type <code>AccordionMembers</code>.
         </p>
         <h4 id="use-accordion-item-context">
           useAccordionItemContext
         </h4>
         <p>
           <code>&lt;AccordionItem&gt;</code> passes down the IDs for its header and panel via
-          the context API. This hook is used to read from that context provider.
+          the context API. This hook can be used to read from that context provider.
         </p>
         <h5>Arguments</h5>
         <p>This hook doesn&apos;t accept any arguments.</p>
         <h5>Return Value</h5>
         <p>
-          This hook returns an object of type <code>AccordionItemContextType</code> that contains
-          the following properties:
+          This hook returns an object of type <code>AccordionItemContextType</code> that contains the following properties:
         </p>
         <div className="table-container">
           <table className="table is-hoverable">
@@ -2188,7 +2232,7 @@ function AccordionPage() {
               <tr>
                 <td><code>id</code></td>
                 <td><code>string</code></td>
-                <td>The accordion item&apos;s identifier. Only has to be unique amongst its sibling items.</td>
+                <td>The accordion item&apos;s identifier. Should be unique amongst its sibling items.</td>
               </tr>
               <tr>
                 <td><code>headerHTMLId</code></td>
@@ -2244,138 +2288,138 @@ function AccordionPage() {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr id="accordion-props">
                 <td><code>AccordionProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_PROPS }
                   </SyntaxHighlighter>
                 </td> 
               </tr>
-              <tr>
+              <tr id="accordion-item-props">
                 <td><code>AccordionItemProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_ITEM_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="controlled-accordion-props">
                 <td><code>ControlledAccordionProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { CUSTOM_ACCORDION_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-header-props">
                 <td><code>AccordionHeaderProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_HEADER_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-header-element-props">
                 <td><code>AccordionHeaderElementProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_HEADER_ELEMENT_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-button-element-props">
                 <td><code>AccordionButtonElementProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_BUTTON_ELEMENT_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-panel-props">
                 <td><code>AccordionPanelProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_PANEL_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="base-accordion-header-props">
                 <td><code>BaseAccordionHeaderProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { BASE_ACCORDION_HEADER_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="base-accordion-header-element-props">
                 <td><code>BaseAccordionHeaderElementProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { BASE_ACCORDION_HEADER_ELEMENT_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="base-accordion-button-element-props">
                 <td><code>BaseAccordionButtonElementProps</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { BASE_ACCORDION_BUTTON_ELEMENT_PROPS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="use-accordion-options">
                 <td><code>UseAccordionOptions</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { USE_ACCORDION_OPTIONS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-members">
                 <td><code>AccordionMembers</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_MEMBERS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-item-context-type">
                 <td><code>AccordionItemContextType</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_ITEM_CONTEXT_TYPE }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-render-function">
                 <td><code>AccordionRenderFunction</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_RENDER_FUNCTION }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-render-class">
                 <td><code>AccordionRenderClass</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_RENDER_CLASS }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-render-style">
                 <td><code>AccordionRenderStyle</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_RENDER_STYLE }
                   </SyntaxHighlighter>
                 </td>
               </tr>
-              <tr>
+              <tr id="accordion-render-style-data">
                 <td><code>AccordionRenderStyleData</code></td>
                 <td>
-                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0' }}>
+                  <SyntaxHighlighter language="typescript" customStyle={{ margin: '0', padding: '0.5rem' }}>
                     { ACCORDION_RENDER_STYLE_DATA }
                   </SyntaxHighlighter>
                 </td>

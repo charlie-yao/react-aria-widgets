@@ -13,3 +13,19 @@
     }
   }
 }
+
+a {
+  code {
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
+code {
+  padding: 0.125em 0.25em 0.125em;
+
+  a {
+    color: inherit;
+  }
+}
