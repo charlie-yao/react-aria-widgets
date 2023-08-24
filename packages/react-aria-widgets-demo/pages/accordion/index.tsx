@@ -1485,7 +1485,7 @@ function AccordionPage() {
         <p>
           Represents the header of an accordion. Receives the fields and methods from the accordion contexts
           by using the <code>useAccordionContext</code> and <code>useAccordionItemContext</code> hooks.
-          Implements event handlers to mange focus and expand/collapse its panel&apos;s visibility. Also sets
+          Implements event handlers to manage focus and expand/collapse its panel&apos;s visibility. Also sets
           the HTML/ARIA attributes needed to fulfill the APG.
         </p>
         <h5>Props</h5>
