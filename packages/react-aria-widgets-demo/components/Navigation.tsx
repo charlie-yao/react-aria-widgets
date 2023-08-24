@@ -25,11 +25,6 @@ export default function Navigation() {
             </Link>
           </li>
           <li>
-            <Link href="/getting-started" className={ pathname === '/getting-started' ? 'is-active' : '' }>
-              Getting Started
-            </Link>
-          </li>
-          <li>
             <Link href="/support" className={ pathname === '/support' ? 'is-active' : '' }>
               Support
             </Link>
@@ -42,6 +37,16 @@ export default function Navigation() {
           <li>
             <Link href="/accordion" className={ pathname === '/accordion' ? 'is-active' : '' }>
               Accordion
+            </Link>
+          </li>
+        </ul>
+        <p className="menu-label">
+          Utilities
+        </p>
+        <ul className="menu-list">
+          <li>
+            <Link href="/types" className={ pathname === '/types' ? 'is-active' : '' }>
+              Shared Types
             </Link>
           </li>
         </ul>

@@ -1,39 +1,9 @@
 import { createContext } from 'react';
 
 //Types
-import type { ValidHTMLHeaderLevels } from '../../types';
-import type {
-  GetIsExpanded,
-  GetIsDisabled,
-  ToggleExpanded,
-  ToggleDisabled,
-  PushHeaderRef,
-  FocusHeaderIndex,
-  FocusHeaderId,
-  FocusPrevHeader,
-  FocusNextHeader,
-  FocusFirstHeader,
-  FocusLastHeader,
-} from '../hooks/useAccordion';
+import type { AccordionMembers } from '../hooks/useAccordion';
 
-export interface AccordionContextType {
-  allowMultiple: boolean;
-  allowCollapseLast: boolean;
-  headerLevel: ValidHTMLHeaderLevels;
-  getIsExpanded: GetIsExpanded;
-  getIsDisabled: GetIsDisabled;
-  toggleExpanded: ToggleExpanded;
-  toggleDisabled: ToggleDisabled;
-  pushHeaderRef: PushHeaderRef;
-  focusHeaderIndex: FocusHeaderIndex;
-  focusHeaderId: FocusHeaderId;
-  focusPrevHeader: FocusPrevHeader;
-  focusNextHeader: FocusNextHeader;
-  focusFirstHeader: FocusFirstHeader;
-  focusLastHeader: FocusLastHeader;
-}
-
-const AccordionContext = createContext<AccordionContextType | null>(null);
+const AccordionContext = createContext<AccordionMembers | null>(null);
 const AccordionProvider = AccordionContext.Provider;
 
 export default AccordionContext;

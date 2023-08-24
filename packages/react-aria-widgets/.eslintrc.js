@@ -303,7 +303,7 @@ module.exports = {
     }],
     'react/jsx-pascal-case': [ 'error' ],
     'react/jsx-props-no-multi-spaces': [ 'error' ],
-    'react/jsx-props-no-spreading': [ 'error' ],
+    'react/jsx-props-no-spreading': [ 'warn' ],
     'react/jsx-tag-spacing': [ 'error', {
       beforeClosing: 'never',
     }],

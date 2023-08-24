@@ -14,22 +14,22 @@ import type {
   AccordionRenderClass,
   AccordionRenderStyle,
 } from '../types';
-import type { BaseHeaderProps, BaseButtonProps } from './BaseAccordionHeader';
+import type { BaseAccordionHeaderElementProps, BaseAccordionButtonElementProps } from './BaseAccordionHeader';
 
-export type HeaderProps = {
+export type AccordionHeaderElementProps = {
   className?: string | AccordionRenderClass;
   style?: React.CSSProperties | AccordionRenderStyle;
-} & Omit<BaseHeaderProps, 'className' | 'style'>;
+} & Omit<BaseAccordionHeaderElementProps, 'className' | 'style'>;
 
-export type ButtonProps = {
+export type AccordionButtonElementProps = {
   className?: string | AccordionRenderClass;
   style?: React.CSSProperties | AccordionRenderStyle;
-} & Omit<BaseButtonProps, 'className' | 'style'>;
+} & Omit<BaseAccordionButtonElementProps, 'className' | 'style'>;
 
 export interface AccordionHeaderProps {
   children?: React.ReactNode | AccordionRenderFunction;
-  headerProps?: HeaderProps;
-  buttonProps?: ButtonProps;
+  headerProps?: AccordionHeaderElementProps;
+  buttonProps?: AccordionButtonElementProps;
 }
 
 function AccordionHeader({
@@ -46,19 +46,19 @@ function AccordionHeader({
     getIsExpanded,
     getIsDisabled,
     toggleExpanded,
-    pushHeaderRef,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
+    pushItemRef,
+    focusPrevItem,
+    focusNextItem,
+    focusFirstItem,
+    focusLastItem,
   } = accordionContext;
   const { id, headerHTMLId, panelHTMLId } = accordionItemContext;
   const isExpanded = getIsExpanded(id);
   const isDisabled = getIsDisabled(id);
 
   const refCallback = useCallback((ref: HTMLButtonElement | null) => {
-    pushHeaderRef(ref, id);
-  }, [ id, pushHeaderRef ]);
+    pushItemRef(ref, id);
+  }, [ id, pushItemRef ]);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = useCallback(() => {
     toggleExpanded(id);
@@ -69,25 +69,25 @@ function AccordionHeader({
 
     if(key === 'ArrowUp') {
       event.preventDefault();
-      focusPrevHeader(id);
+      focusPrevItem(id);
     }
     else if(key === 'ArrowDown') {
       event.preventDefault();
-      focusNextHeader(id);
+      focusNextItem(id);
     }
     else if(key === 'Home') {
       event.preventDefault();
-      focusFirstHeader();
+      focusFirstItem();
     }
     else if(key === 'End') {
       event.preventDefault();
-      focusLastHeader();
+      focusLastItem();
     }
   }, [
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
+    focusPrevItem,
+    focusNextItem,
+    focusFirstItem,
+    focusLastItem,
     id,
   ]);
 

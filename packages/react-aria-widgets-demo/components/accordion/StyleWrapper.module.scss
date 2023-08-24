@@ -1,0 +1,39 @@
+.StyleWrapper {
+  :global {
+    .react-aria-widgets-accordion-panel[data-expanded=false] {
+      display: none;
+    }
+
+    .react-aria-widgets-accordion-panel > p {
+      margin-bottom: 1rem;
+    }
+
+    .custom-accordion-panel[data-expanded=false] {
+      display: none;
+    }
+
+    .custom-accordion-panel > p {
+      margin-bottom: 1rem;
+    }
+
+    .another-custom-panel.collapsed {
+      display: none;
+    }
+
+    .another-custom-panel > p {
+      margin-bottom: 1rem;
+    }
+
+    .my-accordion-header {
+      margin-bottom: 1rem;
+    }
+
+    .my-accordion-button {
+      width: 100%;
+    }
+
+    .my-accordion-panel.collapsed {
+      display: none;
+    }
+  }
+}

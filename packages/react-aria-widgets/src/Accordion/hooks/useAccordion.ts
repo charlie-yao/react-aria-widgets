@@ -3,32 +3,18 @@ import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 //Types
 import type { ValidHTMLHeaderLevels } from '../../types';
 
-export type ExpandedItems = Set<string>;
-export type DisabledItems = Set<string>;
+type AccordionHeaderButtonElement = HTMLButtonElement | HTMLElement | null;
 
-export type AccordionHeaderButtonElement = HTMLButtonElement | HTMLElement | null;
-
-export interface AccordionHeaderRef {
+interface AccordionItemRef {
   elem: AccordionHeaderButtonElement;
   id: string;
 }
 
-export type GetIsExpanded = (id: string) => boolean;
-export type GetIsDisabled = (id: string) => boolean;
-export type ToggleExpanded = (id: string) => void;
-export type ToggleDisabled = (id: string) => void;
-export type PushHeaderRef = (elem: AccordionHeaderButtonElement, id: string) => void;
-export type FocusHeaderIndex = (index: number) => void;
-export type FocusHeaderId = (id: string) => void;
-export type FocusPrevHeader = (id: string) => void;
-export type FocusNextHeader = (id: string) => void;
-export type FocusFirstHeader = () => void;
-export type FocusLastHeader = () => void;
-export type OnToggleExpanded = (expandedItems: ExpandedItems) => void;
-export type OnToggleDisabled = (disabledItems: DisabledItems) => void;
-export type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
+type OnToggleExpanded = (expandedItems: Set<string>) => void;
+type OnToggleDisabled = (disabledItems: Set<string>) => void;
+type OnFocusChange = ({ elem, index, id }: { elem: AccordionHeaderButtonElement; index: number; id: string }) => void;
 
-export interface UseAccordion {
+export interface UseAccordionOptions {
   allowMultiple?: boolean;
   allowCollapseLast?: boolean;
   headerLevel: ValidHTMLHeaderLevels;
@@ -38,6 +24,8 @@ export interface UseAccordion {
   onToggleDisabled?: OnToggleDisabled | undefined;
   onFocusChange?: OnFocusChange | undefined;
 }
+
+export type AccordionMembers = ReturnType<typeof useAccordion>;
 
 function _getIsExpanded(id: string, expandedItems: Set<string>) {
   return expandedItems.has(id);
@@ -60,25 +48,25 @@ export default function useAccordion({
   onToggleExpanded,
   onToggleDisabled,
   onFocusChange,
-}: UseAccordion) {
+}: UseAccordionOptions) {
   const _initialExpanded = useMemo(() => {
     return new Set<string>(allowMultiple ? initialExpanded : initialExpanded.slice(0, 1));
   }, [ allowMultiple, initialExpanded ]);
 
   const _initialDisabled = useMemo(() => new Set<string>(initialDisabled), [ initialDisabled ]);
 
-  const [ expandedItems, setExpandedItems ] = useState<ExpandedItems>(_initialExpanded);
-  const [ disabledItems, setDisabledItems ] = useState<DisabledItems>(_initialDisabled);
-  const headerRefs = useRef<AccordionHeaderRef[]>([]);
+  const [ expandedItems, setExpandedItems ] = useState<Set<string>>(_initialExpanded);
+  const [ disabledItems, setDisabledItems ] = useState<Set<string>>(_initialDisabled);
+  const itemRefs = useRef<AccordionItemRef[]>([]);
   const idToIndexMap = useRef<Map<string, number>>(new Map());
   const onToggleExpandedRef = useRef<OnToggleExpanded | null | undefined>(null);
   const onToggleDisabledRef = useRef<OnToggleDisabled | null | undefined>(null);
 
-  const getIsExpanded: GetIsExpanded = useCallback((id) => {
+  const getIsExpanded = useCallback((id: string) => {
     return _getIsExpanded(id, expandedItems);
   }, [ expandedItems ]);
 
-  const getIsDisabled: GetIsDisabled = useCallback((id) => {
+  const getIsDisabled = useCallback((id: string) => {
     return _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
   }, [
     expandedItems,
@@ -86,7 +74,7 @@ export default function useAccordion({
     allowCollapseLast,
   ]);
 
-  const toggleExpanded: ToggleExpanded = useCallback((id) => {
+  const toggleExpanded = useCallback((id: string) => {
     setExpandedItems((expandedItems) => {
       const isExpanded = _getIsExpanded(id, expandedItems);
       const isDisabled = _getIsDisabled(id, expandedItems, disabledItems, allowCollapseLast);
@@ -114,7 +102,7 @@ export default function useAccordion({
     disabledItems,
   ]);
 
-  const toggleDisabled: ToggleDisabled = useCallback((id) => {
+  const toggleDisabled = useCallback((id: string) => {
     setDisabledItems((disabledItems) => {
       onToggleDisabledRef.current = onToggleDisabled;
 
@@ -127,13 +115,20 @@ export default function useAccordion({
     });
   }, [ onToggleDisabled ]);
 
-  const pushHeaderRef: PushHeaderRef = useCallback((elem, id) => {
-    headerRefs.current.push({ elem, id });
-    idToIndexMap.current.set(id, headerRefs.current.length - 1);
+  const pushItemRef = useCallback((elem: AccordionHeaderButtonElement, id: string) => {
+    itemRefs.current.push({ elem, id });
+    idToIndexMap.current.set(id, itemRefs.current.length - 1);
   }, []);
 
-  const focusHeaderIndex: FocusHeaderIndex = useCallback((index) => {
-    const { elem, id } = headerRefs.current[index];
+  const focusItemIndex = useCallback((index: number) => {
+    /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition --
+     * TypeScript applications will complain if you pass in undefined or null,
+     * but this code may be running in a JavaScript application.
+     **/
+    if(index === undefined || index === null)
+      return;
+
+    const { elem, id } = itemRefs.current[index];
 
     if(!elem)
       return;
@@ -144,40 +139,40 @@ export default function useAccordion({
       onFocusChange({ elem, index, id });
   }, [ onFocusChange ]);
 
-  const focusHeaderId: FocusHeaderId = useCallback((id) => {
+  const focusItemId = useCallback((id: string) => {
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
       return;
 
-    focusHeaderIndex(index);
-  }, [ focusHeaderIndex ]);
+    focusItemIndex(index);
+  }, [ focusItemIndex ]);
 
-  const focusPrevHeader: FocusPrevHeader = useCallback((id) => {
+  const focusPrevItem = useCallback((id: string) => {
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
       return;
 
-    focusHeaderIndex(index === 0 ? headerRefs.current.length - 1 : index - 1);
-  }, [ focusHeaderIndex ]);
+    focusItemIndex(index === 0 ? itemRefs.current.length - 1 : index - 1);
+  }, [ focusItemIndex ]);
 
-  const focusNextHeader: FocusNextHeader = useCallback((id) => {
+  const focusNextItem = useCallback((id: string) => {
     const index = idToIndexMap.current.get(id);
 
     if(index === undefined)
       return;
 
-    focusHeaderIndex(index === headerRefs.current.length - 1 ? 0 : index + 1);
-  }, [ focusHeaderIndex ]);
+    focusItemIndex(index === itemRefs.current.length - 1 ? 0 : index + 1);
+  }, [ focusItemIndex ]);
 
-  const focusFirstHeader: FocusFirstHeader = useCallback(() => {
-    focusHeaderIndex(0);
-  }, [ focusHeaderIndex ]);
+  const focusFirstItem = useCallback(() => {
+    focusItemIndex(0);
+  }, [ focusItemIndex ]);
 
-  const focusLastHeader: FocusLastHeader = useCallback(() => {
-    focusHeaderIndex(headerRefs.current.length - 1);
-  }, [ focusHeaderIndex ]);
+  const focusLastItem = useCallback(() => {
+    focusItemIndex(itemRefs.current.length - 1);
+  }, [ focusItemIndex ]);
 
   useEffect(() => {
     if(typeof onToggleExpandedRef.current === 'function')
@@ -202,13 +197,13 @@ export default function useAccordion({
       getIsDisabled,
       toggleExpanded,
       toggleDisabled,
-      pushHeaderRef,
-      focusHeaderIndex,
-      focusHeaderId,
-      focusPrevHeader,
-      focusNextHeader,
-      focusFirstHeader,
-      focusLastHeader,
+      pushItemRef,
+      focusItemIndex,
+      focusItemId,
+      focusPrevItem,
+      focusNextItem,
+      focusFirstItem,
+      focusLastItem,
     };
   }, [
     allowMultiple,
@@ -218,12 +213,12 @@ export default function useAccordion({
     getIsDisabled,
     toggleExpanded,
     toggleDisabled,
-    pushHeaderRef,
-    focusHeaderIndex,
-    focusHeaderId,
-    focusPrevHeader,
-    focusNextHeader,
-    focusFirstHeader,
-    focusLastHeader,
+    pushItemRef,
+    focusItemIndex,
+    focusItemId,
+    focusPrevItem,
+    focusNextItem,
+    focusFirstItem,
+    focusLastItem,
   ]);
 }

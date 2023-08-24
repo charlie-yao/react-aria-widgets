@@ -8,22 +8,12 @@ import ControlledAccordion from './ControlledAccordion';
 import useAccordion from '../hooks/useAccordion';
 
 //Types
-import type { ValidHTMLHeaderLevels } from '../../types';
-import type { OnToggleExpanded, OnToggleDisabled, OnFocusChange } from '../hooks/useAccordion';
+import type { UseAccordionOptions } from '../hooks/useAccordion';
 
 //Misc.
 import { VALID_HTML_HEADER_LEVELS } from '../../utils';
 
-export type AccordionProps = React.PropsWithChildren<{
-  allowMultiple?: boolean;
-  allowCollapseLast?: boolean;
-  headerLevel: ValidHTMLHeaderLevels;
-  initialExpanded?: string[];
-  initialDisabled?: string[];
-  onToggleExpanded?: OnToggleExpanded;
-  onToggleDisabled?: OnToggleDisabled;
-  onFocusChange?: OnFocusChange;
-}>;
+export type AccordionProps = React.PropsWithChildren<UseAccordionOptions>;
 
 function Accordion({
   children = null,

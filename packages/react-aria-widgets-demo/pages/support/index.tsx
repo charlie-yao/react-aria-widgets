@@ -3,55 +3,10 @@ import Head from 'next/head';
 //Components
 import SyntaxHighlighter from '../../components/SyntaxHighlighter';
 
-/* eslint-disable operator-linebreak */
-const NEXT_EXAMPLE_FAQ_PAGE =
-`//In a hypothetical pages/faq/index.js
-import dynamic from 'next/dynamic';
+const IMPORT_EXAMPLE =
+`import { useAccordion } from 'react-aria-widgets/accordion';
 
-const FAQAccordion = dynamic(
-  () => import('../../components/FAQAccordion'),
-  {
-    ssr: false,
-    loading: () => <p>Loading, please wait...</p>,
-  },
-);
-
-export default function FAQPage() {
-  return (
-    <>
-      <h1>Frequently Asked Questions</h1>
-      <FAQAccordion />
-    </>
-  );
-}`;
-
-const NEXT_EXAMPLE_FAQ_ACCORDION =
-`//In a hypothetical components/FAQAccordion.js
-import { Accordion, AccordionSection, AccordionHeader, AccordionPanel } from 'react-aria-widgets/accordion';
-
-export default function FAQAccordion () {
-  return (
-    <Accordion headerlevel={ 2 }>
-      <AccordionSection id="faq-1">
-        <AccordionHeader>
-          How do I "foo"?
-        </AccordionHeader>
-        <AccordionPanel>
-          Great question!
-        </AccordionPanel>
-      </AccordionSection>
-      <AccordionSection id="faq-2">
-        <AccordionHeader>
-          How do I "bar"?
-        </AccordionHeader>
-        <AccordionPanel>
-          Hard to say!  
-        </AccordionPanel>
-      </AccordionSection>
-    </Accordion>
-  );
-}`;
-/* eslint-enable operator-linebreak */
+Cannot find module 'react-aria-widgets/accordion' or its corresponding type declarations. (tsserver 2307)`;
 
 export default function SupportPage() {
   return (
@@ -65,34 +20,36 @@ export default function SupportPage() {
           If you encounter any issues, please feel free to make an issue
           on <a href="https://github.com/charlie-yao/react-aria-widgets">GitHub</a>.
         </p>
-        <p className="notification is-info is-light">
-          Please note that this library should <strong>NOT</strong> be used in a production environment!
-          It was developed primarily for educational purposes, and longterm
-          support in the form of additional features, bug fixes, maintenance, or etc.
-          cannot be guaranteed!
-        </p>
         <h2>Frequently Asked Questions (FAQ)</h2>
-        <h3 id="faq-mostly-unstyled">
-          &quot;Mostly Unstyled&quot;?
-        </h3>
+        <h3 id="faq-requirements">Requirements</h3>
         <p>
-          The components provided by React ARIA Widgets strives to be as unstyled as possible,
-          but there are cases where styling is included by default. For example, the accordion widget
-          uses <code>display: none !important;</code> by default to handle the expand/collapse states.
-          However, whenever possible, React ARIA Widgets will try to provide customization options
-          so that developers can use the implementation that suits them best.
+          React ARIA Widgets transpiles to ES6 code and requires React v18. In the future, we plan on expanding
+          support back to React v16.8.
+        </p>
+        <h3 id="faq-typescript-submodule-types">TypeScript can&apos;t find a sub-module or its type declarations</h3>
+        <p>
+          If you&apos;re writing a TypeScript application and you import something from one of React ARIA Widget&apos;s
+          sub-modules, you may run into the following error:
+        </p>
+        <SyntaxHighlighter language="typescript">
+          { IMPORT_EXAMPLE }
+        </SyntaxHighlighter>
+        <p>
+          To fix this, you can import directly from <code>react-aria-widgets</code>, though it may increase your
+          bundle sizes. Another option would be to change <code>moduleResolution</code> to <code>node16</code> in
+          your <code>tsconfig.json</code>.
         </p>
         <p>
-          Note that the examples shown for each pattern may contain styling that differs
-          from your browser&apos;s default styling, but that&apos;s due to the CSS used by this
-          website rather than React ARIA Widgets itself.
+          React ARIA Widgets exposes its sub-modules and their type declarations by listing them with
+          the <code>exports</code> field in its <code>package.json</code>, but this isn&apos;t supported
+          in older versions of Node.js.
         </p>
         <h3 id="faq-hidden-vs-display-none">
           <code>hidden</code> versus <code>display: none;</code>
         </h3>
         <p>
-          At the time of writing, many of the example implementations of widgets such as tabs shown in ARIA
-          Authoring Practices Guide (APG) use the <code>hidden</code> HTML attribute to handle expand/collapse states.
+          At the time of writing, many of the example implementations shown in the ARIA
+          Authoring Practices Guide (APG) use the <code>hidden</code> attribute to handle expand/collapse states.
           However, in the
           { ' ' }
           <a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">
@@ -119,44 +76,6 @@ export default function SupportPage() {
           the APG examples that are currently live still do not reflect those changes, their source
           code has been changed to use <code>display: none;</code> rather than <code>hidden</code>.
         </p>
-        <p>
-          React ARIA Widgets will use <code>display: none important!;</code> by default, but whenever possible,
-          it will try to give developers customization options should they decide to
-          use the <code>hidden</code> attribute or custom styling.
-        </p>
-        <h3>Styles from React ARIA Widgets Are Not Appearing</h3>
-        <p>
-          Remember to import the stylesheet!
-        </p>
-        <SyntaxHighlighter language="javascript">
-          import &apos;react-aria-widgets/styles.css&apos;;
-        </SyntaxHighlighter>
-        <h3>Type Notation in the API</h3>
-        <p>
-          <a href="https://flow.org/">Flow</a> is used notate types in the API, though
-          the project itself doesn&apos;t use Flow internally.
-        </p>
-        <h3 id="next-js-lazy-load">Next.js and <code>ReferenceError: self is not defined</code></h3>
-        <p>
-          This error occurs when Next.js pre-renders a page (whether using static generation or
-          server-side rendering) seemingly because React ARIA Widgets is trying to execute
-          code that only exists on clients (i.e. browsers).
-        </p>
-        <p>
-          To get around this on a pre-rendered page, you can lazy load React ARIA Widgets with
-          { ' ' }
-          <a href="https://nextjs.org/docs/advanced-features/dynamic-import">
-            <code>next/dynamic</code>
-          </a>
-          { /**/ }
-          . For example:
-        </p>
-        <SyntaxHighlighter language="jsx">
-          { NEXT_EXAMPLE_FAQ_PAGE }
-        </SyntaxHighlighter>
-        <SyntaxHighlighter language="jsx">
-          { NEXT_EXAMPLE_FAQ_ACCORDION }
-        </SyntaxHighlighter>
       </article>
     </>
   );

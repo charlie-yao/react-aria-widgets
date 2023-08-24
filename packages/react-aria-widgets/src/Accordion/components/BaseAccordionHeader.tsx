@@ -7,22 +7,22 @@ import PropTypes from 'prop-types';
 import type { ValidHTMLHeaderLevels } from '../../types';
 
 //Misc
-import { VALID_HTML_HEADER_LEVELS } from '../../utils';
+import { VALID_HTML_HEADER_LEVELS, VALID_HTML_HEADER_LEVELS_SET } from '../../utils';
 
-export type BaseHeaderProps = Omit<
+export type BaseAccordionHeaderElementProps = Omit<
   React.HTMLAttributes<HTMLHeadingElement>,
   'children' | 'dangerouslySetInnerHTML'
 >;
 
-export type BaseButtonProps = Omit<
+export type BaseAccordionButtonElementProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'children' |
   'dangerouslySetInnerHTML' |
   'type' |
   'id' |
-  'aria-controls' |
   'onClick' |
   'onKeyDown' |
+  'aria-controls' |
   'aria-expanded' |
   'aria-disabled'
 >;
@@ -35,8 +35,8 @@ export type BaseAccordionHeaderProps = React.PropsWithChildren<{
   'aria-controls': string;
   'aria-expanded': boolean;
   'aria-disabled': boolean;
-  headerProps?: BaseHeaderProps;
-  buttonProps?: BaseButtonProps;
+  headerProps?: BaseAccordionHeaderElementProps;
+  buttonProps?: BaseAccordionButtonElementProps;
 }>;
 
 const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHeaderProps>(({
@@ -51,6 +51,9 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
   headerProps,
   buttonProps,
 }, ref) => {
+  if(!VALID_HTML_HEADER_LEVELS_SET.has(headerLevel))
+    throw new Error(`headerLevel prop must be an integer from 1 to 6 (inclusive), but received: ${headerLevel}`);
+
   const HeaderElement: React.ElementType = `h${headerLevel}`;
 
   return (
@@ -73,7 +76,7 @@ const BaseAccordionHeader = React.forwardRef<HTMLButtonElement, BaseAccordionHea
 });
 
 BaseAccordionHeader.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   id: PropTypes.string,
   headerLevel: PropTypes.oneOf(VALID_HTML_HEADER_LEVELS).isRequired,
   onClick: PropTypes.func.isRequired,
@@ -86,6 +89,7 @@ BaseAccordionHeader.propTypes = {
 };
 
 BaseAccordionHeader.defaultProps = {
+  children: null,
   id: undefined,
   onKeyDown: undefined,
   headerProps: {},
