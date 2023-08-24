@@ -1873,7 +1873,7 @@ function AccordionPage() {
                   <p>
                     Informs assistive technologies if the button cannot be interacted with. A common use-case
                     would be if the associated panel is currently expanded, and the accordion does not allow it to
-                    be collapsed (e.g. <code>allowCollapseLast</code> is off and there&apos;s only 1 expanded panel).
+                    be collapsed (e.g. <code>allowCollapseLast</code> is off and there&apos;s only one expanded panel).
                   </p>
                   <p>
                     Note that unlike the <code>disabled</code> attribute, <code>aria-disabled</code> does not
