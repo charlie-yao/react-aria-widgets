@@ -1561,7 +1561,6 @@ __metadata:
     react-aria-widgets: "workspace:*"
     react-dom: ^18.2.0
     react-syntax-highlighter: ^15.5.0
-    react-tabs: ^5
     sass: 1.59.2
     typescript: 5.1.6
   languageName: unknown
@@ -5943,13 +5942,6 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: d06418b7335897209e77bdd430d04f882189582e67bd1f75a04565f3f07f5b3f119a9d670c943b6697d0afb100f03b866b3b8a1f91d4d02d72c4ecf2bb64b5dd
-  languageName: node
-  linkType: hard
-
-"clsx@npm:^1.1.0":
-  version: 1.2.1
-  resolution: "clsx@npm:1.2.1"
-  checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
   languageName: node
   linkType: hard
 
@@ -11861,7 +11853,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.5.0, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -12236,18 +12228,6 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: c082b48f30f8ba8d0c55ed1d761910630860077c7ff5793c4c912adcb5760df06436ed0ad62be0de28113aac9ad2af55eccd995f8eee98df53382e4ced2072fb
-  languageName: node
-  linkType: hard
-
-"react-tabs@npm:^5":
-  version: 5.2.0
-  resolution: "react-tabs@npm:5.2.0"
-  dependencies:
-    clsx: ^1.1.0
-    prop-types: ^15.5.0
-  peerDependencies:
-    react: ^18.0.0
-  checksum: b9ebf9b05138038fe73eb704c98d21d579dcd2cd97ab72b7966f54488cf00aaa4e2edfc6544f090a66ee59b9bf11dd8b330384396727f6d87a377e1790ebd021
   languageName: node
   linkType: hard
 
