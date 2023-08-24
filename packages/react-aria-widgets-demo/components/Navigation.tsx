@@ -41,6 +41,16 @@ export default function Navigation() {
           </li>
         </ul>
         <p className="menu-label">
+          Utilities
+        </p>
+        <ul className="menu-list">
+          <li>
+            <Link href="/types" className={ pathname === '/types' ? 'is-active' : '' }>
+              Shared Types
+            </Link>
+          </li>
+        </ul>
+        <p className="menu-label">
           Links
         </p>
         <ul className="menu-list">
