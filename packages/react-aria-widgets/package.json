@@ -49,6 +49,7 @@
     "url": "git+https://github.com/charlie-yao/react-aria-widgets.git"
   },
   "scripts": {
+    "test": "jest",
     "build:test": "tsc -p tsconfig.build:test.json",
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js",
