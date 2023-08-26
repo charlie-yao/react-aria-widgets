@@ -7400,6 +7400,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/jest", [\
+        ["npm:29.5.4", {\
+          "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.4-d0885ca455-38ed5942f4.zip/node_modules/@types/jest/",\
+          "packageDependencies": [\
+            ["@types/jest", "npm:29.5.4"],\
+            ["expect", "npm:29.6.4"],\
+            ["pretty-format", "npm:29.6.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/json-schema", [\
         ["npm:7.0.12", {\
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.12-f05cfc0e99-00239e9723.zip/node_modules/@types/json-schema/",\
@@ -18174,6 +18185,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/react", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.2.1"],\
             ["@storybook/react-webpack5", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.2.1"],\
             ["@storybook/testing-library", "npm:0.1.0"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/prop-types", "npm:15.7.5"],\
             ["@types/react", "npm:18.2.19"],\
             ["@types/react-dom", "npm:18.2.7"],\
@@ -18226,6 +18238,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@storybook/react", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.2.1"],\
             ["@storybook/react-webpack5", "virtual:49964c7fa9437b7f0ff7346a9545eb26b7b5571f564af7d3e36a14cde56055b159ac1072817fad5f2d24994a694c8ecfb58efe0d3cb59058d7d572635e8e8c68#npm:7.2.1"],\
             ["@storybook/testing-library", "npm:0.1.0"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/prop-types", "npm:15.7.5"],\
             ["@types/react", "npm:18.2.19"],\
             ["@types/react-dom", "npm:18.2.7"],\

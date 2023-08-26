@@ -82,6 +82,7 @@
     "@storybook/react": "^7.0.2",
     "@storybook/react-webpack5": "^7.0.2",
     "@storybook/testing-library": "^0.1.0",
+    "@types/jest": "^29.5.4",
     "@types/prop-types": "^15.7.5",
     "@types/react": "^18.2.19",
     "@types/react-dom": "^18.0.11",
