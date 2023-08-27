@@ -44,11 +44,11 @@ describe('common Accordion functionality', () => {
 });
 
 describe('with allowMultiple === true and allowCollapseLast === true', () => {
-  let rendered: RenderResult;
+  //let rendered: RenderResult;
 
-  beforeEach(() => {
-    rendered = render(<BasicAccordion headerLevel={ 1 } />);
-  });
+  //beforeEach(() => {
+  //  rendered = render(<BasicAccordion headerLevel={ 1 } />);
+  //});
 });
 
 function BasicAccordion(props: AccordionProps) {
