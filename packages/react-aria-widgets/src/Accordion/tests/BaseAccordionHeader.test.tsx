@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 //Components
 import BaseAccordionHeader from '../components/BaseAccordionHeader';
 
-describe('BaseAccordionHeader structure', () => {
+describe('BaseAccordionHeader', () => {
   beforeEach(() => {
     render(<TestBaseAccordionHeader />);
   });

@@ -8,6 +8,9 @@ import BaseAccordionHeader from './BaseAccordionHeader';
 import useAccordionContext from '../hooks/useAccordionContext';
 import useAccordionItemContext from '../hooks/useAccordionItemContext';
 
+//Misc.
+import { DEFAULT_ACCORDION_HEADER_ELEMENT_CSS_CLASS, DEFAULT_ACCORDION_BUTTON_ELEMENT_CSS_CLASS } from '../utils';
+
 //Types
 import type {
   AccordionRenderFunction,
@@ -107,7 +110,7 @@ function AccordionHeader({
     else if(typeof headerProps.className === 'string')
       className = headerProps.className;
     else
-      className = 'react-aria-widgets-accordion-header';
+      className = DEFAULT_ACCORDION_HEADER_ELEMENT_CSS_CLASS;
 
     if(typeof headerProps.style === 'function')
       style = headerProps.style({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
@@ -139,7 +142,7 @@ function AccordionHeader({
     else if(typeof buttonProps.className === 'string')
       className = buttonProps.className;
     else
-      className = 'react-aria-widgets-accordion-button';
+      className = DEFAULT_ACCORDION_BUTTON_ELEMENT_CSS_CLASS;
 
     if(typeof buttonProps.style === 'function')
       style = buttonProps.style({ allowMultiple, allowCollapseLast, headerLevel, isExpanded, isDisabled });
@@ -183,8 +186,8 @@ AccordionHeader.propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
-  headerProps: PropTypes.object,
-  buttonProps: PropTypes.object,
+  headerProps: PropTypes.object as React.Validator<AccordionHeaderElementProps>,
+  buttonProps: PropTypes.object as React.Validator<AccordionButtonElementProps>,
 };
 
 export default AccordionHeader;
