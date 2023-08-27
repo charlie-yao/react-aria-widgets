@@ -9,12 +9,16 @@ import type { ValidHTMLHeaderLevels } from '../../types';
 //Misc
 import { VALID_HTML_HEADER_LEVELS, VALID_HTML_HEADER_LEVELS_SET } from '../../utils';
 
-export type BaseAccordionHeaderElementProps = Omit<
+export type BaseAccordionHeaderElementProps = {
+  [key: `data-${string}`]: unknown;
+} & Omit<
   React.HTMLAttributes<HTMLHeadingElement>,
   'children' | 'dangerouslySetInnerHTML'
 >;
 
-export type BaseAccordionButtonElementProps = Omit<
+export type BaseAccordionButtonElementProps = {
+  [key: `data-${string}`]: unknown;
+} & Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   'children' |
   'dangerouslySetInnerHTML' |
@@ -84,8 +88,8 @@ BaseAccordionHeader.propTypes = {
   'aria-controls': PropTypes.string.isRequired,
   'aria-expanded': PropTypes.bool.isRequired,
   'aria-disabled': PropTypes.bool.isRequired,
-  headerProps: PropTypes.object,
-  buttonProps: PropTypes.object,
+  headerProps: PropTypes.object as React.Validator<BaseAccordionHeaderElementProps>,
+  buttonProps: PropTypes.object as React.Validator<BaseAccordionButtonElementProps>,
 };
 
 BaseAccordionHeader.defaultProps = {
