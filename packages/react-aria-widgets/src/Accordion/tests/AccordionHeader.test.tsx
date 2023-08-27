@@ -33,7 +33,7 @@ describe('AccordionHeader', () => {
     expect(button).toHaveClass(DEFAULT_ACCORDION_BUTTON_ELEMENT_CSS_CLASS);
   });
 
-  test('use the supplied `className` in headerProps or buttonProps', () => {
+  test('use the supplied `className` string in headerProps or buttonProps', () => {
     render(
       <TestAccordion
         headerProps={{ className: 'headerClass' }}
